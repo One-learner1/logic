@@ -1,0 +1,521 @@
+Exercise 1: 
+
+
+(a) Prove Vx(VyPy then Px)
+
+1: F Vx(VyPy then Px) (Hypothesis)
+2: F VyPy then Pa (1)
+3: T VyPy (2)
+4: F Pa (2)
+5: Pa (3)
+--------- (4, 5)
+
+(b) Prove Vx(Px then ExPx)
+
+1: F Vx(Px then ExPx) (Hypothesis)
+2: F Pa then ExPx (1)
+3: T Pa (2)
+4: F ExPx (2)
+5: F Pa (4)
+----------- (3, 5)
+
+*(c) Prove ~EyPy then Vy(ExPx then Py)
+
+1: F (~EyPy then Vy(ExPx then Py)) (Hypothesis)
+2: T ~EyPy (1)
+3: F Vy(ExPx then Py))
+4: F ExPx then Pa (3)
+5: T ExPx (4)
+7: T Pb (5)
+8: F Pb (2)
+----------- (7, 8)
+
+(d) Prove ExPx then EyPy
+
+1: F ExPx then EyPy (Hypothesis)
+2: T ExPx (1)
+3: F EyPy (1)
+4: T Pa (2)
+5: F Pa (3)
+----------- (4, 5)
+
+(e) Prove (VxPx and VxQx) iff Vx(Px and Qx)
+
+1: F (VxPx and VxQx) iff Vx(Px and Qx)
+
+Proof where (VxPx and VxQx) is true and Vx(Px and Qx) is false
+
+2: T VxPx and VxQx (1)
+3: F Vx(Px and Qx) (1)
+4: T VxPx (2)
+5: T VxQx (2)
+6: F Pa and Qa
+7: T Pa (4)
+8: T Qa (5)
+|				|
+|				|
+|				|
+|				|
+9: F Pa (6)		10: F Qa (6)
+-----------		------------
+(7, 9)			(8, 10)
+
+				Proof where (VxPx and VxQx) is false and Vx(Px and Qx) is true
+				2: F VxPx and VxQx (1)
+				3: T Vx(Px and Qx) (1)
+				/							\
+			   /							 \
+			  /								  \
+	4: F VxPx (2)							8: F VxQx (2)
+	5: F Pa (3)								9: F Qa (8)
+	6: T Pa and Qa (3)						10: T Pa and Qa (3)
+	7: T Pa (6)								11: T Qa (10)
+	----------- (5, 7)						------------ (9, 11)
+
+
+(f) Prove (VxPx or VxQx) then Vx(Px or Qx)
+
+					1: F (VxPx or VxQx) then Vx(Px or Qx)
+					2: T VxPx or VxQx (1)
+					3: F Vx(Px or Qx)
+					4: F Pa or Qa (3)
+					5: F Pa (4)
+					6: F Qa (4)
+					/					\
+				   /					 \
+				  /						  \
+			7: T VxPx (2)				9: T VxQx (2)
+			8: T Pa (7)					10: T Qa (9)
+			----------- (5, 8)			------------ (6, 10)
+
+
+(g) Prove Ex(Px or Qx) iff (ExPx or ExQx)
+
+1: F Ex(Px or Qx) iff (ExPx or ExQx)
+						Proof where Ex(Px or Qx) is true and (ExPx or ExQx) is false:
+						2: T Ex(Px or Qx) (1)
+						3: F ExPx or ExQx (1)
+						4: F ExPx (3)
+						5: F ExQx (3)
+						6: Pa or Qa (2)
+						/					\
+					   /					 \
+					  /						  \
+				7: T Pa (2)					9: T Qa (2)	
+				8: F Pa (4)					10: F Qa (5)
+				----------- (7, 8)			------------ (9, 10)
+
+						Proof where Ex(Px or Qx) is false and (ExPx or ExQx) is true:
+						2: F Ex(Px or Qx) (1)
+						3: T ExPx or ExQx (1)
+						/						\
+					   /						 \
+					  /							  \
+				4: T ExPx (3)					8: T ExQx (3)
+				5: T Pa (4)						9: T Qa (8)
+				6: F Pa or Qa (2)				10: F Pa or Qa (2)
+				7: F Pa (6)						11: F Qa (10)
+				----------- (5, 7)				------------- (9, 11)
+
+(h) Prove Ex(Px and Qx) then (ExPx and ExQx)
+
+								1: F Ex(Px and Qx) then (ExPx and ExQx) (Hypothesis)
+								2: T Ex(Px and Qx) (1)
+								3: F ExPx and ExQx (1)
+								4: T Pa and Qa (2)
+								5: T Pa (4)
+								6: T Qa (4)
+								/			\	
+							   /			 \
+							  /				  \
+						7: F ExPx (3)			9: F ExQx (3)
+						8: F Pa (7)				10: F Qa (9)
+						----------- (5, 8)		------------ (6, 10)
+
+
+Problem 1(a): Vx(Px or Qx) says that every x either has property P or property Q. VxPx or VxQx says that either every x has property P, or every x has property Q. This is obviously not equivalent to the first formula, as every x having either property P or property Q says nothing about whether or not every x has property P or if every x has property Q. For example, in a domain U, Px could be true for half of the elements, while Qx could be true for the other half (as in the property of being even and being odd for natural numbers), meaning Vx(Px or Qx) is true, but the second formula would not be true, as VxPx or VxQx does not hold.
+
+Problem 1(b): Ex(Px and Qx) means that there is some x such that Px and Qx both hold. ExPx and ExQx says that there is some x such that Px, and there is some x (not necessarily the same one) such that Qx. We could have the case where Px holds for some x, and Qx holds for some y distinct from x. This does not guarantee there is some x such that both P and Q hold, meaning Ex(Px and Qx) is not implied. Again, we could take the example of being even and odd. Obviously no number can be both even and odd, but there is an odd and an even number. 
+
+Exercise 2, where C is any closed formula: 
+
+
+									(a): Prove Vx(Px or C) iff (VxPx or C)
+								1: F Vx(Px or C) iff (VxPx or C)
+
+
+
+						 Proof where Vx(Px or C) is true and VxPx or C is false:
+						 2: T Vx(Px or C) (1)
+						 3: F VxPx or C (1)
+						 4: F VxPx (3)
+						 5: F C (3)
+						 6: F Pa (4)
+						 7: T Pa or C (2)
+						 /					\
+						/					 \
+				8: T Pa (7)					9: T C (7)
+				----------- (6, 8)			---------- (5, 9)
+
+						Proof where Vx(Px or C) is false and VxPx or C is true:
+						2: F Vx(Px or C) (1)
+						3: T VxPx or C (1)
+						4: F Pa or C (2)
+						5: F Pa (4)
+						6: F C (4)
+						/					\
+					   /					 \
+					  /						  \
+				7: T VxPx (3)				9: T C (3)
+				8: T Pa (7)					---------- (6, 9)
+				----------- (5, 8)
+
+
+
+								(b): Prove Ex(Px and C) iff (ExPx and C)
+								1: F Ex(Px and C) iff (ExPx and C)
+
+								Proof where Ex(Px and C) is true and ExPx and C is false:
+								2: T Ex(Px and C) (1)
+								3: F ExPx and C (1)
+								4: T Pa and C (2)
+								5: T Pa (4)
+								6: T C (4)
+								/					\
+							   /					 \
+							  /						  \
+						7: F ExPx (3)					9: F C (3)
+						8: F Pa (7)						---------- (6, 9)
+						----------- (5, 8)
+
+								Proof where Ex(Px and C) is false and ExPx and C is true:
+								2: F Ex(Px and C) (1)
+								3: T ExPx and C (1)
+								4: T ExPx (3)
+								5: T C (3)
+								6: T Pa (4)
+								7: F Pa and C (2)
+								/					\
+							   /					 \
+							  /						  \
+						8: F Pa (7)					9: F C (7)
+						----------- (6, 8)			---------- (5, 9)
+
+
+								(c): Prove ExC iff C:
+
+								1: F Exc iff C (Hypothesis)
+
+								Proof where Exc is true and C is false:
+								2: T ExC (1)
+								3: F C (1)
+								4: T C(a) (2)
+								5: T C (4 and the fact that C(a) is just C, because C is closed)
+								------ (3, 5)
+
+								Proof where Exc is false and C is true:
+								2: F Exc (1)
+								3: T C (1)
+								4: F C(a) (2)
+								5: F C (4 and the fact that C(a) is just C, because C is closed)
+								------ (3, 5)
+
+
+								(d): Prove VxC iff C:
+
+								This is identical to (c), except by replacing every E by V.
+
+
+
+								(e): Prove Ex(C then Px) iff (C then ExPx):
+
+								1: F Ex(C then Px) iff (C then ExPx) (Hypothesis)
+
+								Proof where Ex(C then Px) is true and C then ExPx is false:
+								2: T Ex(C then Px) (1)
+								3: F C then ExPx (1)
+								4: T C (3)
+								5: F ExPx (3)
+								6: C then Pa (2)
+								/					\
+							   /					 \
+						7: F C (6)					8: T Pa (6)
+						---------- (4, 7)			9: F Pa (5)
+													----------- (8, 9)
+
+								Proof where Ex(C then Px) is false and C then ExPx is true:
+								2: F Ex(C then Px) (1)
+								3: T C then ExPx (1)
+							/							\
+						   /							 \
+						  /								  \
+						4: F C (3)						7: T ExPx (3)
+						5: F C then Pa (2)				8: T Pa (7)
+						6: T C (5)						9: F C then Pa (2)
+						---------- (4, 6)				10: F Pa (9)
+														------------ (8, 10)
+
+								(f): Prove Ex(Px then C) iff (VxPx then C):
+
+								1: F Ex(Px then C) iff (VxPx then C) (Hypothesis)
+
+								Proof where Ex(Px then C) is true, and VxPx then C is false:
+
+								2: T Ex(Px then C) (1)
+								3: F VxPx then C (1)
+								4: T VxPx (3)
+								5: F C (3)
+								6: T Pa then C (2)
+								/					\
+							   /					 \
+						7: F Pa (6)					9: T C (6)
+						8: T Pa (4)					---------- (5, 9)
+						----------- (7, 8)
+
+								Proof where Ex(Px then C) is false, and VxPx then C is true: 
+
+								2: F Ex(Px then C) (1)
+								3: T VxPx then C (1)
+								/						\
+							   /						 \
+							  /							  \
+						4: F VxPx (3)					5: T C (3)		
+						5: F Pa (4)						6: F Pa then C (2)
+						6: F Pa then C (2)				7: F C (6)
+						7: T Pa (6)						---------- (5, 7)
+						----------- (5, 7)
+
+								(g): Prove Vx(C then Px) iff (C then VxPx):
+
+								1: F Vx(C then Px) iff (C then VxPx) (Hypothesis)
+
+								Proof where Vx(C then Px) is true and C then VxPx is false:
+								2: T Vx(C then Px) (1)
+								3: F C then VxPx (1)
+								4: T C (3)
+								5: F VxPx (3)
+								6: F Pa (5)
+								7: T C then Pa (2)
+								/					\
+							   /				     \
+							  /					      \
+						8: F C (7)						9: T Pa (7)
+						---------- (4, 8)				----------- (6, 9)
+
+
+								Proof where Vx(C then Px) is false and C then VxPx is true:
+								2: F Vx(C then Px) (1)
+								3: T C then VxPx (1)
+								4: F C then Pa (2)
+								5: T C (4)
+								6: F Pa (4)
+								/				\
+							   /				 \
+							  /					  \
+						7: F C (3)				8: T VxPx (3)
+						---------- (5, 7)		9: T Pa (8)
+												----------- (6, 9)
+
+
+								(h): Prove Vx(Px then C) iff (ExPx then C):
+								1: F Vx(Px then C) iff (ExPx then C) (Hypothesis)
+
+								Proof where Vx(Px then C) is true, and ExPx then C is false:
+								2: T Vx(Px then C) (1)
+								3: F ExPx then C (1)
+								4: T ExPx (3)
+								5: F C (3)
+								6: T Pa (4)
+								7: T Pa then C (2)
+								/					\
+							   /					 \
+							  /						  \
+						8: F Pa (7)					9: T C (7)
+						----------- (6, 8)			---------- (5, 9)
+
+
+								Proof where Vx(Px then C) is false, and ExPx then C is true:
+								2: F Vx(Px then C) (1)
+								3: T ExPx then C (1)
+								4: F Pa then C (2)
+								5: T Pa (4)
+								6: F C (4)
+							   /				\
+							  /					 \
+							 /					  \
+						7: F ExPx (3)				9: T C (3)
+						8: F Pa (7)					---------- (6, 9)
+						----------- (5, 8)
+
+
+								(i): Prove Vx(Px iff C) then (VxPx or Vx~Px):
+								1: F Vx(Px iff C) then (VxPx or Vx~Px) (Hypothesis)
+								2: T Vx(Px iff C) (1)
+								3: F VxPx or Vx~Px (1)
+								4: F VxPx (3)
+								5: F Vx~Px (3)
+								6: F Pa (4)
+								7: F ~Pb (5)
+								8: T Pb (7)
+								9: T Pa iff C (2)
+								10: T Pb iff C (2)
+
+								Proof where Pa is true and C is true:
+
+								11: T Pa (9)
+								------------ (6, 11)
+
+								Proof where Pa and C are both false:
+
+								12: F Pa (9)
+								13: F C (9)
+								/						\
+							   /						 \
+							  /							  \
+						14: T C (10)						15: F C (10)
+						------------ (13, 14)				16: F b (10)
+															------------ (8, 16)
+
+
+
+Problem 2: We assume the interpretation I satsifies S. Consider some formula s of type delta in S and some parameter a that is new to S. Now consider some interpretation I` which is an extension of I. Well, because I` preserves all the values of the formulas in S, s would still be true under I`. Being true, s(e) must be true for some e in U. Now, because I` is an interpretation of S`, which has S as a subset, it necessarily contains some parameter a which is new to S. Then, when assigning a value to a under I`, we simply give it the value of e, meaning s(a) is true (we could not do this same procedure for the parameters being members of S, as they have already been assigned their original values in I by definition of I`, of which we can not be certain any of them were true for s).
+
+Problem 3: Prove that every Hintikka Set for First Order Logic is Satisfiable:
+
+We prove that for all formulas of degree n in set S, each formula is satisfiable under some interpreation I. This will be proven by complete mathematical induction.
+Base Case: For the base case of formulas of degree 0, these are just n-ary predicates. Then it is obvious that we can assign each predicate P the n-ary relation x1,...,xn such that T Px1,...,xn is a member of S (we can assign any n-ary relation whatsoever to each predicate, meaning we of course can assign it a relation such that it is true under I). Because F Px1,...,...xn is not a member of S by H0, the base case has been proven. 
+Now assume that for all formulas of degrees less than n, these formulas are all true under I. In the case of formulas of type b or a, these are true by either the fact that either b1 or b2 is a member of S, or both a1 and a2 are members of S (by H1 and H2). In the case of the formula of degree n+1 being of type y, y(a) is a member of S for every parameter a, by H3. Now, because y(a) is the result of replacing the occurences of x by a, the bounding quantifier for x (either Vx or ~Ex) is taken out of the formula. Thus the formula y(a) must be less than degree n for every parameter a. Thus every formula y(a) is true under I, meaning y itself is true under I. 
+In the case of a formula of type s, there is at least one parameter a such that the formula s(a) is in S (by H4). Again, s(a) must be of a degree less than n, so that s(a) is true. Than, s itself is also true by definition. 
+Thus, in all cases of formulas, the formula is true under I, meaning that the set S is satisfiable, completing the proof. 
+
+Problem 4(a): If a set is is satisfiable, then all of its members are simultaneously true under some interpretation I. If X is valid, then X is also true under this same interpretation I. Thus S U {X} is true under I, and thus is satisfiable.
+
+*(This problem can be generalized to any formula Y?) Problem 4(b): If S is satisfiable, and S U {X} is not satisfiable, then X is not true under the interpretation I in which S is true. Thus X then Y would be true under I, because X is false. Then S U {X then Y} is satisfiable, because under I, S is true, and X then Y is true.
+
+Problem 5:
+	
+	(a): We assume that S is a finite set of simultaneously satisfiable sentences. Well, y then y(a) is valid, meaning S U {y then y(a)} is satisfiable for every parameter by Problem 4(a).
+
+	 (b): Again S is a finite set of simultaneously satisfiable sentences. Well, if S U {s} is satisfiable, s(a) for some parameter a outside of S and s would be true under that same interpretation by definition, meaning s then s(a) would also be true, and thus S U {s then s(a)} would be true as well. If S U {s} is unsatisfiable, then S U {s then s(a)} is true by Problem 4(b).
+
+	(c): Assume R is a regular set such that no critical parameter of R occurs in S. Well, R is then made up of Q formulas, either of the type y then y(a), or s then s(a) for any a which does not occur in S, and does not occur in s. Thus S U {y then y(a)} or S U {s then s(a)} is satisfiable for the Q's in R by (a) or (b). Thus, for every Qi <= n in the sequence Q1,...,Qn of the Q's of R, we have S U {Q1} U ... U {Qn} being satisfiable, meaning the whole sequence is satisfiable, and thus S U {Q1,...,Qn} is satisfiable, meaning R U S is satisfiable as well.
+
+	(d): Because the empty set is vacuously satisfiable, R U the empty set is satisfiable by (c), thus meaning R is of course satisfiable 
+
+	(e): Recall that X being validly implied by a set S means that X is true under all first-order valuations for which S is true. Well, if X is not valid, then ~X is true under at least one interpreatation. Thus, by (c), and the fact that it was assumed no critical parameter of R occurs in X (and thus also not in ~X), R U ~X is satisfiable. Thus R being true under some interpretation I implies ~X being true, meaning X cannot also be true. Thus, X would then not be validly implied by R, contrary to the initial assumption. Therefore, ~X cannot be satisfiable, meaning X must be valid. 
+
+	(f): Again, y then y(a) is valid. For (y then y(a)) then X to be valid, X must also be valid, or else (y then y(a)) then X would not be true under at least one first-order valuation (because first-order valuations respect the laws of Boolean valuations).
+
+	(g): Because s then s(a) is a regular set R, and no critical parameters of R occur in X, X is valid by (e).
+
+Exercise in the Discussion: Consider any interpreation of the predicates in R, and the value for the non-critical parameters. Consider any Q. If Q itself is false under I, then of course Q then Q(a) is true under I for any critical parameter at all. If Q is true under I, then there is at least one a such that Q(a) is also true under I. For each Q1,...,Qn, we assign to it (if it is of type s) the critical parameter a1,...,an, where each ai is an a not used previously in R or in Q. Thus Q then Q(a) would be true, meaning the whole set R would be true under I. 
+
+Problem 6: 	We prove this theorem by showing that, for any n number of Q formulas used in the closed tableau T for the valid formula X, the tableau T1 using only rules A and B (because we are showing X is implied by the set R under all Boolean valuations, namely those which cannot take into account Vx and Ex, and thus also not rules C and D) must close. We prove this by mathematical induction. The base case of 1 is obvious, for, assume we have a tableau:
+									
+									1: F X
+									2: T R (the Regular set)
+
+									n: Q
+									n+1: Q then Q(a) (by definition of the regular set) 
+									/							\
+								   /							 \
+								  /								  \
+							n+2: F Q (n+1)						 n+3: Because we assumed there will only be one Q formula
+							-------------- (n+1, n+2)			in this construction, the rest of the tableau can close 
+																with only rules A and B, as X is valid, and we have now used the part of the tableau that would have used rule C or D (that part with the Q formula). 
+
+
+									Now, assume that for all tableaus T1 with n Q formulas in the set R, T1 closes. For the tableau T2 for the set R with n+1 Q formulas, we extend T2 to the size of T1, which was assumed to close. Thus, the tableau T2 can be closed up until the very last Q formula. Because we assumed X to be valid, this branch closes again by the method described in the base case, thus proving the induction case, completing the proof of the Regularity Theorem. 
+
+
+Problem 7: We consider some axiom system of type a which is tautologically closed. In addition, we assume that conditions (A1) and (A2) hold for a. Now consider some valid formula X; by the regularity theorem, it is implied by some regular set R. Now consider the set R with the elements Q1,...,Qn obtained through the method of construction highlighted in Problem 6. Because X is valid and is tautologically implied by R, R then X is a tautology. Thus R then X is provable in the system. R, being the formula Q1 and ... and Qn can be split into Q1 and (... and Qn). Because (Q1 and (... and Qn)) then X is a tautology, Q1 then ((... and Qn) then X) is also a tautology (but only a tautology when R then X is a tautology, meaning (Q1 then ((... and Qn) then X)) is tautologically implied by R then X). Because a is tautologically closed, (Q1 then ((... and Qn) then X) is provable. Thus by (A1) or (A2), (Q2 and ... and Qn) then X is provable as well (if there are any Qn higher than 1; if not, X is directly provable by A1 or A2). Then, Q2 then ((... and Qn) then X) is seen to be tautologically implied by (Q2 and ... and Qn) then X, meaning it is provable. Then (Q3 and ... and Qn) then X is provable as well (by A1 or A2, dependant upon what Q2 is), and so on. Eventually, because S was assumed to be a finite set of formulas, the sequence must terminate, ending with either A1 or A2 proving X. 
+
+Problem 8(a):
+	
+	First we prove the Lemma:
+
+	(a): The sentence y then y(a) is either of the form Vxphi(x) then phi(a) or ~Exphi(x) then ~phi(a). If it is the first case, this is an axiom of S1. If it is the second case, this is tautologically implies by Vxphi(x) then phi(a), hence is provable as well.
+
+	(b): We assume that phi(a) then X is provable in S1. The sentence d is either of the form Exphi(x) or ~Vxphi(x). If it is of the first case, we have Exphi(x) then X being provable by the inference rule II(a). If it is of the second case, we have ~X then phi(a) being provable (because this is tautologically implied by ~phi(a) then X), and thus by inference rule II(b) ~X then Vxphi(x) is provable. Then, because ~Vxphi(x) then X is tautologically implied by the former sentence, this is provable as well. 
+
+Problem 8(b):
+
+	As for S1 being tautologically closed, all tautologies are axioms, and for any set S of formulas provable in A, we would then have (S1 and ... and Sn) as well as (S1 and ... and Sn) then X being provable (by the assumption that X is tautologically implies by the set S of formulas), and thus by M.P. X is provable as well. 
+
+	Now assume that (y then y(a)) then X is provable in S1. By Lemma(a), we have y then y(a) being provable, and thus by M.P., X is provable as well. 
+
+	Instead assume that (d then d(a)) then X is provable in S1, and a does not occur in either d or X. Well, because d(a) then X is tautologically implied by (d then d(a)) then X, we have d then X being provable by Lemma(b). Because ~d then X is tautologically implied by (d then d(a)) then X, we also have ~d then X being provable. Then, because the set S of formulas {d then X, ~d then X} tautologically implies X, and is provable, we then have X being provable. 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

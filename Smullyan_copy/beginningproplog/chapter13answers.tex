@@ -1,0 +1,211 @@
+%/*% pdflatex -file-line-error -interaction nonstopmode %
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{amsthm}
+\usepackage{yhmath}
+\newcommand*{\oldneg}{\mathord{\sim}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+
+\title{Chapter 13 Answers}
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+(a): Let us note that, because the Group $I$ axioms are just the system $S_1$ of Chapter $7$,
+it follows that all tautologies are provable in Peano Arithmetic (as 
+$S_1$ was proved to be complete). Then, pick any formula $C$ such that $x$ has no free occurrences (such as a propositional formula). Then, it follows 
+that $C\supset F(x)$ is provable (as this is a tautology if $F(x)$ is provable), and therefore so is $\forall xF(x)$ by $Group\ Inference\ Rules\ Rule\ 2$.
+\newline\newline 
+(b): If $F(x)$ is provable, then $\forall xF(x)$ is provable (by (a)). Hence, by $A10$, because $\forall xF(x)\supset F(t)$ is provable, so is 
+$F(\overline n)$ for every number $n$ by M.P. (because every number $n$ is a term).\newline\newline
+(c): If $F(x,y)$ is provable, then $F(\overline n,y)$ is provable for every $n$ (by (b)), and then $F(\overline n, \overline m)$ is provable for every 
+$n$ and $m$ (by (b)).
+\section*{Problem 2}
+(1):\newline For this, we first introduce into our alphabet $K$ the symbol $v$. Then, we have the following axiom schemes with the predicate $Stx$ 
+(for string)
+ representing all the strings of $v$'s:\newline $Stv$\newline $Stx\rightarrow Stxv$\newline
+(2):\newline Now we introduce the symbols $($ and $)$ into $K$, and then $Vx$ represents all the variables in Peano Arithmetic:\newline
+$Stx\rightarrow V(x)$\newline
+(3):\newline We need the following axioms for the predicate Dist (for distinct):\newline $stx\rightarrow sty\rightarrow Dist(x)(xy)$\newline
+$Distx,y\rightarrow disty,x$\newline
+(4):\newline Now we introduce the symbols $0$ and $'$. Then, $Num$ (for numeral) represents the set of Peano Numerals:\newline
+$Num0$\newline $Numx\rightarrow Numx'$\newline
+(5):\newline We now add the symbols $+$ and $\times$ to $K$. Then $Tx$ (for term) represents the set of all terms:\newline
+$Numx\rightarrow Tx$\newline $Vx\rightarrow Tx$\newline $Tx\rightarrow Ty\rightarrow T(x+y)$\newline $Tx\rightarrow Ty\rightarrow T(x\times y)$\newline
+$Tx\rightarrow Tx'$\newline
+(6):\newline We now add the symbols $=$ and $\le$ to $K$. Then $Afx$ (for atomic formula) represents the set of all atomic formulas:\newline
+$Tx\rightarrow Ty\rightarrow Afx=y$\newline $Tx\rightarrow Ty\rightarrow Afx\le y$\newline
+(7):\newline We now add the symbols $\oldneg$, $\wedge$, $\vee$, $\supset$, $\forall$ and $\exists$ into $K$. Then $Fx$ represents the set of all formulas:
+\newline $Afx\rightarrow Fx$\newline $Fx\rightarrow F\oldneg x$\newline $Fx\rightarrow Fy\rightarrow F(x\wedge y)$\newline $Fx\rightarrow Fy\rightarrow 
+F(x\vee y)$\newline $Fx\rightarrow Fy\rightarrow F(x\supset y)$\newline $Fw\rightarrow varx\rightarrow F\forall xw$\newline
+$Fw\rightarrow varx\rightarrow f\exists xw$:\newline
+(8):\newline We let $Tsub$ be the predicate representing the realtion $t$ is a term, $x$ is a variable, $y$ is a term, and $z$ is the result of 
+substituting $t$ for all occurences of $x$ in $y$.\newline $Tt\rightarrow Vx\rightarrow Num y\rightarrow Tsubt,x,y,y$\newline
+$Tt\rightarrow Vx\rightarrow Tsubt,x,x,t$\newline $Tt\rightarrow Dist x,y\rightarrow Tsubt,x,y,y$\newline
+$Tsubt,x,y,z\rightarrow Tsubt,x,y',z'$\newline
+$Tsubt,x,w,z\rightarrow Tsubt,x,v,l\rightarrow Tsubt,x,(w\times v),(z\times l)$\newline
+$Tsubt,x,w,z\rightarrow Tsubt,x,v,l\rightarrow Tsubt,x(w+v),(z+l)$\newline
+$Note:$ Smullyans answer omits parenthesis (where I placed them), and this seeems to be incorrect, as he defined a term (in those cases) with parenthesis.
+\newline
+(9):\newline We let $Tfsub$ be the predicate representing the relation $t$ is a term, $x$ is a variable, $y$ is a formula, and $z$ is the result of 
+substituting $t$ for all free occurences of $x$ in $y$:\newline
+$Tsubt,x,y,z\rightarrow Tsubt,x,w,v\rightarrow Tfsubt,x,y=w,z=v$\newline $Tsubt,x,y,z\rightarrow Tsubt,x,w,v\rightarrow Tfsubt,x,y\le w,z\le v$\newline
+$Tfsubt,x,y,z\rightarrow Tfsubt,x,w,v\rightarrow Tfsubt,x,y\wedge w,z\wedge v$\newline $Tfsubt,x,y,z\rightarrow Tfsubt,x,w,v\rightarrow Tfsubt,x,y
+\vee w,z\vee v$\newline $Tfsubt,x,y,z\rightarrow Tfsubt,x,w,v\rightarrow Tfsubt,x,y\supset w,z\supset v$\newline $Tfsubt,x,y,z\rightarrow Tfsubt,x,\oldneg y
+\oldneg z$\newline $Fy\rightarrow \rightarrow Tt\rightarrow Vx\rightarrow Tfsubt,x,\forall xy,\forall xy$\newline 
+$Fy\rightarrow Tt\rightarrow Vx\rightarrow Tfsubt,x,\exists xy,\exists xy$\newline
+$Distx,y\rightarrow Tfsubt,x,w,v\rightarrow Tfsubt,x,\forall yw,\forall yv$\newline $Distx,y\rightarrow Tfsubt,x,w,v\rightarrow Tfsubt,x\forall yw,\forall 
+yv$\newline
+(10):\newline We let $Nocf$ represent the relation $x$ is a variable, $f$ is a formula, and $x$ does not occur free in $f$:\newline
+$Distx,y\rightarrow Tsubfy,x,f,f\rightarrow Nocfx,f$\newline
+(11):\newline We let $Nb$ represent the relation $x$ and $y$ are variables, $f$ is a formula, and $x$ is not bound by $y$ in $f$:\newline
+$Vx\rightarrow Vy\rightarrow Afw\rightarrow Nbx,y,w$\newline $Nbx,y,f_1\rightarrow Nbx,y,f_2\rightarrow Nbx,y,f_1\wedge f_2$\newline
+$Nbx,y,f_1\rightarrow Nbx,y,f_2\rightarrow Nbx,y,f_1\vee f_2$\newline $Nbx,y,f_1\rightarrow Nbx,y,f_2\rightarrow Nbx,y,f_1\supset f_2$\newline
+$Nbx,y,f\rightarrow Nbx,y,\oldneg f$\newline $Nbx,y,f\rightarrow Nocfx,f\rightarrow Nbx,x,f\rightarrow Nbx,y,\forall yf$\newline 
+$Nbx,y,f\rightarrow Nocfx,f\rightarrow Nbx,x,f\rightarrow Nbx,y,\exists yf$\newline $Nbx,y,f\rightarrow Distz,y\rightarrow Nbx,y,\forall zf$\newline
+$Nbx,y,f\rightarrow Distz,y\rightarrow Nbx,y,\exists zf$\newline
+$Note:$ Smullyan's answer seems to be incorrect, as it allows for $Nbx,y,\forall y\forall xF(x)$ where $Nbx,y,\forall xF(x)$. However, this seems to infact 
+be a formula in which $x$ is bounded to $y$, as there is some $G$ (namely $\forall xF(x)$) such that $\forall yG$ is part of $F$ and $x$ occurs in $G$. The 
+only time quantifying $y$ will still make $x$ not bound to $y$ is when $x$ does not occur in the formula, and this is why we must have the added condition 
+that $x$ is not bound to $x$ (and thus, because it does not occur freely, it cannot occur at all).\newline
+(12):\newline We let $Ocf$ represent $t$ is a term, $x$ is a variable, $f$ is a formula, and $t$ is free for $x$ in $f$:\newline
+$Nbx,y,f\rightarrow Ocfy,x,f$\newline $Nt\rightarrow Vx\rightarrow Ff\rightarrow Ocft,x,f$\newline $Ocft,x,f\rightarrow Ocft',x,f$\newline 
+$Ocft_1,x,f\rightarrow Ocft_2,x,f\rightarrow Ocft_1+t_2,x,f$\newline $Ocft_1,x,f\rightarrow Ocft_2,x,f\rightarrow Ocft_1\times t_2,x,f$\newline
+(13):\newline We let the predicate $Ax$ represent mean $x$ is an axiom.\newline $Group\ I\ Axiom\ Schemes:$\newline
+$Ff\rightarrow Fg\rightarrow A(f\wedge g)\supset f$\newline $Ff\rightarrow Fg\rightarrow A(f\wedge g)\supset g$\newline $Ff\rightarrow Fg\rightarrow 
+Fh\rightarrow A[(f\wedge g)\supset h]\supset [f\supset (g\supset h)]$\newline $Ff\rightarrow Fg\rightarrow Fh\rightarrow A[(f\supset g)\wedge (f\supset
+ (g\supset h))]\supset (f\supset h)$\newline $Ff\rightarrow Fg\rightarrow Af\supset (f\vee g)$\newline $Fg\rightarrow Ff\rightarrow Ag\supset (f\vee g)$
+\newline $Ff\rightarrow Fg\rightarrow Fh\rightarrow A[(f\supset h)\wedge (g\supset h)]\supset ((f\vee g)\supset h)$\newline
+$Ff\rightarrow Fg\rightarrow A((f\supset g)\wedge (f\supset \oldneg g))\supset \oldneg f$\newline $Ff\rightarrow A\oldneg\oldneg f\supset f$\newline
+$Group\ II\ Axiom\ Schemes:$\newline $Ocft,x,f\rightarrow Tfsubt,x,f,y\rightarrow A\forall x(f)\supset y$\newline
+$Ocft,x,f\rightarrow Tfsubt,x,f,y\rightarrow Ay\supset\exists x(f)$\newline $Group\ III\ Axiom\ Schemes:$\newline
+$Tx\rightarrow Ty\rightarrow A(x'=y')\supset (x=y)$\newline $Tx\rightarrow A\oldneg (x'=0)$\newline $Tx\rightarrow Ty\rightarrow Tz\rightarrow
+ A((x=y)\wedge (x=z))\supset (y=z)$\newline $Tx\rightarrow Ty\rightarrow A(x=y)\supset (x'=y')$\newline $Tx\rightarrow Ax+0=x$\newline $Tx\rightarrow Ty
+\rightarrow Ax+y'=(x+y)'$\newline $Tx\rightarrow Ax\times 0=0$\newline $Tx\rightarrow Ty\rightarrow Ax\times y'=(x\times y)+x$\newline
+$Tfsub0,x,f,z\rightarrow Tfsubx',x,f,y\rightarrow A(z\wedge \forall x(f\supset y))\supset \forall x(f)$\newline
+$Tx\rightarrow A(x\le 0)\equiv (x=0)$\newline $Tx\rightarrow Ty\rightarrow A(x\le y)\equiv ((x\le y)\vee (x\le y'))$\newline
+$Tx\rightarrow Ty\rightarrow A(x\le y)\vee (y\le x)$\newline $Tx\rightarrow Ax=x$\newline $Nn\rightarrow Tfsubn,x,f,y\rightarrow Ay\supset ((x=n)\supset f))$
+\newline $Ff\rightarrow A\forall x\oldneg (f)\supset \oldneg\exists x(f)$\newline
+$Note:$\newline Smullyans addition of $Vx$ in the mathematical induction scheme is unecessary, as $Tfsubt,x,f,z$ implies that $x$ is a variable.
+\newline
+(14):\newline We let $Px$ represent the set of provable formulas:\newline $Af\rightarrow Pf$\newline $Px\rightarrow Px\supset y\rightarrow Py$\newline
+$Nocfx,c\rightarrow Pc\supset f\rightarrow Pc\supset \forall x(f)$\newline $Nocfx,c\rightarrow Pf\supset c\rightarrow P\exists x(f)\supset c$\newline
+$Note:$\newline Smullyans addition of $Fc$ in the last two schemes is unecessary, as this is implied by $Nocfx,c$.\newline
+\section*{Problem 3}
+(a):\newline We have already shown that $F$ being a formula, $x$ does not occur free in $F$, and $x$ is a variable are all formally representable, and 
+therefore the sets of the corresponding Gödel numbers are $\Sigma_1$. Hence, the following formula expresses $S_0$:\newline
+$F_0(y)\wedge (\forall x\le y)(V_0(x)\supset Nocf_0(x,y))$\newline
+Well, this is equivalent to the following, with $\exists yR_1(x,y)$ expressing $V_0$, $\exists kR_2(w,v,k)$ expressing $Nocf_0(w,v)$ and $\exists lR_3(f,l)$
+expressing $F_0(f)$, with all $R_i$ being $\Sigma_0$
+:\newline 
+$\exists l\exists y\exists v(R_3(f,l)\wedge (\forall z\le f)(R_1(x,y)\supset R_2(z,f,v))))$\newline
+which is $\Sigma_1$ by Problem 10(b) of Chapter 11 (because the above formula without the $\exists l$ is $\Sigma_1$ by Problem 10(a) of Chapter 11).\newline 
+(b):\newline $x\in P_0$ iff $Pf_0(x)\wedge S_0(x)$\newline and this is $\Sigma_1$ by Problem 13 of Chapter 11.\newline
+(c):\newline $x\in R_0$ iff $Pf_0(nx)$ where $n$ is the Gödel number of the negation.\newline 
+\section*{Problem 4}
+$\Omega_1$:\newline We assume that $m+n=k$. We are to show that $\overline m+\overline n=k$ is provable in Peano Arithmetic. By $A16$ and Proposition 1(b),  
+$\overline m+0=\overline m$ is provable. Then, we have $(\overline m+0)'=\overline m'$ being provable by $A15$ and M.P. Then, we also have $\overline m+0'=
+(\overline m+0)'$ being provable by A17 and Proposition 1(c), 
+and therefore, by A14, we have $\overline m+0'=m'$ being provable. We can repeat this process $n$ times, until we 
+eventually end up with $\overline m+\overline n=\overline k$, the desired result.\newline 
+$\Omega_2$:\newline We assume that $m\times n=k$. We are to show that $\overline m\times\overline n=\overline k$ is provable in Peano Arithmetic.  
+By $A18$ and Proposition 1(b), $\overline m\times 0=0$ is 
+provable. Then, by $A19$ and Proposition 1(c), 
+$\overline m\times 0'=(\overline m\times 0)+\overline m$ is provable. We repeat the process of applying $A19$ $n$ times, until we 
+have proven $\overline m\times \overline n=\overline{m\times n}$\newline
+$\Omega_3$:\newline We assume that $m\ne n$, and are to show that $\oldneg (\overline m=\overline n)$ is provable in Peano Arithmetic. Let $m$ be the number 
+which is the greater of the two ($m$ and $n$). Then $m-n=k$ for some $k>0$.  
+Hence, by $A13$, $\oldneg (\overline k=0)$ is provable. 
+By $A12$, $(\overline k'=0')\supset (\overline k=0)$ is provable. Hence, by propositional logic (using the fact 
+that $\oldneg X\supset ((Y\supset X)\supset \oldneg Y)$ 
+is provable) and M.P. we can prove that $\oldneg (\overline k'=0')$. We can repeat this process $n$ times, 
+eventually ending with $\oldneg (\overline m=\overline n)$.\newline
+$\Omega_4$:\newline In the base case, $(x\le 0)\equiv (x=0)$ is provable by $A21$. Now assume that for some $n$, $(x\le n)\equiv (x=0\vee ...\vee x=\overline 
+n)$ is provable. By $A22$, $(x\le \overline n')\equiv ((x\le n)\vee (x=n'))$. Then, because $(x\le n)\equiv (x=0\vee ...\vee x=\overline n)$ is provable, 
+$(x\le \overline n') \equiv (x=0\vee ...\vee x=\overline n\vee x=\overline n')$ (because the formulae $X\equiv Y$ and $Z\equiv (Y\vee W)$ imply the formula 
+$Z\equiv (X\vee W)$ by propositional logic), thus completing the induction.\newline
+$\Omega_5$:\newline This is immediate from $A23$ and Proposition 1(b).\newline
+\section*{Problem 5} $Note:$ From this problem forward, it seems that Smullyan labels the results as general answers for any extension of $(R)$, but 
+in fact they rely on arithmetic axioms of PA.\newline 
+ We are to show that every true atomic $\Sigma_0$ sentence is 
+provable in PA. Let us recall that an atomic $\Sigma_0$ 
+formula is either of the form $t_1=t_2, t_1\le t_2$ where $t_1, t_2$ are both terms. In the first case, we can prove this by mathematical induction 
+on the number of occurences of plus, times, and the successor operation in the term (it is in fact a double induction). First, we show that for every term 
+$t_1=\overline n$ where $t_1=n$. The base case where $t_1$ is a numeral 
+is immediate from $A24$. Now, make an induction assumption on the number of plus, 
+times, and successor symbols occuring in $t$. So, $t=\overline n$ is provable for some $n$.
+By $\Omega_1$, $\overline n+\overline k=\overline m$ for every
+ natural number $k$, and $\Omega_2$ proves
+ that $\overline n\times \overline k=\overline m$ for every  
+natural number $k$, where $m$ is the number that $t+\overline k, t\times \overline k$ designate, respectively,
+and the successor operation can be proven just by taking $k$ to 
+be $1$ in the addition case. Then, becuase $t=\overline n$ is provable, we can use $A25$ to prove $t+\overline k=\overline m$ or $t\times \overline k=
+\overline m$, or $t'=\overline m$.
+So, we have shown that, for any term $t$ and any natural number $m$, if $t=m$, then $t=\overline m$ is provable in Peano 
+Arithmetic. Next, we must show that $t_1=t_2$ for every terms $t_1, t_2$ such that $t_1=t_2$. Well, by definition, $t_1=t_2$ iff both $t_1,t_2$ designate 
+the same natural number $n$, and hence, by the above result, both $t_1=\overline n$ and $t_2=\overline n$ are provable. 
+Now, by $A14$, $((x=y)\wedge (x=x))\supset (y=x)$ is provable, and thus, if $x=y$ is provable, so is $y=x$ (using $A24$). Hence, we have 
+$((\overline n=t_1)\wedge (\overline n=t_2))$, and thus, by $A14$, $t_1=t_2$ is provable. Now, we need to show that $t_1\le t_2$ is provable for 
+every terms $t_1, t_2$, if $t_1\le t_2$ is true. Well, assume that $t_1\le t_2$. Now, because these are terms, by the above, 
+$t_1=\overline n, t_2=\overline m$ are provable 
+for some numbers $n$ and $m$. There are then two cases: either $n=m$, or one of $m, n$ is greater than the other. In the first case, $t_1\le m$ is provable, 
+as $t_1=m$ can be provable after we apply $A14$ and the fact that $m=n$ is provable, and then we use $\Omega_4$. After this, we can use $A25$ to conclude 
+that $t_1\le t_2$.
+ Now, in the second case, assume (without 
+loss of generality) that $m$ is the greater numeral. Well, by $\Omega_4$, $t_1\le \overline m
+\equiv (t_1=\overline m\vee...t_1=\overline n\vee...\vee t_1=\overline m$. Because $t_1=\overline n$ is provable, so is $t_1\le \overline m$ (by 
+Propositional Logic). Then, because $t_2=\overline m$ is provable, $t_1\le t_2$ is provable by $A25$.
+\section*{Problem 6}  
+The part of this proof for the true atomic $\Sigma_0$ sentences was just Problem 5, so we only need to prove the part for the false sentences.\newline 
+So let us consider a false $\Sigma_0$ sentence of the form $t_1=t_2$ where $t_1, t_2$ are both terms. Well, $\overline m\ne \overline n$ for the $m, n$ that 
+$t_1, t_2$ designate respectively, is provable by $\Omega_3$. Thus, by two applications of $A25$ (one on $m$, the other on $n$), we can prove $\oldneg (t_1 =
+t_2)$. In the other case, suppose that $t_1\le t_2$ is the false $\Sigma_0$ sentence. We choose $m, n$ similarly to the first part of this problem. Because 
+$\overline m\le \overline n$ is false, $\overline m=0,...,\overline m=\overline n$ are all false, refutable by $\Omega_3$, and therefore, by Propositional 
+Logic and $\Omega_4$, $\overline m\le \overline n$ is refutable. Then, by two applications of $A25$, $t_1\le t_2$ is refutable.  
+\section*{Problem 7}
+Assume that $F(\overline 0),F(\overline 1),...,F(\overline n)$ are all provable, and we are to show that the formula $(\forall x\le \overline n)F(x)$ is 
+provable in PA. Recall that $(\forall x\le \overline n)F(x)$ is the same as $\forall x(x\le n\supset F(x)$. By $A25$, $F(\overline m)\supset ((x=\overline m
+)\supset F(x)$ is provable for any number $n$. Hence, by M.P., we have the formulas $(x=\overline 0)\supset F(x),...,(x=\overline n)\supset F(x)$ all 
+being provable, and thus, by Propositional logic, so is the formula $(x=\overline 0\vee ...\vee x=\overline n)\supset F(x)$. By $\Omega_4$ and Propositional 
+logic, this implies $x\le \overline n\supset F(x)$, and thus, by Proposition 1(a), $\forall x(x\le n\supset F(x)$ is provable.\newline 
+\section*{Problem 8}
+We can prove that PA is $\Sigma_0$ complete by showing the every $\Sigma_0$ sentence is correctly decidable (meaning it defines itself), by using complete 
+induction. In the base case, every atomic $\Sigma_0$ formula is correctly decidable by Problem 6. Let us make a complete induction assumption.
+Consider a $\Sigma_0$ sentence of degree $n+1$. If it is of the form $X\wedge Y, X\vee Y, X\supset Y, \oldneg X$, 
+$X$ and $Y$ are both correctly decidable, obviously meaning the sentence is also correctly decidable. 
+\newline 
+Next, we must consider the other two cases, namely, those $\Sigma_0$ sentences of the form 
+$(\forall x\le \overline n)F(x)$ or $(\exists x\le \overline n)F(x)
+$. In the first case, we assume that $(\forall x\le \overline n)F(x)$ 
+is true. Now, this means that $F(\overline 0),...,F(\overline n)$ are all true, and thus,
+ by the induction assumption, they are all correctly decidable, and hence provable, and thus, 
+by Problem 7, so is $(\forall x\le \overline n)F(x)$. Now, assume that $(\forall x\le \overline n)F(x)$ is false. This implies that, for some $m\le n$, 
+$F(\overline m)$ is false, 
+and therefore, because $F(\overline m)$ is correctly decidable by the induction assumption, it is refutable. Now, $A10$ implies $\oldneg F(t)\supset 
+\oldneg\forall xF(x)$. Well, we now know that $\overline m\le \overline n\wedge \oldneg F(\overline m)$ is provable (because all atomic $\Sigma_0$ 
+formulas have been shown to be correctly decidable) and thus so is $\oldneg (\overline m\le \overline n\supset F(\overline m)$, and hence, so is
+$\oldneg\forall x(x\le \overline n\supset F(x)$, which is the same as saying $\oldneg (\forall x\le \overline n)F(x)$, and thus we have shown 
+$(\forall x\le \overline n)F(x)$ to be correctly decidable.\newline
+On the other hand, consider $(\exists x\le \overline n)F(x)$. Assume that it is true. Hence, for some $m\le n$, $F(\overline m)$ is provable. 
+Because $\overline m\le \overline n$ is also provable, so is $\overline m\le \overline n\supset F(\overline m)$, and thus, by $A11$, so is 
+$\exists x(\overline x\le \overline n\supset F(x)$, which is the same as saying $(\exists x\le \overline n)F(x)$. Now, assume that $(\exists x\le \overline n
+)F(x)$ is false. Thus, by the induction assumption, $\oldneg F(\overline 0),...,\oldneg F(\overline n)$ are all correctly decidable, 
+true, and hence provable. 
+This implies (by Problem 7) the sentence $(\forall x\le \overline n)\oldneg F(x)$ which implies $\forall x(x\le \overline n\supset \oldneg F(x)$, and thus, 
+by $A10$, $x\le \overline n\supset \oldneg F(x)$ is provable, which implies $\oldneg(x\le \overline n\wedge F(x))$, and thus, by Proposition 1(a), 
+so is $\forall x\oldneg(x\le \overline n\wedge F(x))$, and thus, by $A26$, $\oldneg\exists x(x\le \overline n\wedge F(x)$ is provable, which is the same 
+as saying $\oldneg(\exists x\le \overline n)F(x)$.
+\section*{Problem 9}
+$L_1$: This is immediate from Problem 7.\newline
+$L_2$: This is immediate from $\Omega_5$ and Proposition 1(a).
+\end{document}
+

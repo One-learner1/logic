@@ -1,0 +1,101 @@
+%/*% pdflatex -file-line-error -interaction nonstopmode %
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{amsthm}
+\newcommand*{\oldneg}{\mathord{\sim}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+
+\title{Chapter 10}
+\begin{document}
+\maketitle
+
+\section*{Problem 16}
+
+We are considering some system $S$ satisfying conditions $L_1, L_2$ with any disjoint number sets $A, B$. In addition, we assume that
+$A$ is enumerated by the formula $F_1(x, y)$, while $B$ is enumerated by the formula $F_2(x, y)$. We are trying to show that $B$ is strongly separated from
+$A$ by the formula $F(x)$:\newline
+$\forall y[F_1(x, y) \supset \exists z(z \le y \wedge F_2(x, z))]$.\newline
+Thus, we must show the following holds for some superset $S_1$ of $A$, and some superset $S_2$ of $B$:\newline
+\quad$C_1:$ If $n\in S_2$, then $F(\overline n)$ is provable.\newline
+\quad$C_2:$ If $F(\overline n)$ is provable, then $n\in S_2$.\newline
+\quad$C_3:$ If $n\notin S_2$, then $\oldneg F(\overline n)$ is provable.\newline
+\quad$C_4:$ If $\oldneg F(\overline n)$ is provable, then $n\notin S_2$.\newline
+Define $N_1$ and $N_2$ to be the sets of all $n$ such that $F(\overline n)$ and $\oldneg F(\overline n)$ are provable, respectively. Now, define $S_1$ to be
+$A \bigcup N_1$ and $S_2$ to be $B \bigcup N_2$. Because of the assumed simple consistency and the fact that $A$ and $B$ are disjoint, $S_1$ and $S_2$
+are similarly disjoint.\newline
+Proof for $C_1$:
+\begin{proof}
+There are two cases: $n\notin B$ or $n\in B$. In the first case, $F(\overline n)$ was defined to be provable for this $n$. Otherwise, we have
+$\overline n\in B$. Thus, $F_1(\overline n, y)$ is refutable for every $y$, and thus, by $L_1$, 
+$\forall y(y \le \overline n\supset \oldneg F_1(\overline n, y))$ is provable. Also, because $\overline n\in S_2$, 
+$F_2(\overline n, m)$ is provable for some $m$. Hence, $\forall y[\overline k \le y \supset \exists z(z \le y \wedge F_2(\overline n, z))]$ 
+(because $\overline k\le y$, $F_2(\overline n, z)$ is provable when $z = k$).
+Thus, by $L' _2$, $\forall y[\oldneg F_1(\overline n, y) \vee \exists z(z \le y \wedge F_2(\overline n, z))]$ is provable, meaning the equivalent
+formula $\forall y[F_1(\overline n, y) \supset \exists z(z \le y \wedge F_2(\overline n, z))]$ is also provable.
+\end{proof}
+Proof for $C_2$:
+\begin{proof}
+Temporarily assume that $n\notin S_2$. This implies that it is neither in $B$ or some $n$ for which $F(\overline n)$ is provable, thus yeilding a
+contradiction.
+\end{proof}
+Proof for $C_3$:
+\begin{proof}
+There are two cases: $n\notin A$ or $n\in A$. In the first case, $\oldneg F(\overline n)$ was defined to be provable for this $n$. Otherwise, we have
+$\overline n\in A$. Thus, $F_1(\overline n, y)$ is provable for some $m$. Also, because $n \notin B$, $F_2(\overline n, y)$ is refutable for every $m$,
+and hence, by $L_1$, we have:\newline
+(1) $\forall z(z \le \overline m \supset \oldneg F_2(\overline n, z))$\newline
+Hence, we have:\newline
+(2) $F_1(\overline n, \overline m) \wedge \forall z(z\le \overline m \supset \oldneg F_2(\overline n, z))$\newline
+Then, it can be seen that (1) implies:\newline
+(3) $\oldneg \exists z(z \le \overline m \wedge F_2(\overline n, z))$ \newline 
+Thus, substituting (3) for (1) in (2) yields:\newline
+(4) $F_1(\overline n, \overline m) \wedge \oldneg \exists z(z \le \overline m \wedge F_2(\overline n, z))$\newline
+which implies:\newline
+$\oldneg [F_1(\overline n, \overline m) \supset \exists z(z \le \overline m \wedge F_2(\overline n, z))]$\newline
+which implies:\newline
+$\exists y\oldneg[F_1(\overline n, y) \supset \exists z(z \le y \wedge F_2(\overline n, z))]$\newline
+which can be equivalently stated as:
+$\oldneg \forall y[F_1(\overline n, y) \supset \exists z(z \le \overline m \wedge F_2(\overline n, z))]$\newline
+\end{proof}
+Proof for $C_4$:
+\begin{proof}
+Temporarily assume that $n\notin S_1$. Hence it would not be one of those $n$ for which $~F(\overline n)$ is provable, thus yeilding a contradiction.
+\end{proof} 
+\section*{Problem 17}
+We are considering some system $S$ obeying the Rosser conditions that is simply consistent. We are to show that there is an undecidable sentence. 
+\begin{proof}
+Because we are given that both $P^*, R^*$ are enumerable, we know that $R^*$ is strongly separable from $P^*$ by the Separation Lemma for Sets. 
+Thus, by problem 8(b), we know that $R^*$ is also weakly separable from $P^*$. Hence, by problem 7(a), there is an undecidable sentence. 
+In particular, we know that, if $F_1(x, y), F_2(x, y)$ enumerate $P^*, R^*$, respectively, the formula $F(x)$:\newline
+$\forall y[F_1(x, y) \supset \exists z(z \le y \wedge F_2(x, y))]$\newline
+strongly separates $R^*$ from $P^*$. Then, if $f$ is the Gödel number for $F(x)$, problem 7(a) shows that $F(\overline f)$ is an undecidable sentence.
+\end{proof}  
+\section*{Exercise}
+We are considering some system $S$ obeying $L_1, L_2$ in which $R_1, R_2$ are two $n$-ary relations enumerated by $F_1(x_1,...,x_n, y)$ and
+$F_2(x_1,...,x_n, y)$, respectively. We are to show that $R_2-R_1$ is strongly separated from $R_1-R_2$ by the formula $F(x)$:\newline
+$\forall y[F_1(x_1,...,x_n, y) \supset \exists z(z \le y\wedge F_2(x_1, . . . ,x_n, z))]$
+\begin{proof}
+In the first case, assume that $R_2-R_1$ holds. Hence, $R_2$ holds, while $R_1$ does not hold. Thus, for some $m$, 
+$F_2(\overline x_1,...,\overline x_n, \overline m)$ holds, thus implying that:\newline 
+$\forall y[\overline m\le y\supset \exists z(z\le y\wedge F_2(\overline x_1,...,\overline x_2, z))]$ 
+is provable. Also, $F_1(\overline x_1,...,\overline x_n,\overline m)$ is refutable for every $m$, thus implying that:\newline 
+$\forall y[y\le\overline m\supset \oldneg F_1(\overline x_1,...,\overline x_n,\overline m))]$
+is provable by $L_1$. Hence, by $L'_2$, we have:\newline
+$\forall y[\oldneg F_1(\overline x_1,...,\overline x_n, \overline m) \vee \exists z(z\le y\wedge F_2(\overline x_1,...,\overline x_2, z))]$
+which implies:\newline
+$\forall y[F_1(\overline x_1,...,\overline x_2, \overline m) \supset \exists z(z\le y\wedge F_2(\overline x_1,...,\overline x_2, z))]$
+
+In the second case, assume that $R_1-R-2$ holds. Hence, $R_1$ holds, while $R_2$ does not hold. Thus, $F_1(\overline x_1,...,\overline x_n,\overline m)$
+is provable for some $m$, while $F_2(\overline x_1,...,\overline x_n,\overline m)$ is refutable for every $m$. The rest of this case is identical to that
+in the proof for the Separation Lemma for Relations.
+\end{proof}
+\end{document}

@@ -1,0 +1,124 @@
+Problem 1: To exhibit such a sentence, we must create a sentence asserts that itself is not printable, necessarily it is of the form ...N(X), because no sentence P(X) can say that P(X) is printable (or not printable). In addition, we must assert that the sentence cannot print itself, leading to the necessary form ~PN(X). This expression X must be something that, when taking its norm, yields the sentence ~PN(X). Well, simply duplicating ~PN to X, so that the sentence ~PN(~PN) meets all the qualifications, and asserts the the norm of ~PN is not printable, namely ~PN(~PN), which we assumed had been printed.
+
+Problem 2(a): Prove that if A is nameable, so is A#:
+
+	Assume that A is nameable. The set A# is the set of all n such that n* is a member of A. By definition of a diagonalization, K(n) is true iff H(n*) is true. Thus, K(n) names all of those and only those n which have n* being members of A, meaning K names A#.
+
+Problem 2(b): Prove there is a Godel sentence for any nameable set A.
+	
+	Assume that the set A is nameable. By problem 2(a), there is some designator which designates A#; let k be its Godel number. Now consider the sentence Hk(k). This is true iff k is a member of A#, meaning by definition k* would be a member of A. But, because k* is the Godel number of Hk(k), this means Hk(k) is true iff its Godel number is a member of A, meaning that Hk(k) is a Godel sentence for A.
+
+Problem 2(c): 
+
+	We now consider the set T of all true sentences. T0 is the set of all the Godel numbers of the true sentences, and ~T0 is the set of all of the Godel numbers of non-true sentences. Well, if ~T0 was nameable, then by Problem 2(b), there is some Godel sentence for ~T0. Thus K(n) would be true iff k (the Godel number of K(n)) is a member of ~T0, which is true iff the sentence it is the Godel number of is not true. Thus K(n) would be true iff K(n) is not true, which is a contradiction. Thus ~T0 has no Godel Sentence, and then is also not nameable by the contrapositive of Problem 2(b). Now assume that the set of Godel numbers of the true sentences is nameable. Well, by C2, for whatever H(n) names T0, H` would be true whenever H(n) is false, which is of course for all the Godel numbers of the non-true sentences. Thus H` will be true for every Godel number of non-true sentence, meaning that H`(n) names ~T0, contrary to the assumption that it could not be named. Thus, because assuming it is nameable leads to a contradiction, T0 cannot be named.
+
+Problem 3: 
+	
+	Assume n is some formula number. First, we assume that n is a member of W*. Thus n* is a member of W0. Thus Fn(n), of which n* is the Godel number of, is a membmer of W, proving the first case.
+	Next, we assume that Fn(n) is a member of W. Then n* is a member of W0, and in turn n is by definition a member of W*, completing the proof. 
+
+Problem 4: 
+	
+	Assume that P* is representable by F, and that the system is consistent. Now consider the Godel number f' of F'. Thus F(f') is provable iff f' is a member of P*, which is true iff f'* is a member of P0, which is true iff F'(f') is a member of P, which is true iff ~F(f') is a member of P. Thus F(f') is provable iff ~F(f') is provable, meaning that F(f') must be undecidable due to the system being inconsistent. 
+	
+Problem 5: 
+
+	Assume that R* is representable by F and that the system is consistent. Thus for all n, F(n) is provable iff n is the Godel number of a refutable sentence. Now consider the sentence Ff(f) (F applied to its own Godel number f). This is provable iff f is a member of R*, and thus meaning Ff(f) would be a member of R. Thus Ff(f) is provable iff Ff(f) is refutable. Neither of the two can be true, as the system was assumed consistent. Thus Ff(f) is the undecidable sentence. 
+
+Problem 6:
+	
+	Assume F' represents P*. Now consider F(f) for f the Godel number of F. This is refutable by definition iff F(f) is provable, which is true iff f' is a member of P*, which is true iff F(f) is a member of P. Thus F is refutable iff it is provable, meaning by the assumed consistency of the sytem that it must be undecidable. 
+
+Problem 7:
+
+	(a): Assume some superset of R1* of R* disjoint from P* is representable by F. Let f be the Godel number of F. Now consider the sentence F(f). This is provable by definition iff f is a member of R1*. In addition, F(f) is provable iff F(f) is a member of P, meaning that f would be a member of P*. Thus, f is a member of R1* iff F is a member of P*. Because R1* and P* are disjoint, the statement can never have either of the two becoming true, meaning f can neither be a member of R1* nor P*. Because of this, f cannot be a member of the subset R* of R1*, meaning f can neither be a Godel number of a provable nor a refutable sentence, proving F(f) is undecidable. 
+	Alternatively , assume that some superset P1* of P* disjoint from R* is representable by F. Well, by definition, F'(f') (f' the Godel number of f') would be provable iff f' is a member of R* and P*, which shown in the above problem led to the sentence being undecidable. 
+
+	(b): Assume that P* is representable and the system is consistent. Well, if P* was not disjoint from R*, we would have F(n) and F'(n) both being provable, contrary to the assumption of consistency. Thus, because some superset (all sets are supersets of themselves) of P* disjoint from R* is representable and the system is consisten, some sentence is undeciadable by problem 7(a). The proof is similar for the case of R*. 
+
+*(Question for the definitions of F'(n) in a system without the notion of truth: is F'(n) provable iff F(n) is refutable?) Problem 8(a):
+	
+	Assume that some formula F weakly separates A from B, and that the system is consistent. Thus F represents some superset A* of A. This means F(n) is provable iff n is a member of A*. We wish to show that F'(n) represents at least the set B. Well, we know by definition of F(n) that F(n) is not provable for any n being members of B. However, we do not know that F(n) is refutable for these n; because the system is incomplete, it could be the case that F(n) is undecidable, meaning F'(n) is not provable. Thus, it is not necessarily the case that F'(n) also represents a superset of B, meaning that F does not necessarily strongly separate A from B. 
+
+Problem 8(b):
+
+	Assume that A is strongly separable from B and that the system is consistent. Thus some formula F(n) is provable for every n in A, and F'(n) is provable for every n in B. Because the system is consistent, A and B must be disjoint. If they were not, then there would be at least one n for which both F(n) and F'(n) is provable for, contrary to the assumption of consistency. Because F represents some superset of A disjoint from a superset from B, A is also disjoint from B itself, meaning that F represents some superset of A disjoint from B, proving that F strongly separates A from B. 
+
+Probelm 9: 
+	
+	Assume that the system is omega-consistent. Because we are assuming that all tautologies are provable in the system, X then (~X then Y) is provable. Thus, if the system were inconsistent, we would have Y being provable for any formula at all (by two applications of M.P. on the above formula). This means that for any ExF(x) being provable, all the infinitely many sentences ~F(0),...,~F(n),..., are provable, meaning that the system would be omega-inconsistent. Thus, omega-consistency must also imply simple consistency. 
+
+Problem 10(a):
+		
+	Assume that F completely represetns A. Thus F(x) represents A and ~F(x) represents the complents ~A of A. Thus F(-n) is provable iff n is a member of A, proving condition D1. Also, because ~F(x) represents the complement of A, ~F(-n) is provable iff n is not a member of A, meaning F(-n) is refutable if n is not a member of A, proving condition D2. Thus F also defines A.
+
+Problem 10(b):
+	
+	The answer to (b) is shown clearly from problem (c):
+
+	Assume that the system is consistent and that F defines A. Thus if n is a member of A, F(n) is provable, and if n is not a member of A, ~F(n) is provable. Now assume that F(n) is provable. If n was not a member of A, then ~F(n) would be provable by D2, contrary to the assumption of consistency. Alternatively, assume that ~F(n) is provable. If n was a member of A, then F(n) would be provable as well, yeilding a contradiction to the assumed simple consistency. Thus, F(n) is provable iff n is a member of A, and ~F(n) is provable iff n is not a member of A, meaning that F(n) represents A, and that ~F(n) represents ~A, proving that F also completely represents A. 
+
+	Now, for the answer to b, if we assume F(n) is provable, we can not be sure that n is a member of A, because ~F(n) also being provable yeilds no contradiction (because there was no assume consistency). Thus the answer to b is not necessarily (if the system is consistent, it is true), and the answer to c is yes. 
+
+*Problem 11:
+	
+	Assume that F(x, y) enumerates some set A. Thus if n is a member of A, F(n, m) is provable for at least one m, and if n is not a member of A, then F(n, m) is refutable for every m. In order to be numeralwise decidable, a formula F(x1,...,xn) must be decidable for all a1,...,an. In this case, we have the formula with a1,a2. However, if a1 is a member of A, F(a1, a2) is certainly not decidable for every a2. This is because F(n, m) is provable only for at least one m, meaning we now nothing about the decidablility of all the other m's. It could be the case that F(n, m) is provable for only one m, meaning F(n, m) would be either undecidable or refutable for the other m's (we cannot be sure which one). Thus F(x, y) is not necessarily numeralwise decidable. 
+
+Problem 12: 
+
+	Assume that the formula F(x, y) defines the relation R(x, y). Thus for all numbers n and m, if R(n, m) holds, then F(n, m) is provable, and if R(n, m) does not hold, then F(n, m) is refutable. Now consider the set A of domain of R(x, y). If n is a member of A, R(n, m) by definition holds for at least one m, meaning F(n, y) holds for at least that same n. If n is not a member of A, then by definition R(n, m) does not hold for any m, meaning again by definition that F(n, m) is refutable for every m. Thus, because (1) and (2) are satisfied, F(x, y) enumerates the domain of R(x, y).
+
+Problem 13: 
+
+	Assume that A is enumerable in the system S, and that S is omega consistent. If n is a member of A, then by definition, F(n, m) is provable for at least one m. Because F(n, m) then EyF(n, y) is valid, it is provable in the system. Thus by M.P., EyF(n, y) is also provable. 
+	Now assume that EyF(n, y) is provable. If n was not a member of a, then by definition F(n, m) is refutable for every m. Thus, the system would be omega-inconsistent, contrary to the assumption of omega-consistency. 
+	Thus EyF(n, y) is provable iff n is a member of A, meaning EyF(n, y) represents A. 
+
+	*Alternatively, after realizing that F(n, m) would be refutable for all m, it follows that F(n, m) would be refutable for the m for which F(n, m) was provable. Because we saw earlier that omega-consistency implies simple consistency, and the fact that this result is contrary to simple-consistency, n must be a member of A.
+
+Problem 14: 
+	
+	Assume that the formula A(x, y) enumerates the set P*, and that p is the Godel number of the formula Vy~A(x, y), and that G is the diagonalization, Vy~A(p, y). First we assume that the system is simply consistent. Assume that G is provable. Thus, by definition of A(x, y) enumerating P*, A(p, y), would be provable for at least one m. But, because Vy~A(p, y) was also provable, ~A(p, m) is provable as well, leading to a contradiction to the assumed simple consistency. Thus, G cannot be provable.
+
+	Now assume that the system is omega consistent. Thus, by problem 14(a), and the fact that omega consistency implies simple consistency, p cannot be a member of P* (because p* cannot be a member of P0 by problem 14(a)). Thus F(p, m) would be refutable for every m (because A(x, y) enumerates P*), meaning that Ey(p, y) is not provable by the assume omega consistency, meaning Vy~A(p, y) is not refutable (because Ey(p, y) validly implies ~Vy~A(p, y). 
+
+	*(Alternatively?)Now assume that the system is omega consistent (and thus also simply consistent). Assume that G is refutable. Thus ~Vy~A(p, y) is provable, meaning A(p, y) is provable for at least one y. Because the system is simply consistent, A(p, y) being provable for at least one m implies that p is a member of P* (if it were not, then A(p, y) would be refutable, leading to a contradiction with the assumed simple consitency). Thus, p* would be a member of P0, meaning Vy~A(p, y) would be provable, leading to a contradiction to the assumed simple consistency.
+
+Problem 15: 
+
+	Assume that P* is enumerable in the system and that the system is omega consistent. Thus by Lemma 2(a) we have EyF(x, y) representing P* (for F(x, y) enumerating P*). Thus, because omega-consistency implies simple consistency, we have some sentence (namely EyF(f', y), for f' the Godel number of ~EyF(x, y); this is provable iff f' is a member of P*, iff ~EyF(f', y) is a member of P, which breaks the assumption of assumed simple consitency) being undecidable. 
+
+Problem 16 (Are we assuming the axioms of S1? Some of the formulas we receive seem to need M.P., and all tautologies to be provable.):
+
+	Assume that A and B are two disjoint number sets, and that the system satisfies conditions L1 and L2. Additionaly assume that A and B are both enumerable in the system. We are to show that if F1(x, y) is a formula that enumerates A, and F2(x, y) is a formula that enumerates B, then B is strongly separated from A by the formula Vy[F1(x, y) then Ez(z <= y and F2(x, y))]. Thus we must show that ~Vy[F1(x, y) then Ez(z <= y and F2(x, y))] represents A, and that Vy[F1(x, y) then Ez(z <= y and F2(x, y))] represents B. 
+
+	Assume that n is a member of B. Thus F2(n, y) is provable for some y. In addition, because n is not a member of A (and because F1(x, y) enumerates A), F1(n, 0),...,F1(n, y) are all refutable. Thus, by L1, we have Vy(y <= n then ~F1(n, y)). We wish to somehow arrive at the formula Vy[F1(x, y) then Ez(z <= k and F2(x, k))] being provable. Well, we necessarily somehow need to incorporate Ez(z <= k) and F2(x, k). By our assumption of n being a member of B, we have as a consequence of this Vz(z <= n then Ez(z <= n and F2(n, y))). It then follows that, if n <= y, z <= y would of course make the statement still true. Thus, Vy(n <= y then Ez(z <= y and F2(n, z))). Hence, by these two formulas and L2', we have Vy(~F1(n, y) or Ey(z <= n and F2(n, y)). Then, the formula Vy(F1(n, y) then Ez(z <= n and F2(n, y))) is logically implied by the formula obtained immediately from L2', and thus is provable as well. 
+
+	Now we prove that ~Vy(F1(n, y) then Ez(z <= n and F2(n, y))) represents A. First, assume that n is a member of A. Thus F1(n, m) is provable for at least one m; also, because A and B are disjoint, F2(n, z) is refutable for every z. Thus, by L1, we have Vz(z <= n then ~F2(n, z)) being provable. Then, we have F1(n, m) and Vz(z <= n then ~F2(n, z)) being provable as well. Thus, we have F1(n, y) then Vz(z <= y and ~F2(n, z)). Then, we immediately receive ~(F1(n, y) then ~Vz(z <= y) and ~F2(n, z)), which implies ~(F1(n, y) then Ez(z <= y and F2(n, z))) (because ~Vz(z <= y) and ~F2(n, z) says there is at least one z for which F2(n, z) holds). Thus, (because ~phi(n) implies ~Vyphi(y)), we then receive ~Vy[(F1(n, y) then Ez(z <= y and F2(n, z)))], completing this part of the proof. 
+
+	We have shown that, if n is a member of B, then H(n) (Vy(F1(n, y) then Ez(z <= n and F2(n, y))) is provable, and if n is a member of A, H(n) is refutable. We have thus satisfied the conditions of a formula strongly separating B, namely H(n) being provable for every n in B, and F'(n) being provable for every n in A. Thus the proof is complete. 
+
+Problem 17:
+	
+	We are given that the system is simply consistent, and that P* and R* are both enumerable. If P* and R* were not disjoint, then there would be some n for which both the sentence which n* designates is both provable and refutable, contradicting the assumed simple consistency. Thus, P* and R* are disjoint, and hence by the Separation Lemma for Sets, there is an undecidable sentence. In particular, we have Vy(F1(n, y) then Ez(z <= n and F2(n, y))) representing R*. Thus, by problem 7, we have Vy(F1(p, y) then Ez(z <= n and F2(p, y))) being the undecidable sentence, for p the Godel number of F. 
+
+Proof of the Separation Lemma for Relations. Assume that the two disjoint relations R1(x1,...,xn) and R2(x1,...,xn) are enumerated resepctively by the two formulas F1(x1,...,xn,y) and F2(x1,...,xn,y). We must show that R2 is strongly separated from R1 by the formula:
+	Vy[F1(x1,...,xn,y) then Ez(z <= y and F2(x1,...,xn,z))]
+
+	Assume that x1,...,xn holds for R2. Thus F2(x1,..,xn, y) is provable for some y. In addition, because x1,...,xn does not hold for R1 (and because F1(x1,..,xn, y) enumerates A), F1(x1,...,xn, 0),...,F1(x1,...,xn, y) are all refutable. Thus, by L1, we have Vy(y <= n then ~F1(x1,...,xn, y)). We wish to somehow arrive at the formula Vy[F1(x1,...,xn, y) then Ez(z <= k and F2(x1,...,xn, k))] being provable. Well, we necessarily somehow need to incorporate Ez(z <= k) and F2(x1,...,xn, k). By our assumption of x1,...,xn being provable for R2, we have as a consequence of this Vz(z <= n then Ez(z <= n and F2(x1,...,xn, y))). It then follows that, if n <= y, z <= y would of course make the statement still true. Thus, Vy(n <= y then Ez(z <= y and F2(x1,...,xn, z))). Hence, by these two formulas and L2', we have Vy(~F1(x1,...,xn, y) or Ey(z <= n and F2(x1,...,xn, y)). Then, the formula Vy(F1(x1,...,xn, y) then Ez(z <= n and F2(x1,...,xn, y))) is logically implied by the formula obtained immediately from L2', and thus is provable as well. 
+
+	Now we prove that ~Vy(F1(x1,...,xn, y) then Ez(z <= n and F2(x1,...,xn, y))) represents A. First, assume that R1(x1,...,xn) holds. Thus F1(x1,...,xn, m) is provable for at least one m; also, because R1 and R2 are disjoint, F2(x1,...xn, z) is refutable for every z. Thus, by L1, we have Vz(z <= n then ~F2(x1,...,xn, z)) being provable. Then, we have F1(x1,...,xn, m) and Vz(z <= n then ~F2(x1,...,xn, z)) being provable as well. Thus, we have F1(x1,...,xn, y) then Vz(z <= y and ~F2(x1,...,xn, z)). Then, we immediately receive ~(F1(x1,...,xn, y) then ~Vz(z <= y) and ~F2(x1,...,xn, z)), which implies ~(F1(x1,...,xn, y) then Ez(z <= y and F2(x1,...,xn, z))) (because ~Vz(z <= y) and ~F2(x1,...,xn, z) says there is at least one z for which F2(n, z) holds). Thus, (because ~phi(n) implies ~Vyphi(y)), we then receive ~Vy[(F1(x1,...,xn, y) then Ez(z <= y and F2(x1,...,xn, z)))], completing this part of the proof. 
+
+	We have shown that, if R2(x1,...,xn) is provable, then H(n) (Vy(F1(x1,...,xn, y) then Ez(z <= n and F2(x1,...,xn, y))) is provable, and if R1(x1,...,xn, H(n) is refutable. We have thus satisfied the conditions of a formula strongly separating R1 from R2, namely H(n) being provable for every R2(x1,...,xn) being provable, and F'(n) being provable for every R1(x1,..,xn) being provable. Thus the proof is complete. 
+
+Exercise: 
+	
+	Assume that a system S obeys the conditions L1 and L2, and that R1 and R2 are enumerated respectively by F1(x1,...,xn,y) and F2(x1,...,xn,y). We must show that R2-R1 is strongly separatred from R1-R2 by the formula:
+
+		Vy[F1(x1,...,xn,y) then Ez(z <= y and F2(x1,...,xn,z))]
+
+	First, assume that R2(x1,...,xn) and ~R1(x1,...,xn) both hold. Thus F2(x1,...,xn,y) is provable for at least one y, and that F2(x1,...,xn,y) is refutable for every y. The rest of the first part of the proof is exactly identical to that of the one for the Separation Lemma for Relations (R2-R1 is pretty much the same result as R1 being disjoint from R2, because we have by definition of ~R1(x1,...,xn) being provable F1 is refutable for every y, meaning we have showed that condition 2 of enumerabitlity holds for F2, even though we do not know F1(x1,...,xn,y) is not provable for at least one y, because we do not know the system is consistent). 
+
+	Next, assume that R1(x1,...xn) and ~R2(x1,...,xn) both hold. Thus there is at least one y for which F1(x1,...,xn,y) is provable, and there is no y for which F2(x1,...,xn,y) is not refutable. Again, now that we have received the same facts as the ones we would have gotten if the two relations we disjoint, the proof is yet again exactly identical as the one in the Separation Lemma for Relations, thus completing the proof. 
+
+

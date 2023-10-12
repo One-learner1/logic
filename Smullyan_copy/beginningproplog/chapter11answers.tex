@@ -1,0 +1,172 @@
+%/*% pdflatex -file-line-error -interaction nonstopmode %
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{amsthm}
+\usepackage{yhmath}
+\newcommand*{\oldneg}{\mathord{\sim}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+
+\title{Chapter 11 Answers}
+\begin{document}
+\maketitle
+$Note:$ Smullyan must have made a typo when defining $\Sigma_0$ formulae, as he said that the existential type is $\exists x(x\le \overline n\supset F(x))$, which makes 
+no sense, as this is a valid because there is always some $x$ that is greater than $n$, thus making the statement true. It seem that what he meant to say was 
+$\exists x(x\le \overline n\wedge F(x))$, and I will think of $\Sigma_0$ formulas as such. (I later checked pp. 94 of the Begginer's Further Guide, and his typo was confirmed, 
+as he defines the existential case with a $\wedge$, not a $\supset$).
+\section*{Problem 1}
+(a):\newline $x\ div\ y$ can be represented by the formula:\newline $\exists z(z\times x=y)$\newline
+(b):\newline $x\ pdiv\ y$ can be represented by the formula:\newline $x\ div\ y\wedge (\oldneg (x=1) \wedge \oldneg (x=y))$\newline
+(c):\newline $x<y$ can be represente by the formula:\newline $\exists z(\oldneg (z=0)\wedge z+x=y)$\newline
+(d):\newline $prm\ x$ can be represented by the formula:\newline $\oldneg \exists z(z\ pdiv\ x)$
+\section*{Problem 2}
+Consider any set or relation that is expressible by some formula the includes $\le$. Well, we can define $x\le y$ as: $\exists z(z+x=y)$, thus meaning
+ the same formula is expressible in terms of plus and minus.
+\section*{Problem 3}
+We are being asked to prove that $y>0$ and $x=2^{L(y)}$ are true iff the following three conditions hold:\newline
+$C_1: x-1\le y\le 2\times x-1$\newline
+$C_2:$ $x$ is a power of $2$\newline
+$C_3:y\ne 0$
+\begin{proof}
+On the one hand, assume that the three conditions $C_1, C_2, C_3$ all hold. Well, by $C_3$, $y\ne 0$. Hence, because $y$ must be a positive integer, 
+it follows that $y>0$. Next, we know by $C_2$ that $x$ is a power of $2$, and thus, $x=2^m$ for some $m$. Hence, substituting into $C_1$, we get:\newline
+$2^m-1\le y\le 2\times 2^m-1$\newline Then, by $(*)$, we know that $m=r$ for $r=L(y)$. Hence, we know that $x=2^m=2^r=2^{L(y)}$, thus completing this case of
+ the proof.\newline \newline On the other hand, assume that $y>0$ and $x=2^{L(y)}$. Hence, $C_3$ holds, as $y\ne 0$. Also, because $x=2^{L(y)}$,
+ $C_2$ holds, as $x$ is a power of $2$. Lastly, because $x=2^{L(y)}$ where $L(y)=r$ for $r$ the length of $y$, we know $x=2^r$, and thus we can substitute,
+ yielding $x-1\le y\le 2\times (x-1)$ by $(*)$. 
+\end{proof}
+\section*{Problem 4}
+$C_1$ is true iff:\newline $(\exists z\le x)(z=x+1\wedge z\le y\wedge y\le 2\times z)$
+\section*{Problem 5}
+(a):\newline $Pow_2(x)$ can be expressed by the formula:\newline $(\forall y\le x)((y\ div\ x\wedge y\ne 1)\supset 2\ div\ x)$
+\newline (b):\newline First, $x\ne y$ can be expressed by the formula $\oldneg (x=y)$. So, we can represent the desired relation with the formula:\newline
+$x\ne 0\wedge y\ne 0\wedge (\exists v\le z)(v=2^{L(y)}\wedge z=x\times v+y)$\newline by Problem 3. We can tell this is $\Sigma_0$, 
+as, because all of $C_1, C_2, C_3$ are $\Sigma_0$, we have their conjunction $v=2^{L(y)}$ also being $\Sigma_0$.
+\section*{Problem 6}
+(a):\newline Well, because the concatenation operation is assosciative, $x*y*z=(x*y)*z$. Thus, by Problem 5(b), $(x*y)*z$ is $\Sigma_0$. Hence, the relation under consideration can be represented by the $\Sigma_0$ formula:\newline
+$0\ne x_1\wedge 0\ne x_2\wedge 0\ne x_3\wedge (\exists v\le z)(v=x_1*x_2\wedge z=v*x_3)$\newline
+(b):\newline The base case was proven in Problem 5(a). Now, make an induction assumption. Hence:\newline
+$0\ne x_1\wedge ...\wedge 0\ne x_n\wedge x_1*x_2*...*x_n=y$ is $\Sigma_0$. In the case for $n+1$, we have the following $\Sigma_0$ formula representing 
+the desired relation by the induction assumption, as well as Problem 5(a):
+$0\ne x_1\wedge ...\wedge 0\ne x_n+1\wedge (\exists z\le y)(z=x_1*x_2*...*x_n\wedge y=z*x_n+1)$
+\section*{Problem 7}
+(a):\newline $x\ B\ y$ can be represented by the $\Sigma_0$ formula:\newline $(\exists z\le y)(xz=y\vee x=y)\wedge (x\ne 0\wedge y\ne 0)$
+(b):\newline $x\ E\ y$ can be represented by the $\Sigma_0$ formula:\newline $(\exists z\le y)(zx=y\vee x=y)\wedge (x\ne 0\wedge y\ne 0)$
+(c):\newline $x\ P\ y$ can be represented by the $\Sigma_0$ formula:\newline 
+$(x\ B\ y\vee x\ E\ y)\vee (\exists z_1\le y)(\exists z_2\le y)(z_1xz_2=y)$ 
+\section*{Exercise}
+We are considering some number $z$ satisfying the following two conditions:\newline
+(1): $z$ contains at least one frame.\newline
+(2): If $f$ is the largerst frame in $z$, then there is at least one string in $z$ of the form $ffafbff$ where $f$ is not a part of $a$ or $b$.\newline
+We are to show that this number $z$ encodes one and only one sequence of positive integers.
+\begin{proof}
+Let us recall the definition of what it means for a finite sequence $S$ of ordered pairs of positive integers to be encoded in some $z$ (on pp. 205):\newline
+$C_1$: The longest frame $f$ in $z$ contains a string of $1$'s longer than any string of $1$'s in any of the numbers in $S$.\newline
+$C_2$: Every ordered pair $(a,b)$ in $S$ is found within $z$ in a string of the form $ffafbff$, where $f$ occurs in neither $a$ nor $b$, and with $f$ being 
+the longest frame occuring in $z$.\newline
+$C_3$: The pairs $(a_1,b_1),...,(a_n,b_n)$ are found encoded in the sequence as we move form left to right in the dyadic notation for $z$.
+Well, Smullyan either
+made a mistake in his definitions, or I misunderstood his definitions, as the following example disproves the statement. Consider the number $z$ in dyadic 
+notation: $21221211212111212212$ with $212$ being the longest frame in $z$. The only possible finite sequence of integers that $z$ could encode would be 
+the $a$ and $b$ which are listed in $z$, namely $11, 111$. Well, by condition $C_1$, for $z$ to be a code number for this sequence, the longest frame in $z$ 
+must have a string of ones longer than the longest string of ones in the integer sequence. However, $212$ has only one $1$, while $11, 111$ both have longer 
+strings, thus seemingly disproving the statement.
+\end{proof}
+\section*{Problem 8}
+We are attempting to find some $\Sigma_0$ relation $K_0(x,y,z)$ such that for any finite sequence of ordered pairs of natural numbers, there is a number $z$ 
+such that for all numbers $x$ and $y$, the relation $K_0(x,y,z)$ holds iff $(x,y)$ is one of the ordered pairs in $S$. Let us define the set $S_1$ to be the 
+set of all ordered pairs of integers $(x+1,y+1)$ such that the ordered pair $(x,y)$ is a member of $S$. So, we then define $K_0(x,y,z)$ to be the following
+$\Sigma_0$ relation:\newline (1) $(\exists n\le z)(\exists m\le z)(n=x+1\wedge m=y+1\wedge K_1(m,n,z))$\newline
+And we know that there is some $K_1(m,n,z)$ relation such that $z$ is a code number for $S'$ and $K_1(m,n,z)$ holds iff $(m,n)\in S$.
+ Hence, (1) holds iff \newline $K_1(x+1,y+1,z)$ (for the z that makes $K_1(m,n,z)$ encode $S$) holds iff 
+$(x+1,y+1)\in S_1$ iff $(x,y)\in S$, thus completing the proof. 
+\section*{Problem 9}
+\begin{proof}
+We are to show that the realation $g(\overline x)=y$ is $\Sigma_1$, that is, there is some formula of the form $\exists zR(x_1,...,x_n,z)$ that represents 
+$g(\overline x)=y$ where the relation $R(x_1,...,x_n,z)$ is $\Sigma_0$. Well, let us first consider the set $S$ of a sequence of ordered pairs of natural 
+numbers:\newline $(0,g(\overline 0)),(1,g(\overline 1)),...,(n,g(\overline n))$\newline
+where $n=x$ in the equation $g(\overline x)=y$. To be clear, every $g(\overline i)$ in $S$ shall not be the Dyadic Gödelian representation that
+ $g(\overline i)$ is, but instead is the $decimal\ number$ that is designated by the $Dyadic\  Godelian\  representation\  for\  i$. Thus, 
+every member of an ordered pair of $S$ is a natural number. 
+  Now, let us recall the fact that, for each positive integer 
+$i\le x$, $g(\overline{i+1})=g(\overline i)*122$, and that $i=0\supset g(\overline i)=12$. Now, what we wish to show next is that, if $g(\overline x)=y$, 
+then there is some sequence of natural numbers such that:\newline (1) $(m,n)$ is a member of $S$\newline (2) If some $(a,b)$ is a member of $S$, then so is 
+$(c,d)$ for $(a,b)=(c+1,d*122)$ or $(a=0, b=\overline 4)$.\newline Well, by definition, every $g(\overline x)=y$ means that either $x=0,\ y=\overline 4$,
+ or that, for some number $a, b$, $(x,y)=(a+1,b*122)$, and similarly for $(a,b)$, and so on. Thus $S$ contains this sequence. It can be seen by induction 
+on every $x$
+ that $g(\overline x)=y$ holds for every $(x,y)$ in $S$, and thus, if we have some sequence $S$ according to these conditions, it follows that 
+ $g(\overline m)=n$ holds. Hence, we have the following $\Sigma_1$ formula expressing $g(\overline x)=y$:\newline
+$\exists z[K_0(x,y,z)\wedge (\forall a\le z)(\forall b\le z)(K_0(a,b,z) \supset\newline [(a=0\wedge b=\overline 4)\newline \vee
+(\exists c\le z)(\exists d\le z)(K_0(c,d,z)\wedge a=c+1\wedge b=d*122)])]$\newline
+Now let's be clear as to why this formula works. Assume that the above formula holds. Thus there is some $z$ such that $z$ is a code number for at least 
+$(x+1,y+1)$, where the set $S_1$ it is a code number for has the corresponding set $S$ (defined in Problem 8) which clearly satisfies conditions $1,\ 2$, and 
+thus $g(\overline x)=y$. On the other hand, assume that $g(\overline x)=y$. Thus, there is $some$ number $z$ such that $z$ enocdes the set $S_1$ which 
+corresponds to the set $S$ which is one of the sets satisfying conditions $1,\ 2$ for $(x,y)$, thus meaning the formula holds. $Note$: We very well could 
+have instead written $K_0(x,y,z)$ as $(\exists n\le z)(\exists m\le z)(n=x+1\wedge m=y+1\wedge K_1(m,n,z))$, but we wrote it as we did for simplicity.
+\end{proof}
+\section*{Exercise 2}
+We are to show that the relation $x^y=z$ is $\Sigma_1$.
+\begin{proof}
+Consider a set $S$ of a sequence of ordered pairs such that:\newline (1): $(y,z)\in S$\newline (2): If $(a,b)\in S$ than either $a=0\wedge b=1$ or 
+there is some $(c,d)\in S$ such that $(a,b)=(c+1,d\times x)$\newline where $x,y,z$ are defined from the equation $x^y=z$. On the one hand, assume there is 
+a set $S$ satisfying conditions $(1)$ and $(2)$. It can easily be shown with generalized induction, where the component of $(a,b)$ is $(a-1,b/x)$ such that
+$(0,1)$ has no components, that, for every $(a,b)\in S$, $x^a=b$, and thus, in 
+particular, $x^y=z$. Conversley, assume that $x^y=z$. Hence we place $(y,z)\in S$, and then it is obvious that we can satisfy condition $(2)$, as, by 
+definition of a power, either $y=0\wedge z=1$ or we can place the ordered pair $(a,b)$ such that $(y,z)=(a+1,b\times x)$ (we can do this $y-1$ times, as 
+a power $x^y$ is defined to have $y$ factors of $x$). Thus $x^y=z$ iff there is a set $S$ satisfying conditions $(1), (2)$. 
+ Hence, using Lemma $K_0$, we receive the following formula $\Sigma_1$ formula:\newline
+$\exists z[K_0(c,d,z)\wedge (\forall a\le z)(\forall b\le z)(K_0(a,b,z)\supset\newline [(a=0\wedge b=1)\vee (\exists m\le z)(\exists n\le z)
+(a=m+1\wedge b=d\times e)])]$\newline
+that expresses the relation $x^y=z$. 
+For, assume the formula holds. Hence, there is some $z$ such that $z$ is a code number for a sequence of natural 
+numbers in a set $S$ such that the set $S_1$ obviously satisfies conditions $(1), (2)$. Conversley, if $x^y=z$, then there is some sequence of pairs of
+ natural numbers satisfying conditions $(1), (2)$, and the corresponding set $S_1$ can be encoded by $some$ code number $z$.
+\end{proof}
+\section*{Problem 10}
+We consider some $\Sigma_0$ relation $R(x,y,z_1,...,z_n)$ and consider the relation $\exists x\exists yR(x,y,z_1,...,z_n)$. We are to show that this is 
+$\Sigma_1$. Well, the above is equivalent to the following $\Sigma_1$ relation:\newline $\exists a[(\exists x\le a)(\exists y\le a)R(x,y,z_1,...,z_n)]$
+\newline For, assume the above formula holds. This obviously implies that the initial relation holds. Conversley, assume that the initial formula holds. 
+Then, there is some $a$ such that the above $\Sigma_1$ relation holds, namely some $a$ such that $a\ge x\wedge a\ge y$. Then, assume the relation 
+$R(x,z_1,...,z_n)$ is $\Sigma_1$. By definition, it follows that it is equivalent to some relation $\exists yR_1(x,x_1,...,x_n,y)$ where 
+$R_1(x,x_1,...,x_n,y)$ is $\Sigma_0$. Hence, by the above result, we have $\exists xR(x,z_1,...,z_n)$ being equivalent to the $\Sigma_1$ relation 
+$\exists x\exists yR_1(x,x_1,...,x_n,y)$. (It should be noted that, for both of these problems, it is of course not a requirenment that the variables 
+being quantified are the first and second. The proofs that these two relation are $\Sigma_1$ works for any free variable at all in the relation are similar
+, just by replacing $x$ by $x_i$, and $y$ by $y_i$, and so forth).\newline
+\section*{Problem 11}
+We are attempting to show that there is some $\Sigma_1$ function $r(x,y)$ such that for any $e$ the Gödel number of any expression $E$, and any 
+number $n$, $r(e,n)$ is the Gödel number for $E[\overline n]$. Well, $E[\overline n]$ is:\newline $\exists v_1(v_1=\overline n\wedge F(\overline n))$
+\newline Well, we let $\exists v_1(v_1=$ have the Gödel number $g$, $\wedge$ is $g_8$ while $F(\overline n)$ has the Gödel number $f$, and $)$ has the 
+Gödel number $g_4$. So, the Gödel number of the above formula is $g*g(\overline n)*g_8*f*g_4$. So, $r(x,y)$ is this formula. Now, we must show that 
+$r(x,y)=z$ is $\Sigma_1$. Well, this is equivalent to:\newline $\exists w(w=g(\overline n)\wedge g*w*g_8*f*g_4=z)$\newline
+Recall that $w=g(\overline n)$ was shown to be equivalent to some formula of the form $\exists zR(x,y,z)$ where $R(x,y,z)$ is $\Sigma_0$. 
+Hence, we can rewrite the above formula as:
+\newline $\exists w\exists v(R(w,y,v)\wedge g*w*g_8*f*g_4=z)$\newline
+Then, because the realation $R(w,y,v)\wedge g*w*g_8*f*g_4=z$ is $\Sigma_0$, the above formula is $\Sigma_1$ by Problem 10.\newline
+$Note\ to\ self:$ To be $very$ clear (as I spent numerous hours highly puzzled over this), when Smullyan says that we have shown $r(x,y)=z$ 
+to be arithmetic,
+ he does $not$ mean $r(x,y)$ to be any relation at all (as I wrongly thought); he of course means it to be the $r(x,y)$ defined in this problem.
+\section*{Problem 12}                                                                                                      
+Assume $A$ is $\Sigma_1$. Hence there is a $\Sigma_0$ relation $R(v,w)$ such that $v\in A$ iff $\exists wR(v,w)$. Also, $r(x,x)=y$ has been shown to be 
+$\Sigma_1$, and hence there is a $\Sigma_0$ relation $R(x,y,z)$ such that $r(x,x)=y$ holds iff $\exists zR(x,y,z)$ is true. Hence $r(x,x)=y\wedge y\in A$ 
+iff $\exists z\exists w(R_1(x,y,z)\wedge R_2(y,w))$, and this is $\Sigma_1$ by Problem 10, thus meaning $r(x,x)=y\wedge y\in A$ is $\Sigma_1$, and hence:
+\newline $\exists y(r(x,x)=y\wedge y\in A)$, that is, the formula that expresses $A^\#$, is also $\Sigma_1$ (also by Problem 10).
+\section*{Problem 13}
+We consider two $\Sigma_1$ sets $A, B$. Thus, $A, B$ are expressed by the two formulas $\exists zR_1(x,z)$, $\exists yR_2(x,y)$, respectively. Hence, 
+the $\Sigma_1$ formula $\exists z(\exists x\le z)(\exists y\le z)(R_1(v,x)\wedge R_2(v,y))$ clearly represents $A\bigcap B$, as it is true iff $v\in A
+\wedge v\in B$. Also, the $\Sigma_1$ formula $\exists z(\exists x\le z)(\exists y\le z)(R_1(v,x)\wedge R_2(v,y))$ represents $A\bigcup B$, as it is true iff 
+$v\in A\vee v\in B$.
+\section*{Problem 14}
+We have already shown that every arithmetic set has a Gödel sentence, so the below result holds true:\newline 
+Well, we consider any set $W_0$ of Gödel numbers of true sentences that is arithmetic. Thus the complement $\widetilde W_0$ of $W_0$ is also arithmetic, 
+and therefore has some Gödel sentence $X$. Hence, by definition of a Gödel sentence, $X$ is true iff $x^*$, for $x^*$ the Gödel number of 
+$X$, is in $\widetilde W_0$ iff $x^*\notin W_0$. Hence, $X$ must be true, as if it was not, $x^*\in W_0$ and $X$ would be false, contrary to the assumption
+ that only Gödel numbers of true sentences were members of $W_0$.
+\end{document}

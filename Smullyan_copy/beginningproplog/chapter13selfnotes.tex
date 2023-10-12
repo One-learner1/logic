@@ -1,0 +1,50 @@
+%/*% pdflatex -file-line-error -interaction nonstopmode %
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{amsthm}
+\usepackage{yhmath}
+\newcommand*{\oldneg}{\mathord{\sim}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+
+\title{Chapter 13 Self Notes}
+\begin{document}
+\maketitle
+
+\section*{Necessity of the exclusion of free occurences in $C$}
+One may ask, why does $C$ necessarily need to have no free occurences of $x$ (in the $Group\ Inference\ Rules)$ to make sense in relation to $FOL$?
+ Well, if we did not, we very well could have a scenario in which $C\supset F(x)$ is provable, and $C\supset F(t)$ is provable for some $t$ with both 
+$C$, $F(t)$ being provable, and also some $t$ such that both $C$ and $F(t)$ are refutable. Hence, $\forall xF(x)$ would not be true (in $FOL$), and 
+in the case where $C$ is true, we would have $C\supset \forall xF(x)$ being not true. We can use similar reasoning for the second inference rule.\newline
+\newline A similar question arises for the need of substituting a term $t$ for for $x$ in $F$ in the $Group\ II\ Axioms$ such that $x$ is not bound by any 
+variables in $t$. Well, it could be the case that 
+$t$ is some variable $y$ which is bounded in $F$, and such that $y$ is not free for $x$ in $F$. In this case, substituting $y$ for $x$ would essentially 
+'add' a new relation that $y$ is quantified over, as now we would have $y$ being placed in the condition $x$ was previously 
+placed in. Well, this scenario does not obey the laws of $FOL$, and thus we should avoid it.
+
+\section*{Meaning of 'The same as'}
+We should note that, when Smullyan says being dyadically enumerable is the same as being $\Sigma_1$, it does not mean these conditions are equivalent. 
+Instead, he means that dyadic enumerability implies being $\Sigma_1$. And so, when he says that we have shown Peano Arithmetic to be a formal system, 
+he really means that we have shown $P_0$ and $R_0$ to be $\Sigma_1$, and this is all we need to apply the Gödel and Rosser theorems for formal 
+systems (as, in those proofs, we only use the fact that $P_0$ and $R_0$ being dyadically enumerable means they are also $\Sigma_1$).
+
+\section*{Necessity of Using Sentences Instead of Formulae}
+When going through these last four chapters, one will inevitably ask the question, why are all of the sets being used defined for sentences, not for 
+formulas? To start, let us consider the system of First-order arithmetic. Well, this system deals solely with the notion of truth. But truth is in fact 
+not defined for sentences, and therefores, if we were to change the sets to be defined for formulas, it would actually not change anything from them 
+being defined only for sentences (and this holds true for whenever sets are defined that deal with truth). Now, in Chapter 10, we are talking about 
+systems solely dealing with provability. We are given a well defined set of provable $sentences$, but no guarantee that we have a well defined set of 
+provable $formulas$. Of course, there is a well defined set of provable $formulas$ in Peano Arithmetic, but the reason we define all the sets of the 
+results of Gödel and Rosser only with sentences is so that we only $need$ to know that there is a well defined set of sentences (which we have in Peano 
+Arithmetic), which means that getting all these results with sets defined with sentences is a more general result than what could be obtained with 
+formulas (in the sense that these are formulas and sentences of FOL). 
+\end{document}
+

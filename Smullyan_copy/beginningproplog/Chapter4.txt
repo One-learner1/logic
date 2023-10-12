@@ -1,0 +1,303 @@
+
+	
+
+Problem 2:
+Complete mathematical induction:
+Suppose a property P is such that for every natural number n, if P holds for all numbers less than n, than P holds for n. Conclusion, P holds for all n.
+
+Problem 2a:
+
+Prove the principle of complete mathematical induction from the principle of mathematical induction.
+(1): Consider a property P such that if P holds for all numbers less than n, then P holds for n. P must be shown by induction to hold for all n.
+(2): Consider the base case where n=0. Because there are no natural numbers less than 0, and thus n, the set of all numbers less than n is the empty set. Because anything can be said of the empty set, property P can be said to hold for the empty set, and thus P holds for 0 as well.
+(3): Then consider some property Q meaning that P holds for all numbers ≤ n. Showing that Q holds for all n of course also implies that P holds for all n, so it sufficies to show that Q holds for all n to prove the principle of complete mathematical induction.
+(4): Of course, by (2), Q holds for the base case of 0.
+(5): Now, assume Q holds for some n. It must be shown that Q also holds for n+1. Q holding for n means that P holds for all numbers ≤ n. But, because P holds for all numbers less than n+1, P holds for n+1 by the assumed conditions of property P. Thus Q holds for n+1 (as P holds for all numbers ≤ n+1), and thus for all n. Because Q holds for all n, it immediately follows that P holds for all n (because Q cannot hold for n without P holding for n.)
+
+Problem 2b:
+
+Assuming the principle of complete mathematical induction, prove the principle of mathematical induction.
+
+1: Consider a property P with the following conditions:
+	(1): P holds for 0
+	(2): If P holds for n, then P holds for n+1
+	It must be shown that P holds for all n.
+2: Because we are assuming the principle of complelte mathematical induction, assume that P holds for all numbers less than n. Because P holds for n-1, by condition (2), P then holds for n as well. But, because we are assuming the principle of complete mathematical induction, and have shown that if P holds for all numbers less than n, then P holds for n, we have proven that P holds for all n.
+
+Problem 3:
+
+The least number principle is that ever non-empty set of natural numbers contains a least element.
+
+Problem 3a: Assuming the principle of mathematical induction, prove the least number principle.
+
+1: Consider a property P(n) of sets meaning that any set A that has an element x no greater than n has a least element. It must be shown P(n) holds for all n.
+2: In the base case where A has an element x no greater than zero, it is clear that x is zero. Because x is zero, x of course can be no greater than n, and thus P holds for 0, proving the base case.
+3: Now assume that P holds for some n. Let A be a set containing an element no greater than n+1; it must be shown that A contains a least element.
+3: The set A either contains an element less than n+1 or it does not. If it does not, then n+1 is the only element of A (because we assumed that A is a set containing an element no greater than n+1), and thus n+1 is the least element of A. If A does contain an element less than n+1, then A contains an element no greater than n, and thus by the inductive assumption A contains a least element. In either case, P(n) implies P(n+1), and thus P holds for all n. Lastly, it must be shown that every non-empty set A contains some number x no greater than n, and thus contains a least element (because P holds for all n).
+4: Now, any non-empty set A contains some number n. Thus all non-empty sets A contain a number n no greater than n (namely n itself), and thus by P contain a least element. Therefore, every non-empty set A contains a least element, proving the least number principle. 
+
+Problem 3b:
+
+Assuming the least number principle, prove the principle of mathematical induction.
+
+1: Consider a property P such that:
+	(1): P holds for 0
+	(2): If P holds for n, then P holds for n+1
+	It must be shown that P holds for all n.
+2: Assume that P does not hold for all n. Then, by the least number principle, the set of all n which P does not hold for has a least element. Call this least element m. Because P holds for 0, m cannot be 0, and must be greater than it. Thus, because m is the least element of the set of numbers of which P does not hold for, P holds for m-1. Because P holds for m-1, by (2), P also holds for m. But, because it was assumed that P did not hold for m, a contradiction arise. Because a contradiction arises by assuming that P does not hold for some n, P holds for all n, and thus the principle of mathematical induction has been proven.
+
+Problem 4:
+
+The principle of finite descent states that if P is a property such that for any natural number n, if P holds for n, then P also holds for some natural number less than n, P does not hold for any number.
+
+Show that the principle of finite decent is equivalent to the principle of mathematical induction.
+
+Problem 4a:
+
+Assuming the principle of mathematical induction, prove the principle of finite descent.
+
+1: Consider a property P such that for any natural number n, if P holds for n, then P also holds for some natural number less than n. We must show that P does not hold for any natural number n.
+2: In the base case of 0, because there are no natural numbers less than 0, P holding for 0 would lead to a contradiction (because P holding for 0 means that P would need to hold for a natural number less than 0, but there are not any), thus proving the base case. 
+3: Now, consider a property Q(n), meaning the P does not hold for any numbers less than n. We must show that Q holds for all n. The base case of Q(0) immediately follows from there not being any natural numbers less than 0.
+4: Now assume Q holds for some n. We must show Q also holds for n+1. As a consequence of Q holding for n, P does not hold for any numbers less than n. Now, assume P holds for n. Because of this, P must hold for some natural number less than n. But, because Q holds for n, P does not hold for any numbers less than n, and thus P cannot hold for n. Then, because P does not hold for any numbers less than n+1, Q also holds for n+1. Because Q holding for n implies Q holding for n+1, Q holds for all n.
+5: Now, assume P holds for some n. In holding for n, P must also hold for some natural number less than n. But, because Q was shown to hold for all natural numbers, Q also holds for n. Because Q holds for n, P does not hold for any natural numbers less than n, contrary to the assumption that P holds for n. Thus, P holding for any n leads to a contradiction, meaning the P holds for no n, proving the principle of finite descent.
+
+
+Problem 4(b): 
+
+Assuming the principle of finite descent, prove the principle of mathematical induction.
+
+1: Consider a property P such that:
+	(1): P holds for 0
+	(2): If P holds for n, then P holds for n+1
+	Using the principle of finite descent, we must show P holds for all n.
+2: Now consider a property Q(n) meaning the P does not hold for n. We must show that Q does not hold for any n. Assume that Q holds for some n. We must now show that Q must also hold for some natural number less than n, and thus by the principle of finite descent Q does not hold for any n. Well, assume that Q does not also hold for a natural number less than. This means that, because Q does not hold for n-1, P must hold for n-1. But, P holding for n-1 implies by (2) that P holds for n, contrary to the assumption that P does not hold for n (because Q was assumed to hold for n). Thus, if Q holds for n, assuming Q does not hold for a natural number less than n leads to a contradiction, and thus Q must also hold for a natural number less than n. But, because Q is a property such that for any natural number n, if Q holds for n, then Q also holds for some natural number less than n, Q does not hold for any n by the principle of finite descent.
+3: Because Q does not hold for n, it immediately follows that there is no n for which P does not hold, and thus P holds for all n, proving the principle of mathematical induction.
+
+Problem 5:
+
+Suppose P is a property and n is a number such that the following two conditions hold:
+	(1): P holds for 0
+	(2): for any number x less than n, if P holds for x, then P holds for x+1,
+
+Using mathematical induction, prove that P holds for all numbers less than or equal to n.
+
+
+1: Consider a property Q meaning if x ≤ n, then P holds for x. We must show that Q holds for all x.
+2: For the base case of x=0, x is obvioulyy ≤ n. Because P holds for 0, nd x is 0, P holds for x. Because 0 ≤ n, and P holds for 0, Q holds for 0, proving the base case.
+3: Either x ≤ n or it is greater than n. Assume that Q holds for x, and x is greater than n. Because x is greater than n, x+1 must obviously also be greater than n. But, because 'if x ≤ n' is false for x+1, Q is immediately true for x+1, in the case where x is greater than n (becuse a false supposition implies any conclusion). 
+4: Now assume x ≤ n and Q holds for x. Because Q holds for x, and x ≤ n, P holds for x (by the conditions of property Q). If x is equal to n, than Q immediately also holds for x+1, as Q was shown to hold for all numbers greater than n. If x is less than n, P holds for x by (2). Thus, in all cases, assuming Q holds for x implies Q holding for x+1, and therefore Q holds for all x. 
+5: Because Q holds for all x, P holds for all x ≤ n, completing the proof.
+
+Exercise 1: Suppose Q is a property of sets of natural numbers, which satisfies the following two conditions:
+	(1): Q holds for the empty set
+	(2): For any finite set A and any number n not in A, if Q holds for A, then Q holds for the union of A and {n}. 
+Prove that Q holds for all finite sets of natural numbers by mathematical induction.
+
+1: Define P(n) to mean that every set of n numbers has the property Q. We must show that P(n) holds for every n.
+2: For the base case where n=0, n is the empty set. Because Q holds for the empty set by  (1), P holds for 0, proving the base case.
+3: Now, assume that P holds for every set of some n-sized number. Thus Q also holds for every n-sized set. By (2), Q also holds for the union of A and {x}, where A is a set of size n, and x is an element no contained in A. But, because the union of A and {x} is only adding one element to the cardinality of A, which we remember is n, then the union of A and {x} has a cardinality of n+1. Because Q also holds for the union of A and {x}, which is of size n+1, P also holds for all sets of size n+1 (because Q holds for all sets of size n+1). Thus, we have shown that assuming P holds for sets of size n, we can conclude that P also holds for all sets of size n+1, proving that P holds for all n. Because P holds for all n, Q holds for every set of any number n, meaning that Q holds for all n, and thus for all finite sets of natural numbers, completing the required proof.
+
+Exercise 2:
+
+Prove that no finite set can be put into a 1-1 correspondence with any of its proper subsets by mathematical induction.
+
+1: For the base case of a set of size 0, because it is the empty set, it has no proper subsets. Because this set has no proper subsets, it obviously cannot be put into a 1-1 correspondence with any of its proper subsets, as it does not have any; this proves the base case.
+2: Now assume that all n-sized sets cannot be put into a 1-1 correspondence with any of its proper subsets. We must now show that all n+1-sized sets cannot be put into a 1-1 correspondence with any of its proper subsets. Whatever element, call it x, which is added to an n+1-sized set, call it A, can be paired off with one of the elements of the largest proper subset of A. After x has been paired of, the remaing set without x has a cardinality of n. We assumed that sets of size n cannot be put into a 1-1 correspondence with any of their proper subsets, meaning that the set A without x cannot be put into a 1-1 correspondence with any of its subsets. Because the whole set A cannot be put into a 1-1 correspondence with any of its proper subsets, all sets of size n+1 cannot be put into a 1-1 correspondence with any of their proper subset. Because in assuming the nth case we prove the n+1th case, we have proven that no finite sized any number n cannot be put into a 1-1 correspondence with any of its proper subsets, completing the proof.
+
+Problem 7: 
+
+Consider a relation R(x,y) between natural numbers such that:
+	(1): R(n,0) and R(0,n) holds for every number n.
+	(2) For all numbers x and y, if R(x,y+1) and R(x+1,y), then R(x+1,y+1).
+
+Prove that R(x,y) holds for every x and y.
+
+1: Call a number y special if R(x,y) holds for every x. We must prove that every y is special.
+2: For the base case where y=0, R(x,0) holds for every x by (2), thus proving the base case.
+3: Now, assume that R(x,y) holds for every x for some y. We must now show that R(x,y+1) holds for every x. To do this, we must use induction on x. For the base case of R(0,y+1), this holds by (2), proving hte base case. 
+4: Now assume that R(x,y+1) holds for some x. We must now show that it also holds for x+1. Because R(x,y+1) and R(x+1,y) both hold (R(x+1,y) holding due to this induction assumption that R(x,y) holds for every x), R(x+1,y+1) holds. Because assuming R(x,y+1) yields R(x+1,y+1), R(x,y+1) holds for all x. 
+5: Because assuming R(x,y) holds for all x brings us to the conclusion that R(x,y+1) holds for all x, every y is special, and thus R(x,y) holds for every x and y.
+
+Problem 8:
+
+Consider a relation R(x,y) satisfying the following two conditions:
+	(1): R(x,0) holds for every x.
+	(2): For all x and y, if R(x,y) and R(y,x), then R(x,y+1).
+
+Prove that R(x,y) holds for all x and y.
+
+1: Call a number x left normal if R(x,y) holds for every y, and right normal if R(y,x) holds for every y. We must prove first that every right normal number is also left normal, and then show that every number is right normal by induction (and hence R(x,y) holds for all x).
+2: First assume some x is right normal. We must show this x is also left normal. So, we prove this by induction. For the base case of R(x,0), this holds by (1), proving the base case. Now assume that some x is left normal, so that R(x,y) holds. Because we have assumed that both R(x,y) and R(y,x) hold, by (2) R(x,y+1) holds, proving that R(x,y) holds for every y, meaning that x has been proven to be both right and left normal. 
+3: Now we must prove that every number is right normal. For the base case of 0, R(x,0) holds, proving the base case.
+4: Now assume some y is right normal, so that R(x,y) holds for every x. Because we have shown every right normal number to be also left normal, y is also left normal. Because y is also left normal, R(y,x) holds for every x. Because R(y,x) and R(x,y) both hold, R(x,y+1) holds by (2). This proves that every number is right normal (and hence also left normal), obviously mening that R(x,y) holds for every x and y. 
+
+Problem 9:
+
+Under the given conditions, will execution be unavoidable at some point or another?
+
+Yes, execution is unavoidable. Consider the property P on the highest numbered ball in some box, meaning that this box will eventually run out of balls. We must show that P holds for all n, and thus all possible boxes must eventually terminate. For the base case where the highest numbered ball in the box is of size 0, because there are only a finite number of balls of each size, and there are no natural number less than 0 (meaning you can never replace a ball of size 0 you throw out), this box will eventually terminate. Now assume that P holds for some n. For a box in which a ball of size n+1 is the highest ball, you either throw out a ball that is of size n+1 or less. If it is less, we have already shown that these balls will eventually terminate, leaving you with only balls of size n+1, which there are only a finite number of. If you instead first throw out the balls of size n+1, there are only finitely many of them, of which each one can only be replaced by a finite number of lower sized balls. Because of this, the balls of size n+1 will eventually run out leaving only balls < n+1 less. But, because we assumed P holds for n, it is obvious that this box will also terminate. Thus P also holds for n+1, and therefore no matter what n-sized ball is the largest ball in the box, the box must terminate at some point. 
+  
+Problem 10:
+Suppose that we are given that inside of some tree, for any positive integer n, there is at least one path of length n. Does it necessarily follow that there must be at least one infinite path?
+
+No, it does not necessarily follow. We can construct a tree satisfying the above conditions without an infinite path as follows: the origin will be given an denumarable number of successors. Then, it successor farthest to the lest with have zero successor; its second successor will have one successor, and so one, for every length n. Because no path of length n is infinite, there is not an infinite path in this tree, thus disproving the original claim. 
+
+
+
+	
+
+
+
+Problem 11a: 
+
+Assuming a tree is finitely generated (meaning that each point has only finitely many successors), does it necessarily follow that each level contains only finitely many points?
+
+Yes, it does follow. Assume that at some nth level of the tree there is infinitely many points. Let P be the property of a level of a tree having infinitely many points. Thus P(n) holds. We must show by the principle of finite descent P(n) does not hold for any n, and therefore all levels of the tree have only finitely many points. Either a level lower than n having infinitely many points exists or it does not. If it does not, than the level n-1 has finitely many points. Because we are assuming this tree is finitely generated, no points can have infintely many successors. Thus each point on the level n-1 can only have finitely many successors. But, because there are only a finite number of points on level n-1, and there are an infinite number of points on level n, there is no way for all the points on level n to be succesors of points on n-1 (because no finite amount of finite sets can hold an infinite quantity, such as the points on level n). Thus P not holding for any levels lower than n leads to a contradiction, and thus, if P holds for n, than P must hold for a natural number less than n. By the principle of finite descent, P then holds for no n, and thus every level contains only a finite number of points.
+
+
+Problem 11b:
+
+If a tree is finitely generated, which, if either, of the following two statements implies the other?
+	(1): For each n there is at least one path of length n
+	(2): The tree has infinitely many points
+
+
+(1) implies (2). If for each n there is at least one path of length n, then it is immeditaley clear that the origin would have infinite descendants, as every level n must have at least one point, or the origin itself would have infinitely many successors. From 2, if (1) did not also hold, then it is clear that at some n, there would not be a path of length n. Because of this, the tree would not be able to have any points on levels equal to or higher than length n. But, it has been assumed that the tree is finitely generated, and thus by 11a, because the levels of the tree are finite, there cannot be infinitely many points, contrary to the assumption of (2). Thus (1) must also follow from (2).
+
+Problem 12:
+
+Konigs Lemma: A finitely generated tree with infinitely many points must have an infinite path. 
+
+Prove Konigs Lemma.
+
+1: Consider the property P meaning for a level n on a finitely generated tree, all points on that level n have only finitely many descendants. Assume P holds for level n. Now, assume that there is no level that is samller than level n on the tree which has the property P. This means that at least one of the points on the n-1 level of the tree must have infinitely many descendants. Now, because P does not hold for n-1, there must be some point x on the n-1 level which has infinitely many descendants. Recall that because this tree is finitely generated, each point can have only finitely many successors. Because P holds for n, all points on the nth level of the tree have only finitely many descendants. But, x, which was said to have infinitely many descendants, has only finitely many successors, and each of their successsors has only finitely many descendants, which means x has only finitely many descendants (proved in the reading directly after problem 10), contrary to the assumption that x had infinitely many descendants. Thus, assuming P does not hold for some number less than n when P holds for n yields a contradiction, and thus if P holds for n, P must also hold for some number less than n. Thus, by the principle of finite descent, P does not hold for any n.
+2: Because P does not hold for any n, there are no levels on the tree where every point has only finitely many descendants. Now, we can construct an infinite path as follows: because P does not hold for level 0, and the origin is the only point at level 0, the origin must have infinitely many descendants. Then, because P does not hold for level 1, there must be some point on level one which has infinitely many descendants, so the path goes first from the origin to this point, call it x1. Then from x1, the path would continue to a point x2 on level 2, which would be the point having infinitely many descendants on level 2 (because P does not hold for level 2). This process can be repeated for all levels, which we recall there are infinitely many of because there are an infinite number of points on the tree, but only a finite number of points on each level. Thus an infinite path has been constructed.
+
+Problem 13:
+
+The Fan Theorem: If a tree is finitely generated and if all paths are finite, then the whole tree is finite.
+
+Prove The Fan Theorem:
+
+(Quickest version of the proof)
+The Fan Theorem is immediate from Konigs Lemma. Assume some finitely generated tree with only finite paths has an infinite number of points. Then, by Konigs Lemma, the tree must have an infinite path, contratry to the original assumption, completing the proof of The Fan Theorem.
+
+
+(Unessecarilly long version of the proof that I initially created)
+1: Consider a property Q(n) on the paths of a finitely generated tree with only finite paths, meaning that there are finitely many paths of length n. We must prove Q holds for all paths.
+2: For the base case of paths of length 1 (by definition, a path must go at least one level down from the origin, so there are no paths of length 0), because the tree is finitely generated, the origin only has finitely many successors. Because of this, it is obvious that there are also only finitely many paths of length 1 (by definition, paths must start from the origin, so we only need to look at successors of the origin), proving the base case.
+3: Now assume that Q holds for some n-sized paths. We must show it also holds for the n+1-sized paths. Again, because every point in this tree has only finitely many succerssors by virtue of the tree being finitely generated, all points on level n (the level which all paths of length n lead to), have only finitely many successors. Because there are then only a finite number of points which could be the end points of the paths of length n+1, it is obvious that there can only be a finite number of paths of length n+1. Thus Q holds for all n, and thus there are only a finite number of paths for each path of length n. 
+4: Because of this, and the fact that each path is finite, it immediately follows that the whole tree is finite (Add the total amount of points in each n sized path; do this for all n. Because the paths are all finite, and there are only a finite number of paths in total, each sum of total points in paths of length n is also finite, meaning the sum of all the paths is finite, and thus the whole tree is finite), proving The Fan Theorem.
+
+Problem 14: Using The Fan Theorem, given an alternate proof of the Ball Game Problem initially solved in Problem 9.
+
+
+1: Each ball (equivalent to a trees point) in the box's successors will be the balls that are added to the box after the original ball is thrown out of the box. Because each ball, when thrown out, can only be replaced by a finite number of new balls, each point has only finitely many successors, and thus the tree is finitely generated. 
+2: Each path of the tree is constructed as follows: starting at a ball which is numbered higher than any already in the box (equivalent to the origin), then start the path by going down to a ball of level n (which would be one of the highest numbered balls in the box, and would be on level 1). Then, from a ball of number n, go to a ball of size n-1 (either a ball already in the box, or one that was added in). Continue this pattern. Because the box starts out with only finitely many balls, it is obvious that there cannot be an infinite number of sizes  (equivalent to levels of a tree), and thus at some point the path from n will eventually terminate. Because this holds true for all paths, and the tree is finitely generated, the whole tree is finite by the Fan Theorem, and thus you will eventually be executed (because the whole tree is finite, it is clear that at some point the balls will entirely run out)
+
+
+Problem 15:
+
+Prove the Generalized Induction Threorem:
+
+Generalized Induction Theorem: A sufficient condition for a component relation C(x,y) on a set A to obey the generalized induction principle is that all descending chains be finite.
+
+1: If an inductive property P fails for some element x of set A, then P must also fail for some component x1 of x (because by definition of P being inductive, if P held for all components of x, then P must also hold for x). Then, because P does not hold for x1, P must also not hold for some component x2 of x1. But, because this process must necessarily go on infinitely, an infinite chain has been created, going from x to its component x1 for which P fails for, and then the component for x1 which P fails fors, thus creating an infinitely descending chain. But, because it was assumed that all descending chains be finite, this leads to a contradiction. Thus, if all descending chains be finite in a set A, an inductive property P cannot fail for any element, and thus must hold for every element of A, thus proving the generalized induction theorem.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Problem 16:
+
+Using the generalized induction theorem, prove the Fan Theorem.
+
+
+
+We are considering a tree in which each point only has finitely many successors, and one that contains only finite paths. We must prove by the generlized induction theorem that the tree contains only finitely many points. 
+1: By a component of a point x on this said tree is meant its successors. Thus, we must first show by the generalized induction theorem that this component relation obeys the generalized induction principle. Because all paths of the tree are finite, it immediately follows that there cannot be some element of the tree x, which has some component x1, which has some component x2, and so on to infinty. This chain must end at some point, because all paths are finite (meaning for every element x which has a component x1, this descending chain must eventually terminate, because there is some component of this chain which does not have any components, because at some finite length each path will end). Thus this component relation obeys the generalized induction principle.
+2: Now we must show that for the given component relation, the property P, that is, that up to a given point x on level n of the tree, all levels from 0 to n have only a finite number of combined points, is inductive, and thus holds for all elements of the tree. Assume that this property holds for all components on level n of some element x. Then all the number of points on levels 0 to n is finite. Now, the property must also holds for x. If it does not, then there is an infinite number of points in the levels 0 to n-1. But, because we assumed that there was only a finite number of points from the levels 0 to n, there is obviously no way for there to be an infinite number of points in levels 0 to n-1, and thus P also holds for x. Thus, assuming P holds for all components of x, means that P holds for x; thus P is inductive.
+3: P holds for all elements of this tree by the generalized induction principle. Because of this, and the fact that there is not an infinite number of levels in the tree, it is clear that there is only a finite number of points in total in the tree, thus proving the Fan Theorem. 
+
+Problem 17: 
+
+Prove the converse of the generalized induction theorem; that is, if a component relation obeys the generalized induction principle, then all descending chains must be finite. 
+
+
+
+ If for some element x, all components of x do not begin an infinitely descending chain, it is obvious that x does not as well (because the descending chain now starting from x only adds one element, so it obviously cannot be infinite). Thus the property for an element x of not starting an infinitely descending chain is inductive. If we assume that some component relation obeys the generalized induction theorem, it follows that all inductive propertyies hold for this relation, and thus it follows that no elements can begin an infinitely descending chain, and therefore, if a relation obeys the generalized induction principle, all desncending chains must be finite.
+
+
+ Problem 18:
+
+ Prove the following:
+
+ For any component relation C(x,y) on a set A, the following three conditions are all equivalent: 
+ 	(1) The generalized induction principle holds
+ 	(2) All descending chains are finite
+ 	(3) The relation is well-founded
+
+ 1: Taking (1), it has already been proved that (2) must then follow. Now, assume that the relation is not well founded. This means there is some non-empty subset S of A which does not contain an initial element, meaning all elements of S have components also in S. This means we can construct an infinitely descending chain as follows: starting with some element x of S, then go to its component x1 which is also in S, then go to x1's component x2 which is also in S, and so forth. This goes on infinitely because S does not contain an initial element. Thus, because it was originally assumed all chains are finite, this leads to a contradiction and thus the cannot be any set without an initial element, and thus the relation is well-founded.
+2: Taking (3), we must now also prove the other two conditions. If there was an infinitely descending chain in A, the subset S of A which contained all of the elements of this infinitely descending chain obviously cannot contain an initial point (if it did, the chain would then be finite, as the chain would end at the initial point, contrary to the assumption that it was infinite), and thus the relation would no longer be well found. Thus assuming (3) yields (2), which in turn yields (1), completing the proof that all three are equivalent.
+
+
+
+Problem 19:
+
+(a) If there is at least one club, does it necessarily follow that there is a maximal club? (b) If we instead assume that the univers V contains only finitely many elements, does the answer to a change?
+
+(a) It does not follow. Because the universe V contains infinitely many elements, there could be said to be a club containing n elements for each n. Obviously there is no one club which is not a proper subset of another, as for each n-sized club, there must necessarily be a club of size n+1, which means that there can be no maximal club.
+(b) Because V contains a finite number of elements, there can only be a finite number of clubs. Then it obviously follows that there must be a club of size n, where n is the largest size of all the clubs in V. Because of this, this club of size n cannot be numerically smaller than any other clubs, and thus cannot be a proper subset of any other clubs. Thus n is a maximal club, and thus the answer to a changes if V contains only finitely many elements. 
+ 
+
+Problem 20
+
+Show that under the given conditions, the set C* is a club, and is also a maximal club.
+
+1: We must first show that every subset S of a club C is also a club. Consider a subset T of S. Because all finite subsets T of S are also finite subsets of C, by the above conditions, T is also a club. Because all T (all finite subsets) of S are clubs, it also follows from the above conditions that S itself is a club.
+2: We must now show that the set C* is a club. Recall that one of the initial conditions was that a club S is a club iff every finite subset of S is a club (call this condition (1). Thus we must only show that every finite subset of C* is a club. Well, the finite subsets of C* are by definition either finitie subsets of the club C, the single elements xi which were added to C, the finite subsets of the single elements joined together, or the finite subsets of the finite subsets of the club C with the single elements xi. Because cU{xi} for any xi was said to be a club if xi was added to C*, then by (1), xi itself thus must also be a club. Thus all added elements xi to C that are in C* are clubs. Now, any finite subsets of C* that are not single elements are a combination of single elements with the finite subsets of club C. Consider the property P(n), such that all subsets of size n or less of C* are clubs. We must prove this holds for all n. For 0, it is obviously true, as anything can be said of the empty set. Now assume P holds for some n. Any subsets of C* of size n+1 are made up of sets of size n or less. Because all subsets of C* under this assumption are clubs themselves, all subsets of size n+1 are as well (by (1)). Thus all subsets of C* of all sizes n are clubs and thus, by (1), C* is also a club.
+3: We must now also show that C* is a maximal club. To do this, it suffices to show that, for any element xn of V, C*U{xn} is a club iff xn is a member of C*. Then, with this information, we must show that C* is not a proper subset of any club, and thus is a maximal club. Assume that for some xn, C*U{xn} is a club. Now, because every Cn is a subset of C*, CnU{xn} is a subset of C*U{xn}. By (1), CnU{xn} is also a club. But, because the original conditions of any club Cn were that Cn+1=CnU{xn} if CnU{xn}, Cn+1 is also a club. But, because all the distinct inhabitants added to C* were ones that, when added to Cn, make a new club Cn+1, this element xn must also be an element of C*. Thus for any inhabitant xn who is not a member of C*, C*U{xn} is not a club.
+4: Assume C* is a proper subset of some club A. Thus A must contain at least one element x which is not an element of C*. Thus by the step above, C*U{x} is not a club. Because of the subset C*U{x} of A not being a club, and the result of the first step of this proof, A itself must also not being a club, proving that there cannot be any set that contains C*. Thus, C* must be a maximal club. 
+
+
+Problem 21:
+
+Consider a property P*(S) on sets in a denumerable universe V, meaning that the property P holds for all finite subsets of a set S. Show that P*(S) is compact, regardless of whether P is compact. 
+
+1: To show that P*(S) is compact, we must show that P*(S) holding for S implies P*(S) holding for all finite subsets of S, and then show that P*(S) holding for all finite subsets of S implies P*(S) holds for S itself. To start, assume P*(S) holds for S itself. This means that P holds for all finite subsets of S. Now, consider the finite subsets of the finite subsets of S, call one F. Because F is a finite subset of a finite subset of S, call it T, it is obvious that F is also a finite subset of S itself. Then, because it was assumed all finite subsets of S had property P, F also has property. Because it has now been shown all finite subsets of any T will also have property P, it thus follows that T also has property P*(S), meaning that the first part of the proof has been completed.
+2: Now assume that P*(S) holds for all finite subsets T of S. We must show it also holds for S itself. Because P*(S) holds for all T, P holds for all finite subsets of T, call them F. Because T itself was assumed to be finite (we assumed P*(S) held for all finite subsets of S), P also holds for T, as it is a finite subset of itself. Because P holds for all T, P*(S) then also holds for S, as P holds for all finite subsets of S. Thus P*(S) holding for all finite subsets of S implies P*(S) holding for S, and thus the proof that P*(S) is compact is complete.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+

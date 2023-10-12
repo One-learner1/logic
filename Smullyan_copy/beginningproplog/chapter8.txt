@@ -1,0 +1,83 @@
+^ Represents a different answer than the answer key. E represents existential quantifier, V is universal quantifier, == is equivalence
+
+Problem 9:
+
+(a): Vx(xCm then hCx) 
+(b): Vx(mCx then hCx)
+(c): Vx(mCx then hCx)
+(d): Ex(xCm) then hCm
+(e): Vx(xCm) then hCm
+(f): Vx(xCh then xCm)
+^(g): ~Ex(xCh and ~xCm)
+(h): VxEy(~yCm then xCy)
+(i): VxVy((xCh and hCy) then xCy)
+
+Problem 10: 
+
+(a): VxEy(xKy)
+(b): VxEy(yKx)
+(c): VxEy(xKy)
+(d): VxEy(xKy and ~yKx)
+(e): VxEy(xKy then yKx)
+
+Problem 11: 
+
+(a): ExDx then Db
+(b): Vx(Dx == (x = b))
+
+Problem 12:
+
+(a): VxEy(y > x)
+^(b): Vx(x > 0 then Ey(x > y))
+(c): Vx(~Ey(y < x) == (x = 0))
+(d): Equality: 
+	(~(x < y) and ~(y < x))
+	^Inequality:
+	~(~(x < y) and ~(y < x))
+
+Problem 13: 
+
+For the universal quantifier we can write: 
+
+~Ex~Px
+
+For the existential quantifier we can write:
+
+~Vx~Px
+
+Excercise 1:
+
+First, we prove that the statement is true in the base, case, for predicates. Well, if F is a predicate, and is true under I2, Pe1`,...,en` was defined to be true under I1. Because F` is the result of replacing e by e` for every e, F` is obviously true under I1. If F` is true under I1, we have Pe1`,...,en` being true under I1 by definition of the construction of F`. Thus, because I2 assigns the relation such that Pe1`,...,en` is true under I1, F is also true under I2, completing the proof for the base case. Now, assume that the statement holds for all formulas of degrees less than n. Consider any formula of degree n; it is necessarily made up of formulas of at least degree 0, or is of degree 0, which we have showed holds. If it is made up of smaller formulas, these smaller formulas follow the equivalence statement by the induction assumption. If they are quantified formulas, (Vxphi(x) or ~Exphi(x)), phi(e) and phi(e`) (the F` formula) are equivalent by our assumption. Thus, if Vxphi(x) is true, then phi(e) must be true for all e, and therefore phi(e`) must also be true for all e` by the assumption, meaning Vxphi(x`) is also true. Similarly, Exphi(x) is true for phi(e) implies phi(e`) is true, meaning Exphi(x`) is also true. If the formula is made up of propositional connectives, we have its component(s) of degree(s) less than n. Thus, if the components are true for F (or F`), the components for F` (or F) must be true as well, obviously preserving the equivalence of F and F`. Thus the statement holds by the principle of complete mathematical induction. 
+
+
+Problem 14: 
+
+Suppose U1 is a proper subset of U2. We will show that for whatever size U2 is, it is not necessarily the case that a satisfiable formula in U2 is also satisfiable in U1. Because U1 is a proper subset of U2 (and the fact that all U must contain at least one element), U1 must contain at least one element which is also a member of U2. We first consider the case where U2 is a finite domain. Thus, we can construct the elements of U2 as e1,...,en, and U1 as e1,...,ei (i < n). Now, in order to construct a relation that is unique for domains of elements n or more, it obviously must take in to account the fact of having at least n elements. Thus, the formula F must be of some form (if we wish to construct the relation in one formula) in which it takes e1,...,en as its parameters. Now consider the predicate Pxy meaning x is distinct from some element greater than xi from x1,...,xn. Consider also Rxy meaning x is equal to some element xn. Then, consider the formula F: VxEy(Pxy or Rxy). Obviously, this formula must be true for all x in the domain U2, as for every element x of U2, there exists some element y that is either greater than xi or equal to some element xn. However, now consider some domain U1 with at least one element less than U2. Thus, at most, we have e1,...en-1 as its members. Now consider the formula F. For the case of en-1, there does not exist some element y in U2 that is greater than en-1. In addition, because en-1 is obviously not the nth element of U1, it is not equal to some nth element of U1. Thus, F is not satisfiable under U1. 
+In the case of denumerable domains, there is in fact a very easy method of construction of such a formula. Because U1 is a proper subset of U2, it cannot be denumerable. Thus, it is finite. Then U1 must have n members. But, because U2 has denumerably many members, we can construct the formula F: (VxEy(Txy) and ~Ex(Txx)), Txy meaning there exists some element y greater than x. This is obviously true under U2, as U2 is denumerable. However, because U1 is finite, the nth element en of U1 is the greatest element of U1, because x cannot be greater than itself, by ~EX(Txx) holding, and thus for all finite domains F is unsatisfiable. 
+
+Problem 15: This was answered in the second paragraph of Problem 14.
+
+Problem 17: Prove that the axiom system S1 is correct.
+
+Axioms:
+
+1: All tautologies are obviously correct.
+
+2(a): If Vxphi(x) is false, Vxphi(x) then phi(a) is true. If Vxphi(x) is true, phi(a) is the result of replacing the parameter a for every free occurence of x. Because Vxphi(x) is true, obviously phi(a) for all elements a of a domain U is true. 
+2(b): If phi(a) is false, phi(a) then Exphi(x) is true. If phi(a) is true, obviously Exphi(x) is true, because it is true in at least the case where x is a. Thus phi(a) then Exphi(x) would be true as well.
+
+Inference Rules:
+
+1: Modus Ponens obviously preserves validity.
+
+2(a): Assume phi(a) then X is valid. Then, under some domain U and an interpretation I, we have some element e such that phi(e) then X is true. Now, if Exphi(x) is false, Exphi(x) then X is obviously true under I. If Exphi(x) is true, then for some e, phi(e) is true, which we assumed implied X being true (we assumed phi(a) then X to be true for all cases of a). Thus, Exphi(x) also implies X. 
+2(b): Assume X then phi(a) is valid in some domain U. If X is false, then X then Vxphi(x) is obviously true under I. Because X the phi(a) is valid, X being true implies phi(a) for all elements a of U. This obviously means that Vxphi(x) would be true, and thus X then phi(x) would also be true.
+
+
+
+
+
+
+
+
+

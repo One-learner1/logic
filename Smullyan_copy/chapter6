@@ -1,0 +1,350 @@
+Example (In paragraph 2 of page 85)
+
+An if then statement will be represented with the word 'then', an equivalence with 'iff', an and with the word 'and' (similarly for the or statements with 'or').
+
+				1.	F [p then (q then r)] then [(p then q) then (p then r)] (Hypothesis)
+				2.	T p then (q then r) (1)
+				3.	F (p then q) then (p then r) (1)
+				4.	T p then q (3)
+				5.	F p then r (3)
+				6.	T p (5)
+				7.	F r (5)
+				8.	F q (6, 7, 2)
+				9.  F p then q (6, 8, 4)
+				------------------------ (4)
+Exercise 1:
+
+(a)			
+										1.  F q then (p then q) (Hypothesis)
+										2.	T q (1)			
+										3.	F p then q (1)
+										4.	T p (3)
+										5.  F q (3)
+										----------- (2)
+(b)			
+										1.	F [(p then q) and (q then r)] then (p then r) (Hypothesis)
+										2.	T (p then q) and (q then r) (1)
+										3.	F (p then r) (1)
+										4.	T p (3)
+										5.	F r (3)
+										6.	T p then q (2)
+										7.	T q then r (2)
+											/			\
+										   /			 \
+										  /				  \	
+										 /  			   \	
+								8.	F q (7)	 			10.	T r (7)
+								9.	F p (8, 6)			 	--------------------------- (5)	
+								-------------- (4)
+(c)
+										1.	F [p then (q then r)] then [(p then q) then (p then r)]
+										2.	T p then (q then r) (1)
+										3.	F (p then q) then (p then r)
+										4.  T p then q (3)
+										5.	F p then r (3)
+										6.	T p
+										7.	F r            \
+										/			        \
+									   /			         \
+									  / 					  \
+									 /				           \
+								8. F p (2) 					9.	 T q then r (2)
+								------------------ (4)				/				\
+																   /				 \
+																  /					  \
+																 /					   \
+													10. F q (9)					 11.	T r (9)
+													11. F p then q (6, 10)		 -------------- (7)
+													---------------------- (4)
+(d)
+										1.	F [(p then r) and (q then r)] then [(p or q) then r]
+										2.	T [(p then r) and (q then r)] (1)
+										3.	F (p or q) then r (1)
+										4.  T p or q (3)
+										5.	F r (3)
+										6.	T p then r (2)
+										7.	T q then r
+										/				\
+									   /				 \
+									  /					  \
+									 /					   \
+						8. T r (6 Assumption)			9. 	F p (6 Assumption)
+						--------------------- (5)		10. T q (9, 4)
+														11. T r (10, 7)
+														--------------- (5)
+(e)
+										1. 	F [(p then q) and (q then r)] then [p then (q and r)]
+										2.	T [(p then q) and (q then r)] (1)
+										3.	F p then (q and r) (1)
+										4.	T p then q (2)
+										5. 	T q then r (2)
+										6. 	T p (3)
+										7.	F q and r (3)
+										8.	T q (6, 4)
+										9.	F r (8, 7)
+										10. F q then r (8, 9)
+										--------------------- (5)
+(f-j will be completed using unsigned formulas)
+
+(f)
+										1.	~(~(p or q) then (~p and ~q)) 
+										2.	~(p or q) (1)
+										3.	~(~p and ~q)
+										4.	~p (2)
+										5.	~q (2)        
+											/			\
+										   /			 \
+										  /				  \
+										 /				   \
+								6. p (3 Assumption)			7. q (3 Assumption)
+								------------------- (4)		------------------- (5)
+(g)
+										1.	~((~p and ~q) then ~(p or q))
+										2. 	~p and ~q (1)
+										3.	~~(p or q) (1)
+										4.	p or q (3)
+										5.	~p (2)
+										6.	~q (2)
+										/			     \
+									   /				  \
+									  /					   \
+									 / 						\
+							7.	p (4 Assumption)			8. q (4 Assumption)
+							-------------------- (5)		------------------- (6)
+(h)
+										1. ~{[p and (q or r)] then [(p and q) or (p and r)]}
+										2.	p and (q or r) (1)
+										3.	~[(p and q) or (p and r)] (1)
+										4.	p (2)
+										5.	q or r (2)
+										6.	~(p and q) (3)
+										7.	~(p and r) (3)
+										8.	~q (4, 6)
+										9.	~r (4, 7)
+										------------- (8, 9, 5)
+(i)
+										1. ~{[(p then q) and (p then ~q)] then ~p}
+										2.	[(p then q) and (p then ~q)] (1)
+										3.	~(~p) (1)
+										4.	p (3)
+										5.	p then q (2)
+										6.	p then ~q (2)	\
+									/						 \
+								   /						  \
+								  /							   \
+								 /							
+						7.	~p (5 Assumption)				8.	~q (5 Assumption)
+						--------------------- (7, 4)		/					\
+														   /					 \
+														  /						  \
+												9. ~p (6 Assumption)		10. ~(~q) (6 Assumption)
+												-------------------- (4, 9) 11. q (10)
+																			---------- (8, 11)
+(j)
+								1. ~{[((p and q) then r) and (p then (q or r))] then (p then r)}
+								2.	[((p and q) then r) and (p then (q or r))] (1)
+								3.	~(p then r) (1)
+								4.	p (3)
+								5.	~r (3)
+								6.	(p and q) then r (2)
+								7.	p then (q or r) (2) 
+							   /						 \
+							  /							  \
+							 /							   \
+							/								\
+				 8. r (6 Assumption)				9. ~(p and q) (6 Assumption)
+				 ------------------- (5, 8)			/							\
+				 								   /							 \
+				 								  /								  \
+				 								 /								   \
+				 			11.	~q (6 Assumption)						10. ~p (6 Assumption)
+				 		 /			   \								--------------------- (4, 10)
+				 		/	 			\			
+				 	   /				 \
+				 	  /					  \
+				 	 /					   \
+		12. ~p (7 Assumption)		  13. q or rx (7 Assumption)
+		--------------------- (4, 12)		/				\
+										   /				 \
+										  /					  \
+										 /					   \
+							14. q (13 Assumption)			15. r (13 Assumption)
+							--------------------- (11, 14)	--------------------- (5, 15)
+
+
+Problem 1:	Tableuax Rules for Joint Denial (Represented as |>):
+			T X |> Y   T X |> Y    				F X |> Y
+			--------   --------					/       \
+			F X 	   F Y 					   /         \
+											  /			  \
+											T X 		 T Y
+In Unified Notation, T X |> Y 			In Unified Notation, F X |> Y is of type beta, 
+is of type alpha, where F X is a1		where T X is b1 and T Y is b2.
+and F Y is a2.
+
+			Tableuax Rules for Alternative Denial:
+			T X | Y 			F X | Y     F X | Y
+			/		\			-------		-------
+		   /		 \			T X 		T Y
+		  /			  \
+		~X 			  ~Y
+In Unified Notation, T X | Y 			In Unified Notation, F X | Y is of type alpha,
+is of type beta, where ~X is b1			where T X is a1, and T Y is a2.
+and ~Y is b2.
+
+
+
+
+
+
+Problem 2(a):
+	
+
+We must prove that if a tableaux T is satisfiable, then any extension of T by an application of Rule A or Rule B is also satisfiable. To do this, it suffices to show that the extension of T we are considering has at least one branch that is satisfiable. 
+1: First, let us assume we have extended T by rule A. Call the branch that was extended from T . If R was not already satisfiable, then some other branch Y is obviously still satisfiable after R is expanded, and thus T is also satisfiable. If R was previously satisfiable, then the formula a which we extended by rule A was also satisfiable. Thus, because a was true under some interpretation, a1 and a2 would also be true under that same interpretation. Because a1 and a2 are the new formulae on R, and are both true, R is still satisfiable, and thus T is also satisfiable.
+2: Now, if we have extended T by rule B, we must again only consider the possibility when R was previously satsifiable. Because R was previously satisfiable, then b is also satisfiable. Then we extend T twice, into brances y1 and y2, where y1 contains b1, and y2 contains b2. Because either b1 or b2 is satisfiable (because b is satisfiable), either y1 or y2 must also be satisfiable. Thus at least one branch of the tree is satisfiable, and thus T is satisfiable, completing the proof.
+
+Problem 2(b):
+
+
+1: Assuming a formula X is satisfiable, start with the tablueax T as just the formula X by itself. Then, by 2(a), because T is satisfiable, any extension T1 of T will also be satisfiable, and so on until the tablueax is completed. Thus, because all tableauxs with X must have at least one satisfiable branch, no tablueax for X can be closed.
+
+Problem 2(c):
+
+1. If F X is satisfiable, then by 2(b), no tableuax for F X can be closed. Taking the contrapostive of this statement, we receive: If there is a closed tableuax for F X, then F X is not satisfiable.
+
+Problem 3(a):
+
+Prove Hintikka's Lemma.
+
+1: Suppose some set S is a Hintikka set. We are to show that this set is satisfiable. To do this, it suffices to show that, using mathematical induction, all formulas of all possible degrees in S are true under one interpretation. For the formulae of degree 0, which are simply propositional variables, we give the value of truth to any T X. Then, for any F X, we give the value of falsehood. This ensures that, whichever type of variable is in S, X will be true (It will be true because if X is of type T, we are assigning it the value truth, which is true, and thus X is true. If F X is true, then we will assign X the value false, and then each F X will be true, as X is false). Thus, under this interpreation I, all formulas of degree 0 are true, proving the base case. 
+2: Now assume that all the formulas of size n are true under I. Any formulas of degree n+1 are either of type alpha or beta. Because S is a hintikka set, all a1 and a2, or b1 and b2 are members of S if an alpha or beta formula is a member of S. So, assume that a formula of degree n+1 is of type alpha. Then a1 and a2 are members of S. Because a1 and a2 are one degree less than a by definition, a1 and a2 are true under I, and thus a itself is true under I.
+3: Now Assume that a formula of degree n+1 is of type beta. Then either b1 and b2 are members of S, and one of them is true under I (because they are also one degree less than n+1). Because either b1 and b2 is true under I, b is of course also true under I, completing the proof.
+
+Altenrnatively, the proof can be done by simply starting at step 2, but using complete mathematical induction instead of mathematical induction. This ensures that proving the base case of formulas of degree 0 is not necessary, and thus step 1 can be left out. (Shown below)
+
+1: Suppose some set S is a Hintikka set. We are to show this set is satisfiable by complete mathematical induction. Assume that all formulas of degree n or less are true under some interpretation I. We are to show that all formulas of degree n+1 are also true under I. All formulae of degree n+1 are either of type A or type B (the formulae of degrees n+1 are at least of degree 1, and thus have at least one connective, making them necessarily of either type A or B.). Assume X is a formula of degree n+1 and is of type A. Because S is a Hintikka set, both a1 and a2 are also members of S. Because a1 and a2 are both of degrees less than A, they are true under I, making X also true under I. Now Assume X is of type B. Again, because S is a Hintikka set, either b1 and b2 are members of S, and because they are of degrees less than n+1, one of them is true under I, thus making X also true under I, completing the proof.
+
+Problem 3(b):
+
+Prove that if a signed formula X is unsatisfiable, then every completed tableau for X must be closed.
+
+If a formula X is unsatisfiable, then X is not true under any interpretation I. Now consider some completed tableua for X. Because any open branch of a completed tableua is a Hintikka set, it follows that any open branch of a completed tableau must be satisfiable. But, because the unsatisfiable formula X is at the top of the tableau, and thus is included in every possible branch, no possible branch of this tableau could be satisfiable, and thus every completed tableau for X must be closed.
+
+Problem 3(c):
+
+Prove that if an unsigned formula X is a tautology, then any completed tableau for F X must be closed. 
+
+If X is a tautology, it then immediately follows that F X must be unsatisfiable. Because F X, a singed formula, is unsatisfiable, every completed tableau for F X must be closed by 3(b).
+
+Problem 4:
+
+Prove that every finite subset of S is satisfiable iff for every n, the set {X1,...,Xn} is satisfiable.
+
+1: First, we assume that every finite subset of S is satisfiable. We must show that for every n, the set {X1,...Xn} is satisfiable. Because X1,...Xn clearly ends at some point, namely Xn, it is a finite subset of S. Because all finite subsets of S were assumed to be true, {X1,...Xn} is also clearly true, completing the first step of the proof.
+2: Conversley, assume that for every n, the set {X1,...,Xn} is satisfiable. Now, consider any subset S1 of S, in which n is the greatest number such that Xn is an element of S1. Thus S1 is a subset of the set {X1,...,Xn}. Because {X1,...,Xn} was assumed to be satsifiable, all of its subsets are also satisfiable, meaning S1 is satisfiable, thus completing the proof.
+
+
+
+Problem 5(a):
+
+Prove that if a set S is both satisfiable and full, then S is a truth set.
+
+Because S is satisfiable, every element of S is true under some interpretion I. Because S is full, for every formula X, either X or its conjugate ~X is in S, but not both. We must now show that every formula which is true under I is a member of S. Assume that some formula X is true under I. Then, because all elements of S are true under I, X must be a member of S (if it was not, ~X would be a member of S by definition of S being a full set, making S contain an element not true under I, which is a contradiction). Because all X that are true under I must be member of S, S is clearly a truth set for I.
+
+
+Problem 5(b):
+
+In problem 3(a), it was proven that every Hintikka set is satisfiable. Because every satisfiable full set is a truth set by 5(a), the proof of this problem is complete.
+
+Problem 5(c):
+
+By T0, it is clear that no signed X formula and its conjugate ~X can both be in S, satisfying condition H0 of Hintikka sets. By T1, a1 and a2 are obviously both in S if a is, proving condition H1. By T2, either b1 or b2 are in S if b is, proving condition H2. Thus this set S is a Hintikka set. Because either X of its conjugate ~X is in S, S is obviously a full set. Thus, by 5(b), S is a truth set. 
+
+Exercise 3(a): 
+
+Assume conditions T0 and T1. We must prove condition T2. First, assume that b is in S. We must show that either b1 or b2 is in S. Assume that neither b1 or b2 is in S. Then, by condition T0, both the conjugate of b1 and b2 are in S. Thus, by T1, there is a formula a in S, such that the conjugates of b1 and b2 are its components. Because b is true under some interpretation I (because it is a member of a truth set), it follows that either b1 or b2 must also be true under I (because b is only true if either b1 or b2 is true). But, because a is in S, a is also true under I. Because a is true under I, both a1 and a2, which we recall are the conjugates of b1 and b2, are true under I. But, because the conjugates of b1 and b2 are in S, b1 or b2 cannot be in S, and thus cannot be true under I, and therefore b, which was assumed to be true under I, cannot be true under I. Because this is a contradiction, assuming b is in S must lead to either b1 or b2 being in S.
+Alternatively, now assume that either b1 or b2 is a member of S. We must show that b is a member of S. Assume that b is not a member of S. This means that the conjugate of b is in S. Because the conjugate of a formula of type b was defined to be of type a, the conjugate of b is of type a. Then, because a is the conjugate of b, b is false whenever a is true. Because a is true under I, b is false under I, meaning that neither b1 or b2 is true under I. But, because either b1 or b2 was assumed to be true, this is a contradiction, meaning that b must also be a member of S.
+
+Exercise 3(b):
+
+Assume conditions T0 and T2. We must prove condition T1. First assume that some a is in S. We must show that both a1 and a2 are members of S. Assume that either a1 or a2 is not in S; then if follows by T0 that its conjugate is a member of S. Then it also follows that some b is in S, such that either the conjugate of a1 or a2 is in S. Because a is true under I, both a1 and a2 must also be true under I. But, because b is true under S, either the conjugate of a1 or a2 is true under I. Because S does not contain both X and its conjugate, a1 or a2 and it conjuagte cannot both be true under I, leading to a contradiction. Thus assuming a is in S leads to both a1 and a2 being members of S.
+Alternatively, assume that both a1 and a2 are members of S. We must show that a itself is a member of S. Assume that a is not a member of S. By T0, this means that the conjugate of a, which is of type b, is a member of S. Then, because b is the conjugate of a, a is always false when b is true. Because b is a member of S, it is true under some interpretation I. Because b is true, either the conjugate of a1 or a2 is true under I. But, because we assumed that both a1 and a2 are members of S, we cannot have either of their conjugates being members of S by T0, and thus their conjugates cannot be true under I, leading to a contradiction. Thus assuming that both a1 and a2 are members of S leads to a also being a member of S.
+
+Exercise 3(c):
+
+Prove that if T0 is weakened to the case of just signed variables, the set S is still a truth set. 
+
+To prove this, it sufficies to show (proved in problem 5a) that S is both satisfiable and full. First we will show that S is satisfiable. For the base case of formulae of degree 0, we have by condition T0 that not both of x and x~ are members of S, meaning we can assign truth to x to any T X and falsity to any F X inside of S, obviously ensuring all variables are true under some interpretation I. Now assume that for some set of formulae of size n which are all members of S, these formulae are true under I. Now we consider al formulas of size n+1 in S. These formulas are all either of type alpha or of type beta, as they must be at least of degree 1. Thus, if they are of type alpha, both a1 and a2 are members of S by T1, and either b1 or b2 are members of S if beta is a member of S by T2. Because the components of a formula of type alpha or beta are by definition one degree less than the original formula, the components for the formulae of type n+1 are of degree n. But, because we assumed that all formulae of degree n are true under I, we have the components being true under I. Because, in the case of an alpha, both a1 and a2 are true under I, a is true under I, and because either b1 or b2 is true under I, b is true under I, proving that all the formulae of type n+1 are also true under I, thus proving by mathematical induction that all formulae in S are true under I, and thus S is satisfiable. 
+Now we must show that S is also a full set. We consider the property P, meaning that either X or its conjugate are members of S, for all formulae of degree n. Now, in the base case of formulae of degree 0, P holds by the assumed version of T0 holding. Assume that P holds for some n. Thus for all possible formulae of degree n, either X or its conjugate are members of S. Now, all formulae of degree n+1 must either be of type alpha or of type beta, as they must be of at least degree 1. Thus, by T1 and T2, if X is of type a, a is a member of S if both a1 and a2 are members of S, and b is a member of S is either b1 or b2 are members of S. Well, consider some formula of degree n+1 which is of type alpha. Now, for its component a1, either a1 or a1~ (the conjugate of a1) is a member of S by P being assumed true for all formulae of size n; similarly for a2. If both a1 and a2 are members of S, a is a member of S. If either a1~ or a2~ are members of S, the conjugate of a, which we recall is of type b, has either its component b1 or b2 (which is a1~ and a2~, respectively) being a member of S, meaning b is a member of S by T2. In either case, any formula of type a which is of degree n+1 will have property P. Now consider a formula of degree n+1 which is of type b. Again, either b1 or b1~ and either b2 or b2~ are members of S by P being assumed to hold for n. If either b1 or b2 are members of S, b will be as well. If both b1~ and b2~ are members of S, the conjugate of b, which we recall is of type a, is a member of s, because both a1 and a2 (b1~ and b2~) are members of S. Thus P also holds for all formulae of type b and of degree n+1. Because there are no other types of formulas of degree n+1, P obviously holds for all formulas of degree n+1, and thus by mathematical induction, P holds for all n.
+Because P holds for all n, it is obvious that P is also full, and thus by 5a, S is still a truth set.
+
+Problem 6:
+
+Prove that for any set S of signed formulas and any signed formula X, if some finite subset of S U {X} is unsatisfiable, and if some finite subset of S U {X~} is unsatisfiable, then some finite subset of S is unsatisfiable. The unsatisfiable finite subset of S U {X} is either some set F1 U {X} where F1 is a finite subset of S, or F1 itself, where F1 U {X} is obviously also unsatsifiable (because X is a member of F1). Similarly, the unsatisfiable finite subset of S U {X~} is either some set F2 U {X} where F2 is a finite subset of S, or F2 itself, where F2 U {X} is also unsatisfiable. Now consider the finite subset of S F3, which is the union of F1 and F2. Because F1 U {X} is unsatisfiable, F3 U {X} is also unsatisfiable. Similarly, because F2 U {X~} is unsatisfiable, F3 U {X~} is also unsatisfiable. Then, consider some interpretation I in which the set F3 is true, in other words, assume the set F3 is satisfiable. Either X or X~ would be true under I. But, because there is no interpretation in which the union of F3 and X or X~ is satisfiable, it is obvious that F3 itself cannot be satisfiable under I (if it was, then either F3 U {X} or F3 U {X~} would be satisfiable under I, because either X or X~ is satisfiable under I), thus yeilding a contradiction. Thus, because F3 cannot be true under any interpretation I, it follows that F3 is unsatisfiable, and is the finite subset of S which is unsatisfiable.
+
+Alternatively, we can prove this statement, which is equivalent to the above statement: If all finite subsets of S are satisfiable, then either all finite subsets of S U {X} are satisfiable, or all finite subsets of S U {X~} are satisfiable. 
+
+Because all finite subsets of S are satisfiable, it follows that under some interpretation I, all finite subsets of S are true. Under the interpretation I, either X or its conjugate X~ must be true by definition. Because of this, either the set S U {X} or S U {X~} contains the form of the formula X (either X or X~) which is satisfiable under I; now we must consider all the finite subsets of that set. A finite subset of this set is either a finite subset of S where X is not a member of it; a finite subset of S in disjunction with X or X~; a finite subset of S that includes X or X~ (if X or X~ is a member of S), or X or X~ itself. The first case it satisfiable by the assumption that all finite subsets of S are satisfiable. The second case is satisfiable because the form of X that is satisfiable under I was assumed to be in this set; the third case is satisfiable because all finite subsets of S were assumed to be satisfiable; the fourth case is satisfiable because the form of X in this set was assumed to be true under I, and thus satisfiable. Thus either all finite subsets of the set S U {~X} or S U {X} are satisfiable, completing the proof.
+
+
+Problelm 7:
+
+
+Prove that S* is a truth set.
+
+To prove this, it suffices to show that S* is a full Hintikka set, which we proved was a truth set in problem 5. First, assume that neither X or X~ (the conjugate of X) are members of S*. Because S* is a maximal set of formulas having property P*, it follows that any set S* U {X} having property P* must have X being a member of S* (if it were not, then S* would be a member of some set, namely S* U {X} having property P*). So, assume that neither X or X~ are members of S*. By problem 6, and the fact that was noted above, it is clear that this means neither S* U {X} or S* U {X~} are satisfiable, meaning, by problem 6, some finite subset of S* is unsatisfiable, contrary to the assumption that S* has property P*. Thus, either X or X~ must be a member of S*, proving that S* is a full set. 
+Now we must prove that S* is a Hintikka set. First, we must prove H0, that is, that no signed variable and its conjugate are in S. Assume some X is a member of S*, and that X~ is a member of S*. Then, because S* has property P*, the finite subset {X,X~} of S* is satisfiable, which is obviously not true (no formula and its conjugate can be simultaneously true). Thus, because both X and X~ cannot be members of S* at the same time, S* satisfies H0. 
+Next, we must prove that S* satisfies H1, that is, for any a in S*, its components a1 and a2 are both in S. Assume that some a is a member of S*. Thus a is satisfiable. So, under the interpretation I in which a is true, assume that either a1~ or a2~ is a member of S*. This means that the finite subset {a,a1~(or a2~)} of S* is satisfiable. Because a can be true iff both a1 and a2 are true, and a1 or a2 cannot be true while ~a1 or a2~ is true, it is obvious that {a,a1~} is in fact not satisfiable, which is a contradiction. Thus, neither a1~ or a2~ can be a member os S*, and therefore both a1 and a2 are members of S* (becuase S* is full), proving that S* satisfies H1.
+Lastly, we must show that S* satisfies condition H2, that is, for any b in S*, one of its components b1 or b2 is a member of S*. Assume that some b is a member of S*. Then assume that both b1~ and b2~ are members of S*. Thus b is satisfiable, and the set {b1~,b2~} is satisfiable. But, this also means that the finite subset {b,b1~,b2~} of S* is also satisfiable. Because b is true iff either b1 or b2 is also true, and the fact that b1 or b2 cannot be true if b1~ and b2~ are both true, it is clear that there is no interpreation in which b,b1~, and b2~ are all true. Thus {b,b1~,b2~} is not satisfiable, yielding a contradiction. Thus, at least one of b1~ or b2~ must not be a member of S*, meaning that either b1 or b2 is a member of S* (because S* is full), proving that S* satisfies H2. 
+Now that we have shown S* to be a full Hintikka set, it being a truth set immediately follows from problem 5(b).
+
+Alternatively, we can prove that S* is a full set using the contrapositive of the result of problem 6:
+Because S* is a maximal set of signed formulas having property P*, there is not a set of singed formulas having property P* which contains S* as a proper subset. Thus, any set S* U {X} cannot have property P* unless X is a member of S* (because S* has property P*, if S* U {X} had property P* as well, but X was not a member of S*, S* U {X} would contain S* as a proper subset, and thus S* would no longer be maximal.) Because we have proved in problem 6 that all finite subsets of S* U {X} or S* U {X~} are satisfiable if S* is satisfiable, either X or X~ must be a member of S* (because either X or X~ will have property P*). Thus, either X or X~ must be a member of S*, thus proving S* is a full set. 
+
+
+Problem 8:
+
+Prove that if a formula X is a logical consequence of a set S of formulas, then X is also a logical consequence of some finite subet of S.
+
+By the compactness theorem for propositional logic, some set S having property P (Being true whenever the set S is true), and some formula X having property P as well, means that the set containing both S and X has property P. Thus, by the compactness theorem for propositional logic, all finite subsets of S U {X} have property P, meaning all finite subset of S have property P. This obviously means that some finite subset F of S, and the formula X, both have property P (because S U {X} has the property P). Thus, the set {F,X} has the property P, and therefore X is a logical consequence of F, a finite subset of S. 
+
+
+Alternatively, because X is a logical consequence of S, S U {X~} is clearly unsatisfiable. Then, by the compacntess theorem for propositional logic, some finite subset S1 of S U {X~} is unsatisfiable. Thus, S1 U {X~} is unsatisfiable. Thus it is obvious that X must be true whenever S1 is true, and therefore X is a logical consequence of the finite subset S1 of S.
+
+Exercise 4(a): 
+
+Prove that if a set S is a dual Hintikka set, then under some interpretation I, all elemenets of S are false. 
+
+The proof will be conducted by looking at all formulae of degree n, and proving that they are all false by mathematical induction. For the base case of the simple propositional variables, it is obvious we can simply make it assign the value of falsity to any true variable, and truth to any false variable, thus making all variables false. 
+Assume that all formulae of degree n inside of S are false. Now consider the formulae of degree n+1. Because these formulas are at least of degree 1, they are either of type alpha or beta. If they are of type alpha, then by condition H1(0), either a1 or a2 is in S. Because which ever one of a1 or a2 is in S is of degree n, that component of a is false. Because a is false if either a1 or a2 is false, a is also false. If the element of degree n+1 is of type beta, then both b1 and b2 are memebers of S by condition H2(0). Because both b1 and b2 are of degree n, they are both false, making b false as well, completing the proof.
+
+Exercise 4(b):
+
+Give a direct proof that if X is a tautology, then every completed dual tableau for T X is closed. 
+
+(a): First, we must prove that if a dual tableau T is open, then there exists at least one branch which is a dual Hintikka set. Condition H0(0) is obvious, as by definition of T being open, T must have at least one branch being open. This open branch, by definition of being open, cannot have a formula X and its conjugate X~ on the same branch, thus proving H0(0) holds. As for conditions H1(0) and H2(0), we will prove these by mathematical induction. For the base case where X itself is of type a or b, because the dual tableua method consists of branching off any formula of type a into two branches containing a1 and a2, and adding b1 and b2 as direct consequences for any b, any branch containg the base formula X where X is of type a will have either a1 or a2 as well, and will have both b1 and b2 if X is of type b; thus H1(0) holds for the 0th level of the tree, and H2(0) holds for the 0th level of the tree. proving the base case. Assume that H1(0) and H2(0) hold for some nth level of the tree. Now, consider a formula of degree n+1. If it is of type a, again, the dual tableau method consists of branching a's into two branches of a1 or a2, meaning either of the two branches continuing with this formula of degree n+1 would contain either a1 or a2. As for a formula of type b, because the dual tableau method consists of adding both b1 and b2 to the branch where b is on, both b1 and b2 will be on any branch with b. Thus H1(0) and H2(0) hold for all n, meaning that if a dual tableau T is open, every branch of T is a dual Hintikka set.
+
+(b): Now we consider some tautology X, and we must show that every tableau starting with X is closed. Well, because X is true under all interpretations, and the fact that X is a member of all branches on any tableau that starts with X (because X is at the top of the tableau), it is obvious that there is no branch in any tableau starting with X that can have all it's members being false under some interpretation, meaning no branch of a tableau T starting with X is a dual Hintikka set. Because no tableau starting with X has any branches as a dual Hintikka set, by (a) T cannot be open, and thus T must be closed. 
+
+Exercise 5:
+
+Prove that if X is a tautology, then there exists an atomically closed analytic tableau for F X and an atomically closed dual tableau for T X.
+
+First, we will show that statement is true for the case of analyticly closed tableua. Now, consider the property P meaning that for every branch of length n, this branch is atomically closed. Assume that for all branches of sizes less than n, they each are atomically closed. Thus all branches of size n-1 are atomically closed. Now, because any branch Y which is of size n is an extension of of branch Y1 of size n-1, the branch Y will be an extension of some branch which is atomically closed. Because Y will obviously still contain the two closed variables that were on branch Y1, branch Y is also atomically closed. Thus, by complete mathematical induction, P holds for all n, and thus every branch of the tree is atomically closed, meaning that the whole tableau is atomically closed, completing the proof.
+The proof for closed dual tableau is exactly identical.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

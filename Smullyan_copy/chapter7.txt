@@ -1,0 +1,718 @@
+^ Indicates a different answer than the answer key.
+
+Questions: Prove mathematical induction from limited mathematical induction.
+
+Prove +- (X and Y) then (X or Y).
+
+Direct Proof of the correctness of U2:
+
+	Axioms: Consider some set of formulas X1, X2, ..., X1~. Consider the disjunctive form of this set, X1 or X2 or ... or X1~. Because either X1 or X1~ must be true, X1 or X2 or .. or X1~ is true under all interpretations and thus the axioms are correct. 
+
+	Inference Rule A^0: We assume a is a term of theta, and D(O, a1), D(O, a2). Thus (D(O) or a1) and (D(O) or a2). The only case where D(O) could be false is if both a1 and a2 are true. Thus a would be true as well. But, because a is a member of D(O), D(O) would be true, yielding a contradiction. Therefore, D(O) cannot be false, and therefore inference rule A^0 holds. 
+
+	Inference Rule B[1]^0: We assume b is a member of theta, and D(O, b1). Thus D(O) or b1. The only case where D(O) could be false is if b1 is true. Thus b would be true as well. But, because b is a member of D(O), D(O) is true as well, yielding a contradiction. Therefore, D(O) cannot be false, and thus inference rule B[1]^0 holds. 
+
+	Inference Rule B[2]^0: The proof is identical, by replacing b1 with b2.
+
+	Thus, because the axioms and inference rules are valid, U2 is correct.
+ 
+*Proof of the completeness of the system in Logical Labyrinths:
+	We first prove, +- X then Y for any falisy X, and for all formulas Y with degrees >= 1. Consider the property P(n), meaning if n >= 1, then X then Y is provable for any falisy X and for all formulas with degrees less than n. 
+	Base Case: For the base case where n = 0, the statement is automatically true, as 
+		
+	Now consider some tautology X of type a. By the axiom of the system, we have (a1 and a2) then a1, a2 and thus then also X. Because X is of type a, and is a tautology, a1 and a2 must be true under all interpretations. Thus ~(a1 and a2) is a falisy. Thus, because X must be of at least degree 1 (all tautologies must be of at least degree 1), +- ~(a1 and a2) then X by the result above. Thus, because ~(a1 and a2) then X, (a1 and a2) then X, we have +- X by IV. Thus, for every tautology X of type a, X is provable in the system. 
+	Now consider some tautology X of type b. The formula ((b1 or b2) and X) then X is obviously provable by the axiom of the system. Now consider the formula ((b1 or b2) and ~X). Well, note the fact that ((b1 or b2) and ~X) is a falisy. This is because it was assumed X was a tautology, meaning ~X has to be a falisy. Because ~X is a falisy, ((b1 or b2) and ~X) obviously cannot be satisfiable. Because ((b1 or b2) and ~X) is a falisy, by the first result of the proof, it implies X (which is the tautology of type b). Thus, because we have both ((b1 or b2) and X) then X, and ((b1 or b2) and ~X) then X, we then have (b1 or b2) then X (the tautology of type b, with b1 and b2 as its components) by rule III. Because ~(b1 or b2) is a falisy (X is a tautology, meaning one of its components must be true at all times), ~(b1 or b2) then X is provable by the first result of the proof. Thus, because (b1 or b2) then X, and ~(b1 or b2) then X are both provable, X, which we recall is the tautology of type b, is provable by rule IV. Thus, for every tautology X of type b, X is provable in the system.
+	Because all tautologies must be of type a or b, and they have both all been shown to be provable in the system, all tautologies are provable in the system. This concludes the proof that the system is complete.
+		The interesting thing about this system, is that when choosing a formula to use to prove a tautology by rule IV, it is completely irrelevant what formula is chosen. Proof:
+		Consider a tautology X, and Y, which is any formula whatsoever. By truth table construction, it can be seen that Y then X is a tautology. Thus Y then X is provable in the system by the completeness of this system. In addition, it can be seen that ~Y then X is a tautology as well (This is true for no matter what Y is, because every thing implies a tautology!). By the completeness of this system, ~Y then X is also provable. Because Y then X and ~Y then X are both provable, X is provable by rule IV. Thus, any formula Y will always yield a proof of any tautology X. 
+
+
+Problem 0 (X is provable in the system S0 will be represented by +-; Modus Ponens is represented by M.P.):
+
+F1: Prove, if +- X then Y, then X +- Y.
+
+1: +- X then Y (Hypothesis)
+2: +- X (Hypothesis)
+3: +- Y (1, 2, M.P.)
+
+F2: Prove +- X then (Y then Z) then X, Y +- Z.
+
+1: +- X then (Y then Z) (Hypothesis)
+2: +- X (Hypothesis)
+3: +- Y (Hypothesis)
+4: +- Y then Z (1, 2, M.P.)
+5: +- Z (3, 4, M.P.)
+
+^F3: Prove (X and Y) then Z +- X then (Y then Z).
+
+1: +- [(X and Y) then Z] then [X then (Y then Z)] (S3)
+2: +- (X and Y) then Z +- X then (Y then Z) (1, F1)
+
+F4: Prove +- (X and Y) then Z then X, Y +- Z
+
+1: +- (X and Y) then Z (Hypothesis)
+2: +- X then (Y then Z) (1, F3)
+3: X, Y +- Z (2, F2)
+
+Problem 1 (Prove the following using only the axiom schemes S1, S2, S3, and S4):
+
+T1: Prove +- X then (Y then Y).
+
+1: +- (X and Y) then Y (S1)
+2: +- X then (Y then Y) (F3)
+
+T2: Prove Y then Y.
+
+1: +- X then (Y then Y) (T1)
+2: Now take X to be an axiom, such as (X and Y) then Y. Because X is then provable in this system, by 1, M.P., Y then Y follows. For example:
+
+1: +- [(X and Y) then Y] then (Y then Y) (T1)
+2: +- (X and Y) then Y (S2)
+3: +- Y then Y (1, 2, M.P.)
+
+^T3: Prove X then Y, X then (Y then Z) +- X then Z
+
+1: +- [(X then Y) and (X then (Y then Z))] then (X then Z) (S4)
+2: +- X then Y, X then (Y then Z) +- X then Z (1, F4)
+
+Alternatively: 
+
+1: +- X then Y (Hypothesis)
+2: +- X then (Y then Z) (Hypothesis)
+3: +- [(X then Y) and (X then (Y then Z))] then (X then Z) (S4)
+4: +- (X then Y) then ((X then (Y then Z)) then (X then Z)) (3, F3)
+5: +- (X then (Y Then Z)) then (X then Z) (1, 4, M.P.)
+6: +- X then Z (2, 5, M.P.)
+
+T4: Prove +- X then (Y then X).
+
+1: +- (X and Y) then X (S1)
+2: +- X then (Y then X) (1, F3)
+
+T5: Prove X +- Y then X.
+
+1: +- X then (Y then X) (T4)
+2: X +- Y then X (1, F1)
+
+T6: Prove X then Y, Y then Z +- X then Z.
+
+1: +- X then Y (Hypothesis)
+2: +- Y then Z (Hypothesis)
+3: +- X then (Y then Z) (2, T5)
+4: +- X then Z (1, 3, T3)
+
+T7: Prove +- X then (Y then (X and Y)).
+
+1: +- (X and Y) then (X and Y) (T2)
+2: +- X then (Y then (X and Y)) (1, F3)
+
+T8: Prove X, Y +- X and Y.
+
+1: +- X then (Y then (X and Y)) (T7)
+2: X, Y +- X and Y (1, F2)
+
+T9: Prove X then Y, X then Z +- X then (Y and Z).
+
+1: +- X then Y (Hypothesis)
+2: +- X then Z (Hypothesis)
+3: +- Y then (Z then (Y and Z)) (T7)
+4: +- X then (Z then (Y and Z)) (1, 3, Syl.)
+5: +- X then (Y and Z) (2, 4, T3)
+
+T10: Prove +- (X and Y) then (Y and X).
+
+1: +- (X and Y) then Y (S2)
+2: +- (X and Y) then X (S1)
+3: +- (X and Y) then (Y and X) (1,2, T9)
+
+T11: Prove (X and (X then Y)) then Y.
+
+1: +- (X and (X then Y)) then X (S1)
+2: +- (X and (X then Y)) then (X then Y) (S2)
+3: +- (X and (X then Y)) then Y (1, 2, T3)
+
+T12: Prove X then (Y then Z) +- (X and Y) then Z.
+
+1: +- X then (Y then Z) (Hypothesis)
+2: +- (X and Y) then X (S1)
+3: +- (X and Y) then Y (S2)
+4: +- (X and Y) then (Y then Z) (2, 1, Syl.)
+5: +- (X and Y) then Z (3, 4, T3)
+ 
+T13: Prove X then (Y then Z) +- Y then (X then Z).
+
+1: +- X then (Y then Z) (Hypothesis)
+2: +- (X and Y) then Z (1, T12)
+3: +- (Y and X) then (X and Y) (T10)
+4: +- (Y and X) then Z (2, 3, Syl.)
+5: +- Y then (X then Z) (4, F3)
+
+T14: Prove +- (X1 and X2 and X3) then X1, X2, X3.
+
+1: +- (X1 and X2 and X3) then (X1 and X2) (Definition of X1 and X2 and X3, S1)
+2: +- (X1 and X2) then X1 (S1)
+3: +- (X1 and X2) then X2 (S2)
+4: +- (X1 and X2 and X3) then X1 (1, 2, Syl.) (Proves T14a)
+5: +- (X1 and X2 and X3) then X2 (1, 3, Syl.) (Proves T14b)
+6: +- (X1 and X2 and X3) then X3 (S2) (Proves T14c)
+
+T15: Prove ((X then Y) and (Y then Z)) then (X then Z).
+
+1: +- ((X then Y) and (Y then Z) and X) then (X then Y) (T14a)
+2: +- ((X then Y) and (Y then Z) and X) then (Y then Z) (T14b)
+3: +- ((X then Y) and (Y then Z) and X) then X (T14c)
+4: +- ((X then Y) and (Y then Z) and X) then Y (1, 3, T3)
+5: +- (((X then Y) and (Y then Z)) and X) then Z (2, 4, T3)
+6: +- ((X then Y) and (Y then Z)) then (X then Z) (5, F3)
+
+T16: Prove (X and Y) then Z, (X and Y) then ~Z +- X then ~Y.
+
+1: +- (X and Y) then Z (Hypothesis)
+2: +- (X and Y) then ~Z (Hypothesis)
+3: +- X then (Y then Z) (1, F3)
+4: +- X then (Y then ~Z) (2, F3)
+5: +- X then ((Y then Z) and (Y then ~Z)) (3, 4, T8)
+6: +- ((Y then Z) and (Y then ~Z)) then ~Y (S8)
+7: +- X then ~Y (5, 6, Syl.)
+
+^Alternatively:
+1: +- (X and Y) then Z (Hypothesis)
+2: +- (X and Y) then ~Z (Hypothesis)
+3: +- X then (Y then Z) (1, F3)
+4: +- X then (Y then ~Z) (2, F3)
+5: +- [(Y then Z) and (Y then ~Z)] then ~Y (S8)
+6: +- (Y then Z) then ((Y then ~Z) then ~Y) (5, F3)
+7: +- X then ((Y then ~Z) then ~Y) (3, 5, Syl.)
+8: +- X then ~Y (4, 7, T3)
+
+T17a: Prove +- (X then Y) then (~Y then ~X).
+
+1: +- ((X then Y) and ~Y and X) then (X then Y) (T14a)
+2: +- ((X then Y) and ~Y and X) then ~Y (T14b)
+3: +- ((X then Y) and ~Y and X) then X (T14c)
+4: +- ((X then Y) and ~Y and X) then Y (1, 3, T3)
+5: +- ((X then Y) and ~Y) then ~X (2, 4, T16)
+6: +- (X then Y) then (~Y then ~X) (5, F3)
+
+T17b-d: These proves are indentical to (a), except you must replace step 1 with their respective contradictory statements (for example, T17b would be [(X then ~Y) and Y and X)]).
+
+T18: These statements follow by T17a-d and F1.
+
+T19: Prove +- ~X then (X then Y).
+
+1: +- (~X and X and ~Y) then ~X  (T14a)
+2: +- (~X and X and ~Y) then X (T14b)
+3: +- (~X and X) then ~~Y (1, 2, T16)
+4: +- ~~Y then Y (S9)
+5: +- (~X and X) then Y (3, 4, Syl.)
+6: +- ~X then (X then Y) (5, F3)
+
+T20(a): Prove +- ~(X then Y) then X.
+
+1: +- ~X then (X then Y) (T19)
+2: +- ~(X then Y) then X (1, T18c)
+
+T20(b): Prove +- ~(X then Y) then ~Y.
+
+1: +- Y then (X then Y) (T4)
+2: +- ~(X then Y) then ~Y (1, T18a)
+
+T21: Prove +- X then ~~X.
+
+1: +- (X and ~X) then X (S1)
+2: +- (X and ~X) then ~X (S2)
+3: +- X then ~~X (1, 2, T16)
+
+T22: Prove +- (X and ~Y) then ~(X then Y).
+
+1: +- (X and ~Y and (X then Y)) then X (T14a)
+2: +- (X and ~Y and (X then Y)) then ~Y (T14b)
+3: +- (X and ~Y and (X then Y)) then (X then Y) (T14c)
+4: +- (X and ~Y and (X then Y)) then Y (1, 3, T3)
+5: +- (X and ~Y) then ~(X then Y) (2, 4, T16)
+
+T23(a): Prove +- ~X then ~(X and Y).
+
+1: +- (X and Y) then X (S1)
+2: +- ~X then ~(X and Y) (1, T18a)
+
+^Alternatively: 
+
+1: +- (~X and (X and Y)) then ~X (S1)
+2: +- (~X and (X and Y)) then (X and Y) (S2)
+3: +- (X and Y) then X (S1)
+4: +- (~X and (X and Y)) then X (2, 3, Syl.)
+5: +- ~X then ~(X and Y) (1, 4, T16)
+
+More efficiently:
+
+1: +- (X and Y) then X (S1)
+2: +- ~X then ~(X and Y) (1, T18a)
+
+T23(b): Prove +- ~Y then ~(X and Y).
+
+1: +- (X and Y) then Y (S2)
+2: +- ~Y then ~(X and Y) (1, T18a)
+
+T24(a): Prove X then ~X +- ~X.
+
+1: +- X then ~X (Hypothesis)
+2: +- X then X (T2)
+3: +- [(X then X) and (X then ~X)] then ~X (S8)
+4: +- [(X then X) and (X then ~X)] (1, 2, T8)
+5: +- ~X (3, 4, M.P.)
+
+^Alternatively:
+1: +- ((X then ~X) and X) then (X then ~X) (S1)
+2: +- ((X then ~X) and X) then X (S2)
+3: +- ((X then ~X) and X) then ~X (1, 2, T3)
+4: +- (X then ~X) then ~X (2, 3, T16)
+5: X then ~X +- ~X (4, F1)
+
+T24(b): Prove ~X then X +- X
+
+1: +- ~X then X (Hypothesis)
+2: +- X then ~~X (T21)
+3: +- ~X then ~~X (1, 2, Syl.)
+4: +- ~~X (3, T24a)
+5: +- ~~X then X (S9)
+6: +- X (4, 5, M.P.)
+
+^Alternatively:
+1: +- ~X then X (Hypothesis)
+2: +- ~X then ~X (T2)
+3: +- [(~X then X) and (~X then ~X)] (1, 2, T8)
+4: +- [(~X then X) and (~X then ~X)] then ~~X (S8)
+5: +- ~~X (3, 4, M.P.)
+6: +- ~~X then X (S9)
+7: +- X (5, 6, M.P.)
+
+Exercise 1(a): Prove S9 using S*8.
+
+1: +- ((~X then ~X) and (~X then ~~X)) then X (S*8)
+2: +- (~X then ~X) then ((~X then ~~X) then X) (1, F3)
+3: +- ~X then ~X (T2)
+4: +- (~X then ~~X) then X (3, 2, M.P.)
+5: +- ~~X then (~X then ~~X) (T19 or T4)
+6: +- ~~X then X (5, 4, Syl.)
+
+*Exercise 1(b): Prove +- (X then Y) then (~~X then Y).
+
+1: +- [(~~X then X) and (X then Y)] then (~~X then Y) (T15)
+2: +- (~~X then X) then ((X then Y) then (~~X then Y)) (1, F3)
+3: +- (~~X then X) (S9)
+4: +- (X then Y) then (~~X then Y) (2, 3, M.P.)
+
+Exercise 1(c): Prove [(X then Y) and (X then ~Y)] then ~X.
+
+1: +- (X then Y) then (~~X then Y) (Exercise 1b)
+2: +- ((~~X then Y) and (~~X then ~Y)) then ~X (S*8)
+3: +- (~~X then Y) then ((~~X then ~Y) then ~X) (2, F3)
+4: +- (X then Y) then ((~~X then ~Y) then ~X) (1, 3, Syl.)
+5: +- (~~X then ~Y) then ((X then Y) then ~X) (4, T13)
+6: +- (X then ~Y) then (~~X then ~Y) (Exercise 1b)
+7: +- (X then ~Y) then ((X then Y) then ~X) (5, 6, Syl.)
+8: +- (X then Y) then ((X then ~Y) then ~X) (7, T13)
+9: +- ((X then Y) and (X then ~Y)) then ~X (8, T12)
+
+^Alternatively:
+
+1: +- [(X then Y) and (X then ~Y)] then (X then Y) (S1)
+2: +- [(X then Y) and (X then ~Y)] then (X then ~Y) (S2)
+3: +- (X then ~Y) then (~~X then ~Y) (Exercise 1b)
+4: +- (X then Y) then (~~X then Y) (Exercise 1b)
+5: +- [(X then Y) and (X then ~Y)] then (~~X then Y) (1, 4, Syl.)
+6: +- [(X then Y) and (X then ~Y)] then (~~X then ~Y) (2, 3, Syl.)
+7: +- [(X then Y) and (X then ~Y)] then ((~~X then ~Y) and (~~X then Y)) (5, 6, T9)
+8: +- ((~~X then ~Y) and (~~X then Y)) then ~X (S*8.)
+9: +- [(X then Y) and (X then ~Y)] then ~X (7, 8, Syl.)
+
+Problem 3: 
+
+T25(a): Prove +- ~(X or Y) then ~X.
+
+1: +- X then (X or Y) (S5)
+2: +- ~(X or Y) then ~X (1, T18a)
+
+T25(b): Prove +- ~(X or Y) then ~Y.
+
+1: +- Y then (X or Y) (S6)
+2: +- ~(X or Y) then ~Y (T18a)
+
+T26: Prove X then Z, Y then Z +- (X or Y) then Z.
+
+1: +- [(X then Z) and (Y then Z)] then ((X or Y) then Z) (S7)
+2: +- X then Z, Y then Z +- (X or Y) then Z (1, F4)
+
+T27: Prove +- (~X and ~Y) then ~(X or Y).
+
+1: +- (~X and ~Y) then ~X (S1)
+2: +- (~X and ~Y) then ~Y (S2)
+3: +- X then ~(~X and ~Y) (1, T18b)
+4: +- Y then ~(~X and ~Y) (2, T18b)
+5: +- (X or Y) then ~(~X and ~Y) (3, 4, T26)
+6: +- (~X and ~Y) then ~(X or Y) (5, T18b)
+
+T28: Prove +- ~(X and Y) then (~X or ~Y).
+
+1: +- ~X then (~X or ~Y) (S5)
+2: +- ~Y then (~X or ~Y) (S6)
+3: +- ~(~X or ~Y) then X (1, T18c)
+4: +- ~(~X or ~Y) then Y (2, T18c)
+5: +- ~(~X or ~Y) then (X and Y) (3, 4, T8)
+6: +- ~(X and Y) then (~X or ~Y) (5, T18c)
+
+T29: Prove +- (X then Y) then (~X or Y).
+
+1: +- ~X then (~X or Y) (S5)
+2: +- Y then (~X or Y) (S6)
+3: +- ~(~X or Y) then X (1, T18c)
+4: +- ~(~X or Y) then ~Y
+5: +- ~(~X or Y) then (X and ~Y) (3, 4, T8)
+6: +- (X and ~Y) then ~(X then Y) (T22)
+7: +- ~(~X or Y) then ~(X then Y) (5, 6, Syl.)
+8: +- (X then Y) then (~X or Y) (7, T18d)
+
+T30: Prove +- (X or Y) then (~X then Y).
+
+1: +- ~X then (X then Y) (T19)
+2: +- X then (~X then Y) (1, T13)
+3: +- Y then (~X then Y) (T4)
+4: +- (X or Y) then (~X then Y) (2, 3, T26)
+
+T31: Prove +- ~(~X and ~Y) then (X or Y).
+
+1: +- ~(X or Y) then ~X (T25a)
+2: +- ~(X or Y) then ~Y (T25b)
+3: +- ~(X or Y) then (~X and ~Y) (1, 2, T8)
+4: +- ~(~X and ~Y) then (X or Y) (3, T18c)
+
+T32: Prove +- (~X then Y) then (X or Y).
+
+1: +- (~X and ~Y) then ~(~X then Y) (T22)
+2: +- (~X then Y) then ~(~X and ~Y) (1, T18b)
+3: +- ~(~X and ~Y) then (X or Y) (T31)
+4: +- (~X then Y) then (X or Y) (2, 3, Syl.)
+
+T33: Prove X or Y, X or Z +- X or (Y and Z).
+
+1: +- X or Y (Hypothesis)
+2: +- X or Z (Hypothesis)
+3: +- (X or Y) then (~X then Y) (T30)
+4: +- (X or Z) then (~X then Z) (T30)
+5: +- ~X then Y (1, 3, M.P.)
+6: +- ~X then Z (2, 4, M.P.)
+7: +- ~X then (Y and Z) (5, 6, T8)
+8: +- (~X then (Y and Z)) then (X or (Y and Z)) (T32)
+8: +- X or (Y and Z) (7, 8, M.P.) 
+
+T34: Prove +- X or ~X.
+
+1: +- ~X then ~X (T2)
+2: +- (~X then ~X) then (X or ~X) (T32)
+3: +- X or ~X (1, 2, M.P.)
+
+T35: Prove X then Y, ~X then Y +- Y.
+
+1: +- X then Y (Hypothesis)
+2: +- ~X then Y (Hypothesis)
+3: +- (X or ~X) then Y (1, 2, T26)
+4: +- X or ~X (T34)
+5: +- Y (3, 4, M.P.)
+
+T36: Prove +- (~X or Y) then (X then Y).
+
+1: +- ~X then (X then Y) (T19)
+2: +- Y then (X then Y) (T4)
+3: +- (~X or Y) then (X then Y) (1, 2, T26)
+
+T37: Prove ~(X and Y) +- X then ~Y.
+
+1: +- ~(X and Y) (Hypothesis)
+2: +- ~(X and Y) then (~X or ~Y) (T28)
+3: +- (~X or ~Y) (1, 2, M.P.)
+4: +- (~X or ~Y) then (X then ~Y) (T36)
+5: +- X then ~Y (3, 4, M.P.)
+
+^T38: Prove X then Y, ~(X and Y) +- ~X
+
+1: +- X then Y (Hypothesis)
+2: +- ~(X and Y) (Hypothesis)
+3: +- X then ~Y (2, T37)
+4: +- [(X then Y) and (X then ~Y)] (1, 3, T8)
+5: +- [(X then Y) and (X then ~Y)] then ~X (S8)
+6: +- ~X (4, 5, M.P.)
+
+Alternatively (starting at step 3):
+
+3: +- X then X (T2)
+4: +- X then (X and Y) (1, 3, T9)
+5: +- ~(X and Y) then ~X (4, T18a)
+6: +- ~X (2, 5, M.P.)
+
+^T39: Prove X then (Y1 or Y2), ~(X and Y1), ~(X and Y2) +- ~X.
+
+1: +- X then (Y1 or Y2) (Hypothesis)
+2: +- ~(X and Y1) (Hypothesis)
+3: +- ~(X and Y2) (Hypothesis)
+4: +- X then ~Y1 (2, T37)
+5: +- X then ~Y2 (3, T37)
+6: +- X then (~Y1 and ~Y2) (4, 5, T8)
+7: +- (~Y1 and ~Y2) then ~(Y1 or Y2) (T28)
+8: +- X then ~(Y1 or Y2) (6, 7, Syl.)
+9: +- [((X then (Y1 or Y2) and (X then ~(Y1 or Y2)))] (1, 8, T8)
+10: +- [((X then (Y1 or Y2) and (X then ~(Y1 or Y2)))] then ~X (S8)
+11: +- ~X (9, 10, M.P.)
+
+^Alternatively (starting at step 6):
+
+6: +- Y1 then ~X (4, T18b)
+7: +- Y2 then ~X (5, T18b)
+8: +- (Y1 or Y2) then ~X (6, 7, T26)
+9: +- ~(Y1 or Y2) then ~X (1, T18a)
+10: +- ~X (8, 9, T35)
+
+Alternatively (starting at step 9):
+
+9: +- X then ~X (1, 8, Syl.)
+10: +- ~X (9, T24a)
+
+^T40: Prove Y then X, X or Z, Z then Y +- X.
+
+1: +- Y then X (Hypothesis)
+2: +- X or Z (Hypothesis)
+3: +- Z then Y (Hypothesis)
+4: +- Z then X (1, 3, Syl.)
+5: +- (Y or Z) then X (1, 4, T26)
+6: +- ~X then ~(Y or Z) (5, T18a)
+7: +- (~X and ~(Y or Z)) then ~X (S1)
+8: +- (~X and ~(Y or Z)) then ~(Y or Z) (S2)
+9: +- ~(Y or Z) then ~Z (T25a)
+10: +- (~X and ~(Y or Z)) then ~Z (8, 9, Syl.)
+11: +- (X or Z) then (~X then Z) (T30)
+12: +- ~X then Z (2, M.P.)
+13: +- (~X and ~(Y or Z)) then Z (7, 11, Syl.)
+14: +- ~X then ~~(Y or Z) (10, 13, T16)
+15: +- ~~(Y or Z) then (Y or Z) (S9)
+16: +- ~X then (Y or Z) (14, 15, Syl.)
+17: +- [(~X then (Y or Z)) and (~X then ~(Y or Z))] (16, 6, T8)
+18: +- [(~X then (Y or Z)) and (~X then ~(Y or Z))] then ~~X (S8)
+19: +- ~~X (17, 18, M.P.)
+20: +- ~~X then X (S9)
+21: +- X (19, 20, M.P.)
+
+Far more efficiently (starting at step 4):
+
+4: +- (X or Z) then (~X then Z) (T30)
+5: +- ~X then Z (2, 4, M.P.)
+6: +- ~X then Y (5, 3, Syl.)
+7: +- ~X then X (6, 1, Syl.)
+8: +- X (T24b)
+
+^T41: Prove Y then X, X or Y1, X or Y2, (Y1 and Y2) then Y +- X.
+
+1: +- Y then X (Hypothesis)
+2: +- X or Y1 (Hypothesis)
+3: +- X or Y2 (Hypothesis)
+4: +- (Y1 and Y2) then Y (Hypothesis)
+5: +- X or (Y1 and Y2) (2, 3, T33)
+6: +- X (1, 5, 4, T40)
+
+Alternatively (starting at step 6):
+
+6: +- (X or (Y1 and Y2)) then (~X then (Y1 and Y2)) (T30)
+7: +- ~X then (Y1 and Y2) (5, 6, M.P.)
+8: +- ~X then Y (7, 4, Syl.)
+9: +- ~X then X (8, 1, Syl.)
+10: +- X (9, T24b)
+
+T42: Prove by induction for all n >= 2 and i <= n:
+	(a) +- (X1 and X2 and ... and Xn) then Xi
+	(b) +- Xi then (X1 or ... or Xn)
+
+T42(a):
+
+Step 1:
+Consider the base case where n = 2. We then have:
+1: +- (X1 and X2) then X1 (S1)
+2: +- (X1 and X2) then X2 (S2) 
+Thus proving the base case.
+
+Step 2: 
+Assume +- (X1 and X2 and ... and Xn) then Xi is true for some n and all i <= n. Recall that 
+((X1 and X2 and ... and Xn) and Xn+1) was defined equivalently to (X1 and X2 and ... and Xn+1).
+Then we have, for i <= n+1:
+1: +- (X1 and X2 and ... and Xn and Xn+1) then (X1 and X2 and .. and Xn) (S1)
+2: +- (X1 and X2 and ... and Xn+1) then Xn+1 (S2)
+3: +- (X1 and X2 and ... and Xn+1) then Xi (For i <= n) (1, Induction Assumption, Syl.)
+4: +- (X1 and X2 and ... and Xn+1) then (Xi and Xn+1)
+Because either i = n+1, or i<= n, it is clear that the implication to Xi+1 has been proven.
+
+T42(b):
+
+Step 1: 
+Consider the base case where n = 2. We then have:
+1: +- X1 then (X1 or X2) (S5)
+2: +- X2 then (X1 or X2) (S6)
+Thus proving the base case.
+
+Step 2:
+1: Assume +- Xi then (X1 or ... or Xn) is true for some n and all i <= n. Recall that 
+((X1 or ... or Xn) or Xn+1) was defined equivalently to (X1 or ... or Xn+1).
+Either i = n+1 or i <= n. In the first case, we have,
+2: +- Xn+1 then (X1 or ... or Xn or Xn+1) (S6)
+In the second case, we have: 
+3: +- (X1 or ... or Xn) then (X1 or ... or Xn or Xn+1) (S5)
+4: +- Xi then (X1 or ... or Xn or Xn+1) (1, 3, Syl.)
+Thus the formula in all cases of i, and is thus true for all n.
+
+Problem 4:
+
+A1: Prove X then a, (X and a1) then Y +- X then Y.
+
+1: +- X then a (Hypothesis)
+2: +- (X and a1) then Y (Hypothesis)
+3: +- a then a1 (Fact A1)
+4: +- X then a1 (1, 3, Syl.)
+5: +- X then X (T2)
+6: +- X then (X and a1) (4, 5, T8)
+7: +- X then Y (6, 2, Syl.)
+
+A2: Prove X then a, (X and a2) then Y +- X then Y.
+The proof is identical to that of A1, except replacing the usage of Fact A1 with Fact A2.
+
+B: Prove X then b, (X and b1) then Y, (X and b2) then Y +- X then Y.
+
+1: +- X then b (Hypothesis)
+2: +- (X and b1) then Y (Hypothesis)
+3: +- (X and b2) then Y (Hypothesis)
+4: +- X then (b1 then Y) (2, F3)
+5: +- X then (b2 then Y) (3, F3)
+6: +- b1 then (X then Y) (4, T13)
+7: +- b2 then (X then Y) (5, T13)
+8: +- b then (b1 or b2) (Fact B)
+9: +- (b1 or b2) then (X then Y) (6, 7, T26)
+10: +- b then (X then Y) (8, 9, Syl.)
+11: +- X then (b then Y) (10, T13)
+12: +- X then Y (1, 11, T3)
+
+C: Prove X then Z, X then ~Z +- X then Y.
+
+1: +- X then Z (Hypothesis)
+2: +- X then ~Z (Hypothesis)
+3: +- ~Z then (Z then Y) (T19)
+4: +- X then (Z then Y) (2, 3, Syl.)
+5: +- X then Y (1, 4, T3)
+
+D: Prove X then ~X +- ~X
+This proof is identical to that of T24.
+
+Problem 5(a) (O being theta): Prove ~C(O) from O being closed.
+
+1: +- Y is a member of C(O) (Hypothesis)
+2: +- ~Y is a member of C(O) (Hypothesis)
+3: +- C(O) then Y (1, T42a)
+4: +- C(O) then ~Y (2, T42a)
+5: +- [(C(O) then Y) and (C(O) then ~Y)] then ~C(O) (S8)
+6: +- [(C(O) then Y) and (C(O) then ~Y)] (3, 4, T8)
+7: +- ~C(O) (5, 6, M.P.)
+
+Problem 5(b): Prove all of the inference rules of U1 hold in S0.
+
+Rule A1: Prove if a is a term of O, ~C(O, a1) +- ~C(O) (Recall C(O, Y) means C(O) and Y).
+
+1: +- a is a term of O (Hypothesis)
+2: +- ~(C(O) and a1) (Hypothesis)
+3: +- C(O) then a (1, T42a)
+4: +- a then a1 (Fact A1)
+5: +- C(O) then a1 (3, 4, Syl.)
+6: +- ~C(O) (2, 5, T38)
+
+Rule A2: Prove if a is a term of O, ~C(O, a2) +- ~C(O).
+
+1: +- a is a term of O (Hypothesis)
+2: +- ~(C(O) and a2) (Hypothesis)
+3: +- C(O) then a (1, T42a)
+4: +- a then a2 (Fact A2)
+5: +- C(O) then a2 (3, 4, Syl.)
+6: +- ~C(O) (2, 5, T38)
+
+Rule B: Prove if b is a term of O, ~C(O, b1), ~C(O, b2) +- ~C(O).
+
+1: +- b is a term of O (Hypothesis)
+2: +- ~(C(O) and b1) (Hypothesis)
+3: +- ~(C(O) and b2) (Hypothesis)
+4: +- C(O) then b (1, T42a) 
+5: +- b then (b1 or b2) (Fact B)
+6: +- C(O) then (b1 or b2) (4, 5, Syl.)
+7: +- ~C(O) (2, 3, 6, T39)
+
+Rule N: Prove ~~X +- X.
+This follows from S9.
+
+Problem 6: Suppose T^ is an immediate extension of T. Show that if T^ is bad, so is T^.
+
+Assume T^ is bad. Thus every branch of T^ is bad, meaning every branch of T^ contains some formula X and its conjugate X~. T was either extened to T^ by rule A or rule B on some branch O to O1. 
+
+Consider the case in which T was extended by rule A. Thus the branch O contains a. Because T^ was assumed to be bad, O1 is bad. O1 must have either a1 or a2 as its members. Because O1 is bad, either C(O, a1) or C(O, a2) is bad. Thus either ~C(O, a1) or ~C(O, a2) is provable, and therefore ~C(O) is provable either by Rule A1 or Rule A2. Because branch O is C(O), it follows that branch O is bad, because ~C(O) is provable. Because all other branches of T^ are also branches of T, and are all bad, the rest of the branches of T are bad, thus making T bad.
+
+Consider the case in which T was extended by rule B. Thus b is member of O. The branch O in T was extended to two branches, O1 and O2 in T^. Because T^ is closed, both O1 and O2 are closed. O1 and O2 are either C(O, b1) or C(O, b2). Becuase they are both closed, both ~C(O, b1) and ~C(O, b2) are provable, thus meaning ~C(O) is provable by Rule B. Because all other branches of T^ are those of T, all other branches of T are bad, thus meaning T is bad. 
+
+Problem 7: Prove that if there is closed tableau T for X, then X is bad. 
+
+Consider the property P(x) for the tableau T(n-x) being bad, where n is the number of levels of the tableau (meaning Tn is just T). We will show P holds for all x <= n by limited induction. For P(0), this is simply the tableau T(n-0), which is just Tn, which we defined to be T, which was assumed to be closed, meaning T is obviously bad, thus proving P(0) holds. Consider some number x less than n. Assume P holds for X. Thus the tableau T(n-x) for X is bad. Well, the tableau of size T(n-(x+1)) are simply the branches on one lower level of the tree than T(n-x). Because all n sized branches of the tree were assumed to be bad, all n-1 branches of the tree are bad by Problem 6 (because all n levels are extensions of some n-1 level of the tableau). Thus, P(x+1) holds, proving P holds for all x <= n, meaning P(n) holds, making T(0) is bad, which of course is just X. 
+
+Problem 8: Prove that U1 is complete.
+
+Consider some tautology X. Then there is some closed tableau T for ~X by the completeness of the tableau method. Then ~X is bad by problem 7. Because ~X is bad iff ~~X is provable in U1 (by definition), ~~X is provable in U1. By rule N, X is provable in U1, thus completing the proof.
+
+Problem 9: Show that all provable formulas of U2 are provable in S0.
+
+Prove all formulas D(O) where O is closed are provable in S0.
+
+1: +- Y is a member of O (Hypothesis)
+2: +- ~Y is a member of O (Hypothesis)
+3: +- Y then D(O) (1, T42b)
+4: +- ~Y then D(O) (2, T42b)
+5: +- D(O) (3, 4, T35)
+
+Prove Rule A^0: D(O, a1), D(O, a2) +- D(O) where a is a term of O.
+
+1: a is a term of O (Hypothesis)
+2: +- D(O) or a1 (Hypothesis)
+3: +- D(O) or a2 (Hypothesis)
+4: +- a then D(O) (1, T42b)
+5: +- (a1 and a2) then a (Fact A)
+6: +- D(O) (2, 3, 4, 5, T41)
+
+Prove Rule B1^0: If b is a term of O, D(O, b1) +- D(O).
+
+1: +- b is a term of O (Hypothesis)
+2: +- D(O) or b1 (Hypothesis)
+3: +- b1 then b (Fact B1)
+4: +- b then D(O) (1, T42b)
+5: +- D(O) (4, 2, 3, T40)
+
+Prove Rule B2^0: If b is a term of O, D(O, b2) +- D(O).
+
+1: +- b is a term of O (Hypothesis)
+2: +- D(O) or b2 (Hypothesis)
+3: +- b2 then b (Fact B2)
+4: +- b then D(O) (1, T42b)
+5: +- D(O) (4, 2, 3, T40)
+
+Problem 10(a):
+
+Assume some extension T^ of a tableau T is nice. We must show that T is also nice. 
+
+Consider the case where the branch O of T was extended by Rule B0 to the branch O1 of T^ which is O, b1, or O, b2. Because T^ is nice, O1 is nice. Because O, b1 or O, b2 is nice, O is nice by either rule B1 or rule B2 of U2. Because O is nice, and the fact that all other branches of T are branches of T^ (meaning they are all nice), all branches of T are nice, and thus T is nice as well.
+
+Consider the case where the branch O of T was extended by Rule A0 to the two branches O1 and O2 of T^, which are O, a1, and O, a2. Because O1 and O2 are nice, both O, a1 and O, a2 are nice, meaning D(O) is nice by rule A of U2. Again, because all other branches of T are nice because all other branches of T are those of T^, all branches of T are nice, and thus T itself is nice. 
+
+Problem 10(b):
+
+Consider the property P(x) meaning the dual tableaux T(n-x) is nice. We will show by limited mathematical induction that P(x) holds for all x <= n if the dual tableaux Tn is closed. For the case of P(0), this is just the dual tableaux T(n-0), which of course is just T(n), which was assumed to be closed, meaning Tn is nice, and thus P(0) holds. Assume that P(x) holds for some x < n. We must show P(x+1) also holds. The case of P(x+1) is for the dual tableau T(n-(x+1)), which by definition of the sequence T0, T1,...,T2 has T(n-x) as its immediate extension, and thus by problem 10(a) T(n-(x+1)) is nice as well. Thus, by the principle of limited mathematical induction, P holds for all x <= n.
+
+Problem 10(c):
+
+Consider a tautology X. There is then a closed dual tableaux for X. Then by 10b T(0) (which is just X) is nice, and thus X is provable in U2.

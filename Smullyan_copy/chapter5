@@ -1,0 +1,184 @@
+Chapter 5:
+
+Exercise 1 * :
+
+Prove that the set of all formulas of propositional logic is denumerable.
+
+We must show that of all formulas containing all variables and of all degrees is a denumerable set. Starting with only one variable p, we can create a finite set of formulae by simply taking all the formulas of degree 1 with p. Then, adding in another variable q, we can get all the formulae of length two by simply connecting a formula in the first set q. Because there are only a finite number of connectives, and there are only a finite number of formulae in the first set, the number of formulae in q will also be finite. Because continuing this pattern obtains all possible formulas, and it goes on for ever (as there are an infinite number of possible propositional variables), the set of all of the formulae can be put into a 1-1 correspondence with the set of all natural numbers. 
+
+Problem 1:
+
+A: contingent
+B: contingent
+C: tautology
+D: contingent
+E: Contradiction
+F: Tautology
+G: Contingent
+H: Tautology
+I: Contingent 
+J: Tautology
+K: Tautology
+
+Problem 2:
+The method is to look at which combinations of variables make the formula true. Then simply make the statement X or Y or... where each formula is one of the conjunctions of the interpretations of variables in which the unknown formula is true, where the variables are left alone if they are true in the interpretation, and written as their negation if they are false in the interpretation. For this example, a matching formula would be (p and q and r) or (p and ~q and r) or (~p and q and r). 
+
+Problem 3a (with implication being represented by then, and bi-conditionals represented by iff): 
+
+(p and q) then (~q or r)
+
+Problem 3b:
+
+q
+
+Problem 3c:
+
+f
+
+Problem 4a (using the variable p for A):
+
+P has said that p is telling the truth iff both p and q are knaves. In other words, p iff (~p and ~q). Because p can obviously not be telling the truth, p must be of type F. Then q must be of type T, so that p's statement could not be true.
+
+Problem 4b:
+
+P has said that p is telling the truth iff either p or q is a knave. Thus p iff (~p or ~q). Because p obviously cannot be lying, P must be T, and therefore q must be F.
+
+Problem 4c:
+
+Here p has said that p iff q. Thus p iff (p iff q). If p is false, p iff q must also be false and thus then q would be true. If p is true, then p iff q must be true and thus q must be true. Thus q (B) is always of type T, and A is either of type T or F.
+
+Problem 5:
+
+An or statement is the same thing as saying not both ~p and ~q, so that or is equivalent to ~(~p and ~q)
+
+Problem 6:
+
+An and statement is nothing more than saying that not either ~p or ~q is true. Thus and is equivalent to ~(~p or ~q)
+
+Problem 7:
+
+An if-then statement is nothing more than saying that both p and ~q can be both true; thus we can write ~(p and ~q).
+
+Problem 8:
+
+An if-then statement is also nothing more than saying that either p is false, or q is true; thus ~p or q.
+
+Problem 9:
+
+An and statement is nothing more than saying that it is not the case that p then ~q; thus ~(p then ~q)
+
+Problem 10:
+
+An or statement says that either p or q is true, so that if p is false, q must be true; thus ~p then q.
+
+Problem 11:
+
+An or statement says that if 
+
+Problem 12:
+
+A bi-conditional says that if one variable is true, the other one is also true; thus (p then q) and (q then p).
+
+Problem 13:
+
+A bi-conditional says that either both variables are true, or either both are false; thus (p and q) or (~p and ~q).
+
+Problem 14:
+
+A negation says that if p is true, then ~p is false; thus p then f.
+
+Problem 15 (using \ for joint denial):
+
+Negation says that both p and p is false, and thus we can write p\p.
+
+Then, to get the or connective, we simply write it is not the case that both p joint denial q, and thus ~(p\q). All other operators follow from or and negation, and thus we are done.
+
+Problem 16:
+
+The negation operator is true when either p or p is false, and thus we can write p|p for negation.
+
+The and operator is only true when it is false that either p or q is not true; thus ~(p|q).
+
+All other connectives follow from and and negation.
+
+Problem 17:
+
+We can simplify this inhabitants statement to p iff (p then q). Looking at a truth table, we can see that the only possibility in which this statement is true is when both p and q are true. This the inhabitant is of type T, and there is gold on the island.
+
+Problem 18 (using = for bi-conditional):
+
+An and statement means the same thing as saying that p is equivalent to if p then q. This is because if p then q can only be false when q is false, and thus the whole equivalence would be false. If p itself is false, p then q is true, and thus the equivalence is also false. 
+
+Problem 19:
+
+An or statement says the same thing as if p then q, then q (because if q was false, then p would also have to be false, making p or q also false). Because q obviously implies p then q, we can then write the or statement as p iff (p then q).
+
+Problem 20:
+
+An if-then statement says the same thing as p is true iff p and q are both true; thus we can write p iff (p and q).
+
+Problem 21: 
+
+An and statement says the same things as p or q is true iff p is equivalent to q (if it were not, then q could be false, and then p and q would also be false), thus we can write (p or q) iff (p iff q).
+
+Problem 22:
+
+An or statement means the same things as saying that p iff q is true iff p and q is true (because, if it were not, than p iff q could mean both p and q are false, making p or q also false), and thus we can write (p and q) iff (p iff) for the or connective.
+
+Problem 23 (using != for not equivalent to) :
+
+An or statement is the same as saying that p and q is not equivalent to p being not equivalent to q (if one is true, it obviously follows that the other cannot, if neither is true, then the whole statement is false, thus proving that this does in fact represent p or q), and thus we can write (p and q) != (p != q). 
+
+Problem 24:
+
+An and statement is the same as saying the p or q is not equivalent to p being not equivalent to q (This can only be true when p and q is true, or else p is not equivalent to q would also be true, and thus the whole statement would not be true. If it is false, then they are equivalent, meaning both p and q cannot be true), thus we can write (p or q) != (p != q).
+
+Problem 25:
+
+p != p if false every time, and thus we can receive the operator f, and thus, from problem 14, we can then receive all the rest of the operators as well using p then f.
+
+Problem 26 (using !if for p does not imply q):
+An and statement says the same thing as p being true does not mean that p being true means q is not true (if this were not the case, then p could be true but q could be false, contradictory to the and statement), and thus we can write p !if (p !if q).
+
+Problem 27:
+
+Saying that p does not imply q is the same as saying that p is true iff it is not the case that both p and q are true; in other words p does not imply both p and q being true, and thus we can write p != (p and q).
+
+
+Problem 28:
+
+Saying that p does not imply q is the same as saying the q is not equivalent to p or q (because if q is true, then the statement is only false when p is true; if q is false, the statement is only false when p is false as well, because this means that ~p implies ~q, and thus p implies q), and thus we can write q != (p or q), for p does not imply q.
+
+Problem 29: To say that p is not equivalent to q is the same as saying that one of them must not imply the other (if both did, then both p and q would be true or false, and thus the whole statement would be false), thus we can write (p !if q) or (q !if p) for the exclusive disjunction.
+
+Problem 30:
+
+The operator f can be received from just !if, as p !if p is obviously false in all cases. Thus, because if and f obtain all other connectives, this completes the proof.
+
+Problem 31:
+
+Again, the operator f can be received from just !if. Then, from f and = we can receive ~, as p = f is obviously the same as negation (~ is true iff p is false). Then, by problem 26, we have already received the and connective, which then leads to all other connectives in conjunction with the negation and problem 22. Alternatively, because p then q says the same thing as p !if q is not true, p then q can also be received by writing ~(p !if q), which then receives all other connectives. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

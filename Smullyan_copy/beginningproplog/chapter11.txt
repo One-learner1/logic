@@ -1,0 +1,178 @@
+
+
+
+
+Problem 1: Show that the following relations among pairs of (natural) numbers, as well as the set of prime numbers, are arithmetic:
+
+Problem 1(a): x div y
+
+	Consider the formula Ez(x times z = y). Obviously, phi(x, y) is true whenever R(x, y) (x div y) is true. Also, R(x, y) is of course true whenver phi(x, y) is true. Thus x div y is arithmetic. 
+
+*(Is the formula of this form identical to the one in the answer key?)Problem 1(b): x pdiv y
+	
+	Consider the formula Ez(x times z = y and ~(x = y or x = 1)). If R(x, y) is true, then x properly divides y, meaning phi(x, y) will be true (because ~(x = y or x = 1) of course will be true, and there certainly exists some z such that x times z = y). Conversely, assume that Ez(x times z = y and ~(x = y or x = 1)) is true. Thus phi(x, y) is true (because x and y do not affect z). Then, R(x, y) is also true, because x properly divides y by phi(x, y) being true. Thus x pdiv y is artihmetic. 
+
+*Problem 1(c):
+
+	Ez(x + z = y and ~(z = 0))
+
+	Alternatively,
+	x <= y and ~(x = y)
+
+Problem 1(d):
+
+	~Ex(x pdiv y)
+
+Problem 2:
+	
+	Consider any formula that is expressed somehow in terms of <=. Well, we can simply replace every occurence of this by Ez(x + z = y).
+
+Prove that for any dyadic string of 1's of length r, the decimal number this represents is (2^r)-1:
+
+	Base Case:
+
+	For 1, this is obvious, for 1 * 2^0 is 1, which is the same as (2^1)-1, which is also 1. 
+
+	Induction Assumption: Assume for some string of ones of length r, (2^r)-1 represents that number in decimal notation. Now consider a string of 1's of length r+1. This represents the number 2^r + (2^r)-1; this is because we add 2^r-1 for every greater 1 added to dyadic notation, and (2^r)-1 was assumed to represent the ones up until r+1. Well, 2^r + 2^r = 2^r+1, as this multiplies 2^r by 2. Thus we have (2^r+1)-1, proving the theorem. 
+
+Prove that for any concatenation (using . for the concatenation symbol) x.y, x.y = x * 2^L(y) + y:
+	
+
+ 	Well, in dyadic notation, x.y represents the number (written in dyadic notation as well) dj, dj-1,..., d1, d0, ek, ek-1,..., e1, e0, where dj,...,d0 are all the d's in the dyadic notation for x, and all the e's are the dyadic notation for y. In decimal notation, we can rewrite this as dj * 2^n + dj-1 * 2^n-1 + ... + d1 * 2^((n-j)+1) + d0 * 2^n-j + ek * 2^k + ek-1 * 2^k-1 + ... + e1 * 2^1 + d^0, for n = L(x.y)-1, j = L(x)-1, and k = L(y)-1. Well, if n is the length of x.y, this is just L(x) + L(y), which means when we are multiplying each dj by a power of 2, which will be 2^j+k, because each term now in the d's needs to be multiplied by a power of 2 added to k from its original jth value. Thus we can rewrite the above expansion as dj * 2^j+k + dj-1 * 2^j-1+k + ... + d1 * 2^1+k + d0 * 2^0+k + ek * 2^k-1 (which is just 2^-1+k) + ek-1 * 2^k-2 + e1 * 2^1 + e0. Now, when rewriting x * 2^L(y) + y into dyadic notation, we notice this is just the result of adding k to all the exponents of all the dj's, and going from the exponents k-1,...,k-k for all the ek's, which is obviously equivalent to the notation written above for any concatenation, meaning that the two are equivalent, proving the theorem. 
+
+Problem 3: Prove that y > 0 and x = 2^L(y) holds iff C1, C2 and C3 all hold:
+
+	First, assume that y > 0 and x = 2^L(y) both hold. Obviously C3 holds. C2 also obviously holds, as x = 2^L(y) is necessarily a power of 2. Well, by condition (*), y has a dydadic numberal of length r iff y >= 2^r -1 (which is x - 1 in C1), and is <= 2^r-1 (which is just x - 1 in C1), meaning that if L(y) has a length at all (y > 0), and x = 2^L(y), x-1 <= y <= 2 * (x-1), completing the first part of the proof.
+	Conversley, assume that C1, C2, and C3 all hold. We must show that y > 0 and x = 2^L(y). By C3, y != 0, and, because C2 implies x must be greater than x, y must be at least one, and thus y > 0 holds. Now we must show that x = 2^L(y). First x = 2^k for some k by C2. By C1, x - 1 <= y <= 2 * (x - 1). Also, by (*), 2^r-1 <= y <= 2 * (2^r-1) holds because L(y) >= 1. Thus, if 2^r was not x, we could have 2^r - 1 being greater than x, so that y could be less than 2^r-1 by y >= x holding, meaning 2^r cannot be greater than x, and similarly cannot be less than x. Thus, 2^r = x, and therefore 2^r - 1 <= y <= 2 * (2^r - 1) holds. Then, by (*), we then have r being the length of y, meaning 2^r = 2^L(y), and therefore x = 2^L(y), completing the proof. 
+
+***Problem 4 (Can Sigma 0 formulas include + and * ? I thought the atomic Sigma 0 formulas left out those symbols?
+
+	In fact, I think we can prove the impossibility of + x being valid operators in Sigma 0 formulas, with the following inudction:
+
+	The base case (formulas with only one symbol other than a variable or numberal) is given, as an atomic Sigma 0 formula must be either c1 = c2, or c1 <= c2, leaving out + and x. 
+
+	Assume that for some Sigma 0 formulas of degrees less than n, these formulas do not contain any + or x operators. We must show this is also the case for the formulas of degree less than n+1. If the formula is of degree 0, the base case already was shown to hold. If the formula of degree n+1 is made using a propositonal connective, we are not adding any + or x, and thus + and x are still both left out (because any F added to this concatenation with propositional connectives is of degree less than n, and therefore must have no + or x operators). If the formula of degree n+1 has a quantifier, it is either of the form Ex(x <= c then F) or Vx(x <= c then F). In either case, the only area where + or x could appear is in F, which is necessarily of a degree less than n+1, meaning both + and x do not appear in F. Thus the induction case is completed, completing the proof. 
+
+	I think he must have made a typo, and therefore I think it is reasonable to assume an atomic Sigma 0 formula can also contain + and x. Anyways, onto the proof if we do include + and x:) 
+
+	x - 1 <= y <= 2 x (x - 1) is not already Sigma 0, as compound inequalties are not part of the Sigma 0 formulas. In addition, subtraction is not an allowed operator in Sigma 0 formulas. The above formula says that there exists some z, such that z is less than x (meaning there is some z such that z = x - 1), and that z <= y and y <= 2 x z both hold. Thus, we can rewrite the above statement into valid Sigma 0 notation, like so:
+				(Ez <= x)(x = z + 1 and z <= y and y <= 2 x z)
+***Prove that, for any prime number p, a number x is a power of p iff every divisor of x other than 1 or itself divisible by p.
+
+	By the assumption, x = p1 * p2 * ... * pn for all pi = p and n = the power of p. Thus, because all pi are primes, that is the prime factorization of x. Now consider any divisor k of x. We then have k * y = p1 * p2 * ... * pn. By Euclids Lemma, either k or y must be divisible by p. If it is not k, then we have y = j1 * p. Thus, rewriting the above yields k * j1 * p = p1 * p2 * ... * pn. Dividing by p yeilds k * j1 = p1 * p2 * ... * pn-1. Again, either k or j1 is divisible by p. If it is not k, we have j1 = j2 * p. Then, using the same logic as before, we can receive k * j2 = p1 * p2 * ... * pn-2. We can repeat this process only so long as ji is such that i < the p used in n. This is because we assumed x is not 1 or itself, meaning each ji must necessarily be less than x, leading to the conclusion that at some point or another, we will receive k being divisible by p (because successively dividing j by p, and succesively dividing x by p, leads to j becoming prime at a sooner interval, because x is larger than j). Thus every divisor of x other than 1 or itself must be divisible by p.	
+
+Prove the theorem of unique prime factorizations:
+
+	Consider the property P(n), meaning that n has one and only one prime factorization. 
+
+	First we prove that every number has at least one prime factorization, showing that every number greater than 1 is either a prime, or a product of primes:
+
+	Base Case: This holds for 2, as 2 is a prime.
+
+	Assume that the property holds for all numbers less than n. Now consider n. If n is a prime, the property holds. If n is not a prime, we have n = kj for some k and j. Because n is not a prime, there must be at least one pair of k and j such that k and j are proper factors of n. Thus, both k and j are less than n, meaning by the assumption both k and j have prime factorizations. Thus k = p1 * p2 * ... * pn and j = q1 * q2 * ... * qm. Thus, n = p1 * p2 * ... * pn * q1 * q2 * ... * qm, meaning n also has a prime factorization. 
+
+	Now we prove that every prime factorization is unique:
+
+	Assume that the statement does not hold for n, meaning there is some least number n such that the statement does not hold for n. Now we consider this n. We then have n = k1k2...kn and n = j1j2...jn. Now, by Euclids Lemma, k1 must divide some ji. Thus, because k1 and ji are both prime, k1 and ji. Then, divide k1k2...kn by k1 and j1j2...jn by ji, yeilding k2...kn = j2...jn. Then, because k1k2...kn and j1j2...jn were assumed to have a distinc facotorization, and because they were divided by two equal members of the factorization, the remaning factorizations k2...kn and j2...jn must be still distinct, meaning some integer < n has two distinct factorizations, contrary to the assumption that n is the smallest integer with two distinct factorizations, thus proving that there can be no smallest integer having 2 prime factorizations, and thus every integer must have a unique prime factorization. 
+
+Problem 5(a): Show that pow2(x) is constructive arithmetic:
+	This statement is the same as saying, for every factor k of x, k is divisible by 2. Thus, we can write, (Vx <= y)(x div y and x != 1 then 2 div x).
+
+***Problem 5(b): show that the relation 0 != x and 0 != y and x.y = z is constructive arithemetic:
+
+	This is not immediately constructive arithemtic, as x.y has not yet been shown to be constructive arithemtic. Well, C1 and C2 have been shown to be constructive arithmetic, and C3 is an atomic Sigma 0 formula. In addition, because x.y = x * 2^L(y) + y, we can write out the following constructive arithmetic formula for x.y like so:
+
+	n != 0 and y != 0 and (Ez <= x)(z = 2^L(y) and (z * n) + y = x) (we have shown that x = 2^L(y) is constructive arithemtic, as this is simply the conjunction of C1, C2, and C3, of which we have all shown are constructive arithemetic).
+
+***Prove that the concatenation operator is associative:
+	
+
+	
+
+Problem 6(a): Show that 0 != x1 and 0 != x2 and 0 != x3 and x1.x2.x3 = y is constructive arithmetic. Rewriting this, we can say that x1.x2.x3 means that there is some number z = x1.x2, such that z.x3 = y. Thus:
+		0 != x1 and 0 != x2 and 0 != x3 and (Ez <= y)(z = x1.x2 and z.x3 = y)
+
+Problem 6(b): Generalize Problem 6(a) for all n >= 2:
+
+	Base Case: For n = 2, this is constructive arithmetic because x.y = z has been shown to be constructive arithmetic, meaning:
+		0 != x1 and 0 != x2 and x1.x2 = y is also constructive arithmetic. 
+
+	Induction Assumption: Assume that the result holds for some n. We must show it holds for n+1. Because the result holds for n, we can write:
+	0 != x1 and 0 != x2 and ... and 0 != xn and (Ez <= y)(z = x1.x2.....xn and z.xn+1 = y), thus proving the n+1th case is also constructive arithmetic, completing the proof. 
+		
+Prove that for all x > 0, g(n) = g(n-1).122. 
+
+	For the case of x = 1, we have g(n-1) being 12 by definition of 0 having the Godel number g1, and ' having the Godel number g2. Then, 0' (which is 1), is just 12122, because ' has 1 followed by 2 twos. 
+
+	Assume that the statement holds for some n. Now, g(n+1) = g(n).g2. This is because g(n+1) is the Godel number of n, but also with the Godel number for another ', which happens to be defined as g2, which in turn yeilds g(n+1) = gn.122, completing the proof. 
+
+Problem 7(a):
+
+	x = y or (Ez <= y)(x.z = y)
+
+Problem 7(b):
+	
+	x = y or (Ez <= y)(z.x = y)
+
+Problem 7(c):
+	
+	xBy or xEy or (Ez <= y)((Ek <= y)(z.x.k = y))
+
+Prove that the nth sum of successive odd numbers is n^2:
+
+	We must first prove two key Lemmas: 
+
+	Lemma 1: Prove that n^2+n+n+1 = (n+1)^2 for all integers:
+
+		Base Case: 1^2 + 1 + 2 = 4, which equals 2^2, completing the base case. 
+
+		Induction: Assume that the statement holds for all numbers less than n + 1. No we consider the expression:
+
+			(1) n^2 + n + n + 1      We can rewrite this (by the assumption), as:
+			(2) n-1^2 + n - 1 + n + n + n + 1 We can then rewrite this as:
+			(3) n-2^2 + n-2 + n-1 + n-1 + n + n + n + 1 We can repeat this process until we have n^2 = 1, ending at:
+			(4) 1 + 1 + 2 + 2 + ... + n + n + n+1 We now can systematically pair off each k (starting at 1) with each j (starting at n). We start by pairing off 1 with n, and 2 with n-1, and in general, if we have some k, we pair this number off with n+1-k, ensuring that each pair sums to n+1. Because there are two sets of each number less than n+1, and there are n of these numbers, we have 2n total numbers, of which each two numbers pair off to sum to n+1, meaning we have n total pairs of an n+1 sum. Thus, we have n pairs of n+1, in addition to the n+1 we started off with in step (1), meaning we have n+1 pairs of n+1, which is just (n+1)^2, thus completing the proof. 
+
+	Lemma 2: Prove that the nth odd number is n-1 + n:
+
+		Base Case: The first odd number is 1, which is 0 + 1, proving the base case.
+
+		Induction: Assume that the statement holds for some n. Now consider the n+1th odd number. This number
+		is equal to the nth odd number plus two by definition. By the assumption, the nth odd number = n-1 + n. Thus, the n+1th odd number = n-1 + n + 2, or, rewriting, n + n + 1, proving the induction case, and thus the whole statement. 
+	Now for the real proof:
+
+	Base Case: The first 1 odd number is 1, which equals 1^2, proving the base case.
+
+	Induction: Assume that the statement holds for some n. Thus, we have the sum of the first n+1 odd numbers equaling n^2 + n + n + 1 (by Lemma 2), and thus by Lemma 1 this equals (n+1)^2, completing the proof. 
+
+Prove that if k|p-k, k|p:
+	
+	Well, let j=p-k, meaning k|j. Thus, because p = j + k, and j = kl for some l, we have p = lk + k, which is just (l+1)k, meaning p = (l+1)k, thus proving k|p. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

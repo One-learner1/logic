@@ -1,0 +1,162 @@
+%/*% pdflatex -file-line-error -interaction nonstopmode %
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{amsthm}
+\usepackage{yhmath}
+\newcommand*{\oldneg}{\mathord{\sim}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+
+\title{Chapter 12 Answers}
+\begin{document}
+\maketitle
+
+\section*{Exercise}
+$Note$: Smullyan omits saying what alphabet we should show $Ax$ represents the set of all alternating strings, so I will assume he meant the alphabet 
+$\{a,b\}$ (as this is the one he defines (E) with).\newline
+We are to show that $Ax$ really represents the set of all alternating strings over the alphabet $\{a,b\}$.
+\begin{proof} On the one hand, assume that $Ax$ is provable. In the base case where $x$ $a,b,ab$ or $ba$, these are all alternating by definition. 
+So let us make an induction assumption that for all $Ax$ provable with $x$ of length $n$, $x$ is alternating. Well, the only formulas of length $n+1$ 
+for which $Ax$ could be provable would be of the form $Axab$ where $Axa$ is provable, or of the form $Axba$ where $Axb$ is provable. In both cases, we 
+have $Axa$, $Axb$ having $xa$ and $xb$ both being alternating by the assumption, thus meaning it is obvious that $Axab, Axba$ would both be alternating, 
+with respect to the provable sentences $xa, xb$.\newline \newline
+Conversley, we wish to show that all alternating strings $x$ in the alphabet $\{a,b\}$ are such that $Ax$ is provable. The base cases of lengths $1$ and $2$ 
+are given by the first four facts of the system. Now, make an induction assumption that all alternating strings $s$ from the alphabet ${a,b}$ of degree $n$ 
+are such that $Ax$ is provable. Thus $s$ must either be of the form $xa$ or $xb$ for some $x$. Hence, because $s$ is either $xa$ or $xb$, 
+either $Axab$ or $Axba$ 
+are provable in $(E)$, respectively. Also, the only ay to make an alternating string starting from some string of the from $xa$ or $xb$ is from the string 
+$xab$ or $xba$. Hence, all of the alternating strings of degree $n+1$ are such that $Ax$ is provable, hence proving that all alternating strings 
+from the alphabet $\{a,b\}$ are such that $Ax$ is provable, thus completing the proof.
+\end{proof}
+\section*{Problem 1}
+We are considering two $EFS$'s $E_1, E_2$ over the alphabet $K$ in which the sets $W_1, W_2$ are represented, respectively. Well, we consider all of 
+those predicates common to both systems. We then replace these common predicates in $E_2$ by other symbols of the predicates, and keep all of the predicates 
+in $E_1$. Then, we consider the $EFS$ $E$ which is the combination of both of the axiom schemes of $E_1$ and the altered system of $E_2$. Because all 
+the axiom schemes are the same, the only thing that could have made $W_1, W_2$ no longer representable is if 'extra' axiom schemes using the same 
+predicates as the ones that represent them were added. However, this was guaranteed not to happen as all of the possible 'added' predicates 
+would be due to predicates in common to $E_1, E_2$, which we changed when we redefined $E_2$. Thus, $W_1$ and $W_2$ are still both representable.
+\section*{Problem 2}
+We suppose $W_1, W_2$ are representable over $K$. Hence, by Problem 1, there is some $(E)$ over $K$ such that both $W_1, W_2$ are representable. So, 
+we simply add to $(E)$ the predicate $P$ with the following axioms:\newline $P_1x\rightarrow Px$\newline $P_2x\rightarrow Px$ for $P_1, P_2$ the predicates 
+that represent $W_1, W_2$, respectively. Clearly, $P$ represents $W_1\bigcup W_2$. On the other hand, we add the axiom:\newline
+$P_1x\rightarrow P_2x\rightarrow Px$ meaning $Px$ represents $W_1\bigcap W_2$.
+\section*{Problem 3}
+We assume $W_1, W_2$ are both solvable over $K$. Hence, all of $W_1, \widetilde W_1, W_2, \widetilde W_2$ are representable over $K$. Now, by Problem 2, 
+$W_1\bigcup W_2$ and $W_1\bigcap W_2$ are representable over $K$. Also, $\widetilde W_1\bigcap \widetilde W_2$ and $\widetilde W_1\bigcup \widetilde W_2$ 
+are both representable over $K$, that is, both $\widetilde {W_1\bigcup W_2}$ and $\widetilde {W_1\bigcap W_2}$ are representable over $K$, thus proving
+ that both $W_1\bigcup W_2$ and $W_1\bigcap W_2$ are solvable over $K$.
+\section*{Problem 4}
+(a):\newline This problem really asks us to find what it means for $x$ to be the successor of $y$ in dyadic notation. Well, the base cases are simple: 
+$S 1,2; S 2,11$. Then, it is obvious that the successor of some dyadic representation of the form $x1$ is $x2$. Lastly, we prove that the successor of 
+some $x2$ is $y1$ for $y$ the successor of $x$. Well, if $x2$ is some dyadic representation, and $y$ is the successor of $x$, then $y1$ is just the 
+concatenation of $y$ and $1$, that is, $x+1$ and $1$, which is equal to $(x+1)\times 2^1+1=2x+3$, while $x2$ is $2x+2$, thus proving $S x2, y1$ for 
+$S x,y$. Hence, the $EFS$ over $D$ with the axioms schemes:\newline
+$S1,2$\newline $S2,11$\newline $Sx1,x2$\newline $Sx,y\rightarrow Sx2,y1$\newline is such that $Sx,y$ dyadically enumerates the relation $x$ is the successor 
+of $y$
+(as can easily be shown by induction).
+\newline (b):\newline Consider the following $EFS$ over $D$ (and $Lx,y$ is to be read as $x$ is less than $y$):\newline 
+$Sx,y\rightarrow Lx,y$\newline $Lx,y\rightarrow Ly,z\rightarrow Lx,z$\newline
+Well, it is obvious that any $Lx,y$ provable in the system is such that $x$ is really less than $y$. Conversley, assume that $x<y$. Thus $x<z$ for $Sx,z$.
+Then, we can use the same rule to know that $Lz,v$ for $Sv,z$, and thus we can conclude that $Lx,v$. And we can then repeat this process on $v$, and so on
+(that is, we show $Sv,l\rightarrow Lx,l$ and, in general, if we have some $Lx,n$, we use the second axiom scheme to conclude that $Lx,k$ for $Sn,k$),
+until we finally reach $y$ (and we will at some point), which lets us prove $Lx,y$, thus completing the proof.\newline
+(c):\newline Consider the following axiom scheme:\newline
+$Sx,y\rightarrow Sz,y\rightarrow x=z$\newline
+Clearly, every $x=z$ provable in the system is such that $x$ really equals $z$. Conversley, assume $x=z$. Hence, by definition, $Sx,y\wedge Sz,y$, thus 
+meaning the axiom will allow us to conclude that $x=z$.\newline
+(d):\newline Take the two axiom schemes:\newline $x<y\rightarrow x\le y$\newline $x=y\rightarrow x\le y$\newline
+Any $x\le y$ provable in the system is obviously such that $x$ really $\le y$. Conversley, assume that $x\le y$. Thus, either $x=y$ or $x<y$. Whatever case 
+it is, we can use the corresponding axiom to conclude that $x\le y$.\newline
+(e):\newline Take the axiom schemes:\newline $x<y\rightarrow x\ne y$\newline $x\ne y\rightarrow y\ne x$
+\newline Again, any $x\ne y$ in the systerm obviously is such that $x$ really is not equal to $y$. Conversley, assume that $x\ne y$. Hence, either $x<y$ or 
+$y<x$. In the first case, we would immediately conclude $x\ne y$. In the second, we would conclude $y\ne x$ from the first axiom, and the second axiom would 
+let us conclude that $x\ne y$.\newline
+(f):\newline Take the following $EFS$:\newline $Sx,y\rightarrow x+1=y
+$\newline $x+y=z\rightarrow Sy,v\rightarrow Sz,w\rightarrow x+v=w$\newline
+Clearly, any $x+y=z$ provable in the system is such that $x+y$ really equals $z$. On the other hand, assume that $x+y=z$. Hence, $x+1=v$ for $Sx,v$ is 
+provable. Then, we can use the second axiom $y-1$ times to conclude that $x+y=x+1+y-1=x+y=z$.\newline 
+(g):\newline Consider the following $EFS$ over $D$ that has a predicate representing $x\times y=z$:\newline
+$x\times 1=x$\newline $x\times y=z\rightarrow Sy,w\rightarrow z+x=v\rightarrow x\times w=v$\newline
+Again, every $x\times y=z$ provable in this system clearly is such that $x\times y=z$. Now, assume that $x\times y=z$. Thus, $x\times 1=x$ is provable. Then,
+ we apply the second axiom $y-1$ times to recieve $x\times y-1+x=x\times y=z$\newline
+(h):\newline We consider the following $EFS$:\newline
+$x^1=x$\newline $x^y=z\rightarrow Sy,v\rightarrow x^v=z\times x$\newline	
+Every $x^y=z$ provable in the system obviously really means $x^y=z$. On the other hand, assume that $x^y=z$. Thus, $x^1=x$ is provable. Then, we can apply 
+the second axiom $y-1$ times to receive $x^y=x\times x^{y-1}=x^y=z$.\newline
+\section*{Problem 5}
+We consider some dyadically enumerable functional (single-valued) relation R(x,y). We are to show that it is also dyadically solvable. Well, we consider the 
+$EFS\ E$ under which $R(x,y)$ is representable by some predicate $P$. Well, we have already shown the relation $x\ne y$ to be dyadically enumerable, and 
+therefore, by Problem 1, we consider the $EFS\ E_1$ under which both $R(x,y), x\ne y$ are representable (and $R(x,y)$ is representable by $Px,y$). Well, we 
+add the axiom:\newline $Px,y\rightarrow z\ne y\rightarrow Nx,y$\newline Well, because we know that $Px,y$ does not hold for any number other than $y$, 
+$Nx,y$ represents $\oldneg R(x,y)$, and hence proves that $R(x,y)$ is dyadically solvable. The proof for trinary relations is similar, replacing $R(x,y)$ by 
+$R(x,y,z)$.
+\section*{Problem 6}
+(a), (c), (f), (g) and (h) are all dyadically solvable by Problem 5 (as they are all functional relations). (b) is dyadically solvable, as $\oldneg (x<y)$ 
+can be deterimined by the axioms:\newline $x=y\rightarrow \oldneg (x<y)$\newline $y<x\rightarrow \oldneg (x<y)$, and these can be used as the other relations 
+used in these axioms have been shown to be dyadically enumerable. (d) is dyadically solvable, as $\oldneg (x\le y)$ can be determined by:\newline
+$y<x\rightarrow \oldneg (x\le y)$\newline (e) is dyadically solvable, as $\oldneg (x\ne y)$ can be given by $x=y$\newline 
+\section*{Problem 7}
+If $x\in G_n$, it follows that $x$ is either some $g_i\ i<n$ or is a concatenation of strings already in the set; in either case, $1$ must begin $x$. Also, 
+$2$ must end $x$ in a similar fashion. Then, at no point can $11Px$, as $x$ is a concatenation of $g_i$'s. Lastly, it is necessary that for $x$ to be in
+ $G_n$, $g_{n+1}$ is not a part of $x$ (and this implies $\oldneg (g_mPx)\ m>n$). Hence, we have the following $\Sigma_0$ formula expressing $G_n$:\newline
+$x\in G_n$ iff $1Bx\wedge 2Ex\wedge \oldneg (11Px)\wedge \oldneg (g_{n+1}Px)$.
+\section*{Problem 8}
+Consider the following $\Sigma_0$ formula:\newline
+$(\exists v_1\le x)...(\exists v_k\le x)(G_n(v_1)\wedge ...\wedge G_n(v_k)\wedge x=x')$\newline
+where $k$ is the number of variables found in the string made up of symbols of $L$ and variables $x_1,...,x_k$ that defines the set $I(X)$, $n$ is from 
+the sub-alphabet $k_1,...,k_n$, and $x'$ is the concatenation resulting from, in the formula defining $I(X)$,
+ replacing all the occurrences of symbols of $L$ by their respective Gödel numbers, and replacing all occurrences of variables $x_1,...,x_k$ by the 
+variables $v_1,...,v_k$ defined in the above formula, respectively.
+It is clear that, for any given set $I(X)$, the above formula holds iff $x\in I_0(X)$.   
+\section*{Problem 9}
+(a):\newline
+In general, for a given $L$ with $m-1$ symbols, $x$ is a sequence number of $some$ sequence iff $G_m(x)\wedge g_mBx\wedge g_mEx\wedge \oldneg g_m*g_mPx$
+\newline For suppose the formula holds. Then $x$ is a sequence number for $x$, as the $g_m$'s in $x$ are correctly spaced, and for any term other than 
+$g_m$ in $x$, they must have a Gödel number less than $g_m$ and are hence $some$ member of $L$. 
+ Conversley, assume that $x$ is a sequence number for 
+$L$. By defintion, $g_mBx\wedge g_mEx\wedge \oldneg g_m*g_mPx$,
+ Also, if $G_m(x)$ did not hold, then there would be some $g_n\ n>m$ in $x$, which is impossible, as there are only $m-1$ terms in $L$. A more specific, 
+and completely useless (as it is a restatement of the definition) formula for $x$ being a sequence number of $L$ for some sequence $g_m*X_1*g_m*...*g_m*X_r*
+g_m$ is $x=g_m*a_1*g_m*...*g_m*a_r*g_m$.
+\newline (b):\newline
+$x\in y$ iff $Seq(y)\wedge xPy\wedge \oldneg (g_mPx)$ where $m=n+1$ for $n$ the number of symbols in $L$. $Note:$ Smullyan's answer in the book 
+is just another way of saying the above, as it is easy to see that the formula with $G_n(x)$ is equivalent to the one above.\newline
+(c):\newline $pr(x,y,z)$ iff $y\in z\wedge (\exists w\le z)(wBz\wedge x\in W\wedge\oldneg (y\in w))$
+\section*{Problem 10}
+Let us recall that we are considering some $L$ in which the implication sign is part of the ordered alphabet, and therefore has a Gödel number. Thus, 
+let $e$ be the Gödel number of the implication sign. Hence, we have the following formula:\newline $Der(x,y,z)$ iff $y=xez\wedge \oldneg (ePx)$ and this 
+last condition is necessary as $X$ must be atomic.
+\section*{Problem 11}
+(a):\newline $Pf(x)$ iff $Seq(x)\wedge (\forall y\le x)[y\in x\supset \newline
+((\exists v\le x)(\exists w \le x)(Der(v,w,x)\wedge (pr(w,y,x)\wedge (pr(v,w,x))))\vee A(y))])$ where $A(y)$ is the property of $y$ being the Gödel number 
+of an instance of an axiom of $(E)$; and this is $\Sigma_0$ by the Substitution Lemma.\newline
+(b):\newline $ypfx$ iff:\newline $Pf(y)\wedge x\in y\wedge (\forall z\le y)(\oldneg pr(z,x,y))$\newline Alternatively (as Smullyan gives in his answer), 
+the last condition of the above formula is equivalent to $g_m*x*g_mEy$.\newline
+(c):\newline $Pr(x)$ iff $\exists y(ypfx)$\newline
+(d):\newline We consider some formally representable set $W_0$ of Gödel numbers of the representable set $W$. So let us consider the predicate $H$ 
+that represetns $W_0$, and let its Gödel number be $h$. From this, we have the followng $\Sigma_1$ formula expressing $W_0$:\newline
+$\exists y(ypfhx)$\newline
+For $n$-ary relations, the above formula can be rewritten as:\newline
+$\exists y(ypfha_1c...ca_n)$ where $c$ is the Gödel number of the comma.
+\section*{Problem 12}
+Suppose $T$ was formally representable. Hence, by Problem 11 (d), it would be expressed by some $\Sigma_1$ formula, thus meaning that it is arithmetic, 
+contrary to Tarski's Theorem.
+\section*{Problem 13}
+Suppose $S$ is a formal arithmetic system that is $\omega$-consistent and is $\Sigma_0$ complete. Well, this means $P_0$ is $\Sigma_1$, and this means 
+$P^*$ ($P_0^\#$) is also $\Sigma_1$ (by Problem 12 of Chapter 11), that is, of the form $\exists zR(x,z)$ for some $\Sigma_0$ relation 
+$R(x,z)$. Well, because the system is $\Sigma_0$ complete, there is some formula $F(x,z)$ that is provable if $R$ holds, and is 
+refutable otherwise. Hence, if $x\in P^*$, $F(x,z)$ holds for at least one $z$, and if $x\notin P^*$, $F(x,z)$ is refutable for every $z$. Thus, $F(x,z)$ 
+enumerates $P^*$ (and this result can be generalized for any set). 
+Then, if $S$ is a formal system, $P$ is formally representable. Well, consider the $(E)$ in which $P$ is represented by some predicate 
+$P$. Then, add the axiom:\newline $Pnx\rightarrow Rx$ for $n$ the Gödel number of the negation, and for some new predicate $R$. Hence $R$ represents $R$, 
+and therefore $R$ is also formally representable. Hence both $P^*$ and $R^*$ are enumerable. Then the rest of the problem follows from identical reasoning 
+as to that in Chapter 10. 
+\end{document}

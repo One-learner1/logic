@@ -1,0 +1,104 @@
+%/*% pdflatex -file-line-error -interaction nonstopmode %
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{amsthm}
+\newcommand*{\oldneg}{\mathord{\sim}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+
+\title{Chapter 11}
+\begin{document}
+\maketitle
+We are attempting to prove that every decimal number has a unique binary and dyadic representation.
+\section*{Uniqueness}
+Dyadic Notation Case:\newline
+\begin{proof}
+We assume that there exists at least two dyadic representations for some decimal number.
+\newline Result 1: Consider any number $2\times 2^n$. We are to show that this number is bigger than any sum of any $2^m, 2\times 2^m$ for $m<n$ where every
+term with every power $i$ is counted only once. In the base case, we have $2\times 2^2=8$, while the greatest possible sum of lower $m$'s is
+$2\times 2^1+2\times 2^0=6$, thus completing this case. Make an induction assumption. Well, consider $2\times 2^{n+1}$. 
+We can rewrite this as $2^{n+2}$. Then,consider the greatest possible sum of lower powers of $m$, that is:\newline
+$2\times 2^n+2\times 2^{n-1}+...+2\times 2^0$. By the assumption, this simplifies to:\newline
+$\rightarrow 2\times 2^n+m$ where $m<2\times 2^n$. This shows that the sum is:
+$2^{n+1}+m$, that is, some number less than $2^{n+1}+2^{n+1}$, meaning the sum is less than $2^{n+2}$, thus completing this part of the proof.\newline
+\newline Final Result: There are then two cases for this non-unique dyadic representation. Either the two representations are the same length, or they are
+not. \newline Consider the first case, where they are of the same length. Well, because they are different representations, find the first spot where the
+representations differ. Hence, at this point, one representation has a $1$, while the other has $2$. The one with the $2$ at this points currently
+represents a number greater than the one that the other representation represents. For these to be equal, the next lowest digit must be a $2$ for the smaller
+representation. However, the greater one stays greater, as it must at least have a $1$ for this digit. Hence, this process must continue if they are indeed 
+equal decimals. Well, at no point can they be equal, as, whenever we add a $2$ to the lesser representation, a $1$ is added to the greater one, thus 
+meaning it is still larger, and hence, the representations do not represent the same decimal number.\newline Now Consider the second case where the
+representations are different lengths. If the longer representation has a $2$ in the $2^n$ place for the largest $n$, the decimal numbers that the
+representations represent are not equal by Result 2. Otherwise, the longer representation has a $1$ in the $2^n$ place. Well, for these two representations
+to be equal, the $2^m$ digit for the shorter representation for the greatest $m$ must be $2$, while the digit in the $m$ place in the longer representation
+must be $1$. This process must go on, and, as we saw in the first case, it never ends with the representations being equal (because the greater
+representation is of a longer length), thus proving they represent different decimal numbers.
+\end{proof} 
+Binary Notation Case:\newline
+\begin{proof}
+We temporarily assume that some binary notation is non-unique for some number.\newline
+\newline Result 1: Consider any number $2^n$. We are to show that no sum of any number $2^m$ for $m<n$ where every $2^i$ is counted at most once, 
+can be equal to or greater than $2^n$. In the base case of $1$, this is clear, as the only possible sum of lower $2^i$'s would be $2^0$, that is, $1$, 
+which does not equal $2^1=2$. Now, assume that the statement holds true for some $n$. Now, consider $2^{n+1}$. Now, to show that all possible sums of the 
+manner that we are considering are less than $2^n+1$, we need only to show that the greatest sum, namely the one in which all $n-1$ lower powers of $2$ are 
+counted once, is less than $2^{n+1}$. Well, consider this sum. We consider the partial sum $2^0+...+2^{n-1}$. By the assumption, this is less 
+than $2^n$. Hence, $2^n+2^{n-1}+...+2^0=2^n+m$ where $m<2^n$. Thus, $2^n+2^{n-1}+...+2^0<2^n+1$, thus completing this inductive proof.\newline
+\newline Final Result: There are then two cases: either the lengths of the binary numbers are the same, or it is not.
+\newline \newline Consider the first case. Starting at $2^n$, subtract
+$2^n$, and then, if the lengths of the resulting numbers are the same, subtract $2^{n-1}$, and so on. If we never reach a point where the numbers differ, the
+binary notations are clearly the same. However, if we ever reach some point where the digit for one number is $2^i$ is $1$, while the other is $0$, no binary
+number up to length $i-1$ can equal $2^i$ by Result 1 (and it must equal $2^i$ as we assumed that we had subtracted equivalent numbers at every earlier
+stage, thus preserving equality). Hence, these representations do not represent the same decimal number.\newline \newline 
+Consider the second case. Well, this implies that the digit in the $2^m$ place is $1$ for $m$ the length of the longer binary number. Well, by Result 2, 
+no possible sum of any length $n<m$ could equal $2^m$, thus proving that these two numbers do not represent the same decimal number, thus completing 
+the proof. 
+\end{proof}
+\section*{Completeness}
+Binary Notation Case:\newline
+\begin{proof}
+Result 1: \newline We first prove an important Lemma, that is, every integer is either a power of $2$, or equals a sum of distinct powers of $2$.
+In the base case, $1$ is a power of $2$, thus completing the base case. Now, make a complete induction assumption.There are two cases: either the integer
+is odd, or it is even. Let us first consider the case where the integer is even. So, let us consider the $n+1$th even
+number. Well, by the assumption, the $n$th even number is either a power of $2$ or equals a sum of powers of $2$. Now, let us consider $m$, the $n$th even
+number. If it is a power of $2$, it must be $\ge 2$, as we assumed that it was even. Well, if $m=2$, this means that $n$, the $n+1$th even number, is
+$2+2=4$, and is therefore a power of $2$. Otherwise, $m$ is some greater power of $2$, thus meaning that $2+m$, a sum of two distinct powers of $2$, equals
+$n$, thus completing this case.\newline In the other case, we have $m$ equalling a sum of powers of $2$. Let us consider this sum. If $2$ is not a term of
+the sum, then $2+m=n$, that is, some sum of distinct powers of $2$ $=n$. Otherwise, it contains $2$. So, take $2$ out of the sum, and pair it with the $2$
+in the equation $2+m=n$. Then, the leftover sum for $m$ either has $4$ or it does not. If it does not, we have $4+k=n$ for $k$ the sum for $m$ without $2$.
+Otherwise, we pair the $4$ with the leftover $4$ in the equation $4+k=n$, and we repeat this process. Eventually, this process must end. When the process
+ends, we would be left with $2^l+s=n$ for $l$ the number of times the process repeated, and $s$ the leftover partial sum for $m$, thus meaning $n$ is equal
+to a sum of distinct powers of $2$, thus completing the proof. In the case where the integer is odd, we simply take the sum of powers of $2$ for the
+odd integer minus one, and then add to this sum the term $2^0=1$.
+\newline Final Result:\newline Consider any decimal number $n$. It is either $0$, or it is not. If it equals $0$, the binary number $0$ represents this. 
+Otherwise, we consider the sum of distinct powers of $2$ that $n$ has (by Result 1). To make a binary representation for this decimal, we simply
+pick a digit of $1$ for all those powers of $2$ listed in its corresponding sum of powers of $2$, and pick a $0$ for any other powers of $2$, thus 
+effectively representing this number in binary notation.
+\end{proof}
+Dyadic Notation Case:\newline
+\begin{proof}
+Consider any decimal number $n$. Now, let us consider its binary representation shown in the above proof. Here is how we can translate this binary 
+notation into dyadic notation. The first time we encounter a $0$ in $k$th digit in the binary notation, we shift over the representation by firsting changing
+the $k$th digit to a $2$ and making the $k+1$th digit a $0$. Then, we go to the $k+1$th digit, and repeat this process until we reach the last digit. Then,
+ whenever we encounter another $0$ in the rest of the notation, if the $k+1$th digit is a $1$, we change the $k$th digit to a $2$ and the $k+1$th digit to a 
+$0$. If the $k+1$th digit is a $2$, we change the $k+1$th digit to a $1$, and the $k$th digit to a $2$. If the $k+1$th digit was a $1$, we repeat the process
+ until reach the last digit. It should be clear that the process described conserves the initial decimal number that the representation represented. Also, 
+because we repeat this process until there are no more $0$'s, it is clear this process removes all $0$'s from the notation. Thus, we have effectively gone 
+from binary notation to a notation with only $1$'s and $2$'s which represents the same decimal number, and hence, we have therefore represented the decimal
+ number in dyadic notation. Of course, if the binary notation is $only$ $0$'s, then the decimal number it represents is $0$, and thus we need not worry about
+ this case, as we are only trying to show all $integers$ are representable in dyadic notation.
+\end{proof}
+\section*{A Further Result}
+Proof the every dyadic or binary string of $n$ $1$'s is equal to $2^n-1$.
+\begin{proof}
+In the base case, one $1=2^0=1$, that is, $2^1-1$. Now, make an induction assumption. So, a string of $n+1$ $1$'s is equal to $1\times 2^n + 2^n-1$ that is,
+ $2^{n+1}-1$.
+\end{proof} 
+\end{document}
