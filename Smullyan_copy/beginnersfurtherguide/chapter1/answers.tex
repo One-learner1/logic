@@ -1,0 +1,168 @@
+%/*% pdflatex -file-line-error -interaction nonstopmode %
+
+\documentclass{article}
+\usepackage{graphicx}
+\graphicspath{ {.} }
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{amsthm}
+\usepackage{yhmath}
+\usepackage{placeins}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 1 Answers}
+\begin{document}
+
+\section*{1}
+(a): First, we show that if $S$ is a boolean truth set, then (1) and (2) follow.\newline 
+(1): We are to show that $\alpha\in S$ iff $\alpha_1\in S$ and $\alpha_2\in S$. The case where $\alpha$ is $X\wedge Y$ is just condition (1). By (4), 
+$\oldneg (X\supset Y)$ iff $X\supset Y\notin S$. So, $\oldneg (X\supset Y)\in X$ iff $X\supset Y\notin S$ iff $X\in S$ and $Y\not in S$ (by (3)) iff 
+$\oldneg Y\in S$, which proves the case of $X\supset Y$. In the third case, the formula is of the form $\oldneg (X\vee Y)$. $\oldneg (X\vee Y)\in S$ iff 
+$X\vee Y\notin S$ (by (4)) iff $X\notin S$ and $Y\notin S$ (by (2)) iff $\oldneg X\in S$ and $\oldneg Y\in S$ (by (4)), which completes this case. In the 
+last case, the formula is $\oldneg\oldneg X$. $\oldneg\oldneg X\in S$ iff $\oldneg X\notin S$ (by (4)) iff $X\in S$ (by (4)), which completes the proof in 
+this case.\newline
+(2): We are to show that either $X\in S$ or $(\oldneg X)\in S$, but not both. By (4), $(\oldneg X)\in S$ iff $X\notin S$. 
+In any case, this shows that either $X\in S$ and $(\oldneg X)\notin S$, or that $(\oldneg X)\in S$ and $X\notin S$ (by definition of iff), which is 
+what we were trying to prove.
+(b): Next, suppose that the two conditions of Problem 1 hold. We are to show that $S$ is a Boolean truth set. 
+(1): This is immediate from condition (1) of Problem 1.\newline
+(2): By (2) from Problem 1 $X\vee Y\in S$ iff $\oldneg(X\vee Y)\notin S$ iff $\oldneg X\notin S$ or $\oldneg Y\notin S$ (by (1) of Problem 1) iff 
+$X\in S$ or $Y\in S$ (by (2) of Problem 1)\newline
+(3): By (2) from Problem 1 $X\supset Y\in S$ iff $\oldneg(X\supset Y)\notin S$ iff $X\notin S$ or $\oldneg Y\notin S$ (by (1) of Problem 1) iff 
+$\oldneg X\in S$ of $Y\in S$ (by (2) of Problem 1)\newline
+(4): This is obviously equivalent to (4).
+
+\section*{Exercise 1}
+(a): First, we show that if $S$ is a boolean truth set, then (1) and (2) from this exercise follow.\newline
+(1): The cases where $\beta$ is of type $X\vee Y$ or $X\supset Y$ are immediate (by (2) and (3) from the Boolean consequence relation definition). 
+When $\beta$ is of the form $\oldneg(X\wedge Y)$, $\oldneg(X\wedge Y)\in S$ iff $X\wedge Y\notin S$ (by (4)) iff $X\notin S$ or $Y\notin S$ (by (1)) 
+iff $\oldneg X\in S$ or $\oldneg Y\in S$ (by (4)).\newline
+(2): This is equivalent to (4) in the definition of a Boolean consequence relation.\newline
+(b): Next, we show that if $S$ satisfies (1) and (2) from this exercise, then $S$ is a Boolean truth set.
+(1): $X\wedge Y\in S$ iff $\oldneg(X\wedge Y)\notin S$ (by (2)) iff $\oldneg X\notin S$ and $\oldneg Y\notin S$ (by (1)) iff $X\in S$ and $Y\in S$ (by 
+(2)).\newline
+(2-3): Conditions (2) and (3) are immediate from condition (1) of this exercise. 
+(4): This is equivalent to condition (2) of this exercise.
+
+\section*{2}
+\[
+\begin{array}{rl}
+	& 1:\ S\vdash X\ (Hypothesis) \\
+	& 2:\ S\vdash Y\ (Hypothesis) \\
+	& 3:\ X,Y\vdash Z\ (Hypothesis) \\
+	& 4:\ S,X,Y\vdash X,Y\ (C_1) \\
+	& 5:\ S,X\vdash Y\ (2,C_2) \\
+	& 6:\ S,X\vdash X,Y\ (5,4,C_3) \\
+	& 7:\ S\vdash X,Y\ (1,6,C_3) \\
+	& 8:\ S,X,Y\vdash Z\ (3,C_2) \\
+	& 9:\ S\vdash Z\ (7,8,C_3)
+\end{array}
+\]
+
+\section*{3}
+We assume that $S$ is consistent, and $S\vdash X$. We must show that $S,X$ is consistent. Because $S$ is consistent, this means that $S\vdash Z$ is not the 
+for at least one formula $Z$. Now suppose that $S,X\vdash Z$ is the case. By $C_3$, this would mean that $S\vdash Z$, which is a contradiction. This means 
+that $S,X\vdash Z$ is not the case, meaning $S,X$ does not yield at least one formula $Z$, thus proving that it is consistent.
+
+\section*{4}
+(a): We assume that S is consistent,
+$S\vdash X$ and $X\vdash Y$. By $C_2$, $S,X\vdash Y$ follows. By $C_3$, $S\vdash Y$ also follows, meaning $S,Y$ is consistent by 
+Problem 3.\newline
+(b): We assume that S is consistent,  
+$S\vdash X$ and $S\vdash Y$ and $X,Y\vdash Z$. By Problem 2, $S\vdash Z$ follows, and thus, by Problem 3, $S,Z$ is consistent.
+
+\section*{5}
+(a): We assume that M is maximally consistent, 
+$X\in M$ and $X\vdash Y$ and that $M$ is maximally consistent. Suppose that $Y\notin M$. By $C_1$, $M\vdash X$, meaning, by Problem 4(a),
+that $M,Y$ is consistent. If we assume that $Y\notin M$, this is in direct contradiction with the fact that $M$ is maximally consistent, thus meaning 
+$Y\in M$.\newline
+(b): We assume that M is maximally consistent, $X\in M$ and $Y\in M$ and $X,Y\vdash Z$. This means that $M\vdash X$ and $M\vdash Y$ by $C_1$. By 
+Problem 4(b), it follows that $M,Z$ is consistent. So, if $Z\notin M$, this is in direct contradiction with the fact that $M$ is maximally consistent, 
+meaning $Z\in M$. 
+
+\section*{Exericse 2}
+We need to show that $S\vDash X$ is a Boolean consequence relation, that is, that it satisfies $C_1-C_8$.\newline
+$C_1$: Suppose $X\in S$. Because $X\in S$, $X$ is obviously true under all interpretations that satisfy $S$, meaning $S\vDash X$.\newline
+$C_2$: Suppose $S_1\vDash X$ and $S_1\subseteq S_2$. This means that $X$ is true under all interpretations that satisfy $S_1$. Well, because 
+$S_1\subseteq S_2$, all interpretations that satisfy $S_2$ also satisfy $S_1$, meaning $X$ is also true under all interpreations that satisfy 
+$S_2$, thus proving $S_2\vDash X$.\newline
+$C_3$: Suppose $S\vDash X$ and $S,X\vDash Y$. This means that $Y$ is true under all interpretations that satisfy $S$ and satisfy $X$. But 
+$X$ is true under all interpreations that satisfy $S$, meaning, under all interpreations that satisfy $S$, $S,X$ is also satisfied. Thus, 
+$S\vDash Y$.\newline
+$C_4$: Suppose $S\vDash X$. Recall the Corollary to the Compactness Theorem for Propositional Logic that states that 
+if $X$ is a logical consequence of $S$ then $X$ is a logical consequence of some finite subset of $S$ (logical consequence there means the same 
+thing as tautological consequence here), which single-handedly proves $C_4$.\newline
+$C_5$: (a-b): By definition of an $\alpha$ formula, it is true iff $\alpha_1,\alpha_2$ are true, meaning that $\alpha\vDash\alpha_1,\alpha\vDash\alpha_2$.
+\newline
+$C_6$: Again, by definition of an $\alpha$ formula, it is true iff $\alpha_1,\alpha_2$ are true, meaning $\alpha_1,\alpha_2\vDash\alpha$.\newline
+$C_7$: By definition, $X,\oldneg X$ is unsatisfiable. Hence, every formula $Y$ is vacuously true under all interpreations that satisfy $X,\oldneg X$ 
+(because there aren't any). \newline
+$C_8$: Suppose that $S,\oldneg X\vDash X$. This means that, if $\oldneg X$ was true under any interpretations that satisfied $S$, $X$ would also be 
+true, yielding a contradiction. Hence, $S\bigcup\oldneg X$ is unsatisfiable, meaning $X$ is true under all interpretations that satisfy $S$.
+
+\section*{6}
+We suppose that $\vdash$ is tautologically complete. This means that, whenver $X$ is a tautological consequence of $\oldemptyset$. Because we are considering 
+the empty set, this means that all elements of the empty set of vacuously satisfied by every interpretation. Because $X$ is assumed to be a tautology, 
+it to is satisfied by every interpretation, meaning $X$ is a tautological consequence of $\empty$, and thus, because $\vdash$ is tautologically complete, 
+$\oldemptyset\vdash X$.
+
+\section*{7}
+We must prove that if $\vdash$ is a Boolean consequence relation and $M$ is maximally consistent with respect to $\vdash$, then $M$ is a Boolean truth 
+set. Recall that because $\vdash$ is a Boolean consequence realtion, it satisfies $C_1-C_8$. Also, because $M$ is maximally consistent with respect to 
+$\vdash$, it is not a proper subset of any consistent set with respect to $\vdash$ such that this set has an element not in $M$. We need to show that 
+$M$ is a Boolean truth set, which, by Problem 1, is the same as showing that it satisfies conditions (1) and (2) of that problem. As for condition (1), 
+we need to show that $\alpha\in S$ iff $a_1\in S$ and $a_2\in S$. On the one hand, assume that $\alpha\in M$. By $C_1$, $M\vdash\alpha$. By $C_5$, 
+$\alpha\vdash\alpha_1$ and $\alpha\vdash\alpha_2$. Hence, by two applications of Problem 5(a), we can conclude that $\alpha_1\in M$ and $\alpha_2\in M$. 
+On the other hand, assume that $\alpha_1\in M$ and $\alpha_2\in M$. Again, by $C_1$, $M\vdash\alpha_1,M\vdash\alpha_2$. 
+By $C_6$, $\alpha_1,\alpha_2\vdash\alpha$. 
+Then, by Problem 5(b), we can conclude that $\alpha\in M$.\newline
+Now, we need to show that $M$ satisfies condition (2) of Problem 1. This condition states that either $X\in S$ or $(\oldneg X)\in S$, but not both. 
+Suppose both $X$ and $\oldneg X$ were in $M$. By $C_7$, $X,\oldneg X\vdash Y$. Because $M$ is maximally consistent, it is consistent (with repsect to 
+$\vdash$), meaning $M\nvdash Z$ for some formula $Z$. However, by $C_7$, $X,\oldneg X\vdash Z$, meaning, if $X,\oldneg X\in M$, then 
+$M\vdash Z$ by $C_2$, which is a contradiction.\newline
+Next, we need to show that one and only one of $X,\oldneg X$ are in $M$. First, assume that $\oldneg X\notin M$. We need to show that $X\in M$. 
+Because $M$ is maximally consistent, $M,\oldneg X$ must be inconsistent (because $\oldneg X\notin M$). Hence, $M,\oldneg X\vdash Y$ holds for 
+every $Y$, and in particular, $M,\oldneg X\vdash X$ holds, meaning, by $C_8$, $M\vdash X$ holds. By Problem 5(a), substituting $M$ for $X$, 
+it follows that $X\in M$. The proof for the case when $X\notin M$ is similar, replacing $X$ by $\oldneg X$, and $\oldneg X$ by $X$.\newline
+$Alternatively$: To show that $M\vdash X$ means $X\in M$, one can also use $C_3$. In particular, recall that $M\nvdash Z$ for the $Z$ defined above. 
+Then, if $X\notin M$, this means $M,X$ must be inconsistent (because $M$ is maximally consistent), and thus $M,X\vdash Z$. By $C_3$, it would follow 
+that $M\vdash Z$, which is a contradiction, meaning $X\in M$. 
+
+\section*{8}
+We are to show that for a Boolean consequence relation $\vdash$, consistency is compact, that is, a set $S$ is consistent (with respect to $\vdash$) iff 
+all finite subsets of $S$ are consistent. On the one hand, suppose $S$ is consistent. Thus, $S\nvdash Z$ for some $Z$. Suppose at least one finite 
+subset $F$ of $S$ is inconsistent, that is, is such that $F\vdash Y$ is provable for every $Y$. In particular, $F\vdash Z$ holds, meaning, by 
+$C_2$, $S\vdash Z$ holds, which is a contradiction. Thus, all finite subsets of $S$ are consistent. On the other hand, suppose all finite subsets of 
+$S$ are consistent. Suppose that $S$ is inconsistent, that is, $S\vdash Y$ holds for every formula $Y$. Because all finite subsets are consistent, 
+$F\nvdash Z$ for every finite subset $Z$ for some $Z$ (possibly a different $Z$) for every finite subset.  
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -2,6 +2,7 @@ For a new file:
 git add "file"
 Make changes to file, then:
 git status % To see what changes are ready to be committed
+git commit -m "comment"
 git push -u origin main % To update remote repository (Github)
 For a new edit:
 git add "file" for all files changed, and then follows steps for the making a new file process
