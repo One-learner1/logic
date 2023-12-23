@@ -21,11 +21,12 @@
 \setlength{\parskip}{12pt}
 \title{Chapter 1 Answers}
 \begin{document}
+\maketitle
 
 \section*{1}
 (a): First, we show that if $S$ is a boolean truth set, then (1) and (2) follow.\newline 
 (1): We are to show that $\alpha\in S$ iff $\alpha_1\in S$ and $\alpha_2\in S$. The case where $\alpha$ is $X\wedge Y$ is just condition (1). By (4), 
-$\oldneg (X\supset Y)$ iff $X\supset Y\notin S$. So, $\oldneg (X\supset Y)\in X$ iff $X\supset Y\notin S$ iff $X\in S$ and $Y\not in S$ (by (3)) iff 
+$\oldneg (X\supset Y)$ iff $X\supset Y\notin S$. So, $\oldneg (X\supset Y)\in S$ iff $X\supset Y\notin S$ iff $X\in S$ and $Y\notin S$ (by (3)) iff 
 $\oldneg Y\in S$, which proves the case of $X\supset Y$. In the third case, the formula is of the form $\oldneg (X\vee Y)$. $\oldneg (X\vee Y)\in S$ iff 
 $X\vee Y\notin S$ (by (4)) iff $X\notin S$ and $Y\notin S$ (by (2)) iff $\oldneg X\in S$ and $\oldneg Y\in S$ (by (4)), which completes this case. In the 
 last case, the formula is $\oldneg\oldneg X$. $\oldneg\oldneg X\in S$ iff $\oldneg X\notin S$ (by (4)) iff $X\in S$ (by (4)), which completes the proof in 
@@ -39,7 +40,7 @@ what we were trying to prove.
 $X\in S$ or $Y\in S$ (by (2) of Problem 1)\newline
 (3): By (2) from Problem 1 $X\supset Y\in S$ iff $\oldneg(X\supset Y)\notin S$ iff $X\notin S$ or $\oldneg Y\notin S$ (by (1) of Problem 1) iff 
 $\oldneg X\in S$ of $Y\in S$ (by (2) of Problem 1)\newline
-(4): This is obviously equivalent to (4).
+(4): This is obviously equivalent to (1) of Problem 1.
 
 \section*{Exercise 1}
 (a): First, we show that if $S$ is a boolean truth set, then (1) and (2) from this exercise follow.\newline
@@ -110,9 +111,9 @@ $C_8$: Suppose that $S,\oldneg X\vDash X$. This means that, if $\oldneg X$ was t
 true, yielding a contradiction. Hence, $S\bigcup\oldneg X$ is unsatisfiable, meaning $X$ is true under all interpretations that satisfy $S$.
 
 \section*{6}
-We suppose that $\vdash$ is tautologically complete. This means that, whenver $X$ is a tautological consequence of $\oldemptyset$. Because we are considering 
+We suppose that $\vdash$ is tautologically complete. This means that, whenever $X$ is a tautological consequence of $\oldemptyset$. Because we are considering 
 the empty set, this means that all elements of the empty set of vacuously satisfied by every interpretation. Because $X$ is assumed to be a tautology, 
-it to is satisfied by every interpretation, meaning $X$ is a tautological consequence of $\empty$, and thus, because $\vdash$ is tautologically complete, 
+it to is satisfied by every interpretation, meaning $X$ is a tautological consequence of $\oldemptyset$, and thus, because $\vdash$ is tautologically complete, 
 $\oldemptyset\vdash X$.
 
 \section*{7}
@@ -132,18 +133,74 @@ $M\vdash Z$ by $C_2$, which is a contradiction.\newline
 Next, we need to show that one and only one of $X,\oldneg X$ are in $M$. First, assume that $\oldneg X\notin M$. We need to show that $X\in M$. 
 Because $M$ is maximally consistent, $M,\oldneg X$ must be inconsistent (because $\oldneg X\notin M$). Hence, $M,\oldneg X\vdash Y$ holds for 
 every $Y$, and in particular, $M,\oldneg X\vdash X$ holds, meaning, by $C_8$, $M\vdash X$ holds. By Problem 5(a), substituting $M$ for $X$, 
-it follows that $X\in M$. The proof for the case when $X\notin M$ is similar, replacing $X$ by $\oldneg X$, and $\oldneg X$ by $X$.\newline
+it follows that $X\in M$. The contrapositive of this statement is if $X\notin M$ then $\oldneg X\in M$, which completes the proof.\newline
 $Alternatively$: To show that $M\vdash X$ means $X\in M$, one can also use $C_3$. In particular, recall that $M\nvdash Z$ for the $Z$ defined above. 
 Then, if $X\notin M$, this means $M,X$ must be inconsistent (because $M$ is maximally consistent), and thus $M,X\vdash Z$. By $C_3$, it would follow 
 that $M\vdash Z$, which is a contradiction, meaning $X\in M$. 
 
+We can also prove the case where $X\notin M$ directly. For suppose $X\notin M$. Because we have shown that $M$ satisfies condition (1) of Problem 1, 
+it follows that $\oldneg\oldneg X\notin M$. Hence, because $M$ is maximally consistent, $M,\oldneg\oldneg X$ is inconsistent, meaning 
+$M,\oldneg\oldneg X\vdash \oldneg X$, and thus $M\vdash \oldneg X$ by $C_8$. Then, by Problem 5(a), $\oldneg X\in M$.
+
 \section*{8}
-We are to show that for a Boolean consequence relation $\vdash$, consistency is compact, that is, a set $S$ is consistent (with respect to $\vdash$) iff 
-all finite subsets of $S$ are consistent. On the one hand, suppose $S$ is consistent. Thus, $S\nvdash Z$ for some $Z$. Suppose at least one finite 
-subset $F$ of $S$ is inconsistent, that is, is such that $F\vdash Y$ is provable for every $Y$. In particular, $F\vdash Z$ holds, meaning, by 
-$C_2$, $S\vdash Z$ holds, which is a contradiction. Thus, all finite subsets of $S$ are consistent. On the other hand, suppose all finite subsets of 
-$S$ are consistent. Suppose that $S$ is inconsistent, that is, $S\vdash Y$ holds for every formula $Y$. Because all finite subsets are consistent, 
-$F\nvdash Z$ for every finite subset $Z$ for some $Z$ (possibly a different $Z$) for every finite subset.  
+We are to show that for a Boolean consequence relation $\vdash$, consistency is compact. That is, we must show that a $S$ is consistent with 
+respect to $\vdash$ iff all finite subsets of $S$ are also consistent with respect to $\vdash$.\newline
+Case 1: $S$ is consistent:\newline
+In this case, we must show that all finite subsets $F$ of $S$. Suppose that some finite subset $F_1$ of $S$ is inconsistent, that is, 
+$F_1\vdash Z$ holds for every formula $Z$. Because $S$ is consistent, there is some $Z_1$ such that $S\nvdash Z_1$. Because $\vdash$ is a Boolean 
+consequence relation, \[ S,F_1\vdash Z_1 \] holds by $C_2$. Because $F_1\in S$, $S\vdash F_1$ by $C_1$, meaning $S\vdash Z_1$ holds by $C_3$, which 
+is a contradiction, as we assumed $S\nvdash Z_1$, thus completing the proof in this case.\newline
+Case 2: All finite subsets $F$ of $S$ are consistent:\newline
+In this case, we must show that $S$ is also consistent. Suppose $S$ was inconsistent, that is, $S\vdash Z$ holds for every $Z$. Because every finite 
+subset $F$ of $S$ is consistent, there is some formula $Z$ for every $F$ such that $F\nvdash Z$. Because $S$ is inconsistent, $S\vdash X$ and 
+$S\vdash \oldneg X$ for every formula $X$. By Problem 2, substituting $X,\oldneg X$ in for $Z$, it follows that $S\vdash X,\oldneg X$, meaning, 
+by $C_4$, $F_1\vdash X,\oldneg X$ for some finite subset $F_1$ of $S$. By $C_7$ and $C_3$, it follows that $F_1\vdash Z$ for the $Z$ which 
+we assumed $F_1\nvdash Z$ (because $F_1$ is consistent), which yields a contradiction.
+$Alternatively$: Picking up from the above, we know that $S\vdash X$ and $S\vdash \oldneg X$ because $S$ is inconsistent. By $C_4$, $F_1\vdash X$ 
+and $F_2\vdash\oldneg X$ for some finite subsets $F_1,F_2$ of $S$. Now consider $F=F_1\bigcup F_2$. $F\in S$, as, if $X\in S$ and $Y\in S$, then 
+$X,Y\in S$. By $C_1$, $F\vdash F_1$ and $F\vdash F_2$, and therefore $F\vdash X$ and $F\vdash\oldneg X$, meaning, by problem 2, substituting 
+$X,\oldneg X$ in for $Z$, we have $F\vdash X,\oldneg X$, which proves $F\vdash Z$ for every $Z$ (by $C_7$), thus yielding a contradiction (as we 
+assumed all finite subsets of $S$ were consistent).   
+
+\section*{9}
+We are to prove Theorem 1, that is, every Boolean consequence relation is tautologically complete. That is, we must show that, for every set $S$ 
+and formula $X$, whenever $X$ is a tautological consequence of $S$, then $S\vdash X$. 
+Recall that every Boolean truth set has been shown to be satisfiable, thus meaning $M$ is satisfiable. Because $M$ is satisfiable, so is every 
+subset of $M$, that is, every consistent set. Thus, every consistent set is satisfiable, meaning if a set is unsatisfiable, it is inconsistent. Now, 
+because $X$ is a tautological consequence of $S$, $S,\oldneg X$ is unsatisfiable, meaning this same set is also inconsistent, meaning 
+$S,\oldneg X\vdash X$ holds, and therefore, by $C_8$, $S\vdash X$ holds, completing the proof.  
+
+\section*{10}
+We suppose that $S\vdash X$ and $S\vdash X\supset Y$. Because $\vdash$ is assumed to be faithful to modus ponens, $X,X\supset Y\vdash Y$ holds, 
+meaning, by Problem 2, $S\vdash Y$ holds. 
+
+\section*{11}
+(a): Suppose $X\supset Y$ is provable and $S\vdash X$. We are to show that $S\vdash Y$ is provable. Because $\oldemptyset\in S$, and 
+$\oldemptyset\vdash X\supset Y$, $S\vdash X\supset Y$ holds by $C_2$, and then, by Problem 10, $S\vdash Y$.\newline
+(b): Suppose $X\supset(Y\supset Z)$ is provable, and $S\vdash X$ and $S\vdash Y$. We are to show that $S\vdash Z$. By Problem 11(a), 
+$S\vdash Y\supset Z$ holds, and then, again by Problem 11(a), $S\vdash Z$ holds.\newline
+(c): Suppose $X\supset Y$ is provable. We are to show that $X\vdash Y$ is provable. By $C_2$, $X\vdash X\supset Y$ holds. Because 
+$\vdash$ is faithfull to modus ponens, $X,X\supset Y\vdash Y$ holds, and $X\vdash X$ holds by $C_1$. By $C_3$, $X\vdash Y$ holds.\newline
+(d): Suppose $X\supset (Y\supset Z)$ is provable. We are to show that $X,Y\vdash Z$. Again, by $C_2$, $X,Y\vdash X\supset (Y\supset Z)$. 
+By $C_1$, $X,Y\vdash X$. Thus, $X,Y\vdash X$ and $X,Y\vdash X\supset (Y\supset Z)$, meaning, because $X,X\supset (Y\supset Z)\vdash Y\supset Z$, 
+$X,Y\vdash Y\supset Z$ by Problem 2. Then, because $\vdash$ is faithfull to modus ponenes, $Y,Y\supset Z\vdash Z$. By $C_1$, 
+$X,Y\vdash Y$, meaning, by Problem 2, $X,Y\vdash Z$.    
+
+\section*{12}
+We are to show that $\vdash$ is a consequence relation, where $\vdash$ means that $X$ is deducible from $S$. Thus, we need to show that $\vdash$ 
+satisfies $C_1-C_4$.\newline
+$C_1$: If $X\in S$, then $X$ is deducible from $S$, as a deduction was defined such that every term $X_i$ could be a member of $S$, meaning 
+we could have, for example, just the deduction $X$.\newline
+$C_2$: We suppose $S_1\vdash X$, and that $S_1\subseteq S_2$. We need to show that $S_2\vdash X$, that is $X$ is deducible from $S_2$. This is obvious
+as, because $X$ is deducible from $S_1$, we can use this same exact deduction to show that $X$ is deducible from $S_2$, as every term $X_i$ that is 
+a member of $S_1$ is also a member of $S_2$.\newline
+$C_3$: We need to show that if $S\vdash X$ and $S,X\vdash Y$, then $S\vdash Y$. Suppose we have the sequence $X_1,...,X_n$ deducing $X$ from $S$, 
+and the deduction $Y_1,...,Y_k$ deducing $Y$ from $S,X$. Thus, the deduction $X_1,...,X_n,Y_1,...,Y_k$ deduces $Y$ from $S$ (because $X$ is a formula).
+\newline
+$C_4$: We need to show that if $S\vdash X$, then $F\vdash X$ for some finite subset of $X$. Because $X_1,...,X_n$ is a finite sequence, 
+we take $F$ to be the set $Y_1\bigcup ...\bigcup Y_k$, the set of the $k$ formulae being subsets of $S$ 
+used in the deduction of $X$ from $S$. $F$ is obviously a finite 
+subset of $S$, meaning, because $F\vdash X$, the proof is complete. 
 
 \end{document}
 
