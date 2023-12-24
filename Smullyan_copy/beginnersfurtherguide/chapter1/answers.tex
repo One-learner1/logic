@@ -180,7 +180,7 @@ $\oldemptyset\vdash X\supset Y$, $S\vdash X\supset Y$ holds by $C_2$, and then, 
 (b): Suppose $X\supset(Y\supset Z)$ is provable, and $S\vdash X$ and $S\vdash Y$. We are to show that $S\vdash Z$. By Problem 11(a), 
 $S\vdash Y\supset Z$ holds, and then, again by Problem 11(a), $S\vdash Z$ holds.\newline
 (c): Suppose $X\supset Y$ is provable. We are to show that $X\vdash Y$ is provable. By $C_2$, $X\vdash X\supset Y$ holds. Because 
-$\vdash$ is faithfull to modus ponens, $X,X\supset Y\vdash Y$ holds, and $X\vdash X$ holds by $C_1$. By $C_3$, $X\vdash Y$ holds.\newline
+$\vdash$ is faithfull to modus ponens, $X,X\supset Y\vdash Y$ holds, and $X\vdash X$ holds by $C_1$. By Problem 2, $X\vdash Y$ holds.\newline
 (d): Suppose $X\supset (Y\supset Z)$ is provable. We are to show that $X,Y\vdash Z$. Again, by $C_2$, $X,Y\vdash X\supset (Y\supset Z)$. 
 By $C_1$, $X,Y\vdash X$. Thus, $X,Y\vdash X$ and $X,Y\vdash X\supset (Y\supset Z)$, meaning, because $X,X\supset (Y\supset Z)\vdash Y\supset Z$, 
 $X,Y\vdash Y\supset Z$ by Problem 2. Then, because $\vdash$ is faithfull to modus ponenes, $Y,Y\supset Z\vdash Z$. By $C_1$, 
@@ -201,6 +201,55 @@ $C_4$: We need to show that if $S\vdash X$, then $F\vdash X$ for some finite sub
 we take $F$ to be the set $Y_1\bigcup ...\bigcup Y_k$, the set of the $k$ formulae being subsets of $S$ 
 used in the deduction of $X$ from $S$. $F$ is obviously a finite 
 subset of $S$, meaning, because $F\vdash X$, the proof is complete. 
+
+\section*{13}
+We assume $A_1$ and $A_2$, and are to prove that $X\supset X$ is provable. By $A_2$, 
+\[ (X\supset (Y\supset X))\supset ((X\supset Y)\supset (X\supset X)) \] is provable. Also, $X\supset (Y\supset X)$ is provable by $A_1$. 
+Thus, by Problem 11(a), 
+\[ (X\supset Y)\supset (X\supset X) \] is provable (that is, $\oldemptyset\vdash (X\supset Y)\supset (X\supset X)$). Taking $Y\supset X$ for $Y$, 
+\[ (X\supset (Y\supset X))\supset (X\supset X) \] is provable, meaning, by $A_1$ and Problem 11(a), 
+\[ X\supset X \] is provable.\newline 
+$Alternatively$: Because the system $A$ obeys the rule of modus ponens, we can replace the spots in the above proof where it says Problem 11(a) by 
+modus ponens.
+
+\section*{14}
+(a): We are to show that if $S\vdash Y$ then $S\vdash X\supset Y$. This is immediate from Problem 11(a), taking $X\supset Y$ to be 
+$Y\supset (X\supset Y)$ (which is provable by $A_1$).\newline
+(b): We are to show that, if $S\vdash X\supset (Z\supset Y)$ and $S\vdash X\supset Z$, then $S\vdash X\supset Y$. This is immediate from Problem 11(b), 
+taking $X\supset (Y\supset Z)$ to be \[ (X\supset (Z\supset Y))\supset ((X\supset Z)\supset (X\supset Y)) \] (which is provable by $A_2$).
+
+\section*{15}
+We are to prove the Deduction Theorem, that is, that the properties $A_1$ and $A_2$ holding for a system $A$ are sufficient to prove that 
+$A$ satisfies the deduction property, that is, if $S,X\vdash Y$, then $S\vdash X\supset Y$. Suppose $S,X\vdash Y$. Because $S\vdash X$ here is the 
+relation that $X$ is deducible from $S$, this means that $Y$ is deducible from $S\bigcup {X}$. Thus, there is a deduction $Y_1,...,Y_n$ such that 
+$Y=Y_n$. Now consider the sequence $X\supset Y_1,...,X\supset Y_n$. Showing that $S\vdash X\supset Y_i$ holds for every $i$ suffices to complete the 
+proof, as it would mean that $S\vdash X\supset Y_n$ would hold, that is, $S\vdash X\supset Y$ would hold. There are then four cases for what every 
+$Y_i$ could be. To show all cases, we assume that if $S\vdash X\supset Y_j$ for all $j<i$, and we must show that
+$S\vdash X\supset Y_i$ (this is complete 
+induction):\newline
+Case 1-2: In the first case, $Y_i$ is an axiom of $A$. In this case, the proof sequence \[ Y_i,Y_i\supset (X\supset Y_i),X\supset Y_i \] 
+suffices as $X\supset Y_i$ follows from $Y_i\supset (X\supset Y_i)$ and $Y_i$ by modus ponens, and $Y_i\supset (X\supset Y_i)$ is just $A_1$. In 
+the second case where $Y_i\in S$, the same proof sequence suffices, as $Y_i$ can be included in this sequence.\newline
+$Alternatively$: If $Y_i$ is an axiom of $A$, $\vdash Y_i$, meaning, by $C_2$, $S\vdash Y_i$, and thus $S\vdash X\supset Y_i$ by Problem 14(a). 
+If $Y_i\in S$, $S\vdash Y_i$ by $C_1$, meaning, again by Problem 14(a), $S\vdash X\supset Y_i$.\newline
+Case 3: In this case, $Y_i=X$. Thus we are trying to show that $S\vdash X\supset X$. By Problem 13, $X\supset X$ is provable, meaning, by $C_2$, 
+$S\vdash X\supset X$.\newline
+Case 4: In this case, $Y_i$ comes from two terms of the sequence $Y_1,...,Y_i-1$ by modus ponens, meaning these earlier terms are $Z\supset Y_i$ 
+and $Z$ for some formula $Z$. By the induction 
+assumption, $S\vdash X\supset Z$ and $S\vdash X\supset (Z\supset Y_i)$. By Problem 14(b), it follows that $S\vdash X\supset Y_i$, thus completing 
+the proof.
+
+\section*{16}
+We need to show that if a system $A$ satisfies conditions $A_1-A_6$ for a given consequence relation $\vdash$, then $\vdash$ is a Boolean consequence 
+relation. Thus, we must derive $C_5-C_8$.\newline
+$C_5$: By $A_3$, $\alpha\supset\alpha_1$ is provable and $\alpha\supset\alpha_2$ is provable. 
+In both cases, $\alpha\vdash\alpha_1$ and $\alpha\vdash\alpha_2$ by 
+Problem 11(c).\newline
+$C_6$: By $A_4$, $\alpha_1\supset(\alpha_2\supset\alpha)$ is provable. By 11(d), $\alpha_1,\alpha_2\vdash\alpha$.\newline
+$C_7$: By $A_5$, $X\supset(\oldneg X\supset Y)$ is provable, meaning, by 11(d), $X,\oldneg X\vdash Y$.\newline
+$C_8$: In this case, we suppose that $S,\oldneg X\vdash X$. By $A_6$, $(\oldneg X\supset X)\supset X$ is provable, meaning, by $C_2$, 
+$S\vdash (\oldneg X\supset X)\supset X$. By the Deduction Theorem, $S\vdash\oldneg X\supset X$, and thus, by Problem 10, $S\vdash X$. 
+$Alternatively$: You can use Problem 11(a) instead of $C_2$ to reduce the proof of $C_8$ by one step.
 
 \end{document}
 
