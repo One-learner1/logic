@@ -1,0 +1,54 @@
+%/*% pdflatex -file-line-error -interaction nonstopmode %
+
+
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{amsthm}
+\usepackage{yhmath}
+\usepackage{placeins}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 2 Review}
+\begin{document}
+\maketitle
+
+
+This is a document to review a couple concepts of FOL. 
+
+\section*{Why FOL-tableau would not work if we used a domain other than the domain of the denumerable parameters}
+
+
+This fact can be exhibited by looking back at Problem 2 of Chapter 9 of the Beginners Guide [Smullyan, 2014]. The question is to prove that if $I$ 
+satisfies a set $S$, then for any $\delta\in S$ and any parameter $a$ that is new to $S$, the set $S\bigcup{\delta(a)}$ is satisfied by some extension. 
+Because $a$ is a parameter, this is really easy: the way parameters were defined allowed us to assign to them $any$ element of the domain under any 
+interpretation whatsoever; this is why this works for the parameters. However, if we used some other domain, given that $I$ satisfies $S$, we don't 
+even know that the elements of that domain are in the domain under $I$. And even if we did, we still don't know if $\delta(a)$ would be true under some 
+extension of $I$, as $a$ is no longer a parameter.   
+
+\section*{Clarifying the role of predicates in FOL-valuations}
+
+
+Recall that we have the following definition included in the definition of a FOL-valuation (in the domain of the parameters):\newline
+$B_1$: The sentence $\oldneg X$ receives the value $t$ under $v$ iff $v(X)=f$; and accordingly $v(\oldneg X)=f$ iff $v(X)=t$.\newline
+where $X$ is a sentence. This means that we can still assign $t$ or $f$ to predicates, as they are sentences (as long as its set of 
+$n$-tuples $(a_1,...,a_n)$ does not include any variables). However, we no longer have the notion of an interpretation $I(P)$ over a predicate $P$. But 
+this is fine, as we can show that given any interpreation $I$, there is one and only one valuation $v$ such that, for every sentence $X$, $X$ is true 
+under $I$ iff $X$ is true under $v$. This is just the valuation that assigns $t$ to those and only those sentences that are true under $I$. Also, we can 
+show that, for any valuation $v$, there is one and only one interpreation $I$ such that, for every sentence $X$, $X$ is true under $I$ iff $X$ is 
+true under $v$. This is just the interpretation such that, for any predicate $P$ of degree $n$, take $I(P)$ to be the relation that $P_{a_1,...,a_n}=t$ 
+under $v$.
+
+\end{document}
+
+
