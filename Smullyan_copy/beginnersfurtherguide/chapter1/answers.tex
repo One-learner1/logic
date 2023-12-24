@@ -152,11 +152,8 @@ consequence relation, \[ S,F_1\vdash Z_1 \] holds by $C_2$. Because $F_1\in S$, 
 is a contradiction, as we assumed $S\nvdash Z_1$, thus completing the proof in this case.\newline
 Case 2: All finite subsets $F$ of $S$ are consistent:\newline
 In this case, we must show that $S$ is also consistent. Suppose $S$ was inconsistent, that is, $S\vdash Z$ holds for every $Z$. Because every finite 
-subset $F$ of $S$ is consistent, there is some formula $Z$ for every $F$ such that $F\nvdash Z$. Because $S$ is inconsistent, $S\vdash X$ and 
-$S\vdash \oldneg X$ for every formula $X$. By Problem 2, substituting $X,\oldneg X$ in for $Z$, it follows that $S\vdash X,\oldneg X$, meaning, 
-by $C_4$, $F_1\vdash X,\oldneg X$ for some finite subset $F_1$ of $S$. By $C_7$ and $C_3$, it follows that $F_1\vdash Z$ for the $Z$ which 
-we assumed $F_1\nvdash Z$ (because $F_1$ is consistent), which yields a contradiction.
-$Alternatively$: Picking up from the above, we know that $S\vdash X$ and $S\vdash \oldneg X$ because $S$ is inconsistent. By $C_4$, $F_1\vdash X$ 
+subset $F$ of $S$ is consistent, there is some formula $Z$ for every $F$ such that $F\nvdash Z$. Because $S$ is inconsistent, 
+we know that $S\vdash X$ and $S\vdash \oldneg X$ for every formula $X$. By $C_4$, $F_1\vdash X$ 
 and $F_2\vdash\oldneg X$ for some finite subsets $F_1,F_2$ of $S$. Now consider $F=F_1\bigcup F_2$. $F\in S$, as, if $X\in S$ and $Y\in S$, then 
 $X,Y\in S$. By $C_1$, $F\vdash F_1$ and $F\vdash F_2$, and therefore $F\vdash X$ and $F\vdash\oldneg X$, meaning, by problem 2, substituting 
 $X,\oldneg X$ in for $Z$, we have $F\vdash X,\oldneg X$, which proves $F\vdash Z$ for every $Z$ (by $C_7$), thus yielding a contradiction (as we 
