@@ -1,0 +1,50 @@
+%/*% pdflatex -file-line-error -interaction nonstopmode %
+
+
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{amsthm}
+\usepackage{yhmath}
+\usepackage{placeins}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 2 Answers}
+\begin{document}
+\maketitle
+
+\section*{Lemma}
+We must show that, from $F_1$ and $F_2$, the following two conditions hold:\newline
+(1): We need to show that $\oldneg\exists x\phi(x)$ is true iff $\oldneg\phi(a)$ is true for every parameter $a$. Suppose that $\oldneg\exists x\phi(x)$ 
+is true (under some valuation $v$). Thus, by $F_2$, the sentence $\phi(a)$ is not true under $v$ for any parameter $a$. Because $\phi(a)$ is not 
+true under $v$ for any parameter $a$, it follows that $\oldneg\phi(a)$ is true under $v$ for every parameter $a$ (by $B_1$). On the other hand, 
+suppose that $\oldneg\phi(a)$ is true under $v$ for every parameter $a$. Thus, by $B_1$, $\phi(a)$ is false under $v$ for every parameter $a$ (by $B_1$). Thus, by $F_2$, $\exists x\phi(x)$ is not true under $v$, meaning, by $B_1$, $\oldneg\exists x\phi(x)$ is true under $v$.\newline
+(2): We need to show that $\oldneg\forall x\phi(x)$ is true iff $\oldneg\phi(a)$ is true for at least one parameter $a$. On the one hand, suppose 
+that $\oldneg\forall x\phi(x)$ is true under some valuation $v$. Thus $\forall x\phi(x)$ is not true under $v$ (by $B_1$), meaning, by $F_1$, 
+$\phi(a)$ is not true for every parameter $a$. Thus, for the parameter $e$ for which $\phi(e)$ is not true, $\oldneg\phi(e)$ is true by $B_1$. On the 
+other hand, suppose that $\oldneg\phi(a)$ is true for at least one parameter $a$, call it $e$. Thus, by $B_1$, $\phi(e)$ is false, meaning, by $F_1$, 
+$\forall x\phi(x)$ is not true, and therefore, by $B_1$, $\oldneg\forall x\phi(x)$ is true.  
+
+\section*{1}
+We suppose that $v$ is a Boolean valuation such that the following two conditions hold (for all sentences $\gamma$ and $\delta$):\newline
+(1) if $\gamma$ is true under $v$, then for every parameter $a$, the sentence $\gamma(a)$ is true under $v$, and\newline
+(2) if $\delta$ is true under $v$, then $\delta(a)$ is true under $v$ for at least one parameter $a$.\newline
+We must prove that $v$ is a first-order valuation. Thus, we must derive $F_1$ and $F_2$ in the definition of a FOL-valuation.\newline
+$F_1$: On the one hand, if $\forall x\phi(x)$ is true, we know that, for every parameter $a$, the sentence $\phi(a)$ is true (by (1)). On the other hand,
+if for every parameter $a$, the sentence $\phi(a)$ is true, we know that $\oldneg\exists x\oldneg\phi(x)$ is true under $v$ (by (2) and $B_1$), meaning
+$\oldneg\oldneg\phi(a)$ is true under $v$ for every parameter $a$, which means $\phi(a)$ is true for every parameter $a$ (by $B_1$).\newline
+$F_2$: On the one hand, if $\exists x\phi(x)$ is true, we know that, by (2), $\phi(a)$ is true for at least one parameter $a$. On the other hand, 
+if $\phi(a)$ is true for at least one parameter $a$, we know (by $B_1$) that $\oldneg\phi(a)$ is false for at least one parameter $a$, meaning, by 
+(1), $\oldneg\exists x\phi(x)$ is not true, meaning  
+
+\end{document}

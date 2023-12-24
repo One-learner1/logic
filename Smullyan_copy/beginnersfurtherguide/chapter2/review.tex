@@ -46,8 +46,22 @@ $n$-tuples $(a_1,...,a_n)$ does not include any variables). However, we no longe
 this is fine, as we can show that given any interpreation $I$, there is one and only one valuation $v$ such that, for every sentence $X$, $X$ is true 
 under $I$ iff $X$ is true under $v$. This is just the valuation that assigns $t$ to those and only those sentences that are true under $I$. Also, we can 
 show that, for any valuation $v$, there is one and only one interpreation $I$ such that, for every sentence $X$, $X$ is true under $I$ iff $X$ is 
-true under $v$. This is just the interpretation such that, for any predicate $P$ of degree $n$, take $I(P)$ to be the relation that $P_{a_1,...,a_n}=t$ 
+true under $v$. This is just the interpretation (in the domain of the parameters)
+such that, for any predicate $P$ of degree $n$, take $I(P)$ to be the relation that $P_{a_1,...,a_n}=t$ (in the denumerable domain of the parameters) 
 under $v$.
+
+\section*{Exercise from Chapter 8 of the Beginners Guide}
+
+
+Base Case: On the one hand, if $F$ (in this case, an $n$-ary predicate) is true under $I_2$, this means, by definition of $I_2(P)$, $F'$ is true under 
+$I_1$. On the other hand, if $F'$ is true under $I_1$, then this would make $F$ be true under $I_2$, by the definition of $I_2(P)$.\newline
+Induction: Suppose that, for all numbers less than $n$, the result holds for every formula of these said numbers. Thus, if $F$ is of type $\alpha$, 
+$\alpha_1,\alpha_2$ are true iff $\alpha_1',\alpha_2'$ are true, respectively, meaning $F$ is true iff $F'$ is true. If $F$ is of type $\beta$, 
+$\beta_1$ is true iff $\beta_1'$ is true, and likewise for $\beta_2$ and $\beta_2'$. Thus, $F$ is true iff $F'$ is true. If $F$ is of the form 
+$\forall x\phi(x)$, $\phi(a)$ is true iff $\phi(a)'$ is true, for every parameter $a$. Thus, $\phi(a)$ is true for every parameter $a$ iff 
+$\phi(a)'$ is true for every parameter $a$, thus meaning $F$ is true iff $F'$ is true. Lastly, if $F$ is of the form $\exists x\phi(x)$, $\phi(a)$ 
+is true iff $\phi(a)'$ is true, for every parameter $a$. Thus, $\phi(a)$ is true for at least one parameter $a$ iff $\phi(a)'$ is true for at least 
+one parameter $a$, thus meaning $F$ is true iff $F'$ is true.
 
 \end{document}
 
