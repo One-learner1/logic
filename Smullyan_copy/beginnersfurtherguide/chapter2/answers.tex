@@ -39,12 +39,29 @@ $\forall x\phi(x)$ is not true, and therefore, by $B_1$, $\oldneg\forall x\phi(x
 We suppose that $v$ is a Boolean valuation such that the following two conditions hold (for all sentences $\gamma$ and $\delta$):\newline
 (1) if $\gamma$ is true under $v$, then for every parameter $a$, the sentence $\gamma(a)$ is true under $v$, and\newline
 (2) if $\delta$ is true under $v$, then $\delta(a)$ is true under $v$ for at least one parameter $a$.\newline
-We must prove that $v$ is a first-order valuation. Thus, we must derive $F_1$ and $F_2$ in the definition of a FOL-valuation.\newline
-$F_1$: On the one hand, if $\forall x\phi(x)$ is true, we know that, for every parameter $a$, the sentence $\phi(a)$ is true (by (1)). On the other hand,
-if for every parameter $a$, the sentence $\phi(a)$ is true, we know that $\oldneg\exists x\oldneg\phi(x)$ is true under $v$ (by (2) and $B_1$), meaning
-$\oldneg\oldneg\phi(a)$ is true under $v$ for every parameter $a$, which means $\phi(a)$ is true for every parameter $a$ (by $B_1$).\newline
-$F_2$: On the one hand, if $\exists x\phi(x)$ is true, we know that, by (2), $\phi(a)$ is true for at least one parameter $a$. On the other hand, 
-if $\phi(a)$ is true for at least one parameter $a$, we know (by $B_1$) that $\oldneg\phi(a)$ is false for at least one parameter $a$, meaning, by 
-(1), $\oldneg\exists x\phi(x)$ is not true, meaning  
+We must prove that $v$ is a first-order valuation. Thus, we must derive $F_1'$ and $F_2'$. Because we have already have (1) and (2), we only need 
+to prove the converses of (1) and (2).\newline
+(1): In this case, we need to prove that, if for every parameter $a$, the sentence $\gamma(a)$ is true under $v$, then $\gamma$ is true under $v$.
+
+
+Case 1: In this case, $\gamma$ is of the form $\forall x\phi(x)$. So suppose that $\phi(a)$ is true under $v$ for every paramter $a$. By $B_1$, 
+it follows that $\oldneg\phi(a)$ is false under $v$ for every parameter $a$, meaning, by (2), that $\oldneg\forall x\phi(x)$ is not true, and is 
+therefore false (because every sentence $X$ is either assigned the value $t$ or $f$), meaning, by $B_1$, $\forall x\phi(x)$ is true.\newline
+
+
+Case 2: In this case, $\gamma$ is of the form $\oldneg\exists x\phi(x)$. So suppose that $\oldneg\phi(a)$ is true for every parameter $a$, meaning, 
+by $B_1$, that $\phi(a)$ is false for every parameter $a$. Thus, by (2), $\exists x\phi(x)$ is not true, and is therefore false (for the same reason 
+as in Case 1), meaning, by $B_1$, that $\oldneg\exists x\phi(x)$ is true.\newline\newline
+(2): In this case, we need to prove that, if $\delta(a)$ is true for at least one parameter $a$ under $v$, then $\delta$ is true under $v$.
+
+
+Case 1: In this case, $\delta$ is of the form $\exists x\phi(x)$. So suppose that $\phi(a)$ is true for at least one parameter $a$, call it $e$. 
+By $B_1$, $\oldneg\phi(e)$ is false, meaning, by (1), $\oldneg\exists x\phi(x)$ is not true, and is therefore false, and thus, by $B_1$, 
+$\exists x\phi(x)$ is true.\newline 
+
+
+Case 2: In this case, $\delta$ is of the form $\oldneg\forall x\phi(x)$. So suppose that $\oldneg\phi(a)$ is true for at least one parameter $a$, call 
+it $e$. By $B_1$, $\phi(e)$ is false, meaning, by (1), $\forall x\phi(x)$ is not true, and therefore false, meaning, by $B_1$, $\oldneg\forall x\phi(x)$
+is true.  
 
 \end{document}
