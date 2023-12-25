@@ -154,8 +154,8 @@ Case 2: All finite subsets $F$ of $S$ are consistent:\newline
 In this case, we must show that $S$ is also consistent. Suppose $S$ was inconsistent, that is, $S\vdash Z$ holds for every $Z$. Because every finite 
 subset $F$ of $S$ is consistent, there is some formula $Z$ for every $F$ such that $F\nvdash Z$. Because $S$ is inconsistent, 
 we know that $S\vdash X$ and $S\vdash \oldneg X$ for every formula $X$. By $C_4$, $F_1\vdash X$ 
-and $F_2\vdash\oldneg X$ for some finite subsets $F_1,F_2$ of $S$. Now consider $F=F_1\bigcup F_2$. $F\in S$, as, if $X\in S$ and $Y\in S$, then 
-$X,Y\in S$. By $C_1$, $F\vdash F_1$ and $F\vdash F_2$, and therefore $F\vdash X$ and $F\vdash\oldneg X$, meaning, by problem 2, substituting 
+and $F_2\vdash\oldneg X$ for some finite subsets $F_1,F_2$ of $S$. Now consider $F=F_1\bigcup F_2$. $F\in S$, as, if $X\subseteq S$ and $Y\subseteq S$, then 
+$X,Y\subseteq S$. By $C_1$, $F\vdash F_1$ and $F\vdash F_2$, and therefore $F\vdash X$ and $F\vdash\oldneg X$, meaning, by problem 2, substituting 
 $X,\oldneg X$ in for $Z$, we have $F\vdash X,\oldneg X$, which proves $F\vdash Z$ for every $Z$ (by $C_7$), thus yielding a contradiction (as we 
 assumed all finite subsets of $S$ were consistent).   
 
