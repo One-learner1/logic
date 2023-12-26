@@ -64,4 +64,72 @@ Case 2: In this case, $\delta$ is of the form $\oldneg\forall x\phi(x)$. So supp
 it $e$. By $B_1$, $\phi(e)$ is false, meaning, by (1), $\forall x\phi(x)$ is not true, and therefore false, meaning, by $B_1$, $\oldneg\forall x\phi(x)$
 is true.  
 
+\section*{2}
+We are to show that every Magic set is a truth-functional basis for propositional logic.
+
+
+On the one hand, suppose that some pure sentence $X$ is valid. Thus, it is true under all first-order valuations. We must show that $X$ is a tautological consequence of some finite subset $M_0$ of $M$. That is, we must show that under every $Boolean$ valuation 
+that satisfies $M_0$, $X$ is true. Well, by $M_1$, every Boolean valuation that satisfies $S$ is also a first-order valuation. 
+Thus, $X$ is true under all Boolean valuations that satisfy $M$, because $X$ was assumed to be true under all first-order 
+valuations, and every Boolean valuation that satisfies $M$ is also a first-order valuation. Thus, $X$ is a tautological 
+consequence of $M$. By the Corollary to the Denumerable Compactness Theorem for Propositional Logic, it is also a logical 
+consequence of some finite subset $M_0$ of $M$.
+
+
+On the other hand, suppose that some pure sentence $X$ is a truth-functional consequence of some finite subset $M_0$ of $M$. 
+Thus, $M_0\bigcup {\oldneg X}$ is not first-order satisfiable (every first-order valuation is also a Boolean valuation). 
+This means 
+that $\oldneg X$ is not first-order satisfiable. For, if it were, by $M_2$, $M_0\bigcup {\oldneg X}$ would also be first-order 
+satisfiable. 
+Thus, $X$ is valid (true under every first-order valuation). 
+
+\section*{3}
+
+
+We must show that every complete regular set is also a magic set. Recall that a complete regular set $M$ is a set such that 
+for every $\gamma$, $\gamma\supset \gamma(a)\in M$ for every parameter $a$, and for every $\delta$, $\delta\supset \delta(a)\in M$ 
+for at least one parameter $a$, and that every finite subset of $M$ is a regular set. Because we are showing that every complete 
+regular set is a magic set, it suffices to show that $M$ satisfies the conditions $M_1,M_2$.
+
+
+$M_1$: We must show that every Boolean valuation that satisfies $M$ is also a first-order valuation. To that end, it suffices to 
+show that:\newline
+If $\gamma$ is true, then $\gamma(a)$ is true for every parameter $a$,\newline
+If $\delta$ is true, then $\delta(a)$ is true for at least one parameter $a$.\newline
+(which implies a first-order valuation by Problem 1). So, suppose $\gamma$ is true. Thus, $\gamma\supset\gamma(a)\in M$ for 
+every parameter $a$. Because this is a Boolean valuation, and $\gamma$ is true, $\gamma(a)$ is likewise true for $\gamma(a)$ 
+for every parameter $a$ (by $B_4$). On the other hand, suppose that $\delta$ is true. 
+Thus, $\delta\supset\delta(a)\in M$ for at least one
+parameter $a$. Again, because this is a Boolean valuation, and $\delta$ is true, $\delta(a)$ is likewise true for at least one 
+parameter $a$ (again by $B_4$). 
+
+
+$M_2$: We must show that, for every finite set $S_0$ of pure sentences, and every finite subset $M_0$ of $M$, if 
+$S_0$ is first-order satisfiable, so is $M_0\bigcup S_0$. So, suppose that $S_0$ is a finite set of pure sentences, and 
+that it is first-order satisfiable. Now consider any finite subset $M_0$ of $M$. By the definition of a complete regular set, it 
+is a regular set. Thus, it can be split into a sequence
+\[ Q_1\supset Q_1(a_1),...,Q_n\supset Q_n(a_n) \] where, if $Q_i$ is a $\gamma$, $a_i$ is any parameter $a$, and if $Q_i$ 
+is a $\delta$, then $a_i$ is a parameter $a$ such that $a$ does not occur in $\delta$ or in any previous $Q$'s. So, what 
+we really need to show is that, if a set $S$ is first-order satisfiable, 
+$S\bigcup \gamma\supset\gamma(a)$ is first-order satisfiable for every 
+parameter $a$, and $S\bigcup\delta\supset\delta(a)$ is first-order satisfiable, provided $a$ does not occur in $\delta$ or 
+$S$. This would let us show that \[ S_0\bigcup Q_1\supset Q_1(a_1)\bigcup ...\bigcup Q_n\supset Q_n(a_n) \] is first-order 
+satisfiable, which is the same as saying $S_0\bigcup M_0$ is first-order satisfiable. There are then two cases: $Q_i$ is a 
+$\gamma$, or is a $\delta$.
+
+
+$\gamma$: in this case, $Q_i$ is a $\gamma$, meaning $Q_i\supset Q_i(a_i)$ is of the form $\gamma\supset \gamma(a_i)$. 
+Suppose $S$ is first-order satisfiable under some interpretation $I$. Well, $\gamma\supset\gamma(a_i)$ is satsified by $every$ 
+first-order valuation (which can easily be shown, if one desires), meaning $S\bigcup\gamma\supset\gamma(a_i)$ is obviously 
+also first-order satisfiable.
+
+
+$\delta$: in this case, $Q_i$ is a $\delta$, meaning $Q_i\supset Q_i(a_i)$ is of the form $\delta\supset\delta(a_i)$. 
+Suppose $S$ is first-order satisfiable under some interpreation $I$. If $\delta$ is false under $I$, then 
+$\delta\supset\delta(a_i)$ is true under $I$. If $\delta$ is true under $I$, then $S\bigcup\delta$ is satisfiable, meaning 
+$S\bigcup\delta\supset\delta(a_i)$ is satisfiable by Problem 2 of Chapter 9 of the Beginners Guide[Smullyan, 2014] (because we 
+assumed that $a$ does not occur in $\delta$ or any of the previous $Q_i's$, and that $S_0$ was a set of pure sentences, 
+meaning $a$ of course does not occur in them). In either 
+case, $S\bigcup\delta\supset\delta(a_i)$ is satsifiable.
+
 \end{document}
