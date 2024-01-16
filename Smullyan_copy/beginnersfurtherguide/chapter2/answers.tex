@@ -205,6 +205,17 @@ On the other hand, suppose that $U,\oldneg X\rightarrow V$ is true under $v$. If
 $U\rightarrow V,X$ is trivially true. On the other hand, either of $U,\oldneg X$ would be false. If it is $U$ that it false, $U\rightarrow X,V$ is trivially true. 
 If it is $\oldneg X$ that is false, $X$ is true, therefore meaning $U\rightarrow V,X$ is also true under $v$.
 
+\section*{6}
+
+
+As for the axiom, suppose that $|S,TX,FX|$ is provable, where $S$ is a set of signed formulas. Let $TX_1,...,TX_n$ be all of the signed formulas with a $T$ in $S$, and 
+$FY_1,...,FY_k$ be all of the signed formulas with an $F$ in $S$. Thus $|S,TX,FX|$ is just $X_1,...,X_n,X\rightarrow X,Y_1,...,Y_k$, which is just the same thing 
+as $U,X\rightarrow V,X$ holding, we could just let $X_1,...,X_n$ be the set $U$, and $Y_1,...,Y_k$ be the set $V$. On the other hand, suppose that we take the 
+axiom of the system $G_0$. Thus, for any sets $U,V$ of formulas, and any formula $X$, $U,X\rightarrow X,V$ is provable. Again, consider some set $S$ of signed formulas, 
+and suppose that $TX_1,...,TX_n$ be all of the signed formulas with a $T$ in $S$, and $FY_1,...,FY_k$ be all of the signed formulas with an $F$ in $S$. Thus $|S,TX,FX|$ 
+is just $X_1,...,X_n,X\rightarrow X,Y_1,...,Y_k$. Because the axiom of $G_0$ holds for any sets $U$ and $V$, we can simply take $U$ to be the 
+set $X_1,...,X_n$, and $V$ to be the set $Y_1,...,Y_k$, thus proving that $|S,TX,FX|$ is provable.
+
 \subsection*{A set $S$ is unsatisfiable iff its corresponding sequent $|S|$ is a tautology}
 
 
