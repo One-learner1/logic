@@ -144,7 +144,7 @@ were required to prove.
 \subsection*{Correctness of $G_0$}
 
 
-The Axiom of the system is obviouslly correct. For, whenever the set of formulas $U,X$ is true, $X$ is true, meaning it is obviouslly true that $at least one$ of the 
+The Axiom of the system is obviouslly correct. For, whenever the set of formulas $U,X$ is true, $X$ is true, meaning it is obviously true that $at\; least\; one$ of the 
 formulas $V,X$ are true for any set of formulas $V$.
 
 
@@ -156,30 +156,30 @@ follows that at least one element ($V$) of $V,X\wedge Y$ is true. On the other h
 $X\wedge Y$ is the element which is true. 
 
 
-$C_3$: If whenever all elements of $U$ are true then at least one element of $V,X,Y$ is true, if $V$ is the element which is true, it follows that at least one element 
+$D_1$: If whenever all elements of $U$ are true then at least one element of $V,X,Y$ is true, if $V$ is the element which is true, it follows that at least one element 
 of ($V$) of $V,X\vee Y$ is true. On the other hand, if $V$ is false, it would then follow that either $X$ or $Y$ is true, therefore meaning at least one element of 
 $V,X\vee Y$ is true.
 
 
-$C_4$: We are given that at least one element of $V$ is true whenever both $U,X$ are true, or when both $U,Y$ are true. By definition of $X\vee Y$, it follows that all 
+$D_2$: We are given that at least one element of $V$ is true whenever both $U,X$ are true, or when both $U,Y$ are true. By definition of $X\vee Y$, it follows that all 
 elements of $U,X\vee Y$ are true iff either $X$ or $Y$ is true, which would imply that at least one element of $V$ is true.
 
 
-$C_5$: We are given that at least one element of $V,Y$ is true whenever all elements of $U,X$ are true. Thus, if all elements of $U$ are true, either $X$ is true or false. 
+$I_1$: We are given that at least one element of $V,Y$ is true whenever all elements of $U,X$ are true. Thus, if all elements of $U$ are true, either $X$ is true or false. 
 If it is false, at least one element $(X\supset Y)$ of $V,X\supset Y$ is true, while if it is true, it would follow by the assumptions that either $V$ or $Y$ is true. If it 
 is $V$ that is true, this is the element that is true. If it is $Y$ that is true, then $X\supset Y$ is also true.
 
 
-$C_6$: We are given that at least one element of $V,X$ is true whenever $U$ is true, and that at least one element of $V$ is true whenever all elements of $U,Y$ are true. 
+$I_2$: We are given that at least one element of $V,X$ is true whenever $U$ is true, and that at least one element of $V$ is true whenever all elements of $U,Y$ are true. 
 Thus, if all elements of $U,X\supset Y$ are true, it follows that either $V,X$ are true. If it is $V$ that is true, we are done. If it is $X$ that is true, we know that $Y$ is 
 also true, meaning $V$ would also be true by the assumptions.
 
 
-$C_7$: We are given that at least one element of $V$ is true whenever all elements of $U,X$ are true. If $U$ is true, either $X$ is true or false: if it is true, the assumptions
+$N_1$: We are given that at least one element of $V$ is true whenever all elements of $U,X$ are true. If $U$ is true, either $X$ is true or false: if it is true, the assumptions
 prove that $V$ is also true. If it is false, then $\oldneg X$ would be true by definition.
 
 
-$C_8$: We are given that when all elements of $U$ are true, at least one element of $V,X$ is true. Thus, if all elements of $U,\oldneg X$ are true, $V$ would be the true element
+$N_2$: We are given that when all elements of $U$ are true, at least one element of $V,X$ is true. Thus, if all elements of $U,\oldneg X$ are true, $V$ would be the true element
 implied by $U$, as $X$ is false.
 
 \section*{Problem 5}
@@ -210,7 +210,7 @@ If it is $\oldneg X$ that is false, $X$ is true, therefore meaning $U\rightarrow
 
 As for the axiom, suppose that $|S,TX,FX|$ is provable, where $S$ is a set of signed formulas. Let $TX_1,...,TX_n$ be all of the signed formulas with a $T$ in $S$, and 
 $FY_1,...,FY_k$ be all of the signed formulas with an $F$ in $S$. Thus $|S,TX,FX|$ is just $X_1,...,X_n,X\rightarrow X,Y_1,...,Y_k$, which is just the same thing 
-as $U,X\rightarrow V,X$ holding, we could just let $X_1,...,X_n$ be the set $U$, and $Y_1,...,Y_k$ be the set $V$. On the other hand, suppose that we take the 
+as $U,X\rightarrow V,X$ holding, as we could just let $X_1,...,X_n$ be the set $U$, and $Y_1,...,Y_k$ be the set $V$. On the other hand, suppose that we take the 
 axiom of the system $G_0$. Thus, for any sets $U,V$ of formulas, and any formula $X$, $U,X\rightarrow X,V$ is provable. Again, consider some set $S$ of signed formulas, 
 and suppose that $TX_1,...,TX_n$ be all of the signed formulas with a $T$ in $S$, and $FY_1,...,FY_k$ be all of the signed formulas with an $F$ in $S$. Thus $|S,TX,FX|$ 
 is just $X_1,...,X_n,X\rightarrow X,Y_1,...,Y_k$. Because the axiom of $G_0$ holds for any sets $U$ and $V$, we can simply take $U$ to be the 
@@ -264,12 +264,14 @@ using $I_2$. The cases where $\beta$ is $T\oldneg X$ or $F\oldneg X$ are the sam
 \subsection*{A set $S$ is unsatisfiable iff its corresponding sequent $|S|$ is a tautology}
 
 
-On the one hand, suppose that a non-empty set $S$ of formulas is unsatisfiable. There are then multiple cases. In the first case, suppose that there are no formulas of the form 
-$TX$. Thus, $|S|$ is of the form $\rightarrow Y_1,...,Y_k$ where every $Y_i$ is the formula part of the formula $FY_i$. We must show that at least one of $Y_1,...,Y_k$ is true. 
+On the one hand, suppose that a non-empty set $S$ of signed formulas is unsatisfiable. 
+There are then multiple cases. In the first case, suppose that there are no formulas of the form 
+$TX$. Thus, $|S|$ is of the form $\rightarrow Y_1,...,Y_k$ where every $Y_i$ is the formula $FY_i$ without the sign $F$. We must show that at least one of $Y_1,...,Y_k$ is true. 
 We are given that $FY_1,...,FY_k$ is unsatisfiable, meaning, under every interpretation $I$, there is some formula $FY_j$ that is false. Under this same interpretation $I$, 
 it is obvious that $Y_j$ (removing the sign) is true, thus meaning at least one of $FY_1,...,FY_k$ is true. In the second case, suppose that the set $S$ contains no formulas 
 of the form $FY$. Thus $|S|$ is of the form $X_1,...X_n\rightarrow$. We need to show that at least one of $TX_1,...,TX_n$ is false. But this is immediate, as it was 
-assumed that one of $TX_1,...,TX_n$ was false. In the last case, the set $S$ contains at least one formula of the form $TX$ and at least one of the form $FY$. Thus $|S|$ is of 
+assumed that one of $TX_1,...,TX_n$ was false under every interpretation $I$, which is the same as saying one of $X_1,...,X_n$ is false under every interpretation $I$. 
+In the last case, the set $S$ contains at least one formula of the form $TX$ and at least one of the form $FY$. Thus $|S|$ is of 
 the form $X_1,...,X_n\rightarrow Y_1,...,Y_k$. If every element of $X_1,...,X_n$ is true, this would mean, by the assumption that $S$ is not simultaneously 
 satisfiable, that at least one of $FY_1,...,FY_k$ is false (call this element $FY_K$). As before, it can be easily seen that $Y_k$ would then be true under this same 
 interpretation, therefore meaning at least one of $Y_1,...,Y_k$ is true.
@@ -290,7 +292,7 @@ Case 3: In this case, $S$ contains at least one formula of the form $FY$, and at
 $X_1,...,X_n\rightarrow Y_1,...,Y_K$ is a tautology. There are then two cases. In the first case, at least one of $X_1,...,X_n$ are false under an interpretation $I$, 
 which is the same as saying at least one of $TX_1,...,TX_n$ is false under $I$, which would mean $S$ is not simultaneously true under $I$. In the other case, 
 all of $X_1,...,X_n$ are true, which would mean that at least one of $Y_1,...,Y_k$ are true, which is the same as saying that at least one of 
-$FY_1,...,FY_k$ is false, therefore meaning that $S$ is also not simultaneously true under this interpretation.
+$FY_1,...,FY_k$ is false, therefore meaning that $S$ is also not simultaneously satisfiable under this interpretation.
 
 
 
