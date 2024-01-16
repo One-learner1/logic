@@ -182,6 +182,29 @@ prove that $V$ is also true. If it is false, then $\oldneg X$ would be true by d
 $C_8$: We are given that when all elements of $U$ are true, at least one element of $V,X$ is true. Thus, if all elements of $U,\oldneg X$ are true, $V$ would be the true element
 implied by $U$, as $X$ is false.
 
+\section*{Problem 5}
+
+
+(a): On the one hand, suppose that the sequent $U,X\rightarrow V$ is true under some valuation $v$. There are two cases: either at least one of $U,X$ are false under $v$, 
+or both of $U,X$ are true under $v$. In the first case, if it is $U$ that is false, $U\rightarrow V,\oldneg X$ is automatically true. Otherwise, if $X$ is false, 
+$\oldneg X$ is true, meaning $U\rightarrow V,\oldneg X$ is also true. On the other hand, if both of $U,X$ are true under $v$, $V$ is also true under $v$, therefore meaning 
+that $U\rightarrow V,\oldneg X$ is also true under $v$.
+
+
+On the other hand, suppose that $U\rightarrow V,\oldneg X$ is true under some valuation $v$. If $U$ is false, we are done, as this would trivially mean that 
+$U,X\rightarrow V$ is true. On the other hand, if $U$ is true, either $V$ or $\oldneg X$ is true as well. If it is $V$, we are done, as 
+$U,X\rightarrow V$ would be true. If it is $\oldneg X$, then $X$ would be false, therefore meaning $U,X\rightarrow V$ is trivially true.
+
+
+(b): On the one hand, suppose that $U\rightarrow V,X$ is true. If $U$ is true, either $V$ or $X$ is true. If it is $X$ that is true, then 
+$U,\oldneg X\rightarrow V$ is trivially true. If it is $V$ that is true, then $U,\oldneg X\rightarrow V$ is of course also true. If $U$ is false under $v$, then 
+$U,\oldneg X\rightarrow V$ is trivially true under $v$.
+
+
+On the other hand, suppose that $U,\oldneg X\rightarrow V$ is true under $v$. If both of $U,\oldneg X$ are true, then $X$ is false, therefore meaning 
+$U\rightarrow V,X$ is trivially true. On the other hand, either of $U,\oldneg X$ would be false. If it is $U$ that it false, $U\rightarrow X,V$ is trivially true. 
+If it is $\oldneg X$ that is false, $X$ is true, therefore meaning $U\rightarrow V,X$ is also true under $v$.
+
 \subsection*{A set $S$ is unsatisfiable iff its corresponding sequent $|S|$ is a tautology}
 
 
