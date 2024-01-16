@@ -216,6 +216,51 @@ and suppose that $TX_1,...,TX_n$ be all of the signed formulas with a $T$ in $S$
 is just $X_1,...,X_n,X\rightarrow X,Y_1,...,Y_k$. Because the axiom of $G_0$ holds for any sets $U$ and $V$, we can simply take $U$ to be the 
 set $X_1,...,X_n$, and $V$ to be the set $Y_1,...,Y_k$, thus proving that $|S,TX,FX|$ is provable.
 
+
+We now need to show that the inferences rules of $G_0$ in uniform notation are equivalent to those inferences rules of $G_0$ not in uniform notation. First, let us show 
+that the rules in uniform notation imply those rules not in uniform notation. 
+
+
+$C_1$: Consider any two sets of formulas $U$ and $V$. We can take $S$ to be the set of formulas $TX_1,...,TX_n,FY_1,...,FY_k$ such that $X_1,...,X_n=U$ and 
+$Y_1,...,Y_k=V$ (for making the following proofs shorter, we will call the set $S$ constructed in this way the $signed\; set\; for\; U,V$. By $A$, if 
+$|S,TX,TY|$ is provable, that is, $U,X,Y\rightarrow V$, so is $|S,TX\wedge Y|$, that is, $U,X\wedge Y\rightarrow V$.
+
+
+$C_2$: Consider the signed set $S$ for any two sets $U$ and $V$. By $B$, if $|S,FX|$ is provable, that is, $U\rightarrow V,X$, and $|S,FY|$ is provable, that is, 
+$U\rightarrow V,Y$, then $|S,FX\wedge Y|$ is provable, that is, $U\rightarrow V,X\wedge Y$.
+
+
+$D_1$: Consider the signed set $S$ for $U$ and $V$. By $A$, if $|S,FX,FY|$ is provable, that is, $U\rightarrow V,X,Y$, then $|S,FX\vee Y|$ is also provable, that is, 
+$U\rightarrow V,X\vee Y$.
+
+
+$D_2$: Consider the signed set $S$ for $U$ and $V$. By $B$, if $|S,TX|$ is provable, that is, $U,X\rightarrow V$, and $|S,TY|$, that is, $U,Y\rightarrow V$, is provable, 
+then so is $|S,TX\vee Y|$, that is, $U,X\vee Y\rightarrow V$.
+
+
+$I_1$: Consider the signed set $S$ for $U$ and $V$. By $A$, if $|S,TX,FY|$, that is, $U,X\rightarrow V,Y$, is provable, so is $|S,FX\supset Y|$, that is, 
+$U\rightarrow V,X\supset Y$.
+
+
+$I_2$: Consider the signed set $S$ for $U$ and $V$. By $B$, if $|S,FX|$, that is $U\rightarrow V,X$ is provable, and $|S,TY|$, that is $U,Y\rightarrow V$, is provable, 
+so is $|S,TX\supset Y|$, that is $U,X\supset Y\rightarrow V$.
+
+
+$N_1$: Consider the signed set $S$ for $U$ and $V$. By $A$, if $|S,TX|$, that is $U,X\rightarrow V$, is provable, so is $|S,F\oldneg X|$, that is $U\rightarrow V,\oldneg X$.
+
+
+$N_2$: Consider the signed set $S$ for $U$ and $V$. By $A$, if $|S,FX|$, that is $U\rightarrow V,X$, is provable, so is $|S,T\oldneg X|$, that is $U,\oldneg X\rightarrow V$.
+
+
+We now turn to showing that the inferences rules of $G_0$ imply $A$ and $B$.
+
+
+$A$: If $\alpha$ is $TX\wedge Y$, this can be shown using $C_1$. If $\alpha$ is $FX\vee Y$, this can be shown using $D_1$. If $\alpha$ is $FX\supset Y$, this can be shown 
+using $I_1$. If $\alpha$ is $T\oldneg X$, this can be shown using $N_2$. If $\alpha$ is $F\oldneg X$, this can be shown using $N_1$.
+
+$B$: If $\beta$ is $TX\vee Y$, this can be shown using $D_2$. If $\beta$ is $FX\wedge Y$, this can be shown using $C_2$. If $\beta$ is $TX\supset Y$, this can be shown 
+using $I_2$. The cases where $\beta$ is $T\oldneg X$ or $F\oldneg X$ are the same as in the $\alpha$ case.
+
 \subsection*{A set $S$ is unsatisfiable iff its corresponding sequent $|S|$ is a tautology}
 
 
