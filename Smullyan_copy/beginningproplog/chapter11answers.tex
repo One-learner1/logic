@@ -63,6 +63,7 @@ $0\ne x_1\wedge ...\wedge 0\ne x_n+1\wedge (\exists z\le y)(z=x_1*x_2*...*x_n\we
 (c):\newline $x\ P\ y$ can be represented by the $\Sigma_0$ formula:\newline 
 $(x\ B\ y\vee x\ E\ y)\vee (\exists z_1\le y)(\exists z_2\le y)(z_1xz_2=y)$ 
 \section*{Exercise}
+(A question I had great confusion over!)\newline
 We are considering some number $z$ satisfying the following two conditions:\newline
 (1): $z$ contains at least one frame.\newline
 (2): If $f$ is the largerst frame in $z$, then there is at least one string in $z$ of the form $ffafbff$ where $f$ is not a part of $a$ or $b$.\newline
@@ -73,12 +74,15 @@ $C_1$: The longest frame $f$ in $z$ contains a string of $1$'s longer than any s
 $C_2$: Every ordered pair $(a,b)$ in $S$ is found within $z$ in a string of the form $ffafbff$, where $f$ occurs in neither $a$ nor $b$, and with $f$ being 
 the longest frame occuring in $z$.\newline
 $C_3$: The pairs $(a_1,b_1),...,(a_n,b_n)$ are found encoded in the sequence as we move form left to right in the dyadic notation for $z$.
-Well, Smullyan either
-made a mistake in his definitions, or I misunderstood his definitions, as the following example disproves the statement. Consider the number $z$ in dyadic 
-notation: $21221211212111212212$ with $212$ being the longest frame in $z$. The only possible finite sequence of integers that $z$ could encode would be 
-the $a$ and $b$ which are listed in $z$, namely $11, 111$. Well, by condition $C_1$, for $z$ to be a code number for this sequence, the longest frame in $z$ 
-must have a string of ones longer than the longest string of ones in the integer sequence. However, $212$ has only one $1$, while $11, 111$ both have longer 
-strings, thus seemingly disproving the statement.
+
+
+$C_1$ follows from (2) and (1), as, because $f$ is the longest frame in $z$ (and by (1), there exists some frame $f$ at all), 
+it obviously contains a string of $1$'s longer than any of the string of $1$'s 
+in the ordered pairs. If it didn't, this longer string of $1$'s would be enclosed by $2$, thus meaning that this would be a frame, contrary to the assumption 
+that $f$ was the longest frame in $z$. $C_2$ follows from (2). In particular, because at least one sequence of the form $ffafbff$ is in $z$, we know that 
+$a,b$ is an ordered pair in the sequence. If we have $n$ occurences of $ffa_ifb_iff$, then the sequence encoded in $z$ is $(a_1,b_1),...,(a_n,b_n)$. 
+If there was any other sequence, then $C_3$ would not be satisfied, as the sequence found by moving from left to right along $z$ is, as we have shown,  
+$(a_1,b_1),...,(a_n,b_n)$, not any other sequence. Thus, the sequence $(a_1,b_1),...,(a_n,b_n)$ is the one and only sequence encoded in $z$.
 \end{proof}
 \section*{Problem 8}
 We are attempting to find some $\Sigma_0$ relation $K_0(x,y,z)$ such that for any finite sequence of ordered pairs of natural numbers, there is a number $z$ 
