@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{bookmark}
+\usepackage{booktabs}
+\usepackage{exercises}
+\graphicspath{ {./images/} }
+\usepackage{indentfirst}
+\usepackage{amsthm}
+\usepackage{yhmath}
+\usepackage{placeins}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand\showdiv[1]{\overline{\smash{)}#1}}
+\newcommand\Mydiv[1]{%
+\smash{\raise.3ex\hbox{$\big)$}}\mkern-8mu
+        \overline{\enspace\strut#1}}
+\setlength{\tabcolsep}{5pt}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\setlength{\parskip}{12pt}
+\renewcommand{\arraystretch}{2}
+\newcommand{\?}{\stackrel{?}{=}}
+
+\title{Turing Paper Notes}
+\begin{document}
+\maketitle
+
+\setion*{Section 2}
+What is meant when by a number differing by an integer from the number computed by a circle-free machine (\texit{Computable sequences and numbers} section)?
+
+Is it assumed that, after going to a new square on the tape, that square contains no symbol unless otherwise specified?
+
+In the example of the machine that computes the sequence $010101...$, why, after, the configuration determined by the $m$-config $b$ and no symbol, is 
+$P0,R$ done, followed by going to the next configuration, which also does $R$. This seems like it is shifting over to places to the right, 
+and thus missing one place on the tape (this same question comes up with the third and fourth configurations).
+
+For the second example machine, what is the first configuration, is it the $m$-config $b$ with any symbol or no symbol?
+
+We should go over the second example machine, as I was having trouble understanding how it really computed the desired sequence.
+
+What exactly did he mean when he was talking about writing figures on "alternate squares"? Does this have something to do with what he said before: "We also arrange that in the 
+sequence of figures on alternate squares there shall be no blanks."

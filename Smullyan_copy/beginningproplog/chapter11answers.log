@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.25)  8 SEP 2023 13:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.25)  26 JAN 2024 17:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -379,13 +379,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--45
  []
 
 [2] [3]
-Overfull \hbox (4.70601pt too wide) in paragraph at lines 93--114
+Overfull \hbox (4.70601pt too wide) in paragraph at lines 97--118
 \OML/cmm/m/it/10 decimal number$ \OT1/cmr/m/n/10 that is des-ig-nated by the $\
 OML/cmm/m/it/10 Dyadic Godelian representation for i$\OT1/cmr/m/n/10 .
  []
 
 [4] [5]
-Overfull \hbox (60.94037pt too wide) in paragraph at lines 134--143
+Overfull \hbox (60.94037pt too wide) in paragraph at lines 138--147
 \OT1/cmr/m/n/10 We con-sider some $^^F[]$ re-la-tion $\OML/cmm/m/it/10 R\OT1/cm
 r/m/n/10 (\OML/cmm/m/it/10 x; y; z[]; :::; z[]\OT1/cmr/m/n/10 )$ and con-sider 
 the re-la-tion $\OMS/cmsy/m/n/10 9\OML/cmm/m/it/10 x\OMS/cmsy/m/n/10 9\OML/cmm/
@@ -394,7 +394,7 @@ m/it/10 yR\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y; z[]; :::; z[]\OT1/cmr/m/n/10
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--143
+Underfull \hbox (badness 10000) in paragraph at lines 138--147
 
  []
 
@@ -405,7 +405,7 @@ Package rerunfilecheck Info: File `chapter11answers.out' has not changed.
 Here is how much of TeX's memory you used:
  8641 strings out of 476025
  139585 string characters out of 5790017
- 1865388 words of memory out of 5000000
+ 1866388 words of memory out of 5000000
  28961 multiletter control sequences out of 15000+600000
  522660 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -421,7 +421,7 @@ al/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/
 texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
 exlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/tex
 live/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on chapter11answers.pdf (7 pages, 150908 bytes).
+Output written on chapter11answers.pdf (7 pages, 151366 bytes).
 PDF statistics:
  114 PDF objects out of 1000 (max. 8388607)
  82 compressed objects within 1 object stream

@@ -294,6 +294,40 @@ which is the same as saying at least one of $TX_1,...,TX_n$ is false under $I$, 
 all of $X_1,...,X_n$ are true, which would mean that at least one of $Y_1,...,Y_k$ are true, which is the same as saying that at least one of 
 $FY_1,...,FY_k$ is false, therefore meaning that $S$ is also not simultaneously satisfiable under this interpretation.
 
+\section*{7}
+(In the system $GG$, I do not understand why $\dfrac{U\rightarrow V,\gamma(a)}{U\rightarrow V,\gamma^*}$ is true. Also, is $\phi(X)$ the same as 
+$\phi(x)$)\newline
+$Correctness$: First, we show that the altered tableau system is correct. We must show that, for any set $S$:
+\begin{center}
+\begin{array}{lr} 
+	(1) & If $S\bigcup A$, then so is $S\bigcup A_1,A_2$ \\
+	(2) & If S\bigcup B$ is satisfiable, then so is either $S\bigcup B_1$ or $S\bigcup B_2$ \\
+	(3) & If $S\bigcup C$ is satisfiable, then so is $S\bigcup C(a)$ \\
+	(4) & If $S\bigcup D$ is satsifiable, then so is $S\bigcup D(a)$
+\end{array}
+\end{center}
+These can be broken down into individual cases that can be found in chapter 9 of Smullyan [2014]. Thus, the contrapositives of the above statements 
+prove that, if a tableau of $X$ is closed, then $X$ is unsatisfiable.
+$Completeness\; of\; Altered\; Tableau$: Next, we show that the altered tableau system is complete. To that end, we must show that, if the altered 
+tableau for 
+$X$ is open, then $X$ is satisfaible. We can do this by showing that any set satisfying the following conditions is satisfiable:
+\begin{center}
+\begin{array}{lr}
+	(1) & It is not the case that $T\; X$ and $F\; X$ are in $S$, or that $F\; X$ and $F\;\oldneg X$ are in $S$, or that $T\; X$ and $T\;\oldneg X$ 
+are in $S$ \\
+	(2) & If there is some $A\in S$, then $A_1\in S$ and $A_2\in S$. \\
+	(3) & If there is some $B\in S$, then either $B_1\in S$ or $B_2\in S$. \\
+	(4) & If there is some $C\in S$, then $C(a)\in S$ for every parameter $a$. \\
+	(5) & If there is some $D\in S$, then $D(a)\in S$ for at least one parameter $a$. 
+\end{array}
+\end{center}
+We can prove this by complete induction. In the base case, $X$ is an atomic formula. We can assign to it the value of truth if either 
+$T\; X$ or $F\;\oldneg X$ are in $S$, and the value false if either of the form $F\; X$ or $T\;\oldneg X are in $S$. If none of these formulae are in 
+$S$, then it doesn't matter what value we assign to $X$. The cases where $X$ is an $A,B,C,D$ follow the cases where $X$ is a $\alpha,\beta,\gamma,\delta$, 
+respectively. Thus, taking the contrapositive of the proven statement, if $X$ is unsatisfiable, then the altered tableau for $X$ closes.\newline
+$Completeness\; of\; GG$: Next, we show that the system $GG$ is complete. So, we consider some valid formula $X$, and the closed altered tableau for 
+the conjugate of $X$.
+
 
 
 

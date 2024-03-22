@@ -5,7 +5,7 @@ PDF+=answers.pdf
 all: answers.pdf review.pdf
 
 %.pdf:  %.tex
-	pdflatex -file-line-error -interaction=nonstopmode $< | grep -v /usr/local/texlive/
+	@pdflatex -file-line-error -interaction=nonstopmode $< | grep -v /usr/local/texlive/
 	@rm -fr *.out *.log *.aux
 
 clean:
