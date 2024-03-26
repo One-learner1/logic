@@ -12,10 +12,10 @@ enum Config{
 	END, B, O, Q, P, F
 };
 struct Tuple{
-	Config config;
+	enum Config config;
 	const char *symbols;
 	const char *operations;
-	Config final;
+	enum Config final;
 } tuple[]={
 B,	" ",	"Pe,R,Pe,R,P0,R,R,P0,L,L",	O,
 
@@ -33,7 +33,7 @@ F,	"ex01",	"R,R",				F,
 F,	" ",	"P0,L,L",			O,
 END
 };
-char name(Config c){
+char name(enum Config c){
 	switch(c){
 	default:
 		fprintf(stderr, "Bad config %d\n", c);
@@ -47,14 +47,14 @@ char name(Config c){
 }
 #define	NTAPE	65536
 #define	NSTEP	1024
-int main(){
+int main(void){
 	char tape[NTAPE];
 	memset(tape, ' ', NTAPE);
 	int loc=0;
 	int hwm=0;
-	Config config=B;
+	enum Config config=B;
 	for(int nstep=0;nstep!=NSTEP;nstep++){
-		Tuple *t;
+		struct Tuple *t;
 		for(t=tuple;;t++){
 			if(t->config==END){
 				printf("Nothing for state %d, input %c\n",
