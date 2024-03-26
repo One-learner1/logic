@@ -5,12 +5,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+//
+// The second example in section 3
+//
 enum Config{
 	END, B, O, Q, P, F
 };
 struct Tuple{
 	Config config;
-	const char *symbol;
+	const char *symbols;
 	const char *operations;
 	Config final;
 } tuple[]={
@@ -43,7 +46,7 @@ char name(Config c){
 	}
 }
 #define	NTAPE	65536
-#define	NSTEP	8192
+#define	NSTEP	1024
 int main(){
 	char tape[NTAPE];
 	memset(tape, ' ', NTAPE);
@@ -58,7 +61,7 @@ int main(){
 					config, tape[loc]);
 				return 0;
 			}
-			if(t->config==config && strchr(t->symbol, tape[loc])!=0)
+			if(t->config==config && strchr(t->symbols, tape[loc])!=0)
 				break;
 		}
 		for(const char *op=t->operations;*op;op++) switch(*op){
@@ -91,11 +94,11 @@ int main(){
 			break;
 		}
 		config=t->final;
-		for(int i=0;i!=hwm;i++) putchar(tape[i]);
-		putchar('\n');
-		for(int i=0;i!=loc;i++) putchar(' ');
-		putchar(name(config));
-		putchar('\n');
+		for(int i=0;i<=hwm;i++){
+				putchar(tape[i]);
+			if(i==loc)
+				printf("[%c]", name(config));
+		}
 		putchar('\n');
 	}
 	printf("Stopped after %d steps, loc=%d, hwm=%d\n", NSTEP, loc, hwm);
