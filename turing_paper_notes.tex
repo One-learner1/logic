@@ -9,6 +9,7 @@
 \usepackage{indentfirst}
 \usepackage{amsthm}
 \usepackage{yhmath}
+\usepackage{csquotes}
 \usepackage{placeins}
 \newcommand*{\oldneg}{\mathord{\sim}}
 \newcommand\showdiv[1]{\overline{\smash{)}#1}}
@@ -29,21 +30,39 @@
 \maketitle
 
 \section*{Section 2}
-What is meant when by a number differing by an integer from the number computed by a circle-free machine (\textit{Computable sequences and numbers} section)?
+What is meant when by a number differing by an integer from the number computed by a circle-free machine (\textit{Computable sequences and numbers} section)? It 
+just means that the integer part of the number differs by an integer from any other number computable by a circle-free machine (meaning integers don't matter).
 
-Is it assumed that, after going to a new square on the tape, that square contains no symbol unless otherwise specified?
+Is it assumed that, after going to a new square on the tape, that square contains no symbol unless otherwise specified? Yes. A machine is always assumed to start 
+wtih a tape such that every square on it is blank.
 
 \section*{Section 3}
 
 In the example of the machine that computes the sequence $010101...$, why, after, the configuration determined by the $m$-config $b$ and no symbol, is 
 $P0,R$ done, followed by going to the next configuration, which also does $R$. This seems like it is shifting over to places to the right, 
-and thus missing one place on the tape (this same question comes up with the third and fourth configurations).
+and thus missing one place on the tape (this same question comes up with the third and fourth configurations). This is an example of the \textquote{alternate squares} that 
+are being discussed. This is simply something he defines, that each figure in the sequence is meant to be written on alternate squares.
 
-For the second example machine, what is the first configuration, is it the $m$-config $b$ with any symbol or no symbol?
+For the second example machine, what is the first configuration, is it the $m$-config $b$ with any symbol or no symbol? Yes.
 
 We should go over the second example machine, as I was having trouble understanding how it really computed the desired sequence.
 
-What exactly did he mean when he was talking about writing figures on "alternate squares"? Does this have something to do with what he said before: "We also arrange that in the 
-sequence of figures on alternate squares there shall be no blanks."
+What exactly did he mean when he was talking about writing figures on \textquote{alternate squares}? 
+Does this have something to do with what he said before: \textquote{We also arrange that in the 
+sequence of figures on alternate squares there shall be no blanks.} See the answer to the first question in section 3. This is just a convention to leave one square 
+between each square as a marker to help in the computation. The other squares are the figures actually forming the continuous sequence.
+
+\section*{4}
+I was unable to understand what he meant by these \textquote{skeleton tables}. Apparently, they include some sort of \textquote{$m$-function}, yet I can't find a definition 
+for what that means (he says on p. 236 that they are of the form $f(q,r,x)$, say, but does not actually define what this form means).
+
+\section*{5}
+What did he mean when he separated behaviours by ':'.? For example, he says: $E :E,R:E,L:Pa: Pa, R: Pa, L:R:L:$.
+
+What does \textquote{$N$} mean in $Q_iS_jS_kNq_m$ on page 240?
+
+\section*{6}
+
+Was it a mistake when he started of $(C_2)$ on page 242 with $DDA$ instead of $DA$?
 
 \end{document}
