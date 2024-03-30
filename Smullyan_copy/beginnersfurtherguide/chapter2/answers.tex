@@ -11,6 +11,7 @@
 \usepackage{amsthm}
 \usepackage{yhmath}
 \usepackage{placeins}
+\usepackage{tikz}
 \newcommand*{\oldneg}{\mathord{\sim}}
 \let\oldemptyset\emptyset
 
@@ -335,5 +336,34 @@ satisfiable, and hence, by contraposition, the completeness of the altered table
 Lastly, we must show that the system $GG$ is complete, that is, we must show that for any sequent which is valid, $GG$ provides a proof of that sequent. Now, let us transform 
 any given sequent $X_1,...,X_n\rightarrow Y_1,...,Y_k$ to the set of formulas $\{ T\; X_1,...,T\; X_n,F\; Y_1,...,F\; Y_k\}$. Now, if this set of formulas is unsatisfiable (which it must 
 be if a sequent is valid), there is a proof of it using the altered tableau system (as the system was proven complete). So consider the proof of this set using the altered tableau system.
+First, let us convert the inference rules of the altered tableau method into their counterparts in uniform notation:\newline
+\begin{center}
+\begin{tikzpicture}
+\node at (1,0) {$\{S,T\alpha\}$}
+	child {node {$\{S,T\alpha_1,T\alpha_2\}$}};
+\node at (4,0) {$\{S,F\beta\}$}
+	child {node {$\{S,F\beta_1,F\beta_2\}$}};
+\node at (7,0) {$\{S,T\beta\}$}
+	child {node {$\{S,T\beta_1\}$}}
+	child {node {$\{S,T\beta_2\}$}};
+\node at (10,0) {$\{S,F\alpha\}$}
+	child {node {$\{S,F\alpha_1\}$}}
+	child {node {$\{S,F\alpha_2\}$}};
+\node at (1,-3) {$\{S,T\gamma\}$}
+	child {node {$\{S,T\gamma (a)\}$}};
+\node at (4,-3) {$\{S,F\delta\}$}
+	child {node {$\{S,F\delta (a)\}$}};
+\node at (7,-3) {$\{S,T\delta\}*$}
+	child {node {$\{S,T\delta (a)\}$}};
+\node at (10,-3) {$\{S,F\gamma\}*$}
+	child {node {$\{S,F\gamma (a)\}$}};
+\end{tikzpicture}
+\end{center}
+\begin{flushright}
+$*$Providing $a$ is not in the premise.
+\end{flushright}
+
+
+
 
 \end{document}
