@@ -336,7 +336,8 @@ satisfiable, and hence, by contraposition, the completeness of the altered table
 Lastly, we must show that the system $GG$ is complete, that is, we must show that for any sequent which is valid, $GG$ provides a proof of that sequent. Now, let us transform 
 any given sequent $X_1,...,X_n\rightarrow Y_1,...,Y_k$ to the set of formulas $\{ T\; X_1,...,T\; X_n,F\; Y_1,...,F\; Y_k\}$. Now, if this set of formulas is unsatisfiable (which it must 
 be if a sequent is valid), there is a proof of it using the altered tableau system (as the system was proven complete). So consider the proof of this set using the altered tableau system.
-First, let us convert the inference rules of the altered tableau method into their counterparts in uniform notation:\newline
+First, let us convert the inference rules of the altered tableau method into their counterparts in uniform notation (which, in this case, we make to be 
+a $block$ tableau, not an analytic one):\newline
 \begin{center}
 \begin{tikzpicture}
 \node at (1,0) {$\{S,T\alpha\}$}
@@ -362,6 +363,46 @@ First, let us convert the inference rules of the altered tableau method into the
 \begin{flushright}
 $*$Providing $a$ is not in the premise.
 \end{flushright}
+Now, for any of the above block tableau rules of the form:
+\begin{center}
+\begin{tikzpicture}
+\node at (1,0) {$\{S_1\}$}
+	child {node {$\{S_2\}$}};
+\end{tikzpicture}
+\end{center}
+we mean
+\begin{center}
+\begin{tikzpicture}
+\node at (1,0) {$\{|S_2|\}$}
+        child {node {$\{|S_1|\}$}};
+\end{tikzpicture}
+\end{center}
+by the $counterpart$ of the rule. If the block rule is of the form:
+\begin{center}
+\begin{tikzpicture}
+\node at (1,0) {$\{S_1\}$}
+        child {node {$\{S_2\}$}}
+	child {node {$\{S_3\}$}};
+\end{tikzpicture}
+\end{center}
+we mean
+\begin{center}
+\begin{tikzpicture}
+\node at (1,0) {$\{|S_2|,|S_3|\}$}
+        child {node {$\{|S_1|\}$}};
+\end{tikzpicture}
+\end{center}
+by its counterpart. In fact, the counterparts of the eight block tableau rules listed above are the eight inference rules in the system $GG$ (as the reader can 
+easily verify). Now let us suppose we have some given closed altered block tableau $\tau$ for a set of formulas $S$. By virtue of it being closed, all branches of 
+$\tau$ will end with a block of one of the three forms:
+\[ \{S,TX,FX\},\{S,TX,T\oldneg X\},\{S,FX,F\oldneg X\} \] 
+Here is how we convert $\tau$ into a proof of $S$ in the system $GG$. First, if $\tau$ has $n$ closed branches, we place all of the $n$ blocks at the bottom 
+of each of those closed branches as the first $n$ steps of the proof. Because each of these blocks $S$ is of one of the three forms, we know that the corresponding 
+sequence $|S|$ is of one of the three forms:
+\[ U,X\rightarrow V,X;\; U,X,\oldneg X\rightarrow V;\; U\rightarrow V,X,\oldneg X \] which are all axioms of the system $GG$. Hence, we are allowed to start the 
+proof with these blocks. Next, whenever we reach the $n$th step in the altered block tableau, we see which rule was used to conclude that block, and then flip 
+the block upside down using the counterpart of that rule (and place the counterpart in the proof). When we reach the first step of $\tau$, we know we have finished 
+the proof.
 
 
 
