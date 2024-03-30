@@ -302,7 +302,11 @@ satisfiable, then:\newline
 (2) If $B\in S$, then either $S\bigcup B_1$ or $S\bigcup B_2$ is satisfiable,\newline
 (3) If $C\in S$, then $S\bigcup C(a)$ is satisfiable for every parameter $a$,\newline
 (4) If $D\in S$, then $S\bigcup D(a)$ is satisfiable for every parameter $a$ new to $S$.\newline
-These can all be proved by replacing $\alpha,\beta,\gamma,\delta$ by $A,B,C,D$, respectively, in Problem 2 of the Begginers Guide [Smullyan, 2014].
+
+
+These can all be proven by replacing $\alpha,\beta,\gamma,\delta$ by $A,B,C,D$, respectively, in Chapter 9 of the Beginners Guide [Smullyan, 2014]. It is obvious 
+that the use of an altered tableau rule is in effect using one of the four methods of expansion in the above description. Thus, if using those methods preserves 
+satisfiability, then an altered tableau for a set of satisfiable formulas $S$ cannot close.
 
 
 Next, we show that the altered tableau system is complete, that is, if an altered tableau for a set formulas $S$ is open, then $S$ is satisfiable. Consider a $S$ set of the following form:\newline
@@ -310,8 +314,7 @@ Next, we show that the altered tableau system is complete, that is, if an altere
 (2) If $B\in S$, then either $B_1\in S$ or $B_2\in S$,\newline
 (3) If $C\in S$, then $C(a)\in S$ for every parameter $a$,\newline
 (4) If $D\in S$, then $D(a)\in S$ for at least one parameter $a$.\newline
-(5) There is no formula $T\; X\in S$ such that $T\;\oldneg X\in S$; There is no formula $X$ such that $T\; X\in S$ and $F\; X\in S$; and there is no formula $X$ such that 
-    $F\; X\in S$ and $F\;\oldneg X\in S$.\newline
+(5) There is no formula $X$ such that: $T\; X\in S$ and $T\;\oldneg X\in S$; or $T\; X\in S$ and $F\; X\in S$; or $F\; X\in S$ and $F\;\oldneg X\in S$.\newline
 Now, it is clear that if an altered tableau does not close, and runs on infinitely (i.e, is open), every branch on the altered tableau is such a set. Thus, if we can show that every set of 
 the above form is satisfiable, we can show that, if an altered tableau for a set of formulas $S$ is open, then the set $S$ is simultaneously satisfiable (which would show by contraposition 
 that the altered tableau system is complete). We can prove this by complete induction, that is, we must prove that there is some interpretation $I$ under which all elements of $S$ are true.
@@ -320,12 +323,17 @@ that the altered tableau system is complete). We can prove this by complete indu
 Base case: We must show that all formulas of degree 0 (atomic formulas) are satisfiable under some interpretation $I$ (and then show all the formulas of greater degrees are true under that same 
 interpretation). Now, we can assign the value $T$ to any of the following formulas $X$: if $T\; X\in S$ or $F\;\oldneg X\in S$, then we assign $X$ the value of truth
 (and hence both $T\; X$ and $F\;\oldneg X$ would be true as well). Otherwise, if $F\; X\in S$ or $T\;\oldneg X\in S$, then we assign $X$ the value of falsity (and hence both 
-$F\; X$ and $T\;\oldneg X$ would be true as well). If none of $T\; X,F\;\oldneg X,F\; X,T\;\oldneg X$ are in $S$, then it doesn't matter what value we assign to $X$.
+$F\; X$ and $T\;\oldneg X$ would be true as well). If none of $T\; X,F\;\oldneg X,F\; X,T\;\oldneg X$ are in $S$, then it doesn't matter what value we assign to $X$. 
+In this way, we ensure that all atomic formulas in $S$ are true under $I$.
 
-Inductive case: Now, we assume that all formulas in $S$ of a degree less than $n$ are true under $I$. We must show that all formulas $X$ of a degree $n+1$ in $I$ are also true under $I$. Suppose 
-$X$ is of type $A$. Thus $A_1\in S$ and $A_2\in S$, which are thus both true under $I$, and hence $A$ is also true under $I$. Next, suppose $X$ is of type $B$. Thus either $B_1\in S$ or 
-$B_2\in S$, and whichever one is, it is thus true under $I$, hence meaning $B$ is also true under $I$. Next, suppose that $X$ is of type $C$. Thus $C(a)\in S$ for every parameter $a$, which are 
-all true under $I$, thus meaning $C$ is also true under $I$. In the last case, suppose $X$ is of type $D$. Thus $D(a)\in S$ for at least one parameter $a$, and these formulas are all true 
+Inductive case: Now, we assume that all formulas in $S$ of a degree less than $n$ are true under $I$. We must show that all formulas $X$ of 
+degree $n+1$ in $S$ are also true under $I$. Suppose
+$X$ is of type $A$. Thus $A_1\in S$ and $A_2\in S$, which are thus both true under $I$, and hence $A$ is also true under $I$. Next, suppose $X$ is of type $B$.
+ Thus either $B_1\in S$ or 
+$B_2\in S$, and whichever one is in $S$, it is thus true under $I$, hence meaning $B$ is also true under $I$. Next, suppose that $X$ is of type $C$. 
+Thus $C(a)\in S$ for every parameter $a$, which are 
+all true under $I$, thus meaning $C$ is also true under $I$. In the last case, suppose $X$ is of type $D$. Thus $D(a)\in S$ for at least one parameter $a$, 
+and all the formulas of the form $D(a)\in S$ are true 
 under $I$ by the assumption, thus meaning $D$ is also true under $I$. Hence, the proof is complete.
 
 
@@ -337,7 +345,7 @@ Lastly, we must show that the system $GG$ is complete, that is, we must show tha
 any given sequent $X_1,...,X_n\rightarrow Y_1,...,Y_k$ to the set of formulas $\{ T\; X_1,...,T\; X_n,F\; Y_1,...,F\; Y_k\}$. Now, if this set of formulas is unsatisfiable (which it must 
 be if a sequent is valid), there is a proof of it using the altered tableau system (as the system was proven complete). So consider the proof of this set using the altered tableau system.
 First, let us convert the inference rules of the altered tableau method into their counterparts in uniform notation (which, in this case, we make to be 
-a $block$ tableau, not an analytic one):\newline
+a $block$ tableau system, not an analytic one):\newline
 \begin{center}
 \begin{tikzpicture}
 \node at (1,0) {$\{S,T\alpha\}$}
@@ -366,43 +374,43 @@ $*$Providing $a$ is not in the premise.
 Now, for any of the above block tableau rules of the form:
 \begin{center}
 \begin{tikzpicture}
-\node at (1,0) {$\{S_1\}$}
-	child {node {$\{S_2\}$}};
+\node at (1,0) {$S_1$}
+	child {node {$S_2$}};
 \end{tikzpicture}
 \end{center}
 we mean
 \begin{center}
 \begin{tikzpicture}
-\node at (1,0) {$\{|S_2|\}$}
-        child {node {$\{|S_1|\}$}};
+\node at (1,0) {$|S_2|$}
+        child {node {$|S_1|$}};
 \end{tikzpicture}
 \end{center}
 by the $counterpart$ of the rule. If the block rule is of the form:
 \begin{center}
 \begin{tikzpicture}
-\node at (1,0) {$\{S_1\}$}
-        child {node {$\{S_2\}$}}
-	child {node {$\{S_3\}$}};
+\node at (1,0) {$S_1$}
+        child {node {$S_2$}}
+	child {node {$S_3$}};
 \end{tikzpicture}
 \end{center}
 we mean
 \begin{center}
 \begin{tikzpicture}
-\node at (1,0) {$\{|S_2|,|S_3|\}$}
-        child {node {$\{|S_1|\}$}};
+\node at (1,0) {$|S_2|,|S_3|$}
+        child {node {$|S_1|$}};
 \end{tikzpicture}
 \end{center}
 by its counterpart. In fact, the counterparts of the eight block tableau rules listed above are the eight inference rules in the system $GG$ (as the reader can 
 easily verify). Now let us suppose we have some given closed altered block tableau $\tau$ for a set of formulas $S$. By virtue of it being closed, all branches of 
 $\tau$ will end with a block of one of the three forms:
 \[ \{S,TX,FX\},\{S,TX,T\oldneg X\},\{S,FX,F\oldneg X\} \] 
-Here is how we convert $\tau$ into a proof of $S$ in the system $GG$. First, if $\tau$ has $n$ closed branches, we place all of the $n$ blocks at the bottom 
-of each of those closed branches as the first $n$ steps of the proof. Because each of these blocks $S$ is of one of the three forms, we know that the corresponding 
-sequence $|S|$ is of one of the three forms:
+Here is how we convert $\tau$ into a proof of $S$ in the system $GG$. First, if $\tau$ has $n$ closed branches, we place the corresponding sequents of 
+all of the $n$ blocks at the bottom 
+of each of those closed branches as the first $n$ steps of the proof. Because each of these blocks $S$ is of one of the above three forms, we know that its corresponding 
+sequent $|S|$ is of one of the three forms:
 \[ U,X\rightarrow V,X;\; U,X,\oldneg X\rightarrow V;\; U\rightarrow V,X,\oldneg X \] which are all axioms of the system $GG$. Hence, we are allowed to start the 
-proof with these blocks. Next, whenever we reach the $n$th step in the altered block tableau, we see which rule was used to conclude that block, and then flip 
-the block upside down using the counterpart of that rule (and place the counterpart in the proof). When we reach the first step of $\tau$, we know we have finished 
-the proof.
+proof with these sequents. Next, we simply flip the altered block tableau upside down. This is doable as, in flipping it, all the block tableau rules are switched 
+to become their counterparts (which we have shown to be the inference rules of $GG$). 
 
 
 
