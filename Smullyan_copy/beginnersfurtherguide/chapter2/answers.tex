@@ -379,11 +379,13 @@ Now, for any of the above block tableau rules of the form:
 \end{tikzpicture}
 \end{center}
 we mean
+\renewcommand\arraystretch{2.4}
 \begin{center}
-\begin{tikzpicture}
-\node at (1,0) {$|S_2|$}
-        child {node {$|S_1|$}};
-\end{tikzpicture}
+\begin{tabular}{c}
+	$|S_2|$ \\
+	\cline{1-1}
+	$|S_1|$
+\end{tabular}
 \end{center}
 by the $counterpart$ of the rule. If the block rule is of the form:
 \begin{center}
@@ -395,10 +397,11 @@ by the $counterpart$ of the rule. If the block rule is of the form:
 \end{center}
 we mean
 \begin{center}
-\begin{tikzpicture}
-\node at (1,0) {$|S_2|,|S_3|$}
-        child {node {$|S_1|$}};
-\end{tikzpicture}
+\begin{tabular}{c}
+	$|S_2|,|S_3|$ \\
+	\cline{1-1}
+	$|S_1|$
+\end{tabular}
 \end{center}
 by its counterpart. In fact, the counterparts of the eight block tableau rules listed above are the eight inference rules in the system $GG$ (as the reader can 
 easily verify). Now let us suppose we have some given closed altered block tableau $\tau$ for a set of formulas $S$. By virtue of it being closed, all branches of 
