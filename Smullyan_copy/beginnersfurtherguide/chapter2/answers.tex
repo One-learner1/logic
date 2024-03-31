@@ -1,6 +1,3 @@
-%/*% pdflatex -file-line-error -interaction nonstopmode %
-
-
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -8,6 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{hyperref}
 \usepackage{exercises}
+\usepackage{indentfirst}
 \usepackage{amsthm}
 \usepackage{yhmath}
 \usepackage{comment}
@@ -458,10 +456,10 @@ parameters of both $X$ and $Y$ by the assumption, and $V,\alpha$ contains all th
 $\alpha$ contains all the predicates and parameters of $\alpha_1,\alpha_2$.
 
 \section*{Completion of the Proof of Craig's Lemma for Rule's C and D}
-Rule D: We need to show that, if $X$ is an interpolant for $U\rightarrow V,\gamma(a)$ and $a$ does not occur in $U$ or in $V,\gamma(a)$, 
+Rule D: We need to show that, if $X$ is an interpolant for $U\rightarrow V,\gamma(a)$ and $a$ does not occur in $U$ or in $V,\gamma$, 
 then $X$ is an interpolant for $U\rightarrow V,\gamma$. By the assumption of interpolancy, all parameters of $X$ occur in $V$, as well as 
-$U,\gamma(a)$. Thus, because $a$ does not occur in $V$ (by the hypothesis), $a$ must also not occur in $X$. Now, it is clear $\delta$ contains 
-all parameters $b$ in $\gamma(a)$ such that $b\ne a$. And hence, for whatever parameters in $X$ that $\gamma(a)$ has, $\delta$ also contains them
+$U,\gamma(a)$. Thus, because $a$ does not occur in $V$ (by the hypothesis), $a$ must also not occur in $X$. Now, it is clear $\gamma$ contains 
+all parameters $b$ in $\gamma(a)$ such that $b\ne a$. And hence, for whatever parameters in $X$ that $\gamma(a)$ has, $\gamma$ also contains them
 (because these parameters must be $\ne a$). Thus, $V,\gamma$ contains all the parameters of $X$. Both $U$ and $V,\gamma$ also contain all the predicates 
 of $X$, as the predicates in $\gamma$ are the same as those in $\gamma(a)$.
 
@@ -470,7 +468,7 @@ Now, $U\rightarrow X$ is valid by the assumption, and, because $X\rightarrow V,\
 rule D, thus proving $X$ is an interpolant for $U\rightarrow V,\gamma$.
 
 
-Rule C: We need to show that, if $X$ is an interpolant for $U\rightarrow V,\delta(a)$, $X$ is an interpolant for $U\rightarrow V,\delta(a)$, the if 
+Rule C: We need to show that, if $X$ is an interpolant for $U\rightarrow V,\delta(a)$, then if 
 $a$ does not occur in $X$, or $a$ does occur in $V,\delta$, then $X$ is an interpolant for $U\rightarrow V,\delta$. If $a$ does occur in $X$ but not in 
 $V,\delta$, then an interpolant for $U\rightarrow V,\delta$ is $\exists x\phi(x)$ where $\phi(x)$ is the result of replacing every occurence of 
 $a$ in $X$ by a variable $x$ that does not occur in $X$. The first part of the assumption is obvious. Next, we must show the second part. Hence, assume 
