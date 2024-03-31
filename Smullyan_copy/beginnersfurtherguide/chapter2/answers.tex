@@ -415,6 +415,46 @@ sequent $|S|$ is of one of the three forms:
 proof with these sequents. Next, we simply flip the altered block tableau upside down. This is doable as, in flipping it, all the block tableau rules are switched 
 to become their counterparts (which we have shown to be the inference rules of $GG$). 
 
+\section*{Exercise}
+Axiom 1: This is the sequent $U,X\rightarrow V,X$. Here, an interpolant is $X$. For, $U,X\rightarrow X$ is obviously valid, and 
+$X\rightarrow V,X$ is also valid (and $V,X$ and $U,X$ clearly contain all parameters and predicates in $X$).
+
+
+Axiom 2: This is the sequent $U,X,\oldneg X\rightarrow V$. Here, an interpolant is $f$. 
+$U,X,\oldneg X\rightarrow f$ and $f\rightarrow V$ are obviously valid, and all the predicates all parameters and predicates of $f$ are in $V$ and 
+$U,X,\oldneg X$ (as $f$ has no parameters or predicates). 
+
+
+Axiom 3: This is the sequent $U\rightarrow V,X,\oldneg X,$. Here, an interpolant is $t$.
+$U\rightarrow t$ and $t\rightarrow V,X\oldneg X$ are both obviously valid (as $X\vee\oldneg X$ is valid), and, as in the previous axiom, 
+$t$ has no parameters or predicates.
+
+
+Rule A_1: Suppose that there is an interpolant $X$ for the sequent $U,\alpha_1,\alpha_2\rightarrow V$. Then $X$ is obviously an interpolant for 
+$U,\alpha\rightarrow V$, as whenever all of $U,\alpha$ are true, so would all of $U,\alpha_1,\alpha_2$ (and hence $X$ would also be true). Now, if 
+$\alpha_1,\alpha_2$ contains any of the parameters or predicates of $X$, then so would $\alpha$, which takes care of the predicates and parameters of $X$ 
+(as $V$ contains all of the parameters and predicates of $X$ by the assumption). 
+
+
+Rule A_2: Suppose that there is an interpolant $X$ for the sequent $U\rightarrow V,\beta_1,\beta_2$. As in the above rule, $X$ is also an interpolant for 
+$U\rightarrow V,\beta$. $X\rightarrow V,\beta$ is valid, as whenever $X$ is true, either $V,\beta_1,\beta_2$ is true, and if it is $\beta_1$ or 
+$\beta_2$, then $\beta$ would be true as well.
+
+
+Rule B_1: Suppose that there is an interpolant $X$ for the sequent $U,\beta_1\rightarrow V$ and an interpolant $Y$ for the sequent
+$U,\beta_2\rightarrow V$. Then $X\vee Y$ is an interpolant for the sequent $U\beta\rightarrow V$. If all elements of 
+$U,\beta$ are true, then either $X$ or $Y$ is true, meaning $X\vee Y$ is true. If $X\vee Y$ is true, then $V$ is true by the assumption of interpolancy 
+for whichever of $X$ or $Y$ is true. As for the predicates and parameters of $X\vee Y$, it was assumed that $V$ contains the predicates and parameters of 
+both $X$ and $Y$, while $U,\beta$ contains all the predicates and parameters of $X\vee Y$ (as $U,\beta_1$ and $U,\beta_2$ contain all the predicates and 
+parameters of $X$ and $Y$, respectively, and $\beta$ contains all the predicates and parameters of $\beta_1$ and $\beta_2$).
+
+
+Rule B_2: Suppose that there is an interpolant $X$ for the sequent $U\rightarrow V,\alpha_1$ and an interpolant $Y$ for the sequent 
+$U\rightarrow V,\alpha_2$. Then $X\wedge Y$ is an interpolant for $U\rightarrow V,\alpha$. For, if $U$ is true, then so are both $X$ and $Y$ 
+(that is, $X\wedge Y$) by the assumption. And, if $X\wedge Y$ is true, then at least one element of both $V,\alpha_1$ and $V,\alpha_2$ are true. 
+If it is both $\alpha_1,\alpha_2$ which are true, then $\alpha$ is true as well. As for the predicates and parameters, $U$ contains the predicates and 
+parameters of both $X$ and $Y$ by the assumption, and $V,\alpha$ contains all the predicates and parameters of $X\wedge Y$ as 
+$\alpha$ contains all the predicates and parameters of $\alpha_1,\alpha_2$.
 
 
 
