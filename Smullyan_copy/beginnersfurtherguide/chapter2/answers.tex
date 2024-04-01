@@ -7,6 +7,7 @@
 \usepackage{exercises}
 \usepackage{indentfirst}
 \usepackage{amsthm}
+\usepackage{csquotes}
 \usepackage{yhmath}
 \usepackage{comment}
 \usepackage{placeins}
@@ -144,7 +145,7 @@ were required to prove.
 \subsection*{Correctness of $G_0$}
 
 
-The Axiom of the system is obviouslly correct. For, whenever the set of formulas $U,X$ is true, $X$ is true, meaning it is obviously true that $at\; least\; one$ of the 
+The Axiom of the system is obviously correct. For, whenever the set of formulas $U,X$ is true, $X$ is true, meaning it is obviously true that $at\; least\; one$ of the 
 formulas $V,X$ are true for any set of formulas $V$.
 
 
@@ -261,7 +262,7 @@ using $I_1$. If $\alpha$ is $T\oldneg X$, this can be shown using $N_2$. If $\al
 $B$: If $\beta$ is $TX\vee Y$, this can be shown using $D_2$. If $\beta$ is $FX\wedge Y$, this can be shown using $C_2$. If $\beta$ is $TX\supset Y$, this can be shown 
 using $I_2$. The cases where $\beta$ is $T\oldneg X$ or $F\oldneg X$ are the same as in the $\alpha$ case.
 
-\subsection*{A set $S$ is unsatisfiable iff its corresponding sequent $|S|$ is a tautology}
+\section*{A set $S$ is unsatisfiable iff its corresponding sequent $|S|$ is a tautology}
 
 
 On the one hand, suppose that a non-empty set $S$ of signed formulas is unsatisfiable. 
@@ -293,6 +294,10 @@ $X_1,...,X_n\rightarrow Y_1,...,Y_K$ is a tautology. There are then two cases. I
 which is the same as saying at least one of $TX_1,...,TX_n$ is false under $I$, which would mean $S$ is not simultaneously true under $I$. In the other case, 
 all of $X_1,...,X_n$ are true, which would mean that at least one of $Y_1,...,Y_k$ are true, which is the same as saying that at least one of 
 $FY_1,...,FY_k$ is false, therefore meaning that $S$ is also not simultaneously satisfiable under this interpretation.
+
+\subsection*{First-order logic case}
+The case where we wish to prove that a set of first order formulas $S$ if unsatisfiable iff its correponding sequent is $valid$ is identical to the above 
+proof, except replacing \textquote{tautology} with \textquote{valid}.
 
 \section*{7}
 We first show that the altered tableau system is correct, that is, if a set of formulas $S$ is satisfiable, then no altered tableau for $S$ can close. It sufficies to show that, if $S$ is 
