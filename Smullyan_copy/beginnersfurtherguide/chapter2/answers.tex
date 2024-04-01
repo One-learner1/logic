@@ -485,4 +485,61 @@ and all predicates and parameters in $\delta'$ occur in both $U$ (by the assumpt
 and $V,\delta(a)$ was assumed to have all parameters of $\delta'(a)$, and $\delta$ and $\delta'$ have all parameters of $\delta(a)$ and $\delta'(a)$, 
 respectively, except $a$).
 
+\section*{Notes on Beth's definability Theorem}
+An important fact in proving the theorem is that changing around all of one given predicatethe in a valid formula sustains validity. For example, the formula:
+\[ \forall x\left(Px\vee \oldneg Px\right) \] is valid, meaning the formula:
+\[ \forall x\left(Rx\vee \oldneg Rx\right) \] is valid for any other predicate $P$. To illustrate the more general fact, consider how first-order 
+tableaus are completed. They have no dependency on the actual predicates (because we are searching for validity, and hence the predicates cannot take on 
+a specific meaning), and only change depending on the logical structure of the formula.
+
+
+The above fact is somewhat related to the following fact that is used in the proof. Suppose that we have:
+\[ \textrm{(1) } X\supset\left(Pa\equiv\phi\left(a\right)\right) \] being a valid formula. Then
+\[ X\supset\forall x\left(Px\equiv\phi\left(x\right)\right) \] is also valid, provided that $a$ does not occur in $X$ or 
+\[ \forall x\left(Px\equiv\phi\left(x\right)\right) \] To see this, again note that, because we are testing validity, we are not considering only one domain. 
+Hence, we take no notice of the values of predicates in a certain domain, but again, only the formulas logical strucutre. What this means is that 
+the above formula can only be valid if it does not lose its validity by switching around the parameters (in a similar fashion to switching around the 
+predicates), and hence we can quantify it over all the variables in any domain. The only problem that could occur with this is if $a$ is in:
+\[ \forall x\left(Px\equiv\phi\left(x\right)\right) \] 
+This may be a problem if the validity of the (1) relies upon $Pa$ or $\phi(a)$ making some connection with 
+some other sub-formula with $a$ in it, in which case case we could not quantify the formula to be universal (as the connection between $Pa$ ro $\phi(a)$ 
+and that other sub-formula with $a$ would no longer occur, as the parameters would differ in the universal quantification). This fact can be generalized 
+to the rule:
+\begin{center}
+\begin{tabular}{c}
+	$X\supset Y\wedge\gamma\left(a\right)$ \\
+	\cline{1-1}
+	$X\supset Y\wedge\gamma*$
+\end{tabular}
+\end{center}
+\begin{flushright}
+$*$Providing $a$ is not in the premise.
+\end{flushright}
+
+A similar fact can be observed for existential quantification:
+\begin{center}
+\begin{tabular}{c}
+        $X,\delta\left(a\right)\supset Y$ \\
+        \cline{1-1}
+        $X,\delta\supset Y$
+\end{tabular}
+\end{center}
+\begin{flushright}
+$*$Providing $a$ is not in the conclusion.
+\end{flushright}
+This can be seen in a similar fashion: the validity of the formula does not depend on the specific value of the parameter, but only on the 
+$strcuture$ of the parameters in the formula.
+
+\section*{8}
+Recall that $P'$ is a predicate distinct from all of $P,P_1,...,P_n$ and which does not occur in any element of $S$ ($S$ is assumed to have no 
+parameters). Recall also that $S'$ is the result of substituting $P'$ for $P$ in all occurences of $P$ in elements of $S$. Now, we assume that 
+$P$ is explicitly definable from $P_1,...,P_n$ with respect to $S$. We must show that it is implicitly so definable. Well, by the assumption
+\[ S\vdash \forall x\left(Px\equiv\phi\left( x\right)\right) \] for some formula $\phi(x)$ such that its predicates are among $P_1,...,P_n$. 
+This is the same as saying the formula \[ S\supset\forall x\left(Px\equiv\phi\left( x\right)\right) \] is valid, which implies the formula 
+\[ S'\supset\forall x\left(P'x\equiv\phi\left( x\right)\right) \] is valid as $\phi\left( x\right)$ (see the notes in the previous section about 
+switching around predicates in valid formulas for an explanation). Thus
+\[ S\wedge S'\supset\forall x\left(P'x\equiv\phi\left( x\right)\right)\wedge\forall x\left(Px\equiv\phi\left( x\right)\right) \] is valid, which implies:
+\[ S\wedge S'\supset\forall x\left(Px\equiv P'x\right) \] which is to say:
+\[ S\bigcup S'\vdash\forall x\left(Px\equiv P'x\right) \] which is what we were required to prove.
+
 \end{document}
