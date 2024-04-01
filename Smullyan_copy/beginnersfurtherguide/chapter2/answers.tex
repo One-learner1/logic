@@ -486,11 +486,13 @@ and $V,\delta(a)$ was assumed to have all parameters of $\delta'(a)$, and $\delt
 respectively, except $a$).
 
 \section*{Notes on Beth's definability Theorem}
-An important fact in proving the theorem is that changing around all of one given predicatethe in a valid formula sustains validity. For example, the formula:
+An important fact in proving the theorem is that changing around all occurences of a given predicate in a valid formula preserves validity. 
+For example, the formula:
 \[ \forall x\left(Px\vee \oldneg Px\right) \] is valid, meaning the formula:
-\[ \forall x\left(Rx\vee \oldneg Rx\right) \] is valid for any other predicate $P$. To illustrate the more general fact, consider how first-order 
+\[ \forall x\left(Rx\vee \oldneg Rx\right) \] is valid for any other predicate $R$. To illustrate the more general fact, consider how first-order 
 tableaus are completed. They have no dependency on the actual predicates (because we are searching for validity, and hence the predicates cannot take on 
-a specific meaning), and only change depending on the logical structure of the formula.
+a specific meaning), and only change depending on the logical structure of the formula, so substituting new predicates for all occurences of a 
+given predicate will not change validity (as long as the new predicates we are substituting do not already occur in the formula). 
 
 
 The above fact is somewhat related to the following fact that is used in the proof. Suppose that we have:
@@ -500,28 +502,31 @@ The above fact is somewhat related to the following fact that is used in the pro
 Hence, we take no notice of the values of predicates in a certain domain, but again, only the formulas logical strucutre. What this means is that 
 the above formula can only be valid if it does not lose its validity by switching around the parameters (in a similar fashion to switching around the 
 predicates), and hence we can quantify it over all the variables in any domain. The only problem that could occur with this is if $a$ is in:
-\[ \forall x\left(Px\equiv\phi\left(x\right)\right) \] 
-This may be a problem if the validity of the (1) relies upon $Pa$ or $\phi(a)$ making some connection with 
-some other sub-formula with $a$ in it, in which case case we could not quantify the formula to be universal (as the connection between $Pa$ ro $\phi(a)$ 
+\[ X\supset\forall x\left(Px\equiv\phi\left(x\right)\right) \] 
+This may be a problem if the validity of (1) relies upon $Pa$ or $\phi(a)$ making some connection with 
+some other sub-formula with $a$ in it, in which case case we could not quantify the formula to be universal (as the connection between $Pa$ or $\phi(a)$ 
 and that other sub-formula with $a$ would no longer occur, as the parameters would differ in the universal quantification). This fact can be generalized 
 to the rule:
 \begin{center}
 \begin{tabular}{c}
-	$X\supset Y\wedge\gamma\left(a\right)$ \\
+	$X\supset \left(Y\wedge\gamma\left(a\right)\right)$ \\
 	\cline{1-1}
-	$X\supset Y\wedge\gamma*$
+	$X\supset \left(Y\wedge\gamma\right)*$
 \end{tabular}
 \end{center}
 \begin{flushright}
-$*$Providing $a$ is not in the premise.
+$*$Providing $a$ is not in the conclusion.
 \end{flushright}
+In the proof given on 48, note that $\phi\left(x\right)$ does not contain $a$, which allows us to receive the formula 
+\[ X\supset\forall x\left(Px\equiv\phi\left(x\right)\right) \] This is because $\phi(x)$ was defined to be the result of substituting $x$ for all occurences 
+of $a$ in $Z$. But, because $Z$ was shown to contain no parameters other than $a$, it follows that $\phi(x)$ contains no parameters.
 
 A similar fact can be observed for existential quantification:
 \begin{center}
 \begin{tabular}{c}
-        $X,\delta\left(a\right)\supset Y$ \\
+        $\left(X\wedge \delta\left(a\right)\right)\supset Y$ \\
         \cline{1-1}
-        $X,\delta\supset Y$
+        $\left(X\wedge\delta\right)\supset Y*$
 \end{tabular}
 \end{center}
 \begin{flushright}
@@ -536,7 +541,8 @@ parameters). Recall also that $S'$ is the result of substituting $P'$ for $P$ in
 $P$ is explicitly definable from $P_1,...,P_n$ with respect to $S$. We must show that it is implicitly so definable. Well, by the assumption
 \[ S\vdash \forall x\left(Px\equiv\phi\left( x\right)\right) \] for some formula $\phi(x)$ such that its predicates are among $P_1,...,P_n$. 
 This is the same as saying the formula \[ S\supset\forall x\left(Px\equiv\phi\left( x\right)\right) \] is valid, which implies the formula 
-\[ S'\supset\forall x\left(P'x\equiv\phi\left( x\right)\right) \] is valid as $\phi\left( x\right)$ (see the notes in the previous section about 
+\[ S'\supset\forall x\left(P'x\equiv\phi\left( x\right)\right) \] is valid as $\phi(x)$ does not contain the predicate $P$ 
+(see the notes in the previous section about 
 switching around predicates in valid formulas for an explanation). Thus
 \[ S\wedge S'\supset\forall x\left(P'x\equiv\phi\left( x\right)\right)\wedge\forall x\left(Px\equiv\phi\left( x\right)\right) \] is valid, which implies:
 \[ S\wedge S'\supset\forall x\left(Px\equiv P'x\right) \] which is to say:
