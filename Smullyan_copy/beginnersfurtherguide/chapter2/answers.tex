@@ -553,4 +553,17 @@ switching around predicates in valid formulas for an explanation). Thus
 \[ S\wedge S'\supset\forall x\left(Px\equiv P'x\right) \] which is to say:
 \[ S\bigcup S'\vdash\forall x\left(Px\equiv P'x\right) \] which is what we were required to prove.
 
+\section*{9}
+(a): First, suppose that the Regularity Theorem holds; hence every valid sentence $X$ is tautologically implied by some regular set $R$ such that no critical parameter of 
+$R$ occurs in $X$. We must show that every unsatisfiable set has an assosciate. Well, suppose that we have some unsatisfiable set $S$. Now, let the elements of 
+$S$ be $X_1,X_2,...,X_n$. Thus $X_1\wedge X_2\wedge ...\wedge X_n$ is unsatisfiable. Hence, the formula $X$:
+\[ \oldneg\left(X_1\wedge X_2\wedge ...\wedge X_n\right) \] is valid. Thus there is a regular set $R$ such that $X$ is tautologically implied by $R$, and 
+such that no critical parameters of $R$ occur in $X$. Thus $R\bigcup \oldneg X$, that is:
+\[ R\bigcup \left(X_1\wedge X_2\wedge ...\wedge X_n\right) \] is unsatisfiable, which is to say \[ R\bigcup S \] is unsatisfiable.
+
+
+(b): Next, suppose that every unsatisfiable set $S$ has an assosciate. We must show that every valid sentence $X$ is tautologically implied by some regular set $R$ such that 
+no critical parameter of $R$ occurs in $X$. Well, suppose some sentence $X$ is valid. Thus, the set ${\oldneg X}$ is unsatisfiable, and it therefore has an assosciate 
+$R$. Hence $R\bigcup{\oldneg X}$ is unsatisfiable and no critical parameters of $R$ are in $\oldneg X$. Thus $X$ is tautologically implied by $R$, and is such that 
+no critical parameters of $R$ occur in $X$.
 \end{document}
