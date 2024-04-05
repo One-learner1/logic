@@ -573,7 +573,7 @@ any set $S$ having that property:\newline
 $\Gamma_0$: $S$ contains no element and its negation (or no element and its conjugate, if we are considering signed formulas).\newline
 $\Gamma_1$: For any $\alpha$ in $S$, the sets $S\bigcup {\alpha_1}$ and $S\bigcup {\alpha_2}$ are both $\Gamma$-consistent.\newline
 $\Gamma_2$: For any $\beta$ in $S$, at least one of the sets $S\bigcup {\beta_1}$ and $S\bigcup {\beta_2}$ is $\Gamma$-consistent.\newline
-$\Gamma_3$: For any $\gamma$ in $S$ and any parameter $a$, the set $S\bigcup {\gamma\left(a\right)} is $\Gamma$-consistent.\newline
+$\Gamma_3$: For any $\gamma$ in $S$ and any parameter $a$, the set $S\bigcup {\gamma\left(a\right)}$ is $\Gamma$-consistent.\newline
 $\Gamma_4$: For any $\delta$ in $S$, the set $S\bigcup {\delta\left(a\right)}$ is $\Gamma$-consistent for any parameter $a$ that does not occur in 
 any element of $S$.\newline
 So, let tableau-consistenty be the property $\Gamma$. $\Gamma_0$ is obvious, as there existing no closed tableau for $S$ by definition means $S$ cannot contain 
@@ -584,17 +584,17 @@ tableau-consistent).
 
 $T_2$: Next, we show that satisfiablity is an analytic consistency property. By the definition of satisfiability, $\Gamma_0$ is immediate. Now, if 
 $S$ is satisfiable, then under any interpretation $I$ under which it is satisfiable, any $\alpha\in S$ is also true, and hence both $\alpha_1$ and $\alpha_2$ 
-would be true, meaning $\Gamma_1$ holds. $\Gamma_1-\Gamma_4$ hold in a similar fashion.
+would be true, meaning $\Gamma_1$ holds. $\Gamma_2-\Gamma_4$ hold in a similar fashion.
 
 
 $T_3$: We need to show that $F$-consistency (that is, the property that all finite subsets of $S$ are satisfiable) for a set $S$ is an analytic consistency 
 property. Suppose $\Gamma_0$ didn't hold. Thus ${X,\oldneg X}\in S$ for some $X$. But this contradicts the assumption that all finite subsets of $S$ were 
 satisfiable. As for $\Gamma_1$, suppose that some $\alpha\in S$. Now, by the assumption that $S$ is $F$-consistent, all finite subsets of $S$ are 
 satisfiable, and hence all finite subsets of $S\bigcup {\alpha_1}$ that do not include $\alpha_1$ are satisfiable. Now, consider some finite subset of 
-$S\bicup {\alpha_1}$ of the form ${\alpha_1,X_1,X_2,...,X_n}$ for elements $X_1,X_2,...,X_n$ of $S$. Well, it was assumed that the set
+$S\bigcup {\alpha_1}$ of the form ${\alpha_1,X_1,X_2,...,X_n}$ for elements $X_1,X_2,...,X_n$ of $S$. Well, it was assumed that the set
 ${X_1,X_2,...,X_n}$ was satisfiable (as it was in $S$). Also, because $\alpha\in S$, ${X_1,X_2,...,X_n,\alpha}$ is satisfiable under some interpretation $I$. 
 Because $\alpha_1$ would then also be true under $I$, ${X_1,X_2,...,X_n,\alpha_1}$ is therefore true under $I$, and hence satisfiable. The case for 
-$\alpha_2$ is identical, except replacing $\alpha_1$ with $\alpha_2$. $\Gamma_1-\Gamma_4$ can be shown to hold in a similar fashion as in the $\alpha$ case.
+$\alpha_2$ is identical, except replacing $\alpha_1$ with $\alpha_2$. $\Gamma_2-\Gamma_4$ can be shown to hold in a similar fashion as in the $\alpha$ case.
 
 
 $T_5$: Next, we show that $A$-consistency (that is, that a set $S$ does not have an assosciate) is an analytic consistency property. Now, suppose that 
@@ -603,16 +603,10 @@ regular set $R$). This of course means that $\Gamma_0$ is satisfied, as having s
 as for $\Gamma_1$, suppose that some $\alpha\in S$. Now, because $S$ is $A$-consistent, $R\bigcup S$ is satisfiable for every regular set $R$ under some 
 interpretation $I$. Hence, under $I$, $S$ would be simultaneously satisfiable, and thus $\alpha$ would be true, thus meaning both of $\alpha_1,\alpha_2$ are 
 also true. Thus, $R\bigcup {S,\alpha_1}$ and $R\bigcup {S,\alpha_2}$ would be satisfiable for every regular set $R$ under the interpretation $I$ under 
-which $R\bigcup S$ was satisfiable. $\Gamma_1-\Gamma_4$ can be shown using a similar idea.
+which $R\bigcup S$ was satisfiable. $\Gamma_2-\Gamma_4$ can be shown using a similar idea.
 
 
 $T_6$: Lastly, we show that Craig-consistency (that is, a set $S$ in which there is a partition $S_1|S_2$ of $S$ such that there is no partition interpolant 
-between $S_1$ and $S_2$) is an analytic consistency property. So, suppose that $S$ is Craig-consistent. Thus there is some partition $S_1|S_2$ of $S$ such that 
-there is no partition interpolant between $S_1$ and $S_2$. This means that there is no formula $Z$ such that all parameters and predicates of $Z$ occur in both 
-$S_1$ and $S_2$, and that both $S_1\bigcup {\oldneg Z}$ and $S_2\bigcup {Z}$ are unsatisfiable. First, suppose that $\Gamma_0$ did not hold. Hence 
-$S$ is of the form: \[ X,\oldneg X,X_1,X_2,...,X_n \] for some sentence $X$. Now, consider the partition
-\[ X|\oldneg X,X_1,X_2,...,X_n \] Well, $X\bigcup {\oldneg X}$ and $\oldneg X,X_1,X_2,...,X_n\bigcup {X}$ are both clearly unsatisfiable, and 
-all predicates and parameters in $X$ obviously occur in both $X$ and $\oldneg X,X_1,X_2,...,X_n$, thus meaning $X$ would be a partition interpolant between 
 $X$ and $\oldneg X,X_1,X_2,...,X_n$. Thus, this would mean $S$ is $not$ Craig-consistent, and hence, by contradiction, $\Gamma_0$ holds. Now, as for $\Gamma_1$, 
 suppose that some $\alpha\in S$. Consider the partition $S_1|S_2$ of $S$ such that there is no partition interpolant between $S_1$ and $S_2$. Without 
 loss of generality, let $\alpha\in S_1$. Either $S_1\bigcup {\oldneg Z}$ or $S_2\bigcup {Z}$ is satisfiable for every sentence $Z$ such that all predicates and 
@@ -621,6 +615,32 @@ $S\bigcup {\alpha_1}$ would be such that $S_2\bigcup {Z}$ is satisfiable. If it 
 interpretation $I$ under which $S_1\bigcup {\oldneg Z}$ was satisfiable, $\alpha$ would be true, and hence so would $\alpha_1$, meaning 
 the partition ${\alpha_1,S_1}|S_2$ of $S\bigcup {\alpha_1}$ would be such that ${\alpha_1,S_1}\bigcup {\oldneg Z}$ would be satisfiable. In any case, either 
 of ${\alpha_1,S_2}\bigcup {\oldneg Z}$ or $S_2\bigcup {Z}$ would be satisfiable for every $Z$, thus meaning $S\bigcup {\alpha_1}$ is Craig-consistent 
-for the partition ${\alpha_1,S_1}|S_2$.
+for the partition ${\alpha_1,S_1}|S_2$. The case for $\alpha_2$ is identical to the above case for $\alpha_1$. 
+The cases for $\Gamma_2-4$ can be seen with a similar idea.
+
+\section*{10}
+Suppose that $M$ is both maximally $\Gamma$-consistent and $E$-complete. We must show that it is a Hintikka set.
+
+
+$H_0$: We must show that no sentence $X$ and its conjugate $\bar{X}$ are in $S$. This is immediate from condition $\Gamma_0$.
+
+
+$H_1$: We must show that for any $\alpha\in S$, both $\alpha_1$ and $\alpha_2$ are in $S$. Well, because $M$ is $\Gamma$-consistent, 
+both $M\bigcup {\alpha_1}$ and $M\bigcup {\alpha_2}$ are $\Gamma$-consistent. But suppose $\alpha_1$ ($\alpha_2$) was not in $M$. Thus 
+$M$ would be the proper subset of $M\bigcup {\alpha_1}$ ($M\bigcup {\alpha_2}$), and $\Gamma$-consistent set, contrary to the assumption that 
+$M$ was maximally $\Gamma$-consistent. Hence both $\alpha_1$ and $\alpha_2$ are in $S$.
+
+
+$H_2$: We must show that for any $\beta\in S$, either $\beta_1$ or $\beta_2$ are in $S$. Because $M$ is $\Gamma$-consistent, either 
+$M\bigcup {\beta_1}$ or $M\bigcup {\beta_2}$ are $\Gamma$-consistent. Without loss of generality, suppose it was 
+$M\bigcup {\beta_1}$ which was $\Gamma$-consistent. Then $\beta_1\in S$, as, if it weren't, $M$ would be a proper subset of the $\Gamma$-consistent 
+set $M\bigcup {\beta_1}$, contrary to the assumption that $M$ was maximally $\Gamma$-consistent. Thus either $\beta_1\in S$ or $\beta_2\in S$.
+
+$H_4$: We must show that, for any $\gamma\in S$, $\gamma\left(a\right)\in S$ for every parameter $a$. Because $M$ is $\Gamma$-consistent, 
+$M\bigcup {\gamma\left(a\right)}$ is $\Gamma$-consistent for every parameter $a$. Hence, by the assumed $\Gamma$-consistency maximality of $M$, 
+$\gamma\left(a\right)\in S$ for every parameter $a$.
+
+$H_4$: We must show that, for any $\delta\in S$, there is at least one formula of the form $\delta\left(a\right)\in S$. This is immediate due to $M$ 
+being $E$-complete.
 
 \end{document}
