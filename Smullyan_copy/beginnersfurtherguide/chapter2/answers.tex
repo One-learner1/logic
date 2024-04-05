@@ -573,38 +573,40 @@ no critical parameters of $R$ occur in $X$.
 $T_1$: We first show that $tableau-consistency$ is an analytic consistency property. To review, an analytic consistency property $\Gamma$ is one such that for 
 any set $S$ having that property:\newline
 $\Gamma_0$: $S$ contains no element and its negation (or no element and its conjugate, if we are considering signed formulas).\newline
-$\Gamma_1$: For any $\alpha$ in $S$, the sets $S\bigcup {\alpha_1}$ and $S\bigcup {\alpha_2}$ are both $\Gamma$-consistent.\newline
-$\Gamma_2$: For any $\beta$ in $S$, at least one of the sets $S\bigcup {\beta_1}$ and $S\bigcup {\beta_2}$ is $\Gamma$-consistent.\newline
-$\Gamma_3$: For any $\gamma$ in $S$ and any parameter $a$, the set $S\bigcup {\gamma\left(a\right)}$ is $\Gamma$-consistent.\newline
-$\Gamma_4$: For any $\delta$ in $S$, the set $S\bigcup {\delta\left(a\right)}$ is $\Gamma$-consistent for any parameter $a$ that does not occur in 
+$\Gamma_1$: For any $\alpha$ in $S$, the sets $S\bigcup \{\alpha_1\}$ and $S\bigcup \{\alpha_2\}$ are both $\Gamma$-consistent.\newline
+$\Gamma_2$: For any $\beta$ in $S$, at least one of the sets $S\bigcup \{\beta_1\}$ and $S\bigcup \{\beta_2\}$ is $\Gamma$-consistent.\newline
+$\Gamma_3$: For any $\gamma$ in $S$ and any parameter $a$, the set $S\bigcup \{\gamma\left(a\right)\}$ is $\Gamma$-consistent.\newline
+$\Gamma_4$: For any $\delta$ in $S$, the set $S\bigcup \{\delta\left(a\right)\}$ is $\Gamma$-consistent for any parameter $a$ that does not occur in 
 any element of $S$.\newline
 So, let tableau-consistenty be the property $\Gamma$. $\Gamma_0$ is obvious, as there existing no closed tableau for $S$ by definition means $S$ cannot contain 
-any formula $X$ and its conjugate. $\Gamma_1-\Gamma-4$ are also obvious, as a fully completed tableau for $S$ includes using rules $A,B,C,D$ as much as 
+any formula $X$ and its conjugate. $\Gamma_1-\Gamma_4$ are also obvious, as a fully completed tableau for $S$ includes using rules $A,B,C,D$ as much as 
 possible (and hence all the tableaus after using one extension by the rule must also be open, that is, the set of formulae on its branch must be 
 tableau-consistent).
 
 
 $T_2$: Next, we show that satisfiablity is an analytic consistency property. By the definition of satisfiability, $\Gamma_0$ is immediate. Now, if 
 $S$ is satisfiable, then under any interpretation $I$ under which it is satisfiable, any $\alpha\in S$ is also true, and hence both $\alpha_1$ and $\alpha_2$ 
-would be true, meaning $\Gamma_1$ holds. $\Gamma_2-\Gamma_4$ hold in a similar fashion.
+would be true (and hence both $S\bigcup \{\alpha_1\}$ and $S\bigcup \{\alpha_2\}$ would be satisfiable), meaning $\Gamma_1$ holds. $\Gamma_2-\Gamma_4$ hold in a similar fashion.
 
 
 $T_3$: We need to show that $F$-consistency (that is, the property that all finite subsets of $S$ are satisfiable) for a set $S$ is an analytic consistency 
-property. Suppose $\Gamma_0$ didn't hold. Thus ${X,\oldneg X}\in S$ for some $X$. But this contradicts the assumption that all finite subsets of $S$ were 
+property. Suppose $\Gamma_0$ didn't hold. Thus $\{X,\oldneg X\}\in S$ for some $X$. But this contradicts the assumption that all finite subsets of $S$ were 
 satisfiable. As for $\Gamma_1$, suppose that some $\alpha\in S$. Now, by the assumption that $S$ is $F$-consistent, all finite subsets of $S$ are 
-satisfiable, and hence all finite subsets of $S\bigcup {\alpha_1}$ that do not include $\alpha_1$ are satisfiable. Now, consider some finite subset of 
-$S\bigcup {\alpha_1}$ of the form ${\alpha_1,X_1,X_2,...,X_n}$ for elements $X_1,X_2,...,X_n$ of $S$. Well, it was assumed that the set
-${X_1,X_2,...,X_n}$ was satisfiable (as it was in $S$). Also, because $\alpha\in S$, ${X_1,X_2,...,X_n,\alpha}$ is satisfiable under some interpretation $I$. 
-Because $\alpha_1$ would then also be true under $I$, ${X_1,X_2,...,X_n,\alpha_1}$ is therefore true under $I$, and hence satisfiable. The case for 
+satisfiable, and hence all finite subsets of $S\bigcup \{\alpha_1\}$ that do not include $\alpha_1$ are satisfiable. Now, consider some finite subset of 
+$S\bigcup \{\alpha_1\}$ of the form $\{\alpha_1,X_1,X_2,...,X_n\}$ for elements $X_1,X_2,...,X_n$ of $S$. Well, it was assumed that the set
+$\{X_1,X_2,...,X_n\}$ was satisfiable (as it was in $S$). Also, because $\alpha\in S$, $\{X_1,X_2,...,X_n,\alpha\}$ is satisfiable under some interpretation $I$. 
+Because $\alpha_1$ would then also be true under $I$, $\{X_1,X_2,...,X_n,\alpha_1\}$ is therefore true under $I$, and hence satisfiable. The case for 
 $\alpha_2$ is identical, except replacing $\alpha_1$ with $\alpha_2$. $\Gamma_2-\Gamma_4$ can be shown to hold in a similar fashion as in the $\alpha$ case.
 
 
-$T_5$: Next, we show that $A$-consistency (that is, that a set $S$ does not have an assosciate) is an analytic consistency property. Now, suppose that 
+$T_5$: Next, we show that $A$-consistency (that is, the property that a set $S$ does not have an assosciate) is an analytic consistency property. Now, suppose that 
 $S$ is $A$-consistent. This means that $S$ must not be unsatisfiable (for if it were, $R\bigcup S$ would obviously be unsatisfiable for every 
 regular set $R$). This of course means that $\Gamma_0$ is satisfied, as having some formula $X\in S$ and $\oldneg X\in S$ would make $S$ unsatisfiable. Next, 
-as for $\Gamma_1$, suppose that some $\alpha\in S$. Now, because $S$ is $A$-consistent, $R\bigcup S$ is satisfiable for every regular set $R$ under some 
+as for $\Gamma_1$, suppose that some $\alpha\in S$. Now, because $S$ is $A$-consistent, $R\bigcup S$ is satisfiable for every regular set $R$ such that no critical parameter 
+of $R$ occurs in any element of $S$ under some 
 interpretation $I$. Hence, under $I$, $S$ would be simultaneously satisfiable, and thus $\alpha$ would be true, thus meaning both of $\alpha_1,\alpha_2$ are 
-also true. Thus, $R\bigcup {S,\alpha_1}$ and $R\bigcup {S,\alpha_2}$ would be satisfiable for every regular set $R$ under the interpretation $I$ under 
+also true. Thus, $R\bigcup \{S,\alpha_1\}$ and $R\bigcup \{S,\alpha_2\}$ would be satisfiable for every regular set $R$ such that no critical parameter of $R$ occurs in any 
+element of $S$ under the interpretation $I$ under 
 which $R\bigcup S$ was satisfiable. $\Gamma_2-\Gamma_4$ can be shown using a similar idea.
 
 
