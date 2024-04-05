@@ -555,16 +555,18 @@ switching around predicates in valid formulas for an explanation). Thus
 
 \section*{9}
 (a): First, suppose that the Regularity Theorem holds; hence every valid sentence $X$ is tautologically implied by some regular set $R$ such that no critical parameter of 
-$R$ occurs in $X$. We must show that every unsatisfiable set has an assosciate. Well, suppose that we have some unsatisfiable set $S$. Now, let the elements of 
+$R$ occurs in $X$. We must show that every unsatisfiable finite set has an assosciate. Well, suppose that we have some unsatisfiable set $S$. Now, let the elements of 
 $S$ be $X_1,X_2,...,X_n$. Thus $X_1\wedge X_2\wedge ...\wedge X_n$ is unsatisfiable. Hence, the formula $X$:
 \[ \oldneg\left(X_1\wedge X_2\wedge ...\wedge X_n\right) \] is valid. Thus there is a regular set $R$ such that $X$ is tautologically implied by $R$, and 
 such that no critical parameters of $R$ occur in $X$. Thus $R\bigcup \oldneg X$, that is:
-\[ R\bigcup \left(X_1\wedge X_2\wedge ...\wedge X_n\right) \] is unsatisfiable, which is to say \[ R\bigcup S \] is unsatisfiable.
+\[ R\bigcup \left(X_1\wedge X_2\wedge ...\wedge X_n\right) \] is truth-functionally unsatisfiable, which is to say that \[ R\bigcup S \] is truth-functionally unsatisfiable, 
+which completes the proof, as no critical parameters of $R$ can occur in $S$ (as none of them occur in $X$).
 
 
 (b): Next, suppose that every unsatisfiable set $S$ has an assosciate. We must show that every valid sentence $X$ is tautologically implied by some regular set $R$ such that 
 no critical parameter of $R$ occurs in $X$. Well, suppose some sentence $X$ is valid. Thus, the set ${\oldneg X}$ is unsatisfiable, and it therefore has an assosciate 
-$R$. Hence $R\bigcup{\oldneg X}$ is unsatisfiable and no critical parameters of $R$ are in $\oldneg X$. Thus $X$ is tautologically implied by $R$, and is such that 
+$R$. Hence $R\bigcup{\oldneg X}$ is truth-functionally unsatisfiable and no critical parameters of $R$ are in $\oldneg X$. 
+Thus $X$ is tautologically implied by $R$, and is such that 
 no critical parameters of $R$ occur in $X$.
 
 \section*{Grand Exercise}
@@ -627,7 +629,7 @@ $H_0$: We must show that no sentence $X$ and its conjugate $\bar{X}$ are in $S$.
 
 $H_1$: We must show that for any $\alpha\in S$, both $\alpha_1$ and $\alpha_2$ are in $S$. Well, because $M$ is $\Gamma$-consistent, 
 both $M\bigcup {\alpha_1}$ and $M\bigcup {\alpha_2}$ are $\Gamma$-consistent. But suppose $\alpha_1$ ($\alpha_2$) was not in $M$. Thus 
-$M$ would be the proper subset of $M\bigcup {\alpha_1}$ ($M\bigcup {\alpha_2}$), and $\Gamma$-consistent set, contrary to the assumption that 
+$M$ would be the proper subset of $M\bigcup {\alpha_1}$ ($M\bigcup {\alpha_2}$), a $\Gamma$-consistent set, contrary to the assumption that 
 $M$ was maximally $\Gamma$-consistent. Hence both $\alpha_1$ and $\alpha_2$ are in $S$.
 
 
@@ -636,7 +638,7 @@ $M\bigcup {\beta_1}$ or $M\bigcup {\beta_2}$ are $\Gamma$-consistent. Without lo
 $M\bigcup {\beta_1}$ which was $\Gamma$-consistent. Then $\beta_1\in S$, as, if it weren't, $M$ would be a proper subset of the $\Gamma$-consistent 
 set $M\bigcup {\beta_1}$, contrary to the assumption that $M$ was maximally $\Gamma$-consistent. Thus either $\beta_1\in S$ or $\beta_2\in S$.
 
-$H_4$: We must show that, for any $\gamma\in S$, $\gamma\left(a\right)\in S$ for every parameter $a$. Because $M$ is $\Gamma$-consistent, 
+$H_3$: We must show that, for any $\gamma\in S$, $\gamma\left(a\right)\in S$ for every parameter $a$. Because $M$ is $\Gamma$-consistent, 
 $M\bigcup {\gamma\left(a\right)}$ is $\Gamma$-consistent for every parameter $a$. Hence, by the assumed $\Gamma$-consistency maximality of $M$, 
 $\gamma\left(a\right)\in S$ for every parameter $a$.
 
