@@ -598,6 +598,8 @@ $\{X_1,X_2,...,X_n\}$ was satisfiable (as it was in $S$). Also, because $\alpha\
 Because $\alpha_1$ would then also be true under $I$, $\{X_1,X_2,...,X_n,\alpha_1\}$ is therefore true under $I$, and hence satisfiable. The case for 
 $\alpha_2$ is identical, except replacing $\alpha_1$ with $\alpha_2$. $\Gamma_2-\Gamma_4$ can be shown to hold in a similar fashion as in the $\alpha$ case.
 
+$T_4$: I did not do this one, as I could not find where he defined what a \textquote{standard system} in first order logic is.
+
 
 $T_5$: Next, we show that $A$-consistency (that is, the property that a set $S$ does not have an assosciate) is an analytic consistency property. Now, suppose that 
 $S$ is $A$-consistent. This means that $S$ must not be unsatisfiable (for if it were, $R\bigcup S$ would obviously be unsatisfiable for every 
@@ -610,17 +612,22 @@ element of $S$ under the interpretation $I$ under
 which $R\bigcup S$ was satisfiable. $\Gamma_2-\Gamma_4$ can be shown using a similar idea.
 
 
-$T_6$: Lastly, we show that Craig-consistency (that is, a set $S$ in which there is a partition $S_1|S_2$ of $S$ such that there is no partition interpolant 
-$X$ and $\oldneg X,X_1,X_2,...,X_n$. Thus, this would mean $S$ is $not$ Craig-consistent, and hence, by contradiction, $\Gamma_0$ holds. Now, as for $\Gamma_1$, 
-suppose that some $\alpha\in S$. Consider the partition $S_1|S_2$ of $S$ such that there is no partition interpolant between $S_1$ and $S_2$. Without 
+$T_6$: Lastly, we show that Craig-consistency (that is, the property that a set $S$ has a partition $S_1|S_2$ of $S$ such that there is no partition interpolant between 
+$S_1$ and $S_2$) is an analytic consistency property.
+
+
+$\Gamma_0$: I was unable to prove this case.
+
+ 
+$\Gamma_1$: Suppose that some $\alpha\in S$. Consider the partition $S_1|S_2$ of $S$ such that there is no partition interpolant between $S_1$ and $S_2$. Without 
 loss of generality, let $\alpha\in S_1$. Either $S_1\bigcup {\oldneg Z}$ or $S_2\bigcup {Z}$ is satisfiable for every sentence $Z$ such that all predicates and 
 parameters of $Z$ occur in both $S_1$ and $S_2$. If the latter case holds for the given $Z$, we immediately know that the partition ${\alpha_1,S_1}|S_2$ of 
 $S\bigcup {\alpha_1}$ would be such that $S_2\bigcup {Z}$ is satisfiable. If it was the former for the given $Z$, then, under the 
 interpretation $I$ under which $S_1\bigcup {\oldneg Z}$ was satisfiable, $\alpha$ would be true, and hence so would $\alpha_1$, meaning 
 the partition ${\alpha_1,S_1}|S_2$ of $S\bigcup {\alpha_1}$ would be such that ${\alpha_1,S_1}\bigcup {\oldneg Z}$ would be satisfiable. In any case, either 
 of ${\alpha_1,S_2}\bigcup {\oldneg Z}$ or $S_2\bigcup {Z}$ would be satisfiable for every $Z$, thus meaning $S\bigcup {\alpha_1}$ is Craig-consistent 
-for the partition ${\alpha_1,S_1}|S_2$. The case for $\alpha_2$ is identical to the above case for $\alpha_1$. 
-The cases for $\Gamma_2-4$ can be seen with a similar idea.
+for the partition ${\alpha_1,S_1}|S_2$. The case for $\alpha_2$ is identical to the above case for $\alpha_1$ except replacing $\alpha_1$ by $\alpha_2$.
+The cases for $\Gamma_2-\Gamma_4$ can be seen with a similar idea.
 
 \section*{10}
 Suppose that $M$ is both maximally $\Gamma$-consistent and $E$-complete. We must show that it is a Hintikka set.
