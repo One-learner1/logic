@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 3 Answers}
+\begin{document}
+\date{}
+\maketitle
+
+The proofs for the propositions 1.1-1.2 actually prove the corresponding propositions for the other three sections. Hence, we only prove the 
+theorems in section 1, while the others can be easily seen to follow from these proofs. 
+
+\section*{1.1}
+This is a consequence of 1.5 and 1.6, as 1.6 shows that any universal register is creative, while 1.5 shows that any creative register can be 
+stumped (and hence any universal register can be stumped).
+
+\section*{1.2}
+Suppose that at least one of the registers, call it $R_n$, is universal. Hence, for all numbers $x$ and $y$, $R_n$ affirms $xy$ iff $R_x$ affirms 
+$y$. Now, $R_{n^{\#'}}$ affirms $n^{\#'}$ iff $R_n$ affirms $n^{\#'}n^{\#'}$ iff $R_{n^\#}$ affirms $n^{\#'}$ iff $R_{n^{\#'}}$ denies $n^{\#'}$. Thus, 
+$R_{n^{\#'}}$ affirms $n^{\#'}$ iff $R_{n^{\#'}}$ defines $n^{\#'}$, thus meaning $R_{n^{\#'}}$ is stumped by $n^{\#'}$, its own index. 
+
+\section*{1.3}
+This, like 1.1, is a consequence of 1.5 and 1.6.
+
+\section*{1.4}
+(a): Suppose some register $R_n$ is universal. Thus $R_{n^{\#}}$ affirms $n^{\#'}$ iff $R_n$ affirms $n^{\#'}n^{\#'}$ iff $R_{n^{\#'}}$ affirms $n^{\#'}$ 
+iff $R_{n^{\#}}$ denies $n^{\#'}$, 
+ meaning $R_{n^\#}$ is stumped by $n^{\#'}$, the index of its opposer.
+
+
+(b): Next, suppose that some register $R_n$ is contra-universal. Hence, for all $x$ and $y$, $R_{n'}$ affirms $xy$ iff $R_n$ denies $xy$ iff 
+$R_x$ affirms $y$. Thus $R_{n'}$ is a universal register. Thus, because there is a universal register, we know that some register is stumped by its own 
+index by Proposition 1.2. In particular: $R_{n^\#}$ affirms $n^\#$ iff $R_n$ affirms $n^\#n^\#$ iff $R_{n^{\#}}$ denies $n^\#$, 
+thus proving that $R_{n^\#}$ is stumped by $n^\#$, its own index. 
+
+\section*{1.5}
+Suppose some register $C$ is creative. Thus for every register $R$, there is at least one number $n$ such that $C$ affirms $n$ iff $R$ affirms $n$. Well, 
+consider $R_{k'}$ for $k$ the index of $C$. Thus there is at least one number $n$ such that $R_k$ (that is, $C$) affirms $n$ iff 
+$R_{k'}$ affirms $n$ iff $R_k$ denies $n$, and hence $R_k$ ($C$) must be stumped by $n$.
+
+\section*{1.6}
+(a): First, we show that every universal register is creative. Suppose $U$ is universal, that is, for all numbers $x$ and $y$, $U$ affirms 
+$xy$ iff $R_x$ affirms $y$. Now, consider any register $R_n$. We must show that there is at least one number $m$ such that $U$ affirms $m$ iff 
+$R_n$ affirms $n$. Well, $U$ affirms $n^\#n^\#$ iff $R_{n^\#}$ affirms $n^\#$ iff $R_n$ affirms $n^\#n^\#$, thus proving that $U$ is creative.
+
+
+(b): Next, we must show that every contra-universal register is creative. Suppose $V$ is contra-universal, that is, for all numbers $x$ and $y$,
+$V$ affirms $xy$ iff $R_x$ denies $y$. Now, consider any register $R_n$. We must show that there is at least one number $m$ such that $U$ affirms $m$ 
+iff $R_n$ affirms $m$. Well, $V$ affirms $n^{\#'}n^{\#'}$ iff $R_{n^{\#'}}$ denies $n^{\#'}$ iff $R_{n^\#}$ affirms $n^{\#'}$ iff 
+$R_n$ affirms $n^{\#'}n^{\#'}$, thus proving that $V$ is creative. 
+
+\section*{1.7}
+Consider some register $R_x$. Now, $R_x$ affirms $x^\#x^\#$ iff $R_{x^\#}$ affirms $x^\#$ (which is to say $x^\#x^\#\in A$) and $R_x$ denies $x^\#x^\#$ iff 
+$R_{x^\#}$ denies $x^\#$ (which is to say $x^\#x^\#\in B$). Hence for every register $R_x$, $x^\#x^\#$ is a fixed point of $R_x$.
+
+\section*{1.8}
+We suppose that $U$ is universal and $V$ is contra-universal.
+
+
+(a): Suppose $xy$ is a fixed point of $U'$. Hence, for every $x$, 
+$R_x$ affirms $y$ iff $U$ affirms $xy$ iff $U'$ denies $xy$ iff $xy\in B$ iff $R_x$ denies $y$, 
+thus meaning $U$ is stumped by $xy$, the fixed point of $U'$.
+
+
+(b): Suppose $xy$ is a fixed point of $V$. Hence $R_x$ denies $y$ iff $V$ affirms $xy$ iff $xy\in A$ iff $R_x$ affirms $y$, thus meaning $V$ is 
+stumped by $xy$, its own fixed point.
+
+\section*{1.9}
+Suppose some register $R$ is such that $R$ affirms all number in $A$ and doesn't affirm any number in $B$. Hence, if $xy\in A$, then $R$ affirms 
+$xy$, while if $xy\in B$, $A$ doesn't affirm $xy$ (i.e. either denies or is stumped by it). Let $R_k=R$ (that is, let $k$ be the index of $R$). 
+
+
+(a): On the one hand, let $k^{\#'}k^{\#'}$ be in $A$. Then $R_{k^{\#'}}$ would affirm $k^{\#'}$ and $R_k$ would affirm $k^{\#'}k^{\#'}$, and thus 
+$R_{k^\#}$ would deny $k^{\#'}$ and thus $R_k$ would deny $k^{\#'}k^{\#'}$, which is a contradiction. Thus $k^{\#'}k^{\#'}\notin A$.
+
+
+(b): On the other hand, suppose that $k^{\#'}k^{\#'}\in B$. Then $R_{k^{\#'}}$ would deny $k^{\#'}$ and $R_k$ would not affirm $k^{\#'}$, and thus 
+$R_{k^\#}$ would affirm $k^{\#'}$ and thus $R_k$ would affirm $k^{\#'}k^{\#'}$, which is a contradiction. Thus $k^{\#'}k^{\#'}\notin B$.
+
+
+Hence $R_{k^{\#'}}$, because $k^{\#'}k^{\#'}$ is in neither $A$ nor $B$, must be stumped by $k^{\#'}$. So $R_k$ affirms 
+$k^{\#'}k^{\#'}$ iff $R_{k'}$ denies $k^{\#'}k^{\#'}$ iff $R_{k^{\#'}}$ affirms $k^{\#'}k^{\#'}$, meaning $R_k$ can neither affirm nor deny 
+$k^{\#'}k^{\#'}$, and hence is stumped by it.
+
+
+\textbf{Note:} Smullyan said in his answer that we could show that $R_k$ is stumped by $xy$ for $xy$ the fixed point of $R$. However, I was unable to see 
+this. 
+
+\section*{1.10}
+Suppose that some register $R_k$ is a stump detector. Thence $R_k$ halts for $k^\#k^\#$ iff $R_{k^\#}$ is stumped by $k^\#$ iff 
+$R_k$ is stumped by $k^\#k^\#$. Thus $R_k$ halts for $k^\#k^\#$ iff $R_k$ is stumped by $k^\#k^\#$, thus meaning $R_k$ cannot exist.
+
+\section*{1.11}
+We suppose that $U$ is universal, $V$ is contra-universal, and that $R$ dominates $U$ and $R'$ dominatnes $V$. 
+Now, every number $xy$ in $A$ is such that $R_x$ affirms $y$, meaning $U$ affirms $xy$ and hence $R$ affirms $xy$. Also, any number $xy$ in $B$ is 
+such that $R_x$ denies $y$ meaning $V$ affirms $xy$ meaning $R'$ affirms $xy$ and thus $R$ denies $xy$. Hence $R$ affirms all numbers in $A$ and doesn't 
+affirm any number in $B$. Thus, by Proposition 1.9, $R$ can be stumped. 
+
+\section*{1.12}
+We suppose that there is some universal register $U$. Now, let $S$ be the affirmation set for $U$. Hence, because, for all $x$ and $y$, 
+$U$ affirms $xy$ iff $R_x$ affirms $y$, $S$ contains all those and only those numbers $xy$ such that $R_x$ affirms $y$ (hence $S$ is the set $A$). 
+Hence $S'$ (that is, the complement of $S$) contains all those and only those numbers $xy$ such that $R_x$ does not affirm $y$. But suppose that there was 
+some register $R$ such that $S'$ was $R$'s affirmation set. Now, this would mean that $R$ would affirm all those and only those numbers $xy$ such that 
+$R_x$ does not affirm $y$. Let $k$ be the index of $R$. Hence $R_k$ affirms $k^\#k^\#$ iff $R_{k^\#}$ did not affirm $k^\#$ (i.e. either denies or 
+is stumped by it) iff $R_k$ did not affirm $k^\#k^\#$, which means such an $R_k$ cannot exist. Therefore $S'$ (that is, $A'$) is not an affirmation set. 
+
+
+$Alternatively$: We can instead show there cannot be any register $R_k$ (as in the above) using fixed points. Consider some $R_k$ such that $S'$ is 
+its affirmation set. Let $xy$ be its fixed point. Thus $R_k$ affirms $xy$ iff $xy\in A$ and $R_k$ denies $xy$ iff $xy\in B$. 
+So, if $xy\in A$, $R_k$ affirms $A$, while if $xy\in A'$, $R_k$ does not affirm $xy$. In any case, $S'$ (that is, $A'$) cannot be the affirmation set 
+for any register $R_k$, as either $R_k$ affirms some number $xy$ outside of $A'$, or $A'$ contains some number $xy$ such that $R_k$ does not affirm $xy$ 
+(both of these cases would mean $S'$ and the set of numbers affirmed by $R_k$ are not the same). 
+
+\end{document}

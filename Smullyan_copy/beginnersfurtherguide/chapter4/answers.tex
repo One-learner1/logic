@@ -1,0 +1,139 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 4 Answers}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Problem 1}
+(a): We suppose that $R_1$ and $R_2$ are of the same degree ($n$) and are both formally representable over some alphabet $K$. 
+Hence, by Proposition 1, there is 
+an $EFS$ (call it $E$) that is common to $R_1$ and $R_2$ under which the both of them are formally representable under the predicates 
+$P_1$ and $P_2$, respectively. Now, add to $E$ the axioms (with a new predicate $P$): \[ P_1x_1,...,x_n\rightarrow Px_1,...,x_n \]
+ \[ P_2x_1,...,x_n\rightarrow Px_1,...,x_n \] which represent the relation $R_1\bigcup R_2$. To represent the relation 
+$R_1\bigcap R_2$, add the axiom (with a new predicate $P_0$):
+\[ P_1x_1,...,x_n\rightarrow P_2x_1,...,x_n\rightarrow P_0x_1,...,x_n \] 
+
+
+(b): We suppose that $R\left(x_1,...,x_n,y\right)$ is a relation of degree $n+1$ 
+that is formally representable over $K$ (by some predicate $P$). 
+To represent the relation 
+$\exists yR\left(x_1,...,x_n,y\right)$ add the axiom (with a new predicate $P_0$):
+\[ Px_1,...,x_n,y\rightarrow P_0x_1,...,x_n \] 
+
+
+(c): Suppose that $R\left(x_1,...,x_k\right)$ is a relation of degree $k$ that is formally representable over $K$ (by some predicate $P$). To represent the 
+relation $\lambda x_1,...,x_nR\left(\alpha_1,...,\alpha_k\right)$, add the axiom (with a new predicate $P_0$):
+\[ P\alpha_1,...,\alpha_k\rightarrow P_0x_1,...,x_n \]
+To see this, recall that each $\alpha_i$ is either $x_i$ or some constant. Hence, if $P\alpha_1,...,\alpha_k$ is provable (that is, 
+$R\left(\alpha_1,...,\alpha_k\right)$ holds), it is provable after substituting some constant term $c$ in for every variable $x_i$ corresponding to 
+an $\alpha_i$, while leaving every constant $\alpha_i$ as is. Now $\lambda a_1,...,a_nR\left(\alpha_1,...,\alpha_k\right)$ holds for an $n$-tuple 
+$a_1,...,a_n$ iff 
+$R\left(b_1,...,b_k\right)$ holds where, if $\alpha_i$ is a constant, then $b_i$ is $\alpha_i$, whereas if $\alpha_i$ is $x_i$, then 
+$b_i$ is $a_i$. So in the added axiom, the $P_0x_1,...,x_n$ part is actually evaluating a given $n$-tuple $a_1,...,a_n$, and for every 
+$\alpha_i=x_i$, $\alpha_i$ becomes $a_i$ (in the $instance$ of the axiom for the $n$-tuple $a_1,...,a_n$, which we are considering). 
+Hence $P\alpha_1,...,\alpha_k$ means $R\left(\alpha_1,...,\alpha_k\right)$ holds where if 
+$\alpha_1$ was initially a constant, it stays the same, whereas if it was a variable, it becomes $a_i$. But this means that $P_0x_1,...,x_n$ doesn't 
+actually change the values of any $b_i$ from the corresponding value in the above instance of $Px_1,...,x_n,y$ 
+(because all of them have been changed to constants at this point that are the same as their corresponding $b_i$'s), meaning 
+$R\left(b_1,...,b_k\right)$ holds as well. 
+
+\section*{Problem 2}
+(a): Suppose that both $R_1$ and $R_2$ are solvable over some $EFS$ over $K$. This means that all of $R_1,R_2,\widetilde{R_1},\widetilde{R_2}$ are 
+representable over $K$. Hence $R_1\bigcup R_2$ is representable over $K$ by Problem 1(a). 
+$\widetilde{R_1\bigcup R_2}$ is the same as $\widetilde{R_1}\bigcap\widetilde{R_2}$, and because both $\widetilde{R_1}$ and $\widetilde{R_2}$ are 
+representable over $K$, $\widetilde{R_1}\bigcap\widetilde{R_2}$ (that is, $\widetilde{{R_1}\bigcup{R_2}}$) is also representable over $K$ (by Problem 1(a)). 
+Now, $R_1\bigcap R_2$ is formally representable over $K$ by Problem 1(a). $\widetilde{R_1\bigcap R_2}$ is the same as 
+$\widetilde{R_1}\bigcup\widetilde{R_2}$. Because both $\widetilde{R_1}$ and $\widetilde{R_2}$ are representable over $K$, so is 
+$\widetilde{R_1}\bigcup\widetilde{R_2}$ (by Problem 1(a)).
+
+
+(b): Suppose that $R$ (of degree $k$) is solvable over $K$. Hence both $R$ and $\bar{R}$ are formally representable over $K$, which means that
+$\lambda x_1,...,x_nR\left(\alpha_1,...,\alpha_k\right)$ and $\lambda x_1,...,x_n\bar{R}\left(\alpha_1,...,\alpha_k\right)$ are both 
+formally representable over $K$ (by Problem 1(c)). Now, $\lambda x_1,...,x_nR\left(\alpha_1,...,\alpha_k\right)$ is the complement of 
+$\lambda x_1,...,x_n\bar{R}\left(\alpha_1,...,\alpha_k\right)$. To see this, note that, for any $n$-tuple $a_1,...,a_n$, 
+$\lambda a_1,...,a_nR\left(\alpha_1,...,\alpha_k\right)$ holds iff $R\left(b_1,...,b_k\right)$ holds, and 
+$\lambda a_1,...,a_n\bar{R}\left(\alpha_1,...,\alpha_k\right)$ holds iff $\bar{R}\left(b_1,...,b_k\right)$ holds iff 
+$R\left(b_1,...,b_k\right)$ does not hold iff $\lambda a_1,...,a_nR\left(\alpha_1,...,\alpha_k\right)$ does not hold, which means that for all 
+$x_1,...,x_n$, $\lambda x_1,...,x_nR\left(\alpha_1,...,\alpha_k\right)$ holds iff $\lambda x_1,...,x_n\bar{R}\left(\alpha_1,...,\alpha_k\right)$ does not 
+hold, thus showing that they are the complement of one another. 
+
+\section*{Problem 3}
+(a): Suppose that $R\left(x_1,...,x_n,y\right)$ is recursively enumerable (by some predicate $P$). On the one hand, consider $\forall_F R$. This is the 
+relation \[ \left(\forall z\le y\right)R\left(x_1,...,x_n,z\right) \] This relation can be represented by adding the axioms (for some new predicate $Q$):
+\[ Px_1,...,x_n,1\rightarrow Qx_1,...,x_n,1 \] \[ Qx_1,...,x_n,z\rightarrow Sz',z\rightarrow Px_1,...,x_n,z'\rightarrow Qx_1,...,x_n,z' \]
+where $Sz',z$ means \textquote{$z'$ is the successor of $z$} (which was shown to be recursively enumerable in \textit{The Beginner's Guide}).
+As for $\exists_F R$, this can be represented by the axiom (for some new predicate $Q_1$):
+\[ z\le y\rightarrow Px_1,...,x_n,z\rightarrow Qx_1,...,x_n,y \]
+
+
+(b): Suppose $R\left(x_1,...,x_n,y\right)$ is recursive. Hence both $R\left(x_1,...,x_n,y\right)$ and $\bar{R}\left(x_1,...,x_n,y\right)$ are 
+recursively enumerable, and hence, by Problem 3(a), both $\forall_F R$ and $\forall_F\bar{R}$ ($\exists_F R$ and $\exists_F\bar{R}$) are recursively 
+enumerable. But $\forall_F R$ and $\exists_F\bar{R}$ ($\exists_F R$ and $\forall_F\bar{R}$) are complements, meaning 
+$\forall_F R$ ($\exists_F R$) is recursive.
+
+\section*{Problem 4}
+Suppose that we are given some $\Sigma_1$ relation $R\left(x_1,...,x_n,y\right)$. Now, it is obvious that:\newline
+(1): $\exists y\exists zR\left(x_1,...,x_n,y,z\right)$\newline
+(2): $\exists x\left(\exists y\le x\right)\left(\exists z\le x\right)R\left(x_1,...,x_n,y,z\right)$\newline
+are equivalent for any relation $R\left(x_1,...,x_n,y,z\right)$. Well, because $R\left(x_1,...,x_n,y\right)$ is $\Sigma_1$, it is equivalent to 
+some relation $\exists zS\left(x_1,...,x_n,y,z\right)$ where $S\left(x_1,...,x_n,y,z\right)$ is $\Sigma_0$. Hence 
+$\exists yR\left(x_1,...,x_n,y\right)$ is equivalent to $\exists y\exists zS\left(x_1,...,x_n,y,z\right)$ (See this in the following way: 
+$\exists yR\left(x_1,...,x_n,y\right)$ holds iff $R\left(x_1,...,x_n,y\right)$ holds for some $y$ iff $\exists zS\left(x_1,...,x_n,y,z\right)$ holds 
+(for the same $y$) iff $\exists y\exists zS\left(x_1,...,x_n,y,z\right)$ holds), a formula that is in turn equivalent (by the first reasoning in this 
+solution) to one of the form 
+\[ \exists x\left(\exists y\le x\right)\left(\exists z\le x\right)S\left(x_1,...,x_n,y,z\right) \] that is, one of the form
+\[ \exists zR\left(x_1,...,x_n,z\right) \] where $R\left(x_1,...,x_n,z\right)$ is $\Sigma_0$ (taking $R\left(x_1,...,x_n,z\right)$ to be 
+$\left(\exists y\le x\right)\left(\exists z\le x\right)S\left(x_1,...,x_n,y,z\right)$) thus meaning 
+$\exists yR\left(x_1,...,x_n,y\right)$ is also $\Sigma_1$.
+
+\section*{Problem 5}
+We suppose that $A$ is a $\Sigma_1$ set and $f(x)$ is a $\Sigma_1$-function, and that $A'$ is the set of all $x$ such that if $f(x)\in A$. Now, 
+$A$ being a $\Sigma_1$ set means it is expressed by some formula of the form $\exists zR\left(w,z\right)$ where 
+$R\left(w,z\right)$ is a $\Sigma_0$ relation (it has to be a binary relation as the relation of being in a set requires only one argument), 
+and $f(x)$ being a $\Sigma_1$-function means $f(x)=y$ is a $\Sigma_1$ relation, and hence it is 
+expressed by some formula of the form $\exists rS\left(x,y,r\right)$ where $S\left(x,y,r\right)$ is a $\Sigma_0$ relation. Consider the 
+relation \[ f(x)=y\wedge x\in A \] which is equivalent to \[ \exists zR\left(w,z\right)\wedge \exists rS\left(x,y,r\right) \] 
+which is equivalent to \[ \exists z\exists r\left(R\left(w,z\right)\wedge S\left(x,y,r\right)\right) \] which is equivalent to (by Problem 4):
+\[ \exists q\left(\exists z\le q\right)\left(\exists r\le q\right)\left(R\left(w,z,\right)\wedge S\left(x,y,r\right)\right) \]
+which is a $\Sigma_1$ function. Hence $f(x)=y\wedge x\in A$ is $\Sigma_1$, therefore meaning the set $A'$ is $\Sigma_1$.
+
+\section*{Problem 7}
+Recall that, for the function $\delta\left(x,y\right)$:\newline
+(1): $\delta\left(x,y\right)=\left(x-1\right)^2+x$ if $x\le y$\newline
+(2): $\delta\left(x,y\right)=\left(x-1\right)^2+x+y$ if $y<x$\newline
+both hold. Hence $\delta\left(x,y\right)=z$ is equivalent to:
+\[ \textrm{(1) }\left(\exists w\le z\right)[\left(x\le y\supset z=w^2+x\right)\wedge\left(y<x\supset z=w^2+x+y\right)] \]
+Recall that we have already shown that $x^y=z,x+y=z,x\le y,y<x$ are all $\Sigma_0$ relations. Hence (1) is $\Sigma_0$, thus proving that 
+$\delta\left(x,y\right)$ is $\Sigma_0$. This obviously means that $\oldneg\delta\left(x,y\right)$ is also $\Sigma_0$, thus meaning both 
+$\delta\left(x,y\right)$ and $\oldneg\delta\left(x,y\right)$ are recursively enumerable, and hence $\delta\left(x,y\right)$ is a recursive function.
+
+\section*{Problem 8}
+(a): This is completely obvious, as
+\[ \delta\left(Kz,Lz\right)=\delta\left(x,y\right)=z \]
+
+
+(b): $K\left(z\right)=x$ is equivalent to $\left(\exists y\le z\right)\left(\delta\left(x,y\right)=z\right)$ which is $\Sigma_0$. 
+$L\left(z\right)=y$ is equivalent to $\left(\exists x\le z\right)\left(\delta\left(x,y\right)=z\right)$ which is $\Sigma_0$. 
+
+\end{document}
