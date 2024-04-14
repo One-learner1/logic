@@ -136,4 +136,13 @@ $\delta\left(x,y\right)$ and $\oldneg\delta\left(x,y\right)$ are recursively enu
 (b): $K\left(z\right)=x$ is equivalent to $\left(\exists y\le z\right)\left(\delta\left(x,y\right)=z\right)$ which is $\Sigma_0$. 
 $L\left(z\right)=y$ is equivalent to $\left(\exists x\le z\right)\left(\delta\left(x,y\right)=z\right)$ which is $\Sigma_0$. 
 
+\section*{Problem 9}
+(a): Suppose the set $A$ is recursively enumerable (hence $\Sigma_1$). This means that $x\in A$ is equivalent to 
+$\exists wS\left(x,w\right)$ for some $\Sigma_0$ relation $S$. 
+Consider some relation $\delta_n\left(x_1,...,x_n\right)\in A$ where $n\ge 2$. Now, it has already 
+been shown that $\delta_n\left(x_1,...,x_n\right)$ is recursive (hence $\Sigma_1$), meaning it is equivalent to some formula
+$\exists zR\left(x_1,...,x_n,z\right)$. Hence
+\[ \delta_n\left(x_1,...,x_n\right)\in A \] iff \[ \delta_n\left(x_1,...,x_n\right)=y\wedge y\in A \] which is equivalent to  
+\[ \exists zR\left(x_1,...,x_n,z\right)\wedge \exists wS\left(x,w\right) \] iff \[  
+
 \end{document}
