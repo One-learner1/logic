@@ -616,18 +616,18 @@ $T_6$: Lastly, we show that Craig-consistency (that is, the property that a set 
 $S_1$ and $S_2$) is an analytic consistency property.
 
 
-$\Gamma_0$: Suppose that we have some set $S$ that is Craig consistent, and such that $X$ and $\oldneg X\in S$ for some sentence $X$. Consider the partition 
+$\Gamma_0$: Suppose that we have some set $S$ that is Craig consistent, and such that $X\in S$ and $\bar{X}\in S$ for some sentence $X$. Consider the partition 
 $S_1|S_2$ of $S$ such that $S_1$ and $S_2$ have no partition interpolant.
 
 
-In the first case, suppose that \[ S_1=\{X,X_1,...,X_n\} \] and that \[ S_2=\{\oldneg X,Y_1,...,Y_k\} \]
-Take $Z$ to be $X$, which clearly is an partition interpolant between $S_1$ and $S_2$.
+In the first case, suppose that \[ S_1=\{X,X_1,...,X_n\} \] and that \[ S_2=\{\bar{X},Y_1,...,Y_k\} \]
+Take $Z$ to be $X$, which clearly is a partition interpolant between $S_1$ and $S_2$.
 
 
-In the second case, suppose that \[ S_1=\{X,\oldneg X,X_1,....,X_n\} \] and that \[ S_2=\{Y_1,...,Y_k\} \]
+In the second case, suppose that \[ S_1=\{X,\bar{X},X_1,....,X_n\} \] and that \[ S_2=\{Y_1,...,Y_k\} \]
 Take $Z$ to be $f$ (signifying $falsity$, i.e. false under all interpretations), which is clearly a partition interpolant between $S_1$ and $S_2$. 
 If $S_1$ and $S_2$ are switched around, that is:
-\[ S_2=\{X,\oldneg X,X_1,....,X_n\} \] and that \[ S_1=\{Y_1,...,Y_k\} \] take $Z$ to be $t$ (signifying $truth$, i.e. true under all interpretations).
+\[ S_2=\{X,\bar{X},X_1,....,X_n\} \] and that \[ S_1=\{Y_1,...,Y_k\} \] take $Z$ to be $t$ (signifying $truth$, i.e. true under all interpretations).
 
 
 In any case, assuming that $\Gamma_0$ does not hold leads to a contradiction with Craig-consitency, and hence $\Gamma_0$ must hold.
