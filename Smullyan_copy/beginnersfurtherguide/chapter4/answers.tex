@@ -138,28 +138,25 @@ $L\left(z\right)=y$ is equivalent to $\left(\exists x\le z\right)\left(\delta\le
 
 \section*{Problem 9}
 (a): We consider some recursively enumerable set $A$ and $n\ge 2$. Consider the relation:
-$\delta_n\left(x_1,...,x_n\right)\in A$ Now, it has previously been shown that 
+$\delta_n\left(x_1,...,x_n\right)\in A$. Now, it has previously been shown that 
 $\delta_n\left(x_1,...,x_n\right)$ is a recursive function, and hence it is $\Sigma_1$ of the form:
-\[ \exists zR\left(x_1,...,x_n,x,z\right) \] for some $\Sigma_0$ relation $R\left(x_1,...,x_n\right)$. By the assumption that 
+\[ \exists zR\left(x_1,...,x_n,x,z\right) \] for some $\Sigma_0$ relation $R\left(x_1,...,x_n,x,z\right)$. By the assumption that 
 $A$ was recursively enumerable, it is $\Sigma_1$ of the form:
-\[ \exists wS\left(y,z\right) \] for some $\Sigma_0$ relation $S\left(y,z\right)$. Now, 
+\[ \exists wS\left(y,w\right) \] for some $\Sigma_0$ relation $S\left(y,w\right)$. Now, 
 $\delta_n\left(x_1,...,x_n\right)\in A$ is equivalent to \[ \delta_n\left(x_1,...,x_n\right)=y\wedge y\in A \]
-which is equivalent to \[ \exists zR\left(x_1,...,x_n,x,z\right)\wedge\exists wS\left(y,z\right) \] which is equivalent to
-\[ \exists z\exists w\left(R\left(x_1,...,x_n,x,z\right)\wedge S\left(y,z\right)\right) \] which is $\Sigma_1$, thus proving 
+which is equivalent to \[ \exists zR\left(x_1,...,x_n,x,z\right)\wedge\exists wS\left(y,w\right) \] which is equivalent to
+\[ \exists z\exists w\left(R\left(x_1,...,x_n,x,z\right)\wedge S\left(y,w\right)\right) \] which is $\Sigma_1$, thus proving 
 $\delta_n\left(x_1,...,x_n\right)\in A$ is recursively enumerable.
 
 
 (b): Consider some recursively enumerable relation $R\left(x_1,...,x_n\right)$. Hence it is $\Sigma_1$ of the form:
 \[ \exists zS\left(x_1,...,x_n,z\right) \] for some $\Sigma_0$ relation $S$. Now, a number $y$ is in the set of all numbers 
 $\delta_n\left(x_1,...,x_n\right)$ such that $R\left(x_1,...,x_n\right)$ iff 
-\[ \delta_n\left(x_1,...,x_n\right)=y\wedge R\left(x_1,...,x_n\right) \] which is equivalent to:
-\[ \exists wP\left(x_1,...,x_n,y,w\right)\wedge \exists zS\left(x_1,...,x_n,z\right) \] (taking 
+\[ \delta_n\left(x_1,...,x_n\right)=y\wedge R\left(x_1,...,x_n\right) \] for some $n$-tuple $x_1,...,x_n$ which is equivalent to:
+\[ \exists x_1,...,\exists x_n\left(\exists wP\left(x_1,...,x_n,y,w\right)\wedge \exists zS\left(x_1,...,x_n,z\right)\right) \] (taking 
 $\exists wP\left(x_1,...,x_n,y,w\right)$ to be the $\Sigma_1$ form of $\delta_n\left(x_1,...,x_n\right)$) which is 
 equivalent to:
-\[ \exists w\exists z\left(P\left(x_1,...,x_n,y,w\right)\wedge R\left(x_1,...,x_n\right)\right) \]
-which is $\Sigma_1$.
-
-\section*{Problem 10}
-(a): 
+\[ \exists x_1,..,\exists x_n\exists w\exists z\left(P\left(x_1,...,x_n,y,w\right)\wedge R\left(x_1,...,x_n\right)\right) \]
+which is $\Sigma_1$. 
 
 \end{document}
