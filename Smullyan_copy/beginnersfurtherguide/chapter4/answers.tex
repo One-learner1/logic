@@ -180,4 +180,30 @@ x_i=K^{n+1}_i$, if $i\le n$, while $Lx=x_{n+1}=K^{n+1}_i=x_{n+1}$ if $i=n+1$.
 $\exists zS\left(x_1,...,x_n,y_1,...,y_m\right)$ for some $\Sigma_0$ relation $S$. We take $M\left(x,y\right)$ to be the relation:
 \[ \exists zS\left(K^n_1\left(x\right),...,K^n_n\left(x\right),K^m_1\left(y\right),...,K^m_m\left(y\right)\right) \] which is $\Sigma_1$.
 
+\section*{Problem 12}
+First, the relation \textquote{the Gödel number of $x$ is $y$} is recursively enumerable under the axioms:
+\[ G1,12 \] \[ G2,122 \] \[ Gx,y\rightarrow Gq,r\rightarrow Gxq,yr \]
+Hence, to represent the relation \textquote{the norm of $x$ is $y$}, we add the axiom:
+\[ Gx,y\rightarrow Nx,xy \]
+
+
+$Note$: Smullyan seems to have made a mistake in his answer. When he was giving axioms for the relation $x$ has the Gödel number $y$, he was treating it like a unary relation
+(saying $Gx$ and $Gy$), even though he defined it as a binary relation.
+
+\section*{Problem 13}
+Suppose that $A$ is recursively enumerable. Hence it is $\Sigma_1$ of the form $\exists zR\left(x,z\right)$ for some $\Sigma_0$ relation $R\left(x,z\right)$. 
+Now, a number $x\in A^\#$ iff the norm of $x\in A$. Suppose $\exists pS\left(q,r,p\right)$ is the relation that is $\Sigma_1$ for 
+$r$ being the norm of $q$ (as shown to be $\Sigma_1$ in Problem 12). Hence $q\in A^\#$ iff:
+\[ \exists p\exists rS\left(q,r,p\right)\wedge\exists zR\left(r,z\right) \] which is $\Sigma_1$.
+
+
+$Alternatively$: Suppose that $A$ is represented by the predicate $P$. Then, for some new predicate $M$:
+\[ Nx,y\rightarrow Py\rightarrow Mx \] $M$ represents the set $A^\#$.
+
+\section*{Problem 14}
+Now suppose that $A$ is recursively enumerable. Hence, by Problem 13, $A^\#$ is also recursively enumerable. Suppose that the predicate $H$ represents $A^\#$, and that 
+it has a Gödel number of $n$. Thus $Hn$ is true iff $n\in A^\#$ iff $nn_0\in A$ (for $n_0$ the Gödel number of $n$), thus proving that $Hn$ is a Gödel sentence for 
+$A$, as $nn_0$ is the Gödel number of $Hn$.
+
+
 \end{document}
