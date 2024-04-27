@@ -217,7 +217,7 @@ $\exists zS\left(x_1,...,x_n,y_1,...,y_m\right)$ for some $\Sigma_0$ relation $S
 \[ Vy\rightarrow Nz\rightarrow Pp\rightarrow S_2p,y,z,p \] \[ S_2x,y,z,w\rightarrow S_2x_1,y,z,w_1\rightarrow S_2xx_1,y,z,ww_1 \] 
 
 
-(l): Add a new predicate $I_0$: \[ S_2x,y,z,w\rightarrow I_0x,w \] \[ I_0x,y\rightarrow S_2y,z,v,w\rightarrow I_0x,w \]
+(l): Add a new predicate $I_0$: \[ Fx\rightarrow S_2x,y,z,w\rightarrow I_0x,w \] \[ I_0x,y\rightarrow I_0y,z\rightarrow I_0x,z \]
 
 
 (m): Add a new predicate $I$: \[ I_0x,y\rightarrow Sy\rightarrow Ix,y \]
@@ -226,12 +226,11 @@ $\exists zS\left(x_1,...,x_n,y_1,...,y_m\right)$ for some $\Sigma_0$ relation $S
 (n): Add a new predicate $B$: \[ Fx\rightarrow Bx \] \[ Bx\rightarrow Fy\rightarrow Bx\wedge y \]
 
 
-(o): Add a new predicate $C$: \[ Fx\rightarrow Cx,x \] \[ Cx,y\rightarrow Bz\rightarrow Cx\wedge yz \] \[ Cx,y\rightarrow Bz\rightarrow Cx\wedge zy \]
+(o): Add a new predicate $C$: \[ Fx\rightarrow Cx,x \] \[ Cx,y\rightarrow Bz\rightarrow Cx,y\wedge z \] \[ Cx,y\rightarrow Bz\rightarrow Cx,z\wedge y \]
 
 
-(p): Add a new predicate $T$: \[ Bx\rightarrow Cy,x\rightarrow Iz,y\rightarrow Tx\vdash z \] \[ Tx\vdash y\rightarrow Tx\vdash yimpz\rightarrow Tx\vdash z \]  
-$Note$: Smullyan added in the added condition of $S_0z$ in this problem, but this doesn't seem correct. $Sz$ is implied by $Tx\vdash yimpz$, and limiting $z$ to be an atomic sentence seems to be 
-excluding certain provable sentences.
+(p): Add a new predicate $T$: \[ Cy,x\rightarrow Iy,z\rightarrow Tx\vdash z \] \[ Tx\vdash y\rightarrow Tx\vdash yimpz\rightarrow S_0y\rightarrow Tx\vdash z \]  
+$Note$: $S_0x$ needs to be added as the definition of provability says $X$ must be an atomic sentence if $Y$ is inferred from $X$ and $X\rightarrow Y$.
 
 \section*{Problem 12}
 First, the relation \textquote{the Gödel number of $x$ is $y$} is recursively enumerable under the axioms:
