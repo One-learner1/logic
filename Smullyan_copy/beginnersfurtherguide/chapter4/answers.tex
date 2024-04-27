@@ -180,6 +180,59 @@ x_i=K^{n+1}_i$, if $i\le n$, while $Lx=x_{n+1}=K^{n+1}_i=x_{n+1}$ if $i=n+1$.
 $\exists zS\left(x_1,...,x_n,y_1,...,y_m\right)$ for some $\Sigma_0$ relation $S$. We take $M\left(x,y\right)$ to be the relation:
 \[ \exists zS\left(K^n_1\left(x\right),...,K^n_n\left(x\right),K^m_1\left(y\right),...,K^m_m\left(y\right)\right) \] which is $\Sigma_1$.
 
+\section*{Problem 11}
+(a): Add a new predicate $N$: \[ N1 \] \[ N2 \] \[ Nx\rightarrow Ny\rightarrow Nxy \]
+
+
+(b): Add a new predicate $A$: \[ A' \] \[ Ax\rightarrow Ax' \]
+
+
+(c): Add a new predicate $V$: \[ Ax\rightarrow Vvxv \]
+
+
+(d): Add a new predicate $D$: \[ Vvxv\rightarrow Ay\rightarrow Dvxv,vxyv \] \[ Dx,y\rightarrow Dy,x \]
+
+
+(e): Add a new predicate $P$: \[ Ax\rightarrow Ppx \] \[ Px\rightarrow Ppx \] 
+
+
+(f): Add a new predicate $T$: \[ Nx\rightarrow Tx \] \[ Vx\rightarrow Tx \] \[ Tx\rightarrow Ty\rightarrow Txy \]
+
+
+(g): Add a new predicate $F_0$: \[ Tt\rightarrow Ax\rightarrow F_0pxt \] \[ Tt\rightarrow F_0x\rightarrow F_0pxcomt \]  
+
+
+(h): Add a new predicate $F$: \[ F_0x\rightarrow Fx \] \[ Fx\rightarrow F_0y\rightarrow Fximpy \]
+
+
+(i): Add a new predicate $S_0$: \[ Ax\rightarrow Ny\rightarrow S_0pxy \] \[ S_0x\rightarrow Ny\rightarrow S_0pxcomy \]
+
+
+(j): Add a new predicate $S$ (for TS sentence, a problem he apparently forgot to add): \[ S_0x\rightarrow Sx \] \[ Sx\rightarrow S_0y\rightarrow Sximpy \]
+
+
+
+(k): Add a new predicate $S_2$: \[ Nx\rightarrow Vy\rightarrow Nz\rightarrow S_2x,y,z,x \] \[ Vx\rightarrow Dx,y\rightarrow Nz\rightarrow S_2x,y,z,x \]
+\[ Vx\rightarrow Nz\rightarrow S_2x,x,z,z \] \[ Vy\rightarrow Nz\rightarrow S_2com,y,z,com \] \[ Vy\rightarrow Nz\rightarrow S_2imp,y,z,imp \]
+\[ Vy\rightarrow Nz\rightarrow Pp\rightarrow S_2p,y,z,p \] \[ S_2x,y,z,w\rightarrow S_2x_1,y,z,w_1\rightarrow S_2xx_1,y,z,ww_1 \] 
+
+
+(l): Add a new predicate $I_0$: \[ S_2x,y,z,w\rightarrow I_0x,w \] \[ I_0x,y\rightarrow S_2y,z,v,w\rightarrow I_0x,w \]
+
+
+(m): Add a new predicate $I$: \[ I_0x,y\rightarrow Sy\rightarrow Ix,y \]
+
+
+(n): Add a new predicate $B$: \[ Fx\rightarrow Bx \] \[ Bx\rightarrow Fy\rightarrow Bx\wedge y \]
+
+
+(o): Add a new predicate $C$: \[ Fx\rightarrow Cx,x \] \[ Cx,y\rightarrow Bz\rightarrow Cx\wedge yz \] \[ Cx,y\rightarrow Bz\rightarrow Cx\wedge zy \]
+
+
+(p): Add a new predicate $T$: \[ Bx\rightarrow Cy,x\rightarrow Iz,y\rightarrow Tx\vdash z \] \[ Tx\vdash y\rightarrow Tx\vdash yimpz\rightarrow Tx\vdash z \]  
+$Note$: Smullyan added in the added condition of $S_0z$ in this problem, but this doesn't seem correct. $Sz$ is implied by $Tx\vdash yimpz$, and limiting $z$ to be an atomic sentence seems to be 
+excluding certain provable sentences.
+
 \section*{Problem 12}
 First, the relation \textquote{the Gödel number of $x$ is $y$} is recursively enumerable under the axioms:
 \[ G1,12 \] \[ G2,122 \] \[ Gx,y\rightarrow Gq,r\rightarrow Gxq,yr \]
