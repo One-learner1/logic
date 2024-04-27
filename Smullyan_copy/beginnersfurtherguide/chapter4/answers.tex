@@ -159,4 +159,25 @@ equivalent to:
 \[ \exists x_1,..,\exists x_n\exists w\exists z\left(P\left(x_1,...,x_n,y,w\right)\wedge R\left(x_1,...,x_n\right)\right) \]
 which is $\Sigma_1$. 
 
+\section*{Problem 10}
+(a): If $\delta_n\left(x_1,..,x_n\right)=x$, then $K_1^n\left(x\right)=x_1,K_2^n\left(x\right)=x_2,...,K_n^n\left(x\right)=x_n$. Thus
+\[ \delta_n\left(K_1^n\left(x\right),K_2^n\left(x\right),...,K_n^n\left(x\right)\right)=\delta_n\left(x_1,x_2,...,x_n\right)=x \]
+
+
+(b): Suppose that $\delta\left(x_1,x_2\right)=x$. Hence $K^2_1\left(x\right)=Kx=x_1$ and $K^2_2\left(x\right)=Lx=x_2$.
+
+
+(c): Suppose $x=\delta_{n+1}\left(x_1,...,x_{n+1}\right)$. By definition, this means that
+\[ x=\delta\left(\delta_n\left(x_1,...,x_n\right),x_{n+1}\right) \] and thus $Kx=\delta_n\left(x_1,...,x_n\right)$ and $Lx=x_{n+1}$.
+
+
+(d): Suppose that $\delta_{n+1}\left(x_1,...,x_{n+1}\right)=x$. Then, by definition, 
+$\delta\left(\delta_n\left(x_1,...,x_n\right),x_{n+1}\right)=x$, thus meaning $K^n_i\left(Kx\right)=K^n_i\left(\delta_n\left(x_1,...,x_n\right)\right)=
+x_i=K^{n+1}_i$, if $i\le n$, while $Lx=x_{n+1}=K^{n+1}_i=x_{n+1}$ if $i=n+1$. 
+
+
+(e): Consider some recursively enumerable relation $R\left(x_1,...,x_n,y_1,...,y_m\right)$. Hence it is $\Sigma_1$ of the form
+$\exists zS\left(x_1,...,x_n,y_1,...,y_m\right)$ for some $\Sigma_0$ relation $S$. We take $M\left(x,y\right)$ to be the relation:
+\[ \exists zS\left(K^n_1\left(x\right),...,K^n_n\left(x\right),K^m_1\left(y\right),...,K^m_m\left(y\right)\right) \] which is $\Sigma_1$.
+
 \end{document}
