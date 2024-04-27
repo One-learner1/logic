@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 5 Answers}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Problem 1}
+(a): Consider $\omega_n$, that is, the set of all $x$ such that $r\left(n,x\right)\in T_0$. In the last chapter, we showed that $T_0$ and the relation 
+$g\left(x\right)=y$ are both recursively enumerable. Hence $r\left(n,x\right)\in T_0$ iff $g\left(x\right)=x_0\wedge nx_0\in T_0$. Now, the relation 
+$r\left(x,y\right)=z$ is recursively enumerable, as it is expressed by: \[ \exists x_0\left(g\left(x\right)=x_0\wedge yx_0=z\right) \]
+and thus the relation $r\left(n,x\right)\in T_0$ is expressed by the formula: \[ \exists z\left(r\left(n,x\right)=z\wedge z\in T_0\right) \]
+
+
+(b): Suppose that $A$ is a recursively enumerable set. Hence there is some predicate $P$ of $\left(U\right)$ such that $Hx\in T$ iff $x\in A$. If $p$ is the Gödel number of 
+$P$, $Px\in T$ iff $px_0\in T_0$ iff $r\left(p,x\right)\in T_0$ iff $x\in\omega_p$, thus proving that $A=\omega_p$.
+
+\end{document}
