@@ -40,14 +40,14 @@ I could not solve any of these.
 
 \section*{Problem 2}
 Consider a recursively enumerable relation $R\left(x,y\right)$. Hence, in $\left(U\right)$, it is represented by some predicate $H$, with a Gödel number of $h$. 
-Hence $R(x,y)$ holds iff $hxcy\in T_0$ for $c$ the Gödel number of the comma. Take $t(x)$ to be $hx_0c$, which is recursive as $g(x)=x_0$ is recursively enumerable. 
+Hence $R(x,y)$ holds iff $hxcy\in T_0$ for $c$ the Gödel number of the comma. Take $t(y)$ to be $hy_0c$, which is recursive as $g(x)=x_0$ is recursively enumerable. 
 Hence $x\in\omega_{t(i)}$ iff $r\left(hi_0c,x\right)\in T_0$ iff $hi_0cx\in T_0$ iff $R\left(x,i\right)$, thus completing the proof.
 
 \section*{Problem 3}
 Consider some recursively enumerable relation $R\left(x_1,...,x_m,y_1,...,y_n\right)$. Hence there is a recursively enumerable relation $M(x,y)$ such that 
 $R(x_1,...,x_m,y_1,...,y_n)$ iff $M\left(\delta_m\left(x_1,...,x_m\right),\delta_n\left(y_1,...,y_n\right)\right)$. By the Simple Iteration Theorem, there is a function 
 $t(i)$ such that $x\in\omega_{t(i)}$ iff $M(x,i)$. Hence, take 
-$\phi(i_1,...,i_n)$ to be $t(\delta_n(i_1,...,i_n)$. Hence $M(\delta_m(x_1,...,x_m),\delta_n(i_1,...,i_n)$ iff $\delta_m(x_1,...,x_m)\in \omega_{t(\delta_n(i_1,...,i_n))} iff
+$\phi(i_1,...,i_n)$ to be $t(\delta_n(i_1,...,i_n)$. Hence $M(\delta_m(x_1,...,x_m),\delta_n(i_1,...,i_n)$ iff $\delta_m(x_1,...,x_m)\in \omega_{t(\delta_n(i_1,...,i_n))}$ iff
 $R_{t(\delta_n(i_1,...,i_n)}(x_1,...,x_m)$.
 
 \section*{Problem 4}
