@@ -35,4 +35,46 @@ and thus the relation $r\left(n,x\right)\in T_0$ is expressed by the formula: \[
 (b): Suppose that $A$ is a recursively enumerable set. Hence there is some predicate $P$ of $\left(U\right)$ such that $Hx\in T$ iff $x\in A$. If $p$ is the Gödel number of 
 $P$, $Px\in T$ iff $px_0\in T_0$ iff $r\left(p,x\right)\in T_0$ iff $x\in\omega_p$, thus proving that $A=\omega_p$.
 
+\section*{Exercises 1-3}
+I could not solve any of these.
+
+\section*{Problem 2}
+Consider a recursively enumerable relation $R\left(x,y\right)$. Hence, in $\left(U\right)$, it is represented by some predicate $H$, with a Gödel number of $h$. 
+Hence $R(x,y)$ holds iff $hxcy\in T_0$ for $c$ the Gödel number of the comma. Take $t(x)$ to be $hx_0c$, which is recursive as $g(x)=x_0$ is recursively enumerable. 
+Hence $x\in\omega_{t(i)}$ iff $r\left(hi_0c,x\right)\in T_0$ iff $hi_0cx\in T_0$ iff $R\left(x,i\right)$, thus completing the proof.
+
+\section*{Problem 3}
+Consider some recursively enumerable relation $R\left(x_1,...,x_m,y_1,...,y_n\right)$. Hence there is a recursively enumerable relation $M(x,y)$ such that 
+$R(x_1,...,x_m,y_1,...,y_n)$ iff $M\left(\delta_m\left(x_1,...,x_m\right),\delta_n\left(y_1,...,y_n\right)\right)$. By the Simple Iteration Theorem, there is a function 
+$t(i)$ such that $x\in\omega_{t(i)}$ iff $M(x,i)$. Hence, take 
+$\phi(i_1,...,i_n)$ to be $t(\delta_n(i_1,...,i_n)$. Hence $M(\delta_m(x_1,...,x_m),\delta_n(i_1,...,i_n)$ iff $\delta_m(x_1,...,x_m)\in \omega_{t(\delta_n(i_1,...,i_n))} iff
+$R_{t(\delta_n(i_1,...,i_n)}(x_1,...,x_m)$.
+
+\section*{Problem 4}
+We consider the enumeration $\omega_1,\omega_2,...,\omega_n,...$ and any other recursively enumerable indexing $A_1,A_2,...,A_n,...$. Hence 
+$x\in A_y$ is recursively enumerable, which means there is a recursive function $t(i)$ such that $x\in\omega_{t(i)}$ iff $x\in A_i$, thus completing the proof.
+
+\section*{Problem 5}
+Define $S(x_1,...,x_m,y,y_1,...,y_n)$ iff $R_y(x_1,...,x_m,y_1,...,y_n)$, which is recursively enumerable because $R_y(x_1,...,x_m,y_1,...,y_n)$ is recursively enumerable 
+by the enumeration theorem. Hence, by the iteration theorem, there exists some $\phi(i,i_1,...,i_n)$ such that $R_{\phi(i,i_1,...,i_n)}(x_1,...,x_m)$ iff
+$S(x_1,...,x_m,y,y_1,...,y_n)$ iff $R_i(x_1,...,x_m,i_1,...,i_n)$.
+
+\section*{Problem 6}
+Let $n$ be the number $t(m)$. Hence $R(x,n)$ iff $R_m(x,m)$ iff $x\in\omega_{n}$.
+
+\section*{Problem 7}
+(a): Consider some recursive function $f(x)$. Hence $f(x)=y$ is recursively enumerable, and thus the relation $R(x,y)$:
+\[ \exists z(f(y)=z\wedge x\in\omega_z) \] is recursively enumerable. Thus by the weak recursion theorem, there is some number $n$ such that
+$x\in\omega_n$ iff $R(x,n)$ iff $x\in\omega_{f(n)}$.
+
+
+(b):
+1: We can just take $f(x)$ to be $x+1$ (which is recursive, as the relation $x+1=y$ is easily shown to be recursively enumerable), meaning, 
+by part (a), there is some number $n$ such that $\omega_n=\omega_{n+1}$.\newline
+3: This is a special case of 4, when $f(x)=x$.\newline
+4: For a recursive function $f(x)$, $x=f(y)$ is recursively enumerable (because $f(y)=x$ is recursively enumerable). Hence by Problem 5, there is some number $n$ 
+such that $x\in\omega_n$ iff $x=f(n)$, that is, $\omega_n={f(n)}$.\newline
+5: Consider the relation $y\in\omega_x$, which is recursively enumerable. Hence, by Problem 5, there is some number $n$ such that 
+$x\in\omega_n$ iff $n\in\omega_x$.
+
 \end{document}
