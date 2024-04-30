@@ -13,6 +13,7 @@
 \usepackage{placeins}
 \usepackage{tikz}
 \newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
 \let\oldemptyset\emptyset
 
 \theoremstyle{definition}
@@ -62,6 +63,11 @@ $S(x_1,...,x_m,y,y_1,...,y_n)$ iff $R_i(x_1,...,x_m,i_1,...,i_n)$.
 \section*{Problem 6}
 Let $n$ be the number $t(m)$. Hence $R(x,n)$ iff $R_m(x,m)$ iff $x\in\omega_{n}$.
 
+
+$Note$: To be clear, if $R(x,y)$ is recursively enumerable, then so is $R(x,t(y))$, as it is equivalent to the recursively enumerable relation:
+\[ \exists z(t(y)=z\wedge R(x,z)) \] By the enumeration theorem, there then exists a relation $R_m(x,y)$ such that $R_m(x,y)$ iff $R(x,t(y))$, as $R(x,t(y))$ is a 
+relation between $x$ and $y$.
+
 \section*{Problem 7}
 (a): Consider some recursive function $f(x)$. Hence $f(x)=y$ is recursively enumerable, and thus the relation $R(x,y)$:
 \[ \exists z(f(y)=z\wedge x\in\omega_z) \] is recursively enumerable. Thus by the weak recursion theorem, there is some number $n$ such that
@@ -73,8 +79,22 @@ $x\in\omega_n$ iff $R(x,n)$ iff $x\in\omega_{f(n)}$.
 by part (a), there is some number $n$ such that $\omega_n=\omega_{n+1}$.\newline
 3: This is a special case of 4, when $f(x)=x$.\newline
 4: For a recursive function $f(x)$, $x=f(y)$ is recursively enumerable (because $f(y)=x$ is recursively enumerable). Hence by Problem 5, there is some number $n$ 
-such that $x\in\omega_n$ iff $x=f(n)$, that is, $\omega_n={f(n)}$.\newline
+such that $x\in\omega_n$ iff $x=f(n)$, that is, $\omega_n=\{f(n)\}$.\newline
 5: Consider the relation $y\in\omega_x$, which is recursively enumerable. Hence, by Problem 5, there is some number $n$ such that 
 $x\in\omega_n$ iff $n\in\omega_x$.
+
+\section*{Problem 8}
+(a): We know that $A\ne\Z$ and $A\ne\emptyset$ and that $A$ is a recursive set. Thus there is some number $a\in A$ and some number $b\notin A$. Let $f(x)$ be the function:
+\[ f(x)=\begin{cases}
+	x\in A: & b \\
+	x\notin A: & a \\
+	\end{cases}
+\]
+$f(x)=y$ is equivalent to the relation $R(x,y)$: \[ (x\in A\wedge y=b)\vee (x\notin A\wedge y=a) \] which is recursive as $A$ is recursive. Thus $f(x)$ is recursive. Obviously, 
+$x\in A$ iff $f(x)\notin A$.
+
+
+(b): Consider the $f(x)$ of part (a). Because it is recursive, by Problem 6, there is some number $n$ such that $\omega_{f(n)}=\omega_n$. Because $f(n)\in A$ iff $n\notin A$, either 
+$f(n)$ or $n$ are in $A$, but not both. But this means that $A$ is not extensional, for otherwise both $f(n)$ and $n$ would need to be in $A$.
 
 \end{document}
