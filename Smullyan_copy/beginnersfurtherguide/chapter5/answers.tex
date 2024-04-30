@@ -105,7 +105,30 @@ $f(x)=y$ is equivalent to the relation $R(x,y)$: \[ (x\in A\wedge y=b)\vee (x\no
 $x\in A$ iff $f(x)\notin A$.
 
 
-(b): Consider the $f(x)$ of part (a). Because it is recursive, by Problem 7, there is some number $n$ such that $\omega_{f(n)}=\omega_n$. Because $f(n)\in A$ iff $n\notin A$, either 
+(b): Consider the $f(x)$ of part (a). Because it is recursive, by Problem 7, there is some number $n$ such that $\omega_{f(n)}=\omega_n$. Because $f(n)\in A$ iff $n\notin A$, 
+either 
 $f(n)$ or $n$ are in $A$, but not both. But this means that $A$ is not extensional, for otherwise both $f(n)$ and $n$ would need to be in $A$.
+
+\section*{Problem 9}
+(a): Take $\phi(i)$ to be the function $d(t(i))$. Thus $x\in\omega_{\phi(i)}$ iff $x\in\omega_{d(t(i))}$ iff $R_{t(i)}(x,t(i))$ iff $M(x,i,\phi(i))$, which is what 
+we were required to prove.
+
+
+\textit{Note to self}: Here is why $M(x,z,d(y)$ is recursively enumerable. Because $M(x,y,z)$ is, then so is $M(x,y,d(z))$. Then let $M_1(x,y,z)$ be the relation 
+$M(x,z,d(y))$ which is recursively enumerable. By the iteration theorem, there is some funciton $t(i)$ such that $R_{t(i)}(x,y)$ iff 
+$M_1(x,y,i)$ iff $M(x,i,d(y))$.
+
+
+(b): Take $\phi(i)$ to be the function $t(i,h)$. Thus $x\in\omega_{t(i,h)}$ iff $R_h(x,i,h)$ iff $M(x,i,t(i,h))$, which is what we were required to prove.
+
+
+\textit{Note to self}: Here is why $R_z(x,y,z)$ can be said to be a recursively enumerable relation. $R_x(y,z,z_1)$ is defined to be a recursively enumerable relation. 
+Hence let $R_1(x,y,z)$ be the relation $R_x(y,z,z_1)\wedge x=z_1$, which is recursively enumerable, and is the same as saying $R_z(x,y,z)$.
+
+\section*{Problem 10}
+Let $M(x,y,z)$ be $R_y(x,z)$. Then by the strong recursion theorem there exists some function $\phi(i)$ such that 
+\[ \omega_{\phi(i)}=\{x:M(x,i,\phi(i))\}=\{x:R_i(x,\phi(i))\} \] which proves Theorem 8 is a special case of the strong recursion theorem.
+
+
 
 \end{document}
