@@ -42,14 +42,25 @@ I could not solve any of these.
 \section*{Problem 2}
 Consider a recursively enumerable relation $R\left(x,y\right)$. Hence, in $\left(U\right)$, it is represented by some predicate $H$, with a Gödel number of $h$. 
 Hence $R(x,y)$ holds iff $hxcy\in T_0$ for $c$ the Gödel number of the comma. Take $t(y)$ to be $hy_0c$, which is recursive as $g(x)=x_0$ is recursively enumerable. 
-Hence $x\in\omega_{t(i)}$ iff $r\left(hi_0c,x\right)\in T_0$ iff $hi_0cx\in T_0$ iff $R\left(x,i\right)$, thus completing the proof.
+Hence $x\in\omega_{t(i)}$ iff $r\left(hi_0c,x\right)\in T_0$ iff $hi_0cx\in T_0$ iff $R\left(i,x\right)$.
+
+
+$Note$: The above is essentially the answer that Smullyan gave, but it is incorrect. It proves that $x\in\omega_{t(i)}$ iff $R(i,x)$, but that was not the theorem! It was 
+to prove that $x\in\omega_{t(i)}$ iff $R(x,i)$. Below is a correct proof:
+
+
+We suppose that $R(x,y)$ is recursively enumerable. Let $R_1(x,y)$ be the relation $R(y,x)$. Hence $R_1(x,y)$ is recursively enumerable. Thus 
+$R(x,y)$ is represented in $(U)$ by some predicate $H$ with Gödel number $h$, and $R_1(x,y)$ is represented in $(U)$ by some predicate $P$ with Gödel number $p$. Hence 
+\[ px_0cy_0\in T_0\textrm{ iff } hy_0cx_0\in T_0 \] for $x_0,y_0,c$ the Gödel numbers for $x,y,$ and the comma, respectively. Let $t(y)$ be the relation 
+$py_0c$. Thus $x\in\omega_{t(i)}$ iff $r(pi_0c,x)\in T_0$ iff $pi_0cx_0\in T_0$ iff $hx_0ci_0\in T_0$ iff $R(x,i)$, meaning 
+$x\in\omega_{t(i)}$ iff $R(x,i)$, thus completing the proof.
 
 \section*{Problem 3}
 Consider some recursively enumerable relation $R\left(x_1,...,x_m,y_1,...,y_n\right)$. Hence there is a recursively enumerable relation $M(x,y)$ such that 
 $R(x_1,...,x_m,y_1,...,y_n)$ iff $M\left(\delta_m\left(x_1,...,x_m\right),\delta_n\left(y_1,...,y_n\right)\right)$. By the Simple Iteration Theorem, there is a function 
 $t(i)$ such that $x\in\omega_{t(i)}$ iff $M(x,i)$. Hence, take 
-$\phi(i_1,...,i_n)$ to be $t(\delta_n(i_1,...,i_n)$. Hence $M(\delta_m(x_1,...,x_m),\delta_n(i_1,...,i_n)$ iff $\delta_m(x_1,...,x_m)\in \omega_{t(\delta_n(i_1,...,i_n))}$ iff
-$R_{t(\delta_n(i_1,...,i_n)}(x_1,...,x_m)$.
+$\phi(i_1,...,i_n)$ to be $t(\delta_n(i_1,...,i_n)$. Hence $M(\delta_m(x_1,...,x_m),\delta_n(i_1,...,i_n)$ iff $\delta_m(x_1,...,x_m)\in \omega_{\phi(i_1,...,i_n)}$ iff
+$R_{\phi(i_1,...,i_n)}(x_1,...,x_m)$. This is true as we recall that $R^n_i(x_1,...,x_n)$ was defined to be $\delta_n(x_1,...,x_n)\in\omega_i$. 
 
 \section*{Problem 4}
 We consider the enumeration $\omega_1,\omega_2,...,\omega_n,...$ and any other recursively enumerable indexing $A_1,A_2,...,A_n,...$. Hence 
