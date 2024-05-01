@@ -14,6 +14,7 @@
 \usepackage{tikz}
 \newcommand*{\oldneg}{\mathord{\sim}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
 \let\oldemptyset\emptyset
 
 \theoremstyle{definition}
@@ -95,7 +96,7 @@ such that $x\in\omega_n$ iff $x=f(n)$, that is, $\omega_n=\{f(n)\}$.\newline
 $x\in\omega_n$ iff $n\in\omega_x$.
 
 \section*{Problem 8}
-(a): We know that $A\ne\Z$ and $A\ne\emptyset$ and that $A$ is a recursive set. Thus there is some number $a\in A$ and some number $b\notin A$. Let $f(x)$ be the function:
+(a): We know that $A\ne\N$ and $A\ne\emptyset$ and that $A$ is a recursive set. Thus there is some number $a\in A$ and some number $b\notin A$. Let $f(x)$ be the function:
 \[ f(x)=\begin{cases}
 	x\in A: & b \\
 	x\notin A: & a \\
@@ -129,6 +130,63 @@ Hence let $R_1(x,y,z)$ be the relation $R_x(y,z,z_1)\wedge x=z_1$, which is recu
 Let $M(x,y,z)$ be $R_y(x,z)$. Then by the strong recursion theorem there exists some function $\phi(i)$ such that 
 \[ \omega_{\phi(i)}=\{x:M(x,i,\phi(i))\}=\{x:R_i(x,\phi(i))\} \] which proves Theorem 8 is a special case of the strong recursion theorem.
 
+\section*{Problem 11}
+Suppose that $f(x)$ reduces $A$ to $B$ and $\phi(x)$ is a generative function for $A$, and $t(y)$ is an iterative function for the relation $f(x)\in\omega_y$. Hence 
+$x\in A$ iff $f(x)\in B$, $x\in\omega_{t(y)}$ iff $f(x)\in\omega_{y}$, and $\phi(i)\in A$ iff $\phi(i)\in\omega_i$. Thus $f(\phi(t(x)))\in B$ iff $\phi(t(x))\in A$ iff $\phi(t(x))\in\omega_{t(x)}$
+iff $f(\phi(t(x)))\in\omega_x$. That is, $f(\phi(t(x)))\in B$ iff $f(\phi(t(x)))\in\omega_x$. If we let $\phi(i)$ be the function $f(\phi(t(x)))$, this proves that 
+$\phi(i)\in B$ iff $\phi(i)\in\omega_i$.
 
+\section*{Problem 12}
+For every $i$, $x\in\omega_i$ iff $\delta(x,i)\in K$. Hence let $f(x)$ be the function $\delta(x,i)$. Thus $x\in\omega_i$ iff $f(x)\in K$, thus showing $K$ is universal under the function 
+$f(x)$.
+
+
+$Note$: Smullyan must have made a typo when defining $K$. He clearly means that $x\in\omega_y$ iff $\delta(x,y)\in K$, but the definition was $\partial(x,y)\in K$, which is an undefined 
+function.
+
+\section*{Problem 13}
+The set $C$ is recursively enumerable, as it is equivalent to the recursively enumerable relation $x\in\omega_x$. Now consider some universal set $U$. Hence $C$ is reducible to $U$. Because $I(x)$ is a generative function 
+for $C$, $f(I(t(x)))$ (as defined in Theorem 9$^*$) is a generative function for $U$ by Theorem $9^*$. 
+
+\section*{Problem 14}
+We can show that Post's set $K$ is uniformly universal. We have shown that it is universal under the function $\delta(x,i)$ for every $\omega_i$. Hence $K$ is uniformly universal under the 
+recursive function $\delta(x,y)$, as $x\in\omega_i$ iff $\delta(x,i)\in K$. Now consider any universal set $U$. Hence, for some recursive function $f(x)$, 
+$x\in K$ iff $f(x)\in U$. Take $f(x,y)$ to be the function $f(\delta(x,y))$. Hence, for all $i$, $f(\delta(x,i))\in U$ iff $\delta(x,i)\in K$ iff $x\in\omega_i$, thus proving that 
+$U$ is uniformly universal under the recursive function $f(\delta(x,y))$.
+
+\section*{Exercise 4}
+Suppose that $A$ is uniformly universal under $f(x,y)$ and that $t(y)$ is an iterative function for the relation $f(x,x)\in\omega_y$. Thus, for all $i$, $x\in\omega_i$ iff $f(x,i)\in A$, 
+and $x\in\omega_{t(y)}$ iff $f(x,x)\in\omega_y$. Hence $f(t(x),t(x))\in A$ iff $t(x)\in\omega_{t(x)}$ iff $f(t(x),t(x))\in\omega_x$, thus proving $f(t(x),t(x))$ is a generative function for 
+$A$.
+
+\section*{Problem 15}
+(1): We assume that $B$ is a generative set under $\phi(x)$, meaning $\phi(x)\in B$ iff $\phi(x)\in\omega_x$. Thus if $\omega_i=\N$ then, by definition, $\phi(i)\in\omega_i$ (as all 
+positive integers are in $\omega_i$) and thus $\phi(i)\in B$.
+
+
+(2): If $\omega_i=\emptyset$, then $\phi(i)\notin B$. For if it was, then $\phi(i)\in\omega_i$. But this would be contrary to the assumption that $\omega_i=\emptyset$.
+
+\section*{Problem 16}
+Suppose that $A$ is a recursively enumerable set. Define $M(x,y)$ iff $y\in A$. Because $M(x,y)$ is recursively enumerable, by the iteration theorem, there is some recursive function 
+$t(y)$ such that for all $i$, $\omega_{t(i)}=\{x:M(x,i)\}$. 
+
+
+(1): Suppose $i\in A$. Hence $x\in\omega_{t(i)}$ iff $M(x,i)$ iff $i\in A$, which shows that, because $i\in A$, $x\in\omega_{t(i)}$ for every $x$.
+
+
+(2): Suppose $i\notin A$. By part (1) of this problem, we know that $x\in\omega_{t(i)}$ iff $i\in A$. Hence, because $i\notin A$, $x\notin\omega_{t(i)}$ for every $x$, thus meaning 
+$\omega_{t(i)}=\emptyset$.
+
+\section*{Problem 17}
+Consider some generative set $B$. By Problem 15, we know that, if $B$ is generative under the recursive function $\phi(x)$, then, for every $i$:\newline
+(1) If $\omega_i=\N$ then $\phi(i)\in B$.\newline
+(2) If $\omega_i=\emptyset$ then $\phi(i)\notin B$.\newline
+Now consider any recursively enumerable set $A$. Hence, by Problem 16, there is a recursive function $t(y)$ such that for every number $i$:\newline
+(1) If $i\in A$, then $\omega_{t(i)}=\N$;\newline
+(2) If $i\notin A$, then $\omega_{t(i)}=\emptyset$.\newline
+Now, consider the function $\phi(t(i))$. If $i\in A$, then $\omega_{t(i)}=\N$ and thus $\phi(t(i))\in B$. On the other hand, if $\phi(t(i))\in B$, then 
+$\phi(t(i))\in\omega_{t(i)}$. If $i\notin A$, then $\omega_{t(i)}=\emptyset$, which would be contrary to the fact that $\phi(t(i))\in B$ (by (2) of Problem 15). Thus $i\in A$. We have therefore 
+shown that $i\in A$ iff $\phi(t(i))\in B$, which shows that $A$ is reducible to $B$ under the function $\phi(t(i))$, and therefore $B$ is universal.
+ 
 
 \end{document}
