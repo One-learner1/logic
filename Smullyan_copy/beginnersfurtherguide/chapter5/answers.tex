@@ -187,6 +187,65 @@ Now consider any recursively enumerable set $A$. Hence, by Problem 16, there is 
 Now, consider the function $\phi(t(i))$. If $i\in A$, then $\omega_{t(i)}=\N$ and thus $\phi(t(i))\in B$. On the other hand, if $\phi(t(i))\in B$, then 
 $\phi(t(i))\in\omega_{t(i)}$. If $i\notin A$, then $\omega_{t(i)}=\emptyset$, which would be contrary to the fact that $\phi(t(i))\in B$ (by (2) of Problem 15). Thus $i\in A$. We have therefore 
 shown that $i\in A$ iff $\phi(t(i))\in B$, which shows that $A$ is reducible to $B$ under the function $\phi(t(i))$, and therefore $B$ is universal.
- 
+
+\section*{Problem 18}
+Assume $C_1$, that is: There is a recursive function $\phi(x)$ such that for every $i$ such that $\omega_i$ is 
+disjoint from $A$ and such that $\omega_i$ contains at most one member, the number $\phi(i)$ lies outside 
+both $A$ and $\omega_i$.
+
+
+(1): Suppose $\omega_i=\emptyset$. Suppose $\phi(i)\in A$. Hence $\omega_i$ is disjoint from $A$, and $\omega_i$ contains at most one member. Thus $\phi(i)$ lies outside both $A$ and 
+$\omega_i$, contrary to the assumption $\phi(i)\in A$. Hence $\phi(i)\notin A$.
+
+
+(2): Suppose $\omega_i=\{\phi(i)\}$. Suppose that $\phi(i)\notin A$. Then $A$ and $\omega_i$ are disjoint. But because $\omega_i$ has only one member, $\phi(i)$ lies outside both 
+$A$ and $\omega_i$, contrary to the assumption that $\phi(i)\in\omega_i$. Thus $\phi(i)\in A$.
+
+\section*{Problem 19}
+Consider some recursive function $\phi(x)$. Let $M(x,y,z)$ be the recursively enumerable relation $x\in\omega_y\wedge x=\phi(z)$. By the strong recursion theorem, there is some recursive function 
+$t(i)$ such that $x\in\omega_{t(i)}$ iff $M(x,i,\phi(i))$ iff $x\in\omega_i\wedge x=\phi(t(i))$ iff $x\in\omega_i\cap\{\phi(t(i))\}$, which is the same as saying 
+$\omega_{t(i)}=\omega_i\cap\{\phi(t(i))\}$. Thus $t(i)$ is the desired recursive function. 
+
+\section*{Problem 20}
+Suppose that $\phi(x)$ is a weakly co-productive function for $A$. Let $t(y)$ be the recursive function related to $\phi(x)$ as defined in Problem 19. 
+Thus if $\phi(t(i))\in\omega_{t(i)}$, then $\phi(t(i))\in\omega_i\cap\{\phi(t(i))\}$, which is the same as saying $\omega_{t(i)}=\{\phi(t(i))\}$, and thus $\phi(t(i))\in A$ by $C_2$ (2).
+Now suppose that $\phi(t(i))\in A$. If $\phi(t(i))\notin\omega_{t(i)}$, then we know that $\phi(t(i))\notin\omega_i\cap\{\phi(t(i))\}$ and 
+$\omega_{t(i)}=\omega_i\cap\{\phi(t(i))\}$, thus meaning $\omega_{t(i)}=\emptyset$, and thus $\phi(t(i))\notin A$ by $C_2$ (1). Thus $\phi(t(i))\in\omega_{t(i)}$. Hence we have shown that 
+$\phi(t(i))\in A$ iff $\phi(t(i))\in\omega_{t(i)}$, thus proving that $\phi(t(i))$ is a generative function for $A$.
+
+\section*{Direct Proof that Weak Co-productivity Implies Universality}
+Suppose that $B$ is weakly co-productive under $\phi(x)$ and that $A$ is a set that we wish to reduce to $B$ (that is, a recursively enumerable set). Let $M(x,y,z)$ be the recursively enumerable 
+relation \[ y\in A\wedge x=\phi(z) \] By the strong recursion theorem, there is some recursive function $t(i)$ such that 
+\[ \textrm{(1) }x\in\omega_{t(i)}\textrm{ iff }M(x,i,t(i))\textrm{ iff }i\in A\wedge x=\phi(t(i)) \] 
+
+
+Now suppose that $i\in A$. There are then two cases. In the first case, $x=\phi(t(i))$. Thus by (1), $x\in\omega_{t(i)}$. In the second case, $x\ne\phi(t(i))$. Again by 
+(1), this would mean that $x\notin\omega_{t(i)}$. Thus $x\in\omega_{t(i)}$ iff $x=\phi(t(i))$, and therefore $\omega_{t(i)}=\{\phi(t(i))\}$. On the other hand, suppose that 
+$i\notin A$. Thus, by (1), $x\notin\omega_{t(i)}$, and because this holds for all $x$, $\omega_{t(i)}=\emptyset$ in this case.
+
+
+We now have the following. If $i\in A$, then by the above result, $\omega_{t(i)}=\{\phi(t(i))\}$. Thus $\phi(t(i))\in B$ by $C_2$ (2). If $\phi(t(i))\in B$, then 
+$\omega_{t(i)}\ne\emptyset$ by $C_2$ (1). If $i\notin A$, then $\omega_{t(i)}=\emptyset$ by the above result, which is a contradiction. Hence $i\in A$. Thus, we have shown that 
+$i\in A$ iff $\phi(t(i))\in B$, which proves that $\phi(t(i))$ reduces $A$ to $B$, thus showing that $B$ is universal. 
+
+
+\textit{Note}: When Smullyan said $\omega_{t(y)}=\{\phi(y)\}$ in the explanation of this problem, he actually meant $\omega_{t(y)}=\{\phi(t(y))\}$. 
+
+\section*{Exercise 5}
+To me it appears that for every sets $A$ and $B$ such that $A$ is recursively isomorphic to $B$, then both $A$ and $B$ are recursive. For let $\phi(x)$ be the recursive 
+isomorphism from $A$ to $B$. Thus for every $x\in A$, $f(x)=y$ for some $y\in B$, and for every $y\in B$, there is one and only one number $x$ such that $f(x)=y$. So the relation
+\[ \exists y(\phi(x)=y) \] is a recursive relation for $A$. Because $B$ is recursively isomoprhic to $A$ under $\phi^{-1}(x)$, it also follows that
+\[ \exists y(\phi^{-1}(x)=y) \] is a recursive relation for $B$. Thus neither $A$ nor $B$ can be generative, co-productive (which implies universality) or universal, as the Bonus Question 
+shows that no generative or universal sets can be recursive.
+
+
+Now suppose that $A$ is productive. Hence there is some recursive function $\phi(i)$ such that, if $\omega_i$ is a subset of $A$, then $\phi(i)\in A-\omega_i$. Now let $f(x)$ be the 
+recursive isomorphism from $A$ to $B$. Hence $\phi(i)\in A$ iff $f(\phi(i))\in B$. Thus if $\omega_i$ is a subset of $B$, then $f(\phi(i))\in B$ iff $\phi(i)\in A$ and thus 
+$\phi(i)\in A-\omega_i$ meaning $\phi(i)\notin\omega_i$ and therefore $\phi(i)\in B-\omega_i$, thus meaning $f(\phi(i))$ is a productive function for $B$.
+
+\section*{Bonus Question}
+Consider some universal set $A$, and suppose that it was recursive. Hence $\bar{A}$ would be recursively enumerable. We have shown that every universal set is generative. 
+Thus there is some recursive function $\phi(i)$ such that $\phi(i)\in A$ iff $\phi(i)\in\omega_i$. Because $\bar{A}$ is recursively enumerable, it has an index $n$. Thus 
+$\phi(n)\in A$ iff $\phi(n)\in\omega_n$ iff $\phi(n)\in\bar{A}$, which is impossible. Hence there can be no recursive universal set (and no recursive generative set). 
 
 \end{document}
