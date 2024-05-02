@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 6 Answers}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Problem 1}
+\textit{Note}: Here is why the diagonal function is implied. Consider any $R_y(x,y,z)$. By the iteration theorem, there is some $\phi(y,z)$ such that 
+$R_y(x,y,z)$ iff $R_{\phi(y,z)}(x)$. By definition of $R^n_i(x_1,...,x_n)$ when $n=1$, $R_{\phi(y,z)}(x)$ means $x\in\omega_{\phi(y,z)}$, and thus 
+$x\in\omega_{\phi(y,z)}$ iff $R_y(x,y,z)$.
+
+
+Consider any two recursively enumerable relation $M_1(x,y,z)$ and $M_2(x,y,z)$. Hence the relations $M_1(x,d(y,z),d(z,y))$ and $M_2(x,d(z,y),d(y,z))$ are 
+recursively enumerable, and have indices $m$ and $n$, respectively. Thus, if $d(y,z)$ is the diagonal function:
+$x\in\omega_{d(m,n)}$ iff $M_1(x,d(m,n),d(n,m))$ and $x\in\omega_{d(n,m)}$ iff $M_2(x,d(m,n),d(n,m)$, thus showing that $a=d(m,n)$ and $b=d(n,m)$ satisfies the 
+theorem.
+
+\section*{Problem 2}
+Consider any two recursively enumerable relations $M_1(x,y_1,y_2,z_1,z_2)$ and $M_2(x,y_1,y_2,z_1,z_2)$. Hence the relations 
+$M_1(x,i,j,d(y,z),d(z,y))$ and $M_2(x,i,j,d(y,z),d(z,y))$ (as relations between $x,y,z,i,j$) are recursively enumerable for the diagonal function $d$. Hence, by the 
+iteration theorem, there are recursive function $t_1(i,j)$ and $t_2(i,j)$ such that for all numbers $i,j,x,y,z$:\newline
+(1): $R_{t_1(i,j)}(x,y,z)$ iff $M_1(x,i,j,d(y,z),d(z,y))$;\newline
+(2): $R_{t_2(i,j)}(x,y,z)$ iff $M_2(x,i,j,d(z,y),d(y,z))$.\newline
+Let $\phi_1(i,j)$ be the function $d(t_1(i,j),t_2(i,j))$ and $\phi_2(i,j)$ be the function $d(t_2(i,j),t_1(i,j))$. Thus
+$x\in\omega_{\phi_1(i,j)}$ iff $R_{t_1(i,j)}(x,t_1(i,j),t_2(i,j))$ iff $M_1(x,i,j,d(t_1(i,j),t_2(i,j)),d(t_2(i,j),t_1(i,j))$ iff 
+$M_1(x,i,j,\phi_1(i,j),\phi_2(i,j))$ and 
+$x\in\omega_{\phi_2(i,j)}$ iff $R_{t_2(i,j)}(x,t_2(i,j),t_1(i,j))$ iff $M_2(x,i,j,d(t_1(i,j),t_2(i,j)),d(t_2(i,j),t_1(i,j))$ iff $M_2(x,i,j,\phi_1(i,j),\phi_2(i,j)$.
+Thus $\omega_{\phi_1(i,j)}=\{x:M_1(x,i,j,\phi_1(i,j),\phi_2(i,j))\}$ and $\omega_{\phi_2(i,j)}=\{x:M_2(x,i,j,\phi_1(i,j),\phi_2(i,j))\}$, thus completing the proof.
+
+\section*{Problem 3}
+(a): Let $R_1(x,y,y_1,z_1,z_2)$ be $M_1(x,y,z_1,z_2)$, and $R_2(x,y,y_1,z_1,z_2)$ be $M_2(x,y_1,z_1,z_2)$. By Theorem 2, there are recursive functions
+$\omega_{\phi_1(i,j)}$ and $\omega_{\phi_2(i,j)}$ such that:\newline
+(1) $\omega_{\phi_1(i,j)}=\{x:R_1(x,i,j,\phi_1(i,j),\phi_2(i,j)\}=\{x:M_1(x,i,\phi_1(i,j),\phi_2(i,j)\}$;\newline
+(2) $\omega_{\phi_2(i,j)}=\{x:R_2(x,i,j,\phi_1(i,j),\phi_2(i,j)\}=\{x:M_2(x,j,\phi_1(i,j),\phi_2(i,j)\}$\newline thus completing the proof of Theorem 3.
+
+
+(b): Let $M(x,y,z_1,z_2)$ be the relation $R_y(x,z_1,z_2)$ (as a relation between $x,y,z_1,z_2)$. 
+Thus, by Theorem 3, there are recursive functions $\phi_1(i,j)$ and $\phi_2(i,j)$ such that:\newline
+(1) $\omega_{\phi_1(i,j)}=\{x:R_i(x,\phi_1(i,j),\phi_2(i,j))\}$;\newline
+(2) $\omega_{\phi_2(i,j)}=\{x:R_j(x,\phi_1(i,j),\phi_2(i,j))\}$\newline thus showing that Theorem 4 is a special case of Theorem 3.
+
+\end{document}
