@@ -28,12 +28,13 @@
 \maketitle
 
 \section*{Problem 1}
-\textit{Note}: Here is why the diagonal function is implied. Consider any $R_y(x,y,z)$. By the iteration theorem, there is some $\phi(y,z)$ such that 
+\textit{Note}: Here is why the diagonal function is implied by the iteration theorem. 
+Consider any $R_y(x,y,z)$. By the iteration theorem, there is some $\phi(y,z)$ such that 
 $R_y(x,y,z)$ iff $R_{\phi(y,z)}(x)$. By definition of $R^n_i(x_1,...,x_n)$ when $n=1$, $R_{\phi(y,z)}(x)$ means $x\in\omega_{\phi(y,z)}$, and thus 
 $x\in\omega_{\phi(y,z)}$ iff $R_y(x,y,z)$.
 
 
-Consider any two recursively enumerable relation $M_1(x,y,z)$ and $M_2(x,y,z)$. Hence the relations $M_1(x,d(y,z),d(z,y))$ and $M_2(x,d(z,y),d(y,z))$ are 
+Consider any two recursively enumerable relations $M_1(x,y,z)$ and $M_2(x,y,z)$. Hence the relations $M_1(x,d(y,z),d(z,y))$ and $M_2(x,d(z,y),d(y,z))$ are 
 recursively enumerable, and have indices $m$ and $n$, respectively. Thus, if $d(y,z)$ is the diagonal function:
 $x\in\omega_{d(m,n)}$ iff $M_1(x,d(m,n),d(n,m))$ and $x\in\omega_{d(n,m)}$ iff $M_2(x,d(m,n),d(n,m)$, thus showing that $a=d(m,n)$ and $b=d(n,m)$ satisfies the 
 theorem.
@@ -41,7 +42,7 @@ theorem.
 \section*{Problem 2}
 Consider any two recursively enumerable relations $M_1(x,y_1,y_2,z_1,z_2)$ and $M_2(x,y_1,y_2,z_1,z_2)$. Hence the relations 
 $M_1(x,i,j,d(y,z),d(z,y))$ and $M_2(x,i,j,d(y,z),d(z,y))$ (as relations between $x,y,z,i,j$) are recursively enumerable for the diagonal function $d$. Hence, by the 
-iteration theorem, there are recursive function $t_1(i,j)$ and $t_2(i,j)$ such that for all numbers $i,j,x,y,z$:\newline
+iteration theorem, there are recursive functions $t_1(i,j)$ and $t_2(i,j)$ such that for all numbers $i,j,x,y,z$:\newline
 (1): $R_{t_1(i,j)}(x,y,z)$ iff $M_1(x,i,j,d(y,z),d(z,y))$;\newline
 (2): $R_{t_2(i,j)}(x,y,z)$ iff $M_2(x,i,j,d(z,y),d(y,z))$.\newline
 Let $\phi_1(i,j)$ be the function $d(t_1(i,j),t_2(i,j))$ and $\phi_2(i,j)$ be the function $d(t_2(i,j),t_1(i,j))$. Thus
