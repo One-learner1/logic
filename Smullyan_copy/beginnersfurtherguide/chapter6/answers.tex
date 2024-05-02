@@ -36,7 +36,7 @@ $x\in\omega_{\phi(y,z)}$ iff $R_y(x,y,z)$.
 
 Consider any two recursively enumerable relations $M_1(x,y,z)$ and $M_2(x,y,z)$. Hence the relations $M_1(x,d(y,z),d(z,y))$ and $M_2(x,d(z,y),d(y,z))$ are 
 recursively enumerable, and have indices $m$ and $n$, respectively. Thus, if $d(y,z)$ is the diagonal function:
-$x\in\omega_{d(m,n)}$ iff $M_1(x,d(m,n),d(n,m))$ and $x\in\omega_{d(n,m)}$ iff $M_2(x,d(m,n),d(n,m)$, thus showing that $a=d(m,n)$ and $b=d(n,m)$ satisfies the 
+$x\in\omega_{d(m,n)}$ iff $M_1(x,d(m,n),d(n,m))$ and $x\in\omega_{d(n,m)}$ iff $M_2(x,d(m,n),d(n,m))$, thus showing that $a=d(m,n)$ and $b=d(n,m)$ satisfies the 
 theorem.
 
 \section*{Problem 2}
@@ -46,21 +46,51 @@ iteration theorem, there are recursive functions $t_1(i,j)$ and $t_2(i,j)$ such 
 (1): $R_{t_1(i,j)}(x,y,z)$ iff $M_1(x,i,j,d(y,z),d(z,y))$;\newline
 (2): $R_{t_2(i,j)}(x,y,z)$ iff $M_2(x,i,j,d(z,y),d(y,z))$.\newline
 Let $\phi_1(i,j)$ be the function $d(t_1(i,j),t_2(i,j))$ and $\phi_2(i,j)$ be the function $d(t_2(i,j),t_1(i,j))$. Thus
-$x\in\omega_{\phi_1(i,j)}$ iff $R_{t_1(i,j)}(x,t_1(i,j),t_2(i,j))$ iff $M_1(x,i,j,d(t_1(i,j),t_2(i,j)),d(t_2(i,j),t_1(i,j))$ iff 
+$x\in\omega_{\phi_1(i,j)}$ iff $R_{t_1(i,j)}(x,t_1(i,j),t_2(i,j))$ iff $M_1(x,i,j,d(t_1(i,j),t_2(i,j)),d(t_2(i,j),t_1(i,j)))$ iff 
 $M_1(x,i,j,\phi_1(i,j),\phi_2(i,j))$ and 
-$x\in\omega_{\phi_2(i,j)}$ iff $R_{t_2(i,j)}(x,t_2(i,j),t_1(i,j))$ iff $M_2(x,i,j,d(t_1(i,j),t_2(i,j)),d(t_2(i,j),t_1(i,j))$ iff $M_2(x,i,j,\phi_1(i,j),\phi_2(i,j)$.
+$x\in\omega_{\phi_2(i,j)}$ iff $R_{t_2(i,j)}(x,t_2(i,j),t_1(i,j))$ iff $M_2(x,i,j,d(t_1(i,j),t_2(i,j)),d(t_2(i,j),t_1(i,j)))$ iff $M_2(x,i,j,\phi_1(i,j),\phi_2(i,j))$.
 Thus $\omega_{\phi_1(i,j)}=\{x:M_1(x,i,j,\phi_1(i,j),\phi_2(i,j))\}$ and $\omega_{\phi_2(i,j)}=\{x:M_2(x,i,j,\phi_1(i,j),\phi_2(i,j))\}$, thus completing the proof.
 
 \section*{Problem 3}
 (a): Let $R_1(x,y,y_1,z_1,z_2)$ be $M_1(x,y,z_1,z_2)$, and $R_2(x,y,y_1,z_1,z_2)$ be $M_2(x,y_1,z_1,z_2)$. By Theorem 2, there are recursive functions
 $\omega_{\phi_1(i,j)}$ and $\omega_{\phi_2(i,j)}$ such that:\newline
-(1) $\omega_{\phi_1(i,j)}=\{x:R_1(x,i,j,\phi_1(i,j),\phi_2(i,j)\}=\{x:M_1(x,i,\phi_1(i,j),\phi_2(i,j)\}$;\newline
-(2) $\omega_{\phi_2(i,j)}=\{x:R_2(x,i,j,\phi_1(i,j),\phi_2(i,j)\}=\{x:M_2(x,j,\phi_1(i,j),\phi_2(i,j)\}$\newline thus completing the proof of Theorem 3.
+(1) $\omega_{\phi_1(i,j)}=\{x:R_1(x,i,j,\phi_1(i,j),\phi_2(i,j))\}=\{x:M_1(x,i,\phi_1(i,j),\phi_2(i,j))\}$;\newline
+(2) $\omega_{\phi_2(i,j)}=\{x:R_2(x,i,j,\phi_1(i,j),\phi_2(i,j))\}=\{x:M_2(x,j,\phi_1(i,j),\phi_2(i,j))\}$\newline thus completing the proof of Theorem 3.
 
 
 (b): Let $M(x,y,z_1,z_2)$ be the relation $R_y(x,z_1,z_2)$ (as a relation between $x,y,z_1,z_2)$. 
 Thus, by Theorem 3, there are recursive functions $\phi_1(i,j)$ and $\phi_2(i,j)$ such that:\newline
 (1) $\omega_{\phi_1(i,j)}=\{x:R_i(x,\phi_1(i,j),\phi_2(i,j))\}$;\newline
 (2) $\omega_{\phi_2(i,j)}=\{x:R_j(x,\phi_1(i,j),\phi_2(i,j))\}$\newline thus showing that Theorem 4 is a special case of Theorem 3.
+
+\section*{Problem 4}
+Consider two recursively enumerable sets $A$ and $B$. They are both $\Sigma_1$ and so there are $\Sigma_0$ relations $R_1(x,y)$ and $R_2(x,y)$ such that 
+for all $x$:\newline
+(1) $x\in A$ iff $\exists yR_1(x,y)$;\newline
+(2) $x\in B$ iff $\exists yR_2(x,y)$.\newline
+Let the sets $A'$ and $B'$ be defined by the following two conditions:\newline
+(1) $x\in A'$ iff $\exists y(R_1(x,y)\wedge\left(\forall z\le y\right)\oldneg R_2(x,z))$;\newline
+(2) $x\in B'$ iff $\exists y(R_2(x,y)\wedge\left(\forall z\le y\right)\oldneg R_1(x,z))$.\newline
+Now suppose that $x\in A'$. Thus for some $m$: 
+\[ \textrm{(1) }R_1(x,m)\wedge (\forall z\le m)\oldneg R_2(x,z) \] 
+Suppose that $x\in B'$. Thus for some $n$: 
+\[ \textrm{(2) }R_2(x,n)\wedge (\forall z\le n)\oldneg R_1(x,z) \] 
+If $m\ge n$, then $\oldneg R_2(x,n)$ by (1), which is a contradiction. If $m<n$, then $\oldneg R_1(x,m)$ by (2), which is a contradiction. Thus if 
+$x\in A'$, $x\notin B'$. Similar reasoning can be used to show that if $x\in B'$, then $x\notin A'$. Hence $x\in A'$ iff $x\notin B'$, 
+thus proving that $A'$ and $B'$ are disjoint.
+
+\section*{Problem 5}
+(1): Consider some disjoint pair of sets $(A,B)$. 
+We first assume that for any disjoint recursively enumerable supsets $\omega_i$ and $\omega_j$ of $A$ and $B$ respectively, there is a number $n$ outside both 
+$\omega_i$ and $\omega_j$. Now suppose that $(A,B)$ was recursively separable under the first definition. Thus there is some recursive superset $S$ of $A$ disjoint from 
+$B$. Thus both $S$ and $\bar{S}$ are recursively enumerable, and $\bar{S}$ is a superset of $B$. Thus $S$ and $\bar{S}$ are two recursively enumerable supersets of 
+$A$ and $B$ respectively, but there are no numbers $n$ outside both $S$ and $\bar{S}$ (because they are complements), which is a contradiction. Thus $(A,B)$ must be 
+recursively inseparable under the first definition.
+
+
+(2): Now suppose that $(A,B)$ was recursively inseparable under the first definition. Hence there is no recursive superset of $A$ disjoint from $B$. Now suppose that 
+there were two disjoint recursively enumerable supersets $\omega_i$ and $\omega_j$ of $A$ and $B$ respectively, such that there was not a number $n$ outside both 
+$\omega_i$ and $\omega_j$. Hence $\omega_i=\bar{\omega_j}$. Thus $\omega_i$ is a recursive superset of $A$ disjoint from $B$, yielding a contradiction. Hence 
+$(A,B)$ must also be recursively inseparable under the second definition. Thus the proof that the two definitions are equivalent is done.
 
 \end{document}
