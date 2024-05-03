@@ -218,6 +218,14 @@ $\omega_i$ and $A$ would be disjoint, meaning, by the assumption of double co-pr
 $D_2$: Similar reasoning can be used here as in the case of $D_1$. 
 
 \section*{Problem 15}
+Consider some recursive function $g(x,y)$. Let $M_1(x,y,z_1,z_2)$ be the recursively enumerable relation $x\in\omega_y\wedge x=g(z_1,z_2)$, and let $M_2(x,y,z_1,z_2)$ be the same relation. By 
+Theorem 3, there are recursive functions $\phi_1(i,j)$ and $\phi_2(i,j)$ such that for all numbers $i$ and $j$:\newline
+(1) $\omega_{\phi_1(i,j)}=\{x:M_1(x,i,\phi_1(i,j),\phi_2(i,j))\}$;\newline
+(2) $\omega_{\phi_2(i,j)}=\{x:M_1(x,j,\phi_1(i,j),\phi_2(i,j))\}$.\newline
+Take $t_1(i,j)$ and $t_2(i,j)$ to be $\phi_1(i,j)$ and $\phi_2(i,j)$, respectively. Thus $x\in\omega_{t_1(i,j)}$ iff $M_1(x,i,\phi_1(i,j),\phi_2(i,j))$ iff 
+$x\in\omega_i\wedge x=g(\phi_1(i,j),\phi_2(i,j))$, which is the same as saying $\omega_{t_1(i,j)}=\omega_i\cap\{g(t_1(i,j),t_2(i,j))\}$. Also 
+$x\in\omega_{t_2(i,j)}$ iff $M_2(x,j,\phi_1(i,j),\phi_2(i,j))$ iff $x\in\omega_j\wedge x=g(\phi_1(i,j),\phi_2(i,j))$, which is the same as saying 
+$\omega_{t_2(i,j)}=\omega_j\cap\{g(t_1(i,j),t_2(i,j))\}$.
 
 
 \end{document}
