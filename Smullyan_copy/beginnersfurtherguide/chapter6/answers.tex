@@ -111,6 +111,13 @@ By the separation principle, we have two disjoint recursively enumerable sets $K
 Thus, if $\delta(i,j)\in\omega_i-\omega_j$, 
 $x\in K_2$, and if $\delta(i,j)\in\omega_j-\omega_i$, then $\delta(i,j)\in K_1$. Hence $\delta(x,y)$ is a Kleene function for the disjoint pair $(K_1,K_2)$ of recursively enumerable sets.
 
+
+Here is the more general result that if $\zeta(x,y)$ is a Kleene function for $(B_1,B_2)$, and if $B_1',B_2'$ are disjoint supersets of $B_1,B_2$ respectively, then $\zeta(x,y)$ must be 
+a Kleene function for $(B_1',B_2')$. So suppose that $\zeta(x,y)$ is a Kleene function for $(B_1,B_2)$, and that $B_1',B_2'$ are disjoint supersets of $B_1,B_2$ respectively. Thus:\newline
+(1) If $\zeta(i,j)\in\omega_i-\omega_j$, then $\zeta(i,j)\in B_2$ and thus also in $B_2'$;\newline
+(2) If $\zeta(i,j)\in\omega_j-\omega_i$, then $\zeta(i,j)\in B_1$ and thus also in $B_1'$.\newline
+Hence $\zeta(i,j)$ is a Kleene function for $(B_1',B_2')$.
+
 \section*{Problem 8}
 Suppose that $f(x)$ is the function which semi-reduces $(A_1,A_2)$ to $(B_1,B_2)$. Thus:\newline
 (1) If $x\in A_1$, then $f(x)\in B_1$;\newline
@@ -126,5 +133,84 @@ the function $f(k(t(i),t(j)))$ is a Kleene function for $(B_1,B_2)$.
 \section*{Problem 9}
 Consider some disjoint semi-doubly-universal pair $(U_1,U_2)$. We know that some Kleene pair exists, namely $(K_1,K_2)$. Thus, by Proposition 2, because $(K_1,K_2)$ is semi-reducible to 
 $(U_1,U_2)$ and $U_1$ and $U_2$ are disjoint, $(U_1,U_2)$ is a Kleene pair. Then, by Proposition 1, $(U_1,U_2)$ is completely effectively inseparable.
+
+\section*{Problem 10}
+Suppose that $(A,B)$ are doubly generative under some recursive function $\phi(x,y)$. Thus:\newline
+(1) $\phi(i,j)\in A$ iff $\phi(i,j)\in\omega_i$;\newline
+(2) $\phi(i,j)\in B$ iff $\phi(i,j)\in\omega_j$.\newline
+Let $f(x)$ be $\phi(x,x)$. Thus $f(x)\in\omega_x$ iff $f(x)\in A$ (by 1) iff $f(x)\in B$ (by 2).
+
+\section*{Problem 11}
+Suppose that the pair of recursively enumerable sets $(A,B)$ is completely effectively inseparable under some recursive function $\zeta(x,y)$. By the iteration theorem, there are recursive 
+function $t_1(i),t_2(i)$, such that for all $x$ and $i$:\newline 
+(1) $\omega_{t_1(i)}=\{x:x\in\omega_i\vee x\in A\}$;\newline
+(2) $\omega_{t_2(i)}=\{x:x\in\omega_i\vee x\in B\}$.\newline
+Let $\phi(i,j)=\zeta(t_1(j),t_2(i))$. Because $(A,B)$ is completely effectively inseparable under $\zeta(x,y)$, if $\omega_i$ and $\omega_j$ are recursively enumerable supersets of $A$ and 
+$B$ respectively, then $\zeta(i,j)\in\omega_i$ iff $\zeta(i,j)\in\omega_j$. Now suppose that $\omega_i$ and $\omega_j$ are disjoint. 
+Thus $\zeta(t_1(j),t_2(i))\in\omega_i$ iff $\zeta(t_1(j),t_2(i))\in\omega_{t_2(i)}$ (by (2)) iff $\zeta(t_1(j),t_2(i))\in\omega_{t_1(j)}$ iff $\zeta(t_1(j),t_2(i))\in A$ (by (1) and the assumed 
+disjointness of $\omega_i$ and $\omega_j$). On the other hand, $\zeta(t_1(j),t_2(i))\in\omega_j$ iff $\zeta(t_1(j),t_2(i))\in\omega_{t_1(j)}$ 
+(by (1)) iff $\zeta(t_1(j),t_2(i))\in\omega_{t_2(i)}$ iff $\zeta(t_1(j),t_2(i))\in B$ (by (2) and the assumed disjointness of $\omega_i$ and $\omega_j$). Thus we have shown conditions 
+(1) and (2) of being doubly generative are satisfied for $(A,B)$ under the recursive function $\zeta(t_1(j),t_2(i))$.
+
+\section*{Problem 12}
+Suppose that $(A_1,A_2)$ is a disjoint pair doubly generative under the function $g(x,y)$. Thus we have conditions (1) and (2) of being doubly generative. For all numbers $i$ and $j$:
+
+
+$C_1$: Suppose that $\omega_i=\N$ and $\omega_j=\emptyset$. Thus $g(i,j)\in\omega_i$, and because $\omega_i$ and $\omega_j$ are disjoint, $g(i,j)\in A_1$ by (1).\newline
+
+
+$C_2$: Suppose that $\omega_i=\emptyset$ and $\omega_j=\N$. Thus $g(i,j)\in\omega_j$, and because $\omega_i$ and $\omega_j$ are disjoint, $g(i,j)\in A_2$ by (2).\newline
+
+
+$C_3$: Suppose that $\omega_i=\omega_j=\emptyset$. Hence $\omega_i$ and $\omega_j$ are disjoint. Thus, if $g(i,j)\in A_1\cup A_2$, $g(i,j)\in\omega_i\cup\omega_j$ by either (1) or (2), 
+contrary to the asusmption that they the empty set. Hence $g(i,j)\notin A_1\cup A_2$.
+
+\section*{Problem 13}
+Suppose that $(A_1,A_2)$ is a disjoint pair and that $g(x,y)$ is a recursive functions such that $C_1$ and $C_2$ hold for $(A_1,A_2)$. Now consider any disjoint pair $(B_1,B_2)$ of 
+recursively enumerable sets. By Problem 16 of Chapter 5, we have recursive functions $t_1(i),t_2(i)$ such that, for all $i$:\newline
+(1) If $i\in B_1$, then $\omega_{t_1(i)}=\N$;\newline
+(2) If $i\notin B_1$, then $\omega_{t_1(i)}=\emptyset$;\newline
+and\newline
+$(1')$ If $i\in B_2$, then $\omega_{t_2(i)}=\N$;\newline
+$(2')$ If $i\notin B_2$, then $\omega_{t_2(i)}=\emptyset$;\newline
+all hold. Let $f(x)$ be the recursive function $g(t_1(x),t_2(x))$.
+
+
+(1): We first show that $(B_1,B_2)$ is semi-reducible to $(A_1,A_2)$ under $g(t_1(x),t_2(x))$. Suppose that $i\in B_1$. Thus $\omega_{t_1(i)}=\N$ by (1). If $\omega_{t_2(i)}\ne\emptyset$, then by 
+$(2')$, $i\in B_2$, contrary to the assumption that $B_1$ and $B_2$ are disjoint. Thus $\omega_{t_2(i)}=\emptyset$, meaning $f(i)\in A_1$ by $C_1$. Similar reasoning can be used to prove that 
+if $i\in B_2$, then $f(i)\in A_2$.
+
+
+(2): Now assume that $C_3$ also holds for $g(x,y)$.
+We now show that if $i\notin B_1\cup B_2$, then $i\notin A_1\cup A_2$. So suppose that $i\notin B_1\cup B_2$, meaning both $\omega_{t_1(i)}=\emptyset$ and $\omega_{t_2(i)}=\emptyset$ 
+by (2) and $(2')$, respectively. Thus $g(t_1(i),t_2())$, that is $f(i)$, $\notin A_1\cup A_2$ by $C_3$. Thus we have shown that the third condition of $(B_1,B_2)$ being reducible to $(A_1,A_2)$ 
+holds. Because we showed the first two conditions held in part (1), we can conclude that $(B_1,B_2)$ is reducible to $(A_1,A_2)$ under $g(t_1(x),t_2(x))$. 
+
+
+It should be noted that the definition given for reducibility from one pair $(B_1,B_2)$ to another pair $(A_1,A_2)$ under some function $f(x)$ 
+only means $B_1$ is reducible to $A_1$ and $B_2$ is reducible to $A_2$, both under $f(x)$, if 
+$A_1,A_2$ are disjoint. For we are given the conditions:\newline
+(1) If $x\in B_1$, then $f(x)\in A_1$;\newline
+(2) If $x\in B_2$, then $f(x)\in A_2$;\newline
+(3) If $x\notin B_1\cup B_2$, then $f(x)\notin A_1\cup A_2$.\newline
+To show that $B_1$ is reducible to $A_1$ and $B_2$ is reducible to $A_2$, both under $f(x)$, we would need $x\in B_1$ iff $f(x)\in A_1$ and $x\in B_2$ iff $x\in A_2$. The first parts of both 
+of those statements are given by (1) and (2) respectively. Suppose that $f(x)\in A_1$. By (3), it cannot be that $x\notin B_1\cup B_2$. If $x\in B_2$, then $f(x)\in A_2$, contrary to the 
+assumption that $A_1$ and $A_2$ are disjoint. The same reasoning shows that if $f(x)\in A_2$, then $x\in B_2$. But this reasoning only works when $A_1,A_2$ are disjoint, so that assumption needs 
+to be made. 
+
+\section*{Problem 14}
+Suppose that we have a doubly co-productive pair $(A,B)$ under a recursive function $g(x,y)$. Thus, for all $i$ and $j$, if $\omega_i$ is disjoint from $\omega_j$, and $\omega_i$ is disjoint 
+from $A$ and $\omega_j$ disjoint from $B$, then $g(i,j)$ lies outside all the four sets $\omega_i,\omega_j,A,B$.
+
+
+$D_0$: If $\omega_i=\omega_j=\emptyset$, then $\omega_i$ is disjoint from $\omega_j$, and $\omega_i$ is disjoint 
+from $A$ and $\omega_j$ disjoint from $B$, meaing $g(i,j)\notin A\cup B$ by the asusmption of double co-productivity.
+
+
+$D_1$: If $\omega_i=\{g(i,j)\}$ and $\omega_j=\emptyset$, then $\omega_i$ and $\omega_j$ are disjoint, and $\omega_j$ and $B$ are disjoint. If $g(i,j)\notin A$, then 
+$\omega_i$ and $A$ would be disjoint, meaning, by the assumption of double co-productivity, $g(i,j)\notin\omega_i$, which is a contradiction. Thus $g(i,j)\in A$.
+
+
+$D_2$: Similar reasoning can be used here as in the case of $D_1$. 
 
 \end{document}
