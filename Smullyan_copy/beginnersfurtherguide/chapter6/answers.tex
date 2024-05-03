@@ -138,7 +138,7 @@ $(U_1,U_2)$ and $U_1$ and $U_2$ are disjoint, $(U_1,U_2)$ is a Kleene pair. Then
 Suppose that $(A,B)$ are doubly generative under some recursive function $\phi(x,y)$. Thus:\newline
 (1) $\phi(i,j)\in A$ iff $\phi(i,j)\in\omega_i$;\newline
 (2) $\phi(i,j)\in B$ iff $\phi(i,j)\in\omega_j$.\newline
-Let $f(x)$ be $\phi(x,x)$. Thus $f(x)\in\omega_x$ iff $f(x)\in A$ (by 1) iff $f(x)\in B$ (by 2).
+Let $f(x)$ be $\phi(x,x)$. Thus $f(x)\in\omega_x$ iff $f(x)\in A$ (by 1) iff $f(x)\in B$ (by 2), showing that both $A$ and $B$ are generative under the function $f(x)$.
 
 \section*{Problem 11}
 Suppose that the pair of recursively enumerable sets $(A,B)$ is completely effectively inseparable under some recursive function $\zeta(x,y)$. By the iteration theorem, there are recursive 
@@ -163,7 +163,7 @@ $C_2$: Suppose that $\omega_i=\emptyset$ and $\omega_j=\N$. Thus $g(i,j)\in\omeg
 
 
 $C_3$: Suppose that $\omega_i=\omega_j=\emptyset$. Hence $\omega_i$ and $\omega_j$ are disjoint. Thus, if $g(i,j)\in A_1\cup A_2$, $g(i,j)\in\omega_i\cup\omega_j$ by either (1) or (2), 
-contrary to the asusmption that they the empty set. Hence $g(i,j)\notin A_1\cup A_2$.
+contrary to the asusmption that they are the empty set. Hence $g(i,j)\notin A_1\cup A_2$.
 
 \section*{Problem 13}
 Suppose that $(A_1,A_2)$ is a disjoint pair and that $g(x,y)$ is a recursive functions such that $C_1$ and $C_2$ hold for $(A_1,A_2)$. Now consider any disjoint pair $(B_1,B_2)$ of 
@@ -195,7 +195,8 @@ $A_1,A_2$ are disjoint. For we are given the conditions:\newline
 (3) If $x\notin B_1\cup B_2$, then $f(x)\notin A_1\cup A_2$.\newline
 To show that $B_1$ is reducible to $A_1$ and $B_2$ is reducible to $A_2$, both under $f(x)$, we would need $x\in B_1$ iff $f(x)\in A_1$ and $x\in B_2$ iff $x\in A_2$. The first parts of both 
 of those statements are given by (1) and (2) respectively. Suppose that $f(x)\in A_1$. By (3), it cannot be that $x\notin B_1\cup B_2$. If $x\in B_2$, then $f(x)\in A_2$, contrary to the 
-assumption that $A_1$ and $A_2$ are disjoint. The same reasoning shows that if $f(x)\in A_2$, then $x\in B_2$. But this reasoning only works when $A_1,A_2$ are disjoint, so that assumption needs 
+assumption that $A_1$ and $A_2$ are disjoint. Thus $x\in B_1$.
+Similar reasoning shows that if $f(x)\in A_2$, then $x\in B_2$. But this reasoning only works when $A_1,A_2$ are disjoint, so that assumption needs 
 to be made. 
 
 \section*{Problem 14}
