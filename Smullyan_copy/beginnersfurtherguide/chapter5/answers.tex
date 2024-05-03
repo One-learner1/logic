@@ -60,8 +60,26 @@ $x\in\omega_{t(i)}$ iff $R(x,i)$, thus completing the proof.
 Consider some recursively enumerable relation $R\left(x_1,...,x_m,y_1,...,y_n\right)$. Hence there is a recursively enumerable relation $M(x,y)$ such that 
 $R(x_1,...,x_m,y_1,...,y_n)$ iff $M\left(\delta_m\left(x_1,...,x_m\right),\delta_n\left(y_1,...,y_n\right)\right)$. By the Simple Iteration Theorem, there is a function 
 $t(i)$ such that $x\in\omega_{t(i)}$ iff $M(x,i)$. Hence, take 
-$\phi(i_1,...,i_n)$ to be $t(\delta_n(i_1,...,i_n)$. Hence $M(\delta_m(x_1,...,x_m),\delta_n(i_1,...,i_n)$ iff $\delta_m(x_1,...,x_m)\in \omega_{\phi(i_1,...,i_n)}$ iff
+$\phi(i_1,...,i_n)$ to be $t(\delta_n(i_1,...,i_n))$. Hence $M(\delta_m(x_1,...,x_m),\delta_n(i_1,...,i_n)$ iff $\delta_m(x_1,...,x_m)\in \omega_{\phi(i_1,...,i_n)}$ iff
 $R_{\phi(i_1,...,i_n)}(x_1,...,x_m)$. This is true as we recall that $R^n_i(x_1,...,x_n)$ was defined to be $\delta_n(x_1,...,x_n)\in\omega_i$. 
+
+
+The above proof handles the case where $n\ge 2$ and $m\ge 2$. The proof where either $n=1$ and $m\ge 2$, or $m=1$ and $n\ge 2$ (a case which Smullyan left out of his 
+answer), is shown below.
+
+
+Consider some recursively enumerable relation $R(x,y_1,y_2)$. Take $M(x,y)$ to be the relation $R(x,K^2_1(y),K^2_1(y))$ (where $K^n_i(x)$ is the recursive 
+function defined in Chapter 4) which is recursively enumerable. Thus $M(x,\delta(y_1,y_2))$ iff $R(x,y_1,y_2)$. By the simple iteration theorem, there is some function 
+$t(i)$ such that $x\in\omega_{t(i)}$ iff $M(x,i)$. Thus $x\in\omega_{t(\delta(y_1,y_2))}$ iff $M(x,\delta(y_1,y_2))$ iff $R(x,y_1,y_2)$, and 
+$x\in\omega_{t(\delta(y_1,y_2))}$ is the same as saying
+$R_{t(\delta(y_1,y_2))}(x)$, as $m=1$ (in $R(x_1,...,x_m,y_1,...,y_n)$). Thus $R(x,y_1,y_2)$ iff $R_{t(\delta(y_1,y_2))}(x)$, thus proving that 
+$t(\delta(y_1,y_2))$ is the desired function $\phi(i_1,i_2)$.
+
+
+Now consider some recursively enumerable relation $R(x_1,x_2,y)$. Take $M(x,y)$ to be the relation $R(K^2_1(x),K^2_2(x),y)$ which is recursively enumerable. Thus 
+$M(\delta(x_1,x_2),y)$ iff $R(x_1,x_2,x)$. By the simple iteration theorem, there is some function $t(i)$ such that $x\in\omega_{t(i)}$ iff $M(x,i)$. Thus 
+$\delta(x_1,x_2)\in\omega_{t(i)}$ iff $M(\delta(x_1,x_2),i)$ iff $R(x_1,x_2,y)$, and $\delta(x_1,x_2)\in\omega_{t(i)}$ is defined to be equivalent to 
+$R_{t(i)}(x_1,x_2)$. Thus $R(x_1,x_2,y)$ iff $R_{t(i)}(x_1,x_2)$, proving that $t(i)$ is the desired function $\phi(i_1)$ in this case.
 
 \section*{Problem 4}
 We consider the enumeration $\omega_1,\omega_2,...,\omega_n,...$ and any other recursively enumerable indexing $A_1,A_2,...,A_n,...$. Hence 
