@@ -93,4 +93,38 @@ there were two disjoint recursively enumerable supersets $\omega_i$ and $\omega_
 $\omega_i$ and $\omega_j$. Hence $\omega_i=\bar{\omega_j}$. Thus $\omega_i$ is a recursive superset of $A$ disjoint from $B$, yielding a contradiction. Hence 
 $(A,B)$ must also be recursively inseparable under the second definition. Thus the proof that the two definitions are equivalent is done.
 
+\section*{Problem 6}
+Suppose that $k(x,y)$ is a Kleene function for a disjoint pair $(A_1,A_2)$. Thus:\newline
+(1) If $k(i,j)\in\omega_i-\omega_j$, then $k(i,j)\in A_2$;\newline
+(2) If $k(i,j)\in\omega_j-\omega_i$, then $k(i,j)\in A_1$.\newline
+Suppose that $\omega_i$ and $\omega_j$ are recursively enumerable supersets of $A$ and $B$ respectively. If $k(i,j)\in\omega_i$, then if 
+$k(i,j)\notin\omega_j$, $k(i,j)\in A_2$ by (1). But this is impossible, as $A_2\subseteq\omega_j$. Thus $k(i,j)\in\omega_j$. Now if $k(i,j)\in\omega_j$, then if 
+$k(i,j)\notin\omega_i$, $k(i,j)\in A_1$ by (2). But this is impossible, as $A_1\subseteq\omega_i$. Thus $k(i,j)\in\omega_i$. Hence $k(i,j)\in\omega_i$ iff
+$k(i,j)\in\omega_j$, showing that $(A_1,A_2)$ is completely effectively inseparable under $k(x,y)$.
+
+\section*{Problem 7}
+Let $A_1$ be the set of all numbers $\delta(i,j)$ such that $\delta(i,j)\in\omega_j$ (hence $A_1$ is recursively enumerable, in particular $x\in A_1$ iff
+$\exists i\exists j(\delta(i,j)=x\wedge x\in\omega_j))$. Let $A_2$ be the set of all $\delta(i,j)$ such that 
+$\delta(i,j)\in\omega_i$ (hence $A_2$ is recursively enumerable, in particular $x\in A_2$ iff $\exists i\exists j(\delta(i,j)=x\wedge x\in\omega_i)$). Now suppose that 
+$\delta(i,j)\in\omega_i-\omega_j$. Thus $x\in A_2-A_1$. If $\delta(i,j)\in\omega_j-\omega_i$, then $x\in A_1-A_2$. Thus $\delta(i,j)$ is a Kleene function for $(A_2-A_1,A_1-A_2)$. 
+By the separation principle, we have two disjoint recursively enumerable sets $K_1$ and $K_2$ such that $A_2-A_1\subseteq K_1$ and $A_1-A_2\subseteq K_2$. 
+Thus, if $\delta(i,j)\in\omega_i-\omega_j$, 
+$x\in K_2$, and if $\delta(i,j)\in\omega_j-\omega_i$, then $\delta(i,j)\in K_1$. Hence $\delta(x,y)$ is a Kleene function for the disjoint pair $(K_1,K_2)$ of recursively enumerable sets.
+
+\section*{Problem 8}
+Suppose that $f(x)$ is the function which semi-reduces $(A_1,A_2)$ to $(B_1,B_2)$. Thus:\newline
+(1) If $x\in A_1$, then $f(x)\in B_1$;\newline
+(2) If $x\in A_2$, then $f(x)\in B_2$.\newline
+Let $k(x,y)$ be a Kleene function for $(A_1,A_2)$. Thus:\newline
+(1') If $k(i,j)\in\omega_i-\omega_j$, then $k(i,j)\in A_2$;\newline
+(2') If $k(i,j)\in\omega_j-\omega_i$, then $k(i,j)\in A_1$.\newline
+By the iteration theorem, there is a recursive function $t(y)$ such that $x\in\omega_{t(y)}$ iff $f(x)\in\omega_y$. We now consider the function $f(k(t(i),t(j)))$.
+If $f(k(t(i),t(j)))\in\omega_i-\omega_j$, then $k(t(i),t(j))\in\omega_{t(i)}-\omega_{t(j)}$, meaning, by (1'), $k(t(i),t(j))\in A_2$. By (2), $f(k(t(i)),t(j))\in B_2$. 
+If $f(k(t(i),t(j)))\in\omega_j-\omega_i$, then $k(t(i),t(j))\in\omega_{t(j)}-\omega_{t(i)}$, meaning, by (2'), $k(t(i),t(j))\in A_1$. By (1), $f(k(t(i),t(j)))\in B_1$. Thus we have shown that 
+the function $f(k(t(i),t(j)))$ is a Kleene function for $(B_1,B_2)$.
+
+\section*{Problem 9}
+Consider some disjoint semi-doubly-universal pair $(U_1,U_2)$. We know that some Kleene pair exists, namely $(K_1,K_2)$. Thus, by Proposition 2, because $(K_1,K_2)$ is semi-reducible to 
+$(U_1,U_2)$ and $U_1$ and $U_2$ are disjoint, $(U_1,U_2)$ is a Kleene pair. Then, by Proposition 1, $(U_1,U_2)$ is completely effectively inseparable.
+
 \end{document}
