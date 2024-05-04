@@ -227,5 +227,45 @@ $x\in\omega_i\wedge x=g(\phi_1(i,j),\phi_2(i,j))$, which is the same as saying $
 $x\in\omega_{t_2(i,j)}$ iff $M_2(x,j,\phi_1(i,j),\phi_2(i,j))$ iff $x\in\omega_j\wedge x=g(\phi_1(i,j),\phi_2(i,j))$, which is the same as saying 
 $\omega_{t_2(i,j)}=\omega_j\cap\{g(t_1(i,j),t_2(i,j))\}$.
 
+\section*{Problem 16}
+Suppose that $(A,B)$ is weakly doubly co-productive under $g(x,y)$. By the Lemma, there are recursive functions $t_1(x,y),t_2(x,y)$ such that for all $i$ and $j$:\newline
+(1) $\omega_{t_1(i,j)}=\omega_i\cap\{g(t_1(i,j),t_2(i,j))\}$;\newline
+(2) $\omega_{t_2(i,j)}=\omega_j\cap\{g(t_1(i,j),t_2(i,j))\}$.\newline
+Let $\phi(x,y)=g(t_1(x,y),t_2(x,y))$. Because $(A,B)$ is weakly doubly co-productive, $D_0-D_2$ hold. Consider any two disjoint sets $\omega_i$ and $\omega_j$. 
+Because of their disjointness, $\omega_{t_1(i,j)}$ and $\omega_{t_2(i,j)}$ must also be disjoint.
 
+
+We first show that if $\phi(i,j)\in\omega_i$, then $\phi(i,j)\in A$, and if $\phi(i,j)\in\omega_j$, then $\phi(i,j)\in B$. 
+First, suppose that $\phi(i,j)\in\omega_i$. 
+We know that $\phi(i,j)\in\omega_i$ iff $g(t_1(i,j),t_2(i,j))\in\omega_i$ iff
+$g(t_1(i,j),t_2(i,j))\in\omega_i\cap\{g(t_1(i,j),t_2(i,j)\}=\omega_{t_1(i,j)}$ by (1). 
+Thus $\omega_{t_1(i,j)}=\{g(t_1(i,j),t_2(i,j)\}$. Now, if $\omega_{t_2(i,j)}\ne\emptyset$, then 
+$\omega_{t_2(i,j)}=\{g(t_1(i,j),t_2(i,j)\}$ by (2), contrary to the assumption that $\omega_{t_1(i,j)}$ and $\omega_{t_2(i,j)}$ are disjoint. Thus 
+$\omega_{t_2(i,j)}=\emptyset$, and therefore $g(t_1(x,y),t_2(x,y))\in A$ by $D_1$. Similar reasoning can be used to conclude that if $\phi(i,j)\in\omega_j$, then 
+$\phi(i,j)\in B$, replacing $D_1$ by $D_2$ and (2) and (1) by (1) and (2), respectively. 
+
+
+Next we show that if $\phi(i,j)\in A$, then $\phi(i,j)\in\omega_i$, and if $\phi(i,j)\in B$, then $\phi(i,j)\in\omega_j$. Now $\phi(i,j)\in A$ iff 
+$g(t_1(i,j),t_2(i,j))\in A$. By $D_0$, one of $\omega_{t_1(i,j)}$ or $\omega_{t_2(i,j)}$ must not be the empty set, or else $\phi(i,j)\notin A\cup B$, which would mean 
+$\phi(i,j)\notin A$, a contradiction. So suppose that $\phi(i,j)\in\omega_{t_2(i,j)}$, which would imply that $\phi(i,j)\in\omega_j$ by (2). 
+By the results in the previous paragraph, this would mean that $\phi(i,j)\in B$. But 
+this is contrary to the assumption that $A$ and $B$ are disjoint. Thus $\phi(i,j)\in\omega_{t_1(i,j)}$, which implies that $\phi(i,j)\in\omega_i$ by (1). 
+Similar reasoning can be used to show that if $\phi(i,j)\in B$, then 
+$\phi(i,j)\in\omega_j$. Thus, we have shown that $\phi(i,j)\in\omega_i$ iff $\phi(i,j)\in A$ and $\phi(i,j)\in\omega_j$ iff $\phi(i,j)\in B$, meaning 
+$(A,B)$ is doubly generative under $\phi(i,j)$.
+
+\section*{Problem 17}
+(a): Consider some recursively enumerable set $A$. Thus $x\in\omega_i\vee x\in A$ is also recursively enumerable. By the iteration theorem, there is some $t(i)$ such that 
+$x\in\omega_{t(i)}$ iff $x\in\omega_i\vee x\in A$ iff $x\in\omega_i\cup A$.
+
+
+(b): Now suppose that $(A,B)$ is effectively inseparable under $\zeta(x,y)$ and that $A$ and $B$ are both recursively enumerable. By part (a), let $t_1(i),t_2(i)$ be recursive functions such 
+that for all $i$, $\omega_{t_1(i)}=\omega_i\cup A$ and $\omega_{t_2(i)}=\omega_i\cup B$. Let $g(x,y)=\zeta(t_1(y),t_2(x))$. 
+We consider any disjoint pair $(\omega_i,\omega_j)$, and recall 
+that $A$ and $B$ are disjoint. This means that $\omega_{t_1(j)}$ and $\omega_{t_2(i)}$ are disjoint, and thus, by the assumed effective inseparability of $A$ and $B$, 
+$g(i,j)$ lies outside both of $\omega_{t_1(j)}$ and $\omega_{t_2(i)}$, which implies that $g(i,j)$ lies outside all of $\omega_j,\omega_i,A,B$.
+This implies that:\newline
+(1) $g(i,j)\in\omega_i$ iff $g(i,j)\in A$;\newline
+(2) $g(i,j)\in\omega_j$ iff $g(i,j)\in B$.\newline
+Thus $(A,B)$ is doubly generative under $g(x,y)$.
 \end{document}
