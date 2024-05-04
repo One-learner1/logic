@@ -35,7 +35,7 @@ system was not complete, it could be that $h(n)$ was undecidable). Thus $h$ comp
 
 
 (a): On the one hand, suppose $h$ defines $A$. Thus (1) $n\in A$ implies $h(n)\in P$, and (2) $n\in\bar{A}$ implies $h(n)\in R$ (which is the same as saying 
-$h'(n)\in P$). We need to show that if $h(n)\in P$ implies $n\in A$ and $h(n)\in R$ ($h'(n)\in R$) implies $n\in\bar{A}$. Suppose $h(n)\in P$. 
+$h'(n)\in P$). We need to show that if $h(n)\in P$ implies $n\in A$ and $h(n)\in R$ implies $n\in\bar{A}$. Suppose $h(n)\in P$. 
 Thus $h(n)\notin R$ meaning $n\in A$ by (2). If $h(n)\in R$, then $h(n)\notin P$ and thus $n\in\bar{A}$ by (1). Thus $h$ completely represents $A$. On the other hand, 
 suppose that $h$ completely represents $A$. It is obvious that $h$ then defines $A$.
 
@@ -44,17 +44,17 @@ suppose that $h$ completely represents $A$. It is obvious that $h$ then defines 
 If $h'$ represents $A$, then $h'(n)\in A$ iff $n\in A$, which is the same as saying $h(n)\in R$ iff $n\in A$. Thus $A$ is contra-representable by $h$.
 
 \section*{Problem 2}
-(a): On the one hand, suppose that $h$ represents $A$. Thus $h(n)\in P$ iff $n\in A$, which is the same as saying $r_h\in P$ iff $n\in A$. Because 
+(a): On the one hand, suppose that $h$ represents $A$. Thus $h(n)\in P$ iff $n\in A$, which is the same as saying $r_h(n)\in P$ iff $n\in A$. Because 
 $n\in r_h^{-1}(P)$ iff $f(n)\in P$, this means that $n\in r_h^{-1}(P)$ iff $n\in A$. On the other hand, suppose that $A=r_h^{-1}(P)$. Thus 
 $n\in A$ iff $r_h(n)\in P$, which is the same as saying $n\in A$ iff $h(n)\in P$. 
 
 
-(b): Suppose that $h$ contra represents $A$. Thus $n\in r_h^{-1}(R)$ iff $h(n)\in R$ iff $n\in A$. On the other hand, suppose that $A=r_h^{-1}(R)$. 
+(b): Suppose that $h$ contra-represents $A$. Thus $n\in r_h^{-1}(R)$ iff $h(n)\in R$ iff $n\in A$. On the other hand, suppose that $A=r_h^{-1}(R)$. 
 Thus $h(n)\in R$ iff $n\in r_h^{-1}(R)$ iff $n\in A$.
 
 \section*{Problem 3}
 Suppose that $A$ is represented in $\mathcal{S}$ by $h$, while $\bar{A}$ is not represented by any number. As a consequence of the note in Problem 1, if 
-$\mathcal{S}$ was complete, $\bar{A}$ would be represented by $h'$. Thus, $\bar{A}$ is not represented by $h'$, $\mathcal{S}$ is incomplete. 
+$\mathcal{S}$ was complete, $\bar{A}$ would be represented by $h'$. Thus, because $\bar{A}$ is not represented by $h'$, $\mathcal{S}$ is incomplete. 
 
 \section*{Problem 4}
 If $\bar{P^*}$ was representable in $\mathcal{S}$, then there would be some number $h$ such that $h(n)\in P$ iff $n\in\bar{P^*}$. Thus 
@@ -86,8 +86,8 @@ from $P^*$ to be $R^*$ itself, and the superset of $P^*$ disjoint from $R^*$ to 
 Consider any sets $A$ and $B$. Then:
 
 
-(a): Suppose $A\subset B$. Now, $x\in f^{-1}(A)$ iff $f(x)\in A$, and $x\in f^{-1}(B)$ iff $f(x)\in B$. Thus $f^{-1}(A)$ and $f^{-1}(B)$ have the same size as 
-$A$ and $B$, respectively, meaning $f^{-1}(A)\subset f^{-1}(B)$.
+(a): Suppose $A\subseteq B$. Now, $x\in f^{-1}(A)$ iff $f(x)\in A$, and $x\in f^{-1}(B)$ iff $f(x)\in B$. Thus $x\in f^{-1}(A)$ implies $x\in f^{-1}(B)$,  
+meaning $f^{-1}(A)\subseteq f^{-1}(B)$.
 
 
 (b): Suppose that $A$ is disjoint from $B$. Because $x\in f^{-1}(A)$ iff $f(x)\in A$, and $x\in f^{-1}(B)$ iff $f(x)\in B$, $x$ cannot be in both 
@@ -113,8 +113,8 @@ separable in $\mathcal{S}$.
 
 \section*{Problem 9}
 Suppose that $\mathcal{S}$ is a normal system, which means that for every number $h$, $h^\#(n)$ is equivalent to $h(d(n))$. Now suppose that $A$ is representable by 
-some $h$. Thus $h(n)\in P$ iff $n\in A$, and $h^\#(n)\in P$ iff $h(d(n))\in P$ iff $d(n)\in A$. Thus $h(h)\in A$ iff $h(d(h))\in P$ iff $h^\#(h)\in P$, which means 
-$h^\#$ represents $A^*$ in $\mathcal{S}$.
+some $h$. Thus $h(n)\in P$ iff $n\in A$, and $h^\#(n)\in P$ iff $h(d(n))\in P$ iff $d(n)\in A$. Thus $h\in A^*$ iff $h(h)\in A$ iff $h(d(h))\in P$ iff $h^\#(h)\in P$, 
+which means $h^\#$ represents $A^*$ in $\mathcal{S}$.
 
 \section*{Problem 10}
 Consider some normal system $\mathcal{S}$, meaning, for every $h$, $h^\#(n)$ is equivalent to $h(d(n))$. 
@@ -133,18 +133,14 @@ $h^\#(h^\#)$, meaning $h^\#(h^\#)$ is a fixed point for $h$.
 
 \section*{Problem 12}
 (a): Suppose that $h$ represents $R$, meaning $h(n)\in P$ iff $n\in R$. If $n$ is a fixed point of $h$, then $h(n)\in P$ iff $n\in P$. But $h(n)\in P$ iff 
-$n\in R$, meaning $h$ must be undecidable. 
+$n\in R$, meaning $n$ must be undecidable. 
 
 
 (b): Suppose that $h$ represents $P$, meaning $h(n)\in P$ iff $n\in P$. If $n$ is a fixed point of $h'$, then $n\in P$ iff $h(n)\in P$ iff $h'(n)\in R$ iff $n\in R$, which 
 means that $n$ is undecidable. Also, $h'(n)\in P$ iff $n\in P$ iff $h(n)\in P$, thus showing that $h'(n)$ (and $h(n)$) is also undecidable.
 
 \section*{Exercise 1}
-(1): Suppose that $h$ represents some superset of $R$ disjoint from $P$. Thus $h\in P^*$ iff $h(h)\in P$ iff $h\notin P$ iff $h\notin P^*$ iff $h(h)\notin P$, meaning 
-$h(h)$ is undecidable.
-
-
-(2): Suppose that $h$ represents some superset of $P$ disjoint from $R$. Thus $h(h')\in P$ iff 
+I could not solve either of these.
 
 \section*{Problem 13}
 Suppose that $A$ is some superset of $R^*$ disjoint from $P^*$. If it was definable by some $h$ in $\mathcal{S}$, we would have (1) $n\in A$ implies $h(n)\in P$, and 
@@ -153,8 +149,8 @@ $h\in A$. Now if $h\notin P^*$, then $h(h)\notin P$, which would imply by (1) th
 from $P^*$, meaning $A$ cannot be definable in $\mathcal{S}$.
 
 \section*{Exercise 2}
-Suppose that $P^*\subset A$, and $h$ defines $A$ in $\mathcal{S}$. Thus (1) $n\in A$ implies $h(n)\in P$, and $n\notin A$ implies $h(n)\in R$. Suppose that 
-$h'\notin A$. Thus $h(h')\in R$ by (2), meaning $h'(h')\in P$ and $h'\in P^*$, and because $P^*\subset A$, $h'\in A$, which is a contradiction. Thus $h'\in A$. 
+Suppose that $P^*\subseteq A$, and $h$ defines $A$ in $\mathcal{S}$. Thus (1) $n\in A$ implies $h(n)\in P$, and $n\notin A$ implies $h(n)\in R$. Suppose that 
+$h'\notin A$. Thus $h(h')\in R$ by (2), meaning $h'(h')\in P$ and $h'\in P^*$, and because $P^*\subseteq A$, $h'\in A$, which is a contradiction. Thus $h'\in A$. 
 Now suppose that $h'\notin R^*$. Thus $h'(h')\notin R$ meaning $h(h')\notin P$, which would mean that $h'\notin A$ by (1), which is a contradiction. Thus $h'\in R^*$.
 
 \end{document}
