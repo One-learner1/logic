@@ -153,4 +153,51 @@ Suppose that $P^*\subseteq A$, and $h$ defines $A$ in $\mathcal{S}$. Thus (1) $n
 $h'\notin A$. Thus $h(h')\in R$ by (2), meaning $h'(h')\in P$ and $h'\in P^*$, and because $P^*\subseteq A$, $h'\in A$, which is a contradiction. Thus $h'\in A$. 
 Now suppose that $h'\notin R^*$. Thus $h'(h')\notin R$ meaning $h(h')\notin P$, which would mean that $h'\notin A$ by (1), which is a contradiction. Thus $h'\in R^*$.
 
+\section*{Problem 14}
+Consider some standard simple system $\mathcal{S}$ and any recursive function $f(x)$. Then:
+
+
+(1') Suppose $A$ is recursively enumerable. Now, $f^{-1}(A)$ is the set of all $x$ such that $f(x)\in A$. Thus $x\in f^{-1}(A)$ iff $\exists y(f(x)=y\wedge y\in A)$, which is recursively 
+enumerable.
+
+
+(2') Suppose that $A$ is recursive. Thus by part (1'), both $f^{-1}(A)$ and $f^{-1}(\bar{A})$ are recursively enumerable. Because $f^{-1}(A)$ and $f^{-1}(\bar{A})$ are complements by 
+Problem 7(c), it follows that $f^{-1}(A)$ is recursive.
+
+
+Note that (1) and (2) of this problem follow by taking $f(x)$ to be $r(x,x)$ ($d(x)$), which is recursive as $\mathcal{S}$ is a standard system.
+
+\section*{Problem 15}
+(a): Suppose that $A$ is representable in $\mathcal{S}$ by $h$. Thus, for all $n$, $r(h,n)\in P$ iff $n\in A$. Because $r(h,n)\in P$ is recursively enumerable, so is $A$.
+
+
+(b): Suppose that $A$ is definable in $\mathcal{S}$ by $h$. Thus (1) $n\in A$ implies $r(h,n)\in P$ and (2) $n\in\bar{A}$ implies $r(h,n)\in R$. These imply that 
+$r(h,n)\in P$ implies $n\in A$, and $r(h,n)\in R$ implies $n\in\bar{A}$. Thus $r(h,n)\in P$ and $r(h,n)\in R$ represent $A$ and $\bar{A}$, respectively. By part (a) of this problem, 
+both $A$ and $\bar{A}$ are thus recursively enumerable, meaning $A$ is recursive.
+
+\section*{Problem 16}
+(a): Suppose that some recursively enumerable but non-recursive set $A$ is representable in $\mathcal{S}$. There are two cases: Either there is some number $n$ outside of $A$, or there 
+isn't. Suppose that there was some $n$ outside of $A$. By Problem 15, we know that $A$ cannot be definable in $\mathcal{S}$, or else $A$ would be recursive. Hence, because condition (1) of 
+being definable already holds because $A$ is representable, condition (2) must not hold (for the $h$ which represents $A$). Thus $n\in\bar{A}$ does not imply $r(h,n)\in R$. Now, we know that 
+there is some $n\in\bar{A}$. Because $r(h,n)\notin R$, it must be undecidable, for being in $P$ would imply that $n\in A$ (because $h$ represents $A$). Thus $r(h,n)$ is undecidable for any $n$ 
+outside of $A$. On the other hand, suppose that there were no $n$ outside of $A$. But this is impossible, as that would mean $\bar{A}$ is the empty set, a recursively enumerable set, contrary 
+to the assumption that $A$ was not recursive. 
+
+
+A more swift proof can be seen in this way: Because $A$ is not recursive, $\bar{A}$ is not recursively enumerable, and hence not representable (because all representable sets in $\mathcal{S}$ 
+are recursively enumerable by Problem 15). Thus, because $A$ is represented in $\mathcal{S}$, but not $\bar{A}$, $\mathcal{S}$ is incomplete by Problem 3. 
+
+(b): Suppose that all recursively enumerable sets are representable in $\mathcal{S}$. Then there must be some recursively enumerable non-recursive set representable in $\mathcal{S}$. For 
+example, the set $T_0$ of the Gödel numbers of the true sentences of the system $(U)$ defined in chapter 4 is one such set. Hence, by part (a) of this problem, $\mathcal{S}$ is incomplete.
+
+\section*{Problem 17}
+Suppose that $\mathcal{S}$ is undecidable and standard. Thus both $P$ and $R$ are recursively enumerable. So if there was not some number outside of both $P$ and $R$, $R$ would be the 
+complement of $P$, meaning $P$ would be recursive, a contradiction to the assumed undecidability. Hence there must be some number outside of both $P$ and $R$, meaning $\mathcal{S}$ is 
+incomplete. 
+
+\section*{Problem 18}
+Suppose that all recursive sets are representable in $\mathcal{S}$. Now, suppose that $\mathcal{S}$ was not undecidable, which would mean that $P$ is recursive. By Problem 
+14(1), $P^*$ is also recursive. Hence $\bar{P^*}$ is also recursive, and therefore representable in $\mathcal{S}$ by some $h$. Thus, for all $n$, $h(n)\in P$ iff $n\in\bar{P^*}$. 
+This means $h(h)\notin P$ iff $h\in P^*$ iff $h(h)\in P$, which is impossible. Thus $\mathcal{S}$ being decidable raises a contradiction, therefore meaning it must be undecidable.
+
 \end{document}
