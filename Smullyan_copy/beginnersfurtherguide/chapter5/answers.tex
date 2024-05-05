@@ -60,7 +60,7 @@ $x\in\omega_{t(i)}$ iff $R(x,i)$, thus completing the proof.
 Consider some recursively enumerable relation $R\left(x_1,...,x_m,y_1,...,y_n\right)$. Hence there is a recursively enumerable relation $M(x,y)$ such that 
 $R(x_1,...,x_m,y_1,...,y_n)$ iff $M\left(\delta_m\left(x_1,...,x_m\right),\delta_n\left(y_1,...,y_n\right)\right)$. By the Simple Iteration Theorem, there is a function 
 $t(i)$ such that $x\in\omega_{t(i)}$ iff $M(x,i)$. Hence, take 
-$\phi(i_1,...,i_n)$ to be $t(\delta_n(i_1,...,i_n))$. Hence $M(\delta_m(x_1,...,x_m),\delta_n(i_1,...,i_n)$ iff $\delta_m(x_1,...,x_m)\in \omega_{\phi(i_1,...,i_n)}$ iff
+$\phi(i_1,...,i_n)$ to be $t(\delta_n(i_1,...,i_n))$. Hence $M(\delta_m(x_1,...,x_m),\delta_n(i_1,...,i_n))$ iff $\delta_m(x_1,...,x_m)\in \omega_{\phi(i_1,...,i_n)}$ iff
 $R_{\phi(i_1,...,i_n)}(x_1,...,x_m)$. This is true as we recall that $R^n_i(x_1,...,x_n)$ was defined to be $\delta_n(x_1,...,x_n)\in\omega_i$. 
 
 
@@ -68,18 +68,18 @@ The above proof handles the case where $n\ge 2$ and $m\ge 2$. The proof where ei
 answer), is shown below.
 
 
-Consider some recursively enumerable relation $R(x,y_1,y_2)$. Take $M(x,y)$ to be the relation $R(x,K^2_1(y),K^2_1(y))$ (where $K^n_i(x)$ is the recursive 
-function defined in Chapter 4) which is recursively enumerable. Thus $M(x,\delta(y_1,y_2))$ iff $R(x,y_1,y_2)$. By the simple iteration theorem, there is some function 
-$t(i)$ such that $x\in\omega_{t(i)}$ iff $M(x,i)$. Thus $x\in\omega_{t(\delta(y_1,y_2))}$ iff $M(x,\delta(y_1,y_2))$ iff $R(x,y_1,y_2)$, and 
-$x\in\omega_{t(\delta(y_1,y_2))}$ is the same as saying
-$R_{t(\delta(y_1,y_2))}(x)$, as $m=1$ (in $R(x_1,...,x_m,y_1,...,y_n)$). Thus $R(x,y_1,y_2)$ iff $R_{t(\delta(y_1,y_2))}(x)$, thus proving that 
-$t(\delta(y_1,y_2))$ is the desired function $\phi(i_1,i_2)$.
+Consider some recursively enumerable relation $R(x,y_1,...,y_n)$. Take $M(x,y)$ to be the relation $R(x,K^n_1(y),K^n_2(y),...,K^n_n(y))$ (where $K^n_i(x)$ is the recursive 
+function defined in Chapter 4) which is recursively enumerable. Thus $M(x,\delta_n(y_1,y_2,...,y_n))$ iff $R(x,y_1,y_2,...,y_n)$. By the simple iteration theorem, there is some function 
+$t(i)$ such that $x\in\omega_{t(i)}$ iff $M(x,i)$. Thus $x\in\omega_{t(\delta_n(y_1,y_2,...,y_n))}$ iff $M(x,\delta_n(y_1,y_2,...,y_n))$ iff $R(x,y_1,y_2,...,y_n)$, and 
+$x\in\omega_{t(\delta_n(y_1,y_2,...,y_n))}$ is the same as saying
+$R_{t(\delta_(y_1,y_2,...,y_n))}(x)$, as $m=1$ (in $R(x_1,...,x_m,y_1,...,y_n)$). Thus $R(x,y_1,y_2,...,y_n)$ iff $R_{t(\delta_n(y_1,y_2,...,y_n))}(x)$, thus proving that 
+$t(\delta(y_1,y_2,...,y_n))$ is the desired function $\phi(i_1,i_2,...,i_n)$.
 
 
-Now consider some recursively enumerable relation $R(x_1,x_2,y)$. Take $M(x,y)$ to be the relation $R(K^2_1(x),K^2_2(x),y)$ which is recursively enumerable. Thus 
-$M(\delta(x_1,x_2),y)$ iff $R(x_1,x_2,x)$. By the simple iteration theorem, there is some function $t(i)$ such that $x\in\omega_{t(i)}$ iff $M(x,i)$. Thus 
-$\delta(x_1,x_2)\in\omega_{t(i)}$ iff $M(\delta(x_1,x_2),i)$ iff $R(x_1,x_2,y)$, and $\delta(x_1,x_2)\in\omega_{t(i)}$ is defined to be equivalent to 
-$R_{t(i)}(x_1,x_2)$. Thus $R(x_1,x_2,y)$ iff $R_{t(i)}(x_1,x_2)$, proving that $t(i)$ is the desired function $\phi(i_1)$ in this case.
+Now consider some recursively enumerable relation $R(x_1,x_2,...,x_m,y)$. Take $M(x,y)$ to be the relation $R(K^m_1(x),K^m_2(x),...,K^m_m(x),y)$ which is recursively enumerable. Thus 
+$M(\delta_m(x_1,x_2,...,x_m),y)$ iff $R(x_1,x_2,...,x_m,y)$. By the simple iteration theorem, there is some function $t(i)$ such that $x\in\omega_{t(i)}$ iff $M(x,i)$. Thus 
+$\delta_m(x_1,x_2,...,x_m)\in\omega_{t(i)}$ iff $M(\delta_m(x_1,x_2,...,x_m),i)$ iff $R(x_1,x_2,...,x_m,y)$, and $\delta_m(x_1,x_2,...,x_m)\in\omega_{t(i)}$ is defined to be equivalent to 
+$R_{t(i)}(x_1,x_2,...,x_m)$. Thus $R(x_1,x_2,...,x_m,y)$ iff $R_{t(i)}(x_1,x_2,...,x_m)$, proving that $t(i)$ is the desired function $\phi(i_1)$ in this case.
 
 \section*{Problem 4}
 We consider the enumeration $\omega_1,\omega_2,...,\omega_n,...$ and any other recursively enumerable indexing $A_1,A_2,...,A_n,...$. Hence 
@@ -254,8 +254,8 @@ $i\in A$ iff $\phi(t(i))\in B$, which proves that $\phi(t(i))$ reduces $A$ to $B
 \textit{Note}: When Smullyan said $\omega_{t(y)}=\{\phi(y)\}$ in the explanation of this problem, he actually meant $\omega_{t(y)}=\{\phi(t(y))\}$. 
 
 \section*{Exercise 5}
-To me it appears that for every sets $A$ and $B$ such that $A$ is recursively isomorphic to $B$, then both $A$ and $B$ are recursive. For let $\phi(x)$ be the recursive 
-isomorphism from $A$ to $B$. Thus for every $x\in A$, $f(x)=y$ for some $y\in B$, and for every $y\in B$, there is one and only one number $x$ such that $f(x)=y$. So the relation
+To me it appears that for every sets $A$ and $B$ such that $A$ is recursively isomorphic to $B$, then both $A$ and $B$ are recursively enumerable. For let $\phi(x)$ be the recursive 
+isomorphism from $A$ to $B$. Thus for every $x\in A$, $\phi(x)=y$ for some $y\in B$, and for every $y\in B$, there is one and only one number $x$ such that $f(x)=y$. So the relation
 \[ \exists y(\phi(x)=y) \] is a recursive relation for $A$. Because $B$ is recursively isomoprhic to $A$ under $\phi^{-1}(x)$, it also follows that
 \[ \exists y(\phi^{-1}(x)=y) \] is a recursive relation for $B$. Thus neither $A$ nor $B$ can be generative, co-productive (which implies universality) or universal, as the Bonus Question 
 shows that no generative or universal sets can be recursive.
