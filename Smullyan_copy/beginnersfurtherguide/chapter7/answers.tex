@@ -200,4 +200,38 @@ Suppose that all recursive sets are representable in $\mathcal{S}$. Now, suppose
 14(1), $P^*$ is also recursive. Hence $\bar{P^*}$ is also recursive, and therefore representable in $\mathcal{S}$ by some $h$. Thus, for all $n$, $h(n)\in P$ iff $n\in\bar{P^*}$. 
 This means $h(h)\notin P$ iff $h\in P^*$ iff $h(h)\in P$, which is impossible. Thus $\mathcal{S}$ being decidable raises a contradiction, therefore meaning it must be undecidable.
 
+\section*{Problem 19}
+Suppose that the pair $(P,R)$ is recursively inseparable. Hence there is no recursive superset of $P$ disjoint from $R$. So if $\mathcal{S}$ was not undecidable, $P$ would be recursive. Because 
+$P$ is a superset of itself, this is a contradiction to the assumed recursive inseparability. Thus $\mathcal{S}$ must be undecidable.
+
+\section*{Problem 20}
+Consider any recursive function $f(x)$ and any disjoint pair $(A,B)$. Suppose $(f^{-1}(A),f^{-1}(B))$ is recursively inseparable. Hence there is no recursive superset of $f^{-1}(A)$ disjoint from 
+$f^{-1}(B)$. Now suppose that $(A,B)$ was not recursively inseparable. Hence some superset $S$ of $A$ disjoint from $B$ is recursive. But $x\in f^{-1}(S)$ iff $f(x)\in S$. Thus 
+$f^{-1}(S)$ is equivalent to $f(x)\in S$, meaning $f^{-1}(S)$ is recursive. Now, $f^{-1}(S)$ is a supserset of $f^{-1}(A)$, as $x\in f^{-1}(A)$ iff $f(x)\in A$, which would mean $f(x)\in S$ iff 
+$x\in f^{-1}(S)$. Also, $f^{-1}(S)$ is disjoint from $f^{-1}(B)$, as $x\in f^{-1}(B)$ iff $f(x)\in B$, which would mean $f(x)\notin S$ iff $x\notin f^{-1}(S)$.
+Thus, because $f^{-1}(S)$ is a superset of $f^{-1}(A)$ disjoint from $f^{-1}(B)$, this is contrary to the 
+assumption of recursive inseparability for $(f^{-1}(A),f^{-1}(B))$. Thus $(A,B)$ must be recursively inseparable. Thus if $(P^*,R^*)$ is recursively inseparable, so is $(P,R)$, as 
+$P^*=d^{-1}(P)$ and $R^*=d^{-1}(R)$.
+
+\section*{Problem 21}
+Suppose that every recursive set is definable in $\mathcal{S}$. Suppose that $(P^*,R^*)$ was not recursively inseparable. Hence there would be some recurisve 
+superset of $P^*$ disjoint from $R^*$, and because the superset is recursive, it would be definable in $\mathcal{S}$. 
+But this is impossible by Problem 13. Thus $(P^*,R^*)$ is recursively inseparable, meaning so is $(P,R)$ by Problem 20.
+
+\section*{Problem 22}
+Consider some standard simple system $\mathcal{S}$, and suppose that some disjoint pair $(A_1,A_2)$ is recursively inseparable, but separable in $\mathcal{S}$. Thus some number $h$ represents 
+some superset $S_1$ of $A_1$ and contra-represents some superset $S_2$ of $A_2$. Suppose that $S_1$ and $S_2$ were not disjoint, that is, they shared some number $n$. Thus $h(n)\in P$ and 
+$h(n)\in R$, which is impossible. Therefore $S_1$ and $S_2$ are disjoint. Because $(A_1,A_2)$ is recursively inseparable, so is $(S_1,S_2)$. For if it weren't, there would be some recursive 
+superset $S$ of $S_1$ disjoint from $S_2$. But $S$ would also be a superset of $A_1$, and because it is disjoint from $S_2$, would also be disjoint from $A_1$, in contradiction to the assumed 
+recursive inseparability of $(A_1,A_2)$. Thus $(S_1,S_2)$ is recursively inseparable. Now, 
+$S_1=r_h^{-1}(P)$ and $S_2=r_h^{-1}(R)$ by Problem 2. Thus the pair $(r_h^{-1}(P),r_h^{-1}(R))$ is recursively inseparable, meaning so is $(P,R)$ by Problem 20.
+
+
+Corollary 1 follows in this way: Suppose some recursively inseparable pair is separable in $\mathcal{S}$. By Theorem 4, $(P,R)$ is recursively inseparable. Thus by Problem 19, $\mathcal{S}$ 
+is undecidable. 
+
+
+Corollary 2 follows in this way: Suppose some recursively inseparable pair is separable in $\mathcal{S}$. Thus $\mathcal{S}$ is undecidable by Corollary 1, and is thus also incomplete by 
+Theorem 1.
+
 \end{document}
