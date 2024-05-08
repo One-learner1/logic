@@ -222,7 +222,7 @@ But this is impossible by Problem 13. Thus $(P^*,R^*)$ is recursively inseparabl
 Consider some standard simple system $\mathcal{S}$, and suppose that some disjoint pair $(A_1,A_2)$ is recursively inseparable, but separable in $\mathcal{S}$. Thus some number $h$ represents 
 some superset $S_1$ of $A_1$ and contra-represents some superset $S_2$ of $A_2$. Suppose that $S_1$ and $S_2$ were not disjoint, that is, they shared some number $n$. Thus $h(n)\in P$ and 
 $h(n)\in R$, which is impossible. Therefore $S_1$ and $S_2$ are disjoint. Because $(A_1,A_2)$ is recursively inseparable, so is $(S_1,S_2)$. For if it weren't, there would be some recursive 
-superset $S$ of $S_1$ disjoint from $S_2$. But $S$ would also be a superset of $A_1$, and because it is disjoint from $S_2$, would also be disjoint from $A_1$, in contradiction to the assumed 
+superset $S$ of $S_1$ disjoint from $S_2$. But $S$ would also be a superset of $A_1$, and because it is disjoint from $S_2$, would also be disjoint from $A_2$, in contradiction to the assumed 
 recursive inseparability of $(A_1,A_2)$. Thus $(S_1,S_2)$ is recursively inseparable. Now, 
 $S_1=r_h^{-1}(P)$ and $S_2=r_h^{-1}(R)$ by Problem 2. Thus the pair $(r_h^{-1}(P),r_h^{-1}(R))$ is recursively inseparable, meaning so is $(P,R)$ by Problem 20.
 
@@ -233,5 +233,30 @@ is undecidable.
 
 Corollary 2 follows in this way: Suppose some recursively inseparable pair is separable in $\mathcal{S}$. Thus $\mathcal{S}$ is undecidable by Corollary 1, and is thus also incomplete by 
 Theorem 1.
+
+\section*{Problem 23}
+\textit{Note}: It should be noted that the second part of this problem relies upon the fact that $(U_1,U_2)$ is a disjoint pair, which is not explicitly stated in the problem. For why this is the case, see my 
+note in Problem 13 or Chapter 6. 
+
+
+Suppose $\mathcal{S}$ is a Rosser system. Thus for any two recursively enumerable sets $A$ and $B$, there is a number $h$ that separates $A-B$ from $B-A$. Consider any completely effectively inseparable pair of 
+recursively enumerable sets (we know that at least one exists, namely the Kleene pair $(K_1,K_2)$). 
+Now, because $K_1$ and $K_2$ are disjoint, $K_1-K_2=K_1$ and $K_2-K_1=K_2$. Thus, because $\mathcal{S}$ is a Rosser system, $K_1$ is separable from $K_2$ in $\mathcal{S}$ by some number $h$. Thus $h$ represents 
+some superset $S_1$ of $K_1$ and contra-represents some superset $S_2$ of $K_2$. Clearly, $S_1$ and $S_2$ must be disjoint. For if they shared some number $n$, we would have $h(n)\in P$ and $h(n)\in R$, which is impossible. 
+This means that $(S_1,S_2)$ is also completely effectively inseparable. 
+For consider any supersets $\omega_i$ and $\omega_j$ of $S_1$ and $S_2$ respectively. Now, $\omega_i$ and $\omega_j$ are also supersets of $K_1$ and $K_2$ respectively. Thus there is some recursive function 
+$\zeta(x,y)$ (by the complete effective inseparability of $(K_1,K_2)$) such that $\zeta(i,j)\in\omega_i$ iff $\zeta(i,j)\in\omega_j$. Hence $\zeta(x,y)$ is a completely effective inseparability function for 
+$(S_1,S_2)$, meaning that pair is completely effectively inseparable. Now, by Theorem 9 of Chapter 6, $(S_1,S_2)$ is also doubly universal. Hence, because $h$ exactly separates $(S_1,S_2)$, we have shown that there is an 
+exactly separable doubly universal pair in $\mathcal{S}$. 
+
+
+Now suppose that some doubly universal pair is exactly separable in $\mathcal{S}$ and that all recursive functions of one argument are admissible in $\mathcal{S}$. Thus for every recursive function $f(x)$ and for 
+every number $h$, there is a number $k$ such that for every $n$ the number $k(n)$ is equivalent to $h(f(n))$. Now consider some disjoint pair $(A,B)$ of recursively enumerable sets. Now, consider the doubly universal 
+pair $(U_1,U_2)$ that was assumed exactly separable in $\mathcal{S}$. Thus, for some recursive function $f(x)$ we have, for all $x$:\newline
+(1) $x\in A$ iff $f(x)\in U_1$;\newline
+(2) $x\in B$ iff $f(x)\in U_2$;\newline
+Now, we know that $f(x)$ is admissible in $\mathcal{S}$ (because it only has one argument). Consider the $h$ that exactly separates $(U_1,U_2)$. Thus there is some number $k$ such that for every $n$ the 
+number $k(n)$ is equivalent to $h(f(n))$. Hence $k(n)\in P$ iff $h(f(n))\in P$ iff $f(n)\in U_1$ iff $n\in A$, and $k(n)\in R$ iff $h(f(n))\in R$ iff $f(n)\in U_2$ iff $n\in B$, thus showing that 
+$(A,B)$ is exactly separable by the number $k$. 
 
 \end{document}
