@@ -154,6 +154,9 @@ $h'\notin A$. Thus $h(h')\in R$ by (2), meaning $h'(h')\in P$ and $h'\in P^*$, a
 Now suppose that $h'\notin R^*$. Thus $h'(h')\notin R$ meaning $h(h')\notin P$, which would mean that $h'\notin A$ by (1), which is a contradiction. Thus $h'\in R^*$.
 
 \section*{Problem 14}
+Note that for all of the following problems, we assume that $\mathcal{S}$ is a standard simple system.
+
+ 
 Consider some standard simple system $\mathcal{S}$ and any recursive function $f(x)$. Then:
 
 
@@ -236,7 +239,7 @@ Theorem 1.
 
 \section*{Problem 23}
 \textit{Note}: It should be noted that the second part of this problem relies upon the fact that $(U_1,U_2)$ is a disjoint pair, which is not explicitly stated in the problem. For why this is the case, see my 
-note in Problem 13 or Chapter 6. 
+note in Problem 13 of Chapter 6. 
 
 
 Suppose $\mathcal{S}$ is a Rosser system. Thus for any two recursively enumerable sets $A$ and $B$, there is a number $h$ that separates $A-B$ from $B-A$. Consider any completely effectively inseparable pair of 
@@ -258,5 +261,46 @@ pair $(U_1,U_2)$ that was assumed exactly separable in $\mathcal{S}$. Thus, for 
 Now, we know that $f(x)$ is admissible in $\mathcal{S}$ (because it only has one argument). Consider the $h$ that exactly separates $(U_1,U_2)$. Thus there is some number $k$ such that for every $n$ the 
 number $k(n)$ is equivalent to $h(f(n))$. Hence $k(n)\in P$ iff $h(f(n))\in P$ iff $f(n)\in U_1$ iff $n\in A$, and $k(n)\in R$ iff $h(f(n))\in R$ iff $f(n)\in U_2$ iff $n\in B$, thus showing that 
 $(A,B)$ is exactly separable by the number $k$. 
+
+\section*{Problem 24}
+Suppose that $\mathcal{S}$ is an effective Rosser system. Consider some recursively enumerable relations $R_1(x,y)$ and $R_2(x,y)$. Let $\Pi(x,y)$ be a Rosser function in $\mathcal{S}$. 
+Thus $R_1(x,\Pi(x,y))$ and $R_2(x,\Pi(x,y))$ are both recursively enumerable. By the weak double recursion theorem, there are numbers $a$ and $b$ such that:\newline
+(1) $x\in\omega_a$ iff $R_1(x,\Pi(a,b))$;\newline
+(2) $x\in\omega_b$ iff $R_2(x,\Pi(a,b))$.\newline
+Now suppose that $R_1(n,\Pi(a,b))\wedge\oldneg R_2(n,\Pi(a,b))$ holds. Thus $x\in\omega_a$ and $x\notin\omega_b$ by (1) and (2), respectively, that is, $x\in\omega_a-\omega_b$. Then, by the 
+definition of a Rosser function $\Pi(x,y)$, $\Pi(a,b)(n)\in P$ (because $\Pi(a,b)$ represents some superset of $(\omega_a-\omega_b)$). 
+On the other hand, suppose that $R_2(n,\Pi(a,b))\wedge\oldneg R_1(n,\Pi(a,b))$ holds. 
+Thus $x\in\omega_b$ and $x\notin\omega_a$ by (2) and (1), respectively, that is, $x\in\omega_b-\omega_a$. Then, by the definition of the Rosser function, $\Pi(a,b)(n)\in R$ (as $\Pi(a,b)$ 
+contra-represents some superset of $\omega_b-\omega_a$). Thus we have shown:\newline
+$(1')$ $R_1(n,h)\wedge\oldneg R_2(n,h)$ implies $h(n)\in P$;\newline
+$(2')$ $R_2(n,h)\wedge\oldneg R_1(n,h)$ implies $h(n)\in R$;\newline
+when taking $\Pi(a,b)$ for $h$. 
+
+\section*{Problem 25}
+Suppose that $\mathcal{S}$ is an effective Rosser system. Consider any two recursively enumerable disjoint sets $A$ and $B$. Recall that $y(x)=r(y,x)$, a recursive function. 
+Let $R_1(x,y)$ be the relation $x\in A\vee y(x)\in R$ and $R_2(x,y)$ be the relation $x\in B\vee y(x)\in P$, which are both recursively enumerable. By Proposition 3, there is a number 
+$h$ such that for all $n$:\newline
+(1) $R_1(n,h)\wedge\oldneg R_2(n,h)$ implies $h(n)\in P$;\newline
+(2) $R_2(n,h)\wedge\oldneg R_1(n,h)$ implies $h(n)\in R$;\newline
+that is:\newline
+$(1')$ $(n\in A\vee h(n)\in R)\wedge\oldneg (n\in B\vee h(n)\in P)$ implies $h(n)\in P$;\newline
+$(2')$ $(n\in B\vee h(n)\in P)\wedge\oldneg (n\in A\vee h(n)\in R)$ implies $h(n)\in R$.\newline
+We must show that $h$ exactly separates $A$ from $B$, that is, $n\in A$ iff $h(n)\in P$ and $n\in B$ iff $h(n)\in R$. 
+
+
+First, suppose $h(n)\in P$. Thus, by $(2')$, $\oldneg((n\in B\vee h(n)\in P)\wedge\oldneg (n\in A\vee h(n)\in R))$ holds. $\oldneg(n\in B\vee h(n)\in P)$ cannot hold, or else $h(n)\notin P$, 
+a contradiction. Thus $n\in A\vee h(n)\in R$ holds, and because $h(n)\in R$ cannot hold, we have $h(n)\in A$. On the other hand, suppose that $h(n)\in R$. 
+Thus, by $(1')$, $\oldneg((n\in A\vee h(n)\in R)\wedge\oldneg (n\in B\vee h(n)\in P))$ holds. It cannot be that $\oldneg(n\in A\vee h(n)\in R)$ holds, or else $h(n)\notin R$, a contradiction.
+Thus $n\in B\vee h(n)\in P$ holds. But because $h(n)\in P$ cannot hold, $n\in B$.
+
+
+Now we show the converses. First suppose that $n\in A$. Thus $n\in A\vee h(n)\in R$ holds, and $h(n)\notin R$, or else $n\in B$ by the above paragraph (and $A$ and $B$ are disjoint). 
+Now, if $h(n)\notin P$, we would have $h(n)$ being undecidable. But because $n\notin B$ and $h(n)\notin P$, we would have $\oldneg (n\in B\vee h(n)\in P)$ holding. Thus 
+$(n\in A\vee h(n)\in R)\wedge\oldneg (n\in B\vee h(n)\in P)$ holds, meaning $h(n)\in P$, a contradiction. Hence $h(n)$ cannot be undecidable, and consequently $h(n)\in P$. A similar argument 
+proves that if $n\in B$, then $h(n)\in R$. 
+
+
+Thus we have shown that $n\in A$ iff $h(n)\in P$ and $n\in B$ iff $h(n)\in R$, meaning $h$ exactly separates $A$ from $B$. Thus we have shown, for any two disjoint recursively enumerable sets $A$ 
+and $B$, there is some number $h$ that exactly separates $A$ from $B$, meaning, by definition, $\mathcal{S}$ is an exact Rosser system.
 
 \end{document}
