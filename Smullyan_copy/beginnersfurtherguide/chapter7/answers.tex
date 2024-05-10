@@ -314,6 +314,10 @@ $(1')$ $h(n)\in\omega_{f_1(n)}$ implies $h(n)\in P$;\newline
 $(2')$ $h(n)\in\omega_{f_2(n)}$ implies $h(n)\in R$.\newline
 for all $n$ such that $\omega_{f_1(n)}$ and $\omega_{f_2(n)}$ are disjoint.
 
+\textit{Note}: For future reference, here is why $y(x)\in\omega_{f_1(x)}$ and $y(x)\in\omega_{f_2(x)}$ are recursively enumerable. $y(x)\in\omega_{f_1(x)}$ is equivalent to 
+\[ \exists x_1\exists x_2(y(x)=x_1\wedge f_1(x)=x_2\wedge r(x_2,x_1)\in T_0) \] which is recursively enumerable. Similarly, $y(x)\in\omega_{f_2(x)}$ is equivalent to
+\[ \exists x_1\exists x_2(y(x)=x_1\wedge f_2(x)=x_2\wedge r(x_2,x_1)\in T_0) \]
+
 \section*{Problem 27}
 Consider some effective Rosser system, and any recursively enumerable sequence of extensions of $\mathcal{S}$. Thus the relations $x\in P_y$ and $x\in R_y$ are both recursively enumerable. By the iteration theorem, 
 there are recursive functions $f_1(x)$ and $f_2(x)$ such that $\omega_{f_1(n)}=\{x: x\in R_n\}$ and $\omega_{f_2(n)}=\{x: x\in P_n\}$. That is, $\omega_{f_1(n)}=R_n$ and $\omega_{f_2(n)}=P_n$. 
