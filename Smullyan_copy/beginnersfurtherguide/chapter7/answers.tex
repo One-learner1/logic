@@ -303,4 +303,25 @@ proves that if $n\in B$, then $h(n)\in R$.
 Thus we have shown that $n\in A$ iff $h(n)\in P$ and $n\in B$ iff $h(n)\in R$, meaning $h$ exactly separates $A$ from $B$. Thus we have shown, for any two disjoint recursively enumerable sets $A$ 
 and $B$, there is some number $h$ that exactly separates $A$ from $B$, meaning, by definition, $\mathcal{S}$ is an exact Rosser system.
 
+\section*{Problem 26}
+Consider any effective Rosser system and any two recursive functions $f_1(x)$ and $f_2(x)$. Hence the relations $y(x)\in\omega_{f_1(x)}$ and $y(x)\in\omega_{f_2(x)}$ are recursively enumerable. 
+By Proposition 3, there is a number $h$ such that for any $n$:\newline
+(1) $(h(n)\in\omega_{f_1(n)})\wedge\oldneg(h(n)\in\omega_{f_2(n)})$ implies $h(n)\in P$;\newline
+(2) $(h(n)\in\omega_{f_2(n)})\wedge\oldneg(h(n)\in\omega_{f_1(n)})$ implies $h(n)\in R$.\newline
+Now consider any $n$ for which $\omega_{f_1(n)}$ is disjoint from $\omega_{f_2(n)}$. This means that $h(n)\in\omega_{f_1(n)}$ and $h(n)\in\omega_{f_2(n)}$ imply 
+$(h(n)\in\omega_{f_1(n)})\wedge\oldneg(h(n)\in\omega_{f_2(n)})$ and $(h(n)\in\omega_{f_2(n)})\wedge\oldneg(h(n)\in\omega_{f_1(n)})$, respectively. Thus, by (1) and (2):\newline
+$(1')$ $h(n)\in\omega_{f_1(n)}$ implies $h(n)\in P$;\newline
+$(2')$ $h(n)\in\omega_{f_2(n)}$ implies $h(n)\in R$.\newline
+for all $n$ such that $\omega_{f_1(n)}$ and $\omega_{f_2(n)}$ are disjoint.
+
+\section*{Problem 27}
+Consider some effective Rosser system, and any recursively enumerable sequence of extensions of $\mathcal{S}$. Thus the relations $x\in P_y$ and $x\in R_y$ are both recursively enumerable. By the iteration theorem, 
+there are recursive functions $f_1(x)$ and $f_2(x)$ such that $\omega_{f_1(n)}=\{x: x\in R_n\}$ and $\omega_{f_2(n)}=\{x: x\in P_n\}$. That is, $\omega_{f_1(n)}=R_n$ and $\omega_{f_2(n)}=P_n$. 
+Then, by the Rosser fixed point property, there is a number $h$ such that for all $n$ (because $\omega_{f_1(n)}$, that is $R_n$, is always disjoint from $\omega_{f_2(n)}$, that is $P_n$):\newline
+(1) $h(n)\in\omega_{f_1(n)}$ implies $h(n)\in P$;\newline
+(2) $h(n)\in\omega_{f_2(n)}$ implies $h(n)\in R$.\newline 
+Now consider any $n$, and suppose that $h(n)\in P_n$, meaning $h(n)\in\omega_{f_2(n)}$, and thus, by (2), $h(n)\in R$. 
+Recall that, because $\mathcal{S}_n$ is an extension of $\mathcal{S}$, $P\subseteq P_n$ and $R\subseteq R_n$. Thus $h(n)\in R_n$, a contradiction. Hence $h(n)\notin P_n$. Similar reasoning can be used to show that 
+$h(n)\notin R_n$. Thus we have shown, for every $n$, $h(n)\notin P_n\cup R_n$, which proves that $\mathcal{S}$ is uniformly incompletable. 
+
 \end{document}
