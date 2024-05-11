@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 8 Answers}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Problem 1}
+Consider some element $A$. By $C_2$, there is a mocker $M$ such that $MA=AA$. Thus, by $C_1$, there is some element $C$ such that 
+$CC=A(MC)=A(CC)$, that is to say, $CC$ is a fixed point of $A$.
+
+\section*{Problem 2}
+Suppose that $C_1$ and $C_2$ hold. Thus, by Problem 1, the mocker $M$ has some fixed point $CC$ such that $M(CC)=CC$. Thus $M(CC)=CCCC=M(CC)M(CC)$, meaning $M(CC)$ is a fixed point of 
+itself.
+
+\section*{Problem 3}
+(a): Suppose that $C_1$ holds, and that at least one element $A$ is agreeable. Thus for every element $B$, there is at least one element $x$ on which $A$ and $B$ agree, and for every 
+$A$ and $B$, there is some $C$ that combines $A$ with $B$. Now consider any element $x$. Thus there is some $C$ that combines $A$ with $x$, meaning, for every element $y$, 
+$Cy=x(Ay)$. Now consider the $y$ for which $A$ and $C$ agree. Thus $Cy=x(Ay)=x(Cy)$, meaning $Cy$ is a fixed point of $x$.
+
+
+(b): It is a special case because a mocker is agreeable. For if $M$ is a mocker, then $Mx=xx$ for every element $x$. Thus for every element $x$, $M$ and $x$ agree upon $x$ itself.  
+
+\section*{Problem 4}
+Suppose that $C_1$ holds and $C$ combines $A$ with $B$, and that $C$ is agreeable. Thus for every element $x$, $Cx=A(Bx)$ and there is at least one $y$ such that $Cx=yx$. Now consider any 
+element $D$. We must show that $Ax=Dx$ for at least one $x$. By the composition condition, there is some $C_1$ such that, for every element $x$, $C_1x=D(Bx)$. Thus there is some element $y$ 
+such that $Cy=C_1y$. Hence $A(By)=Cy=C_1y=D(By)$, that is, $A(By)=D(By)$, meaning $A$ and $D$ agree on $By$. 
+
+\section*{Problem 5}
+Assume the composition condition $C_1$. Consider any elements $A,B$ and $C$. Thus there is an element $C_1$ such that $C_1x=B(Cx)$. Hence there is an element $C_2$ that combines $A$ and $C_1$, 
+meaning $C_2x=A(C_1x)=A(B(Cx))$. Thus we take $E$ to be $C_2$.
+
+\section*{Problem 6}
+Suppose conditions $C_1$ and $C_2$ hold. Consider any two elements $A$ and $B$. Thus there is some $C$ such that $Cx=A(Bx)$ for all $x$, and $C$ has some fixed point $y$. 
+Thus $A(By)=Cy$ and $B(Cy)=By$, meaning the pair $(By,Cy)$ is a cross point of the pair $(A,B)$.
+
+\section*{Problem 7}
+Suppose an element $A$ has a fixed point $x$. Thus $Ax=x$, meaning $A$ is compatible with $A$ under the cross point $x$.
+
+\section*{Problem 8}
+Suppose that $C_1$ holds and that there is at least one smug element $A$. Thus there is some pair $(x,y)$ such that $Ax=y$ and $Ay=x$. Thus there is some $C$ such that $Ci=A(Ai)$ for all $i$. 
+Hence $Cx=A(Ax)=Ay=x$, meaning $x$ is a fixed point for $C$. It can also be seen that $y$ is a fixed point for $C$.
+
+\section*{Problem 9}
+Suppose that $A$ was fixated on two distinct elements $B$ and $C$. Thus $Ax=B=C$ for every element $x$, that is, $B=C$, contrary to the assumption that $B$ and $C$ are distinct elements. Thus 
+$A$ cannot be fixated on more than one element.
+
+
+\textit{Note}: This problem exemplifies the problem that the equal sign is not defined in this section. It seems that he is treating $x$ and $y$ being \textquote{distinct elements} 
+as the same as it is not the case that $x=y$. He does not mention this, so it is not entirely clear what he means.
+
+\section*{Problem 10}
+(a): Suppose that $y$ is a fixed point of $x$. This does not necessarily mean $Ax=y$ for every $x$.
+
+
+(b): Suppose that $x$ is fixated on $y$. Then $Ax=y$ for every $x$, and in particular, $Ay=y$, meaning $y$ is a fixed point of $x$.
+
+\section*{Problem 11}
+(a): Consider some narcissistic element $A$, meaning $Ax=x$ for every element $x$. Thus $AA=A$, meaning it is egocentric ($A$ is it's own fixed point).
+
+
+(b): Consider some egocentric element $A$, meaning $AA=A$. This does not necessarily mean $Ax=A$ for every $x$.
+
+\section*{Problem 12}
+Suppose that $A$ is narcissistic. Then for all elements $x$ and $y$, $Ax=A=Ay$, meaning the statement is true.
+
+\section*{Problem 13}
+Suppose that $A$ is narcissistic. Thus $Ax=A$ for all $x$. Now recall that $Axy$ is an abbreviation for $(Ax)y$. Thus $Axy=(Ax)y=Ay=A$ for all $x$ and $y$.
+
+\section*{Problem 14}
+Suppose that $A$ is narcissistic. By Problem 13, $Axy=A$ for all elements $x$ and $y$. Thus, because $A=Ax$, $Ax$ is narcissistic for every $x$. 
+
+\end{document}
