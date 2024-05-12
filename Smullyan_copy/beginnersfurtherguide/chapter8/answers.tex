@@ -122,7 +122,7 @@ $KKx=(KK)x$, not $K(Kx)$.
 
 (b): Suppose that $y$ is some fixed point of $K$. Thus $Ky=y$. Thus, for any element $x$, $yx=(Ky)x=Kyx=y$, proving that $y$ is narcissistic.
 
-\section*{Problrm 21}
+\section*{Problem 21}
 Consider the set $\{K,KK,KKK,...\}$, and we are considering whether it is infinte. That is, we need to determine how many distinct elements it has. Now, let $K_1=K$, $K_2=KK$, and in general, 
 $K_n$ be $n$ $K$'s compounded together. Now, $KKK=K$, $KKKK=((KK)K)K=(KKK)K=KK$, $KKKKK=(KKKK)K=(KK)K=KKK=K$, and in general, a string of $n$ $K$'s equals $K$ if $n$ is odd, 
 and equals $KK$ if $n$ is even. Here is the proof:
@@ -130,5 +130,56 @@ and equals $KK$ if $n$ is even. Here is the proof:
 
 The base cases are given above. Now suppose that the hypothesis holds some $n$. Thus $K_{n+1}=(K_n)K$. So if $n+1$ is even, $n$ is odd, meaning $(K_n)K=KK$ by the assumption, and if 
 $n+1$ is odd, then $n$ is even, meaning $(K_n)K=(KK)K=K$ by the assumption.
+
+\section*{Problem 22}
+Consider the set $\{K,KK,K(KK),K(K(KK)),...\}$, that is, the set $\{K_1,K_2,...,K_N,...\}$ where $K_1=K$ and $K_{n+1}=K(K_n)$ for all $n> 1$. Now, by Problem 19, 
+$KK\ne K$. Now we prove by induction that $K_n\ne $K_m$ for all $m<n$. We have already proved the base case when $n=1$, so now suppose that the hypothesis holds for some $n$. 
+Now, $K_{n+1}=K(K_n)$. By Problem 19, $K_{n+1}\ne K$. Also, if $K(K_n)=K_m$ for some $1<m<n$, we know that $K(K_n)=K(K_{m-1})$ (as $K_m=K(K_{m-1})$), and thus, by Problem 18, 
+$K_n=K_{m-1}$, a contradiction (as we assumed $K_n\ne K_m$ for all $m<n$). Thus $K_{n+1}\ne K_m$ for all $m<n+1$, meaning $K_{n+1}$ is distinct from all 
+$K_m$ such that $m<n+1$. Thus, by induction, all elements in the set are distinct, meaning it is an infinite set. 
+
+\section*{Problem 23}
+Suppose we have some lark $L$. Thus $Lxy=x(yy)$. Now consider any element $x$. Thus $Lx(Lx)=x((Lx)(Lx))=x(Lx(Lx))$ thus proving that $Lx(Lx)$ is a fixed point of $x$.
+
+\section*{Problem 24}
+Suppose that some $L$ was both a lark and a kestrel. Thus, for all $x$ and $y$, $Lxy=x$ and $Lxy=x(yy)$. Hence for all $y$, $LLy=L$ and $LLy=L(yy)$, meaning 
+$L=L(yy)$, which is not possible by Problem 19.
+
+\section*{Problem 25}
+Suppose that a lark $L$ is narcissistic. Thus, for all elements $x$ and $y$, $Lxy=x(yy)$ and $Lx=L$. Hence $xL=x(LL)=LxL=(Lx)L=LL=L$ for all $x$, 
+proving that $L$ is a fixed point of $x$.
+
+\section*{Problem 26}
+Suppose that some kestrel $K$ was a fixed point of a lark $L$. Thus $LK=K$, meaning $KK=(LK)K=LKK=K(KK)$, and thus, by Problem 18, $K=KK$, which contradicts Problem 19. 
+
+\section*{Problem 27}
+Suppose that some lark $L$ is a fixed point of a kestrel. Thus $KL=L$. Now consider any element $x$. Hence $L=KLx=Lx$, meaning $L$ is narcissistic, and is therefore 
+a fixed point of $x$ by Problem 25.
+
+\section*{Problem 28}
+Suppose that we are given some lark $L$. Now, let us show that any fixed point $x$ of $LL$ is such that $xx$ is egocentric. For suppose that $x$ is a fixed point of 
+$LL$. Thus $L(xx)=LLx=x$, meaning $xx=(L(xx))(L(xx))=L(xx)(L(xx))=(xx)(L(xx)L(xx))=(xx)(xx)$, thus proving that $xx$ is egocentric. Now, by Problem 23, $LL$ does have a 
+fixed point, in particular, the fixed point $L(LL)(L(LL))$. Thus the element $(L(LL(L(LL))))(L(LL(L(LL))))$ is egocentric.
+
+\section*{Problem 29}
+(a): Suppose that an identity element $I$ is agreeable. Thus for every $x$, $Ix=x$ and $Iy=xy$ for some $y$. But $Iy=y$, meaning $xy=y$, thus proving $y$ is a fixed point of 
+$x$. On the other hand, suppose that every element has a fixed point. Now consider some elemnt $x$ and its fixed point $y$. Thus $Iy=y$ and $xy=y$, meaning 
+$I$ agrees with $x$ on $y$, thus meaning $I$ is agreeable.
+
+
+(b): Now suppose that every pair of elements is compatible. Now consider any element $x$. Thus $I$ and $x$ are compatible, meaning for some $y$ and $z$, 
+$Iy=z$ and $xz=y$. But $Iy=y$, meaning $z=y$. Thus $Iz=z=y$, meaning $I$ and $x$ agree on $z$.
+
+
+(c): $I$ is egocentric as $II=I$. But suppose that $I$ was narcissistic. Then $Ix=I$ for every $x$. But $Ix=x$ for every $x$. Thus $x=I$ for every $x$, meaning 
+the only element in $\mathcal{C}$ would be $I$. But this contradicts the assumption that $\mathcal{C}$ contained more than one element. Hence $I$ cannot be narcissistic. 
+
+\section*{Problem 30}
+Suppose that $\mathcal{C}$ contains a lark $L$ and an identity element $I$. Thus for every $y$, $LIy=I(yy)=yy$, meaning $LI$ is a mocker.
+
+\section*{Problem 31}
+Suppose that $\mathcal{C}$ contains a lark $L$ and mocker $M$, and the composition condition holds. By Problem 23, $Lx(Lx)$ is a fixed point of $x$ for every $x$. Consider 
+the $C$ that combines $M$ with $L$. Thus $Cx=M(Lx)$. Hence $x(Cx)=x(M(Lx))=x(Lx(Lx))=Lx(Lx)=M(Lx)=Cx$, proving that $C$ is a sage.
+
 
 \end{document}
