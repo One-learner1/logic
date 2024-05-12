@@ -132,8 +132,8 @@ The base cases are given above. Now suppose that the hypothesis holds some $n$. 
 $n+1$ is odd, then $n$ is even, meaning $(K_n)K=(KK)K=K$ by the assumption.
 
 \section*{Problem 22}
-Consider the set $\{K,KK,K(KK),K(K(KK)),...\}$, that is, the set $\{K_1,K_2,...,K_N,...\}$ where $K_1=K$ and $K_{n+1}=K(K_n)$ for all $n> 1$. Now, by Problem 19, 
-$KK\ne K$. Now we prove by induction that $K_n\ne $K_m$ for all $m<n$. We have already proved the base case when $n=1$, so now suppose that the hypothesis holds for some $n$. 
+Consider the set $\{K,KK,K(KK),K(K(KK)),...\}$, that is, the set $\{K_1,K_2,...,K_n,...\}$ where $K_1=K$ and $K_{n+1}=K(K_n)$ for all $n>1$. Now, by Problem 19, 
+$KK\ne K$. Now we prove by induction that $K_n\ne K_m$ for all $m<n$. We have already proved the base case when $n=2$, so now suppose that the hypothesis holds for some $n$. 
 Now, $K_{n+1}=K(K_n)$. By Problem 19, $K_{n+1}\ne K$. Also, if $K(K_n)=K_m$ for some $1<m<n$, we know that $K(K_n)=K(K_{m-1})$ (as $K_m=K(K_{m-1})$), and thus, by Problem 18, 
 $K_n=K_{m-1}$, a contradiction (as we assumed $K_n\ne K_m$ for all $m<n$). Thus $K_{n+1}\ne K_m$ for all $m<n+1$, meaning $K_{n+1}$ is distinct from all 
 $K_m$ such that $m<n+1$. Thus, by induction, all elements in the set are distinct, meaning it is an infinite set. 
@@ -159,7 +159,7 @@ a fixed point of $x$ by Problem 25.
 \section*{Problem 28}
 Suppose that we are given some lark $L$. Now, let us show that any fixed point $x$ of $LL$ is such that $xx$ is egocentric. For suppose that $x$ is a fixed point of 
 $LL$. Thus $L(xx)=LLx=x$, meaning $xx=(L(xx))(L(xx))=L(xx)(L(xx))=(xx)(L(xx)L(xx))=(xx)(xx)$, thus proving that $xx$ is egocentric. Now, by Problem 23, $LL$ does have a 
-fixed point, in particular, the fixed point $L(LL)(L(LL))$. Thus the element $(L(LL(L(LL))))(L(LL(L(LL))))$ is egocentric.
+fixed point, in particular, the fixed point $L(LL)(L(LL))$. Thus the element $L(LL)(L(LL))(L(LL(L(LL))))$ is egocentric.
 
 \section*{Problem 29}
 (a): Suppose that an identity element $I$ is agreeable. Thus for every $x$, $Ix=x$ and $Iy=xy$ for some $y$. But $Iy=y$, meaning $xy=y$, thus proving $y$ is a fixed point of 
