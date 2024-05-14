@@ -73,7 +73,8 @@ $BD=B_1B$, as $BD=B(BB)=BBBB=DBB=B_1B$. Thus $D_1xyzw=BDxyzwv=(BDxy)zwv=D(xy)zwv
 
 (2): The base case, when $B=0$, is $B$ itself. Now suppose that the hypothesis holds for some $n$, that is, \[ B_nxy_1...y_{n+2}=x(y_1...y_{n+2}) \] 
 Let $B_{n+1}$ be the combinator $BB_nB$. Thus \[ BB_nBxy_1...y_{n+3}=(BB_nBx)y_1...y_{n+3}=B_n(Bx)y_1...y_{n+3}=(B_n(Bx)y_1...y_{n+2})y_{n+3}=(Bx)(y_1...y_{n+2})y_{n+3} \]
-\[ =Bx(y_1...y_{n+2})y_{n+3}=x((y_1...y_{n+2})y_{n+3})=x(y_1...y_{n+2}y_{n+3}) \] thus showing that $B_{n+1}$ is the desired combinator, and therefore the proof is complete.
+\[ =Bx(y_1...y_{n+2})y_{n+3}=x((y_1...y_{n+2})y_{n+3})=x(y_1...y_{n+2}y_{n+3}) \] thus showing that $B_{n+1}$ is the desired combinator, and therefore the proof is complete. Alternatively, as 
+Smullyan gives in his answer, it can be seen that taking $B_{n+1}$ to be $BBB_n$ also works.
 
 \section*{Problem 5}
 Suppose that we have a truth $T$ and a lark $L$. Thus $Txy=yx$ and $Lxy=x(yy)$ for all $x$ and $y$. Now, by Problem 23 of Chapter 7, $T$ has a fixed point. Let $A$ be some fixed point of $T$. 
