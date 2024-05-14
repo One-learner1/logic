@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=1in}
+\setlength{\parskip}{12pt}
+\title{Chapter 9 Answers}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Problem 1}
+Suppose that $\mathcal{C}$ contains a bluebird $B$ and a mocker $M$. Thus, for all $x,y$ and $z$, $Bxyz=x(yz)$ and $Mx=xx$. Now consider any elements $x$ and $y$. Take $C$ to be the 
+combinator $(Bx)y$. Thus $(Bxy)z=((Bx)y)z=Bxyz=x(yz)$ for every $z$, meaning $C$ combines $x$ with $y$, and thus the composition condition holds. By Theorem 1 of the last chapter, 
+a fixed point of every element $x$ is $CC$, where $C$ combines $x$ with $M$. Thus a fixed point of every element $x$ in $\mathcal{C}$ is $(BxM)(BxM)$, which is the same as $M(BxM)$.
+
+\section*{Problem 2}
+Suppose that $\mathcal{C}$ has some bluebird $B$ and mocker $M$. Then, by Problem 2 of Chapter 8, there is an egocentric element, namely $y$ for $y$ the fixed point of $M$. In particular, 
+this is the element $M(BMM)$. In particular: $(M(BMM))(M(BMM))=M(M(BMM))=(BMM)(BMM)=M(BMM)$.
+
+\section*{Problem 3}
+Now suppose that $\mathcal{C}$ contains some $B,M$ and a kestrel $K$. Thus by Problem 1, $K$ has a fixed point, and hence, by Problem 20(b) of Chapter 8, the fixed point of $K$ is narcissistic. 
+In particular, $M(BKM)$ is narcissistic.
+
+\section*{Problem 4}
+(1):
+
+
+(a): Take $D$ to be $BB$. Thus $Dxyzw=BBxyzw=(BBxy)zw=(B(xy))zw=B(xy)zw=(xy)(zw)=xy(zw)$.
+
+
+(b): Take $B_1$ to be $DB$. Thus $B_1xyzw=DBxyzw=(DBxyz)w=(Bx(yz))w=Bx(yz)w=x((yz)w)=x(yzw)$.
+
+
+(c): Take $E$ to be $BB_1$. Thus $Dxyzwv=BB_1xyzwv=(BB_1xy)zwv=B_1(xy)zwv=(xy)(zwv)=xy(zwv)$.
+
+
+(d): Take $B_2$ to be $EB$. Thus $B_2xyzwv=EBxyzwv=(EBxyzw)v=(Bx(yzw))v=Bx(yzw)v=x((yzw)v)=x(yzwv)$.
+
+
+(e): Take $D_1$ to be $B_1B$. Thus $D_1xyzwv=B_1Bxyzwv=(B_1Bxyz)wv=B(xyz)wv=(xyz)(wv)=xyz(wv)$. Alternatively, we could take $D_1$ to be $BD$. Actually, 
+$BD=B_1B$, as $BD=B(BB)=BBBB=DBB=B_1B$. Thus $D_1xyzw=BDxyzwv=(BDxy)zwv=D(xy)zwv=(xy)z(wv)=xyz(wv)$.
+
+
+(f): Take $B^+$ to be $D_1B$. Thus $B^+xyzw=D_1Bxyzw=Bxy(zw)=x(y(zw))$.
+
+
+(g): Take $D_2$ to be $DD$. Thus $D_2xyzwv=DDxyzwv=(DDxyz)wv=Dx(yz)wv=x(yz)(wv)$.
+
+
+(h): Take $\overset{\mathrm{\wedge}}{E}$ to be $EE$. Thus 
+\[ \overset{\mathrm{\wedge}}{E}xy_1y_2y_3z_1z_2z_3=EExy_1y_2y_3z_1z_2z_3=(EExy_1y_2y_3)z_1z_2z_3=Ex(y_1y_2y_3)z_1z_2z_3=x(y_1y_2y_3)(z_1z_2z_3) \] 
+
+(2): The base case, when $B=0$, is $B$ itself. Now suppose that the hypothesis holds for some $n$, that is, \[ B_nxy_1...y_{n+2}=x(y_1...y_{n+2}) \] 
+Let $B_{n+1}$ be the combinator $BB_nB$. Thus \[ BB_nBxy_1...y_{n+3}=(BB_nBx)y_1...y_{n+3}=B_n(Bx)y_1...y_{n+3}=(Bx)(y_1...y_{n+2})y_{n+3} \]
+\[ =Bx(y_1...y_{n+2})y_{n+3}=x((y_1...y_{n+2})y_{n+3})=x(y_1...y_{n+2}y_{n+3}) \] thus showing that $B_{n+1}$ is the desired combinator, and therefore the proof is complete.
+
+\end{document}
