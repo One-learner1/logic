@@ -127,4 +127,11 @@ $I$ to be $RAK$ for any element $A$, as $RAKx=KxA=x$.
 For all parts of this problem, take the new combinator $A^{**}$ to be the combinator $BA^*$. For example, in the case of $C^{**}$, we have 
 $C^{**}vwxyz=BC^*vwxyz=C^*(vw)xyz=vwxzy$. More generally, if $Axyz=abc$, where $abc$ is a permutation of $xyz$, then $BA^*wvxyz=A^*(wv)xyz=wvabc$.
 
+\section*{$n$th Identity Combinator}
+Assuming a bluebird $B$ and an identity combinator $I$, we can define, for every $n$, a combinator $I_n$ such that $I_nx_1...x_{n+1}=x_1...x_{n+1}$. 
+The base case when $n=0$ is simple: we take $I_0$ to be $I$. Now suppose $n>0$. Then take $I_n$ to be $B_{n-1}I$. Thus
+\[ I_nx_1...x_{n+1}=B_{n-1}Ix_1...x_{n+1}=I(x_1...x_{n+1})=x_1...x_{n+1} \]
+By Problem 14, the $n$th Identity Combinator is also present if some robin $R$ (or equivalently, some cardinal $C$) and some kestrel $K$ are present (and of course, 
+also a bluebird $B$).
+
 \end{document}
