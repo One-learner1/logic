@@ -147,7 +147,7 @@ $V=C^*T=(BC)T=(B(RRR))T=(B(B(T(BBT))(BBT)))T$ (the last step uses Problem 8).
 Just take $A$ to be $T$: $Axyz=Txyz=(Txy)z=(yx)z=yxz$.
 
 \section*{Problem 19}
-Consider the $A$ from Problem 18. Let $A^*$ be the combinator $BR^*C^*$. Thus $A^*wxyz=BR^*C^*wxyz=R^*(C^*w)xyz=C^*wyzx=wyzx$. Then take $Q$ to be 
+Consider the $A$ from Problem 18. Let $A^*$ be the combinator $BR^*C^*$. Thus $A^*wxyz=BR^*C^*wxyz=R^*(C^*w)xyz=C^*wyzx=wyxz$. Then take $Q$ to be 
 $A^*Bxyz$, meaning $Qxyz=A^*Bxyz=Byxz=y(xz)$. Note that by Problem 16, $A^{**}=BA^*$.
 
 
@@ -157,14 +157,16 @@ A far simpler solution is taking $Q$ to be $CB$, as $CBxyz=Byxz=y(xz)$.
 Take $Q_1$ to be $C^*B$, meaning $Q_1xyz=C^*Bxyz=Bxzy=x(zy)$. Take $Q_2$ to be $R^*B$, meaning $Q_2xyz=R^*Bxyz=Byzx=y(zx)$.
 
 
-Note that, in general, if $Q_i$ is defined to be $Q_ixyz=a(bc)$ for some permutation $abc$ of $xyz$, we can take $Q_i$ to be $A^*B$ where $A^*xyz=abc$, as 
+Note that, in general, if $Q_i$ is defined to be $Q_ixyz=a(bc)$ for some permutation $abc$ of $xyz$, we can take $Q_i$ to be $A^*B$ where $Axyz=abc$, as 
 $A^*Bxyz=Babc=a(bc)$. Given a combinator $Q_i$ such that $Q_ixyz=a(bc)$ for some permutation $abc$ of $xyz$, define $Q_i^*$ to be the combinator satisfying the condition 
 $Q_i^*wxyz=wa(bc)$. Take $Q_1^*$ to be $BQ_1$, as $BQ_1wxyz=Q_1(wx)yz=(wx)(zy)=wx(zy)$. Take $Q_2^*$ to be $A^{**}Q_1^*$ with the $A$ that was defined in Problem 18, as 
 $A^{**}Q_1^*wxyz=Q_1^*wyxz=wy(zx)$. Let $Q_0$ be an abbreviation for $Q$, the queer bird. Take $Q_0^*$ to be $R^{**}Q_1^*$, as 
-$R^{**}Q_1^*wxyz=Q_1^*wyzx=wy(xz)$. In a similar fashion, take $Q_3^*$ to be $F^{**}Q_1^*$, and $Q_4^*$ to be $V^{**}Q_1^*$.
+$R^{**}Q_1^*wxyz=Q_1^*wyzx=wy(xz)$. In a similar fashion, take $Q_3^*$ to be $F^{**}Q_1^*$ (as $F^{**}Q_1^*wxyz=Q_1^*wzyx=wz(xy)$), 
+and $Q_4^*$ to be $V^{**}Q_1^*$ (as $V^{**}Q_1^*wxyz=Q_1^*wzxy=wz(yx)$).
 
 
-We can generalize the concept of $Q_i^*$ in a near identical fashion to that expressed in Problem 16. First, let $Q_i^*$ be $Q_i^1$. Now, we want a combinator $Q_i^n$ 
+We can generalize the concept of $Q_i^*$ in a near identical fashion to that expressed in Problem 16. First, let $Q_i^*$ be $Q_i^1$. Now, we want a combinator $Q_i^n$, for all 
+$n>0$, 
 such that $Q_i^nx_1...x_nxyz=x_1...x_na(bc)$ where $abc$ is a permutation of $xyz$ and $Q_ixyz=a(bc)$. The base cases were proven in the last paragraph (as $Q_i^1$ 
 is $Q_i^*$). Now if $n>1$, we, just as in Problem 16, take $Q_i^n$ to be $BQ_i^{n-1}$, as 
 $BQ_i^{n-1}x_1...x_nxyz=Q_i^{n-1}(x_1x_2)...x_nxyz=(x_1x_2)...x_na(bc)=x_1x_2...x_na(bc)$.
@@ -176,9 +178,11 @@ $CRQ_1xyz=RxQ_1yz=Q_1yxz=y(zx)$, meaning $Q_2$ is quizzied. On the other hand, i
 $CQ_2xyz=Q_2yxz=x(zy)$, meaning $Q_1$ is quixotic.   
 
 \section*{Problem 22}
-By the note in Problem 20, we can take $Q_3$ to be $V^*B$, and $Q_4$ to be $F^*B$. Take $Q_5$ to be $V^*B_1$, as 
-$V^*B_1xyzw=B_1zxyw=z(xyw)$. Take $Q_6$ to be $C_3Q_5$, with the $C_3$ defined in the note of Problem 16 (that is, $BC^{**}$), as
-$C_3Q_5xyzw=Q_5xywz=w(xyz)$. 
+By the note in Problem 20, we can take $Q_3$ to be $V^*B$, and $Q_4$ to be $F^*B$. Alternatively, we could take $Q_3$ to be 
+$BT$, as $BTxyz=T(xy)z=z(xy)$, or $QQC$, as $QQCxyz=C(Qx)yz=Qxzy=z(xy)$, or $BC(CB)$, as $BC(CB)xyz=C(CBx)yz=CBxzy=Bzxy=z(xy)$; by Problem 23, we could also take 
+$Q_4$ to be $CQ_3$. Take $Q_5$ to be $V^*B_1$, as $V^*B_1xyzw=B_1zxyw=z(xyw)$. Alternatively, we could take $Q_5$ to be $BQ$, as 
+$BQxyzw=Q(xy)zw=z((xy)w)=z(xyw)$. Take $Q_6$ to be $C^{**}Q_5$, as
+$C^{**}Q_5xyzw=Q_5xywz=w(xyz)$. 
 
 \section*{Problem 23}
 Suppose that a cardinal $C$ is present. On the one hand, if a quirky bird $Q_3$ is present, take $Q_4$ to be $CQ_3$, as 
