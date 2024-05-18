@@ -198,7 +198,10 @@ Take $B$ to be the combinator $QT(QQ)$, as $QT(QQ)xyz=QQ(Tx)yz=Tx(Qy)z=Qyxz=x(yz
 Take $C$ to be $QQ(QT)$, as $QQ(QT)xyz=QT(Qx)yz=Qx(Ty)z=Ty(xz)=xzy$, meaning $C$ is a cardinal.
 
 \section*{Problem 27}
-Take $G$ to be $V^**D$, as $V^**Dxyzw=Dxwyz=xw(yz)$.
+Take $G$ to be $V^{**}D$, as $V^{**}Dxyzw=Dxwyz=xw(yz)$.
+
+
+Alternatively, we could take, as Smullyan does, $G$ to be $BBC$, as $BBCxyzw=B(Cx)yzw=Cx(yz)w=xw(yz)$.
 
 \section*{Problem 28}
 Take $M_2$ to be $BMxy$, as $BMxy=M(xy)=(xy)(xy)=xy(xy)$.
@@ -212,7 +215,7 @@ Alternatively, we could take $W'$ to be $B(M_2B)T$, as $B(M_2B)Txy=M_2B(Tx)y=B(T
 This is an expression of five letters when reduced to $B,T$ and $M$, as $B(M_2B)T=B(BMB)T$.
 
 \section*{Problem 30}
-Take $W$ to be $CW'$, as $CW'xy=W'yx=xyy$. This, when reduced to $B,T$ and $M$, is ten letters, as 
+Take $W$ to be $CW'$, as $CW'xy=W'yx=xyy$. This, when reduced to $B,T$ and $M$, is 
 \[ CW'=B(T(BBT))(BBT)(BM(BBT)) \] by Problem 8, which is an expression of 13 letters. We could also take $W$ to be 
 \[ B(T(BBT))(BBT)(B(BMB)T) \] as $B(BMB)T$ is an alternative form of $W'$.
 The first expression can be simplified in the following way:
@@ -223,10 +226,11 @@ simplified in the following way:
 \[ =B(T(B(BMB)T))(BBT) \] 
 
 
-Note that a couple of generalizations can be made about the warbler. First, we want a combinator $W_n$ such that 
+Note that a couple of generalizations can be made about the warbler. First, we want a combinator $W^n$ such that 
 $W^nxy=xy_1...y_{n+1}$ where $y_i=y$ for every $i$. $W^1$ is just $W$. Let $W^2=W_2BW$, as $W_2BWxy=BWxyy=W(xy)y=(xy)yy=xyyy$. We can generalize this concept with induction. Suppose the 
-hypothesis holds for some $n$, that is, $W^nxy=xy_1...y_{n+1}$. Then let $W^{n+1}=W_2BW^{n-1}$, as $W_2BW^{n-1}xy=BW^{n-1}xyy=W^{n-1}(xy)y=xyy_1...y_{n-1}=xy_1...y_n$ where 
-every $y_i=y$. Now, let $W_0=W$. We want a combinator $W_n^m$ such that $W_n^mz_1...z_{n+1}w=z_1..z_{n+1}w_1...w_{m+1}$ for all $n\ge 1$. We already have a combinator 
+hypothesis holds for some $n$, that is, $W^nxy=xy_1...y_{n+1}$. Then let $W^{n+1}=W_2BW^n$, as $W_2BW^nxy=BW^nxyy=W^n(xy)y=xyy_1...y_{n+1}=xy_1...y_{n+2}$ where 
+every $y_i=y$. Now, let $W_0=W$. We want a combinator $W_n^m$ such that $W_n^mz_1...z_{n+1}w=z_1..z_{n+1}w_1...w_{m+1}$ for all $n\ge 1$. For the case of $W_0^n$, we simply 
+define $W_0^n$ to be $W^n$ for every $n$. We already have a combinator 
 $W^n$ such that $W^nxy=xy_1...y_{n+1}$. Take $W_n^m$ to be $B_{n-1}W^m$, as $B_{n-1}W^mz_1...z_{n+1}w=W^m(z_1...z_{n+1})w=z_1...z_{n+1}w_1...w_{m+1}$.
 
 \section*{Problem 31}
@@ -238,9 +242,11 @@ Take $W_1$ to be $BW$, as $BWxyz=W(xy)z=(xy)zz=xyzz$. Take $W_2$ to be $B_1Wxyzw
 
 
 In general, if we want $W_nx_1...x_{n+2}=x_1...x_{n+1}x_{n+2}x_{n+2}$, 
-we can take $W_n$ to be $B_{n-1}W$ (letting $B=B_0$, as $B_{n_1}Wx_1...x_{n+2}=W(x_1...x_{n+1})x_{n+2}=x_1...x_{n+1}x_{n+2}x_{n+2}$.
+we can take $W_n$ to be $B_{n-1}W$ (letting $B=B_0$, as $B_{n-1}Wx_1...x_{n+2}=W(x_1...x_{n+1})x_{n+2}=x_1...x_{n+1}x_{n+2}x_{n+2}$. Smullyan provides an alternative way of 
+defining $W_n$. In paritcular, let $W_0=W$. Then, if $W_nx_1...x_{n+2}=x_1...x_{n+1}x_{n+2}x_{n+2}$, take $W_{n+1}$ to be $BW_n$, as 
+$BW_nx_1...x_{n+3}=W_n(x_1x_2)...x_{n+3}=x_1x_2...x_{n+3}x_{n+3}$.
 
 \section*{Problem 33}
-Take $H$ to be $W_2C^*$, as $W_1C^*xyz=C^*xyyz=xyzy$.
+Take $H$ to be $W_1C^*$, as $W_1C^*xyz=C^*xyyz=xyzy$.
 
 \end{document}
