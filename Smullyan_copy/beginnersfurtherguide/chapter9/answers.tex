@@ -197,4 +197,50 @@ Take $B$ to be the combinator $QT(QQ)$, as $QT(QQ)xyz=QQ(Tx)yz=Tx(Qy)z=Qyxz=x(yz
 \section*{Problem 26}
 Take $C$ to be $QQ(QT)$, as $QQ(QT)xyz=QT(Qx)yz=Qx(Ty)z=Ty(xz)=xzy$, meaning $C$ is a cardinal.
 
+\section*{Problem 27}
+Take $G$ to be $V^**D$, as $V^**Dxyzw=Dxwyz=xw(yz)$.
+
+\section*{Problem 28}
+Take $M_2$ to be $BMxy$, as $BMxy=M(xy)=(xy)(xy)=xy(xy)$.
+
+
+In general, if we want a $M_nx_1...x_n=x_1...x_n(x_1...x_n)$ for $n\ge 2$, we can let $M_n=B_{n-2}M$ (letting $B_0=B$), as $B_{n-2}Mx_1...x_n=M(x_1...x_n)=x_1...x_n(x_1...x_n)$.
+
+\section*{Problem 29}
+We could take $W'$ to be $M_2R$, as $M_2Rxy=Rx(Rx)y=Rxyx=yxx$. This is an expression of five letters when reduced to $B,T$ and $M$, as $M_2R=(BM)(DT)=BM(BBT)$.
+Alternatively, we could take $W'$ to be $B(M_2B)T$, as $B(M_2B)Txy=M_2B(Tx)y=B(Tx)(B(Tx))y=Tx(B(Tx)y)=B(Tx)yx=Tx(yx)=yxx$. 
+This is an expression of five letters when reduced to $B,T$ and $M$, as $B(M_2B)T=B(BMB)T$.
+
+\section*{Problem 30}
+Take $W$ to be $CW'$, as $CW'xy=W'yx=xyy$. This, when reduced to $B,T$ and $M$, is ten letters, as 
+\[ CW'=B(T(BBT))(BBT)(BM(BBT)) \] by Problem 8, which is an expression of 13 letters. We could also take $W$ to be 
+\[ B(T(BBT))(BBT)(B(BMB)T) \] as $B(BMB)T$ is an alternative form of $W'$.
+The first expression can be simplified in the following way:
+\[ B(T(BBT))(BBT)(BM(BBT))=T(BBT)(BBT(BM(BBT)))=BBT(BM(BBT))(BBT) \]
+\[ =B(T(BM(BBT)))(BBT) \] which is an expression of ten letters. The second expression can be 
+simplified in the following way:
+\[ B(T(BBT))(BBT)(B(BMB)T)=T(BBT)(BBT(B(BMB)T))=BBT(B(BMB)T)(BBT) \]
+\[ =B(T(B(BMB)T))(BBT) \] 
+
+
+Note that a couple of generalizations can be made about the warbler. First, we want a combinator $W_n$ such that 
+$W^nxy=xy_1...y_{n+1}$ where $y_i=y$ for every $i$. $W^1$ is just $W$. Let $W^2=W_2BW$, as $W_2BWxy=BWxyy=W(xy)y=(xy)yy=xyyy$. We can generalize this concept with induction. Suppose the 
+hypothesis holds for some $n$, that is, $W^nxy=xy_1...y_{n+1}$. Then let $W^{n+1}=W_2BW^{n-1}$, as $W_2BW^{n-1}xy=BW^{n-1}xyy=W^{n-1}(xy)y=xyy_1...y_{n-1}=xy_1...y_n$ where 
+every $y_i=y$. Now, let $W_0=W$. We want a combinator $W_n^m$ such that $W_n^mz_1...z_{n+1}w=z_1..z_{n+1}w_1...w_{m+1}$ for all $n\ge 1$. We already have a combinator 
+$W^n$ such that $W^nxy=xy_1...y_{n+1}$. Take $W_n^m$ to be $B_{n-1}W^m$, as $B_{n-1}W^mz_1...z_{n+1}w=W^m(z_1...z_{n+1})w=z_1...z_{n+1}w_1...w_{m+1}$.
+
+\section*{Problem 31}
+Take $M$ to be $WT$, as $WTx=Txx=xx$. Second, take $M$ to be $WI$, as $WIxx=Ixx=xx$. Third, take $I$ to be
+$WK$, as $WKx=Kxx=x$.
+
+\section*{Problem 32}
+Take $W_1$ to be $BW$, as $BWxyz=W(xy)z=(xy)zz=xyzz$. Take $W_2$ to be $B_1Wxyzw=W(xyz)w=xyzww$. Take $W_3$ to be $B_2Wxyzwv=W(xyzw)v=xyzwvv$.
+
+
+In general, if we want $W_nx_1...x_{n+2}=x_1...x_{n+1}x_{n+2}x_{n+2}$, 
+we can take $W_n$ to be $B_{n-1}W$ (letting $B=B_0$, as $B_{n_1}Wx_1...x_{n+2}=W(x_1...x_{n+1})x_{n+2}=x_1...x_{n+1}x_{n+2}x_{n+2}$.
+
+\section*{Problem 33}
+Take $H$ to be $W_2C^*$, as $W_1C^*xyz=C^*xyyz=xyzy$.
+
 \end{document}
