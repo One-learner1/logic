@@ -242,11 +242,63 @@ Take $W_1$ to be $BW$, as $BWxyz=W(xy)z=(xy)zz=xyzz$. Take $W_2$ to be $B_1Wxyzw
 
 
 In general, if we want $W_nx_1...x_{n+2}=x_1...x_{n+1}x_{n+2}x_{n+2}$, 
-we can take $W_n$ to be $B_{n-1}W$ (letting $B=B_0$, as $B_{n-1}Wx_1...x_{n+2}=W(x_1...x_{n+1})x_{n+2}=x_1...x_{n+1}x_{n+2}x_{n+2}$. Smullyan provides an alternative way of 
+we can take $W_n$ to be $B_{n-1}W$ (letting $B=B_0$), as $B_{n-1}Wx_1...x_{n+2}=W(x_1...x_{n+1})x_{n+2}=x_1...x_{n+1}x_{n+2}x_{n+2}$. Smullyan provides an alternative way of 
 defining $W_n$. In paritcular, let $W_0=W$. Then, if $W_nx_1...x_{n+2}=x_1...x_{n+1}x_{n+2}x_{n+2}$, take $W_{n+1}$ to be $BW_n$, as 
 $BW_nx_1...x_{n+3}=W_n(x_1x_2)...x_{n+3}=x_1x_2...x_{n+3}x_{n+3}$.
 
 \section*{Problem 33}
 Take $H$ to be $W_1C^*$, as $W_1C^*xyz=C^*xyyz=xyzy$.
+
+\section*{Problem 34}
+Take $W$ to be $C(HR)$, as $C(HR)xy=HRyx=Ryxy=xyy$. We could also take $HR$ to be $W'$, as $HRxy=Rxyx=yxx$, meaning $W$ could be simplified to 
+$CW'$. Note that because $C=RRR$, we could expand $W$ to $RRW'$.
+
+\section*{Problem 35}
+(a): Assume the combinators $B,R$ and $M$. Take $L$ to be $RMB$, as $RMBxy=BxMy=x(My)=x(yy)$. Now assume the combinators $B,C$ and $M$. Take $L$ to be 
+$CBM$, as $CBMxy=BxMy=x(My)=x(yy)$. This can be reduced to $B,M$ and $T$ in the following way: $CBM=(B(T(BBT))(BBT))BM$ by Problem 8.
+
+
+(b): Assume the combinators $B$ and $W$. Take $L$ to be $W_1B$, as $W_1Bxy=Bxyy=x(yy)$.
+
+
+(c): Let $L$ be $QM$, as $QMxy=x(My)=x(yy)$. When, reduced to $B,M$ and $T$, this is: $QM=CBM=(B(T(BBT))(BBT))BM$ by Problem 8.
+
+\section*{Problem 36}
+Take $S$ to be $W_2G$, as $W_2Gxyz=Gxyzz=xz(yz)$. This can be reduced to: $W_2G=B(BW)(BBC)$.
+
+\section*{Problem 37}
+Take $H$ to be $SR$, as $SRxyz=Ry(xy)z=xyzy$.
+
+\section*{Problem 38}
+Suppose we have $S$ and $T$. Take $W$ to be $ST$, as $STxy=Ty(xy)=xyy$. Take $M$ to be $STT$, as $STTx=Tx(Tx)=Txx=xx$.
+
+\section*{Problem 39}
+Take $W'$ to be $SRR$, as $SRRxy=Rx(Rx)y=Rxyx=yxx$. Then, by Problem 30, $CW'$ is a warbler.
+
+\section*{Problem 40}
+(a): Take $P$ to be $DW_1Q$, as $DW_1Qxyz=W_1Q(xy)z=Q(xy)zz=z(xyz)$.
+
+
+(b): Take $P_1$ to be $W_1BQ$, as $W_1BQxyz=BQxxyz=Q(xx)yz=y(xxz)$.
+
+
+(c): Take $P_2$ to be $W_1B_1xyz=B_1xyyz=x(yyz)$.
+
+
+(d): Take $P_3$ to be $DW_1Q_5C$, as $DW_1Q_5Cxyz=W_1Q_5(Cx)yz=Q_5(Cx)yyz=y(Cxyz)=y(xzy)$. More simply, take $P_3$ to be 
+$BCP$, as $BCPxyz=C(Px)yz=Pxzy=y(xzy)$. 
+
+\section*{Problem 41}
+Let $M$ be $PII$, as $PIIx=x(IIx)=x(x)=xx$.
+
+\section*{Problem 42}
+(a): Take $\Phi$ to be $B_1SB$, as $B_1SBxyzw=S(Bxy)zw=Bxyw(zw)=x(yw)(zw)$. 
+
+
+(b): The base case, where $n=1$, is part (a). Now assume the hypothesis holds for some $n$, that is:
+\[ \Phi_nxyzw_1...w_n=x(yw_1...w_n)(zw_1...w_n) \]
+Take $\Phi_{n+1}$ to be $B\Phi_n\Phi$, as 
+\[ B\Phi_n\Phi xyzw_1...w_{n+1}=\Phi_n(\Phi x)yzw_1...w_{n+1}=\Phi x(yw_1...w_n)(zw_1...w_n)w_{n+1} \]
+\[ =x(yw_1...w_nw_{n+1})(zw_1...w_nw_{n+1}) \]
 
 \end{document}
