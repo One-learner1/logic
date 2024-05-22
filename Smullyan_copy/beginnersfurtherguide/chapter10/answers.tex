@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=1in}
+\setlength{\parskip}{12pt}
+\title{Chapter 10 Answers}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Problem 1}
+Suppose that $B,M$ and $R$ are present. By Problem 1 of Chapter 9, $M(BxM)$ is a fixed point of every element $x$. Now, $BxM=RMBx$. Thus 
+$M(BxM)=M(RMBx)=BM(RMB)x$, which is to say that $BM(RMB)x=M(BxM)=xM(BxM)=x(BM(RMB)x)$, thus showing that $BM(RMB)$ is a sage.
+
+\section*{Problem 2}
+In a similar manner as in Problem 1, $BM(CBM)$ is a sage, as $BM(CBM)x=M(CBMx)=M(BxM)$ and thus $BM(CBM)x=M(BxM)=xM(BxM)=x(BM(CBM)x)$. 
+
+\section*{Problem 3}
+Recall Problem 30 of Chapter 8, which states that, if $\mathcal{C}$ contains a lark $L$ and a mocker $M$, and if the composition condition holds, then 
+$\mathcal{C}$ contains a sage, in particular, any element $\theta$ which combines $M$ with $L$ is a sage. In addition, recall that, by Problem 1 of Chapter 9, 
+if $B$ and $M$ are present, the composition condition holds, in particular, for any elements $x$ and $y$, $Bxy$ combines $x$ with $y$. 
+Thus, if we assume the combinators $B,M$ and $L$, the composition conditions holds, and any element $\theta$ which combines $M$ with $L$ is a sage. 
+In particular, the element $BML$ is a sage. Now, if the combinators $B,M$ and $R$ were present, we could, by Problem 35 of Chapter 9, take 
+$RMB$ to be $L$, meaning $BM(RMB)$ is a sage. In a similar fashion, if the combinators $B,M$ and $R$ were present, then, by the same problem, 
+we could take $CBM$ to be $L$, meaning $BM(CBM)$ is a sage. 
+
+\section*{Problem 4}
+Suppose the combinators $B,M$ and $W$ are present. By Problem 35 of Chapter 9, we could $L$ to be $WB$, meaning, by Problem 3, $BM(WB)$ is a sage.
+
+\section*{Problem 5}
+Suppose the combinators $B,L$ and $Q$ are present. Recall that $Qxyz=y(xz)$. Now, recall Problem 23 of Chapter 8, which states that $Lx(Lx)$ is a fixed point of 
+every $x$. Now, $Lx(Lx)=QL(Lx)x=B(QL)Lxx=(B(QL)Lx)x$. Thus take the sage $\theta$ to be $B(QL)Lx$, as 
+$x(B(QL)Lxx)=x(Lx(Lx))=Lx(Lx)=B(QL)Lxx$. 
+
+\section*{Problem 6}
+Recall that, because $CBxyz=Byxz=y(xz)$, $CB$ is a queer bird. In addition, recall that, by Problem 35 of Chapter 9, 
+$BWB$ is a lark, as $BWBxy=W(Bx)y=Bxyy=x(yy)$. Thus, by Problem 5, $B(QL)Lx$, that is, 
+$B(CB(BWB))(BWB)x$, is a sage.
+
+\section*{Problem 7}
+Suppose the combinators $Q,M$ and $L$ are present. Recall that $Lx(Lx)$ is a fixed point of every $x$. Now,
+$Lx(Lx)=M(Lx)=QLMx$. Thus take the sage $\theta$ to be $QLM$, as
+$x(QLMx)=x(Lx(Lx))=Lx(Lx)=QLMx$.
+
+\section*{Problem 8}
+Suppose the combinators $Q$ and $M$ are present. Take $L$ to be $QM$, as $QMxy=x(My)=x(yy)$, meaning it is a lark. Thus, by Problem 7, 
+$QLM$, that is, $Q(QM)M$, is a sage.
+
+\section*{Problem 9}
+Suppose the combinators $L$ and $S$ are present. Recall that $Lx(Lx)$ is a fixed point for every $x$. Take the sage to be 
+$SLL$, as $Lx(Lx)=SLLx$, meaning $x(SLLx)=x(Lx(Lx))=Lx(Lx)=Lx(Lx)=SLLx$.
+
+\section*{Problem 10}
+Suppose the combinators $B,W$ and $S$. Recall that, because $BWB$ is a lark, it follows by Problem 9 that 
+$S(BWB)(BWB)$ is a sage. In turn, $LS(BWB)$ is a sage, because $LS(BWB)=S(BWB)(BWB)$.
+
+\section*{Problem 11}
+Suppose the combinators $M$ and $P$ are present. Take the sage $\theta$ to be $PM(PM)$ (that is, $M(PM)$), as $PM(PM)x=x(M(PM)x)=x(PM(PM)x)$.
+
+\section*{Problem 12}
+Suppose the combinators $P$ and $W$ are present. Take the sage $\theta$ to be $WP(WP)$, as $WP(WP)x=P(WP)(WP)x=x(WP(WP)x)$. 
+
+\section*{Problem 13}
+Suppose the combinators $P$ and $I$ are present. Recall that $PII$ is a mocker, as $PIIx=x(IIx)=x(Ix)=x(x)=x$. Thus, by Problem 
+11, $P(PII)(P(PII))$ is a sage.
+
+\end{document}
