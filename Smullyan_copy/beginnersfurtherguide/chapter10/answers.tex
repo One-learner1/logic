@@ -42,21 +42,19 @@ $\mathcal{C}$ contains a sage, in particular, any element $\theta$ which combine
 if $B$ and $M$ are present, the composition condition holds, in particular, for any elements $x$ and $y$, $Bxy$ combines $x$ with $y$. 
 Thus, if we assume the combinators $B,M$ and $L$, the composition conditions holds, and any element $\theta$ which combines $M$ with $L$ is a sage. 
 In particular, the element $BML$ is a sage. Now, if the combinators $B,M$ and $R$ were present, we could, by Problem 35 of Chapter 9, take 
-$RMB$ to be $L$, meaning $BM(RMB)$ is a sage. In a similar fashion, if the combinators $B,M$ and $R$ were present, then, by the same problem, 
+$RMB$ to be $L$, meaning $BM(RMB)$ is a sage. In a similar fashion, if the combinators $B,M$ and $C$ were present, then, by the same problem, 
 we could take $CBM$ to be $L$, meaning $BM(CBM)$ is a sage. 
 
 \section*{Problem 4}
-Suppose the combinators $B,M$ and $W$ are present. By Problem 35 of Chapter 9, we could $L$ to be $WB$, meaning, by Problem 3, $BM(WB)$ is a sage.
+Suppose the combinators $B,M$ and $W$ are present. By Problem 35 of Chapter 9, we could take $L$ to be $BWB$, meaning, by Problem 3, $BM(BWB)$ is a sage.
 
 \section*{Problem 5}
-Suppose the combinators $B,L$ and $Q$ are present. Recall that $Qxyz=y(xz)$. Now, recall Problem 23 of Chapter 8, which states that $Lx(Lx)$ is a fixed point of 
-every $x$. Now, $Lx(Lx)=QL(Lx)x=B(QL)Lxx=(B(QL)Lx)x$. Thus take the sage $\theta$ to be $B(QL)Lx$, as 
-$x(B(QL)Lxx)=x(Lx(Lx))=Lx(Lx)=B(QL)Lxx$. 
+(Smullyan seems to assume $W$ is also present for this problem.) Recall that $Lx(Lx)$ is a fixed point for every $x$. Take the sage to be $W(QL(QL))$, as 
+$Lx(Lx)=QL(Lx)x=QL(QL)xx=W(QL(QL))x$, meaning $W(QL(QL))x=Lx(Lx)=x(Lx(Lx))=x(W(QL(QL))x)$.
 
 \section*{Problem 6}
 Recall that, because $CBxyz=Byxz=y(xz)$, $CB$ is a queer bird. In addition, recall that, by Problem 35 of Chapter 9, 
-$BWB$ is a lark, as $BWBxy=W(Bx)y=Bxyy=x(yy)$. Thus, by Problem 5, $B(QL)Lx$, that is, 
-$B(CB(BWB))(BWB)x$, is a sage.
+$BWB$ is a lark, as $BWBxy=W(Bx)y=Bxyy=x(yy)$. Thus, by Problem 5, $W(QL(QL))$, that is, $W(CB(BWB)(CB(BWB))=W(B(CB(BWB))(BWB))$ is a sage. 
 
 \section*{Problem 7}
 Suppose the combinators $Q,M$ and $L$ are present. Recall that $Lx(Lx)$ is a fixed point of every $x$. Now,
@@ -73,7 +71,10 @@ $SLL$, as $Lx(Lx)=SLLx$, meaning $x(SLLx)=x(Lx(Lx))=Lx(Lx)=Lx(Lx)=SLLx$.
 
 \section*{Problem 10}
 Suppose the combinators $B,W$ and $S$. Recall that, because $BWB$ is a lark, it follows by Problem 9 that 
-$S(BWB)(BWB)$ is a sage. In turn, $LS(BWB)$ is a sage, because $LS(BWB)=S(BWB)(BWB)$.
+$S(BWB)(BWB)$ is a sage. In turn, $WS(BWB)$ is a sage, as $WS(BWB)=S(BWB)(BWB)$.
+
+
+\textit{Note}: Smullyan says that $S(BWB(BWB))$ is a sage, but this seems incorrect. We know that $SLL$ is a sage, not $S(LL)$.
 
 \section*{Problem 11}
 Suppose the combinators $M$ and $P$ are present. Take the sage $\theta$ to be $PM(PM)$ (that is, $M(PM)$), as $PM(PM)x=x(M(PM)x)=x(PM(PM)x)$.
@@ -83,6 +84,97 @@ Suppose the combinators $P$ and $W$ are present. Take the sage $\theta$ to be $W
 
 \section*{Problem 13}
 Suppose the combinators $P$ and $I$ are present. Recall that $PII$ is a mocker, as $PIIx=x(IIx)=x(Ix)=x(x)=x$. Thus, by Problem 
-11, $P(PII)(P(PII))$ is a sage.
+11, $P(PII)(P(PII))$ is a sage (or, more simply, $PII(P(PII))$).
+
+\section*{Problem 14}
+Take $U$ to be $W_1P_1$, as $W_1P_1xy=P_1xyy=y(xxy)$.
+
+\section*{Problem 15}
+Take $U$ to be $WP$, as $WPxy=Pxxy=y(xxy)$.
+
+\section*{Problem 16}
+Take $U$ to be $PM$, as $PMxy=y(Mxy)=y(xxy)$.
+
+\section*{Problem 17}
+Take $U$ to be $L(SI)$, as $L(SI)xy=SI(xx)y=Iy((xx)y)=y(xxy)$.
+
+\section*{Problem 18}
+Take $\theta$ to be $UU$, as $UUx=x(UUx)$.
+
+\section*{Problem 19}
+Take $O$ to be $QQW$, as $QQWxy=W(Qx)y=Qxyy=y(xy)$.
+
+\section*{Problem 20}
+Take $O$ to be $BW(CB)$, as $BW(CB)xy=W(CBx)y=CBxyy=Byxy=y(xy)$.
+
+\section*{Problem 21}
+Take $O$ to be $SI$, as $SIxy=Iy(xy)=y(xy)$.
+
+\section*{Problem 22}
+Take $O$ to be $PI$, as $PIxy=y(Ixy)=y(xy)$.
+
+\section*{Problem 23}
+Recall that, if $B$ and $M$ are present, $M(BxM)$ is a fixed point for every $x$. Thus $M(BOM)$ is a fixed point of $O$. That is a sage, as 
+$M(BOM)x=O(M(BOM))x=x(M(BOM)x)$.
+
+\section*{Problem 24}
+Recall that, if $L$ is present, $Lx(Lx)$ is a fixed point of every $x$. Thus $LO(LO)$ is a fixed point of $O$. That is a sage, as
+$LO(LO)x=O(LO(LO))x=x(LO(LO)x)$.
+
+\section*{Problem 25}
+Take $U$ to be $BOM$, as $BOMxy=O(Mx)y=y(Mxy)=y(xxy)$.
+
+\section*{Problem 26}
+Take $U$ to be $LO$, as $LOxy=O(xx)y=y(xxy)$.
+
+\section*{Problem 27}
+Suppose $O'$ is a fixed point of $O$. Thus $O'x=OO'x=x(O'x)$, meaning $O'$ is a sage.
+
+\section*{Problem 28}
+Suppose $\theta$ is a sage. Thus $\theta x=x(\theta x)$, and $O\theta x=x(\theta x)=\theta x$, meaning $\theta x$ is a fixed point of $O$ for every $x$. Smullyan seems to assume 
+that we could take $x$ to be an empty element, which would of course mean that $O\theta=\theta$, that is, $\theta$ is a fixed point of $O$.
+
+\section*{Problem 29}
+Suppose we have a nice combinator $N$. Now consider any pair of elements $(x_1,x_2)$. Let $y_1=Nx_1x_1x_2$, and $y_2=Nx_2x_1x_2$. 
+Then $y_1=Nx_1x_1x_2=x_1(Nx_1x_1x_2)(Nx_2x_1x_2)$ and $y_2=Nx_2x_1x_2=x_2(Nx_1x_1x_1)(Nx_2x_1x_2)$, showing $(y_1,y_2)$ is a double fixed point of 
+$(x_1,x_2)$, meaning the weak double fixed point property holds.
+
+\section*{Problem 30}
+(a): Take $n$ to be $C^{**}V^*\Phi_3W(C(W^{**}R^*))$, as 
+\[ C^{**}V^*\Phi_3W(C(W^{**}R^*))wzxy=V^*\Phi_3W(C(W^{**}R^*))zwxy \]
+\[ =\Phi_3zW(C(W^{**}R^*))wxy=z(Wwxy)(C(W^{**}R^*)wxy) \]
+\[ =z(wxxy)(W^{**}R^*xwy)=z(wxxy)(R^*xwyy)=z(wxxy)(wyxy) \]
+Alternatively, we could, as Smullyan does, take $n$ to be $C(V^*\Phi_3W(W_2C))$, as
+\[ C(V^*\Phi_3W(W_2C))wzxy=V^*\Phi_3W(W_2C)zwxy \]
+\[ =\Phi_3zW(W_2C)wxy=z((Wwxy)(W_2Cwxy)=z(wxxy)(Cwxyy)=z(wxxy)(wyxy) \]
+
+
+(b): Recall by Problem 35 of Chapter 9 that $L=B(TM)B$, meaning a lark is present, and that $M(Lx)$ is a fixed point for every $x$. Thus $M(Ln)$ is a fixed point of $n$. 
+Now suppose that $n'$ is any fixed point of $n$, that is, $nn'=n'$. Thus $n'zxy=nn'zxy=z(n'xxy)(n'yxy)$.
+
+\section*{Problem 31}
+Take $\theta_1$ to be $WN$, and $\theta_2$ to be $W_1(CN)$. Note that $WNxy=Nxxy$, and $W_1(CN)xy=CNxyy=Nyxy$. Thus 
+\[ \theta_1xy=WNxy=Nxxy=x(Nxxy)(Nyxy)=x(\theta_1 xy)(\theta_2 xy) \] Similarly,
+\[ \theta_2xy=W_1(CN)xy=CNxyy=Nyxy=y(Nxxy)(Nyxy)=y(\theta_1 xy)(\theta_2 xy) \] meaning $(\theta_1,\theta_2)$ is a double sage.
+
+\section*{Problem 32}
+First, we can derive $O_1$ and $O_2$ from $B,T$ and $M$. Take $O_1$ to be $W_2(V^*\Phi_2)$ and $O_2$ to be $W_3(C^{***}V^*\Phi_2)$, as
+\[ O_1zwxy=W_2(V^*\Phi_2)zwxy=V^*\Phi_2zwxxy=\Phi_2xzwxy=x(zxy)(wxy) \] and
+\[ O_2zwxy=W_3(C^{***}V^*\Phi_2)zwxy=C^{***}V^*\Phi_2zwxyy=V^*\Phi_2zwyxy=\Phi_2yzwxy=y(zxy)(wxy) \]
+Now, consider any $O_1,O_2$. Now consider some double fixed point $(y_1,y_2)$ of $(O_1,O_2)$. Thus $O_1y_1y_2=y_1$ and $O_2y_1y_2=y_2$. 
+Thus, for every $x$ and $y$, \[ y_1xy=O_1y_1y_2xy=x(y_1xy)(y_2xy) \] and \[ y_2xy=O_2y_1y_2xy=y(y_1xy)(y_2xy) \] meaning 
+$(y_1,y_2)$ is a double sage.
+
+
+We can verify the statement that every double sage is a double fixed point of any dobule oracle in the following way. In particular, we show this for the double oracle 
+$(O_1,O_2)$ (this is what Smullyan did, and I could not find a result for double oracles in general).
+Now consider any double sage $(\theta_1,\theta_2)$. Thus
+\[ \theta_1xy=x(\theta_1xy)(\theta_2xy) \]
+\[ \theta_2xy=y(\theta_1xy)(\theta_2xy) \] for all $x$ and $y$. But also
+\[ O_1\theta_1\theta_2xy=x(\theta_1xy)(\theta_2xy) \]
+\[ O_2\theta_1\theta_2xy=y(\theta_1xy)(\theta_2xy) \] for all $x$ and $y$. Thus
+\[ O_1\theta_1\theta_2xy=\theta_1xy \] and \[ O_2\theta_1\theta_2xy=\theta_2xy \]
+Taking $x$ and $y$ for empty elements, we receive $O_1\theta_1\theta_2=\theta_1$ and $O_2\theta_1\theta_2=\theta_2$, meaning 
+$(\theta_1,\theta_2)$ is a double fixed point of $(O_1,O_2)$.
 
 \end{document}
