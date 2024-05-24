@@ -40,12 +40,12 @@ $x_1x_2(x_1x_2)$. But $x_1x_2(x_1x_2)\ne (x_1x_2)$. Thus this definition does no
 $t_1t_2t_3=x_1x_2(x_1x_2)$ and from that construct the sequence $k_1=(x_1x_2)$, which would show that $(x_1x_2)$ is a term.
 
 \section*{Justification for Term Induction}
-The principle of term induction could use a bit of clarification as regards its justification. Now, suppose $S$ is a set whose members are variables or constants or both. 
-Let $S^+$ be the set of all terms built from elements of $S$ (and paranetheses). Now suppose that a property $P$ holds for all elements of $S$, and if any terms 
+Here is why term induction can be derived from mathematical induction. Now, suppose $S$ is a set whose members are variables or constants or both. 
+Let $S^+$ be the set of all terms built from elements of $S$ (and parantheses). Now suppose that a property $P$ holds for all elements of $S$, and if any terms 
 $t_1$ and $t_2$ have property $P$, then so does $(t_1t_2)$. Now, $S^+$ consists of all variables and constants in $S$, in fact, all elements of $S$. We wish to show that 
 for all $n$ being the number of occurrences of elements of $S$ in a term in $S^+$, that term has property $P$. The base case is obvious, as terms having only 1 occurence are 
 either variables or constants, and these are assumed to have property $P$ (as they are all in $S$). Now suppose the assumption holds for all number $<n$. A term having 
-$n+1$ occurences of elements of $S$ must be of the form $(t_1t_2)$ where $t_1,t_2$ both have less than $n$ occurences of elements of $S$ in them. Hence both 
+$n$ occurences of elements of $S$ must be of the form $(t_1t_2)$ where $t_1,t_2$ both have less than $n$ occurences of elements of $S$ in them. Hence both 
 $t_1$ and $t_2$ have property $P$, meaning so does $(t_1t_2)$, that is, $t$. Thus we have proven by complete induction that all elements of $S^+$ have the property $P$.
 
 \section*{Problem 2}
@@ -58,10 +58,11 @@ $K\mathcal{W}$ contains only those variables in $\mathcal{W}$, and $\mathcal{W}$
 (3) also holds, as $K\mathcal{W}x=\mathcal{W}$. Thus $K\mathcal{W}$ is an $x$-eliminate of $\mathcal{W}$.
 
 
-(iii): Suppose that $\mathcal{W}_x$ and $\mathcal{V}_x$ are $x$-eliminates of $\mathcal{W}$ and $\mathcal{V}$ respectively. Thus 
+(iii): Suppose that $\mathcal{W}_x$ and $\mathcal{V}_x$ are $x$-eliminates of $\mathcal{W}$ and $\mathcal{V}$, respectively. Thus 
 $(\mathcal{W}\mathcal{V})_x$ is $S\mathcal{W}_x\mathcal{V}_x$. (1) holds, as $x$ was assumed to not occur in either of $\mathcal{W}_x$ or $\mathcal{V}_x$. 
 (2) holds in the following way: The variables of $S\mathcal{W}_x\mathcal{V}_x$ are those of $\mathcal{W}$ and $\mathcal{V}$. The variables in 
-$(\mathcal{W}\mathcal{V})$. Because we assumed the variables of $\mathcal{W}_x$ and $\mathcal{V}_x$ occured in $\mathcal{W}$ and $\mathcal{V}$, respectively, it thus 
+$(\mathcal{W}\mathcal{V})$ are those in $\mathcal{W}$ or in $\mathcal{V}$. 
+Because we assumed the variables of $\mathcal{W}_x$ and $\mathcal{V}_x$ occured in $\mathcal{W}$ and $\mathcal{V}$, respectively, it thus 
 follows that the variables of $S\mathcal{W}_x\mathcal{V}_x$ are all in $(\mathcal{W}\mathcal{V})$. (3) also holds, as 
 $S\mathcal{W}_x\mathcal{V}_xx=\mathcal{W}_xx(\mathcal{V}x)=\mathcal{W}(\mathcal{V})=\mathcal{W}\mathcal{V}$. Thus $S\mathcal{W}_x\mathcal{V}_x$ is an $x$-eliminate of 
 $(\mathcal{W}\mathcal{V})$.
@@ -82,7 +83,7 @@ $\mathcal{W}_xx=\mathcal{W}x=\mathcal{W}x$.
 
 \section*{Problem 4}
 (2) is the one which is true. For consider $\mathcal{W}_{x,y}$. (1) and (2) obviously hold. Because $\mathcal{W}_{x,y}=(\mathcal{W}_x)_y$, we have
-$\mathcal{W}_{x,y}yx=(\mathcal{W}_x)_yyx=\mathcal{W}_xx=\mathcal{W}$.
+$\mathcal{W}_{x,y}yx=(\mathcal{W}_x)_yyx=\mathcal{W}_xx=\mathcal{W}$, meaning (3) also holds.
 
 
 Here is an explicit proof of Proposition 2 from Problem 4 and mathematical induction. The base cases of Proposition 2, namely when $n\le 2$, are just Problems 2 and 4. 
