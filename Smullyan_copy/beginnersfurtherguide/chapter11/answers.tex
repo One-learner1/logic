@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=1in}
+\setlength{\parskip}{12pt}
+\title{Chapter 11 Answers}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Problem 1}
+An expression $t$ is a term iff there is some sequence $t_1,...,t_n$ such that every $t_i$ is either a variable or a constant, or is an expression of the form 
+$(t_jt_k)$ for some $j<i$ and $k<i$, and such that there is some sequence $k_1,...,k_m$ such that every $k_i$ is some $t_i$ and 
+$k_1...k_m=t$. Smullyan's answer seems to be incorrect here. For even consider the term $(x_1x_2)$. According to his answer for Problem 1, we need to find a finite sequence 
+$t_1...t_n=(x_1x_2)$ such that for each $i\le n$, either $t_i$ is a variable or constant, or there are numbers $j_1$ and $j_2$ both less than $i$ such that 
+$t_i=(t_{j1}t_{j2})$. But such a sequence cannot be found. We would need to have some $t_i=(x_1x_2)$. Because this is neither a constant nor a variable, we would need 
+to have $j_1$ and $j_2$ such that $(x_1x_2)=(t_{j1}t_{j2})$ for $j_1<i$ and $j_2<i$. Thus the sequence would be of the form
+$x_1x_2(x_1x_2)$. But $x_1x_2(x_1x_2)\ne (x_1x_2)$. Thus this definition does not work. Instead, with the preceeding definition, one could construct the sequence 
+$t_1t_2t_3=x_1x_2(x_1x_2)$ and from that construct the sequence $k_1=(x_1x_2)$, which would show that $(x_1x_2)$ is a term.
+
+\section*{Justification for Term Induction}
+The principle of term induction could use a bit of clarification as regards its justification. Now, suppose $S$ is a set whose members are variables or constants or both. 
+Let $S^+$ be the set of all terms built from elements of $S$ (and paranetheses). Now suppose that a property $P$ holds for all elements of $S$, and if any terms 
+$t_1$ and $t_2$ have property $P$, then so does $(t_1t_2)$. Now, $S^+$ consists of all variables and constants in $S$, in fact, all elements of $S$. We wish to show that 
+for all $n$ being the number of occurrences of elements of $S$ in a term in $S^+$, that term has property $P$. The base case is obvious, as terms having only 1 occurence are 
+either variables or constants, and these are assumed to have property $P$ (as they are all in $S$). Now suppose the assumption holds for all number $<n$. A term having 
+$n+1$ occurences of elements of $S$ must be of the form $(t_1t_2)$ where $t_1,t_2$ both have less than $n$ occurences of elements of $S$ in them. Hence both 
+$t_1$ and $t_2$ have property $P$, meaning so does $(t_1t_2)$, that is, $t$. Thus we have proven by complete induction that all elements of $S^+$ have the property $P$.
+
+\section*{Problem 2}
+(i): Suppose that $\mathcal{W}$ is $x$. Hence $\mathcal{W}_x$ is $I$. (1) and (2) hold, as $I$ contains no variables. Also, $\mathcal{W}_xx=Ix=x=\mathcal{W}$, 
+meaning condition (3) holds. Hence $I$ is an $x$-eliminate of $\mathcal{W}$.
+
+
+(ii): Suppose that $\mathcal{W}$ is any term in which $x$ does not occur. Hence $\mathcal{W}_x$ is $K\mathcal{W}$. (1) holds, as 
+$K\mathcal{W}$ contains only those variables in $\mathcal{W}$, and $\mathcal{W}$ does not contain $x$; this also means (2) holds. 
+(3) also holds, as $K\mathcal{W}x=\mathcal{W}$. Thus $K\mathcal{W}$ is an $x$-eliminate of $\mathcal{W}$.
+
+
+(iii): Suppose that $\mathcal{W}_x$ and $\mathcal{V}_x$ are $x$-eliminates of $\mathcal{W}$ and $\mathcal{V}$ respectively. Thus 
+$(\mathcal{W}\mathcal{V})_x$ is $S\mathcal{W}_x\mathcal{V}_x$. (1) holds, as $x$ was assumed to not occur in either of $\mathcal{W}_x$ or $\mathcal{V}_x$. 
+(2) holds in the following way: The variables of $S\mathcal{W}_x\mathcal{V}_x$ are those of $\mathcal{W}$ and $\mathcal{V}$. The variables in 
+$(\mathcal{W}\mathcal{V})$. Because we assumed the variables of $\mathcal{W}_x$ and $\mathcal{V}_x$ occured in $\mathcal{W}$ and $\mathcal{V}$, respectively, it thus 
+follows that the variables of $S\mathcal{W}_x\mathcal{V}_x$ are all in $(\mathcal{W}\mathcal{V})$. (3) also holds, as 
+$S\mathcal{W}_x\mathcal{V}_xx=\mathcal{W}_xx(\mathcal{V}x)=\mathcal{W}(\mathcal{V})=\mathcal{W}\mathcal{V}$. Thus $S\mathcal{W}_x\mathcal{V}_x$ is an $x$-eliminate of 
+$(\mathcal{W}\mathcal{V})$.
+
+
+Note that this is why Proposition 1 follows from Problem 2 by term induction. We wish $S^+$ to be the set of all simple terms. Thus let $S$ be the set of all variables, as 
+well as the constants $S,K$ and $I$. Hence $S^+$ is the set of all terms built from elements of $S$ and parentheses, that is, all simple terms. Let $P$ be the property that 
+$\mathcal{W}_x$ is an $x$-eliminate of $\mathcal{W}$. We have shown by (i) that 
+$\mathcal{W}_x$ for $\mathcal{W}$ being a variable is an $x$-eliminate of $\mathcal{W}$. Similarly, for $S,K$ and $I$, we showed in (ii) that 
+their respective $\mathcal{W}_x$'s are $x$-eliminates of them. Thus we have shown that $P$ holds for all elements of $S$. Now suppose we have any terms $t_1$ and $t_2$ 
+of $S^+$ such that $t_1$ and $t_2$ have the property $P$. Because $t_1$ and $t_2$ are simple terms, we thus showed in (iii) that $(t_1t_2)$ also has property $P$. 
+Thus, by term induction, $P$ holds for all elements in $S^+$, which is what we were required to prove. 
+
+\section*{Problem 3}
+Suppose that $x$ does not occur in $\mathcal{W}$. We prove that $\mathcal{W}$ is an $x$-eliminate of $\mathcal{W}x$. (1) holds, as 
+$x$ was assumed to not occur in $\mathcal{W}$. (2) obviously holds, as $\mathcal{W}$ is itself part of $\mathcal{W}x$. (3) also obviously holds, as 
+$\mathcal{W}_xx=\mathcal{W}x=\mathcal{W}x$.
+
+\section*{Problem 4}
+(2) is the one which is true. For consider $\mathcal{W}_{x,y}$. (1) and (2) obviously hold. Because $\mathcal{W}_{x,y}=(\mathcal{W}_x)_y$, we have
+$\mathcal{W}_{x,y}yx=(\mathcal{W}_x)_yyx=\mathcal{W}_xx=\mathcal{W}$.
+
+
+Here is an explicit proof of Proposition 2 from Problem 4 and mathematical induction. The base cases of Proposition 2, namely when $n\le 2$, are just Problems 2 and 4. 
+Now suppose the result holds for some $n$, that is, $\mathcal{W}_{x_nx_{n-1}...x_1}$ is an $x_1,x_2,...,x_n$ eliminate of $\mathcal{W}$. Now, 
+$\mathcal{W}_{x_{n+1}x_n...x_1}$ is $(...(\mathcal{W}_{x_{n+1}})_{x_n})...)_{x_1})$. Conditions (1) and (2) obviously hold. As for (3), 
+\[ \mathcal{W}_{x_{n+1}x_n...x_1}x_1x_2...x_{n+1}=(...(\mathcal{W}_{x_{n+1}})_{x_n})...)_{x_1})x_1x_2...x_{n+1} \]
+\[ =(...(\mathcal{W}_{x_{n+1}})_{x_n})...)_{x_2}x_2...x_{n+1} \]
+\[ =(...(\mathcal{W}_{x_{n+1}})_{x_n})...)_{x_3}x_3...x_{n+1} \]
+\[ ... \]
+\[ =\mathcal{W}_{x_{n+1}}x_{n+1}=\mathcal{W} \]
+
+\end{document} 
