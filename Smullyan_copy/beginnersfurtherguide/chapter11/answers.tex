@@ -103,6 +103,12 @@ $A$ is the combinator which realizes the term $t((xx),x_1,...,x_n)$. In this cas
 as $AAx_1,...,x_n=t(AA,x_1,...,x_n)$.
 
 
+\textit{Note to self}: Someone could ask: \textquote{We have already proved that there is some combinator that realizes every simple term $t$. So, if we have a given 
+simple term $t(x,x_1,...,x_n)$, we could, for \textit{any} combinator $A$, take $t_1$ to be $t(A,x_1,...,x_n)$, and then there is some combinator $B$ which realizes 
+$t_1$. Doesn't this prove the fixed point theorem?} It shows that there is, for each combinator $A$, \textit{some other} combinator $B$ that realizes 
+$t(A,x_1,...,x_n)$. But this means $B$ could be something other than $A$. The theorem wants to have $A$ and $B$ be the same, so this line of reasoning does not work.  
+
+
 (2): Part (a) of the exercise is a special case when $t(x_1,x,y)$ is the term $x(x_1y)$ (this is just the queer bird $Q$, as $Qxyz=y(xz)$), 
 as then $\Gamma xy=x(\Gamma y)$. Part (b) of the exercise follows when 
 $t(x_1,x,y)$ is the term $x_1yx$ (this is just the cardinal $C$, which was defined as $Cxyz=xzy$), as then $\Gamma xy=\Gamma yx$.
@@ -133,5 +139,39 @@ the fact that we are working in a complete system, every pair of terms has a cro
 $(\Gamma_1,\Gamma_2)$ be the cross point of $(A_2,A_1)$, as then $A_2\Gamma_1=\Gamma_2$ and $A_1\Gamma_2=\Gamma_1$, meaning:
 \[ \Gamma_1x_1...x_n=A_1\Gamma_2x_1...x_n=t_1(\Gamma_2,x_1,...,x_n) \]
 \[ \Gamma_2x_1...x_n=A_2\Gamma_1x_1...x_n=t_2(\Gamma_1,x_1,...,x_n) \] 
+
+\section*{Problem 7}
+We wish to prove Proposition 3. This can be done by using term induction. Take the set $S$ to be all of the variables, as well as $S,B,C$ and $I$ (the only constants in 
+our system). Hence $S^+$ is the set of all nice terms. Now, let $P$ be the property that, if the term $\mathcal{W}$ is nice and such that $x$ occurs in it, then 
+$\mathcal{W}_x$ is a nice-$x$-eliminate of $\mathcal{W}$. We need to first show that $P$ holds for all elements of $S$, and then show that it holds for all elements of 
+$S^+$. Well, for every element of $S$, it either is $x$ or it 
+isn't. If it isn't, the property vacuosly holds. If it is $x$, then $\mathcal{W}_x$ is $I$. Recall the conditions of being a nice-$x$-eliminate of $\mathcal{W}$:\newline
+(1) The variable $x$ does not occur in $\mathcal{W}_x$.\newline
+(2) All variables of $\mathcal{W}_x$ occur in $\mathcal{W}$.\newline
+(3) The equation $\mathcal{W}_xx=\mathcal{W}$ holds.\newline
+Because $I$ has no variables, conditions (1) and (2) obviously hold. (3) also holds, as $Ix=x=\mathcal{W}$. Thus $I$ is an nice-$x$-eliminate of 
+$x$. We have therefore shown that $P$ holds for all elements in $S$. Now consider any terms $t_1$ and $t_2$ of $S^+$. Suppose $t_1$ and $t_2$ have property $P$. 
+Consider the term $(t_1t_2)$. There are now multiple cases.
+
+
+In the first case, $x$ occurs both in $t_1$ and $t_2$. Thus $(t_1t_2)_x$ is $S(t_1)_x(t_2)_x$. Conditions (1) and (2) obviously hold (by the assumption of 
+$t_1$ and $t_2$ having property $P$). (3) also holds, as $S(t_1)_x(t_2)_xx=(t_1)_xx((t_2)_xx)=t_1(t_2)=t_1t_2$.
+
+
+In the second case, $x$ occurs in $t_1$ but not in $t_2$. Thus $(t_1t_2)_x$ is $C(t_1)_xt_2$. Conditions (1) and (2) obviously hold. (3) also holds, as 
+$C(t_1)_xt_2x=(t_1)_xxt_2=t_1t_2$.
+
+
+In the third case, $x$ occurs in $t_2$ but not in $t_1$. There are then two sub-cases. In the first, $t_2$ is just $x$. Then $(t_1t_2)_x$ is $t_1$. 
+Again, conditions (1) and (2) obviously hold. As for (3), it also holds, as $t_1x=t_1t_2$ (as we assumed $t_2$ was just $x$). In the second sub-case, 
+$t_2\ne x$, but $x$ occurs in $t_2$ but not in $t_1$. Then $(t_1t_2)_x$ is $Bt_1(t_2)_x$. Again, (1) and (2) obviously hold. As for (3), it also holds, as
+$Bt_1(t_2)_xx=t_1((t_2)_xx)=t_1(t_2)=t_1t_2$.
+
+
+The last case is the vacuous one, in which neither $t_1$ or $t_2$ contain $x$. Then $(t_1t_2)$ would also not contain $x$, meaning $P$ would hold vacuously for it.
+
+
+Thus, in all cases, $(t_1t_2)$ also has the property $P$. Then, by term induction, all elements of $S^+$ have the property $P$. As a consequence of this, 
+for any nice term $\mathcal{W}$ in which $x$ occurs, $\mathcal{W}_x$ is a nice-$x$-eliminate of $\mathcal{W}$.
 
 \end{document} 
