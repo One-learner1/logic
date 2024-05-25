@@ -95,4 +95,43 @@ $\mathcal{W}_{x_{n+1}x_n...x_1}$ is $(...(\mathcal{W}_{x_{n+1}})_{x_n})...)_{x_1
 \[ ... \]
 \[ =\mathcal{W}_{x_{n+1}}x_{n+1}=\mathcal{W} \]
 
+\section*{Problem 5}
+(1): We can prove this in two ways. First, suppose that $A$ is the combinator which realizes the term $t(x,x_1,...,x_n)$. Because we are working in a complete system, 
+we can consider the fixed point $A'$ of $A$. Take $\Gamma$ to be $AA'$ (or, equivalently, just $A'$), 
+as $AA'x_1...x_n=t(A',x_1,...,x_n)=t(AA'(x_1,...,x_n))$. An alternative proof instead supposes that 
+$A$ is the combinator which realizes the term $t((xx),x_1,...,x_n)$. In this case, we take $\Gamma$ to be $AA$,
+as $AAx_1,...,x_n=t(AA,x_1,...,x_n)$.
+
+
+(2): Part (a) of the exercise is a special case when $t(x_1,x,y)$ is the term $x(x_1y)$ (this is just the queer bird $Q$, as $Qxyz=y(xz)$), 
+as then $\Gamma xy=x(\Gamma y)$. Part (b) of the exercise follows when 
+$t(x_1,x,y)$ is the term $x_1yx$ (this is just the cardinal $C$, which was defined as $Cxyz=xzy$), as then $\Gamma xy=\Gamma yx$.
+
+\section*{Problem 6}
+Suppose the terms $t_1(x,x_1,...,x_n)$ and $t_2(x,x_1,...,x_n)$ are realizable by $A_1$ and $A_2$, respectively. Because the system is complete, we have the combinator 
+$A_1(A_2(BA_1A_2)')$ for $(BA_1A_2)'$ the fixed point of $(BA_1A_2)$. Take $\Gamma_1$ to be $A_1(A_2(BA_1A_2)')$, and $\Gamma_2$ to be 
+$A_2(BA_1A_2)'$. Then:
+\[ A_1(A_2(BA_1A_2)')x_1...x_n=t_1(A_2(BA_1A_2)',x_1,...,x_n) \] and 
+\[ A_2(BA_1A_2)'x_1....x_n=t_2((BA_1A_2)',x_1,...,x_n) \]
+\[ =t_2(BA_1A_2(BA_1A_2)',x_1,...,x_n) \]
+\[ =t_2(A_1(A_2(BA_1A_2)'),x_1,...,x_n) \]
+That is:
+\[ \Gamma_1x_1...x_n=t_1(\Gamma_2,x_1,...,x_n) \]
+\[ \Gamma_2x_1...x_n=t_2(\Gamma_1,x_1,...,x_n) \]
+
+
+Smullyan provides two alternative solutions. One takes $A_1$ and $A_2$ to be the combinators which realize 
+$t_1(xyx,x_1,...,x_n)$ and $t_2(xyx,x_1,...,x_n)$, respectively. That is:
+\[ A_1xyx_1...x_n=t_1(xyx,x_1,...,x_n) \] \[ A_2xyx_1...x_n=t_2(xyx,x_1,...,x_n) \] and then the theorem is satisfied by taking $\Gamma_1$ to be 
+$A_1A_2A_1$ and $\Gamma_2$ to be $A_2A_1A_2$, as:
+\[ A_1A_2A_1=t_1(A_2A_1A_2,x_1,...,x_n) \]
+\[ A_2A_1A_2=t_2(A_1A_2A_1,x_1,...,x_n) \]
+
+
+The other proof uses the previously introduced notion of a cross point $(x,y)$ of a pair $(A,B)$ meaning $Ax=y$ and $By=x$. By Problem 6 of Chapter 8, and 
+the fact that we are working in a complete system, every pair of terms has a cross point. Thus, if $A_1$ and $A_2$ realize $t_1$ and $t_2$ respectively, we let
+$(\Gamma_1,\Gamma_2)$ be the cross point of $(A_2,A_1)$, as then $A_2\Gamma_1=\Gamma_2$ and $A_1\Gamma_2=\Gamma_1$, meaning:
+\[ \Gamma_1x_1...x_n=A_1\Gamma_2x_1...x_n=t_1(\Gamma_2,x_1,...,x_n) \]
+\[ \Gamma_2x_1...x_n=A_2\Gamma_1x_1...x_n=t_2(\Gamma_1,x_1,...,x_n) \] 
+
 \end{document} 
