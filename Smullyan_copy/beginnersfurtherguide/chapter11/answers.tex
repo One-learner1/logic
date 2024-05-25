@@ -174,4 +174,17 @@ The last case is the vacuous one, in which neither $t_1$ or $t_2$ contain $x$. T
 Thus, in all cases, $(t_1t_2)$ also has the property $P$. Then, by term induction, all elements of $S^+$ have the property $P$. As a consequence of this, 
 for any nice term $\mathcal{W}$ in which $x$ occurs, $\mathcal{W}_x$ is a nice-$x$-eliminate of $\mathcal{W}$.
 
+
+Here is the proof of the generalization of this result: Suppose that the variables $x_1,...,x_n$ occur in some nice term $\mathcal{W}$. We then must show that 
+$\mathcal{W}_{x_nx_{n-1}...x_1}$ is a nice $x_1,...,x_n$ eliminate of $\mathcal{W}$. Recall that 
+$\mathcal{W}_{x_nx_{n-1}...x_1}$ is an abbreviation for $(...(\mathcal{W}_{x_n})_{x_{n-1}})...)_{x_1})$. 
+This can be proven by induction on $n$. The base case is just the above result, when 
+we showed that for any nice term $\mathcal{W}$ in which $x$ occurs, the term $\mathcal{W}_x$ is a nice $x$-eliminate of $\mathcal{W}$. Now consider any $n>1$. 
+Now, conditions (1) and (2) obviously hold for $\mathcal{W}_{x_{n+1}x_n...x_1}$. As for (3),
+\[ \mathcal{W}_{x_{n+1}x_n...x_1}x_1x_2...x_{n+1}=(...(\mathcal{W}_{x_{n+1}})x_n)...)x_1)x_1x_2...x_{n+1} \]
+\[ =(...(\mathcal{W}_{x_{n+1}})_{x_n})...)x_2x_2...x_{n+1} \]
+\[ =(...(\mathcal{W}_{x_{n+1}})_{x_n})...)x_3x_3...x_{n+1} \]
+\[ =\mathcal{W}_{x_{n+1}}x_{n+1} \]
+\[ =\mathcal{W} \]
+
 \end{document} 
