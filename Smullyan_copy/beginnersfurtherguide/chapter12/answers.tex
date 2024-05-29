@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=1in}
+\setlength{\parskip}{12pt}
+\title{Chapter 12 Answers}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{1}
+(a): Take $N$ to be $Vft$, as $Vftt=tft=f$, and $Vftf=fft=t$.
+
+
+(b): Take $\wedge$ to be $Ff$, as $Fftt=ttf=t$, $Fftf=ftf=f$, $Ffft=tff=f$, and $Ffff=fff=f$.
+
+
+(c): Take $\vee$ to be $Vt$, as $Vttt=ttt=t$, $Vttf=ftt=t$, $Vtft=ttf=t$, and $Vtff=ftf=f$.
+
+
+(d): Take $\supset$ to $Rt$, as $Rttt=ttt=t$, $Rttf=tft=f$, $Rtft=ftt=t$, and $Rtff=fft=t$.
+
+
+(e): Take $\equiv$ to be the combinator \[ W(W_2(F^{**}(R^*(R^*(B_1E\supset )\wedge )\supset ))) \]
+as \[ W(W_2(F^{**}(R^*(R^*(B_1E\supset )\wedge )\supset )))pq \]
+\[ =W_2(F^{**}(R^*(R^*(B_1E\supset )\wedge )\supset ))ppq \]
+\[ =F^{**}(R^*(R^*(B_1E\supset )\wedge )\supset )ppqq \]
+\[ =R^*(R^*(B_1E\supset )\wedge )\supset pqqp \]
+\[ =R^*(B_1E\supset )\wedge pq\supset qp \]
+\[ =B_1E\supset pq\wedge\supset qp \]
+\[ =E(\supset pq)\wedge\supset qp \]
+\[ =(\supset pq)\wedge(\supset qp) \]
+That is, $\equiv pq=(\supset pq)\wedge(\supset qp)$, which is how we wished to define $\equiv$.
+
+\end{document}
