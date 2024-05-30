@@ -158,6 +158,10 @@ case where $x=0$ was proven above) and $x-1\le y-1$. Thus, by the assumption, \[
 meaning
 \[ \Gamma\bar{x}\bar{y}=\wedge (N(Z\bar{x}))(\vee (Z\bar{y})(\Gamma(P\bar{x})(P\bar{y})))=f \] 
 
+
+Smullyan provides an alternative solution which does not involve the logical combinators. By the fixed point theorem, there is some $\Gamma$ such that 
+$\Gamma xy=Zxf(Zyt(\Gamma(Px)(Py)))$. $\Gamma$ can be seen to satisfy the conditions of the problem.
+
 \section*{Problem 11}
 Suppose $f(x)$ and $g(x)$ are realizable by the combinators $A_1$ and $A_2$, respectively. Take the combinator $A_3$ which realizes $f(g(x))$ to be 
 $BA_1A_2$, as $BA_1A_2\overline{n}=A_1(A_2\overline{n})=A_1\overline{g(n)}=\overline{f(g(n))}$. In a similar fashion, we could take the combinator $BA_2A_1$ to be the combinator which realizes 
@@ -174,12 +178,18 @@ $BAA_1\bar{x}\bar{y}=A(A_1\bar{x})=A\overline{f(x)}\bar{y}=f$.
 
 
 (b): Let $A_3$ be the combinator such that $A_3xyz=yxz$. Similar reasoning as in part (a) shows that $A_3^{**}DAA_2$ computes $R(x,g(y))$ 
-(as $A_3^{**}DAA_2\bar{x}\bar{y}=DA\bar{x}A_2\bar{y}=A\bar{x}(A_2\bar{y})$).
+(as $A_3^{**}DAA_2\bar{x}\bar{y}=DA\bar{x}A_2\bar{y}=A\bar{x}(A_2\bar{y})$). Smullyan provides an alternative solution: Take $BCDAA_2$ to be the combinator which computes the 
+relation $R(x,g(y))$.
 
 
 (c): Similar reasoning as in part (a) shows that $B(A_3^*(DA)A_2)A_1$ computes $R(f(x),g(y))$, as
 \[ B(A_3^*(DA)A_2)A_1\bar{x}\bar{y}=A_3^*(DA)A_2(A_1\bar{x})\bar{y} \]
 \[ =DA(A_1\bar{x})A_2\bar{y}=A(A_1\bar{x})(A_2\bar{y}) \]
+
+
+For part (c), Smullyan provides two swifter proofs. Let $S(x,y)$ be the relation $R(f(x),y)$. By part (a), $BAA_1$ computes it. Hence, by part (b), 
+$S(x,g(y))$, that is, $R(f(x),g(y))$, is computed by $BCD(BAA_1)A_2$. Alternatively, let $\delta(x,y)$ be the relation $R(x,g(y))$. By part (b), $BCDAA_2$ computes it.
+Hence, by part (a), $\delta(f(x),y)$, that is, $R(f(x),g(y))$, is computed by $B(BCDAA_2)A_1$.
 
 \section*{Problem 13}
 Suppose we have a regular relational combinator $A$ of degree 2 (in fact, the result of this problem does not rely upon $A$ being regular). 
@@ -193,7 +203,7 @@ $A\bar{n}\bar{m}=f$. Then
 thus proving $\Gamma$ satisfies the desired conditions of the problem.
 
 \section*{Problem 14}
-Consider some regular relational combinator $A$ of degree 2. Now let $A'$ be the combinator $CA_1\bar{1}$, as $CA_1\bar{1}\bar{n}=A_1\bar{n}\bar{1}$. This obviously works, as
-$A_1\bar{n}\bar{1}=A_1\bar{n}\bar{2}=...=A_1\bar{n}\bar{k}=\bar{k}$ for $k$ the smallest number for which $A\bar{n}\bar{k}=t$. 
+Consider some regular relational combinator $A$ of degree 2. Now let $A'$ be the combinator $CA_1\bar{1}$, as $CA_1\bar{0}\bar{n}=A_1\bar{n}\bar{0}$. This obviously works, as
+$A_1\bar{n}\bar{0}=A_1\bar{n}\bar{1}=...=A_1\bar{n}\bar{k}=\bar{k}$ for $k$ the smallest number for which $A\bar{n}\bar{k}=t$. 
 
 \end{document}
