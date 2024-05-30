@@ -127,4 +127,70 @@ Now we can prove by induction that $\Gamma\bar{m}\bar{n}=\overline{m^n}$. The ba
 Now suppose the hypothesis holds for some $n$. Then \[ \Gamma\bar{m}\overline{n^+}=\bigotimes\bar{m}(\Gamma\bar{m}\bar{n})=\bigotimes\bar{m}\overline{m^n} \]
 \[ =\overline{m\times m^n}=\overline{m^{n^+}} \] 
 
+\section*{Problem 8}
+Consider the realizable term $t(x,x_1)=Zx_1t(x(Px_1)ft)$. By the fixed point theorem, there is a $\Gamma$ such that
+$\Gamma\bar{n}=Z\bar{n}t(\Gamma(Px_1)ft)$. This obviously works; if $n=0$, $\Gamma\bar{0}=Z\bar{0}t(\Gamma(Px_1)ft)=t$, and if 
+$n>0$, $\Gamma\bar{n}=Z\bar{n}t(\Gamma(Px_1)ft)=\Gamma(Px_1)ft$, that is, if $n-1$ is even, $\Gamma\bar{n}=f$, and if $n-1$ is odd, $\Gamma\bar{n}=t$, which is the condition we desired.
+
+\section*{Problem 9}
+In fact, it is not $N\Gamma$ that computes $\bar{A}$, but $BN\Gamma$. For suppose $n\in A$. Then $\Gamma\bar{n}=t$, meaning 
+$BN\Gamma\bar{n}=N(\Gamma\bar{n})=Nt=f$. If $n\notin A$, then $\Gamma\bar{n}=f$, meaning $BN\Gamma\bar{n}=N(\Gamma\bar{n})=Nf=t$.
+
+\section*{Problem 10}
+Note the importance of specifying that a relational combinator of degree $n$ must always be such that 
+$A\overline{k_1}...\overline{k_n}=t$ or $A\overline{k_1}...\overline{k_n}=f$. If this wasn't specified, it could be that it neither equaled $t$ nor $f$. Now suppose we had such a relational 
+combinator computing some relation $R$. Then if $R(k_1,...,k_n)$ holds, $A\overline{k_1}...\overline{k_n}=t$, and if it doesn't hold, then 
+$A\overline{k_1}...\overline{k_n}=f$. But the contrapositives of those two statements show that, if $A\overline{k_1}...\overline{k_2}$ does not equal either $t$ or $f$, 
+$R(k_1,...,k_n)$ both holds and does not hold at the same time. Thus the requirenment that $A\overline{k_1}...\overline{k_n}$ is always either equal to $t$ or $f$ is a necessary one.
+
+
+Consider the realizable term: \[ t(x,x_1x_2)=\wedge (N(Z\overline{x_1}))(\vee (Z\overline{x_2})(x(P\overline{x_1})(P\overline{x_2}))) \]
+By the fixed point theorem, there is some $\Gamma$ such that:
+\[ \Gamma\bar{x}\bar{y}=\wedge (N(Z\bar{x}))(\vee (Z\bar{y})(\Gamma(P\bar{x})(P\bar{y}))) \]
+We can prove that this works by induction on $x$. The base case is when $x=0$. Thus, because $N(Z\bar{0})=f$, 
+\[ \Gamma\bar{0}\bar{y}=\wedge (N(Z\bar{0}))(\vee (Z\bar{y})(\Gamma(P\bar{0})(P\bar{y})))=f \]
+Now suppose the hypothesis holds for some $x$, that is, for all $y$, if $x>y$, then $\Gamma xy=t$, and if $x\le y$, then $\Gamma xy=f$. On the one hand, suppose that 
+$x>y$. Then either $y=0$, meaning $Z\bar{y}=t$, or $x-1>y-1$, in which case $\Gamma(P\bar{x})(P\bar{y})=t$ by the assumption. Thus, either of 
+$Z\bar{y}=t$ or $\Gamma(P\bar{x})(P\bar{y})=t$, and $N(Z\bar{x})=t$ as well, as $x>0$. Thus
+\[ \vee (Z\bar{y})(\Gamma(P\bar{x})(P\bar{y}))=t\textrm{ and }N(Z\bar{x})=t \] meaning
+\[ \Gamma\bar{x}\bar{y}=\wedge (N(Z\bar{x}))(\vee (Z\bar{y})(\Gamma(P\bar{x})(P\bar{y})))=t \] Similar reasoning shows that, if $x\le y$, then 
+$\Gamma\bar{x}\bar{y}=f$.
+
+\section*{Problem 11}
+Suppose $f(x)$ and $g(x)$ are realizable by the combinators $A_1$ and $A_2$, respectively. Take the combinator $A_3$ which realizes $f(g(x))$ to be 
+$BA_1A_2$, as $BA_1A_2\bar{n}=A_1(A_2\bar{n})=A_1\bar{g(n)}=\bar{f(g(n))}$. In a similar fashion, we could take the combinator $BA_2A_1$ to be the combinator which realizes 
+$g(f(x))$, as $BA_2A_1\bar{n}=A_2(A_1\bar{n})=A_2\bar{f(n)}=\bar{g(f(n))}$.
+
+\section*{Problem 12}
+We suppose that $R(x,y)$ is computable and that $f(x)$ and $g(x)$ are both realizable. Thus there is some combinator $A$ such that if $R(x,y)$, then 
+$A\bar{x}\bar{y}=t$, and if $R(x,y)$ doesn't hold, then $A\bar{x}\bar{y}=f$. Also, there are combinators $A_1$ and $A_2$ which realize $f(x)$ and $g(x)$, 
+respectively. Then:
+
+
+(a): $BAA_1$ computes $R(f(x),y)$, as if $R(f(x),y)$, then $BAA_1\bar{x}\bar{y}=A(A_1\bar{x})\bar{y}=A\overline{f(x)}\bar{y}=t$. If $R(f(x),y)$ does not hold, then 
+$BAA_1\bar{x}\bar{y}=A(A_1\bar{x})=A\overline{f(x)}\bar{y}=f$. 
+
+
+(b): Let $A_3$ be the combinator such that $A_3xyz=yxz$. Similar reasoning as in part (a) shows that $A_3^{**}DAA_2$ computes $R(x,g(y))$ 
+(as $A_3^{**}DAA_2\bar{x}\bar{y}=DA\bar{x}A_2\bar{y}=A\bar{x}(A_2\bar{y})$).
+
+
+(c): Similar reasoning as in part (a) shows that $B(A_3^*(DA)A_2)A_1$ computes $R(f(x),g(y))$, as
+\[ B(A_3^*(DA)A_2)A_1\bar{x}\bar{y}=A_3^*(DA)A_2(A_1\bar{x})\bar{y} \]
+\[ =DA(A_1\bar{x})A_2\bar{y}=A(A_1\bar{x})(A_2\bar{y}) \]
+
+\section*{Problem 13}
+Suppose we have a regular relational combinator $A$ of degree 2. Note that there is a combinator $Y$ such that $Y\bar{n}=\bar{n^+}$; it is just $\bigoplus 1$. 
+Now consider the realizable term $t(x,x_1,x_2)=Ax_1x_2x_2(xx_1(Yy_1))$. By the fixed point theorem, we have some $\Gamma$ such that 
+$\Gamma \bar{x}\bar{y}=A\bar{x}\bar{y}\bar{y}(\Gamma\bar{x}(Y\bar{y}))$. Now suppose that $A\bar{n}\bar{m}=t$. Then 
+\[ \Gamma\bar{n}\bar{m}=A\bar{n}\bar{m}\bar{m}(\Gamma\bar{n}(Y\bar{m})=t\bar{m}(\Gamma\bar{n}(Y\bar{m})=\bar{m} \] On the other hand, suppose that 
+$A\bar{n}\bar{m}=f$. Then
+\[ \Gamma\bar{n}\bar{m}=A\bar{n}\bar{m}\bar{m}(\Gamma\bar{n}(Y\bar{m}))=f\bar{m}(\Gamma\bar{n}(Y\bar{m})) \]
+\[ =\Gamma\bar{n}\overline{m+1} \] 
+thus proving $\Gamma$ satisfied the desired conditions of the problem.
+
+\section*{Problem 14}
+Consider some relational combinator $A$ of degree 2. Now let $A'$ be the combinator $CA_1\bar{1}$, as $CA_1\bar{1}\bar{n}=A_1\bar{n}\bar{1}$. This obviously works, as
+$A_1\bar{n}\bar{1}=A_1\bar{n}\bar{2}=...A_1\bar{n}\bar{k}=\bar{k}$ for $k$ the smallest number for which $A\bar{n}\bar{k}=t$. 
+
 \end{document}
