@@ -193,12 +193,11 @@ Hence, by part (a), $\delta(f(x),y)$, that is, $R(f(x),g(y))$, is computed by $B
 
 \section*{Problem 13}
 Suppose we have a regular relational combinator $A$ of degree 2 (in fact, the result of this problem does not rely upon $A$ being regular). 
-Note that there is a combinator $Y$ such that $Y\bar{n}=\overline{n^+}$; it is just $\bigoplus 1$. 
-Now consider the realizable term $t(x,x_1,x_2)=Ax_1x_2x_2(xx_1(Yy_1))$. By the fixed point theorem, we have some $\Gamma$ such that 
-$\Gamma \bar{x}\bar{y}=A\bar{x}\bar{y}\bar{y}(\Gamma\bar{x}(Y\bar{y}))$. Now suppose that $A\bar{n}\bar{m}=t$. Then 
-\[ \Gamma\bar{n}\bar{m}=A\bar{n}\bar{m}\bar{m}(\Gamma\bar{n}(Y\bar{m}))=t\bar{m}(\Gamma\bar{n}(Y\bar{m}))=\bar{m} \] On the other hand, suppose that 
+Now consider the realizable term $t(x,x_1,x_2)=Ax_1x_2x_2(xx_1(\sigma y_1))$. By the fixed point theorem, we have some $\Gamma$ such that 
+$\Gamma \bar{x}\bar{y}=A\bar{x}\bar{y}\bar{y}(\Gamma\bar{x}(\sigma\bar{y}))$. Now suppose that $A\bar{n}\bar{m}=t$. Then 
+\[ \Gamma\bar{n}\bar{m}=A\bar{n}\bar{m}\bar{m}(\Gamma\bar{n}(\sigma\bar{m}))=t\bar{m}(\Gamma\bar{n}(\sigma\bar{m}))=\bar{m} \] On the other hand, suppose that 
 $A\bar{n}\bar{m}=f$. Then
-\[ \Gamma\bar{n}\bar{m}=A\bar{n}\bar{m}\bar{m}(\Gamma\bar{n}(Y\bar{m}))=f\bar{m}(\Gamma\bar{n}(Y\bar{m})) \]
+\[ \Gamma\bar{n}\bar{m}=A\bar{n}\bar{m}\bar{m}(\Gamma\bar{n}(\sigma\bar{m}))=f\bar{m}(\Gamma\bar{n}(\sigma\bar{m})) \]
 \[ =\Gamma\bar{n}\overline{m+1} \] 
 thus proving $\Gamma$ satisfies the desired conditions of the problem.
 
