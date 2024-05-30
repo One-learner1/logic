@@ -74,10 +74,11 @@ $\overline{m}\ne\overline{n}$, which is the same as saying $\overline{n}\ne\over
 $\overline{m}\ne\overline{n}$.
 
 \section*{Problem 3}
-Take $P$ to be $T(CK)$, as \[ T(CK)\overline{n^+}=T(CK)(Vf\bar{n})=Vf\bar{n}(CK)=CKf\bar{n}=K\bar{n}f=\bar{n} \]
+Take $P$ to be $T(CK)$, as \[ T(CK)\overline{n^+}=T(CK)(Vf\bar{n})=Vf\bar{n}(CK)=CKf\bar{n}=K\bar{n}f=\bar{n} \] Smullyan provides an alternative solution. He takes $P$ to be $Tf$, as 
+$Tf\overline{n^+}=Vf\bar{n}f=ff\bar{n}=\bar{n}$.
 
 \section*{Problem 4}
-Take $Z$ to be $TK$, as $TK\bar{0}=TKI=IK=K=t$, and $TK\bar{n^+}=TK(Vf\bar{n})=Vf\bar{n}K=Kf\bar{n}=f$ for all $n$.
+Take $Z$ to be $TK$ (that is, $Tt$), as $TK\bar{0}=TKI=IK=K=t$, and $TK\bar{n^+}=TK(Vf\bar{n})=Vf\bar{n}K=Kf\bar{n}=f$ for all $n$.
 
 \section*{Problem 5}
 This is just the combinator $Z$ from Problem 4, as $Z\bar{0}xy=txy=x$ and $Z\overline{n^+}xy=fxy=y$.
@@ -89,13 +90,16 @@ $\Gamma x_1=t(\Gamma,x_1)=Zx_1\bar{k}(A(\Gamma(Px_1)))$. Thus
 and \[ \Gamma\overline{n^+}=Z\overline{n^+}\bar{k}(A(\Gamma(P\overline{n^+}))) \]
 \[ =f\bar{k}(A(\Gamma\bar{n})) \]
 \[ =A(\Gamma\bar{n}) \]
+Note that if $\theta$ is the combinator that realizes the term $t(x,x_1)$, then $\Gamma$ is specifically the fixed point of $\theta$.
 
 \section*{Problem 7}
 (a): We can use a similar concept as in Problem 6. Now, however, we want a combinator $\Gamma$ such that for any combinator $A$: 
 \newline $C_1$: $\Gamma \bar{0}\bar{k}=\bar{k}$.\newline $C_2$: $\Gamma \overline{n^+}\bar{k}=A(\Gamma\bar{n}\bar{k})$.\newline
 We can find this combinator by, in Problem 6, instead letting $t(x,x_1,x_2)$ be the term $Zx_1x_2(A(x(Px_1)x_2))$, and then taking $\Gamma$ to be the 
 $\Gamma$ from the fixed point theorem such that $\Gamma x_1x_2=t(\Gamma,x_1,x_2)$. Now, let $A$ be the combinator $V(KI)$. We then take $\bigoplus$ to be
-the $\Gamma$ such that $\Gamma x_1x_2=Zx_1x_2(V(KI)(\Gamma (Px_1)x_2))$, that is, $\Gamma \bar{0}\bar{k}=\bar{k}$ and $\Gamma \bar{m^+}\bar{k}=V(KI)(\Gamma\bar{m}\bar{k})$. 
+the $\Gamma$ such that $\Gamma x_1x_2=Zx_1x_2(V(KI)(\Gamma (Px_1)x_2))$ (Smullyan's answer is slightly different: he takes $\Gamma x_1x_2=Zx_2x_1(V(KI)(\Gamma x_1(Px_2)))$, which could be proven by 
+doing induction on $n$ instead of $m$), 
+meaning $\Gamma \bar{0}\bar{k}=\bar{k}$ and $\Gamma \bar{m^+}\bar{k}=V(KI)(\Gamma\bar{m}\bar{k})$. 
 Then, we can show that $\Gamma\overline{m}{n}=\overline{m^++n}$ by induction. Now, the base case when $m=0$ holds, as $\Gamma \bar{0}\bar{n}=\bar{n}=\overline{0+n}$. 
 Then suppose the hypothesis holds for some $m$, that is, 
 $\Gamma\overline{m}\overline{n}=\overline{m+n}$. Then \[ \Gamma\overline{m^+}{n}=V(KI)(\Gamma\bar{m}\bar{n})=V(KI)\overline{m+n}=\overline{(m+n)+1} \] Thus, in all cases, 
@@ -114,7 +118,8 @@ $\Gamma\bar{m}\bar{n}=\overline{m\times n}$. Then \[ \Gamma\bar{m}\overline{n^+}
 \[ =\overline{m+(m\times n)}=\overline{m\times (n+1)} \]
 
 
-(c): Note that this answer assumes $m>0$. We can yet again make a variation of Problem 6. Consider the term $t(x,x_1,x_2)=Zx_2\bar{1}(\bigotimes x_1(xx_1(Px_2)))$. By the fixed point theorem, there is 
+(c): Note that this answer assumes $m>0$. Additionaly note that Smullyans answer seems incorrect. His yields $\Circled{E}\bar{0}\bar{m}=1$, which should not happen (as, for positive $m$, $0^m=0$). 
+We can yet again make a variation of Problem 6. Consider the term $t(x,x_1,x_2)=Zx_2\bar{1}(\bigotimes x_1(xx_1(Px_2)))$. By the fixed point theorem, there is 
 some $\Gamma$ such that $\Gamma x_1x_2=Zx_2\bar{1}(\bigoplus x_1(\Gamma x_1(Px_2)))$. Note that $\Gamma\bar{m}\bar{0}=\bar{1}$, and 
 $\Gamma\bar{m}\overline{n^+}=\bigotimes x_1(\Gamma \bar{m}\bar{n})$. This is the combinator we take for $\Circled{E}$ (I could not find the exact latex control sequence being used for the 
 exponential combinator). 
