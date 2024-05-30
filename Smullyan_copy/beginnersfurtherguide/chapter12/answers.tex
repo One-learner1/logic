@@ -33,10 +33,11 @@
 (a): Take $N$ to be $Vft$, as $Vftt=tft=f$, and $Vftf=fft=t$.
 
 
-(b): Take $\wedge$ to be $Ff$, as $Fftt=ttf=t$, $Fftf=ftf=f$, $Ffft=tff=f$, and $Ffff=fff=f$.
+(b): Take $\wedge$ to be $Ff$, as $Fftt=ttf=t$, $Fftf=ftf=f$, $Ffft=tff=f$, and $Ffff=fff=f$. Smullyan gives an alternative solution, taking $\wedge$ to be $Rf$, as 
+$Rfpq=pqf$ (which can easily be seen to also work).
 
 
-(c): Take $\vee$ to be $Vt$, as $Vttt=ttt=t$, $Vttf=ftt=t$, $Vtft=ttf=t$, and $Vtff=ftf=f$.
+(c): Take $\vee$ to be $Vt$, as $Vttt=ttt=t$, $Vttf=ftt=t$, $Vtft=ttf=t$, and $Vtff=ftf=f$. Smullyan gives an alternative solution, taking $\vee$ to be $Tt$, which can easily be seen to work.
 
 
 (d): Take $\supset$ to $Rt$, as $Rttt=ttt=t$, $Rttf=tft=f$, $Rtft=ftt=t$, and $Rtff=fft=t$.
@@ -52,5 +53,23 @@ as \[ W(W_2(F^{**}(R^*(R^*(B_1E\supset )\wedge )\supset )))pq \]
 \[ =E(\supset pq)\wedge\supset qp \]
 \[ =(\supset pq)\wedge(\supset qp) \]
 That is, $\equiv pq=(\supset pq)\wedge(\supset qp)$, which is how we wished to define $\equiv$.
+
+
+Smullyan provides a far simpler solution for part (e). He notes that we want $\equiv$ to be such that:
+\[ \equiv pq=pq(Nq) \] which can be received by taking $\equiv$ to be the combinator $CSN$, as
+\[ CSNpq=SpNq=pq(Nq) \]
+
+\section*{2}
+Let $n^+$ be an abbreviation for $n+1$. We first show that, for every $n$, $\overline{0}\ne\overline{n^+}$. Suppose that $\overline{0}=\overline{n^+}$. Then 
+$I=Vf\sigma$, meaning $K=IK=V(KI)\sigma K=K(KI)\sigma=KI$, which is in contradiction to Problem 19 of Chapter 8, which proved that $Kx\ne K$ for all $x$. Next, we show that, 
+if $\overline{m^+}=\overline{n^+}$, then $\overline{m}=\overline{n}$. If $\overline{m^+}=\overline{n^+}$, then $Vf\overline{m}=Vf\overline{n}$, meaning 
+$\overline{m}=ff\overline{m}=Vf\overline{m}f=Vf\overline{n}f=ff\overline{n}=\overline{n}$. Lastly, we show that, for all $n$ and positive $k$, $\overline{n}\ne\overline{n+k}$. But suppose 
+$\overline{n}=\overline{n+k}$. Now, by the first result of this problem, we know that $n>0$. Consider the sequence of combinators
+\[ \overline{n-1},\overline{n-2},...,\overline{n-(n-1)},\overline{n-n} \] For each $\overline{n-i}$, it is true that $\overline{n-i}=\overline{(n+k)-i}$. For, because $\overline{n}=\overline{n+k}$, then 
+$\overline{n-1}=\overline{(n+k)-1}$ by the second result of this problem. Then, if $\overline{n-i}=\overline{(n+k)-i}$ holds for some $i$, and there is an $i+1$th term in the sequence, 
+$\overline{n-(i+1)}=\overline{(n+k)-(i+1)}$ again by the second result of the problem. Thus $\overline{0}=\overline{n-n}=\overline{(n+k)-n}$ such that $(n+k)-n$ is positive, which is in contradiction to the first result 
+of this problem. Therefore $\overline{n}\ne\overline{n+k}$. Thus, if $n\ne m$, either $m<n$ or $n<m$. If the former, then the preceeding result would show that 
+$\overline{m}\ne\overline{n}$, which is the same as saying $\overline{n}\ne\overline{m}$. Similarly, if $n<m$, then the preceeding result proves that $\overline{n}\ne\overline{m}$, which is the same as saying 
+$\overline{m}\ne\overline{n}$.
 
 \end{document}
