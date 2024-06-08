@@ -227,24 +227,25 @@ This is just the combinator $\Delta$ satisfying the condition:
 \[ \Delta\bar{n}=\Circled{*}\bar{n}(\delta\bar{n}) \]
 
 \section*{Problem 19}
-(b) is the statement which is true (for all numerical combinators $X$). For $\Delta \bigl X\bigr =\overline{n*n^#}$ where $n$ is the Gödel number of $X$. But
-Now, $X\bigl X\bigr $ is $n*n^\#$, that is, the norm of $X$. Then, by definition, $\bigl X\bigl X\bigr \bigr =\overline{n*n^\#$, thus showing $\Delta \bigl X\bigl X\bigl X\bigr \bigr $.
+(b) is the statement which is true (for all numerical combinators $X$). For $\Delta \bigl \lceil X\bigr \rceil =\overline{n*n^\#}$ where $n$ is the Gödel number of $X$. But
+Now, $X\bigl \lceil X\bigr \rceil $ is $n*n^\#$, that is, the norm of $X$. 
+Then, by definition, $\bigl \lceil X\bigl \lceil X\bigr \rceil \bigr \rceil =\overline{n*n^\#}$, thus showing $\Delta \bigl \lceil X\bigl \lceil X\bigl \lceil X\bigr \rceil \bigr \rceil $.
 
 \section*{Problem 20}
-Consider any term $A$. Let $X$ be the term $A(\Delta(\bigl BA\Delta\big r))$, as
-\[ A(\Delta(\bigl BA\Delta\big r))=A\bigl BA\Delta\bigl BA\Delta\bigr\bigr \] and
-\[ A\bigl X\bigr=A\bigl A(\Delta(\bigl BA\Delta\big r))\bigr \]
-\[ =A\bigl BA\Delta\bigl BA\Delta\bigr\bigr \]
-\[ =A\bigl A(\Delta(\bigl BA\Delta\big r))\bigr \]
-that is, $A\bigl X\bigr =X$.
+Consider any term $A$. Let $X$ be the term $A(\Delta(\bigl \lceil BA\Delta\bigr \rceil))$, as
+\[ A(\Delta(\bigl \lceil BA\Delta\bigr \rceil))=A\bigl \lceil BA\Delta\bigl \lceil BA\Delta\bigr \rceil\bigr \rceil \] and
+\[ A\bigl \lceil X\bigr \rceil=A\bigl \lceil A(\Delta(\bigl \lceil BA\Delta\bigr \rceil))\bigr \rceil \]
+\[ =A\bigl \lceil BA\Delta\bigl \lceil BA\Delta\bigr \rceil\bigr \rceil \]
+\[ =A\bigl \lceil A(\Delta(\bigl \lceil BA\Delta\bigr \rceil))\bigr \rceil \]
+that is, $A\bigl \lceil X\bigr \rceil =X$.
 
 \section*{Problem 21}
 This is immediate from the second fixed point theorem. For suppose we have some realizable function $f(x)$. Hence it is realized by some combinator $A$. 
-By the second fixed point theorem, there is some term $X$ such that $A\bigl X\bigr =X$. But we also know $A\bar{n}=\overline{f(n)}$ for all $n$. Thus, because
-$\bigl X\bigr$ is some $\bar{n}$ for $n$ the Gödel number of $X$, $A\bigl X\bigr=\overline{f(n)}$. Thus $X=\overline{f(n)}$, that is, $X$ designates $f(n)$, where $n$ is the Gödel number of $X$. 
+By the second fixed point theorem, there is some term $X$ such that $A\bigl \lceil X\bigr \rceil =X$. But we also know $A\bar{n}=\overline{f(n)}$ for all $n$. Thus, because
+$\bigl \lceil X\bigr \rceil$ is some $\bar{n}$ for $n$ the Gödel number of $X$, $A\bigl \lceil X\bigr \rceil=\overline{f(n)}$. Thus $X=\overline{f(n)}$, that is, $X$ designates $f(n)$, where $n$ is the Gödel number of $X$. 
 
 \section*{Problem 22}
-(a): This is obviously true. For suppose $\Gamma$ computes $A$. Thus $\Gamma\bar{n}=t$ for every $n$ in A$, and $\Gamma\bar{n}=f$ for every $n$ that is not in $A$. To show that 
+(a): This is obviously true. For suppose $\Gamma$ computes $A$. Thus $\Gamma\bar{n}=t$ for every $n$ in $A$, and $\Gamma\bar{n}=f$ for every $n$ that is not in $A$. To show that 
 $\Gamma$ represents $A$, we need to show that $\Gamma\bar{n}=t$ iff $n\in A$. If $n\in A$, we are already given that $\Gamma\bar{n}=t$. Now suppose that $\Gamma\bar{n}=t$. Then if 
 $n\notin A$, we would have $\Gamma\bar{n}=f$. But $t\ne f$, as this would contradict Problem 19 of Chapter 8, which proved that $K\ne Kx$ for every $x$ (we recall that $t=K$ and $f=KI$).
 
@@ -255,8 +256,8 @@ $n\notin A$, we would have $\Gamma\bar{n}=f$. But $t\ne f$, as this would contra
 Suppose $f(x)$ is realizable by $\Gamma$, and $A$ is representable by the combinator $Y$. Thus $\Gamma\bar{n}=\overline{f(n)}$ and 
 if $n\in A$, then $Y\bar{n}=t$, and if $n\notin A$, then $Y\bar{n}=f$. Let $X$ be the combinator realizing the term $t(x)=Y(\Gamma x)$, that is, 
 $X\bar{n}=Y(\Gamma\bar{n})$. $X$ represents $f^{-1}(A)$. For suppose $n\in f^{-1}(A)$. Then $f(n)\in A$. Hence 
-\[ X\bar{n}=Y(\Gamma\bar{n})=Y\overline{f(n)}=t$. On the other hand, suppose $n\notin f^{-1}(A)$. Then $f(n)\notin A$. Hence
-\[ X\bar{n}=Y(\Gamma\bar{n})=Y\overline{f(n)}=f$.
+\[ X\bar{n}=Y(\Gamma\bar{n})=Y\overline{f(n)}=t \] On the other hand, suppose $n\notin f^{-1}(A)$. Then $f(n)\notin A$. Hence
+\[ X\bar{n}=Y(\Gamma\bar{n})=Y\overline{f(n)}=f \]
 
 \section*{Problem 24}
 Suppose that $A$ is representable by $\Gamma$. Now let $f$ be the function such that $f(x)=x*52$. This is realizable by the combinator $\gamma$ realizing the term 
@@ -265,9 +266,9 @@ $t(x)=\Circled{*}x\bar{52}$. Then, by Problem 23, $f^{-1}(A)$ is re. That is, th
 \section*{Problem 25}
 Consider any representable set $A$ (suppose it is representable by $\Gamma$). By Problem 24, the set of all $n$ such that $(n*52)\in A$ is representable, say by $\Gamma_1$. By Problem 20, there is some term $X$ 
 (let $n$ be its Gödel number)
-such that $\Gamma_1\bigl X\bigr=X$ holds. Consider the sentence $X=t$. We show that this is a Gödel sentence for $A$. On the one hand, suppose that $X=t$ is true. Then
-$\Gamma_1\bigl X\bigr =t$ meaning $n*52\in A$, that is, the Gödel number of $X=t$ is in $A$. On the other hand, suppose that $n*52\in A$. Then 
-$X=\Gamma_1\bigl X\bigr =t$. Hence $X=t$ is a Gödel sentence for $A$.  
+such that $\Gamma_1\bigl \lceil X\bigr \rceil=X$ holds. Consider the sentence $X=t$. We show that this is a Gödel sentence for $A$. On the one hand, suppose that $X=t$ is true. Then
+$\Gamma_1\bigl \lceil X\bigr \rceil =t$ meaning $n*52\in A$, that is, the Gödel number of $X=t$ is in $A$. On the other hand, suppose that $n*52\in A$. Then 
+$X=\Gamma_1\bigl \lceil X\bigr \rceil =t$. Hence $X=t$ is a Gödel sentence for $A$.  
 
 \section*{Problem 26}
 Suppose that $\mathcal{T}_0$ was computable. By Problem 22 (2), it follows that $\overline{\mathcal{T}_0}$ is representable. By Problem 25, it would follow that there is some Gödel sentence $X$ for 
