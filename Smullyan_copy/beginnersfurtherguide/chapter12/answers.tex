@@ -207,13 +207,14 @@ $A_1\bar{n}\bar{0}=A_1\bar{n}\bar{1}=...=A_1\bar{n}\bar{k}=\bar{k}$ for $k$ the 
 
 \section*{Problem 15}
 By the fixed point theorem, there is some $\Gamma$ such that $\Gamma xy=((\Circled{E}\bar{10}x)>y)x(\Gamma (\sigma x)y)$, that is, 
-\[ \Gamma\bar{m}\bar{n}=((\Circled{E}\bar{10}\bar{m})>\bar{n})\bar{m}(\Gamma\overline{m^+}\bar{n}) \] 
+\[ \Gamma\bar{m}\bar{n}=((\Circled{E}\overline{10}\bar{m})>\bar{n})\bar{m}(\Gamma\overline{m^+}\bar{n}) \] 
 Then take $L'$ to be $\Gamma\bar{1}$, which is a length measurer (as we recall that the length of $n$ is the smallest number $k$ 
-such that $10^k>n$).
+such that $10^k>n$). Note that $(\Circled{E}\overline{10}\bar{m})>\bar{n}$ is an abbreviation for 
+$g(\Circled{E}\overline{10}\bar{m})\bar{n}$, which was defined in Problem 10.
 
 \section*{Problem 16}
 Note that $x*y=(x\times 10^k)+y$ where $k$ is the length of $y$. Thus take $\Circled{*}$ to be the combinator which realizes the term
-\[ t(x,y)=\bigoplus(\bigotimes x(\Circled{E}\bar{10}k))y \]
+\[ t(x,y)=\bigoplus(\bigotimes x(\Circled{E}\bar{10}(L'y)))y \]
 
 \section*{Problem 17}
 Let $s$ be the Gödel number of $Vf$. We note that $0^\#=3312424$ and $1^\#$ is the Gödel number of $(\sigma\bar{0})$, that is, $3*s*0^\#*4$, and in general, 
@@ -223,9 +224,21 @@ $P$ is the predecessor combinator):
 which exists by the fixed point theorem. Note that $(\bar{3}*\bar{s}*(\delta(P\bar{n}))*\bar{4})$ is an abbreviation for 
 \[ \Circled{*}\bar{3}\left(\Circled{*}\bar{s}\left(\Circled{*}(\delta (P\bar{n}))\bar{4}\right)\right) \]
 
+
+An interesting alternative derivation of $\delta$ can be found in the following way: Let $A$ be the combinator satisfying the condition: 
+$A\bar{n}=\bar{3}*\bar{s}*\bar{n}*\bar{4}$. By Problem 6, there is a combinator $\Gamma$ (in fact, the $\Gamma$ obtained in this way is the same as the one in the preceeding paragraph) 
+satisfying the following conditions:\newline
+$C_1$: $\Gamma\bar{0}=\overline{3312424}$\newline
+$C_2$: $\Gamma\overline{n^+}=A(\Gamma\bar{n})$\newline
+We prove by induction that we can take $\delta$ to be $\Gamma$. The base case is given by $C_1$. Now suppose it works for some $n$, that is, 
+$\Gamma\overline{n}=\overline{n^\#}$. Then
+\[ \Gamma\overline{n^+}=A(\Gamma\bar{n})=A\overline{n^\#}=\bar{3}*\bar{s}*\overline{n^\#}*\bar{4}=\overline{(n^+)^\#} \] thus completing the proof.
+
 \section*{Problem 18}
 This is just the combinator $\Delta$ satisfying the condition:
 \[ \Delta\bar{n}=\Circled{*}\bar{n}(\delta\bar{n}) \]
+We could take $\Delta$ to be $S\Circled{*}\delta$ (as can be easily verified). Alternatively, we could take $\Delta$ to be $W(DC\Circled{*}\delta)$. This is because
+$Sxyz=W(DCxy)z$. For $Sxyz=xz(yz)$ and \[ W(DCxy)z=DCxyzz=Cx(yz)z=xz(yz) \]
 
 \section*{Problem 19}
 (b) is the statement which is true (for all numerical combinators $X$). For $\Delta \bigl \lceil X\bigr \rceil =\overline{n*n^\#}$ where $n$ is the Gödel number of $X$.
@@ -250,7 +263,7 @@ $\Gamma$ represents $A$, we need to show that $\Gamma\bar{n}=t$ iff $n\in A$. If
 $n\notin A$, we would have $\Gamma\bar{n}=f$. But $t\ne f$, as this would contradict Problem 19 of Chapter 8, which proved that $K\ne Kx$ for every $x$ (we recall that $t=K$ and $f=KI$).
 
 
-(b): By Problem 9, $BNA$ computes $\bar{A}$. Thus, by part (a) of this problem, $\bar{A}$ is also representable.
+(b): By Problem 9, $BN\Gamma$ computes $\bar{A}$. Thus, by part (a) of this problem, $\bar{A}$ is also representable.
 
 \section*{Problem 23}
 Suppose $f(x)$ is realizable by $\Gamma$, and $A$ is representable by the combinator $Y$. Thus $\Gamma\bar{n}=\overline{f(n)}$ and 
@@ -261,7 +274,7 @@ $X\bar{n}=Y(\Gamma\bar{n})$. $X$ represents $f^{-1}(A)$. For suppose $n\in f^{-1
 
 \section*{Problem 24}
 Suppose that $A$ is representable by $\Gamma$. Now let $f$ be the function such that $f(x)=x*52$. This is realizable by the combinator $\gamma$ realizing the term 
-$t(x)=\Circled{*}x\overline{52}$. Then, by Problem 23, $f^{-1}(A)$ is representable. That is, the set of all $n$ such that $(n*52)\in A$ is representable.
+$t(x)=\Circled{*}\bar{x}\overline{52}$. Then, by Problem 23, $f^{-1}(A)$ is representable. That is, the set of all $n$ such that $(n*52)\in A$ is representable.
 
 \section*{Problem 25}
 For this problem, note that if $n$ is the Gödel number of $X$, then $n*52$ is the Gödel number of $X=t$. 
