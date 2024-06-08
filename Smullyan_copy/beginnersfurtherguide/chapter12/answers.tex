@@ -78,7 +78,7 @@ Take $P$ to be $T(CK)$, as \[ T(CK)\overline{n^+}=T(CK)(Vf\bar{n})=Vf\bar{n}(CK)
 $Tf\overline{n^+}=Vf\bar{n}f=ff\bar{n}=\bar{n}$.
 
 \section*{Problem 4}
-Take $Z$ to be $TK$ (that is, $Tt$), as $TK\bar{0}=TKI=IK=K=t$, and $TK\bar{n^+}=TK(Vf\bar{n})=Vf\bar{n}K=Kf\bar{n}=f$ for all $n$.
+Take $Z$ to be $TK$ (that is, $Tt$), as $TK\bar{0}=TKI=IK=K=t$, and $TK\overline{n^+}=TK(Vf\bar{n})=Vf\bar{n}K=Kf\bar{n}=f$ for all $n$.
 
 \section*{Problem 5}
 This is just the combinator $Z$ from Problem 4, as $Z\bar{0}xy=txy=x$ and $Z\overline{n^+}xy=fxy=y$.
@@ -207,7 +207,8 @@ $A_1\bar{n}\bar{0}=A_1\bar{n}\bar{1}=...=A_1\bar{n}\bar{k}=\bar{k}$ for $k$ the 
 
 \section*{Problem 15}
 By the fixed point theorem, there is some $\Gamma$ such that $\Gamma xy=((\Circled{E}\bar{10}x)>y)x(\Gamma (\sigma x)y)$, that is, 
-\[ \Gamma\bar{m}\bar{n}=((\Circled{E}\bar{10}\bar{m})>\bar{n})(\Gamma\bar{m^+}\bar{n}) \] which is a length measurer (as we recall that the length of $n$ is the smallest number $k$ 
+\[ \Gamma\bar{m}\bar{n}=((\Circled{E}\bar{10}\bar{m})>\bar{n})\bar{m}(\Gamma\overline{m^+}\bar{n}) \] 
+Then take $L'$ to be $\Gamma\bar{1}$, which is a length measurer (as we recall that the length of $n$ is the smallest number $k$ 
 such that $10^k>n$).
 
 \section*{Problem 16}
@@ -218,7 +219,7 @@ Note that $x*y=(x\times 10^k)+y$ where $k$ is the length of $y$. Thus take $\Cir
 Let $s$ be the Gödel number of $Vf$. We note that $0^\#=3312424$ and $1^\#$ is the Gödel number of $(\sigma\bar{0})$, that is, $3*s*0^\#*4$, and in general, 
 $(n+1)^\#$ is the Gödel number of $(\sigma\bar{n})$, which is $3*s*n^\#*4$. Thus we take $\delta$ to be the combinator satisfying (recalling that $Z$ is the zero tester and 
 $P$ is the predecessor combinator):
-\[ \delta\bar{n}=Z\bar{n}\bar{3312424}(\bar{3}*\bar{s}*(\delta (P\bar{n}))*\bar{4}) \]
+\[ \delta\bar{n}=Z\bar{n}\overline{3312424}(\bar{3}*\bar{s}*(\delta (P\bar{n}))*\bar{4}) \]
 which exists by the fixed point theorem. Note that $(\bar{3}*\bar{s}*(\delta(P\bar{n}))*\bar{4})$ is an abbreviation for 
 \[ \Circled{*}\bar{3}\left(\Circled{*}\bar{s}\left(\Circled{*}(\delta (P\bar{n}))\bar{4}\right)\right) \]
 
@@ -227,21 +228,20 @@ This is just the combinator $\Delta$ satisfying the condition:
 \[ \Delta\bar{n}=\Circled{*}\bar{n}(\delta\bar{n}) \]
 
 \section*{Problem 19}
-(b) is the statement which is true (for all numerical combinators $X$). For $\Delta \bigl \lceil X\bigr \rceil =\overline{n*n^\#}$ where $n$ is the Gödel number of $X$. But
-Now, $X\bigl \lceil X\bigr \rceil $ is $n*n^\#$, that is, the norm of $X$. 
-Then, by definition, $\bigl \lceil X\bigl \lceil X\bigr \rceil \bigr \rceil =\overline{n*n^\#}$, thus showing $\Delta \bigl \lceil X\bigl \lceil X\bigl \lceil X\bigr \rceil \bigr \rceil $.
+(b) is the statement which is true (for all numerical combinators $X$). For $\Delta \bigl \lceil X\bigr \rceil =\overline{n*n^\#}$ where $n$ is the Gödel number of $X$.
+Now, $X\bigl \lceil X\bigr \rceil =n*n^\#$, that is, the norm of $X$. 
+Then, by definition, $\bigl \lceil X\bigl \lceil X\bigr \rceil \bigr \rceil =\overline{n*n^\#}$, thus showing $\Delta \bigl \lceil X\bigr \rceil =\bigl \lceil X\bigl \lceil X\bigr \rceil \bigr \rceil $.
 
 \section*{Problem 20}
-Consider any term $A$. Let $X$ be the term $A(\Delta(\bigl \lceil BA\Delta\bigr \rceil))$, as
-\[ A(\Delta(\bigl \lceil BA\Delta\bigr \rceil))=A\bigl \lceil BA\Delta\bigl \lceil BA\Delta\bigr \rceil\bigr \rceil \] and
-\[ A\bigl \lceil X\bigr \rceil=A\bigl \lceil A(\Delta(\bigl \lceil BA\Delta\bigr \rceil))\bigr \rceil \]
-\[ =A\bigl \lceil BA\Delta\bigl \lceil BA\Delta\bigr \rceil\bigr \rceil \]
-\[ =A\bigl \lceil A(\Delta(\bigl \lceil BA\Delta\bigr \rceil))\bigr \rceil \]
+Consider any term $A$. Let $X$ be the term $A(\Delta\bigl \lceil BA\Delta\bigr \rceil)$, as
+\[ X=A(\Delta\bigl \lceil BA\Delta\bigr \rceil)=A\bigl \lceil BA\Delta\bigl \lceil BA\Delta\bigr \rceil\bigr \rceil \] 
+\[ =A\bigl \lceil A(\Delta\bigl\lceil BA\Delta\bigr\rceil )\bigr\rceil \] and
+\[ A\bigl \lceil X\bigr \rceil=A\bigl \lceil A(\Delta\bigl \lceil BA\Delta\bigr \rceil)\bigr \rceil \]
 that is, $A\bigl \lceil X\bigr \rceil =X$.
 
 \section*{Problem 21}
 This is immediate from the second fixed point theorem. For suppose we have some realizable function $f(x)$. Hence it is realized by some combinator $A$. 
-By the second fixed point theorem, there is some term $X$ such that $A\bigl \lceil X\bigr \rceil =X$. But we also know $A\bar{n}=\overline{f(n)}$ for all $n$. Thus, because
+By the second fixed point theorem, there is some term $X$ such that $A\bigl \lceil X\bigr \rceil =X$. But we also know that $A\bar{n}=\overline{f(n)}$ for all $n$. Thus, because
 $\bigl \lceil X\bigr \rceil$ is some $\bar{n}$ for $n$ the Gödel number of $X$, $A\bigl \lceil X\bigr \rceil=\overline{f(n)}$. Thus $X=\overline{f(n)}$, that is, $X$ designates $f(n)$, where $n$ is the Gödel number of $X$. 
 
 \section*{Problem 22}
@@ -261,14 +261,15 @@ $X\bar{n}=Y(\Gamma\bar{n})$. $X$ represents $f^{-1}(A)$. For suppose $n\in f^{-1
 
 \section*{Problem 24}
 Suppose that $A$ is representable by $\Gamma$. Now let $f$ be the function such that $f(x)=x*52$. This is realizable by the combinator $\gamma$ realizing the term 
-$t(x)=\Circled{*}x\bar{52}$. Then, by Problem 23, $f^{-1}(A)$ is re. That is, the set of all $n$ such that $(n*52)\in A$ is representable.
+$t(x)=\Circled{*}x\overline{52}$. Then, by Problem 23, $f^{-1}(A)$ is representable. That is, the set of all $n$ such that $(n*52)\in A$ is representable.
 
 \section*{Problem 25}
-Consider any representable set $A$ (suppose it is representable by $\Gamma$). By Problem 24, the set of all $n$ such that $(n*52)\in A$ is representable, say by $\Gamma_1$. By Problem 20, there is some term $X$ 
+For this problem, note that if $n$ is the Gödel number of $X$, then $n*52$ is the Gödel number of $X=t$. 
+Consider any representable set $A$. By Problem 24, the set of all $n$ such that $(n*52)\in A$ is representable, say by $\Gamma_1$. By Problem 20, there is some term $X$ 
 (let $n$ be its Gödel number)
 such that $\Gamma_1\bigl \lceil X\bigr \rceil=X$ holds. Consider the sentence $X=t$. We show that this is a Gödel sentence for $A$. On the one hand, suppose that $X=t$ is true. Then
-$\Gamma_1\bigl \lceil X\bigr \rceil =t$ meaning $n*52\in A$, that is, the Gödel number of $X=t$ is in $A$. On the other hand, suppose that $n*52\in A$. Then 
-$X=\Gamma_1\bigl \lceil X\bigr \rceil =t$. Hence $X=t$ is a Gödel sentence for $A$.  
+$\Gamma_1\bigl \lceil X\bigr \rceil =t$ also holds, meaning $n*52\in A$, that is, the Gödel number of $X=t$ is in $A$. On the other hand, suppose that $n*52\in A$. Then 
+$X=\Gamma_1\bigl \lceil X\bigr \rceil =t$, that is, $X=t$ holds. Hence $X=t$ is a Gödel sentence for $A$.  
 
 \section*{Problem 26}
 Suppose that $\mathcal{T}_0$ was computable. By Problem 22 (2), it follows that $\overline{\mathcal{T}_0}$ is representable. By Problem 25, it would follow that there is some Gödel sentence $X$ for 
