@@ -205,4 +205,74 @@ thus proving $\Gamma$ satisfies the desired conditions of the problem.
 Consider some regular relational combinator $A$ of degree 2. Now let $A'$ be the combinator $CA_1\bar{0}$, as $CA_1\bar{0}\bar{n}=A_1\bar{n}\bar{0}$. This obviously works, as
 $A_1\bar{n}\bar{0}=A_1\bar{n}\bar{1}=...=A_1\bar{n}\bar{k}=\bar{k}$ for $k$ the smallest number for which $A\bar{n}\bar{k}=t$. 
 
+\section*{Problem 15}
+By the fixed point theorem, there is some $\Gamma$ such that $\Gamma xy=((\Circled{E}\bar{10}x)>y)x(\Gamma (\sigma x)y)$, that is, 
+\[ \Gamma\bar{m}\bar{n}=((\Circled{E}\bar{10}\bar{m})>\bar{n})(\Gamma\bar{m^+}\bar{n}) \] which is a length measurer (as we recall that the length of $n$ is the smallest number $k$ 
+such that $10^k>n$).
+
+\section*{Problem 16}
+Note that $x*y=(x\times 10^k)+y$ where $k$ is the length of $y$. Thus take $\Circled{*}$ to be the combinator which realizes the term
+\[ t(x,y)=\bigoplus(\bigotimes x(\Circled{E}\bar{10}k))y \]
+
+\section*{Problem 17}
+Let $s$ be the Gödel number of $Vf$. We note that $0^\#=3312424$ and $1^\#$ is the Gödel number of $(\sigma\bar{0})$, that is, $3*s*0^\#*4$, and in general, 
+$(n+1)^\#$ is the Gödel number of $(\sigma\bar{n})$, which is $3*s*n^\#*4$. Thus we take $\delta$ to be the combinator satisfying (recalling that $Z$ is the zero tester and 
+$P$ is the predecessor combinator):
+\[ \delta\bar{n}=Z\bar{n}\bar{3312424}(\bar{3}*\bar{s}*(\delta (P\bar{n}))*\bar{4}) \]
+which exists by the fixed point theorem. Note that $(\bar{3}*\bar{s}*(\delta(P\bar{n}))*\bar{4})$ is an abbreviation for 
+\[ \Circled{*}\bar{3}\left(\Circled{*}\bar{s}\left(\Circled{*}(\delta (P\bar{n}))\bar{4}\right)\right) \]
+
+\section*{Problem 18}
+This is just the combinator $\Delta$ satisfying the condition:
+\[ \Delta\bar{n}=\Circled{*}\bar{n}(\delta\bar{n}) \]
+
+\section*{Problem 19}
+(b) is the statement which is true (for all numerical combinators $X$). For $\Delta \bigl X\bigr =\overline{n*n^#}$ where $n$ is the Gödel number of $X$. But
+Now, $X\bigl X\bigr $ is $n*n^\#$, that is, the norm of $X$. Then, by definition, $\bigl X\bigl X\bigr \bigr =\overline{n*n^\#$, thus showing $\Delta \bigl X\bigl X\bigl X\bigr \bigr $.
+
+\section*{Problem 20}
+Consider any term $A$. Let $X$ be the term $A(\Delta(\bigl BA\Delta\big r))$, as
+\[ A(\Delta(\bigl BA\Delta\big r))=A\bigl BA\Delta\bigl BA\Delta\bigr\bigr \] and
+\[ A\bigl X\bigr=A\bigl A(\Delta(\bigl BA\Delta\big r))\bigr \]
+\[ =A\bigl BA\Delta\bigl BA\Delta\bigr\bigr \]
+\[ =A\bigl A(\Delta(\bigl BA\Delta\big r))\bigr \]
+that is, $A\bigl X\bigr =X$.
+
+\section*{Problem 21}
+This is immediate from the second fixed point theorem. For suppose we have some realizable function $f(x)$. Hence it is realized by some combinator $A$. 
+By the second fixed point theorem, there is some term $X$ such that $A\bigl X\bigr =X$. But we also know $A\bar{n}=\overline{f(n)}$ for all $n$. Thus, because
+$\bigl X\bigr$ is some $\bar{n}$ for $n$ the Gödel number of $X$, $A\bigl X\bigr=\overline{f(n)}$. Thus $X=\overline{f(n)}$, that is, $X$ designates $f(n)$, where $n$ is the Gödel number of $X$. 
+
+\section*{Problem 22}
+(a): This is obviously true. For suppose $\Gamma$ computes $A$. Thus $\Gamma\bar{n}=t$ for every $n$ in A$, and $\Gamma\bar{n}=f$ for every $n$ that is not in $A$. To show that 
+$\Gamma$ represents $A$, we need to show that $\Gamma\bar{n}=t$ iff $n\in A$. If $n\in A$, we are already given that $\Gamma\bar{n}=t$. Now suppose that $\Gamma\bar{n}=t$. Then if 
+$n\notin A$, we would have $\Gamma\bar{n}=f$. But $t\ne f$, as this would contradict Problem 19 of Chapter 8, which proved that $K\ne Kx$ for every $x$ (we recall that $t=K$ and $f=KI$).
+
+
+(b): By Problem 9, $BNA$ computes $\bar{A}$. Thus, by part (a) of this problem, $\bar{A}$ is also representable.
+
+\section*{Problem 23}
+Suppose $f(x)$ is realizable by $\Gamma$, and $A$ is representable by the combinator $Y$. Thus $\Gamma\bar{n}=\overline{f(n)}$ and 
+if $n\in A$, then $Y\bar{n}=t$, and if $n\notin A$, then $Y\bar{n}=f$. Let $X$ be the combinator realizing the term $t(x)=Y(\Gamma x)$, that is, 
+$X\bar{n}=Y(\Gamma\bar{n})$. $X$ represents $f^{-1}(A)$. For suppose $n\in f^{-1}(A)$. Then $f(n)\in A$. Hence 
+\[ X\bar{n}=Y(\Gamma\bar{n})=Y\overline{f(n)}=t$. On the other hand, suppose $n\notin f^{-1}(A)$. Then $f(n)\notin A$. Hence
+\[ X\bar{n}=Y(\Gamma\bar{n})=Y\overline{f(n)}=f$.
+
+\section*{Problem 24}
+Suppose that $A$ is representable by $\Gamma$. Now let $f$ be the function such that $f(x)=x*52$. This is realizable by the combinator $\gamma$ realizing the term 
+$t(x)=\Circled{*}x\bar{52}$. Then, by Problem 23, $f^{-1}(A)$ is re. That is, the set of all $n$ such that $(n*52)\in A$ is representable.
+
+\section*{Problem 25}
+Consider any representable set $A$ (suppose it is representable by $\Gamma$). By Problem 24, the set of all $n$ such that $(n*52)\in A$ is representable, say by $\Gamma_1$. By Problem 20, there is some term $X$ 
+(let $n$ be its Gödel number)
+such that $\Gamma_1\bigl X\bigr=X$ holds. Consider the sentence $X=t$. We show that this is a Gödel sentence for $A$. On the one hand, suppose that $X=t$ is true. Then
+$\Gamma_1\bigl X\bigr =t$ meaning $n*52\in A$, that is, the Gödel number of $X=t$ is in $A$. On the other hand, suppose that $n*52\in A$. Then 
+$X=\Gamma_1\bigl X\bigr =t$. Hence $X=t$ is a Gödel sentence for $A$.  
+
+\section*{Problem 26}
+Suppose that $\mathcal{T}_0$ was computable. By Problem 22 (2), it follows that $\overline{\mathcal{T}_0}$ is representable. By Problem 25, it would follow that there is some Gödel sentence $X$ for 
+$\overline{\mathcal{T}_0}$. That is, $X$ is true iff the Gödel number of $X$ is in $\overline{\mathcal{T}_0}$ iff $X$ is not true. 
+Thus $X$ is true iff it is not true, which is a contradiction. Hence $\overline{\mathcal{T}_0}$ cannot be 
+representable, and, consequently, $\mathcal{T}_0$ cannot be computable.
+
 \end{document}
