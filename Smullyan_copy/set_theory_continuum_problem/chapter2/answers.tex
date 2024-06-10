@@ -104,4 +104,25 @@ $\{a\}=\{c\}$ and thus $a=c$. Then again by Lemma 4.3, $\{\{b\}\}=\{\{d\}\}$ and
 Now consider the second case, where $\{\emptyset,\{a\}\}=\{\emptyset,\{c\}\}$. Thus $\{a\}=\{c\}$ (by Lemma 4.3) and $a=c$, meaning, again by Lemma 4.3, 
 $\{\{b\}\}=\{\{d\}\}$ and thus $b=d$, therefore completing the proof.
 
+\section*{1.5}
+
+\subsection*{Exercise 5.1}
+For suppose for any set $x$ there is a set $y$ that contains all elements of all elements of $x$. Now, $\cup x$ is defined to be the class of all elements of all elements 
+of $A$. Thus $\cup x$ is a subclass of $y$, and hence, by $A_2$, is a set.
+
+\subsection*{Exercise 5.2}
+(a): Suppose $A\subseteq B$. Then, for all $x\in A$, $x\in B$. Now suppose $x\in \cup A$. Then $x\in y$ for some $y\in A$, that is, $y\in B$. Now, $\cup B$ is the set 
+of all elements of all elements of $B$. But we have shown that $x$ is an element of $y$, an element of $B$. Thus $x\in \cup B$.
+Hence $\cup A\subseteq B$.
+
+
+(b): Suppose $A\subseteq B$. Then, for all $x\in A$, $x\in B$. Now suppose that $x\in\cap B$. Then $x\in y$ for every $y\in B$, and thus $x\in z$ for every 
+$z\in A$. But $\cup A$ is the set of all elements of all elements of $A$, and we have shown that $x\in z$ for every element $z$ of $A$. Hence $x\in\cap A$. 
+Thus $\cap B\subseteq\cap A$.
+
+\subsection*{Exercise 5.3}
+(a): This is true. For suppose that $A$ is transitive. Then all elements of all elements of $A$ are elements of $A$. $\cup A$ is the set of all elements of all elements of 
+$A$. Now suppose that $x\in\cup A$. Thus, because it is an element of some element of $A$, we know that $x$ is an element of $A$ by the transitivity of $A$. Hence 
+$x\in A$, and therefore $\cup A\subseteq A$.
+
 \end{document}
