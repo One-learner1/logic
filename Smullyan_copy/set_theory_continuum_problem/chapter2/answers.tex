@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=1in}
+\setlength{\parskip}{12pt}
+\title{Chapter 1 Answers}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{1.4}
+Note that $P_1$ seems to be being used not just as an implication, but as an equivalence. See for example the proof of Lemma 4.3, where 
+$\{a,b\}=\{a,d\}$ is said to imply $b\in \{a,d\}$. The equivalence is of course the definition that makes much more sense (if we only had the implication, we 
+couldn't actually discern what $a=b$ even meant).
+
+\subsection*{Induction with A4}
+Consider the infinite sequence $a_0,a_1,a_2,...,a_n,...$ such that $a_0=\emptyset$ and for each $n$, $a_{n+1}=\{a_n\}$. We prove that 
+if $n\ne m$, $a_n\ne a_m$. The base case is when $n=0$, that is, $a_n=\emptyset$. Obviously, $\emptyset\ne a_m$ for every $m\ne 0$, as every 
+$a_m$ where $m>0$ is a set that contains an element, that is, a non-empty set. Now suppose the result holds for some $n$, that is, if $n\ne m$, then 
+$a_n\ne a_m$. Now consider $a_{n+1}$. We prove that if $n+1\ne m$, then $a_{n+1}\ne a_m$. By similar reasoning as in the base case, $a_{n+1}\ne\emptyset$. 
+Now consider any $m>0$. By Note 3, if $a_{n+1}=a_m$, then 
+$a_n=a_{m-1}$, as $a_{n+1}=\{a_n\}$ and $a_m=\{a_{m-1}\}$. Now, if $n+1\ne m$, then $n\ne m-1$, and by the induction assumption, $a_n\ne a_{m-1}$, which is a contradiction. 
+Thus $a_{n+1}\ne a_m$.
+If $n+1=m$, the statement vacuously holds.
+
+\subsection*{Theorem 4.4}
+Note that this theorem can obviously be extended to equivalence, that is, $\langle a,b\rangle =\langle c,d\rangle$ iff $a=c$ and $b=d$.
+
+\subsection*{$n$-tuples}
+One can easily prove by induction that this scheme of $n$-tuples works. The base case is just Theorem 4.4. Now suppose the result holds for some $n$, that is, 
+if $\langle x_1,...,x_n\rangle =\langle y_1,...,y_n\rangle$ then for every $i\le n$, $x_i=y_i$. Now, if 
+\[ \langle x_1,...,x_n,x_{n+1}\rangle =\langle y_1,...,y_n,y_{n+1}\rangle \] then 
+\[ \langle \langle x_1,...,x_n\rangle ,x_{n+1}\rangle =\langle\langle y_1,...,y_n\rangle ,y_{n+1}\rangle \]
+\[ \langle x_1,...,x_n\rangle =\langle y_1,...,y_n\rangle \]
+and \[ x_{n+1}=y_{n+1} \] by Theorem 4.4 and then, by the induction assumption, for every $i\le n$,
+$x_i=y_i$. Thus for all $i\le n+1$, $x_i=y_i$. Note that one could also take $\langle x_1,...,x_n,x_{n+1} \rangle$ to be 
+$\langle x_1,\langle x_2,...,x_n,x_{n+1}\rangle\rangle$, as can be proven in a similar manner as above.
+
+\subsection*{Exercise 4.1}
+(a): Suppose $\langle x,y\rangle$ is defined to be $\{\{\emptyset ,x\},\{\{\emptyset\},y\}\}$. Now suppose that 
+$\langle a,b\rangle =\langle c,d\rangle$. Thus \[ \{\{\emptyset ,a\},\{\{\emptyset\},b\}\}=\{\{\emptyset ,c\},\{\{\emptyset\},d\}\} \]
+meaning $\{\emptyset ,a\}\in \langle c,d\rangle$. Thus either $\{\emptyset ,a\}=\{\{\emptyset\},d\}$ or 
+$\{\emptyset ,a\}=\{\emptyset ,c\}$. 
+
+
+In the first case, we would have $\emptyset\in\{\{\emptyset\},d\}$, meaning $\emptyset=d$. Then also 
+$a=\{\emptyset\}$. Then we also have two sub-cases: either $\{\{\emptyset\},b\}=\{\emptyset,\{c\}\}$ or 
+$\{\{\emptyset\},b\}=\{\{\emptyset\},d\}$ (as $\{\{\emptyset\},b\}\in\langle c,d\rangle$). 
+In the first sub-case, we would have $b=\emptyset$ and $c=\{\emptyset\}$, and because $a=\{\emptyset\}$ and 
+$d=\emptyset$, the result would be proven. In the second sub-case we would have $\{\{\emptyset\},b\}=\{\{\emptyset\},d\}$ (meaning $b=d$ by Lemma 4.3) and thus 
+\[ \{\{\emptyset ,a\},\{\{\emptyset\},b\}\}=\{\{\emptyset ,c\},\{\{\emptyset\},d\}\}=\{\{\emptyset ,c\},\{\{\emptyset\},b\}\} \]
+that is,
+\[ \{\{\{\emptyset\},b\},\{\emptyset ,a\}\}=\{\{\{\emptyset\},b\},\{\emptyset ,c\}\} \] and by Lemma 4.3 
+$\{\emptyset ,a\}=\{\emptyset,c\}$, meaning $a=c$ (again by Lemma 4.3), thus proving the theorem.
+
+
+In the second case, we have $\{\emptyset ,a\}=\{\emptyset ,c\}$ (meaning $a=c$ by Lemma 4.3) and thus $\{\{\emptyset\},b\}=\{\{\emptyset\},d\}$ by Lemma 4.3 
+and, again by Lemma 4.3, $b=d$, thus completing the proof.
+
+
+(b): Now suppose that $\langle x,y\rangle$ is defined to be $\{\{\emptyset,\{x\}\},\{\{y\}\}\}$. Now suppose that
+$\langle a,b\rangle =\langle c,d\rangle$. Thus $\{\emptyset,\{a\}\}\in \langle c,d\rangle$, meaning either 
+$\{\emptyset,\{a\}\}=\{\{d\}\}$ or $\{\emptyset,\{a\}\}=\{\emptyset,\{c\}\}$. The first sub-case is ruled out, as then we would have $\emptyset=\{\{d\}\}$, which is 
+impossible, as $\emptyset$ contains no elements, whereas $\{\{d\}\}$ contains an element. Thus $\{\emptyset,\{a\}\}=\{\emptyset,\{c\}\}$ meaning, by Lemma 4.3, 
+$\{a\}=\{c\}$ and thus $a=c$. Then again by Lemma 4.3, $\{\{b\}\}=\{\{d\}\}$ and thus $b=d$, hence showing $a=c$ and $b=d$.
+
+
+Now consider the second case, where $\{\emptyset,\{a\}\}=\{\emptyset,\{c\}\}$. Thus $\{a\}=\{c\}$ (by Lemma 4.3) and $a=c$, meaning, again by Lemma 4.3, 
+$\{\{b\}\}=\{\{d\}\}$ and thus $b=d$, therefore completing the proof.
+
+\end{document}
