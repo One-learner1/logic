@@ -50,13 +50,27 @@ Note that this theorem can obviously be extended to equivalence, that is, $\lang
 
 \subsection*{$n$-tuples}
 One can easily prove by induction that this scheme of $n$-tuples works. The base case is just Theorem 4.4. Now suppose the result holds for some $n$, that is, 
-if $\langle x_1,...,x_n\rangle =\langle y_1,...,y_n\rangle$ then for every $i\le n$, $x_i=y_i$. Now, if 
+for all sets $x_1,...,x_n$ and $y_1,...,y_n$, if $\langle x_1,...,x_n\rangle =\langle y_1,...,y_n\rangle$ then for every $i\le n$, $x_i=y_i$. Now, if 
 \[ \langle x_1,...,x_n,x_{n+1}\rangle =\langle y_1,...,y_n,y_{n+1}\rangle \] then 
 \[ \langle \langle x_1,...,x_n\rangle ,x_{n+1}\rangle =\langle\langle y_1,...,y_n\rangle ,y_{n+1}\rangle \]
 \[ \langle x_1,...,x_n\rangle =\langle y_1,...,y_n\rangle \]
 and \[ x_{n+1}=y_{n+1} \] by Theorem 4.4 and then, by the induction assumption, for every $i\le n$,
 $x_i=y_i$. Thus for all $i\le n+1$, $x_i=y_i$. Note that one could also take $\langle x_1,...,x_n,x_{n+1} \rangle$ to be 
 $\langle x_1,\langle x_2,...,x_n,x_{n+1}\rangle\rangle$, as can be proven in a similar manner as above.
+
+
+In fact, we can generalize the definitions of $n$-tuples in the following way. For $n=2$, define it in the same way as before. Then for every $n>2$, we could take 
+$\langle x_1,...,x_n,x_{n+1}\rangle$ to be any $m$-tuple (where $m<n$) of the form 
+$\langle x_1,...,x_a,\langle x_{a+1},...,x_b\rangle ,x_{b+1},...,x_c\rangle$ where, if $c>0$, then $c=n$, and if $c=0$, then $b=n$. 
+This scheme can be proven to work by the following induction. Because 
+$n=2$ is defined in the same way, the base case holds. Now suppose the result holds for all number less than $n$. Now consider any scheme for $n$ of the form:
+\[ \langle x_1,...,x_a,\langle x_{a+1},...,x_b\rangle ,x_{b+1},...,x_c\rangle \] Suppose that 
+\[ \langle x_1,...,x_a,\langle x_{a+1},...,x_b\rangle ,x_{b+1},...,x_c\rangle=\langle y_1,...,y_a,\langle y_{a+1},...,y_b\rangle ,y_{b+1},...,y_c\rangle \]
+Because both $\langle x_1,...,x_a,\langle x_{a+1},...,x_b\rangle ,x_{b+1},...,x_c\rangle$ and $\langle y_1,...,y_a,\langle y_{a+1},...,y_b\rangle ,y_{b+1},...,y_c\rangle$ 
+are some $m$-tuples where $m<n$, the induction assumption holds, and the three following things are true: (1) for all $i\le a$, $x_i=y_i$; 
+(2) $\langle x_{a+1},...,x_b\rangle=\langle y_{a+1},...,y_b\rangle$; (3) for all $b+1\le i\le c$, $x_i=y_i$. By (2) and the induction assumption, 
+($1'$) for all $a+1\le i\le b$, $x_i=y_i$. Thus, combining (1), ($1'$), and (3) together, we have, for all $i\le c$, $x_i=y_i$, that is, for all $i\le n$, 
+$x_i=y_i$, thus completing the proof. 
 
 \subsection*{Exercise 4.1}
 (a): Suppose $\langle x,y\rangle$ is defined to be $\{\{\emptyset ,x\},\{\{\emptyset\},y\}\}$. Now suppose that 
