@@ -90,10 +90,10 @@ Here is an explicit proof of Proposition 2 from Problem 4 and mathematical induc
 Now suppose the result holds for some $n$, that is, $\mathcal{W}_{x_nx_{n-1}...x_1}$ is an $x_1,x_2,...,x_n$ eliminate of $\mathcal{W}$. Now, 
 $\mathcal{W}_{x_{n+1}x_n...x_1}$ is $(...(\mathcal{W}_{x_{n+1}})_{x_n})...)_{x_1})$. Conditions (1) and (2) obviously hold. As for (3), 
 \[ \mathcal{W}_{x_{n+1}x_n...x_1}x_1x_2...x_{n+1}=(...(\mathcal{W}_{x_{n+1}})_{x_n})...)_{x_1})x_1x_2...x_{n+1} \]
-\[ =(...(\mathcal{W}_{x_{n+1}})_{x_n})...)_{x_2}x_2...x_{n+1} \]
-\[ =(...(\mathcal{W}_{x_{n+1}})_{x_n})...)_{x_3}x_3...x_{n+1} \]
-\[ ... \]
-\[ =\mathcal{W}_{x_{n+1}}x_{n+1}=\mathcal{W} \]
+\[ =(...(\mathcal{W}_{x_{n+1}})_{x_n})...)_{x_2})x_2...x_{n+1} \]
+\[ =\mathcal{W}_{x_{n+1}x_n...x_2}x_2...x_{n+1} \]
+\[ =\mathcal{W} \]
+by the induction assumption.
 
 \section*{Problem 5}
 (1): We can prove this in two ways. First, suppose that $A$ is the combinator which realizes the term $t(x,x_1,...,x_n)$. Because we are working in a complete system, 
@@ -179,13 +179,13 @@ Here is the proof of the generalization of this result: Suppose that the variabl
 $\mathcal{W}_{x_nx_{n-1}...x_1}$ is a nice $x_1,...,x_n$ eliminate of $\mathcal{W}$. Recall that 
 $\mathcal{W}_{x_nx_{n-1}...x_1}$ is an abbreviation for $(...(\mathcal{W}_{x_n})_{x_{n-1}})...)_{x_1})$. 
 This can be proven by induction on $n$. The base case is just the above result, when 
-we showed that for any nice term $\mathcal{W}$ in which $x$ occurs, the term $\mathcal{W}_x$ is a nice $x$-eliminate of $\mathcal{W}$. Now consider any $n>1$. 
+we showed that for any nice term $\mathcal{W}$ in which $x$ occurs, the term $\mathcal{W}_x$ is a nice $x$-eliminate of $\mathcal{W}$. Now suppose the result holds for some $n$. 
 Now, conditions (1) and (2) obviously hold for $\mathcal{W}_{x_{n+1}x_n...x_1}$. As for (3),
-\[ \mathcal{W}_{x_{n+1}x_n...x_1}x_1x_2...x_{n+1}=(...(\mathcal{W}_{x_{n+1}})x_n)...)x_1)x_1x_2...x_{n+1} \]
-\[ =(...(\mathcal{W}_{x_{n+1}})_{x_n})...)x_2x_2...x_{n+1} \]
-\[ =(...(\mathcal{W}_{x_{n+1}})_{x_n})...)x_3x_3...x_{n+1} \]
-\[ =\mathcal{W}_{x_{n+1}}x_{n+1} \]
+\[ \mathcal{W}_{x_{n+1}x_n...x_1}x_1x_2...x_{n+1}=(...(\mathcal{W}_{x_{n+1}})_{x_n})...)_{x_1})x_1x_2...x_{n+1} \]
+\[ =(...(\mathcal{W}_{x_{n+1}})_{x_n})...)_{x_2})x_2...x_{n+1} \]
+\[ =\mathcal{W}_{x_{n+1}x_n...x_2}x_2...x_{n+1} \]
 \[ =\mathcal{W} \]
+by the induction assumption.
 
 \section*{Problem 8}
 (a): Take $Q_3$ to be $GI$, as $GIxyz=Iz(xy)=z(xy)$.
