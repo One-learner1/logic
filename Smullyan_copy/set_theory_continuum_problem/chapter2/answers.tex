@@ -125,4 +125,74 @@ Thus $\cap B\subseteq\cap A$.
 $A$. Now suppose that $x\in\cup A$. Thus, because it is an element of some element of $A$, we know that $x$ is an element of $A$ by the transitivity of $A$. Hence 
 $x\in A$, and therefore $\cup A\subseteq A$.
 
+
+(b): This is true. For suppose that $\cup A\subseteq A$. Then all elements of all elements of $A$ are elements of $A$, that is, $A$ is transitive.
+
+
+(c): This is true. For suppose that $A$ is transitive. Then all elements of all elements of $A$ are elements of $A$. Now, $\cup A$ is the class of all elements of 
+all elements of $A$. But suppose $\cup A$ was not transitive, that is, there was some element $x$ of some element $y$ of $\cup A$ such that $x\notin \cup A$. Now, we know that, 
+because $y$ is an element of some element of $A$, and because $A$ is transitive, $y\in A$. But this means that $x$ is an element of an element of $A$, that is, 
+$x\in\cup A$. Hence $\cup A$ is transitive. 
+
+
+(d): This is true. For suppose that every element of $A$ is transitive. Then, for every element $x$ of $A$, all elements of all elements of $x$ are elements of $x$. 
+Now suppose that $\cup A$ was not transitive. Hence there would be some element $x$ of an element $y$ of $\cup A$ such that $x\notin A$. Because $y\in\cup A$, 
+$y$ is an element of some element $z$ of $A$. Because $z$ is transitive, all elements of all elements of $z$ are elements of $z$. But $x\in y$; hence $x\in z$. Thus 
+$x$ is an element of an element of $A$, meaning $x\in\cup A$. Thus $\cup A$ is transitive. 
+
+\subsection*{Exercise 5.4}
+(a): On the one hand, suppose that $z\in x\cup y$. Then $z\in x$ or $z\in y$. To be an element of $\cup\{x,y\}$, $z$ must be an element of either $x$ or $y$. But we have 
+shown this. Hence $z\in\cup\{x,y\}$. On the other hand, suppose that $z\in\cup\{x,y\}$. Then $z$ is either an element of $x$ or $y$. But this means $z\in x\cup y$. Hence, 
+because $z\in x\cup y$ iff $z\in\cup\{x,y\}$, $x\cup y=\cup\{x,y\}$.
+
+
+(b): On the ond hand, suppose that $z\in x\cap y$. Then $z\in x$ and $z\in y$. To be an element of $\cap\{x,y\}$, $z$ must be an element of both $x$ and $y$. But we have shown 
+this. Hence $z\in\cap\{x,y\}$. On the other hand, suppose that $z\in\cap\{x,y\}$. Then $z\in x$ and $z\in y$, that is, $z\in x\cap y$. Hence 
+$x\cap y=\cap\{ x,y\}$.
+
+\subsection*{Exercise 5.5}
+For non-empty sets, (a) and (b) are not necessarily true. In fact, assuming that sets cannot be members of themselves, they are never true. For suppose 
+$\cup\{x\}=x$ and $x$ was non-empty. This would mean that $x$ was an element of $x$, which we assumed cannot occur. Similar reasoning shows that 
+$\cap\{x\}\ne x$ for non-empty $x$. But if $x$ is empty, then both (a) and (b) are true. In particular, because $\emptyset$ has no elements, 
+$\cup\{\emptyset\}=\cap\{\emptyset\}=\emptyset$.
+
+\subsection*{Exercise 5.6}
+(a): On the one hand, suppose that $x\in A\cap (B\cup C)$. Then $x\in A$ and $x\in B\cup C$. Hence either $x\in B$ or $x\in C$. If 
+$x\in B$, then $x\in A\cap B$. If $x\in C$, then $x\in A\cap C$. Thus either $x\in A\cap B$ or $x\in A\cap C$, meaning
+$x\in (A\cap B)\cup (A\cap C)$. On the other hand, suppose that $x\in (A\cap B)\cup (A\cap C)$. Then either $x\in A$ and $x\in B$, or 
+$x\in A$ and $x\in C$. Thus $x\in A$ and either $x\in B$ or $x\in C$, that is, $x\in A\cap (B\cup C)$.
+
+
+(b): On the one hand, suppose that $x\in A\cup (B\cap C)$. Then $x\in A$ or $x\in B\cap C$. If $x\in A$, then 
+$x$ is in both $A\cup B$ and $A\cup C$, and hence also in $(A\cup B)\cap (A\cup C)$. If $x\in B\cap C$, then $x\in B$ and $x\in C$. 
+Then $x\in A\cup B$ and $x\in A\cup C$, meaning $x\in (A\cup B)\cap (A\cup C)$. On the other hand, suppose that 
+$x\in (A\cup B)\cap (A\cup C)$. Then $x\in A\cup B$ and $x\in A\cup C$. If $x\in A$, then $x\in A\cup (B\cap C)$. If $x\notin A$, then 
+$x\in B$ and $x\in C$, that is, $x\in B\cap C$, meaning $x\in A\cup (B\cap C)$.
+
+
+(c): On the one hand, suppose that $x\in A-(A-B)$. Then $x\in A$ and $x\notin A-B$. Thus either $x\notin A$ or $x\in B$. But it cannot be that $x\notin A$, for 
+it was assumed that $x\in A$. Thus $x\in B$. Hence $x\in A$ and $x\in B$, meaning $x\in A\cap B$. On the other hand, suppose that $x\in A\cap B$. Then $x\in A$ and 
+$x\in B$. Hence $x\notin A-B$. Thus $x\in A$ and $x\notin A-B$, meaning $x\in A-(A-B)$.
+
+
+(d): The question gives the incorrect statement to prove. It should instead by $B-(A-B)=B$, not $\emptyset$. 
+Now, $x\in B-(A-B)$ iff $x\in B$ and $x\notin A-B$. Thus either $x\notin A$ or $x\in B$. Thus this statement is satisfied for all $x\in B$. But 
+suppose there were some $x\notin B$ such that $x\in B-(A-B)$. But that is impossible, as $x$ must be in $B$. Hence $x\in B$ iff $x\in B-(A-B)$, therefore meaning 
+$B-(A-B)=B$.
+
+
+(e): On the one hand, suppose that $A\subseteq B$. Now suppose that $x\in A\cup B$. Then $x\in A$. Now alternatively suppose that $x\in A$. 
+But because $A\subseteq B$, $x\in B$. Thus $x\in A\cap B$. Thus $A\cap B=A$. On the other hand, suppose that $A\cap B=A$. Now suppose that $x\in A$. 
+Thus $x\in A\cap B$, meaning $x\in B$. Hence $A\subseteq B$.
+
+
+(f): On the one hand, suppose that $A\subseteq B$. Now suppose that $x\in A\cup B$. Then $x\in A$ or $x\in B$. If $x\in A$, then, because 
+$A\subseteq B$, $x\in B$. In the second case, $x\in B$. Thus $x\in B$. Now alternatively suppose that $x\in B$. Thus $x\in A\cup B$. Thus 
+$x\in A\cup B$ iff $x\in B$, meaning $A\cup B=B$. On the other hand, suppose that $A\cup B=B$. Now suppose that $x\in A$. Then 
+$x\in A\cup B$, and thus $x\in B$.
+
+
+(g): Suppose that $B\subseteq A$. By part (c) of this problem, $A-(A-B)=A\cap B$. By part (e) of this problem, $B\cap A=B$. But 
+$B\cap A$ is just $A\cap B$. Thus $A\cap B=B$, meaning $A-(A-B)=B$.
+
 \end{document}
