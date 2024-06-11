@@ -198,4 +198,47 @@ $x\in A\cup B$, and thus $x\in B$.
 (g): Suppose that $B\subseteq A$. By part (c) of this problem, $A-(A-B)=A\cap B$. By part (e) of this problem, and the assumption that $B\subseteq A$, $B\cap A=B$. But 
 $B\cap A$ is just $A\cap B$. Thus $A\cap B=B$, meaning $A-(A-B)=B$.
 
+\section*{1.6}
+
+\subsection*{Remark 1}
+Here is why Remark 1 is true. For suppose we instead had the axiom $A'_6$: for any set $x$ there is a set $y$ that contains all subsets of $x$ as elements. 
+Now, the class $\mathcal{P}(x)$ contains all of those and only those subsets of $x$. Thus $\mathcal{P}(x)$ is a subset of (and equal to) 
+the set that exists by $A_6'$. Hence, by $A_2$, $\mathcal{P}(x)$ is also a set.
+
+\subsection*{Exercise 6.1}
+(a): Suppose that $y\in x$. Now, $\mathcal{P}(\cup x)$ is the set of all subsets of $\cup x$, and $\cup x$ is the set of all elements of all elements of 
+$x$. Thus $\mathcal{P}(\cup x)$ is the set of all sets whose only elements are elements of elements of $x$. Now, either $y$ is empty, or it is non-empty. If 
+it empty, then $y\in\mathcal{P}(\cup x)$ vacuously holds. On the other hand, if it is non-empty, then $y$ is a set of elements of an element of $x$, namely $y$ itself. 
+Thus $y$ is a subset of $\cup x$, and hence $y\in\mathcal{P}(\cup x)$. Thus we have shown that $x\subseteq\mathcal{P}(\cup x)$.
+
+
+(b): On the one hand, suppose that $y\in\cup(\mathcal{P}(x))$. What this means is that $y$ is an element of an element of $\mathcal{P}(x)$. But all elements of 
+$\mathcal{P}(x)$ are subsets of $x$, that is, they only contain elements of $x$. Hence $y$ is an element of $x$. On the other hand, suppose that $y\in x$. Thus $y$ 
+is an element of an element of $\mathcal{P}(x)$, namely any subset of $x$ which contains $y$. Thus $\cup(\mathcal{P}(x))=x$.
+
+
+(c): Suppose that $x\subseteq y$. Now suppose that $z\in\mathcal{P}(x)$. Thus $z$ is a subset of $x$, that is, $z$ is such that all of its elements are elements of 
+$x$. But that means all of the elements of $z$ are also elements of $y$. Thus all elements of $z$ are elements of $y$, meaning $z$ is a subset of $y$, and thus 
+$z\in\mathcal{P}(y)$. Hence $\mathcal{P}(x)\subseteq\mathcal{P}(y)$.
+
+\section*{1.7}
+
+\subsection*{Exercise 7.1}
+On the hand hand, suppose that $x\in (A\cup B)\times (C\cup D)$. Thus $x=\langle a,b\rangle$ for some $a\in A\cup B$ and 
+$b\in C\cup D$. Thus there are four cases: $a\in A$ and $b\in C$; $a\in A$ and $b\in D$; $a\in B$ and $b\in C$; $a\in B$ and $b\in C$. This is the same as saying 
+either $x\in A\times C$ or $x\in A\times D$ or $x\in B\times C$ or $x\in B\times D$. That is, 
+\[ x\in (A\times C)\cup (A\times D)\cup (B\times C)\cup (B\times D) \]
+
+
+On the other hand, suppose that \[ x\in (A\times C)\cup (A\times D)\cup(B\times C)\cup(B\times D) \]
+Thus $x=\langle a,b\rangle$ for some $a$ either in $A$ or $B$ and for some $b$ either in $C$ or $D$, that is, 
+\[ x\in (A\cup B)\times (C\cup D) \] Hence the statement is true.
+
+\section*{1.8}
+
+\subsection*{Exercise 8.1}
+Suppose that $x\in\textrm{Dom}(R)$. Thus there is some y such that $\langle x,y\rangle\in R$. Thus 
+$\{\{x\},\{x,y\}\}\in R$. Also $\{x,y\}\in\{\{x\},\{x,y\}\}$, meaning $\{x,y\}\in\cup R$. But $x\in\{x,y\}$. Thus $x\in\cup(\cup R)$. Hence 
+$\textrm{Dom}(R)\subseteq\cup(\cup R)$.
+
 \end{document}
