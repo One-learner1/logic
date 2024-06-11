@@ -108,20 +108,20 @@ $\{\{b\}\}=\{\{d\}\}$ and thus $b=d$, therefore completing the proof.
 
 \subsection*{Exercise 5.1}
 For suppose for any set $x$ there is a set $y$ that contains all elements of all elements of $x$. Now, $\cup x$ is defined to be the class of all elements of all elements 
-of $A$. Thus $\cup x$ is a subclass of $y$, and hence, by $A_2$, is a set.
+of $A$. Thus $\cup x$ is a subclass of $y$ (in fact, they are identical classes), and hence, by $A_2$, is a set.
 
 \subsection*{Exercise 5.2}
-(a): Suppose $A\subseteq B$. Then, for all $x\in A$, $x\in B$. Now suppose $x\in \cup A$. Then $x\in y$ for some $y\in A$, that is, $y\in B$. Now, $\cup B$ is the set 
-of all elements of all elements of $B$. But we have shown that $x$ is an element of $y$, an element of $B$. Thus $x\in \cup B$.
+(a): Suppose $A\subseteq B$. Then, for all $x\in A$, $x\in B$. Now suppose $x\in \cup A$. Then $x\in y$ for some $y\in A$, that is, $y\in B$. Now, $\cup B$ is the class 
+of all elements of all elements of $B$. But we have shown that $x$ is an element of $y$, which is an element of $B$. Thus $x\in \cup B$.
 Hence $\cup A\subseteq B$.
 
 
 (b): Suppose $A\subseteq B$. Then, for all $x\in A$, $x\in B$. Now suppose that $x\in\cap B$. Then $x\in y$ for every $y\in B$, and thus $x\in z$ for every 
-$z\in A$. But $\cup A$ is the set of all elements of all elements of $A$, and we have shown that $x\in z$ for every element $z$ of $A$. Hence $x\in\cap A$. 
+$z\in A$. But $\cap A$ is the class of all elements of all elements of $A$, and we have shown that $x\in z$ for every element $z$ of $A$. Hence $x\in\cap A$. 
 Thus $\cap B\subseteq\cap A$.
 
 \subsection*{Exercise 5.3}
-(a): This is true. For suppose that $A$ is transitive. Then all elements of all elements of $A$ are elements of $A$. $\cup A$ is the set of all elements of all elements of 
+(a): This is true. For suppose that $A$ is transitive. Then all elements of all elements of $A$ are elements of $A$. $\cup A$ is the class of all elements of all elements of 
 $A$. Now suppose that $x\in\cup A$. Thus, because it is an element of some element of $A$, we know that $x$ is an element of $A$ by the transitivity of $A$. Hence 
 $x\in A$, and therefore $\cup A\subseteq A$.
 
@@ -136,7 +136,7 @@ $x\in\cup A$. Hence $\cup A$ is transitive.
 
 
 (d): This is true. For suppose that every element of $A$ is transitive. Then, for every element $x$ of $A$, all elements of all elements of $x$ are elements of $x$. 
-Now suppose that $\cup A$ was not transitive. Hence there would be some element $x$ of an element $y$ of $\cup A$ such that $x\notin A$. Because $y\in\cup A$, 
+Now suppose that $\cup A$ was not transitive. Hence there would be some element $x$ of an element $y$ of $\cup A$ such that $x\notin\cup A$. Because $y\in\cup A$, 
 $y$ is an element of some element $z$ of $A$. Because $z$ is transitive, all elements of all elements of $z$ are elements of $z$. But $x\in y$; hence $x\in z$. Thus 
 $x$ is an element of an element of $A$, meaning $x\in\cup A$. Thus $\cup A$ is transitive. 
 
@@ -151,10 +151,13 @@ this. Hence $z\in\cap\{x,y\}$. On the other hand, suppose that $z\in\cap\{x,y\}$
 $x\cap y=\cap\{ x,y\}$.
 
 \subsection*{Exercise 5.5}
-For non-empty sets, (a) and (b) are not necessarily true. In fact, assuming that sets cannot be members of themselves, they are never true. For suppose 
-$\cup\{x\}=x$ and $x$ was non-empty. This would mean that $x$ was an element of $x$, which we assumed cannot occur. Similar reasoning shows that 
-$\cap\{x\}\ne x$ for non-empty $x$. But if $x$ is empty, then both (a) and (b) are true. In particular, because $\emptyset$ has no elements, 
-$\cup\{\emptyset\}=\cap\{\emptyset\}=\emptyset$.
+(a): On the one hand, suppose that $y\in\cup\{x\}$. Then $y$ is in some element of $\{x\}$. Because $x$ is the only such element, $y\in x$. On the other hand, suppose that 
+$y\in x$. Thus $y$ is in some element of $\{x\}$, namely $x$, meaning $y\in\cup\{x\}$. Hence $\cup\{x\}=x$, meaning the statement is necessarily true.
+
+
+(b): On the one hand, suppose that $y\in\cap\{x\}$. Then $y$ is an element of all elements of $\{x\}$. But $x$ is the only such element, meaning $y\in x$. On the other hand, 
+suppose that $y\in x$. Then $y$ is in all elements of $\{x\}$, as $x$ is the only such element, meaning $y\in\cap\{x\}$. Hence $\cap\{x\}=x$, meaning the statement is 
+necessarily true. 
 
 \subsection*{Exercise 5.6}
 (a): On the one hand, suppose that $x\in A\cap (B\cup C)$. Then $x\in A$ and $x\in B\cup C$. Hence either $x\in B$ or $x\in C$. If 
@@ -175,13 +178,13 @@ it was assumed that $x\in A$. Thus $x\in B$. Hence $x\in A$ and $x\in B$, meanin
 $x\in B$. Hence $x\notin A-B$. Thus $x\in A$ and $x\notin A-B$, meaning $x\in A-(A-B)$.
 
 
-(d): The question gives the incorrect statement to prove. It should instead by $B-(A-B)=B$, not $\emptyset$. 
+(d): The question gives the incorrect statement to prove. It should instead say $B-(A-B)=B$, not $\emptyset$. 
 Now, $x\in B-(A-B)$ iff $x\in B$ and $x\notin A-B$. Thus either $x\notin A$ or $x\in B$. Thus this statement is satisfied for all $x\in B$. But 
 suppose there were some $x\notin B$ such that $x\in B-(A-B)$. But that is impossible, as $x$ must be in $B$. Hence $x\in B$ iff $x\in B-(A-B)$, therefore meaning 
 $B-(A-B)=B$.
 
 
-(e): On the one hand, suppose that $A\subseteq B$. Now suppose that $x\in A\cup B$. Then $x\in A$. Now alternatively suppose that $x\in A$. 
+(e): On the one hand, suppose that $A\subseteq B$. Now suppose that $x\in A\cap B$. Then $x\in A$. Now alternatively suppose that $x\in A$. 
 But because $A\subseteq B$, $x\in B$. Thus $x\in A\cap B$. Thus $A\cap B=A$. On the other hand, suppose that $A\cap B=A$. Now suppose that $x\in A$. 
 Thus $x\in A\cap B$, meaning $x\in B$. Hence $A\subseteq B$.
 
@@ -192,7 +195,7 @@ $x\in A\cup B$ iff $x\in B$, meaning $A\cup B=B$. On the other hand, suppose tha
 $x\in A\cup B$, and thus $x\in B$.
 
 
-(g): Suppose that $B\subseteq A$. By part (c) of this problem, $A-(A-B)=A\cap B$. By part (e) of this problem, $B\cap A=B$. But 
+(g): Suppose that $B\subseteq A$. By part (c) of this problem, $A-(A-B)=A\cap B$. By part (e) of this problem, and the assumption that $B\subseteq A$, $B\cap A=B$. But 
 $B\cap A$ is just $A\cap B$. Thus $A\cap B=B$, meaning $A-(A-B)=B$.
 
 \end{document}
