@@ -30,7 +30,7 @@
 \date{}
 \maketitle
 
-\section*{1.4}
+\section*{2.4}
 Note that $P_1$ seems to be being used not just as an implication, but as an equivalence. See for example the proof of Lemma 4.3, where 
 $\{a,b\}=\{a,d\}$ is said to imply $b\in \{a,d\}$. The equivalence is of course the definition that makes much more sense (if we only had the implication, we 
 couldn't actually discern what $a=b$ even meant).
@@ -104,7 +104,7 @@ $\{a\}=\{c\}$ and thus $a=c$. Then again by Lemma 4.3, $\{\{b\}\}=\{\{d\}\}$ and
 Now consider the second case, where $\{\emptyset,\{a\}\}=\{\emptyset,\{c\}\}$. Thus $\{a\}=\{c\}$ (by Lemma 4.3) and $a=c$, meaning, again by Lemma 4.3, 
 $\{\{b\}\}=\{\{d\}\}$ and thus $b=d$, therefore completing the proof.
 
-\section*{1.5}
+\section*{2.5}
 
 \subsection*{Exercise 5.1}
 For suppose for any set $x$ there is a set $y$ that contains all elements of all elements of $x$. Now, $\cup x$ is defined to be the class of all elements of all elements 
@@ -198,7 +198,7 @@ $x\in A\cup B$, and thus $x\in B$.
 (g): Suppose that $B\subseteq A$. By part (c) of this problem, $A-(A-B)=A\cap B$. By part (e) of this problem, and the assumption that $B\subseteq A$, $B\cap A=B$. But 
 $B\cap A$ is just $A\cap B$. Thus $A\cap B=B$, meaning $A-(A-B)=B$.
 
-\section*{1.6}
+\section*{2.6}
 
 \subsection*{Remark 1}
 Here is why Remark 1 is true. For suppose we instead had the axiom $A'_6$: for any set $x$ there is a set $y$ that contains all subsets of $x$ as elements. 
@@ -221,7 +221,7 @@ is an element of an element of $\mathcal{P}(x)$, namely any subset of $x$ which 
 $x$. But that means all of the elements of $z$ are also elements of $y$. Thus all elements of $z$ are elements of $y$, meaning $z$ is a subset of $y$, and thus 
 $z\in\mathcal{P}(y)$. Hence $\mathcal{P}(x)\subseteq\mathcal{P}(y)$.
 
-\section*{1.7}
+\section*{2.7}
 
 \subsection*{Exercise 7.1}
 On the hand hand, suppose that $x\in (A\cup B)\times (C\cup D)$. Thus $x=\langle a,b\rangle$ for some $a\in A\cup B$ and 
@@ -234,14 +234,14 @@ On the other hand, suppose that \[ x\in (A\times C)\cup (A\times D)\cup(B\times 
 Thus $x=\langle a,b\rangle$ for some $a$ either in $A$ or $B$ and for some $b$ either in $C$ or $D$, that is, 
 \[ x\in (A\cup B)\times (C\cup D) \] Hence the statement is true.
 
-\section*{1.8}
+\section*{2.8}
 
 \subsection*{Exercise 8.1}
 Suppose that $x\in\textrm{Dom}(R)$. Thus there is some y such that $\langle x,y\rangle\in R$. Thus 
 $\{\{x\},\{x,y\}\}\in R$. Also $\{x,y\}\in\{\{x\},\{x,y\}\}$, meaning $\{x,y\}\in\cup R$. But $x\in\{x,y\}$. Thus $x\in\cup(\cup R)$. Hence 
 $\textrm{Dom}(R)\subseteq\cup(\cup R)$.
 
-\section*{1.10}
+\section*{2.10}
 
 \subsection*{Notes}
 Note that the reason Theorem 10.4 and Theorem 10.5 only hold for sets is that $\mathcal{P}(x)$ was only defined for sets (not for classes in general).
@@ -269,7 +269,7 @@ $a_{n+1}$ are in $a_{n+1}$.
 Another generalization can be made (this time of paragraph two). Suppose we considered some set $x=\{a_m,...,a_n\}$ where $m<n$, but such that the set does not 
 have $n$ elements. This is just the 
 $\{a_1,...,a_n\}$ but with at least one $a_i$ removed (for $i<n$). We prove that this set cannot be transitive. Let $a_k$ be (at least) one of the elements missing from the set 
-$\{a_m,...,a_n\}$. Now, $a_{k+1}\in x$. But $a_{k+1}=\{a_1,...,a_k\}$, that is, $a_k\in a_{k+1}$. But $a_k\notin x$. Thus there is an element of $x$ that has an element 
+$\{a_m,...,a_n\}$. Now, $a_n\in x$. But $a_n=\{a_1,...,a_k,...,a_{n-1}\}$, that is, $a_k\in a_n$. But $a_k\notin x$. Thus there is an element of $x$ that has an element 
 that is not in $x$, meaning $x$ is not transitive.
 
 
@@ -281,6 +281,55 @@ for some for all numbers less than $n$ (where $n\ge 2$). Now, $a_n=\{a_1,...,a_{
 $\{a_1,...,a_{n-2}\}$ is a set, as $\{a_1,...,a_{n-2}\}=a_{n-1}$, which was assumed to be a set. Then, by $A_4$,
 \[ x=\{\{a_1,...,a_{n-2}\},\{a_{n-1}\}\} \] is a set. Thus, by $A_5$, $\cup x$ is a set. But 
 \[ \cup x=\{a_1,...,a_{n-2},a_{n-1}\}=a_n \] Thus, by $A_2$, $a_n$ is a set, completing the proof.
+
+
+It should be noted that the results in the above paragraphs also hold if one instead defined $a_1,...,a_n,...$ as we did previously: $a_1=\emptyset$ and $a_{n+1}=\{a_n\}$, and then 
+considered the same sequence of sets: $c_1=\emptyset$ and $c_{n+1}=\{a_1,...,a_n\}$. It should also be 
+noted that these results prove that there are an infinite number of transitive sets. Here is the proof that $\{a_1,...,a_n\}$ when defined in this way is still a set (for every $n$). We can show the 
+more general fact that, for any sets $x_1,...,x_n$, $\{x_1,...,x_n\}$ is a set. The base case (when $n=1$) holds by $A_4$. Now suppose that the result holds for some $n$, that is, 
+$\{x_1,...,x_n\}$ is a set for all sets $x_1,...,x_n$. Now consider $\{x_1,...,x_n,x_{n+1}\}$ (for any sets $x_1,...,x_n,x_{n+1}$). By $A_4$, and the assumption that 
+$\{x_1,...,x_n\}$ is a set, $\{\{x_1,...,x_n\},\{x_{n+1}\}\}$ is a set. Then, by $A_5$, $\cup\{\{x_1,...,x_n\},\{x_{n+1}\}\}$ is a set. But 
+$\cup\{\{x_1,...,x_n\},\{x_{n+1}\}\}=\{x_1,...,x_n,x_{n+1}\}$, thus showing $\{x_1,...,x_n,x_{n+1}\}$ is a set. As a consequence of this result, 
+$\{a_1,...,a_n\}$ is a set for all $n$. 
+
+
+For the sake of clarity, let us refer to the sequence of $a_i$'s in the last paragraph as $b_i$. That is, $b_1=\emptyset$ and $b_{n+1}=\{\emptyset\}$ and $c_1=\emptyset$ and 
+$c_{n+1}=\{b_1,...,b_n\}$. Let us refer to the previous defintion of 
+$a_i$'s in the same way. That is, $a_1=\emptyset$ and $a_{n+1}=\{a_1,...,a_n\}$. Interestingly enough, $b_i$ is never swelled (if $i>2$), but $c_i$ is always swelled, 
+whereas $a_i$ is swelled for $i\le 3$, but is not 
+swelled for any $i>3$. First, we show the former statement: that $b_n$ is swelled for $i\le 2$, but is not swelled for $i>2$, and $c_i$ is always swelled. 
+The base cases (for $i=1$ and $i=2$) hold, as it has already been shown that $\emptyset$ and $\{\emptyset\}$ are supercomplete (and hence swelled). Now consider any $b_n$ for $n>1$. 
+Then $b_n=\{b_{n-1}\}$. This obviously means $b_n$ is not swelled, as a subset of $b_n$ is $\emptyset$, but that is not a member of $\{b_{n-1}\}$, unless $b_n=\{\emptyset\}$, in which case $n=2$. Now 
+consider $c_n$, that is, $\{b_1,...,b_n\}$. Now, for each $i>1$, the subsets of $b_i$ are $\emptyset$ and $b_{i-1}$, and there are no subsets of the empty set. But $c_n$ includes $b_{i-1}$ and 
+the empty set. Thus $c_n$ contains every subset of each of its elements. Now we consider $a_n$. Both $a_1$ and $a_2$ have been shown to be supercomplete (hence swelled). Consider 
+$a_3: \{\emptyset,\{\emptyset\},\{\emptyset,\{\emptyset\}\}\}$. The subsets of all of its elements are: $\emptyset,\{\emptyset\}$ and $\{\emptyset,\{\emptyset\}\}$. But $a_3$ has all of these as 
+elements. Thus it is swelled. But now consider any $a_n$ for $n>3$. Then $a_3$ is an element of $a_n$. One subset of 
+$a_3$ is $x:\{\emptyset,\{\emptyset,\{\emptyset\}\}\}$. But $x\notin a_n$, as $x\ne a_m$ (as can be easily shown) for any $m<n$ (and $a_n=\{a_1,...,a_{n-1}\}$). Hence there is a subset of an 
+element of $a_n$ which is not an element of $a_n$, meaning $a_n$ is not swelled. 
+
+
+It should be noted that the above case for $c_n$ assumes the following (which I am not sure is implied by the definitions given in the book): Suppose we have some subset $y$ of $x$, and some 
+set $z=y$. Then, if $z\in x$, then $y\in x$. Or, more generally, for any two sets $y$ and $z$, if $z=y$ and $z\in x$, then $y\in x$. Here is why this relates to the above. For suppose we considered 
+some $c_n:\{b_1,...,b_n\}$. Then we would have, for example, $\{b_1,b_1\}\subseteq c_n$. But we do not explicitly have $\{b_1,b_1\}\in c_n$, only $\{b_1\}\in c_n$. But 
+$\{b_1\}=\{b_1,b_1\}\in c$. Thus, if the first statement of this paragraph held, then we would also have $\{b_1,b_1\}\subseteq c_n$. It seems that this is how the book is using the notion of 
+set membership. Recall Note 2 of section 4. It is stated here that $a=b$ means $a$ and $b$ are the same element. Thus, because $\{b_1,b_1\}=\{b_1\}$, they are the same element. Hence 
+$\{b_1,b_1\}\in c_n$.
+
+
+Here is why $x:\{\emptyset,\{\emptyset,\{\emptyset\}\}\}\notin a_n$ for every $n$. We can prove a more general statement: Any set of the form $x:\{x_k,...,x_n\}$ is not equal to any 
+set of the form $y:\{x_j,...,x_m\}$ such that $y$ contains at least one $x_i$ such that $i\ne l$ for all $x_l\in x$. A statement that we will see implies this is: $a_n\ne a_m$ for all 
+$n$ and $m$ such that $n\ne m$. The base case, where $n=1$, is obvious, as $a_1=\emptyset$, whereas all $a_m$ for $m>0$ have at least one element. Now suppose the result holds for all numbers $\le n$. 
+Now consider $a_{n+1}$, and any $a_m$ such that $m\ne n$. Either $m>n$ or $m<n$. In the first case, 
+$a_{n+1}=\{a_1,...,a_n\}$ and $a_m=\{a_1,...,a_n,...,a_m\}$. Then it must be that $a_m=a_i$ for some $i\le n$ (if $a_{n+1}=a_m$). 
+But, becuase $m\ne i$ for all $i\le n$, it follows by the induction assumption 
+that $a_m\ne a_i$ for all $i\le n$. Thus $a_m\notin a_{n+1}$, meaning $a_{n+1}\ne a_m$. On the other hand, suppose that $m<n$. Then it follows that 
+$a_m=\{a_1,...,a_{m-1}\}$ where $m-1<n$. Then, if $a_{n+1}=a_m$, $a_n=a_i$ for some $i<n$. But this is not possible by the induction assumption. Thus $a_n\notin a_m$, meaning 
+$a_{n+1}\ne a_m$. 
+
+
+Now having proven this result, it is obvious that the other result holds: Any set of the form $x:\{x_k,...,x_n\}$ is not equal to any
+set of the form $y:\{x_j,...,x_m\}$ such that $y$ contains at least one $x_i$ such that $i\ne l$ for all $x_l\in x$. For suppose this was the case. Then $x_i$ is such that $i\ne l$ for 
+all $x_l\in x$. But, by the last result, it then follows that $x_i\ne x_l$ for all $x_l\in x$. Thus $x_i\notin x$, meaning $x\ne y$.
 
 \subsection*{Exercise 10.1}
 (a): The only element of $\{\{\emptyset\}\}$ is $\{\emptyset\}$. It's only element is $\emptyset$. But $\emptyset\notin\{\{\emptyset\}\}$. Thus 
