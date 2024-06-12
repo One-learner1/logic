@@ -214,7 +214,7 @@ Thus $y$ is a subset of $\cup x$, and hence $y\in\mathcal{P}(\cup x)$. Thus we h
 
 (b): On the one hand, suppose that $y\in\cup(\mathcal{P}(x))$. What this means is that $y$ is an element of an element of $\mathcal{P}(x)$. But all elements of 
 $\mathcal{P}(x)$ are subsets of $x$, that is, they only contain elements of $x$. Hence $y$ is an element of $x$. On the other hand, suppose that $y\in x$. Thus $y$ 
-is an element of an element of $\mathcal{P}(x)$, namely any subset of $x$ which contains $y$. Thus $\cup(\mathcal{P}(x))=x$.
+is an element of an element of $\mathcal{P}(x)$, namely any subset of $x$ which contains $y$. Hence $y\in\cup(\mathcal{P}(x))$. Thus $\cup(\mathcal{P}(x))=x$.
 
 
 (c): Suppose that $x\subseteq y$. Now suppose that $z\in\mathcal{P}(x)$. Thus $z$ is a subset of $x$, that is, $z$ is such that all of its elements are elements of 
@@ -240,5 +240,55 @@ Thus $x=\langle a,b\rangle$ for some $a$ either in $A$ or $B$ and for some $b$ e
 Suppose that $x\in\textrm{Dom}(R)$. Thus there is some y such that $\langle x,y\rangle\in R$. Thus 
 $\{\{x\},\{x,y\}\}\in R$. Also $\{x,y\}\in\{\{x\},\{x,y\}\}$, meaning $\{x,y\}\in\cup R$. But $x\in\{x,y\}$. Thus $x\in\cup(\cup R)$. Hence 
 $\textrm{Dom}(R)\subseteq\cup(\cup R)$.
+
+\section*{1.10}
+
+\subsection*{Notes}
+Note that the reason Theorem 10.4 and Theorem 10.5 only hold for sets is that $\mathcal{P}(x)$ was only defined for sets (not for classes in general).
+
+
+Note that Theorem 10.3 is just Exercise 5.3 (d).
+
+
+In Theorem 10.5, here is why $x\subseteq\mathcal{P}(x)$ implies that $\mathcal{P}(x)\subseteq\mathcal{P}(\mathcal{P}(x))$. Because 
+$x\subseteq\mathcal{P}(x)$, every element of $x$ is a subset of $x$. But now suppose that $y\in\mathcal{P}(x)$. Then $y$ is a subset of $x$. Now, 
+$\mathcal{P}(\mathcal{P}(x))$ is the set of all subsets of all subsets of $x$. But, for every element of $x$, that element is a subset of $x$. Thus, because 
+$y$ is a set containing only elements of $x$, all elements of $y$ are elements of $\mathcal{P}(x)$. But that means $y$ is a subset of 
+$\mathcal{P}(x)$, that is, $y\in\mathcal{P}(\mathcal{P}(x))$.
+
+
+One can generalize the results obtained in the first three paragraphs in this section. Let the sequence $a_1,a_2,...,a_n,...$ be defined in the following way:
+$a_1=\emptyset$, $a_2=\{a_1\}$, $a_3=\{a_1,a_2\}$, and in general, $a_{n+1}=\{a_1,...,a_n\}$. We prove that every $a_n$ is transitive. The base case was explained in 
+Note 2 of Section 3. Now suppose the result holds for all number less than $n+1$, that is, all sets $a_i$ for $i\le n$ are transitive. Now, 
+$a_{n+1}=\{a_1,...,a_{n-1},a_n\}$. We can prove that all elements of all elements of $a_{n+1}$ are elements of $a_{n+1}$ by limited induction. The case for 
+$a_1$ is vacuously true. Now suppose the result holds for all numbers less than some $m<n$. That is, all elements of $a_i$ are in $a_{n+1}$ for every $i<m$. Now, 
+$a_m=\{a_1,...,a_{m-1}\}$. But $a_1,...,a_{m-1}$ are all in $a_{n+1}$, that is, all elements of $a_m$ are in $a_{n+1}$. Thus all elements of all elements of 
+$a_{n+1}$ are in $a_{n+1}$.
+
+
+Another generalization can be made (this time of paragraph two). Suppose we considered some set $x=\{a_m,...,a_n\}$ where $m<n$, but such that the set does not 
+have $n$ elements. This is just the 
+$\{a_1,...,a_n\}$ but with at least one $a_i$ removed (for $i<n$). We prove that this set cannot be transitive. Let $a_k$ be (at least) one of the elements missing from the set 
+$\{a_m,...,a_n\}$. Now, $a_{k+1}\in x$. But $a_{k+1}=\{a_1,...,a_k\}$, that is, $a_k\in a_{k+1}$. But $a_k\notin x$. Thus there is an element of $x$ that has an element 
+that is not in $x$, meaning $x$ is not transitive.
+
+
+Here is an explanation for why every $a_n$ defined in the preceeding two paragraphs really is a set. $a_1$ and $a_2$ have already been shown to be sets. Now, 
+$a_3=\{\emptyset,\{\emptyset\},\{\emptyset,\{\emptyset\}\}\}$. Using $A_4$, we know that
+\[ x=\{\{\emptyset,\{\emptyset\}\},\{\{\emptyset,\{\emptyset\}\}\}\} \] is a set. By $A_5$, we know that 
+$\cup x$ is a set. But $\cup x=\{\emptyset,\{\emptyset\},\{\emptyset,\{\emptyset\}\}\}$, that is, $\cup x=a_3$, meaning $a_3$ is a set by $A_2$. Now suppose the result holds 
+for some for all numbers less than $n$ (where $n\ge 2$). Now, $a_n=\{a_1,...,a_{n-2},a_{n-1}\}$. By the induction assumption, 
+$\{a_1,...,a_{n-2}\}$ is a set, as $\{a_1,...,a_{n-2}\}=a_{n-1}$, which was assumed to be a set. Then, by $A_4$,
+\[ x=\{\{a_1,...,a_{n-2}\},\{a_{n-1}\}\} \] is a set. Thus, by $A_5$, $\cup x$ is a set. But 
+\[ \cup x=\{a_1,...,a_{n-2},a_{n-1}\}=a_n \] Thus, by $A_2$, $a_n$ is a set, completing the proof.
+
+\subsection*{Exercise 10.1}
+(a): The only element of $\{\{\emptyset\}\}$ is $\{\emptyset\}$. It's only element is $\emptyset$. But $\emptyset\notin\{\{\emptyset\}\}$. Thus 
+$\{\{\emptyset\}\}$ is not transitive. In fact, $\{\{\emptyset\}\}$ is not transitive as a consequence of the result of the paragraph preceeding the last.
+
+
+(b): Suppose that we removed some element $x$ from $V$. Thus the resulting class is $V-\{x\}$. Now, because $x\in V$, 
+$\{x\}\in V$. But we didn't remove $\{x\}$ from $V$. Thus $\{x\}\in V-\{x\}$. But $x\notin V-\{x\}$. Thus there is some element of 
+$V-\{x\}$ who has an element that is not in $V$, meaning $V-\{x\}$ is not transitive. 
 
 \end{document}
