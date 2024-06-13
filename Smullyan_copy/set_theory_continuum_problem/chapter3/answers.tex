@@ -25,7 +25,7 @@
 \setlength{\parindent}{.5in}
 \geometry{margin=1in}
 \setlength{\parskip}{12pt}
-\title{Chapter 3 Note}
+\title{Chapter 3 Notes}
 \begin{document}
 \date{}
 \maketitle
@@ -58,6 +58,10 @@ $x\in y$ and $y\in n-1$. But then, by the transitivity of $n-1$ (by Theorem 3.1)
 the statement is not necessarily true.
 
 
+It should be noted that all elements other than $n-1$ of $n$ are members of $\cup n$. For all elements of $n$ are either elements of $n-1$ or equal to $n-1$. Thus, if 
+they are not equal to $n-1$, the element is an element of $n-1$. But, because $n-1\in n$, then all elements of $n-1$ are elements of $\cup n$.
+
+
 (b): Suppose that $x\in\cup n$. Thus either $x\in n-1$ or $x$ is an element of some element of $n-1$. In the first case, because $n-1\in n$, $x\in n$ (by the transitivity of $n$). 
 In the second case, because 
 $n-1$ is transitive, it follows that $x\in n-1$. But then, because $n-1\in n$ and $n$ is transitive, $x\in n$. Thus, in either case, $x\in n$, and thus $\cup n\subseteq n$. Hence the statement 
@@ -65,8 +69,15 @@ is necessarily true.
 
 
 (c): By part (b) of this problem, it follows that $x\in\cup n$ implies $x\in n$. But $n^+=n\cup\{n\}$. Thus all elements of $n$ are in $n^+$, meaning $x\in n^+$. On the other hand, suppose that 
-$x\in n^+$. Then it could be that $x=n$. But then, if $x\in\cup n$, we would have either $n$ being an element of an element of $n$, or $n\in n$. In the first case, the transitivity of $n$ would 
-show that $n\in n$. Thus we would have, in either case, $n\in n$, which is impossible. Hence it is not necessarily the case that $n^+\subseteq\cup n$. Thus $\cup n=n^+$ does not necessarily hold. 
+$x\in n^+$. Then it could be that $x=n$. But then, if $x\in\cup n$, we would have either $n$ being an element of an element of $n-1$, or $n\in n-1$. In the first case, the transitivity of $n-1$ 
+would 
+show that $n\in n-1$. Thus we would have, in either case, $n\in n-1$, which is impossible. For if $n\in n-1$, then, because $n-1\in n$, $n-1\in n-1$ by the transitivity of $n-1$, which is 
+impossible (or, if $n-1=\emptyset$, it could have no members). Hence it is not necessarily the case that $n^+\subseteq\cup n$. Thus $\cup n=n^+$ does not necessarily hold. 
+
+
+Similar reasoning as to the above also shows that $n-1$ cannot be an element of $\cup n$. It should be noted that $n-1$ and $n$ are the only members of $n^+$ that are not members of 
+$\cup n$. For any other element of $n^+$ is an element of $n$ but not equal to $n-1$. But $n=n-1\cup\{n-1\}$. Hence it would be an element of $n-1$, and because 
+$n-1$ is an element of $n$, it would also be an element of $\cup n$.
 
 
 (d): On the one hand, suppose that $x\in\cup n^+$. Then either $x$ is an element of an element of $n$, or $x$ is an element of $n$. In the first case, because $n$ is transitive, 
@@ -87,6 +98,17 @@ some $n$, $x=n$. Now, all elements of $n^+$ are in $\cup\omega$. But $n$ is an e
 
 (b): On the one hand, suppose that $x\in\cup\omega^+$. Now, $\omega^+=\omega\cup\{\omega\}$. Thus either $x$ is an element of a natural number or $x$ is a natural number. By the results of 
 part (a) of this problem, it follows that if $x$ is an element of a natural number, then $x$ is a natural number. Thus $x$ is a natural number, that is, $x\in\omega$. Now suppose that
-$x\in\omega$. Then $x\in\cup\omega^+$, as $x$ would be an element of $\omega$, which is an element of $\omega^+$.
+$x\in\omega$. Then $x\in\cup\omega^+$, as $x$ would be an element of $\omega$, which is an element of $\omega^+$. Thus we have proven that $\cup\omega^+=\omega$.
+
+
+Note that a generalization cannot be made of this problem. Define $\{\omega_0,\omega_1,\omega_2,...,\omega_n,...\}$ in the following way: $\omega_0=\omega$ and 
+$\omega_{n+1}=\omega_n^+$. Then it does not follow that $\cup\omega_n=\omega$ for all $n$. For consider $n=2$. This is $\omega_1^+$, that is, 
+\[ \omega_1\cup\{\omega_1\}=(\omega\cup\{\omega\})\cup\{(\omega\cup\{\omega\})\} \] Thus $\omega\in\cup\omega_1^+$. But $\omega\notin\omega$, meaning 
+$\cup\omega_2\ne\omega$. Indeed, it is a general fact that, for $n\ge 2$, $\cup\omega_n\ne\omega$. To prove this, we can just prove that, for all $n\ge 2$, 
+$\omega\in\omega_n$. We have just proven the base case. If the result holds for some $n$, then $\omega\in\omega_{n+1}$, as $\omega_{n+1}=\omega_n \cup\{\omega_n\}$, and it was assumed that 
+$\omega\in\omega_n$. Thus, for every $n\ge 2$, $\omega\in\omega_n$. Now we can prove the statement that, for $n\ge 2$, $\cup\omega_n\ne\omega$. We proved the base case for $n=2$ above. 
+Now consider some $n>2$. Then $\omega_n=\omega_{n-1}\cup\{\omega_{n-1}\}$ and $\cup\omega_n$ consists of all elements of all elements of $\omega_{n-1}$ and 
+all elements of $\omega_{n-1}$. Because $\omega$ is an element of $\omega_{n-1}$, it follows that $\omega\in\cup\omega_n$, and thus, because $\omega\notin\omega$, 
+$\cup\omega_n\ne\omega$. 
 
 \end{document}
