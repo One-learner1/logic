@@ -24,8 +24,25 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 	for (int i = 0; i<(int)strlen(expression); i++) {
+		// if the character is a left parenthesis, we need to ensure that it matches up with a right parenthesis
 		if (expression[i] == '(') {
+			int nested_paren_count = 1;
 			paren_count++;
+			for (int j = i; j<(int)strlen(expression); j++) {
+				if (expression[j] == '(') {
+					nested_paren_count++;
+				}
+				else if (expression[j] == ')') {
+					nested_paren_count--;
+					if (nested_paren_count == 0) {
+						break;
+					}
+				}
+			}
+			if (nested_paren_count != 0) {
+				printf("Incorrect syntax.\n");
+				exit(1);
+			}
 		}
 		else if (expression[i] == ')') {
 			paren_count--;

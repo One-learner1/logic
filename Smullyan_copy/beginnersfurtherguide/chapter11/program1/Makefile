@@ -9,3 +9,6 @@ clean:
 
 syntax: syntax.o
 	$(CC) $(CFLAGS) syntax.c -o syntax
+
+simplify: simplify.o
+	$(CC) $(CFLAGS) simplify.c -o simplify
