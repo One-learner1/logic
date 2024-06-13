@@ -5,70 +5,92 @@ than $S$ or $K$ are also variables. No other characters stand for variables, and
 #include <stdlib.h>
 #define MAX_LENGTH 100
 
+/* Function to determine the syntactical correctness of a given expression */
+int correct_syntax(char* expression);
+
+/* Function to find the first term in the given expression */
+char* term(char* expression, int index, int* end_index);
+
+/* Function to find the right paren corresponding to a given left paren in an expression */
+int right_paren(char* expression, int index);
+
 int main(int argc, char* argv[]) {
-	char* expression = (char*)malloc(MAX_LENGTH);
 	if (argc != 2) {
-		printf("An expression (maximum length of %d) must be supplied as an argument.\n", MAX_LENGTH);
+		printf("Exactly one expression must be supplied.\n");
 		exit(1);
 	}
+	int ret_val;
+	ret_val = correct_syntax(argv[1]);
+	printf("The expression is syntactically %s.\n", ret_val?"correct":"incorrect");
+}
+
+int correct_syntax(char* expression) {
+	char* t1 = NULL;
+	char* t2 = NULL;
+	int first_index, second_index; // these track where the first and second terms end
+	// if it is a single character that is either an uppercase or lowercase letter, it has correct syntax
+	if (strlen(expression) == 1 && ((expression[0] >= 65 && expression[0] <= 90) || (expression[0] >= 97 && expression[0] <= 122))) {
+		return 1;
+	}
+	// the next case is when the first character is a left paren and the last is a right paren
+	else if (expression[0] == '(' && expression[strlen(expression)-1] == ')') {
+		// calls function to find the terms t_1 and t_2
+		t1 = term(expression, 1, &first_index);
+		t2 = term(expression, first_index+1, &second_index);
+		// we check that both the terms t1 and t2 were found
+		if (t1 == NULL || t2 == NULL) {
+			return 0;
+		}
+		// we also check that the end of the second term is the second to last character of the expression
+		if (second_index != (int)strlen(expression)-2) {
+			return 0;
+		} 
+		// now we ensure that both t1 and t2 are terms
+		if (correct_syntax(t1) && correct_syntax(t2)) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
+	// otherwise the expression does not start with a valid character
+	else {
+		return 0;
+	}
+}
+
+char* term(char* expression, int index, int* end_index) {
+	char* term = (char*)malloc(MAX_LENGTH);
+	int right;
+	if (expression[index] != '(') {
+		term[0] = expression[index];
+		*end_index = index; 
+		return term;
+	}
+	// otherwise we know it is a left paren, and we need to find a right paren 
+	right = right_paren(expression, index);
+	if (right == -1) {
+		return NULL;
+	}
+	else {
+		strncpy(term, &expression[index], (right+1)-index);
+		*end_index = right;
+		return term;
+	}
+}
+
+int right_paren(char* expression, int index) {
 	int paren_count = 0;
-	int right_paren_encounter = 0; // to track whether the first right paren in a string of right paren's has been encountered
-	int last_char = 0; // to track whether the preceeding character in the expression is not a parentheses
-	expression = argv[1];
-	if (strlen(expression) == 0) {
-		printf("An expression must be entered.\n");
-		exit(1);
-	}
-	if (strlen(argv[1]) > MAX_LENGTH) {
-		printf("The expression must be at most %d characters.\n", MAX_LENGTH);
-		exit(1);
-	}
-	for (int i = 0; i<(int)strlen(expression); i++) {
-		// if the character is a left parenthesis, we need to ensure that it matches up with a right parenthesis
+	for (int i = index; i < (int)strlen(expression); i++) {
 		if (expression[i] == '(') {
-			int nested_paren_count = 1;
 			paren_count++;
-			for (int j = i; j<(int)strlen(expression); j++) {
-				if (expression[j] == '(') {
-					nested_paren_count++;
-				}
-				else if (expression[j] == ')') {
-					nested_paren_count--;
-					if (nested_paren_count == 0) {
-						break;
-					}
-				}
-			}
-			if (nested_paren_count != 0) {
-				printf("Incorrect syntax.\n");
-				exit(1);
-			}
 		}
 		else if (expression[i] == ')') {
 			paren_count--;
-			if (right_paren_encounter == 0) {
-				right_paren_encounter = 1;
-				if (last_char == 0) {
-					printf("Incorrect syntax.\n");
-					exit(1);
-				}
-			}
-		}
-		else {
-			last_char = 1;
-			right_paren_encounter = 0;
-			// this ensures that the character is either a lower case or upper case letter
-			if (!(((expression[i] >= 65 && expression[i] <= 90)) || (expression[i] >= 97 && expression[i] <= 122))) {
-				printf("expression[i]: %d\n", expression[i]);
-				printf("Character '%c' is not allowed.\n", expression[i]);
-				exit(1);
+			if (paren_count == 0) {
+				return i;
 			}
 		}
 	}
-	if (paren_count != 0) {
-		printf("Incorrect syntax.\n");
-		exit(1);
-	}
-	printf("Correct syntax.\n");
+	return -1;
 }
-		
