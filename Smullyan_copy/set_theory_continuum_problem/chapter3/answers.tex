@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=1in}
+\setlength{\parskip}{12pt}
+\title{Chapter 3 Note}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{3.1}
+In the proof of Theorem 3.1, here is why the class of all transitive natural numbers is a set. We can show that it is a subset of $\omega$, and is hence a set by $A_2$. For suppose $x$ is a 
+member of the class of all transitive natural numbers. Then obviously $x$ is also a natural number, hence $x\in\omega$, thus completing the proof. 
+
+
+Note that here is why the only natural numbers allowed for by Definition 2.2 are the ones defined right before Definition 1.1. By Definition 2.2, a natural number is a member of every 
+inductive set. Now, consider the following inductive set: $\emptyset$ is an element, and if $x$ is an element, then so is $x^+$. Hence every natural number is a member of this set. But 
+this set is just the set of all sets that were defined in the way just before Definition 1.1.
+
+\subsection*{Exercise 3.1}
+Suppose that $A$ is a class of natural numbers such that for every natural number $n$, if $A$ contains all numbers less than $n$, then $A$ contains $n$ as well. Now, we can prove by induction that 
+$A$ contains all natural numbers. Consider the property $P$ meaning $A$ contains all numbers natural numbers less than or equal to $n$. Now, there are no natural numbers less than 0. Thus 
+the statement that $A$ contains all natural numbers less than 0 is vacuously true; hence $A$ contains 0. Thus, because $0$ is the only natural number less than or equal to 0, $P$ holds for 
+$0$. Now suppose that $P$ holds for some $n$, that is, $A$ contains all natural numbers less than or equal to $n$. But then $A$ contains all numbers less than $n+1$, meaning (by the definition of 
+$A$) $A$ also contains $n+1$. Thus, by induction, $A$ contains all natural numbers.
+
+\subsection*{Exercise 3.2}
+Consider a natural number $n$.
+
+
+(a): Suppose that $x\in n$. Now, it cannot be that $n=\emptyset$. Thus $n$ is non-empty, hence of the form $(n-1)^+$. Thus either $x\in n-1$ or $x=n-1$. 
+Now, $\cup n$ is just the set of all elements 
+of all elements of $n-1$ together with all elements of $n-1$. Now suppose $x=n-1$. Then $x\notin\cup n$. For suppose it were. Then it would either be an element of $n-1$ or it would be 
+an element of an element of $n-1$. In the first case, we would have $n-1\in n-1$, which is ruled out by Theorem 3.2. In the second case, there would be some $y$ such that 
+$x\in y$ and $y\in n-1$. But then, by the transitivity of $n-1$ (by Theorem 3.1), $x\in n-1$, that is, $n-1\in n-1$, which is again ruled out by Theorem 3.2. Thus $n-1\notin\cup n$, meaning 
+the statement is not necessarily true.
+
+
+(b): Suppose that $x\in\cup n$. Thus either $x\in n-1$ or $x$ is an element of some element of $n-1$. In the first case, because $n-1\in n$, $x\in n$ (by the transitivity of $n$). 
+In the second case, because 
+$n-1$ is transitive, it follows that $x\in n-1$. But then, because $n-1\in n$ and $n$ is transitive, $x\in n$. Thus, in either case, $x\in n$, and thus $\cup n\subseteq n$. Hence the statement 
+is necessarily true.
+
+
+(c): By part (b) of this problem, it follows that $x\in\cup n$ implies $x\in n$. But $n^+=n\cup\{n\}$. Thus all elements of $n$ are in $n^+$, meaning $x\in n^+$. On the other hand, suppose that 
+$x\in n^+$. Then it could be that $x=n$. But then, if $x\in\cup n$, we would have either $n$ being an element of an element of $n$, or $n\in n$. In the first case, the transitivity of $n$ would 
+show that $n\in n$. Thus we would have, in either case, $n\in n$, which is impossible. Hence it is not necessarily the case that $n^+\subseteq\cup n$. Thus $\cup n=n^+$ does not necessarily hold. 
+
+
+(d): On the one hand, suppose that $x\in\cup n^+$. Then either $x$ is an element of an element of $n$, or $x$ is an element of $n$. In the first case, because $n$ is transitive, 
+$x\in n$. The second case means $x\in n$. Thus, in any case, $x\in n$. On the other hand, suppose that $x\in n$. Then $x\in\cup n^+$, as $n^+=n\cup\{n\}$. Hence $\cup n^+=n$.
+
+
+(e): By part (b) of this problem, $\cup n\subseteq n$ holds. But by the answer to part (a) of this problem, it does not necessarily follow that $n\subseteq\cup n$. Thus it is not necessarily true 
+that $\cup n=n$.
+
+\subsection*{Exercise 3.3}
+(a): On the one hand, suppose that $x\in\cup\omega$. Then $x$ is an element of a natural number. 
+Thus either $x\in n$ or $x=n$. Now we prove the following statement: every element of every natural number is a natural number. The base case vacuously 
+holds, as $\emptyset$ has no elements. Now suppose the statement holds for some $n$. Then $n^+=n\cup\{n\}$. Hence, if $y\in n^+$, either $y\in n$ or $y=n$. In the former case, by the induction 
+assumption, it follows that $y$ is a natural number, and in the latter case, $y$ would be a natural number (as $n$ is a natural number). Thus, in any case, $y$ is a natural number, therefore 
+completing the proof. As a consequence of having proven this statement, it follows that $x$ is a natural number, and hence $x\in\omega$. On the other hand, suppose that $x\in\omega$. Thus, for 
+some $n$, $x=n$. Now, all elements of $n^+$ are in $\cup\omega$. But $n$ is an element of $n^+$. Thus $n\in\cup\omega$, and hence $x\in\cup\omega$. Thus we have proven that $\cup\omega=\omega$. 
+
+
+(b): On the one hand, suppose that $x\in\cup\omega^+$. Now, $\omega^+=\omega\cup\{\omega\}$. Thus either $x$ is an element of a natural number or $x$ is a natural number. By the results of 
+part (a) of this problem, it follows that if $x$ is an element of a natural number, then $x$ is a natural number. Thus $x$ is a natural number, that is, $x\in\omega$. Now suppose that
+$x\in\omega$. Then $x\in\cup\omega^+$, as $x$ would be an element of $\omega$, which is an element of $\omega^+$.
+
+\end{document}
