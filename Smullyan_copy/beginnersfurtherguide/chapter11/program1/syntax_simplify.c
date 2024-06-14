@@ -4,6 +4,10 @@ For readability, it is useful to use the abbreviated notation which was used in 
 For all constants and variables, the simplified form of x is x. For all terms t1, the simplified form of (t1x) is tx, where t is the simplified form of t1, and for all
 terms t1 and expressions x1, the simplified form of (t1(x1)) (if it is a term) is t(x) where t and x are the simplified forms of t1 and (x1), respectively. This program
 simplifies any given term according to these rules. It will be useful to note for another program that, for any variables or constants x, the simplified form of (x) is just x. */
+/* This is also a program to "termify" a given simplified expression (according to the rules in the syntax and simplify program). Formally, we can define the process of termification as follows:
+For any expressions x and y (assumed to be syntactically correct or simplified from syntactically correct terms), the termified form of xy is (xy). Also, the termified form of x is x.
+The termified form of (x) is x. Then, for any expressions
+x_1,...,x_n, if x is the termified form of x_1,...,x_n-1, then (xx_n) is the termified form of x_1,...,x_n. */
 /* QUESTION: If I replace 
 char* second_simplified = (char*)malloc(MAX_LENGTH); by 
 char* second_simplified = NULL; or
@@ -14,6 +18,12 @@ a segmentation fault occurs. second_simplified is the destination of a strcpy, a
 #include <string.h>
 #include <stdlib.h>
 #define MAX_LENGTH 100
+
+// this stores the sub-expressions of expression
+typedef struct sub_expression {
+        char* expression;
+        int end_index;
+} sub_expression;
 
 /* Function to determine the syntactical correctness of a given expression */
 int correct_syntax(char* expression);
@@ -27,20 +37,33 @@ int right_paren(char* expression, int index);
 /* Function to simplify an expression (assumed syntactically correct) according to the above rules */
 char* simplify(char* expression);
 
+/* Functino to termify a given expression, if possible */
+char* termify(char* expression);
+
 int main(int argc, char* argv[]) {
 	char* expression = (char*)malloc(MAX_LENGTH);
 	if (argc != 2 || strlen(argv[1]) == 0) {
 		printf("Exactly one expression must be supplied.\n");
 		exit(1);
 	}
-	int ret_val = 1;
-	//ret_val = correct_syntax(argv[1]);
-	//printf("The expression is syntactically %s.\n", ret_val?"correct":"incorrect");
-	// if the formula is syntactically correct, we simplify it
+	int ret_val = 0;
+	ret_val = correct_syntax(argv[1]);
 	if (ret_val == 1) {
-		expression = simplify(argv[1]);
-		printf("The simplified expression is: %s\n", expression);
-	}
+		printf("The expression is syntactically correct.\n");
+                expression = simplify(argv[1]);
+                printf("The simplified expression is: %s\n", expression);
+        }
+	// if the initial expression is syntactically incorrect, we make an attempt to termify it, and see if the resulting expression is syntactically correct
+	else if (ret_val == 0) {
+		expression = termify(argv[1]);
+		ret_val = correct_syntax(expression);
+		if (ret_val == 1) {
+			printf("The termified form of the expression is: %s\nIt is syntactically correct.\n", expression);
+		}
+		else {
+			printf("The expression is syntactically incorrect.\n");
+		}
+	}	
 }
 
 int correct_syntax(char* expression) {
@@ -81,6 +104,9 @@ int correct_syntax(char* expression) {
 char* term(char* expression, int index, int* end_index) {
 	char* term = (char*)malloc(MAX_LENGTH);
 	int right;
+	if (expression == NULL || index > (int)strlen(expression)-1) {
+		return NULL;
+	}
 	if (expression[index] != '(') {
 		term[0] = expression[index];
 		*end_index = index; 
@@ -164,4 +190,71 @@ char* simplify(char* expression) {
                 printf("Syntactically incorrect expression.\n");
                 exit(1);
         }
+}
+
+char* termify(char* expression) {
+        sub_expression sub_expressions[MAX_LENGTH];
+        int term_count = 0;
+        int current_index = 0; // to track what the index of the expression is
+	int stop; // for when the sub_expressions should stop
+	int start; // for where the sub_expressions should start
+        char* termified = (char*)malloc(MAX_LENGTH);
+        if (expression == NULL) {
+                return NULL;
+        }
+        // in this case, expression is just a single character, meaning its termified form is the same 
+        else if (strlen(expression) == 1) {
+                return expression;
+        }
+	// in this case, expression is three characters, and is of the form (x)
+	else if (strlen(expression) == 3 && (expression[0] == '(' && expression[strlen(expression)-1] == ')')) {
+		termified[0] = expression[1];
+		return termified;
+	}
+        // in this case expression consists of sub-expressions
+        else {
+		int end_index;
+		// if the whole expression itself is something enclosed in parentheses, we handle the case differently
+		if (term(expression, 0, &end_index) != 0 && end_index == (int)strlen(expression)-1) {
+			start = 1;
+			current_index = 1;
+			stop = strlen(expression)-2;
+		}
+		else {
+			start = 0;
+			stop = strlen(expression)-1;
+		}
+                for (int i = 0; i < MAX_LENGTH; i++) {
+                        // we find the next sub-term
+                        sub_expressions[i].expression = term(expression, current_index, &sub_expressions[i].end_index);
+                        // if no term was found, an error occured
+                        if (sub_expressions[i].expression == NULL) {
+                                printf("Invalid expression.\n");
+                                exit(1);
+                        }
+                        // otherwise, if a term was found, and it is at the end of the expression, we have found all of the sub expressions
+                        else if (sub_expressions[i].end_index == stop) {
+                                term_count++;
+                                break;
+                        }
+                        else {
+                                // we update current_index
+                                current_index = sub_expressions[i].end_index+1;
+                                term_count++;
+                        }
+                }
+        }
+        // if there were only two terms x and y, the termified expression is (mn) where m is the termified form of x and n is the termified form of y
+        if (term_count == 2) {
+                sprintf(termified, "(%s%s)", termify(sub_expressions[0].expression), termify(sub_expressions[1].expression));
+        }
+        // otherwise we need to make a recursive call
+        else {
+                char* first_termified = (char*)malloc(MAX_LENGTH); // this is the termified expression of the first n-1 sub expressions
+                char* sub = (char*)malloc(MAX_LENGTH); // to store the string of the first n-1 sub expressions
+                memmove(sub, &expression[start], sub_expressions[term_count-2].end_index+1);
+                first_termified = termify(sub);
+                sprintf(termified, "(%s%s)", first_termified, termify(sub_expressions[term_count-1].expression));
+        }
+        return termified;
 }
