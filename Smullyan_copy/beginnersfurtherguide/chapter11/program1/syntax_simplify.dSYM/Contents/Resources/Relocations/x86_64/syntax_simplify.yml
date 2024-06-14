@@ -2,10 +2,10 @@
 triple:          'x86_64-apple-darwin'
 binary-path:     syntax_simplify
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x1000008F0, symSize: 0x80 }
-  - { offsetInCU: 0x4D, offset: 0x4D, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x1000008F0, symSize: 0x80 }
-  - { offsetInCU: 0xBD, offset: 0xBD, size: 0x8, addend: 0x0, symName: _correct_syntax, symObjAddr: 0x80, symBinAddr: 0x100000970, symSize: 0x1F0 }
-  - { offsetInCU: 0x20D, offset: 0x20D, size: 0x8, addend: 0x0, symName: _simplify, symObjAddr: 0x270, symBinAddr: 0x100000B60, symSize: 0x230 }
-  - { offsetInCU: 0x410, offset: 0x410, size: 0x8, addend: 0x0, symName: _term, symObjAddr: 0x4A0, symBinAddr: 0x100000D90, symSize: 0xB0 }
-  - { offsetInCU: 0x484, offset: 0x484, size: 0x8, addend: 0x0, symName: _right_paren, symObjAddr: 0x550, symBinAddr: 0x100000E40, symSize: 0x56 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x1000008F0, symSize: 0x50 }
+  - { offsetInCU: 0x4D, offset: 0x4D, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x1000008F0, symSize: 0x50 }
+  - { offsetInCU: 0xB0, offset: 0xB0, size: 0x8, addend: 0x0, symName: _simplify, symObjAddr: 0x50, symBinAddr: 0x100000940, symSize: 0x290 }
+  - { offsetInCU: 0x2B3, offset: 0x2B3, size: 0x8, addend: 0x0, symName: _correct_syntax, symObjAddr: 0x2E0, symBinAddr: 0x100000BD0, symSize: 0x1F0 }
+  - { offsetInCU: 0x403, offset: 0x403, size: 0x8, addend: 0x0, symName: _term, symObjAddr: 0x4D0, symBinAddr: 0x100000DC0, symSize: 0xB0 }
+  - { offsetInCU: 0x477, offset: 0x477, size: 0x8, addend: 0x0, symName: _right_paren, symObjAddr: 0x580, symBinAddr: 0x100000E70, symSize: 0x56 }
 ...

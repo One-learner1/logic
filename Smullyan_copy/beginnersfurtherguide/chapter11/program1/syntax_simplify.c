@@ -33,9 +33,9 @@ int main(int argc, char* argv[]) {
 		printf("Exactly one expression must be supplied.\n");
 		exit(1);
 	}
-	int ret_val;
-	ret_val = correct_syntax(argv[1]);
-	printf("The expression is syntactically %s.\n", ret_val?"correct":"incorrect");
+	int ret_val = 1;
+	//ret_val = correct_syntax(argv[1]);
+	//printf("The expression is syntactically %s.\n", ret_val?"correct":"incorrect");
 	// if the formula is syntactically correct, we simplify it
 	if (ret_val == 1) {
 		expression = simplify(argv[1]);
@@ -128,6 +128,11 @@ char* simplify(char* expression) {
         else if (strlen(expression) == 1) {
                 return expression;
         }
+	// if the expression is just three characters long (of the form (x)), then the simplified form is just x
+	else if (strlen(expression) == 3) {
+		simplified[0] = expression[1];
+		return simplified;
+	}
         // otherwise the expression must start with a left paren
         else if (expression[0] == '(') {
                 char* first_simplified = NULL; // to store the simplified form of t1
@@ -137,11 +142,16 @@ char* simplify(char* expression) {
                 t2 = term(expression, first_index+1, &second_index);
                 // we obtain the simplified version of t1
                 first_simplified = simplify(t1);
-                // if t2 is just a single character, then we let second_simplified equal it; otherwise we make a recursive call
+                // if t2 is just a single character, then we let second_simplified equal it; otherwise we make a recursive call; also, if t2 is just three characters (meaning it is of the form 
+		// (x)), we also simplify accordingly
                 if (strlen(t2) == 1) {
                         strcpy(second_simplified, t2);
                         sprintf(simplified, "%s%s", first_simplified, second_simplified);
                 }
+		else if (strlen(t2) == 3) {
+			second_simplified[0] = t2[1];
+			sprintf(simplified, "%s%s", first_simplified, second_simplified);
+		}
                 // in this case, note that this means the second term is surrounded by parentheses (it is different from the previous case)
                 else {
                         second_simplified = simplify(t2);
