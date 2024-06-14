@@ -3,7 +3,7 @@ than $S$ or $K$ are also variables. No other characters stand for variables, and
 For readability, it is useful to use the abbreviated notation which was used in the book. It can be defined as follows:
 For all constants and variables, the simplified form of x is x. For all terms t1, the simplified form of (t1x) is tx, where t is the simplified form of t1, and for all
 terms t1 and expressions x1, the simplified form of (t1(x1)) (if it is a term) is t(x) where t and x are the simplified forms of t1 and (x1), respectively. This program
-simplifies any given term according to these rules. */
+simplifies any given term according to these rules. It will be useful to note for another program that, for any variables or constants x, the simplified form of (x) is just x. */
 /* QUESTION: If I replace 
 char* second_simplified = (char*)malloc(MAX_LENGTH); by 
 char* second_simplified = NULL; or
