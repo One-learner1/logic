@@ -60,6 +60,10 @@ int main(int argc, char* argv[]) {
                 expression = simplify(argv[1]);
                 printf("The simplified expression is: %s\n", expression);
         }
+	else {
+		printf("The expression is not syntactically correct.\n");
+	}
+	/*
 	// if the initial expression is syntactically incorrect, we make an attempt to termify it, and see if the resulting expression is syntactically correct
 	else if (ret_val == 0) {
 		expression = termify(argv[1], 0);
@@ -72,7 +76,7 @@ int main(int argc, char* argv[]) {
 		else {
 			printf("The expression is syntactically incorrect.\n");
 		}
-	}	
+	}*/	
 	// if the syntax has been found to be correct, then we see if there are any possibilities to use S or K simplification
 	/*if (ret_val == 1) {
 		expression = simplify_sk(expression);
