@@ -11,7 +11,7 @@ x_1,...,x_n, if x is the termified form of x_1,...,x_n-1, then (xx_n) is the ter
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#define MAX_LENGTH 100
+#define MAX_LENGTH 1000
 
 // this stores the sub-expressions of expression
 typedef struct sub_expression {
@@ -40,6 +40,9 @@ char* simplify_sk(char* expression);
 
 /* Funtion to find n terms. Returns success or failure. */
 int term_find(char* expression, int index, int n, sub_expression sub_expressions[]);
+
+/* Function to return 1 if the end has been reached, and 0 otherwise */
+int end(int i, int end);
 
 int main(int argc, char* argv[]) {
 	char* expression = (char*)malloc(MAX_LENGTH);
@@ -311,11 +314,13 @@ char* simplify_sk(char* expression) {
 		}
 		// we first termify the expression, and then simplify the resulting term
 		expression = simplify(termify(expression, 0));
+		int last_index = (int)strlen(expression)-1; // to track the last index of the expression
                 for (int i = 0; i < (int)strlen(expression); i++) {
                         char* previous_term = (char*)malloc(MAX_LENGTH);
 			char* next_term = (char*)malloc(MAX_LENGTH);
                         if (expression[i] == 'S') {
                                 if (term_find(expression, i+1, 3, sub_expressions) == 0) {
+					done = end(i, last_index);
 					continue;
                                 }
 				next_index = sub_expressions[2].end_index+1;
@@ -331,7 +336,8 @@ char* simplify_sk(char* expression) {
 				// the previous index starts a term, and S is part of it
                                 if (i != 0) {
 					if (!(term(expression, i-1, &end_index) && i<end_index)) {
-						 continue;
+						done = end(i, last_index);
+						continue;
 					}					
                                         memmove(previous_term, expression, i);
 					// if next_term is null, we do not append it to the expression
@@ -355,13 +361,14 @@ char* simplify_sk(char* expression) {
 					sprintf(new_expression, "%s%s(%s%s)%s", sub_expressions[0].expression, sub_expressions[2].expression, sub_expressions[1].expression,
                                                                 sub_expressions[2].expression, next_term);
 					}
-					printf("new_expression: %s\n", new_expression);
 					expression = new_expression;
                                 }
                                 break;
                         }
                         else if (expression[i] == 'K') {
                                 if (term_find(expression, i+1, 2, sub_expressions) == 0) {
+					printf("BBB\n");
+					done = end(i, last_index);
 					continue;
                                 }
                                 if (i == 0) {
@@ -369,18 +376,26 @@ char* simplify_sk(char* expression) {
                                 }
                                 else {
 					if (!(term(expression, i-1, &end_index) && i<end_index)) {
-                                                 continue;
+						done = end(i, last_index);
+						continue;
                                         }
                                         memmove(previous_term, expression, i);
                                         sprintf(expression, "%s%s%s", previous_term, sub_expressions[0].expression, &expression[sub_expressions[1].end_index+1]);
                                 }
                                 break;
                         }
-                        if (i == (int)strlen(expression)-1) {
-                                done = 1;
-                                break;
+			if (i == (int)strlen(expression)-1) {
+				done = 1;
+				break;
 			}
 		}
 	}
 	return expression;
+}
+
+int end(int i, int end) {
+	if (i == end) {
+		return 1;
+	}
+	return 0;
 }
