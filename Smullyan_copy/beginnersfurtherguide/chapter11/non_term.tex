@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=1in}
+\setlength{\parskip}{12pt}
+\title{Non-terms}
+\begin{document}
+\date{}
+\maketitle
+
+All literals are non-terms. For any non-terms $x$ and $y$, $xy,(x)y,x(y),(xy)$ are all non-terms.
+The termified form of an expression $x_1x_2...x_{n-1}x_n$ where all $x_i$ are non-terms, is
+$(mn)$ where $m$ is the termified form of $x_1x_2...x_{n-1}$ and $n$ is the termified form of 
+$x_n$. The base cases for the termified forms are as follows: the termified form of $x$ is $x$ for all
+literals, and, for all non-terms $x$, the termified form of $(x)$ is $n$ where $n$ is the 
+termified form of $x$.
+
+\end{document}
