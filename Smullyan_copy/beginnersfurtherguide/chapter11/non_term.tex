@@ -29,11 +29,19 @@
 \date{}
 \maketitle
 
-All literals are non-terms. For any non-terms $x$ and $y$, $xy,(x)y,x(y),(xy)$ are all non-terms.
+All literals are non-terms. For any non-terms $x$ and $y$, $xy,(x)y,x(y),(xy),$ and $(x)$ are all non-terms.
 The termified form of an expression $x_1x_2...x_{n-1}x_n$ where all $x_i$ are non-terms, is
 $(mn)$ where $m$ is the termified form of $x_1x_2...x_{n-1}$ and $n$ is the termified form of 
 $x_n$. The base cases for the termified forms are as follows: the termified form of $x$ is $x$ for all
 literals, and, for all non-terms $x$, the termified form of $(x)$ is $n$ where $n$ is the 
 termified form of $x$.
+
+
+We can prove that, for all non-terms $x$, the termified form of $x$ is a term, by complete induction. The base case is just when $x$ is a constant or a variable. Thus the 
+termified form of $x$ is just $x$ itself, and because it is a constant or a variable, it is also a term. Now suppose the result holds for all numbers less than $n$. Consider 
+any non-term $x$ of length $n$. It is either of the form $(y)$ where $y$ is a non-term, or of the form $x_1x_2...x_{m-1}x_m$ where all $x_i$ are non-terms. In the first case, 
+the termified form of $x$ is $a$ where $a$ is the termified form of $y$. But by the induction assumption, the termified form of $y$ is a term. Hence the termified form of $x$ is a term.
+In the second case, the termified form of $x$ is $(ab)$ where $a$ is the termified form of $x_1x_2...x_{n-1}$ and $b$ is the termified form of 
+$x_n$. But by the induction assumption, $a$ and $b$ are terms, meaning so is $(ab)$, and thus the termified form of $x$ is a term, therefore completing the proof.
 
 \end{document}
