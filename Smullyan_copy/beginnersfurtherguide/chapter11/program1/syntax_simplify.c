@@ -75,10 +75,7 @@ int main(int argc, char* argv[]) {
 		expression = simplify_sk(expression);
 		printf("The expression with S and K simplification is: %s\n", expression);
 	}
-	/*
-	printf("The termified expression is: %s\n", termify(argv[1], 0));
-	printf("The simplified expression is: %s\n", simplify_sk(termify(argv[1], 0)));
-	*/
+	//printf("The termified expression is: %s\n", termify(argv[1], 0));
 }
 
 int correct_syntax(char* expression) {
@@ -173,11 +170,6 @@ char* simplify(char* expression) {
         else if (strlen(expression) == 1) {
                 return expression;
         }
-	// if the expression is just three characters long (of the form (x)), then the simplified form is just x
-	else if (strlen(expression) == 3) {
-		simplified[0] = expression[1];
-		return simplified;
-	}
         // otherwise the expression must start with a left paren
         else if (expression[0] == '(') {
                 char* first_simplified = NULL; // to store the simplified form of t1
@@ -193,10 +185,6 @@ char* simplify(char* expression) {
                         strcpy(second_simplified, t2);
                         sprintf(simplified, "%s%s", first_simplified, second_simplified);
                 }
-		else if (strlen(t2) == 3) {
-			second_simplified[0] = t2[1];
-			sprintf(simplified, "%s%s", first_simplified, second_simplified);
-		}
                 // in this case, note that this means the second term is surrounded by parentheses (it is different from the previous case)
                 else {
                         second_simplified = simplify(t2);
@@ -215,9 +203,8 @@ char* termify(char* expression, int recursive_calls) {
         sub_expression sub_expressions[MAX_LENGTH];
         int term_count = 0;
         int current_index = 0; // to track what the index of the expression is
-	int stop; // for when the sub_expressions should stop
-	int start; // for where the sub_expressions should start
-	int sub_length = 0; // to track the length of the sub-expression
+	int end_index = 0;
+	char* sub = (char*)malloc(MAX_LENGTH);
         char* termified = (char*)malloc(MAX_LENGTH);
         if (expression == NULL) {
                 return NULL;
@@ -227,24 +214,14 @@ char* termify(char* expression, int recursive_calls) {
 		//printf("single character: %s recursive calls: %d\n", expression, recursive_calls);
                 return expression;
         }
-	// in this case, expression is three characters, and is of the form (x)
-	else if (strlen(expression) == 3 && (expression[0] == '(' && expression[strlen(expression)-1] == ')')) {
-		termified[0] = expression[1];
-		return termified;
+	// in this case, the expression is enclosed by parentheses, meaning we make a recursive call
+	else if (term(expression, 0, &end_index) != NULL && end_index == (int)strlen(expression)-1) {
+		memmove(sub, &expression[1], strlen(expression)-2);
+		return termify(sub, recursive_calls+1);
 	}
+	// in the last case, we know that there are multiple sub-expressions
         // in this case expression consists of sub-expressions
         else {
-		int end_index;
-		// if the whole expression itself is something enclosed in parentheses, we handle the case differently
-		if (term(expression, 0, &end_index) != 0 && end_index == (int)strlen(expression)-1) {
-			start = 1;
-			current_index = 1;
-			stop = strlen(expression)-2;
-		}
-		else {
-			start = 0;
-			stop = strlen(expression)-1;
-		}
                 for (int i = 0; i < MAX_LENGTH; i++) {
                         // we find the next sub-term
                         sub_expressions[i].expression = term(expression, current_index, &sub_expressions[i].end_index);
@@ -254,7 +231,7 @@ char* termify(char* expression, int recursive_calls) {
                                 exit(1);
                         }
                         // otherwise, if a term was found, and it is at the end of the expression, we have found all of the sub expressions
-                        else if (sub_expressions[i].end_index == stop) {
+                       else if (sub_expressions[i].end_index == (int)strlen(expression)-1) {
                                 term_count++;
                                 break;
                         }
@@ -264,34 +241,14 @@ char* termify(char* expression, int recursive_calls) {
                                 term_count++;
                         }
                 }
-        }
-        // if there were only two terms x and y, the termified expression is (mn) where m is the termified form of x and n is the termified form of y
-        if (term_count == 2) {
-                sprintf(termified, "(%s%s)", termify(sub_expressions[0].expression, recursive_calls+1), termify(sub_expressions[1].expression, recursive_calls+1));
-        }
-        // otherwise we need to make a recursive call
-        else {
 		char* second_termified = (char*)malloc(MAX_LENGTH);
                 char* first_termified = (char*)malloc(MAX_LENGTH); // this is the termified expression of the first n-1 sub expressions
-                char* sub = (char*)malloc(MAX_LENGTH); // to store the string of the first n-1 sub expressions
-		if (term_count == 1) {
-			memmove(sub, &expression[start], sub_expressions[0].end_index);
-                        first_termified = termify(sub, recursive_calls+1);
-			sprintf(termified, "%s", first_termified);
-			return termified;
-		}
-		if (start == 1) {
-			sub_length = sub_expressions[term_count-2].end_index;
-		}
-		else {
-			sub_length = sub_expressions[term_count-2].end_index+1;
-		}
-                memmove(sub, &expression[start], sub_length);
+                memmove(sub, &expression[0], sub_expressions[term_count-2].end_index+1);
                 first_termified = termify(sub, recursive_calls+1);
 		second_termified = termify(sub_expressions[term_count-1].expression, recursive_calls+1);
                 sprintf(termified, "(%s%s)", first_termified, second_termified);
+		return termified;
         }
-        return termified;
 }
 
 int term_find(char* expression, int index, int n, sub_expression sub_expressions[]) {
