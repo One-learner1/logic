@@ -44,4 +44,9 @@ the termified form of $x$ is $a$ where $a$ is the termified form of $y$. But by 
 In the second case, the termified form of $x$ is $(ab)$ where $a$ is the termified form of $x_1x_2...x_{n-1}$ and $b$ is the termified form of 
 $x_n$. But by the induction assumption, $a$ and $b$ are terms, meaning so is $(ab)$, and thus the termified form of $x$ is a term, therefore completing the proof.
 
+
+It should also be noted that for all terms $t$, the termified form of $t$ is just $t$. The base case when $t$ is a constant or a variable is obvious. Now suppose the result holds for all 
+terms of length less than $n$. Now consider some term of lenth $n$. By definition, it is of the form $(t_1t_2)$ where $t_1$ and $t_2$ are both terms. Thus the termified form of 
+$t$ is $(xy)$ where $x$ and $y$ are the termified forms of $t_1$ and $t_2$, respectively. But by the induction assumption, $x=t_1$ and $y=t_2$. Thus $(xy)=t$.
+
 \end{document}
