@@ -112,18 +112,5 @@ all elements of $\omega_{n-1}$. Because $\omega$ is an element of $\omega_{n-1}$
 $\cup\omega_n\ne\omega$. 
 
 \subsection*{3.4}
-Consider an aritrary class $A$ and an arbitrary function $g$. We shall say that $A$ is inductive under $g$, or $g$-inductive, if the following two conditions hold:\newline
-(1) $\emptyset\in A$,\newline
-(2) for every $x$ in $A$, the set $g(x)$ is in $A$.\newline
-We shall say that $A$ is minimally inductive under $g$ if $A$ is inductive under $g$ and if no proper subclass of $A$ is inductive under $g$, in other words, any subclass of $A$ that is inductive under 
-$g$ contains all elements of $A$.
-Supppose $M$ is minimally inductive under $g$ and that $R$ is a relation satisfying the following two conditions:\newline
-$D_1$ $R(x,0)$ holds for every $x$ in $M$;\newline
-$D_2$ for all $x,y$ in $M$, if $R(x,y)$ and $R(y,x)$ then $R(x,g(y))$;\newline Then $R(x,y)$ holds for all $x,y$ in $M$
-
-In Smullyan's proof, we calls an element $x$ of $M$ left normal if $R(x,y)$ holds for all $y$ in $M$, and right normal if $R(y,x)$ holds for all $y$ in $M$. Then he shows that every element that is 
-right normal is also left normal. After this, he shows that all elements are right normal (and hence also left normal), and thus $R(x,y)$ holds for all $x,y$ in $M$. But I do not think we need to show that 
-every right normal element is also left normal. For suppose we have shown that all elements are right normal. Thus, for all $x$ in $M$, $R(y,x)$ holds for all $y$ in $M$. Now consider any elements $x,y$ in $M$. 
-Then $y$ is right normal, meaning $R(x,y)$ holds.
 
 \end{document}

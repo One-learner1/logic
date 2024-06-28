@@ -8,42 +8,9 @@ simplifies any given term according to these rules. It will be useful to note fo
 For any expressions x and y (assumed to be syntactically correct or simplified from syntactically correct terms), the termified form of xy is (xy). Also, the termified form of x is x.
 The termified form of (x) is x. Then, for any expressions
 x_1,...,x_n, if x is the termified form of x_1,...,x_n-1, then (xx_n) is the termified form of x_1,...,x_n. */
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#define MAX_LENGTH 10000
+#include "syntax_simplify.h"
 
-// this stores the sub-expressions of expression
-typedef struct sub_expression {
-        char* expression;
-        int end_index;
-} sub_expression;
-
-/* Function to determine the syntactical correctness of a given expression */
-int correct_syntax(char* expression);
-
-/* Function to find the first term in the given expression */
-char* term(char* expression, int index, int* end_index);
-
-/* Function to find the right paren corresponding to a given left paren in an expression */
-int right_paren(char* expression, int index);
-
-/* Function to simplify an expression (assumed syntactically correct) according to the above rules */
-char* simplify(char* expression);
-
-/* Function to termify a given expression, if possible */
-char* termify(char* expression, int recursive_calls);
-
-/* Function to fully simplify a given expression; that is, a simplified expression is assumed to be passed in, and 
-this function will simplify any simplifiable S or K's inside of the expression */
-char* simplify_sk(char* expression);
-
-/* Funtion to find n terms. Returns success or failure. */
-int term_find(char* expression, int index, int n, sub_expression sub_expressions[]);
-
-/* Function to return 1 if the end has been reached, and 0 otherwise */
-int end(int i, int end);
-
+/*
 int main(int argc, char* argv[]) {
 	char* expression = (char*)malloc(MAX_LENGTH);
 	if (argc != 2 || strlen(argv[1]) == 0) {
@@ -77,6 +44,7 @@ int main(int argc, char* argv[]) {
 	}
 	//printf("The termified expression is: %s\n", termify(argv[1], 0));
 }
+*/
 
 int correct_syntax(char* expression) {
 	char* t1 = (char*)malloc(MAX_LENGTH);

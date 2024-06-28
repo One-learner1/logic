@@ -32,12 +32,8 @@
 \section*{Problem 1}
 An expression $t$ is a term iff there is some sequence $t_1,...,t_n$ such that every $t_i$ is either a variable or a constant, or is an expression of the form 
 $(t_jt_k)$ for some $j<i$ and $k<i$, and such that there is some sequence $k_1,...,k_m$ such that every $k_i$ is some $t_i$ and 
-$k_1...k_m=t$. Smullyan's answer seems to be incorrect here. For even consider the term $(x_1x_2)$. According to his answer for Problem 1, we need to find a finite sequence 
-$t_1...t_n=(x_1x_2)$ such that for each $i\le n$, either $t_i$ is a variable or constant, or there are numbers $j_1$ and $j_2$ both less than $i$ such that 
-$t_i=(t_{j1}t_{j2})$. But such a sequence cannot be found. We would need to have some $t_i=(x_1x_2)$. Because this is neither a constant nor a variable, we would need 
-to have $j_1$ and $j_2$ such that $(x_1x_2)=(t_{j1}t_{j2})$ for $j_1<i$ and $j_2<i$. Thus the sequence would be of the form
-$x_1x_2(x_1x_2)$. But $x_1x_2(x_1x_2)\ne (x_1x_2)$. Thus this definition does not work. Instead, with the preceeding definition, one could construct the sequence 
-$t_1t_2t_3=x_1x_2(x_1x_2)$ and from that construct the sequence $k_1=(x_1x_2)$, which would show that $(x_1x_2)$ is a term.
+$k_1...k_m=t$.
+Note that Smullyan's answer is also correct, noting that he means $t_n=t$, not $t_1...t_n=t$.
 
 \section*{Justification for Term Induction}
 Here is why term induction can be derived from mathematical induction. Now, suppose $S$ is a set whose members are variables or constants or both. 

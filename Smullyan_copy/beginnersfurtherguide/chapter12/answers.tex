@@ -18,6 +18,8 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 \let\oldemptyset\emptyset
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
@@ -118,11 +120,11 @@ $\Gamma\bar{m}\bar{n}=\overline{m\times n}$. Then \[ \Gamma\bar{m}\overline{n^+}
 \[ =\overline{m+(m\times n)}=\overline{m\times (n+1)} \]
 
 
-(c): Note that this answer assumes $m>0$. Additionaly note that Smullyans answer seems incorrect. His yields $\Circled{E}\bar{0}\bar{m}=1$, which should not happen (as, for positive $m$, $0^m=0$). 
+(c):\circled{\textsf{E}}
+Note that this answer assumes $m>0$. Additionaly note that Smullyans answer seems incorrect. His yields $\textrm{\Circled{E}}\bar{0}\bar{m}=1$, which should not happen (as, for positive $m$, $0^m=0$). 
 We can yet again make a variation of Problem 6. Consider the term $t(x,x_1,x_2)=Zx_2\bar{1}(\bigotimes x_1(xx_1(Px_2)))$. By the fixed point theorem, there is 
 some $\Gamma$ such that $\Gamma x_1x_2=Zx_2\bar{1}(\bigoplus x_1(\Gamma x_1(Px_2)))$. Note that $\Gamma\bar{m}\bar{0}=\bar{1}$, and 
-$\Gamma\bar{m}\overline{n^+}=\bigotimes x_1(\Gamma \bar{m}\bar{n})$. This is the combinator we take for $\Circled{E}$ (I could not find the exact latex control sequence being used for the 
-exponential combinator). 
+$\Gamma\bar{m}\overline{n^+}=\bigotimes x_1(\Gamma \bar{m}\bar{n})$. This is the combinator we take for \Circled{E} 
 Now we can prove by induction that $\Gamma\bar{m}\bar{n}=\overline{m^n}$. The base case, when $n=0$, was noted above.
 Now suppose the hypothesis holds for some $n$. Then \[ \Gamma\bar{m}\overline{n^+}=\bigotimes\bar{m}(\Gamma\bar{m}\bar{n})=\bigotimes\bar{m}\overline{m^n} \]
 \[ =\overline{m\times m^n}=\overline{m^{n^+}} \] 
