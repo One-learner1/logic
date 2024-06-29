@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
 	ret_val = strcmp(argv[1], simplify_sk(test_expression));
 	// if the initial strcmp did not come out correct, it could be that the resulting expression was simplified too far, and we need to check to see if the simplified form of the given expression
 	// equals the simplified form of the test_expression. For example, suppose we had the x-eliminate E of Kxy. Then Ex=Kxy=x
-	if (ret_val != 0) {
+	if (ret_val == 0) {
 		ret_val = strcmp(simplify_sk(argv[1]), simplify_sk(test_expression))?0:1;
 	}
 	printf("The %s eliminate was obtained.\n", ret_val?"correct":"incorrect");

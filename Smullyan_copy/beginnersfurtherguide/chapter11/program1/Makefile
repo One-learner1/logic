@@ -13,5 +13,14 @@ syntax_simplify: syntax_simplify.o syntax_simplify.h
 x_eliminate: syntax_simplify.o x_eliminate.o syntax_simplify.h
 	$(CC) $(CFLAGS) x_eliminate.c syntax_simplify.o -o x_eliminate
 
+eliminate: syntax_simplify.o eliminate.o syntax_simplify.h eliminate.h
+	$(CC) $(CFLAGS) eliminate.c syntax_simplify.o -o eliminate
+
 simplify: simplify.o
 	$(CC) $(CFLAGS) simplify.c -o simplify
+
+algorithm: algorithm.o algorithm.h
+	$(CC) $(CFLAGS) algorithm.c -o algorithm
+
+convert: algorithm.o convert.o algorithm.h
+	$(CC) $(CFLAGS) convert.c algorithm.o -o convert
