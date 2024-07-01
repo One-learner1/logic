@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
 	variable_check(argv[2], found_variables);
 	// now that we have ensured correct input, we successively eliminate the variables
 	for (int i = variable_count-1; i >= 0; i--) {
-		printf("i: %d expression: %s variable: %c\n", i, expression, variables[i]);
+		//printf("i: %d expression: %s variable: %c\n", i, expression, variables[i]);
 		expression = x_eliminate(expression, variables[i]);
 	}
 	printf("The eliminate is %s\n", expression);
@@ -72,12 +72,12 @@ void variable_check(char* expression, int found_variables[]) {
 		printf("The expression must not be empty.\n");
 		exit(1);
 	}
-	printf("AAA\n");
+	//printf("AAA\n");
 	for (int i = 0; i < (int)strlen(expression); i++) {
 		// if the character is a variable, we need to be sure that it was listed
 		if (expression[i] >= 'a' && expression[i] <= 'z') {
-			printf("character: %c\n", expression[i]);
-			printf("index: %d\n", expression[i]-97);
+			//printf("character: %c\n", expression[i]);
+			//printf("index: %d\n", expression[i]-97);
 			if (found_variables[expression[i]-97] != 1) {
 				printf("The expression must only contain variables in the list.\n");
 				exit(1);

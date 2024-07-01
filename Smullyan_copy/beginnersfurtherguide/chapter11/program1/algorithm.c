@@ -298,7 +298,7 @@ char* x_eliminate(char* expression, char variable) {
 		printf("The second argument must be a variable.\n");
 		exit(1);
 	}
-	printf("AAA\n");
+	//printf("AAA\n");
 	// we first termify the given expression, and then ensure that it is syntactically correct
 	expression = termify(expression, 0);
 	if (!correct_syntax(expression)) {
@@ -306,9 +306,9 @@ char* x_eliminate(char* expression, char variable) {
 		exit(1);
 	}
 	expression = eliminate(expression, variable);
-	printf("The expression with %c elimination is %s\n", variable, expression);
+	//printf("The expression with %c elimination is %s\n", variable, expression);
 	sprintf(test_expression, "(%s%c)", expression, variable);
-	printf("Check on elimination: %s=%s\n", test_expression, simplify_sk(test_expression));
+	//printf("Check on elimination: %s=%s\n", test_expression, simplify_sk(test_expression));
 	int ret_val = 0;
 	ret_val = strcmp(expression, simplify_sk(test_expression));
 	// if the initial strcmp did not come out correct, it could be that the resulting expression was simplified too far, and we need to check to see if the simplified form of the given expression
@@ -316,7 +316,7 @@ char* x_eliminate(char* expression, char variable) {
 	if (ret_val == 0) {
 		ret_val = strcmp(simplify_sk(expression), simplify_sk(test_expression))?0:1;
 	}
-	printf("The %s eliminate was obtained.\n", ret_val?"correct":"incorrect");
+	//printf("The %s eliminate was obtained.\n", ret_val?"correct":"incorrect");
 	return expression;
 }
 
