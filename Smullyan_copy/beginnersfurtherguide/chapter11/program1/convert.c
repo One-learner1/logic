@@ -25,7 +25,11 @@ int main(int argc, char* argv[]) {
 		printf("A list of variables and an expression must be supplied.\n");
 		exit(1);
 	}
+	printf("CCC\n");
+	printf("argv[2]: %s\n", argv[2]);
+	printf("termified form: %s\n", termify(argv[2], 0));
 	expression = termify(argv[2], 0);
+	printf("DDD\n");
 	// we termify the expression, and make sure it is syntactically correct
 	if (!correct_syntax(expression)) {
 		printf("Incorrect syntax.\n");
@@ -35,13 +39,15 @@ int main(int argc, char* argv[]) {
 	for (int i = 0; i < 26; i++) {
 		found_variables[i] = 0;
 	}
+	printf("BBB\n");
 	// function to read the variables out of argv[1]
 	read_variables(argv[1], variables, found_variables);
 	// we know check that all of the variables in the expression are found in the list of variables
 	variable_check(argv[2], found_variables);
 	// now that we have ensured correct input, we successively eliminate the variables
+	printf("AAA\n");
 	for (int i = variable_count-1; i >= 0; i--) {
-		//printf("i: %d expression: %s variable: %c\n", i, expression, variables[i]);
+		printf("i: %d expression: %s variable: %c\n", i, expression, variables[i]);
 		expression = x_eliminate(expression, variables[i]);
 	}
 	printf("The eliminate is %s\n", expression);

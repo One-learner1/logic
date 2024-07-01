@@ -122,6 +122,7 @@ char* simplify(char* expression) {
 }
 
 char* termify(char* expression, int recursive_calls) {
+	printf("ZZZ\n");
         sub_expression sub_expressions[MAX_LENGTH];
         int term_count = 0;
         int current_index = 0; // to track what the index of the expression is
@@ -144,6 +145,7 @@ char* termify(char* expression, int recursive_calls) {
 	// in the last case, we know that there are multiple sub-expressions
         // in this case expression consists of sub-expressions
         else {
+		printf("GGG recursive calls: %d\n", recursive_calls);
                 for (int i = 0; i < MAX_LENGTH; i++) {
                         // we find the next sub-term
                         sub_expressions[i].expression = term(expression, current_index, &sub_expressions[i].end_index);
@@ -310,12 +312,12 @@ char* x_eliminate(char* expression, char variable) {
 	sprintf(test_expression, "(%s%c)", expression, variable);
 	//printf("Check on elimination: %s=%s\n", test_expression, simplify_sk(test_expression));
 	int ret_val = 0;
-	ret_val = strcmp(expression, simplify_sk(test_expression));
+	//ret_val = strcmp(expression, simplify_sk(test_expression));
 	// if the initial strcmp did not come out correct, it could be that the resulting expression was simplified too far, and we need to check to see if the simplified form of the given expression
 	// equals the simplified form of the test_expression. For example, suppose we had the x-eliminate E of Kxy. Then Ex=Kxy=x
-	if (ret_val == 0) {
-		ret_val = strcmp(simplify_sk(expression), simplify_sk(test_expression))?0:1;
-	}
+	//if (ret_val == 0) {
+	//	ret_val = strcmp(simplify_sk(expression), simplify_sk(test_expression))?0:1;
+	//}
 	//printf("The %s eliminate was obtained.\n", ret_val?"correct":"incorrect");
 	return expression;
 }
