@@ -10,8 +10,9 @@ void read_variables(char* variables, char variable_array[], int found_variables[
 void variable_check(char* expression, int found_variables[]);
 
 int main(int argc, char* argv[]) {
+	int recursive_calls = 0;
 	char* expression = (char*)malloc(MAX_LENGTH);
-	char variables[MAX_LENGTH];
+	char variables[MAX_VARIABLES];
 	int found_variables[26]; // array to track what variables have been entered
 	if (argc != 3) {
 		printf("A list of variables and an expression must be supplied.\n");
@@ -26,9 +27,10 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 	printf("CCC\n");
-	printf("argv[2]: %s\n", argv[2]);
-	printf("termified form: %s\n", termify(argv[2], 0));
-	expression = termify(argv[2], 0);
+	fflush(stdin);
+	printf("argv[2]: %p string: %s\n", &argv[2], argv[2]);
+	expression = termify(argv[2], recursive_calls);
+	printf("expression: %s\n", expression);
 	printf("DDD\n");
 	// we termify the expression, and make sure it is syntactically correct
 	if (!correct_syntax(expression)) {
