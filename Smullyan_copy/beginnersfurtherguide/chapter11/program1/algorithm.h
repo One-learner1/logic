@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #define MAX_VARIABLES 26
-#define MAX_LENGTH 26
+#define MAX_LENGTH 10000
 
 // this stores the sub-expressions of expression
 typedef struct sub_expression {

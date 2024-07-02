@@ -26,12 +26,7 @@ int main(int argc, char* argv[]) {
 		printf("A list of variables and an expression must be supplied.\n");
 		exit(1);
 	}
-	printf("CCC\n");
-	fflush(stdin);
-	printf("argv[2]: %p string: %s\n", &argv[2], argv[2]);
 	expression = termify(argv[2], recursive_calls);
-	printf("expression: %s\n", expression);
-	printf("DDD\n");
 	// we termify the expression, and make sure it is syntactically correct
 	if (!correct_syntax(expression)) {
 		printf("Incorrect syntax.\n");
@@ -41,15 +36,12 @@ int main(int argc, char* argv[]) {
 	for (int i = 0; i < 26; i++) {
 		found_variables[i] = 0;
 	}
-	printf("BBB\n");
 	// function to read the variables out of argv[1]
 	read_variables(argv[1], variables, found_variables);
 	// we know check that all of the variables in the expression are found in the list of variables
 	variable_check(argv[2], found_variables);
 	// now that we have ensured correct input, we successively eliminate the variables
-	printf("AAA\n");
 	for (int i = variable_count-1; i >= 0; i--) {
-		printf("i: %d expression: %s variable: %c\n", i, expression, variables[i]);
 		expression = x_eliminate(expression, variables[i]);
 	}
 	printf("The eliminate is %s\n", expression);
@@ -80,12 +72,9 @@ void variable_check(char* expression, int found_variables[]) {
 		printf("The expression must not be empty.\n");
 		exit(1);
 	}
-	//printf("AAA\n");
 	for (int i = 0; i < (int)strlen(expression); i++) {
 		// if the character is a variable, we need to be sure that it was listed
 		if (expression[i] >= 'a' && expression[i] <= 'z') {
-			//printf("character: %c\n", expression[i]);
-			//printf("index: %d\n", expression[i]-97);
 			if (found_variables[expression[i]-97] != 1) {
 				printf("The expression must only contain variables in the list.\n");
 				exit(1);

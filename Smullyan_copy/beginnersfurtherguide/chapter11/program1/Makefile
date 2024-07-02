@@ -16,8 +16,8 @@ x_eliminate: syntax_simplify.o x_eliminate.o syntax_simplify.h
 eliminate: syntax_simplify.o eliminate.o syntax_simplify.h eliminate.h
 	$(CC) $(CFLAGS) eliminate.c syntax_simplify.o -o eliminate
 
-simplify: simplify.o
-	$(CC) $(CFLAGS) simplify.c -o simplify
+simplify: simplify.o algorithm.o algorithm.h
+	$(CC) $(CFLAGS) simplify.c algorithm.o -o simplify
 
 algorithm: algorithm.o algorithm.h
 	$(CC) $(CFLAGS) algorithm.c -o algorithm
