@@ -111,6 +111,66 @@ Now consider some $n>2$. Then $\omega_n=\omega_{n-1}\cup\{\omega_{n-1}\}$ and $\
 all elements of $\omega_{n-1}$. Because $\omega$ is an element of $\omega_{n-1}$, it follows that $\omega\in\cup\omega_n$, and thus, because $\omega\notin\omega$, 
 $\cup\omega_n\ne\omega$. 
 
-\subsection*{3.4}
+\section*{Section 4}
+\subsection*{Theorem 4.16}
+The proof of Theorem 4.16 seems incorrect to me. At a point in the proof, we rely upon Theorem 4.12. But that assumes $L$ is a bounded \textit{subset} of $A$. However he 
+assumes that $\emptyset\notin A$ and shows that $\emptyset\in L$, meaning $L$ is not a subset of $A$, contrary to the claim that it was.
+
+
+\subsection*{Exercise 4.1}
+We suppose that $N$ is closed under $g$, where $g$ is progressing, and that $b$ is an element of $N$ and that no proper sublcass of $N$ containing $b$ is closed under 
+$g$. In order to prove the desired results, we can first prove (1) of Theorem 4.17. We are given that $N$ is closed under $g$. Call a sequence of the form 
+$x,g(x),g(g(x)),g(g(g(x))),...$ a $g-sequence$ (and call it a subset of a set $A$ if all elements of the sequence are elements of $A$). 
+Label $x$ the first term of the $g$-sequence, $g(x)$ the second term, and, in general, if $y$ is the $n$th term of the $g$-sequence, then $g(y)$ is the 
+$n+1$th term of the $g$-sequence (and we say that $n$ is the \textit{index} of the $n$th term of the sequence).
+We first show that $N$ is just the $g$-sequence $b,g(b),g(g(b)),...$ Now, it is obvious that the $g$-sequence started by $b$ is a subset of $N$ (because 
+$N$ is closed under $g$, and $b$ is in $N$). Then suppose that there was some element $c\in N$ outside of the $g$-sequence started by $b$. Then the 
+$g$-sequence
+$c,g(x),g(g(c)),...$ would be a subset of $A$. But then $b,g(b),g(g(b)),...$ would be a proper subset of $N$ containing $b$ which was closed under $g$, contrary to the 
+hypothesis. Hence the only elements in $N$ are the elements of the $g$-sequence started by $b$. Having shown this, recall that $g$ is a progressive function. Now consider 
+any $x,y$ in $N$. If $x=y$, then $y\subseteq x$. Now suppose $x\ne y$. Let $x$ be the $m$th term of the $g$-sequence and $y$ the $n$th term. Thus $m\ne n$. On the one hand, 
+suppose that $m<n$. An obvious induction argument shows that $x\subseteq y$. Now either $g(x)=y$ or not. In either case, $g(x)\subseteq y$ is obvious. On the other hand, 
+suppose that $n<m$. Then the same argument shows that $y\subseteq x$, thus completing the proof of (1). 
+
+
+Here is the \textquote{obvious inductive argument} mentioned above (I will refer to this as Lemma 1). 
+We prove that, for all $n$, all $m$th terms where $m<n$ are subsets of the $n$th term of the 
+$g$-sequence. The base case is obvious (as there are no terms of index less than 1). Now suppose the result holds for the $n$th term $x$. Then all terms of index $m$ where 
+$m<n$ are subsets of $x$. But then, because $g$ is progressing, $x$ is a subset of $g(x)$ (the $n+1$th term), and because all the terms of index $m$ where 
+$m<n$ are subsets of $x$, it follows that all terms of index $m$ where $m<n+1$ are subsets of $g(x)$, completing the proof.
+
+
+We now prove (2) of the problem. We prove by induction on $n$ that every non-empty subset of $N$ that is bounded by the $n$th term of $N$ (that is, the $n$th term 
+of the $g$-sequence $b,g(b),g(g(b)),...$) has a greatest element. The proof of this is similar to that of Theorem 4.12:  
+
+
+I was not entirely sure what (3) was trying to prove: I interpreted it to mean that, if $x$ is the greatest element of $N$, then it is a fixed point of $g$. 
+Suppose that $x$ is the greatest element of $N$. Then, for all elements $y$ of $N$, $y\subseteq x$. Now, we know that 
+$g(x)\in N$. Because $x$ is the greatest element of $N$, $g(x)\subseteq x$. But also, because $g$ is progressing, $x\subseteq g(x)$. Thus $g(x)=x$, meaning $x$ is a fixed 
+point of $g$.
+
+Now we prove (4) of the problem. Because we have shown that $g(x)\subseteq y$ or $y\subseteq x$ for all $x,y$ in $N$, it follows that $x\subseteq y$ or 
+$y\subseteq x$ (as $x\subseteq g(x)$). Thus $N$ is a nest. It remains to be shown that every non-empty subclass of $N$ has a least element. So consider some non-empty 
+subclass $A$ of $N$. Because $N$ is just the set of all terms of the $g$-sequence $b,g(b),g(g(b)),...$, it follows that $A$ contains only members of that sequence. 
+Hence $A$ contains some term $x$ whose index (in the $g$-sequence) $n$ is less than or equal to the indices of all the other elements of $A$. By Lemma 1, it follows that 
+$x$ is a subset of all terms with an index greater than or equal to $n$, and hence $x$ is a subset of all other elements of $A$, meaning it is the least element of $A$. 
+
+Because $b$ starts the $g$-sequence $b,g(b),g(g(b)),...$, which makes up the entirety of $N$, Lemma 1 
+above shows that $b$ is the least element of 
+$N$ (is a subset of all elements of $N$). This proves (5) of the problem.
+
+
+The reason that this generalizes some of the earlier results of the section is that it takes away the requirenment that $N$ be minimally inductive under $g$. For example, 
+Theorem 4.7 holds now when $N$ is closed under $g$, where $g$ is progressing, 
+and that $b$ is an element of $N$ and that no propert subclass of $N$ containing $b$ is closed. That 
+is, we do not need to know that $N$ is minimally inductive under $g$. 
+
+\subsection*{Exericse 4.2}
+(I did not think that this proof requires $A$ to be a set)\newline
+Suppose that $A$ is inductive under $g$ and that $A$ is a set. Thus we know\newline
+(1) $\emptyset\in A$,\newline
+(2) for every $x$ in $A$, the set $g(x)$ is in $A$.\newline
+Consider the $g$-sequence $\emptyset,g(\emptyset),g(g(\emptyset)),...$. Because $A$ is inductive under $g$, that $g$-sequence is a subset of 
+$A$. But clearly, that $g$-sequence is minimally inductive under $g$. Hence there is some subset of $A$ that is minimally inductive under $g$.
 
 \end{document}
