@@ -114,7 +114,13 @@ $\cup\omega_n\ne\omega$.
 \section*{Section 4}
 \subsection*{Theorem 4.16}
 The proof of Theorem 4.16 seems incorrect to me. At a point in the proof, we rely upon Theorem 4.12. But that assumes $L$ is a bounded \textit{subset} of $A$. However he 
-assumes that $\emptyset\notin A$ and shows that $\emptyset\in L$, meaning $L$ is not a subset of $A$, contrary to the claim that it was.
+assumes that $\emptyset\notin A$ and shows that $\emptyset\in L$, meaning $L$ is not a subset of $A$, contrary to the claim that it was. (In fact, I think we would need 
+to show that $L$ is a subset of $M$, as $M$ is the one which is minimally inductive under $g$, but Smullyan does not make this clear)
+
+
+I think that what Smullyan was trying to say was: Let $L$ be the class of all elements of $x$ \textit{of $M$} such that $x$ is a proper subclass of all 
+elements of $A$. Obviously, this means that $L$ is a subset of $M$, and then, when we show that $L$ is bounded by $A$, we really can use Theorem 4.12. Also, when we assume 
+that $\emptyset\notin A$, we can still conclude that $\emptyset\in L$, as $\emptyset\in M$ by the assumption that $M$ is minimally inductive under $g$. 
 
 
 \subsection*{Exercise 4.1}
@@ -141,7 +147,15 @@ $m<n$ are subsets of $x$, it follows that all terms of index $m$ where $m<n+1$ a
 
 
 We now prove (2) of the problem. We prove by induction on $n$ that every non-empty subset of $N$ that is bounded by the $n$th term of $N$ (that is, the $n$th term 
-of the $g$-sequence $b,g(b),g(g(b)),...$) has a greatest element. The proof of this is similar to that of Theorem 4.12:  
+of the $g$-sequence $b,g(b),g(g(b)),...$) has a greatest element. The base case is when $n=0$, that is, when the term is $b$. Now consider some 
+bounded subset $c$ of $N$ which is bounded by $b$. Thus $c\subseteq N$ and, for all $d\in c$, $d\subseteq b$. But, by Lemma 1, $b$ is a subset of all elements of 
+$N$. Thus $b$ is a subset of all elements $d\in c$. But $d\subseteq b$. Hence $b=d$ for all elements $d\in c$, meaning $c$ is just the set 
+$\{ b\}$. Then, of course, $b$ is the greatest element of $c$, therefore proving the base case. Now suppose the hypothesis holds for some $n$. That is, 
+every non-empty subset of $N$ bounded by the $n$th term $x$ of $N$ has a greatest element. Now, the $n+1$th term of $N$ is just $g(x)$. Consider any non-empty 
+subset $B$ of $N$ bounded by $g(x)$. If $g(x)\in B$, then of course $g(x)$ is the greatest element of $B$. So suppose that $g(x)\notin B$. Then every element of $B$ is a 
+proper subset of $g(x)$. Consider any element $y$ of $B$. Then $y\subset g(x)$, meaning $g(x)\subseteq y$ doesn't hold, and therefore $y\subseteq x$ holds 
+(because either $g(x)\subseteq y$ or $y\subseteq x$ by (1) of this problem). But this means that $B$ is bounded by $x$; hence, by the induction assumption, it has a 
+greatest element. 
 
 
 I was not entirely sure what (3) was trying to prove: I interpreted it to mean that, if $x$ is the greatest element of $N$, then it is a fixed point of $g$. 
