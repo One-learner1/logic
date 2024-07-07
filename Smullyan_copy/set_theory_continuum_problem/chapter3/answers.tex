@@ -112,6 +112,15 @@ all elements of $\omega_{n-1}$. Because $\omega$ is an element of $\omega_{n-1}$
 $\cup\omega_n\ne\omega$. 
 
 \section*{Section 4}
+\subsection*{Notes}
+Note that $g$-induction only works on minimally inductive sets for the following reason: If $A$ was not minimally inductive under $g$, we would have some element $x$ of 
+$A$ such that $x$ is not a term of the $g$-sequence (see the section below titled Exercise 4.1) $\emptyset,g(\emptyset),g(g(\emptyset)),...$ But the proof by $g$-induction 
+only proves the result for the terms of the $g$-sequence started by $\emptyset$, meaning we would not necessarily know that the result held for $x$.
+
+
+Note that (1) of Lemma 4.6 holds because $0$ is just $\emptyset$, and $\emptyset$ obviously is a subclass of $y$ for every $y$.
+
+
 \subsection*{Theorem 4.16}
 The proof of Theorem 4.16 seems incorrect to me. At a point in the proof, we rely upon Theorem 4.12. But that assumes $L$ is a bounded \textit{subset} of $A$. However he 
 assumes that $\emptyset\notin A$ and shows that $\emptyset\in L$, meaning $L$ is not a subset of $A$, contrary to the claim that it was. (In fact, I think we would need 
