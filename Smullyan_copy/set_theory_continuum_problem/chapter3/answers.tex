@@ -222,9 +222,10 @@ But this means that, for all $n<m$, $f(n)\subset f(m^+)$, thus completing the in
 \section*{Section 7}
 
 \subsection*{Exercise 7.1}
-We can prove the equivalent statement that, if a set $S$ of natural numbers is not finite, then it is denumerable. Note that, because $\omega$ is the set of all natural numbers, $S\subseteq\omega$. Now, 
-we can arrange the set $S$ of natural numbers as follows: $a_0,a_1,...,a_n,...$. We can make a 1-1 correspondence between $S$ and $\omega$ by pairing each 
-$a_i$ with $i$. If we ever encountered an $i$ that did not have an $a_i$ to match with, this would mean that $S$ only had $i-1$ elements, contrary to the assumption that is was not finite. If we 
-ever encountered an $a_i$ which had no $i$ to match to, this would contradict the fact that $S\subseteq\omega$. Thus this really is a 1-1 correspondence.
+We can prove the equivalent statement that, if a set $S$ of natural numbers is not finite, then it is denumerable. Note that, because $\omega$ is the set of all natural numbers, $S\subseteq\omega$. 
+We can make a 1-1 correspondence between $S$ and $\omega$ as follows: pick some element $a_0$ of $S$ and pair it with $0$. Then pick another element $a_1$ of $S$ and pair it with $1$, and, in general, 
+we pair $n$ with some element $a_n$ of $S$, where $a_n$ is disitinct from all $a_m$ where $m<n$. If there was any $n$ for which it could not be paired to an $a_n$, this would mean that 
+$S$ only had $n-1$ elements, contrary to the assumption that it was infinite. If there was ever some $a_n$ for which no $n$ could be found, this would contradict the fact that $S\subseteq\omega$. Thus 
+this really is a 1-1 correspondence. 
 
 \end{document}
