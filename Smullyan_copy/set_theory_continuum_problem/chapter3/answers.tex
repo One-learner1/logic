@@ -196,4 +196,27 @@ Suppose that $A$ is inductive under $g$ and that $A$ is a set. Thus we know\newl
 Consider the $g$-sequence $\emptyset,g(\emptyset),g(g(\emptyset)),...$. Because $A$ is inductive under $g$, that $g$-sequence is a subset of 
 $A$. But clearly, that $g$-sequence is minimally inductive under $g$. Hence there is some subset of $A$ that is minimally inductive under $g$.
 
+\section*{Section 5}
+
+\subsection*{Exercise 5.1}
+Suppose that the natural number $n$ is in $A$ and that for any number $x$ in $A$, $x^+$ is also in $A$. We can prove that $A$ contains every number $\ge n$ by $g$-induction. In particular, 
+consider the property $P$: If $m\ge n$, then $m\in A$. We show that this prpoerty holds for all numbers $m$. Either $\emptyset=n$ or $\emptyset <n$. In the first case, $P$ holds, while 
+in the second case, $P$ vacuously holds. Thus $P$ holds for $\emptyset$. Now suppose that $P$ holds for $x$. There are two cases: either $x^+<n$, $x^+=n$, or $x^+>n$. In the first case, $P$ 
+vacuously holds. In the second case, because we assumed $n\in A$, $P$ holds. In the last case, by the induction assumption that $x\in A$, $x^+\in A$, and thus $P$ holds for 
+$x^+$. Thus, in any case, $P$ holds for $x^+$, therefore completing the induction.
+
+\subsection*{Exercise 5.2}
+We suppose $f$ is a function from $\omega$ into $A$.
+
+
+(a): We suppose that, for all $n$, $f(n)\subseteq f(n^+)$. We can prove that, for all $n$ and $m$, if $n\le m$ then $f(n)\subseteq f(m)$ by induction on $m$. In particular, we show that, for 
+all numbers $m$, for all numbers $n\le m$, $f(n)\subseteq f(m)$. The base case is when $m=\emptyset$. The only natural number $\le\emptyset$ is $\emptyset$, which is a subset of itself, meaning 
+the base case holds. Now suppose that the hypothesis holds for some $m$. Thus, for all $n\le m$, $f(n)\subseteq f(m)$. Now, we are given that $f(m)\subseteq f(m^+)$. But this means that, 
+for all number $n\le m$, $f(n)\subseteq f(m^+)$. Thus all numbers $n\le m^+$ are such that $f(n)\subseteq f(m^+)$, therefore completing the induction.
+
+
+(b): We prove that, for all $n$, if $f(n)\subset f(n^+)$, then for all $n$ and $m$, if $n<m$, then $f(n)<f(m)$. The base case is when $m=\emptyset$. In this case, there 
+are no natural numbers less than $\emptyset$, so the property vacuously holds. No suppose it holds for some $m$. Thus, for all $n<m$, $f(n)\subset f(m)$. Now, we are given that $f(m)<f(m^+)$. 
+But this means that, for all $n<m$, $f(n)\subset f(m^+)$, thus completing the induction.
+
 \end{document}
