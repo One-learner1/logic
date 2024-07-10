@@ -219,4 +219,12 @@ for all number $n\le m$, $f(n)\subseteq f(m^+)$. Thus all numbers $n\le m^+$ are
 are no natural numbers less than $\emptyset$, so the property vacuously holds. No suppose it holds for some $m$. Thus, for all $n<m$, $f(n)\subset f(m)$. Now, we are given that $f(m)<f(m^+)$. 
 But this means that, for all $n<m$, $f(n)\subset f(m^+)$, thus completing the induction.
 
+\section*{Section 7}
+
+\subsection*{Exercise 7.1}
+We can prove the equivalent statement that, if a set $S$ of natural numbers is not finite, then it is denumerable. Note that, because $\omega$ is the set of all natural numbers, $S\subseteq\omega$. Now, 
+we can arrange the set $S$ of natural numbers as follows: $a_0,a_1,...,a_n,...$. We can make a 1-1 correspondence between $S$ and $\omega$ by pairing each 
+$a_i$ with $i$. If we ever encountered an $i$ that did not have an $a_i$ to match with, this would mean that $S$ only had $i-1$ elements, contrary to the assumption that is was not finite. If we 
+ever encountered an $a_i$ which had no $i$ to match to, this would contradict the fact that $S\subseteq\omega$. Thus this really is a 1-1 correspondence.
+
 \end{document}
