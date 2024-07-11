@@ -202,7 +202,8 @@ is a set), we can show that every element of every $g$-inductive class is a set.
 in turn relied upon the notion of an ordered pair $\langle x,y\rangle$, which was only defined when $x$ and $y$ are sets. Thus $x$ can only be in the domain of a function if 
 $x$ is a set. Now consider any $g$-inductive class $A$, and 
 consider any element $x$ in $A$. Then we know that $g(x)\in A$, and thus, because $x$ is in the domain of $g$, $x$ is a set. If it happens that $A$ is finite (which could 
-occur if, for instance, $\emptyset$ was a fixed point of $g$ and $A$ only contained $\emptyset$), $A$ would be a set as a consequence of Exercise 6.1.
+occur if, for instance, $\emptyset$ was a fixed point of $g$ and $A$ only contained $\emptyset$), $A$ would be a set as a consequence of Exercise 6.1. Indeed, there are non-denumerable 
+$g$-inductive classes, for instance, the class of all sets, which is $g$-inductive under the power function.
 
 \section*{Section 5}
 
@@ -235,5 +236,29 @@ We can make a 1-1 correspondence between $S$ and $\omega$ as follows: pick some 
 we pair $n$ with some element $a_n$ of $S$, where $a_n$ is disitinct from all $a_m$ where $m<n$. If there was any $n$ for which it could not be paired to an $a_n$, this would mean that 
 $S$ only had $n-1$ elements, contrary to the assumption that it was infinite. If there was ever some $a_n$ for which no $n$ could be found, this would contradict the fact that $S\subseteq\omega$. Thus 
 this really is a 1-1 correspondence. 
+
+
+We can also show that every non-denumerable set has a denumerable proper subset. For consider any non-denumerable set $A$. We can show that some proper subset of $A$ can 
+be put into a 1-1 correspondence with $\omega$ in the following way: Pick some element $a_0$ of $A$, and pair it with 0. Then pick another element $a_1$ of $A$, and 
+pair it with $1$, and in general, for every $n$, we pick a new element $a_n$ of $n$ to match with $n$. 
+If for any $n$ we could not pick a new element of $A$ to match with it, that would mean that $A$ would only have $n-1$ elements, contrary to the 
+assumption that it was infinite. Thus, for every $n$, we can pick an element of $A$ to match with it, meaning we have a denumerable subset $S$ of $A$ consisting of the 
+elements 
+$a_0,a_1,...,a_n,...$. If this was the entirety of $A$, then $A$ itself would be denumerable, contrary to the assumption that it was not. Thus $S$ is a 
+proper subset of $A$, therefore completing the proof.
+
+
+Having shown the above result, we can now prove that any infinite subset of a denumerable set is denumerable. For consider some denumerable set $A$. Suppose it had a 
+non-denumerable subset $B$. By the above result, there is a proper subset $C$ of $B$ which is denumerable. Because $B\subseteq A$ and $C\subset B$, $C\subset A$. Thus we 
+would have $A$ being in a 1-1 correspondence with $C$, a proper subset of $A$, which is impossible. Hence $A$ can have no non-denumerable subset.
+
+
+Note the following incorrect proof that any denumerable set can be put into a 1-1 correspondence with any non-denumerable set: Consider any denumerable set $A$ and any
+non-denumerable set $B$. Arrange the elements of $A$ in the order $a_0,a_1,...,a_n,...$. If for any $n$, $a_n$ did not have a matching element in $B$, then 
+$B$ would be finite, a contradiction. Also, if we ever encountered an element in $B$ for which we could pair no element of $A$ with, this would mean $A$ would be finite, 
+a contradiction. The error in this proof is that we of course can reach an element in $B$ for which we could pair no element of $A$ with (and this does not mean that $A$ is 
+finite; it would only mean so if the statement was:\textquote{if we ever encountered some \textit{$n$th element} in $B$ for which we could pair no element of $A$ with} This 
+would then mean that $A$ was finite). Of course, this element in $B$ that we could not pair up with $A$ would come after pairing off a denumerable amount of elements from 
+$B$, meaning we would already know that $A$ was infinite (and thus there is no supposed contradiction). 
 
 \end{document}
