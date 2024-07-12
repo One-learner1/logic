@@ -322,9 +322,10 @@ $a_0,a_1,...,a_n,...$. If this was the entirety of $A$, then $A$ itself would be
 proper subset of $A$, therefore completing the proof.
 
 
-Having shown the above result, we can now prove that any infinite subset of a denumerable set is denumerable. For consider some denumerable set $A$. Suppose it had a 
+Note the following incorrect proof: Having shown the above result, we can now prove that any infinite subset of a denumerable set is denumerable. For consider some denumerable set $A$. Suppose it had a 
 non-denumerable subset $B$. By the above result, there is a proper subset $C$ of $B$ which is denumerable. Because $B\subseteq A$ and $C\subset B$, $C\subset A$. Thus we 
-would have $A$ being in a 1-1 correspondence with $C$, a proper subset of $A$, which is impossible. Hence $A$ can have no non-denumerable subset.
+would have $A$ being in a 1-1 correspondence with $C$, a proper subset of $A$, which is impossible. Hence $A$ can have no non-denumerable subset. This is of course incorrect that it is not 
+true that $A$ cannot be in a 1-1 correspondence with a proper subset of itself. For instance, $\omega$ can be placed in a 1-1 correspondence with the set of all even numbers.
 
 
 Note the following incorrect proof that any denumerable set can be put into a 1-1 correspondence with any non-denumerable set: Consider any denumerable set $A$ and any
@@ -334,5 +335,38 @@ a contradiction. The error in this proof is that we of course can reach an eleme
 finite; it would only mean so if the statement was:\textquote{if we ever encountered some \textit{$n$th element} in $B$ for which we could pair no element of $A$ with} This 
 would then mean that $A$ was finite). Of course, this element in $B$ that we could not pair up with $A$ would come after pairing off a denumerable amount of elements from 
 $B$, meaning we would already know that $A$ was infinite (and thus there is no supposed contradiction). 
+
+
+We can prove the fact that no denumerable subset can have a non-denumerable subset in a different way. First, define a set $S$ to be \textit{greater} than a set $F$ is 
+$S$ cannot be put into a 1-1 correspondence with $F$, but some proper subset of $S$ can be put into a 1-1 correspondence with $F$. If $S$ is greater than $F$, we denote this by $S>F$, and say that 
+$F$ is less than $S$, and denote this by $F<S$. We first show some facts about sets being greater than one anohther, 
+and then the desired result comes easily.
+
+First we show that, for any sets $S$ and $F$, either $S<F$ or $F<S$, or $S$ and $F$ can be put into a 1-1 correspondence. Suppose that $S$ and $F$ cannot be put into a 1-1 correspondence. 
+Pick some element $a_1$ of $S$, and $b_1$ of $F$, and pair them together. Then pick some new element $a_2$ of $S$, and some new element $b_2$ of $F$, and so on. Becaus $S$ and $F$ cannot be put into a 
+1-1 correspondence, we will at some point either reach some element of $F$ for which no element of $S$ can be found, in which case $F>S$ (as the the elements paired up with $S$ up until that point 
+represent a subset of $F$, and are is in a 1-1 correspondence with $S$), or we reach some element of $S$ for which no element of $F$ can be found, in which case $S>F$. 
+
+
+\begin{Lemma} For all sets $S$, no subset of $S$ can be greater than $S$. \end{Lemma} 
+For suppose some subset $F$ was greater than $S$. Then $S$ and $F$ could not be put into a 1-1 correspondence, but 
+some proper subset of $F$ could be put into a 1-1 correspondence with $S$. We can show that $F$ and $S$ can, in fact, be put into a 1-1 correspondence, in the following way: If there was ever some 
+element of $F$ for which we could not find any element of $S$ to pair it with, this would contradict the fact that $F$ was a subset of $S$. If there was ever some element of $S$ for which we could not 
+find any element of $F$ to pair it with, this contradicts the fact that some proper subset of $F$ could be put into a 1-1 correspondence with $S$. Thus $S$ and $F$ can be put into a 1-1 correspondence, 
+a contradiction, therefore completing the proof.
+
+
+After this, we can prove the desired result about denumerable sets (that no denumerable set can have a non-denumerable subset). For suppose we had some denuemrable set $A$ having a
+non-denumerable subset $B$. We have already shown that a proper subset of every non-denumerable subset is denumerable. Hence a proper subset of $B$ is denumerable (can be put into a 
+1-1 correspondence with $A$). But, by definition, $B$ cannot be put into a 1-1 correspondence with $A$. Thus $B>A$, which contradicts the Lemma, therefore completing the proof.
+
+
+We now show that, for any sets $S$ and $F$, it is not the case that both $S>F$ and $F>S$ hold. For suppose the hypothesis did not hold. Then we would have 
+$S$ and $F$ not in a 1-1 correspondence, and some proper subset $A$ of $S$ being in a 1-1 correspondence with $F$, and some proper subset $B$ of $F$ being in a 1-1 correspondence with $S$. Then we 
+would have $A$, a proper subset of $S$, being put into a 1-1 correspondence with $F$, a set which is greater than $S$. Thus $A$, a subset of $S$, is greater than $S$, which is impossible by the 
+Lemma, therefore completing the proof.
+
+
+We now show that any infinite set can be put into a 1-1 correspondence with a proper subset of itself.
 
 \end{document}
