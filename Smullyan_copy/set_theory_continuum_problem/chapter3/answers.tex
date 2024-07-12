@@ -234,7 +234,7 @@ But this means that, for all $n<m$, $f(n)\subset f(m^+)$, thus completing the in
 (1): We prove that every finite class is a set. This can be done using induction on the number of elements $n$ in the class. The base case is for the class 
 $\emptyset$, which is a set by $A_3$. Now suppose the result holds for some $n$. Consider some class $S$ of size $n+1$. Pick some arbitrary element $a$ of $S$. 
 By the induction assumption, $S-\{a\}$ is a set. Also, $S=\{a\}\cup(S-\{a\})$. But 
-$\{a\}\cup(S-\{a\})=\{a,\{S-\{a\}\}\}$, which is a set by $A_4$. Thus $S$ is a set, therefore completing the proof.
+$\{a\}\cup(S-\{a\})=\cup\{\{a\},(S-\{a\})\}$, which is a set by $A_5$ (because $\{\{a\},(S-\{a\})\}$ is a set by $A_4$), thus proving $S$ is a set.
 
 
 (2): We prove that every subset of a finite set is finite. This can be done using induction on the number of elements $n$ in the set. The base case is for 
@@ -245,12 +245,13 @@ completing the proof.
 
 
 (3): We prove that every non-empty finite set of natural numbers has a greatest element. This can be done using induction on the natural numbers. 
-The base case if for $\{\emptyset\}$, whose only element, and therefore greatest element, is $\emptyset$. Now assume that the result holds for some $n$, that is, 
+The base case is for $\{\emptyset\}$, whose only element, and therefore greatest element, is $\emptyset$. Now assume that the result holds for some $n$, that is, 
 $n$ has a greatest element. Now consider $n+1$. It is just $n\cup\{n\}$. Thus its elements are either elements of $n$, or $n$ itself. But we know that all elements of $n$ 
-are subsets of $n$. Thus all elements of $n+1$ are subsets of $n$, therefore completing the proof. 
+are subsets of $n$ (by results in section 5). Thus all elements of $n+1$ are subsets of $n$, therefore completing the proof. 
 
 \subsection*{Exercise 6.2}
-We prove that the union of any two finite sets is finite. An equivalent thing to prove is that the union of a set $S$ with $n$ elements and any other finite set is finite, 
+We prove that the union of any two finite sets is finite. An equivalent thing to prove is that the statement that the 
+union of a set $S$ with $n$ elements and any other finite set is finite, 
 holds for all $n$. This can be proven using complete induction on $n$. The base case, when $n=0$, is when $S=\emptyset$. Now consider any other finite set $A$ with $m$ elements. 
 But, because $\emptyset\cup A=A$ holds for all sets $A$, and because $A$ was assumed to be finite, $\emptyset\cup A$ is also finite. Thus the base case is proven. Now 
 suppose the result holds for all numbers less than $n$, that is, for any set $S$ having less than $n$ elements, 
@@ -263,7 +264,7 @@ $C\cup (B-\{a\})$ has been shown to be finite, $(C\cup (B-\{a\}))\cup\{a\}$ is f
 \subsection*{Exercise 6.3}
 We prove that the union of any finite set $S$ of finite sets is finite. We prove this by induction on the size $n$ of $S$. In the base case, $S$ has only one element $a$, 
 and its union is just all of the elements of $a$, which is finite, as $a$ was assumed to be finite. Now suppose the result holds for some $n$. Consider some set $S$ of 
-size $n+1$ of finite sets. Let its elements be $a_1,a_2,...,a_n,a_{n+1}$. Let $S_1=\{a-1,a_2,...,a_n\}$. Now, 
+size $n+1$ of finite sets. Let its elements be $a_1,a_2,...,a_n,a_{n+1}$. Let $S_1=\{a_1,a_2,...,a_n\}$. Now, 
 $\cup S=(\cup S_1)\cup a_{n+1}$ (as can easily be shown). By the induction assumption, $\cup S_1$ is finite. Then, by Exercise 6.2, 
 $(\cup S_1)\cup a_{n+1}$ is also finite. Hence $\cup S$ is finite, therefore completing the proof.
 
@@ -281,7 +282,7 @@ the set of all $y\in M$ such that $y\subseteq x$ is just $S$, which is finite, t
 
 \subsection*{Exercise 6.5}
 Suppose $M$ is minimally inductive unger $g$, where $g$ is progressing. Suppose also that $M$ contains an element $x$ such that $x=g(x)$. We show that $M$ is finite. We know
-that $M$ is just the set of all the members in the $g$-sequence $\emptyset,g(\emptyset),g(g(\emptyset)),...$. Suppose the element $x$ of $M$ for which $x=g(x)$ has 
+that $M$ is just the set of all the members in the $g$-sequence $\emptyset,g(\emptyset),g(g(\emptyset)),...$. Suppose the first element $x$ of $M$ for which $x=g(x)$ has 
 an index $n$ in that $g$-sequence. Then, as can easily be shown, for all terms $y$ with an index greater than $n$ in the sequence, $y=x$. Thus the only elements of $M$ 
 are the first $n$ terms of the $g$-sequence, meaning $M$ is finite, in particular, a set with $n$ elements.
 
