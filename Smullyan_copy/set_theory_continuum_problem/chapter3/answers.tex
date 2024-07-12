@@ -269,6 +269,17 @@ $\cup S=(\cup S_1)\cup a_{n+1}$ (as can easily be shown). By the induction assum
 $(\cup S_1)\cup a_{n+1}$ is also finite. Hence $\cup S$ is finite, therefore completing the proof.
 
 \subsection*{Exercise 6.4}
+Suppose that $M$ is minimally under $g$ where $g$ is progressing. We prove that for every $x$ in $M$, the set of all $y\in M$ such that
+$y\subseteq x$ is finite. This can be done by using $g$-induction on $M$. For $\emptyset$, it only has a subset of $\emptyset$, meaning the set of all $y\in M$ 
+such that $y\subseteq x$ is finite. Now suppose the result holds for some $x$. That is, the set $S$ of all $y\in M$ such that $y\subseteq x$ is finite. Now consider 
+$g(x)$. Because $g$ is progressing, $x\subseteq g(x)$. Thus all elements of $S$ are subsets of $g(x)$. Now suppose there was some $y\in M$ such that $y\subseteq g(x)$, but 
+$y$ is not a member of $S$ (that is, $y$ is not a subset of $x$). Thus, because $M$ is a nest (as was shown in section 4), $x\subseteq y$. Now, we know that 
+$y\subseteq g(x)$. Thus $x\subseteq y\subseteq g(x)$, meaning, by Theorem 4.10 part (1), either $y=x$ or $y=g(x)$. Thus the elements of the set of all $y\in M$ such that 
+$y\subseteq g(x)$ are the elements of $S$, and the sets $x$ and $g(x)$. But $x\in S$. Thus the set of all $y\in M$ such that 
+$y\subseteq g(x)$ is just the set $S$ together with $g(x)$, meaning it is also a finite set (because $S$ is finite).
+
+
+We can also show the result using $g$-sequences:
 Suppose that $M$ is minimally under $g$ where $g$ is progressing. We prove that for every $x$ in $M$, the set of all $y\in M$ such that 
 $y\subseteq x$ is finite. Now, $M$ is just the set of all members of the $g$-sequence $\emptyset,g(\emptyset),g(g(\emptyset)),...$. We prove that for all $n$, the 
 $n$th term in the above $g$-sequence satisfies the desired conditions. This shows that all elements of $M$ satisfy the desired conditions. Consider the $n$th term in the 
@@ -281,7 +292,12 @@ were already shown to be subsets of $x$). But then, because $g$ is progressing, 
 the set of all $y\in M$ such that $y\subseteq x$ is just $S$, which is finite, therefore completing the proof.
 
 \subsection*{Exercise 6.5}
-Suppose $M$ is minimally inductive unger $g$, where $g$ is progressing. Suppose also that $M$ contains an element $x$ such that $x=g(x)$. We show that $M$ is finite. We know
+Suppose $M$ is minimally inductive under $g$, where $g$ is progressing. Suppose also that $M$ contains an element $x$ such that $x=g(x)$. By Theorem 4.14, we then know that 
+$x$ is the greatest element of $M$, that is, for all $y\in M$, $y\subseteq M$. But by Exercise 6.4, the set of all $y\in M$ such that $y\subseteq x$ is 
+finite. Then, because every element of $M$ is a subset of $x$, it follows that $M$ is finite.
+
+We can also prove this using $g$-sequences: 
+Suppose $M$ is minimally inductive under $g$, where $g$ is progressing. Suppose also that $M$ contains an element $x$ such that $x=g(x)$. We show that $M$ is finite. We know
 that $M$ is just the set of all the members in the $g$-sequence $\emptyset,g(\emptyset),g(g(\emptyset)),...$. Suppose the first element $x$ of $M$ for which $x=g(x)$ has 
 an index $n$ in that $g$-sequence. Then, as can easily be shown, for all terms $y$ with an index greater than $n$ in the sequence, $y=x$. Thus the only elements of $M$ 
 are the first $n$ terms of the $g$-sequence, meaning $M$ is finite, in particular, a set with $n$ elements.
