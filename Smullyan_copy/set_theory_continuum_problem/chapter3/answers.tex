@@ -366,6 +366,14 @@ $S$ and $F$ not in a 1-1 correspondence, and some proper subset $A$ of $S$ being
 would have $A$, a proper subset of $S$, being put into a 1-1 correspondence with $F$, a set which is greater than $S$. Thus $A$, a subset of $S$, is greater than $S$, which is impossible by the 
 Lemma, therefore completing the proof.
 
+The following Lemma will be useful:
+\textbf{Union Lemma}:\textit{ For any sets $A,B,C,$ and $D$, if $A$ and $D$ can be placed in a 1-1 correspondence, and $B$ and $C$ can be placed in a 1-1 correspondence, and 
+$A$ and $B$ contain no elements in common, and $C$ and $D$ contain no elements in common, then $A\cup B$ can be placed in a 1-1 correspondence with $C\cup D$.}
+
+\textbf{Proof}: Suppose we have sets $A,B,C,$ and $D$ in the relation described in the statement of the Lemma. First, we pair off the elements of $A$ in the set 
+$A\cup B$ with the elements of $C$ in the set $C\cup D$, which can be done, as $A$ and $C$ can be placed in a 1-1 correspondence. Also, this does not use any elements of $B$, as 
+$A$ and $B$ were assumed to be disjoint. Then we can do the same thing for $B$ and $D$, therefor showing we can pair up all elements of $A\cup B$ with $C\cup D$, meaning 
+$A\cup B$ can be placed in a 1-1 correspondence with $C\cup D$.
 
 We now show that any infinite set can be put into a 1-1 correspondence with a proper subset of itself. We first prove this for denumerable sets, and then the case for non-denumerable sets 
 easily follows. Consider any denumerable set $S$. Thus the elements of $S$ can be arranged in a denumerable sequence $a_1,a_2,...,a_n,...$. Now consider the set $S-\{a_1\}$, which is a proper 
@@ -375,10 +383,9 @@ $a_1$ with $b_1$, $a_2$ with $b_2$, and, in general, $a_n$ with $b_n$, thus show
 
 Now that we have shown the denumerable case, consider some non-denumerable set $S$. We have already shown that $S$ contains 
 some denumerable subset $D$. Now pick some arbitrary element $a$ of $D$. Now, $D\cup (S-D)=S$. Consider the set $(D-\{a\})\cup (S-D)$ (which is just the set $S-\{a\}$), which is a proper subset of 
-$S$. We have already shown that $D-\{a\}$ can be placed into a 1-1 correspondence with $D$. Then the elements of $S-D$ in $D\cup (S-D)$ can be placed in a 1-1 correspondence with 
-all of the elements of $S-D$ in $(D-\{a\})\cup (S-D)$, and the elements of $D-\{a\}$ can be placed in a 1-1 correspondence with the elements of $D$. Thus, the elements of 
-$D\cup (S-D)$ can be placed in a 1-1 correspondence with the elements of $(D-\{a\})\cup (S-D)$, that is, the elements of $S$ can be placed in a 1-1 correspondence with the elements of 
-$S-\{a\}$.
+$S$. We have already shown that $D-\{a\}$ can be placed into a 1-1 correspondence with $D$. Then, because $D-\{a\}$ can be placed in a 1-1 correspondence with $D$, 
+$S-D$ can be placed in a 1-1 correspondence with $S-D$, $D$ and $S-D$ are disjoint, and $D-\{a\}$ and $S-D$ are disjoint, the Union Lemma shows that 
+$D\cup (S-D)$ can be placed in a 1-1 correspondence with $(D-\{a\})\cup (S-D)$, that is, $S$ can be placed in a 1-1 correspondence with a proper subset of itself. 
 
 Now we prove that, for any element $a$ of any infinite set $S$, there is a denumerable subset of $S$ containing $a$. We have already shown that $S$ must contain some
 denumerable set $D$. Either $D$ contains $a$ or it doesn't. If it does, we are done. If it doesn't, pick some arbitrary element $e$ of $D$. Then $(D-\{e\})\cup\{a\}$ is the desired set, as we can
@@ -397,7 +404,9 @@ $i>m$, we pair off the $a_i\in D\cup G$ with the $a_{m+i}\in D$, thus showing th
 
 Now we prove that the union of any non-denumerable set $S$ (thus proving the result for all infintie sets) and any finite set can be placed in a 1-1 correspondence with $S$. For consider 
 some non-denumerable set $S$ and some finite set $F$. Let $G$ be the set of all elements in $F$ not in $S$. Now, we know that $S$ contains some denumerable subset $D$. By the preceeding result, 
-$D\cup G$ is denumerable, that is, $D\cup G$ can be placed in a 1-1 correspondence with $D$. But then $(D\cup G)\cup (S-D)$, that is, $S\cup G$, can be placed in a 1-1 correspondence 
+$D\cup G$ is denumerable, that is, $D\cup G$ can be placed in a 1-1 correspondence with $D$. Then, because $S-D$ can be placed in a 1-1 correspondence with $S-D$, and 
+$D\cup G$ can be placed in a 1-1 correspondence with $D$, and $D\cup G$ and $S-D$ are disjoint (because $G$ and $S$ are disjoint), and $D$ and $S-D$ are disjoint, the Union Lemma shows that 
+$(D\cup G)\cup (S-D)$, that is, $S\cup G$, can be placed in a 1-1 correspondence 
 with $D\cup (S-D)$, that is, $S$, therefore completing the proof.
 
 \section*{Section 8}
