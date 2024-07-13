@@ -324,7 +324,7 @@ proper subset of $A$, therefore completing the proof.
 
 Note the following incorrect proof: Having shown the above result, we can now prove that any infinite subset of a denumerable set is denumerable. For consider some denumerable set $A$. Suppose it had a 
 non-denumerable subset $B$. By the above result, there is a proper subset $C$ of $B$ which is denumerable. Because $B\subseteq A$ and $C\subset B$, $C\subset A$. Thus we 
-would have $A$ being in a 1-1 correspondence with $C$, a proper subset of $A$, which is impossible. Hence $A$ can have no non-denumerable subset. This is of course incorrect that it is not 
+would have $A$ being in a 1-1 correspondence with $C$, a proper subset of $A$, which is impossible. Hence $A$ can have no non-denumerable subset. This is of course incorrect because it is not 
 true that $A$ cannot be in a 1-1 correspondence with a proper subset of itself. For instance, $\omega$ can be placed in a 1-1 correspondence with the set of all even numbers.
 
 
@@ -337,18 +337,18 @@ would then mean that $A$ was finite). Of course, this element in $B$ that we cou
 $B$, meaning we would already know that $A$ was infinite (and thus there is no supposed contradiction). 
 
 
-We can prove the fact that no denumerable subset can have a non-denumerable subset in a different way. First, define a set $S$ to be \textit{greater} than a set $F$ is 
+We can prove the fact that no denumerable subset can have a non-denumerable subset in a different way. First, define a set $S$ to be \textit{greater} than a set $F$ if 
 $S$ cannot be put into a 1-1 correspondence with $F$, but some proper subset of $S$ can be put into a 1-1 correspondence with $F$. If $S$ is greater than $F$, we denote this by $S>F$, and say that 
-$F$ is less than $S$, and denote this by $F<S$. We first show some facts about sets being greater than one anohther, 
+$F$ is less than $S$, and denote this by $F<S$. We first show some facts about sets being greater than one another, 
 and then the desired result comes easily.
 
 First we show that, for any sets $S$ and $F$, either $S<F$ or $F<S$, or $S$ and $F$ can be put into a 1-1 correspondence. Suppose that $S$ and $F$ cannot be put into a 1-1 correspondence. 
 Pick some element $a_1$ of $S$, and $b_1$ of $F$, and pair them together. Then pick some new element $a_2$ of $S$, and some new element $b_2$ of $F$, and so on. Becaus $S$ and $F$ cannot be put into a 
 1-1 correspondence, we will at some point either reach some element of $F$ for which no element of $S$ can be found, in which case $F>S$ (as the the elements paired up with $S$ up until that point 
-represent a subset of $F$, and are is in a 1-1 correspondence with $S$), or we reach some element of $S$ for which no element of $F$ can be found, in which case $S>F$. 
+represent a subset of $F$, and is in a 1-1 correspondence with $S$), or we reach some element of $S$ for which no element of $F$ can be found, in which case $S>F$. 
 
 
-\textbf{Lemma}:\textit{For all sets $S$, no subset of $S$ can be greater than $S$.}\newline 
+\textbf{Lemma}:\textit{ For all sets $S$, no subset of $S$ can be greater than $S$.}\newline 
 For suppose some subset $F$ was greater than $S$. Then $S$ and $F$ could not be put into a 1-1 correspondence, but 
 some proper subset of $F$ could be put into a 1-1 correspondence with $S$. We can show that $F$ and $S$ can, in fact, be put into a 1-1 correspondence, in the following way: If there was ever some 
 element of $F$ for which we could not find any element of $S$ to pair it with, this would contradict the fact that $F$ was a subset of $S$. If there was ever some element of $S$ for which we could not 
@@ -357,7 +357,7 @@ a contradiction, therefore completing the proof.
 
 
 After this, we can prove the desired result about denumerable sets (that no denumerable set can have a non-denumerable subset). For suppose we had some denuemrable set $A$ having a
-non-denumerable subset $B$. We have already shown that a proper subset of every non-denumerable subset is denumerable. Hence a proper subset of $B$ is denumerable (can be put into a 
+non-denumerable subset $B$. We have already shown that some proper subset of every non-denumerable subset is denumerable. Hence a proper subset of $B$ is denumerable (can be put into a 
 1-1 correspondence with $A$). But, by definition, $B$ cannot be put into a 1-1 correspondence with $A$. Thus $B>A$, which contradicts the Lemma, therefore completing the proof.
 
 
@@ -371,25 +371,27 @@ We now show that any infinite set can be put into a 1-1 correspondence with a pr
 easily follows. Consider any denumerable set $S$. Thus the elements of $S$ can be arranged in a denumerable sequence $a_1,a_2,...,a_n,...$. Now consider the set $S-\{a_1\}$, which is a proper 
 subset of $S$. We can show that it can be placed in a 1-1 correspondence with $S$ as follows: Note that the elements of $S-\{a_1\}$ are $b_1,b_2,...,b_{n+1},...$, where $b_1=a_2,$ $b_2=a_3,$ and, 
 in general, $b_n=a_{n+1}$. We pair up 
-$a_1$ with $b_1$, $a_2$ with $b_2$, and, in general, $a_n$ with $b_n$, thus shown there is a 1-1 correspondence with $S-\{a_1\}$, a proper subset of $S$.
-
-Now we prove that, for any element $a$ of any infinite set $S$, there is a denumerable subset of $S$ containing $a$. We have already shown that $S$ must contain some 
-denumerable set $D$. Either $D$ contains $a$ or it doesn't. If it does, we are done. If it doesn't, pick some arbitrary element $e$ of $D$. Then $(D-\{e\})+\{a\}$ is the desired set, as we can 
-show that it is denumerable. We know that the elements of $D$ can be placed in a denumerable sequence $a_0,a_1,...,a_n,...$. If $a_0\ne e$, then we pair $0$ off with $a_0$, and if 
-$a_0=e$, then we pair $0$ off with $e$. If  
-$a_1\ne e$, then we pair $1$ off with $a_1$, and if $a_1=e$, then we pair $1$ off with $e$. And, in general, if $a_n\ne E$, then we pair $1$ off with $a_n$, and if 
-$a_n=e$, then we pair $n$ off with $a$, thus showing that $(D-\{e\})+\{a\}$ is denumerable. 
+$a_1$ with $b_1$, $a_2$ with $b_2$, and, in general, $a_n$ with $b_n$, thus showing that there is a 1-1 correspondence between $S$ and $S-\{a_1\}$, a proper subset of $S$.
 
 Now that we have shown the denumerable case, consider some non-denumerable set $S$. We have already shown that $S$ contains 
-some denumerable subset $D$. Now pick some arbitrary element $a$ of $D$. Now, $D\cup (S-D)=S$, as $D\subseteq S$. Consider the set $(D-\{a\})\cup (S-D)$, which is a proper subset of 
+some denumerable subset $D$. Now pick some arbitrary element $a$ of $D$. Now, $D\cup (S-D)=S$. Consider the set $(D-\{a\})\cup (S-D)$ (which is just the set $S-\{a\}$), which is a proper subset of 
 $S$. We have already shown that $D-\{a\}$ can be placed into a 1-1 correspondence with $D$. Then the elements of $S-D$ in $D\cup (S-D)$ can be placed in a 1-1 correspondence with 
-all of the elements of $S-D$ in $(D-\{a\})\cup (S-D)$, and the elements of $D-\{a\}$ can be placed in a 1-1 correspondence with the elements of $D$.
+all of the elements of $S-D$ in $(D-\{a\})\cup (S-D)$, and the elements of $D-\{a\}$ can be placed in a 1-1 correspondence with the elements of $D$. Thus, the elements of 
+$D\cup (S-D)$ can be placed in a 1-1 correspondence with the elements of $(D-\{a\})\cup (S-D)$, that is, the elements of $S$ can be placed in a 1-1 correspondence with the elements of 
+$S-\{a\}$.
+
+Now we prove that, for any element $a$ of any infinite set $S$, there is a denumerable subset of $S$ containing $a$. We have already shown that $S$ must contain some
+denumerable set $D$. Either $D$ contains $a$ or it doesn't. If it does, we are done. If it doesn't, pick some arbitrary element $e$ of $D$. Then $(D-\{e\})\cup\{a\}$ is the desired set, as we can
+show that it is denumerable. We know that the elements of $D$ can be placed in a denumerable sequence $a_0,a_1,...,a_n,...$. If $a_0\ne e$, then we pair $0$ off with $a_0$, and if
+$a_0=e$, then we pair $0$ off with $a$. If
+$a_1\ne e$, then we pair $1$ off with $a_1$, and if $a_1=e$, then we pair $1$ off with $a$. And, in general, if $a_n\ne E$, then we pair $1$ off with $a_n$, and if
+$a_n=e$, then we pair $n$ off with $a$, thus showing that $(D-\{e\})\cup\{a\}$ is denumerable.
 
 
 Now we prove that the union of any denumerable set and any finite set is denumerable. For consider some finite set $F$ and some denumerable set $D$. Then the elements of $D$ can be 
 arranged in the sequence $a_1,a_2,...,a_n,...$. Also, the set $G$ of all elements of $F$ which are not already elements of $D$ is finite, say its elements are in the sequence 
 $b_1,b_2,...,b_m$. Then $D\cup F=D\cup G=\{b_1,b_2,...,b_m,a_1,a_2,...,a_n,...\}$. We pair off $b_1$ with the $a_1\in S$, $b_2$ with the $a_2\in S$, and, for all $i\le m$, 
-$b_i$ with the $a_i\in S$. Then, we pair off the $a_1$ in $D\cup G$ with the $a_{m+1}$ in $D$, the $a_2$ in $D\cup G$ with the $a_{m+2}$ in $D$, and, in general, for all 
+we pair off $b_i$ with the $a_i\in S$. Then, we pair off the $a_1$ in $D\cup G$ with the $a_{m+1}$ in $D$, the $a_2$ in $D\cup G$ with the $a_{m+2}$ in $D$, and, in general, for all 
 $i>m$, we pair off the $a_i\in D\cup G$ with the $a_{m+i}\in D$, thus showing that $D\cup G$ can be placed in a 1-1 correspondence with $D$.
 
 
@@ -406,7 +408,7 @@ denumerable. It suffices to show that every non-empty finite set of natural numb
 the finite set $S$. The base case is when $n=1$. In this case, $S=\{m\}$ for some natural number $m$, meaning the greatest element of $S$ is just $m$. Now suppose the result holds for some 
 $n$, that is, any finite set of natural numbers of size $n$ has a greatest element. Now consider any finite set $F$ of natural numbers $S$ having $n+1$ elements. Pick some arbitrary element $a$ 
 of $F$. Then $S-\{a\}$ has $n$ elements. By the induction assumption, it has a greatest element $g$. Now, either $g\subseteq a$ or $a\subseteq g$. In the first case, because $g$ is the 
-greatest element of $S-\{a\}$, all elements of $S-\{a\}$ are subsets of $a$. But the only elements of $S$ are those of $S-\{a\}$ and $a$. Thus $a$ is the greates element of $S$. In the 
+greatest element of $S-\{a\}$, all elements of $S-\{a\}$ are subsets of $a$. But the only elements of $S$ are those of $S-\{a\}$ and $a$. Thus $a$ is the greatest element of $S$. In the 
 second case, because the only elements of $S$ are those of $S-\{a\}$ and $a$, and because all of these are subsets of $g$, $g$ is the greastest element of $S$. Thus, in any case, 
 $S$ has a greatest element, meaning, by induction, all non-empty finite sets of natural numbers have a greatest element. Thus, because $A$ does not have a greatest element, it follows that 
 $A$ is denumerable. 
