@@ -422,4 +422,21 @@ second case, because the only elements of $S$ are those of $S-\{a\}$ and $a$, an
 $S$ has a greatest element, meaning, by induction, all non-empty finite sets of natural numbers have a greatest element. Thus, because $A$ does not have a greatest element, it follows that 
 $A$ is denumerable. 
 
+\subsection*{Exercise 8.2}
+I was unsure what Smullyan meant by a \textquote{unique} function. What would a \textit{non}-unique function look like?
+
+We first show that for every $n$, there is a function $f_n$ defined on the set of integers from $0$ to $n$ such that $f_n(0)=c$ and for each number $i<n$, 
+$f_n(i^+)=g(f_n(i))$. We prove this by induction on $n$. The base case is when $n=0$. Then we just take $f_0$ to be the ordered pair $\langle 0,c\rangle$. Now suppose the result holds 
+for some $n$, that is, $f_n(0)=c$ and for all $i<n$, $f_n(i^+)=g(f_n(i))$. Then take $f_{n+1}$ to be the set of all ordered pairs defined for $f_n$ as well as the ordered pair 
+$\langle n,g(f_n(n-1))\rangle$. This works because $f_n(n-1)=f_{n+1}(n-1)$ (as this is how we defined it). Next we show that for each $n$, $f_n\subseteq f_{n^+}$, that is, 
+for every number $k\le n$, $f_n(k)=f_{n^+}(k)$. Now, $f_n(0)=f_{n^+}(0)$ follows by definition. Then suppose that $f_n(k)=f_{n^+}(k)$ for some $k<n$. 
+Then $f_n(k^+)=g(f_n(k))=g(f_{n^+}(k))$ and $f_{n^+}(k^+)=g(f_{n^+}(k))$, meaning $f_n(k^+)=f_{n^+}(k^+)$. Hence, for all $k\le n$, $f_n(k)=f_{n^+}(k)$. Then we take $f$ to be the the set of all 
+ordered paris $\langle n,f_n(n)\rangle$ (for all $n$). Lastly, we need to show that $f(0)=c$ and $f(n^+)=g(f(n))$. The first part holds as
+$f(0)=f_0(0)=c$. The second part also holds, as $f(n^+)=f_{n^+}(n^+)=g(f_{n^+}(n))=g(f_n(n))$. Thus the proof is complete. 
+
+The proof above is fine, though I think there is a simpler way to prove the theorem. Consider any function $g$ from $A$ into $A$ and any set $c\in A$. Then consider the $g$-sequence 
+started by $c$: $c,g(c),g(g(c)),...$. It is defined by the recursive rule $a_0=c$ and $a_{n+1}=g(a_n)$. Then take the function $f$ to be the set of all ordered pairs 
+$\langle n,a_n\rangle$ (for all $n$). We need to show show that $f(0)=c$ and $f(n^+)=g(f(n))$. The first part holds, as $f(0)=a_0=0$. The second part holds, as 
+$f(n^+)=a_{n^+}=g(a_n)=g(f(n))$.
+
 \end{document}
