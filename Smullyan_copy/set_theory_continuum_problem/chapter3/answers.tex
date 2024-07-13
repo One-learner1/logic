@@ -428,7 +428,7 @@ I was unsure what Smullyan meant by a \textquote{unique} function. What would a 
 We first show that for every $n$, there is a function $f_n$ defined on the set of integers from $0$ to $n$ such that $f_n(0)=c$ and for each number $i<n$, 
 $f_n(i^+)=g(f_n(i))$. We prove this by induction on $n$. The base case is when $n=0$. Then we just take $f_0$ to be the ordered pair $\langle 0,c\rangle$. Now suppose the result holds 
 for some $n$, that is, $f_n(0)=c$ and for all $i<n$, $f_n(i^+)=g(f_n(i))$. Then take $f_{n+1}$ to be the set of all ordered pairs defined for $f_n$ as well as the ordered pair 
-$\langle n,g(f_n(n-1))\rangle$. This works because $f_n(n-1)=f_{n+1}(n-1)$ (as this is how we defined it). Next we show that for each $n$, $f_n\subseteq f_{n^+}$, that is, 
+$\langle n^+,g(f_n(n))\rangle$. Next we show that for each $n$, $f_n\subseteq f_{n^+}$, that is, 
 for every number $k\le n$, $f_n(k)=f_{n^+}(k)$. Now, $f_n(0)=f_{n^+}(0)$ follows by definition. Then suppose that $f_n(k)=f_{n^+}(k)$ for some $k<n$. 
 Then $f_n(k^+)=g(f_n(k))=g(f_{n^+}(k))$ and $f_{n^+}(k^+)=g(f_{n^+}(k))$, meaning $f_n(k^+)=f_{n^+}(k^+)$. Hence, for all $k\le n$, $f_n(k)=f_{n^+}(k)$. Then we take $f$ to be the the set of all 
 ordered paris $\langle n,f_n(n)\rangle$ (for all $n$). Lastly, we need to show that $f(0)=c$ and $f(n^+)=g(f(n))$. The first part holds as
@@ -463,5 +463,39 @@ Then we take $f$ to be the set of all ordered pairs $\langle n,f_n(n)\rangle$. W
 $f(0)=f_0(0)=c$. The second part holds, as $f(n^+)=f_{n^+}(n^+)=g(n,f_n(n))=g(n,f(n))$. 
 
 This is a strengthening of Theorem 8.1, as it shows a similar result also holds for functions of two variables, not just of one variable.
+
+\subsection*{Exercise 8.4}
+(a): By Theorem 8.1, taking $g$ to be the successor function, for any natural number $n$, there is some function $f$ from numbers to numbers 
+such that\newline
+(1) $f(0)=n$;\newline
+(2) for every $n$, $f(n^+)=f(n)^+$\newline
+Let the function satisfying the above for $n=0$ be labeled $f_0$, the function satisfying the above for $n=1$ be labeled $f_1$, and, in general, the function 
+satisfying the above for $n=m$ be labeled $f_m$. Thus we have a denumerable sequence of functions $f_0,f_1,...,f_m,...$. Then define $A(x,y)$ to be the set of all 
+$3$-tuples $\langle m,n,f_m(n)\rangle$. We need to show that for any natural numbers $x$ and $y$, $A(x,0)=x$ and $A(x,y^+)=A(x,y)^+$. 
+The first part holds, as $A(x,0)=f_x(0)=x$. The second part also holds, as
+$A(x,y^+)=f_x(y^+)=f_x(y)^+=A(x,y)^+$. 
+
+(b): In order to prove this, we first prove the following lemma:\newline
+\textbf{Lemma}:\textit{ For any function $g$ from $A\times A$ into $A$ and any set $c\in A$, there is a function $f$ from $\omega\times\omega$ to elements of $A$ such that:\newline
+(1) for every $m$, $f(m,0)=c$;\newline
+(2) for every $m,n,$ $f(m,n^+)=g(m,f(m,n))$.}
+
+This can be proven in the following way. First we show that for every $n$, there is a function $f_n(x,y)$ defined on all $x$ and all $y\le n$ such that 
+$f_n(x,0)=c$ and for each number $i<n$, $f_n(x,i^+)=g(x,f_n(x,i))$. We prove this by induction on $n$. The base case is when $n=0$. Then we just take $f_0$ to be the set of all 
+3-tuples $\langle x,0,c\rangle$. Now suppose the result holds for some $n$, that is, $f_n(x,0)=c$ holds for all $x$, and for all $i<n$, 
+$f_n(x,i^+)=g(x,f(x,i))$ holds for all $x$. Then take $f_{n^+}$ to be the set of all 3-tuples that $f_n$ was defined on, as well as the 
+3-tuple $\langle x,n^+,g(x,f_n(x,n))\rangle$ for all $x$. Next we show that for each $n$, $f_n\subseteq f_{n^+}$, that is, 
+for every number $k\le n$, $f_n(x,k)=f_{n^+}(x,k)$ for all numbers $x$. Now, $f_n(x,0)=f_{n^+}(x,0)$ by definition. Then suppose that 
+$f_n(x,k)=f_{n^+}(x,k)$ holds for all $x$ for some $k<n$. Then $f_n(x,k^+)=g(x,f_n(x,k))=g(x,f_{n^+}(x,k))$ and
+$f_{n^+}(x,k^+)=g(x,f_{n^+}(x,k))$, that is, $f_n(x,k^+)=f_{n^+}(x,k^+)$. Thus, by induction, $f_n(x,k)=f_{n^+}(x,k)$ holds for all $x$ and all $k\le n$. Then take $f$ to be the 
+set of all ordered pairs $\langle x,n,f_n(x,n)\rangle$ (for all $x$ and $n$). We need to show that 
+$f(m,0)=0$ for all $m$, and that $f(m,n^+)=g(m,f(m,n))$ for all $m$ and $n$. The first part holds, as 
+$f(m,0)=f_0(x,0)=c$ for all $m$. The second part holds, as
+$f(m,n^+)=f_{n^+}(x,n^+)=g(x,f_{n^+}(x,n))=g(x,f_n(x,n))=g(x,f(x,n))$. Thus $f$ is the desired function.
+
+Having proven the Lemma, the multiplication function comes easy: By the Lemma, there is some function $M$ such that:\newline
+(1) $M(x,0)=0$ holds for all $x$;\newline
+(2) for every $x,y,$ $f(x,y^+)=A(x,f(x,y))$.\newline
+$M$ is the desired multiplication function.
 
 \end{document}
