@@ -498,4 +498,23 @@ Having proven the Lemma, the multiplication function comes easy: By the Lemma, t
 (2) for every $x,y,$ $f(x,y^+)=A(x,f(x,y))$.\newline
 $M$ is the desired multiplication function.
 
+\subsection*{Exercise 8.5}
+Are we sure that $\{a_0,a_1,...,a_n,a_{n+1},...\}$ is a set? I cannot find anything that guarantees that.
+
+Suppose that $a_0,a_1,...,a_n,a_{n+1},...$ is an infinite sequence such that for each $n$, $a_n\subseteq a_{n+1}$. Let $c$ be the class 
+$\{a_0,a_1,...,a_n,a_{n+1},...\}$. We prove that $c$ is a nest, that is, for any two elements $a$ and $b$ of $c$, either $a\subseteq b$ or $b\subseteq a$. An obvious induction argument (one 
+that has already been given in multiple other exercises) shows that, if $m\le n$, then $a_m\subseteq a_n$. Now consider any two elements $a$ and $b$ of $c$. Thus 
+$a=a_m$ and $b=a_n$ for some $m$ and $n$. If $m=n$, the both $a\subseteq b$ and $b\subseteq a$ hold. If $m<n$, then $a\subseteq b$ holds. If $n<m$, then $b\subseteq a$ holds. Thus the proof is 
+complete.
+
+\subsection*{Exercise 8.6}
+Again, I am not sure why $\{a_0,a_1,...,a_n,a_{n+1},...\}$ is guaranteed to be a set in this exercise.
+
+Suppose that $g$ is a function and $a_0,a_1,...,a_n,a_{n+1},...$ is an infinite sequence such that $a_0=\emptyset$, and for each $n$, $a_{n+1}=g(a_n)$. 
+Let $c$ be the class $\{a_0,a_1,...,a_n,a_{n+1},...\}$. We prove that $c$ is the class which is minimally inductive under $g$. Obviously, $c$ is inductive under $g$. Now consider any proper subclass 
+$S$ of $c$. The class of all elements in $c$ but not in $S$ must have an element with a least index $n$. 
+Either $a_n=\emptyset$ or $a_n=g(a_{n-1})$. In the first case, $S$ would not contain $\emptyset$, meaning it would not be $g$-inductive. In the second case, because $n$ is the least index 
+of all elements in $c$ but not in $S$, $a_{n-1}\in S$. Thus $a_{n-1}\in S$, but $g(a_{n-1})\notin S$, meaning $S$ would not be $g$-inductive. Thus, in any case, $S$ is not $g$-inductive. Hence
+no proper subclass of $c$ is $g$-inductive, meaning $c$ is minimally $g$-inductive.
+
 \end{document}
