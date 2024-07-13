@@ -398,4 +398,17 @@ some non-denumerable set $S$ and some finite set $F$. Let $G$ be the set of all 
 $D\cup G$ is denumerable, that is, $D\cup G$ can be placed in a 1-1 correspondence with $D$. But then $(D\cup G)\cup (S-D)$, that is, $S\cup G$, can be placed in a 1-1 correspondence 
 with $D\cup (S-D)$, that is, $S$, therefore completing the proof.
 
+\section*{Section 8}
+
+\subsection*{Exercise 8.1}
+Suppose that $A$ is a non-empty set of natural numbers having no greatest element. We prove that $A$ is denumerable. We have already shown (in Exercise 7.1) that $A$ is either finite or 
+denumerable. It suffices to show that every non-empty finite set of natural numbers has a greatest element, which would show that $A$ must be denumerable. We prove this by induction on the size $n$ of 
+the finite set $S$. The base case is when $n=1$. In this case, $S=\{m\}$ for some natural number $m$, meaning the greatest element of $S$ is just $m$. Now suppose the result holds for some 
+$n$, that is, any finite set of natural numbers of size $n$ has a greatest element. Now consider any finite set $F$ of natural numbers $S$ having $n+1$ elements. Pick some arbitrary element $a$ 
+of $F$. Then $S-\{a\}$ has $n$ elements. By the induction assumption, it has a greatest element $g$. Now, either $g\subseteq a$ or $a\subseteq g$. In the first case, because $g$ is the 
+greatest element of $S-\{a\}$, all elements of $S-\{a\}$ are subsets of $a$. But the only elements of $S$ are those of $S-\{a\}$ and $a$. Thus $a$ is the greates element of $S$. In the 
+second case, because the only elements of $S$ are those of $S-\{a\}$ and $a$, and because all of these are subsets of $g$, $g$ is the greastest element of $S$. Thus, in any case, 
+$S$ has a greatest element, meaning, by induction, all non-empty finite sets of natural numbers have a greatest element. Thus, because $A$ does not have a greatest element, it follows that 
+$A$ is denumerable. 
+
 \end{document}
