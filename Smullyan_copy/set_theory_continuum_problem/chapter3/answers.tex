@@ -348,7 +348,7 @@ Pick some element $a_1$ of $S$, and $b_1$ of $F$, and pair them together. Then p
 represent a subset of $F$, and are is in a 1-1 correspondence with $S$), or we reach some element of $S$ for which no element of $F$ can be found, in which case $S>F$. 
 
 
-\begin{Lemma} For all sets $S$, no subset of $S$ can be greater than $S$. \end{Lemma} 
+\textbf{Lemma}:\textit{For all sets $S$, no subset of $S$ can be greater than $S$.}\newline 
 For suppose some subset $F$ was greater than $S$. Then $S$ and $F$ could not be put into a 1-1 correspondence, but 
 some proper subset of $F$ could be put into a 1-1 correspondence with $S$. We can show that $F$ and $S$ can, in fact, be put into a 1-1 correspondence, in the following way: If there was ever some 
 element of $F$ for which we could not find any element of $S$ to pair it with, this would contradict the fact that $F$ was a subset of $S$. If there was ever some element of $S$ for which we could not 
@@ -367,6 +367,35 @@ would have $A$, a proper subset of $S$, being put into a 1-1 correspondence with
 Lemma, therefore completing the proof.
 
 
-We now show that any infinite set can be put into a 1-1 correspondence with a proper subset of itself.
+We now show that any infinite set can be put into a 1-1 correspondence with a proper subset of itself. We first prove this for denumerable sets, and then the case for non-denumerable sets 
+easily follows. Consider any denumerable set $S$. Thus the elements of $S$ can be arranged in a denumerable sequence $a_1,a_2,...,a_n,...$. Now consider the set $S-\{a_1\}$, which is a proper 
+subset of $S$. We can show that it can be placed in a 1-1 correspondence with $S$ as follows: Note that the elements of $S-\{a_1\}$ are $b_1,b_2,...,b_{n+1},...$, where $b_1=a_2,$ $b_2=a_3,$ and, 
+in general, $b_n=a_{n+1}$. We pair up 
+$a_1$ with $b_1$, $a_2$ with $b_2$, and, in general, $a_n$ with $b_n$, thus shown there is a 1-1 correspondence with $S-\{a_1\}$, a proper subset of $S$.
+
+Now we prove that, for any element $a$ of any infinite set $S$, there is a denumerable subset of $S$ containing $a$. We have already shown that $S$ must contain some 
+denumerable set $D$. Either $D$ contains $a$ or it doesn't. If it does, we are done. If it doesn't, pick some arbitrary element $e$ of $D$. Then $(D-\{e\})+\{a\}$ is the desired set, as we can 
+show that it is denumerable. We know that the elements of $D$ can be placed in a denumerable sequence $a_0,a_1,...,a_n,...$. If $a_0\ne e$, then we pair $0$ off with $a_0$, and if 
+$a_0=e$, then we pair $0$ off with $e$. If  
+$a_1\ne e$, then we pair $1$ off with $a_1$, and if $a_1=e$, then we pair $1$ off with $e$. And, in general, if $a_n\ne E$, then we pair $1$ off with $a_n$, and if 
+$a_n=e$, then we pair $n$ off with $a$, thus showing that $(D-\{e\})+\{a\}$ is denumerable. 
+
+Now that we have shown the denumerable case, consider some non-denumerable set $S$. We have already shown that $S$ contains 
+some denumerable subset $D$. Now pick some arbitrary element $a$ of $D$. Now, $D\cup (S-D)=S$, as $D\subseteq S$. Consider the set $(D-\{a\})\cup (S-D)$, which is a proper subset of 
+$S$. We have already shown that $D-\{a\}$ can be placed into a 1-1 correspondence with $D$. Then the elements of $S-D$ in $D\cup (S-D)$ can be placed in a 1-1 correspondence with 
+all of the elements of $S-D$ in $(D-\{a\})\cup (S-D)$, and the elements of $D-\{a\}$ can be placed in a 1-1 correspondence with the elements of $D$.
+
+
+Now we prove that the union of any denumerable set and any finite set is denumerable. For consider some finite set $F$ and some denumerable set $D$. Then the elements of $D$ can be 
+arranged in the sequence $a_1,a_2,...,a_n,...$. Also, the set $G$ of all elements of $F$ which are not already elements of $D$ is finite, say its elements are in the sequence 
+$b_1,b_2,...,b_m$. Then $D\cup F=D\cup G=\{b_1,b_2,...,b_m,a_1,a_2,...,a_n,...\}$. We pair off $b_1$ with the $a_1\in S$, $b_2$ with the $a_2\in S$, and, for all $i\le m$, 
+$b_i$ with the $a_i\in S$. Then, we pair off the $a_1$ in $D\cup G$ with the $a_{m+1}$ in $D$, the $a_2$ in $D\cup G$ with the $a_{m+2}$ in $D$, and, in general, for all 
+$i>m$, we pair off the $a_i\in D\cup G$ with the $a_{m+i}\in D$, thus showing that $D\cup G$ can be placed in a 1-1 correspondence with $D$.
+
+
+Now we prove that the union of any non-denumerable set $S$ (thus proving the result for all infintie sets) and any finite set can be placed in a 1-1 correspondence with $S$. For consider 
+some non-denumerable set $S$ and some finite set $F$. Let $G$ be the set of all elements in $F$ not in $S$. Now, we know that $S$ contains some denumerable subset $D$. By the preceeding result, 
+$D\cup G$ is denumerable, that is, $D\cup G$ can be placed in a 1-1 correspondence with $D$. But then $(D\cup G)\cup (S-D)$, that is, $S\cup G$, can be placed in a 1-1 correspondence 
+with $D\cup (S-D)$, that is, $S$, therefore completing the proof.
 
 \end{document}
