@@ -23,7 +23,7 @@
 \newtheorem{definition}{Definition}
 
 \setlength{\parindent}{.5in}
-\geometry{margin=1in}
+\geometry{margin=0.5in}
 \setlength{\parskip}{12pt}
 \title{Chapter 3 Notes}
 \begin{document}
@@ -484,7 +484,8 @@ $A(x,y^+)=f_x(y^+)=f_x(y)^+=A(x,y)^+$.
 (1) for every $m$, $f(m,0)=c$;\newline
 (2) for all $m,n,$ $f(m,n^+)=g(m,f(m,n))$.}
 \newline Indeed, the proof of the Lemma can easily be altered to find a fuction $f$ such that $(2)$ is changed to:\newline
-(2') for all $m,n,$ $f(m,n^+)=g(f(m,n),m)$.
+(2') for all $m,n,$ $f(m,n^+)=g(f(m,n),m)$. Smullyan's desired multiplication function does not seem correct to me. For then we would have:
+\[ M(0,1)=M(0,0)+1=0+1=1 \] which is obviously not what we want.
 
 This can be proven in the following way. First we show that for every $n$, there is a function $f_n(x,y)$ defined on all $x$ and all $y\le n$ (where $x\in\omega$ and $y\in\omega$) such that 
 $f_n(x,0)=c$ and for each number $i<n$, $f_n(x,i^+)=g(x,f_n(x,i))$. We prove this by induction on $n$. The base case is when $n=0$. Then we just take $f_0$ to be the set of all 
@@ -501,8 +502,42 @@ $f(m,n^+)=f_{n^+}(m,n^+)=g(x,f_{n^+}(m,n))=g(m,f_n(m,n))=g(m,f(m,n))$. Thus $f$ 
 
 Having proven the Lemma, the multiplication function comes easy: By the Lemma, there is some function $M$ (from $\omega\times\omega$ into $\omega$) such that:\newline
 (1) $M(x,0)=0$ holds for all $x$;\newline
-(2) for every $x,y,$ $f(x,y^+)=A(x,f(x,y))$.\newline
+(2) for every $x,y,$ $M(x,y^+)=A(x,M(x,y))$.\newline
 $M$ is the desired multiplication function.
+
+Having obtained the addition and multiplication functions, we can now prove that they are commutative. First we show this for the addition function $A(x,y)$.
+
+It suffices to prove the following statement holds for all $x$: $A(x,y)=A(y,x)$ holds for all $y$. We prove this by induction on $x$. The base case is when $x=0$. 
+We know that $A(y,0)=y$ for all $y$. We need to show that $A(0,y)=y$ for all $y$. The base case, when $y=0$, holds, as $A(0,0)=0$. Now suppose the result holds for some $y$, that is, 
+$A(0,y)=y$. Then $A(0,y^+)=A(0,y)^+=y^+$. Thus, by induction, $A(0,y)=y$ for all $y$, meaning $A(y,0)=A(0,y)$ for all $y$. Now suppose that the result holds for some $x$, that is, 
+$A(x,y)=A(y,x)$ holds for all $y$. We need to show that $A(x^+,y)=A(y,x^+)$ holds for all $y$. The base case, when $y=0$, holds, as it was already shown that 
+$A(z,0)=A(0,z)$ holds for all $z$. Now suppose the result holds for some $y$, that is, $A(x^+,y)=A(y,x^+)$. Then
+\[ A(x^+,y^+)=A(x^+,y)^+=A(y,x^+)^+=A(y,x)^{++}=A(x,y)^{++} \]
+and
+\[ A(y^+,x^+)=A(y^+,x)^+=A(x,y^+)^+=A(x,y)^{++} \] and thus
+$A(x^+,y^+)=A(y^+,x^+)$. Hence, by induction, for all $x$, $A(x,y)=A(y,x)$ holds for all $y$.
+
+Before proving the commutativity of multiplication, we first prove the associativity of addition. That is, we prove that $A(x,A(y,z))=A(A(x,y),z)$. It suffices to show that, for all $x$, 
+$A(x,A(y,z))=A(A(x,y),z)$ holds for all $y$ and $z$. The base case is when $x=0$. We know that
+\[ A(0,A(y,z))=A(A(y,z),0)=A(y,z) \] and
+\[ A(A(0,y),z)=A(A(y,0),z)=A(y,z) \] meaning $A(0,A(y,z))=A(A(0,y),z)$. Now suppose the result holds for some $x$. Then
+\[ A(x^+,A(y,z))=A(A(y,z),x^+)=A(A(y,z),x)^+=A(x,A(y,z))^+ \] and
+\[ A(A(x^+,y),z)=A(A(y,x^+),z)=A(A(y,x)^+,z)=A(z,A(y,x)^+)=A(z,A(y,x))^+ \]
+\[ =A(A(y,x),z)^+=A(A(x,y),z)^+=A(x,A(y,z))^+ \]
+Hence, by induction, for all $x$, $A(x,A(y,z))=A(A(x,y),z)$ holds for all $y$ and $z$.
+
+Now we show that the multiplication function is commutative. It suffices to prove the following statement holds for all $x$: $M(x,y)=M(y,x)$ holds for all $y$. We prove this by induction 
+on $x$. The base case is when $x=0$. We know that $M(y,0)=0$ holds for all $y$. We need to show that $M(0,y)=0$ for all $y$. The base case, when $y=0$, holds, as $M(0,0)=0$. Now suppose the result 
+holds for some $y$, that is, $M(0,y)=0$. Then $M(0,y^+)=A(0,M(0,y))=A(0,0)=0$. Thus $M(0,y)=0$ holds for all $y$, meaning $M(y,0)=M(0,y)$ holds for all $y$. Now suppose the result holds for some 
+$x$, that is $M(x,y)=M(y,x)$ holds for all $y$. We need to show that $M(x^+,y)=M(y,x^+)$ holds for all $y$. The base case, when $y=0$, holds, as it was already shown that 
+$M(z,0)=M(0,z)$ holds for all $z$. Now suppose the result holds for some $y$, that is, $M(x^+,y)=M(y,x^+)$. Note that $A(x^+,y)=A(y^+,x)$, as
+\[ A(x^+,y)=A(y,x^+)=A(y,x)^+=A(x,y)^+ \] and
+\[ A(y^+,x)=A(x,y^+)=A(x,y)^+ \]
+Then
+\[ M(x^+,y^+)=A(x^+,M(x^+,y))=A(x^+,M(y,x^+))=A(x^+,A(y,M(x,y)))=A(A(x^+,y),M(x,y))=A(A(x,y)^+,M(x,y)) \]
+and
+\[ M(y^+,x^+)=A(y^+,M(y^+,x))=A(y^+,M(x,y^+))=A(y^+,A(x,M(x,y)))=A(A(y^+,x),M(x,y))=A(A(x,y)^+,M(x,y)) \]
+Hence, by induction, for all $x$, $M(x,y)=M(y,x)$ holds for all $y$.
 
 \subsection*{Exercise 8.5}
 Are we sure that $\{a_0,a_1,...,a_n,a_{n+1},...\}$ is a set? I cannot find anything that guarantees that.
