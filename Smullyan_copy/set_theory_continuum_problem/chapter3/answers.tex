@@ -462,7 +462,9 @@ suppose that for some $k<n$, $f_n(k)=f_{n^+}(k)$. Then $f_n(k^+)=g(k,f_n(k))$ an
 Then we take $f$ to be the set of all ordered pairs $\langle n,f_n(n)\rangle$. We need to show that $f(0)=c$ and $f(n^+)=g(n, f(n))$. The first part holds, as 
 $f(0)=f_0(0)=c$. The second part holds, as $f(n^+)=f_{n^+}(n^+)=g(n,f_n(n))=g(n,f(n))$. 
 
-This is a strengthening of Theorem 8.1, as it shows a similar result also holds for functions of two variables, not just of one variable.
+This is a strengthening of Theorem 8.1, as Theorem 8.1 can be derived from this result in the following way: For consider some function $g$ from $A$ into $A$ and any set $c\in A$. 
+Take $h(x,y)$ to be the set of all 3-tuples $\langle x,y,g(y)\rangle$. Then, by Exercise 8.3, there is some function $f$ from numbers to elements of $A$ such that 
+$f(0)=c$ and for any number $n$, $f(n^+)=h(n,f(n))=g(f(n))$, which satisfies the conditions of Theorem 8.1.
 
 \subsection*{Exercise 8.4}
 (a): By Theorem 8.1, taking $g$ to be the successor function, for any natural number $n$, there is some function $f$ from numbers to numbers 
@@ -519,7 +521,7 @@ no proper subclass of $c$ is $g$-inductive, meaning $c$ is minimally $g$-inducti
 
 \section*{Section 9}
 
-\subsection*{Exercise 9.1}
+\subsection*{Exercise 9.1(a)}
 Suppose that $M$ is minimally inductive under $g$ and that $R$ is a relation satisfying the following two conditions:\newline
 $D_1'$ $R(x,0)$ and $R(0,x)$ hold for every $x$ in $M$.\newline
 $D_2'$ For every $x$ and $y$ in $M$, $[R(x,y)\wedge R(x,g(y))\wedge R(g(x),y)]\supset R(g(x),g(y))$.\newline
@@ -530,5 +532,29 @@ $R(g(x),y)$ holds for all $y$. We are given that $R(g(x),0)$ holds. Now suppose 
 $R(x,g(y))$ holds. Thus $R(x,y)$, $R(g(x),y)$, and $R(x,g(y))$ all hold, meaning, by $D_2'$, $R(g(x),g(y))$ holds. Thus, by $g$-induction, $R(g(x),y)$ holds for all $y$, meaning 
 $g(x)$ is left normal. Thus, by $g$-induction, all elements of $M$ are left normal. Now consider any elements $x,y$ of $M$. Then, because $x$ is left normal, $R(x,y)$ holds, therefore completing 
 the proof.
+
+\subsection*{Exercise 9.1(b)}
+We suppose that $g$ is slowly progressing and $R(x,y)$ is the relation $x\subseteq y$ or $y\subseteq x$. We prove that $R$ satisfies conditions $D_1',D_2'$ of the theorem above. For this, we 
+first prove the following Lemma:\newline
+\textbf{Lemma}:\textit{If $g$ is slowly progressing, then if $x\subseteq y\subseteq g(x)$, either $y=x$ or $y=g(x)$}\newline
+We suppose that $x\subseteq y\subseteq g(x)$. Now, because $g$ is slowly progressing, either $x=g(x)$ or $g(x)$ contains exactly one more element than $x$. In the first case, obviously 
+$y=x=g(x)$. In the second case, suppose that $x\ne y$. Then $x\subset y$. Now, consider the element $e$ in $g(x)$ but not in $x$. Because it is the only such element in $g(x)$ but not in $x$, 
+and because $y\subseteq g(x)$, $e\in y$. And there could be no other such element in $y$ but not in $x$; for then $y$ would not be a subset of $g(x)$. Hence $y=g(x)$, thus completing the proof.
+
+Having proven the above Lemma, Lemma $S_2$ follows easily. For suppose that $g$ is slowly progressing and that $R(x,y)$ is the relation 
+$x\subseteq y$ or $y\subseteq x$. $D_1'$ obviously holds (as $0$ is just the empty set). Now suppose that 
+$R(x,y)\wedge R(x,g(y))\wedge R(g(x),y)$ held. On the one hand, suppose that $x\subseteq y$. Then there are two sub-cases: either $g(x)\subseteq y$, or $y\subseteq g(x)$. The first 
+obviously means $g(x)\subseteq g(y)$, meaning $R(g(x),g(y))$. On the other hand, suppose that $y\subseteq g(x)$. Then we know that $x\subseteq y\subseteq g(x)$, meaning, by the Lemma, 
+either $y=x$ or $y=g(x)$. In the first case, $g(y)=g(x)$ and obviously $R(g(x),g(y))$. In the second case, $g(x)\subseteq g(g(x))=g(y)$, meaning $R(g(x),g(y))$ holds. Thus, in any case, 
+$R(g(x),g(y))$ holds. On the other hand, if we had $y\subseteq x$, the proof is nearly identical. Thus the proof is complete. 
+
+\subsection*{Exericse 9.1(c)}
+(1) Suppose that $x\subset y\subset g(x)$ held. Then $x\subseteq y\subseteq g(x)$, meaning, by the Lemma in Exercise 9.1(b), either $x=y$ or $y=g(x)$, which would mean that either 
+$x\subset y$ or $y\subset g(x)$ did not hold, a contradiction. Thus $x\subset y\subset g(x)$ can never hold. (This part of the proof is unnecessary, considering we have already proven the 
+Lemma in exercise 9.1(b). Perhaps Smullyan's original proof did not first prove that Lemma).
+
+(2) Suppose that $N$ is a nest closed under $g$ (and that $g$ is slowly progressing). For any elements $x$ and $y$ of $N$, we know that either $x\subseteq y$ or $y\subseteq x$. So suppose 
+$x\subseteq y$. We also know that either $g(x)\subseteq y$ or $y\subseteq g(x)$. Suppose that $y\subseteq g(x)$. Then, by the Lemma in Exercise 9.1(b), eitehr $x=y$ or $y=g(x)$. In the first 
+case, obviously $y\subseteq x$. In the second case, obviously $g(x)\subseteq y$. Thus the proof is complete.
 
 \end{document}
