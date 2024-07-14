@@ -485,7 +485,7 @@ $A(x,y^+)=f_x(y^+)=f_x(y)^+=A(x,y)^+$.
 (2) for all $m,n,$ $f(m,n^+)=g(m,f(m,n))$.}
 \newline Indeed, the proof of the Lemma can easily be altered to find a fuction $f$ such that $(2)$ is changed to:\newline
 (2') for all $m,n,$ $f(m,n^+)=g(f(m,n),m)$. Smullyan's desired multiplication function does not seem correct to me. For then we would have:
-\[ M(0,1)=M(0,0)+1=0+1=1 \] which is obviously not what we want.
+\[ M(0,2)=A(M(0,1),1)=A(A(M(0,0),0),1)=A(0,1)=1 \] which is obviously not what we want.
 
 This can be proven in the following way. First we show that for every $n$, there is a function $f_n(x,y)$ defined on all $x$ and all $y\le n$ (where $x\in\omega$ and $y\in\omega$) such that 
 $f_n(x,0)=c$ and for each number $i<n$, $f_n(x,i^+)=g(x,f_n(x,i))$. We prove this by induction on $n$. The base case is when $n=0$. Then we just take $f_0$ to be the set of all 
@@ -560,7 +560,8 @@ therefore completing the proof.
 Now we prove that multiplication is associateive. That is, we prove that $M(x,M(y,z))=M(M(x,y),z)$ holds for all $x,y,z$. The base case is when $x=0$. 
 This holds, as $M(0,M(y,z))=0$ and $M(M(0,y),z)=M(0,z)=0$. Now suppose the result holds for some $x$, that is, 
 $M(x,M(y,z))=M(M(x,y),z)$ holds for all $y$ and $z$. Then
-\[ M(M(x^+,y),z)=M(M(y,x^+),z)=M(A(y,M(y,x)),z) \]
+\[ M(M(x^+,y),z)=M(M(y,x^+),z) \]
+\[ =M(A(y,M(y,x)),z) \]
 \[ =A(M(y,z),M(M(y,x),z)) \]
 \[ =A(M(y,z),M(M(x,y),z)) \]
 \[ =A(M(y,z),M(x,M(y,z)) \]
