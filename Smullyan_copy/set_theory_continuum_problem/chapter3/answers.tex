@@ -541,6 +541,34 @@ and
 \[ =A(A(y^+,x),M(x,y))=A(A(x,y)^+,M(x,y)) \]
 Hence, by induction, for all $x$, $M(x,y)=M(y,x)$ holds for all $y$.
 
+We next prove the distributivity of multiplication, and then, using that, we can prove that multiplication is associative.
+
+We prove that $M(A(x,y),z)=A(M(x,z),M(y,z))$ holds for all $x,y,z$. The base case is when $z=0$. This holds, as
+$A(M(x,0),M(y,0))=A(0,0)=0$ and $M(A(x,y),0)=0$. Now suppose the result holds for some $z$, that is, 
+$M(A(x,y),z)=A(M(x,z),M(y,z))$ holds for all $x$ and $y$. Then
+\[ M(A(x,y),z^+)=A(A(x,y),M(A(x,y),z)) \]
+\[ =A(A(x,y),A(M(x,z),M(y,z))) \]
+\[ =A(A(A(x,y),M(x,z)),M(y,z)) \]
+\[ =A(A(A(y,x),M(x,z)),M(y,z)) \]
+\[ =A(A(y,A(x,M(x,z))),M(y,z)) \]
+\[ =A(A(A(x,M(x,z)),y),M(y,z)) \]
+\[ =A(A(x,M(x,z)),A(y,M(y,z))) \]
+\[ =A(M(x,z^+),M(y,z^+)) \]
+therefore completing the proof.
+
+
+Now we prove that multiplication is associateive. That is, we prove that $M(x,M(y,z))=M(M(x,y),z)$ holds for all $x,y,z$. The base case is when $x=0$. 
+This holds, as $M(0,M(y,z))=0$ and $M(M(0,y),z)=M(0,z)=0$. Now suppose the result holds for some $x$, that is, 
+$M(x,M(y,z))=M(M(x,y),z)$ holds for all $y$ and $z$. Then
+\[ M(M(x^+,y),z)=M(M(y,x^+),z)=M(A(y,M(y,x)),z) \]
+\[ =A(M(y,z),M(M(y,x),z)) \]
+\[ =A(M(y,z),M(M(x,y),z)) \]
+\[ =A(M(y,z),M(x,M(y,z)) \]
+\[ =A(M(y,z),M(M(y,z),x)) \]
+\[ =M(M(y,z),x^+) \]
+\[ =M(x^+,M(y,z)) \]
+therefore completing the proof.
+
 \subsection*{Exercise 8.5}
 Are we sure that $\{a_0,a_1,...,a_n,a_{n+1},...\}$ is a set? I cannot find anything that guarantees that.
 
