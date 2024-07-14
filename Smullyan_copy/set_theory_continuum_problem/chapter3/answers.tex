@@ -520,7 +520,7 @@ $A(x^+,y^+)=A(y^+,x^+)$. Hence, by induction, for all $x$, $A(x,y)=A(y,x)$ holds
 Before proving the commutativity of multiplication, we first prove the associativity of addition. That is, we prove that $A(x,A(y,z))=A(A(x,y),z)$. It suffices to show that, for all $x$, 
 $A(x,A(y,z))=A(A(x,y),z)$ holds for all $y$ and $z$. The base case is when $x=0$. We know that
 \[ A(0,A(y,z))=A(A(y,z),0)=A(y,z) \] and
-\[ A(A(0,y),z)=A(A(y,0),z)=A(y,z) \] meaning $A(0,A(y,z))=A(A(0,y),z)$. Now suppose the result holds for some $x$. Then
+\[ A(A(0,y),z)=A(A(y,0),z)=A(y,z) \] meaning $A(0,A(y,z))=A(A(0,y),z)$. Now suppose the result holds for some $x$, that is, $A(x,A(y,z))=A(A(x,y),z)$ for all $y$ and $z$. Then
 \[ A(x^+,A(y,z))=A(A(y,z),x^+)=A(A(y,z),x)^+=A(x,A(y,z))^+ \] and
 \[ A(A(x^+,y),z)=A(A(y,x^+),z)=A(A(y,x)^+,z)=A(z,A(y,x)^+)=A(z,A(y,x))^+ \]
 \[ =A(A(y,x),z)^+=A(A(x,y),z)^+=A(x,A(y,z))^+ \]
@@ -534,9 +534,11 @@ $M(z,0)=M(0,z)$ holds for all $z$. Now suppose the result holds for some $y$, th
 \[ A(x^+,y)=A(y,x^+)=A(y,x)^+=A(x,y)^+ \] and
 \[ A(y^+,x)=A(x,y^+)=A(x,y)^+ \]
 Then
-\[ M(x^+,y^+)=A(x^+,M(x^+,y))=A(x^+,M(y,x^+))=A(x^+,A(y,M(x,y)))=A(A(x^+,y),M(x,y))=A(A(x,y)^+,M(x,y)) \]
+\[ M(x^+,y^+)=A(x^+,M(x^+,y))=A(x^+,M(y,x^+))=A(x^+,A(y,M(y,x)))=A(x^+,A(y,M(x,y))) \]
+\[ =A(A(x^+,y),M(x,y))=A(A(x,y)^+,M(x,y)) \]
 and
-\[ M(y^+,x^+)=A(y^+,M(y^+,x))=A(y^+,M(x,y^+))=A(y^+,A(x,M(x,y)))=A(A(y^+,x),M(x,y))=A(A(x,y)^+,M(x,y)) \]
+\[ M(y^+,x^+)=A(y^+,M(y^+,x))=A(y^+,M(x,y^+))=A(y^+,A(x,M(x,y))) \]
+\[ =A(A(y^+,x),M(x,y))=A(A(x,y)^+,M(x,y)) \]
 Hence, by induction, for all $x$, $M(x,y)=M(y,x)$ holds for all $y$.
 
 \subsection*{Exercise 8.5}
