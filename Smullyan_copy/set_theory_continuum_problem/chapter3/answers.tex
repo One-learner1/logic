@@ -517,4 +517,18 @@ Either $a_n=\emptyset$ or $a_n=g(a_{n-1})$. In the first case, $S$ would not con
 of all elements in $c$ but not in $S$, $a_{n-1}\in S$. Thus $a_{n-1}\in S$, but $g(a_{n-1})\notin S$, meaning $S$ would not be $g$-inductive. Thus, in any case, $S$ is not $g$-inductive. Hence
 no proper subclass of $c$ is $g$-inductive, meaning $c$ is minimally $g$-inductive.
 
+\section*{Section 9}
+
+\subsection*{Exercise 9.1}
+Suppose that $M$ is minimally inductive under $g$ and that $R$ is a relation satisfying the following two conditions:\newline
+$D_1'$ $R(x,0)$ and $R(0,x)$ hold for every $x$ in $M$.\newline
+$D_2'$ For every $x$ and $y$ in $M$, $[R(x,y)\wedge R(x,g(y))\wedge R(g(x),y)]\supset R(g(x),g(y))$.\newline
+We prove that $R(x,y)$ holds for all $x,y$ in $M$. As in the first double induction principle, we call an element $x$ of $M$ left-normal if $R(x,y)$ holds for all $y$ in $M$, and we call an element 
+$x$ of $M$ right-normal if $R(y,x)$ holds for all $y$ in $M$. We first show that every element of $M$ is left normal. Then we show that left normality implies right nomrality. Now, $0$, 
+is left normal, as it was assumed that $R(0,x)$ holds for all $x$. Now suppose that some $x$ in $M$ is left normal. We need to show that 
+$R(g(x),y)$ holds for all $y$. We are given that $R(g(x),0)$ holds. Now suppose that $R(g(x),y)$ holds for some $y$. Because $x$ is left normal, we know that 
+$R(x,g(y))$ holds. Thus $R(x,y)$, $R(g(x),y)$, and $R(x,g(y))$ all hold, meaning, by $D_2'$, $R(g(x),g(y))$ holds. Thus, by $g$-induction, $R(g(x),y)$ holds for all $y$, meaning 
+$g(x)$ is left normal. Thus, by $g$-induction, all elements of $M$ are left normal. Now consider any elements $x,y$ of $M$. Then, because $x$ is left normal, $R(x,y)$ holds, therefore completing 
+the proof.
+
 \end{document}
