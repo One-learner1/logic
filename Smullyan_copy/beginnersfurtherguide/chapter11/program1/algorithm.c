@@ -286,7 +286,7 @@ int end(int i, int end) {
 	return 0;
 }
 char* x_eliminate(char* expression, char variable) {
-	char* test_expression = (char*)malloc((int)strlen(expression)); // expression to test if the eliminate is correct
+	//char* test_expression = (char*)malloc((int)strlen(expression)); // expression to test if the eliminate is correct
 	if (expression == NULL || variable == '\0') {
 		printf("An expression and a variable must be simplified.\n");
 		exit(1);
@@ -311,6 +311,7 @@ char* x_eliminate(char* expression, char variable) {
 	//printf("The expression with %c elimination is %s\n", variable, expression);
 	// we check to see if there is enough memory for 
 	return expression;
+	/*
 	sprintf(test_expression, "(%s%c)", expression, variable);
 	printf("test_expression: %s\n", test_expression);
 	printf("new expression: %s\n", expression);
@@ -324,6 +325,7 @@ char* x_eliminate(char* expression, char variable) {
 	}
 	printf("The %s eliminate was obtained.\n", ret_val?"correct":"incorrect");
 	return expression;
+	*/
 }
 
 char* eliminate(char* expression, char variable) {
