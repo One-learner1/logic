@@ -124,14 +124,10 @@ char* simplify(char* expression) {
 }
 
 char* termify(char* expression, int recursive_calls) {
-	printf("ZZZ\n");
         int term_count = 0;
         int current_index = 0; // to track what the index of the expression is
 	int end_index = 0;
-	printf("expression: %s strlen: %d\n", expression, MAX_LENGTH);
-	printf("pointer: %p\n", &expression);
 	char* sub = (char*)malloc((int)strlen(expression));
-	printf("EEE\n");
         if (expression == NULL) {
                 return NULL;
         }
@@ -142,9 +138,7 @@ char* termify(char* expression, int recursive_calls) {
         }
 	// in this case, the expression is enclosed by parentheses, meaning we make a recursive call
 	else if (term(expression, 0, &end_index) != NULL && end_index == (int)strlen(expression)-1) {
-		printf("LLL\n");
 		memmove(sub, &expression[1], strlen(expression)-2);
-		printf("PAREN sub: %s\n", sub);
 		return termify(sub, recursive_calls+1);
 	}
 	// in the last case, we know that there are multiple sub-expressions
@@ -152,9 +146,7 @@ char* termify(char* expression, int recursive_calls) {
         else {
 		char* termified = (char*)malloc((int)strlen(expression));
 		sub_expression* sub_expressions = (sub_expression*)malloc((int)strlen(expression));
-		printf("GGG recursive calls: %d\n", recursive_calls);
                 for (int i = 0; i < (int)strlen(expression); i++) {
-			printf("i: %d strlen: %d\n", i, (int)strlen(expression));
                         // we find the next sub-term
                         sub_expressions[i].expression = term(expression, current_index, &sub_expressions[i].end_index);
                         // if no term was found, an error occured
@@ -164,7 +156,6 @@ char* termify(char* expression, int recursive_calls) {
                         }
                         // otherwise, if a term was found, and it is at the end of the expression, we have found all of the sub expressions
                        else if (sub_expressions[i].end_index == (int)strlen(expression)-1) {
-				printf("sub_expression: %s end_index: %d\n", sub_expressions[i].expression, sub_expressions[i].end_index);
                                 term_count++;
                                 break;
                         }
@@ -172,31 +163,14 @@ char* termify(char* expression, int recursive_calls) {
                                 // we update current_index
                                 current_index = sub_expressions[i].end_index+1;
                                 term_count++;
-				printf("sub_expression: %s end_index: %d\n", sub_expressions[i].expression, sub_expressions[i].end_index);
                         }
                 }
-		printf("DDD\n");
 		char* second_termified = (char*)malloc((int)strlen(expression));
                 char* first_termified = (char*)malloc((int)strlen(expression)); // this is the termified expression of the first n-1 sub expressions
                 memmove(sub, &expression[0], sub_expressions[term_count-2].end_index+1);
-		printf("sub: %s recursive_calls: %d\n", sub, recursive_calls);
                 first_termified = termify(sub, recursive_calls+1);
-		printf("FIRST_termified: %s\n", first_termified);
-		if (recursive_calls == 1) {
-			printf("sub: %s first_termified: %s\n", sub, first_termified);
-		}
 		second_termified = termify(sub_expressions[term_count-1].expression, recursive_calls+1);
                 sprintf(termified, "(%s%s)", first_termified, second_termified);
-		if (recursive_calls == 3) {
-			printf("first_termified: %s second termified: %s\n", first_termified, second_termified);
-			printf("termfied: %s\n", termified);
-		}
-		//printf("freed sub2: %p\n", sub);
-		printf("PPP\n");
-		printf("BBB\n");
-		if (recursive_calls == 2) {
-			printf("RETURN term: %s\n", termified);
-		}
 		return termified;
         }
 }
@@ -326,7 +300,6 @@ char* x_eliminate(char* expression, char variable) {
 		printf("The second argument must be a variable.\n");
 		exit(1);
 	}
-	//printf("AAA\n");
 	// we first termify the given expression, and then ensure that it is syntactically correct
 	expression = termify(expression, 0);
 	if (!correct_syntax(expression)) {
@@ -334,8 +307,13 @@ char* x_eliminate(char* expression, char variable) {
 		exit(1);
 	}
 	expression = eliminate(expression, variable);
+	printf("Return expression: %s\n", expression);
 	//printf("The expression with %c elimination is %s\n", variable, expression);
+	// we check to see if there is enough memory for 
+	return expression;
 	sprintf(test_expression, "(%s%c)", expression, variable);
+	printf("test_expression: %s\n", test_expression);
+	printf("new expression: %s\n", expression);
 	//printf("Check on elimination: %s=%s\n", test_expression, simplify_sk(test_expression));
 	int ret_val = 0;
 	ret_val = strcmp(expression, simplify_sk(test_expression));
@@ -349,25 +327,33 @@ char* x_eliminate(char* expression, char variable) {
 }
 
 char* eliminate(char* expression, char variable) {
+	char* return_expression = (char*)malloc(MAX_LENGTH);
 	if ((int)strlen(expression) == 1 && expression[0] == variable) {
 		// we return the expression for I, but written in terms of S and K
 		return "((SK)K)";
 	}
 	else if (!var_find(expression, variable)) {
-		sprintf(expression, "(K%s)", expression);
-		return expression;
+		printf("last expression: %s\n", expression);
+		sprintf(return_expression, "(K%s)", expression);
+		printf("return last: %s\n", expression);
+		return return_expression;
 	}
 	// otherwise we know that the expression is enclosed by parentheses
 	else {
 		// we find the two sub-terms of the epxression
-		char* term1 = (char*)malloc((int)strlen(expression));
-		char* term2 = (char*)malloc((int)strlen(expression));
+		char* term1 = (char*)malloc(MAX_LENGTH);
+		char* term2 = (char*)malloc(MAX_LENGTH);
 		int end_index1;
 		int end_index2;
+		printf("CCC\n");
+		printf("variable: %c first_term: %s\n", variable, term(expression, 1, &end_index1));
 		term1 = eliminate(term(expression, 1, &end_index1), variable);
+		printf("term1: %s\n", term1);
 		term2 = eliminate(term(expression, end_index1+1, &end_index2), variable);
- 		sprintf(expression, "((S%s)%s)", term1, term2);
-		return expression;
+		printf("second term: %s\n", term(expression, end_index1+1, &end_index2));
+		printf("term2: %s\n", term2);
+ 		sprintf(return_expression, "((S%s)%s)", term1, term2);
+		return return_expression;
 	} 
 }
 

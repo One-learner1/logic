@@ -27,6 +27,7 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 	expression = termify(argv[2], recursive_calls);
+	printf("termified: %s\n", expression);
 	// we termify the expression, and make sure it is syntactically correct
 	if (!correct_syntax(expression)) {
 		printf("Incorrect syntax.\n");
