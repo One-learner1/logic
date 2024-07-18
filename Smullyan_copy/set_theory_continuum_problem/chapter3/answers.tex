@@ -436,7 +436,7 @@ $f(0)=f_0(0)=c$. The second part also holds, as $f(n^+)=f_{n^+}(n^+)=g(f_{n^+}(n
 
 The proof above is fine, though I think there is a simpler way to prove the theorem. Consider any function $g$ from $A$ into $A$ and any set $c\in A$. Then consider the $g$-sequence 
 started by $c$: $c,g(c),g(g(c)),...$. It is defined by the recursive rule $a_0=c$ and $a_{n+1}=g(a_n)$. Then take the function $f$ to be the set of all ordered pairs 
-$\langle n,a_n\rangle$ (for all $n$). We need to show show that $f(0)=c$ and $f(n^+)=g(f(n))$. The first part holds, as $f(0)=a_0=0$. The second part holds, as 
+$\langle n,a_n\rangle$ (for all $n$). We need to show show that $f(0)=c$ and $f(n^+)=g(f(n))$. The first part holds, as $f(0)=a_0=c$. The second part holds, as 
 $f(n^+)=a_{n^+}=g(a_n)=g(f(n))$.
 
 \subsection*{Exercise 8.3}
@@ -446,12 +446,13 @@ $V^n$. Now, let us recall the definition for an $n$-tuple: $\langle x_1,...,x_n,
 it is just $\langle x_1,x_2\rangle$. We can show by induction that 
 an $n$-ary relation is just a class of $n$-tuples. The base case, when $n=2$, is obvious. Now suppose the result holds for some $n$. Then $V^{n+1}=V^n\times V$, that is, all the elements in 
 $V^{n+1}$ are of the form $\langle x,y\rangle$ where $x\in V^n$. But it was assumed that all elements in $V^n$ were $n$ tuples. Thus all elements in $V^{n+1}$ are of the form 
-$\langle \langle x_1,...,x_n\rangle, x_{n+1}\rangle=\langle x_1,x_2,...,x_n,x_{n+1}\rangle$ (which holds by definition). Thus $V^{n+1}$ is simply a class of $n$-tuples, completing the 
+$\langle \langle x_1,...,x_n\rangle, x_{n+1}\rangle=\langle x_1,x_2,...,x_n,x_{n+1}\rangle$ (which holds by definition). Thus $V^{n+1}$ is simply a class of $n+1$-tuples, completing the 
 induction. Then we say that the 
-domain of an $n$-ary relation (for $n>2$) is the class of all $n$-tuples $\langle x_1,...,x_n\rangle$ such that $\langle\langle x_1,...,x_n\rangle ,y\rangle\in R$ 
+domain of an $n$-ary relation $R$ (for $n>2$) is the class of all $n-1$-tuples $\langle x_1,...,x_{n-1}\rangle$ such that $\langle\langle x_1,...,x_{n-1}\rangle ,y\rangle\in R$ 
 for at least one $y$. By the range of 
-$R$ is meant the class of all $y$ such that $\langle\langle x_1,...,x_n\rangle,y\rangle\in R$ for at least one $n$-tuple $\langle x_1,...,x_n\rangle$. Then a function of $n$ (for $n>2$) variables 
-is a relation $R$ such that for any $n-1$-tuple $\langle x_1,...,x_n\rangle$ there is at most one element $y$ such that $\langle\langle x_1,...,x_n\rangle, y\rangle\in R$.
+$R$ is meant the class of all $y$ such that $\langle\langle x_1,...,x_{n-1}\rangle,y\rangle\in R$ for at least one $n-1$-tuple $\langle x_1,...,x_{n-1}\rangle$. 
+Then a function of $n$ (for $n>2$) variables 
+is a relation $R$ such that for any $n-1$-tuple $\langle x_1,...,x_{n-1}\rangle$ there is at most one element $y$ such that $\langle\langle x_1,...,x_{n-1}\rangle, y\rangle\in R$.
 
 Now having defined functions of $n$ variables, we can move on to some proofs. Consider any class $A$ and any element 
 $c$ in $A$ and any function $g(x,y)$ from $\omega\times A$ into $A$. We wish to show that there is some function $f$ from $\omega$ into $A$ such that $f(0)=c$ and for any number $n$, 
