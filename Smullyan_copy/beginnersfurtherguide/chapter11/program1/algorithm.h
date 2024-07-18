@@ -11,10 +11,10 @@ typedef struct sub_expression {
 } sub_expression;
 
 /* Function to preform the elimination, given an expression and a variable */
-char* x_eliminate(char* expression, char variable);
+char* x_eliminate(char* expression, char variable, char** return_expression);
                 
 /* The function to actually do the elimination */
-char* eliminate(char* expression, char variable);
+char* eliminate(char* expression, char variable, char** return_expression);
         
 /* Function to determine if the variable occurs in the given expression */
 int var_find(char* expression, char variable);

@@ -24,3 +24,6 @@ algorithm: algorithm.o algorithm.h
 
 convert: algorithm.o convert.o algorithm.h
 	$(CC) $(CFLAGS) convert.c algorithm.o -o convert
+
+one_eliminate: algorithm.o algorithm.h one_eliminate.o
+	$(CC) $(CFLAGS) one_eliminate.c algorithm.o -o one_eliminate

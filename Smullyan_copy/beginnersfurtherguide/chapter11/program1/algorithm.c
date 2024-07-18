@@ -285,7 +285,7 @@ int end(int i, int end) {
 	}
 	return 0;
 }
-char* x_eliminate(char* expression, char variable) {
+char* x_eliminate(char* expression, char variable, char** return_expression) {
 	//char* test_expression = (char*)malloc((int)strlen(expression)); // expression to test if the eliminate is correct
 	if (expression == NULL || variable == '\0') {
 		printf("An expression and a variable must be simplified.\n");
@@ -306,7 +306,7 @@ char* x_eliminate(char* expression, char variable) {
 		printf("Expression is syntactically incorrect.\n");
 		exit(1);
 	}
-	expression = eliminate(expression, variable);
+	expression = eliminate(expression, variable, return_expression);
 	printf("Return expression: %s\n", expression);
 	//printf("The expression with %c elimination is %s\n", variable, expression);
 	// we check to see if there is enough memory for 
@@ -328,17 +328,19 @@ char* x_eliminate(char* expression, char variable) {
 	*/
 }
 
-char* eliminate(char* expression, char variable) {
-	char* return_expression = (char*)malloc(MAX_LENGTH);
+char* eliminate(char* expression, char variable, char** return_expression) {
 	if ((int)strlen(expression) == 1 && expression[0] == variable) {
 		// we return the expression for I, but written in terms of S and K
-		return "((SK)K)";
+		printf("AAA\n");
+		strcpy(*return_expression, "((SK)K)");
+		return *return_expression;
 	}
 	else if (!var_find(expression, variable)) {
-		printf("last expression: %s\n", expression);
-		sprintf(return_expression, "(K%s)", expression);
-		printf("return last: %s\n", expression);
-		return return_expression;
+		printf("BBB\n");
+		printf("expression pointer: %p\n", expression);
+		sprintf(*return_expression, "(K%s)", expression);
+		printf("return_expression: %p\n", return_expression);
+		return *return_expression;
 	}
 	// otherwise we know that the expression is enclosed by parentheses
 	else {
@@ -348,14 +350,20 @@ char* eliminate(char* expression, char variable) {
 		int end_index1;
 		int end_index2;
 		printf("CCC\n");
+		printf("before recursive call: return_expression: %p\n", return_expression);
 		printf("variable: %c first_term: %s\n", variable, term(expression, 1, &end_index1));
-		term1 = eliminate(term(expression, 1, &end_index1), variable);
-		printf("term1: %s\n", term1);
-		term2 = eliminate(term(expression, end_index1+1, &end_index2), variable);
+		printf("before recursive call: term1: %p term2: %p\n", term1, term2);
+		term1 = eliminate(term(expression, 1, &end_index1), variable, &term1);
+		printf("after recursive call: term1: %s pointer: %p\n", term1, &term1);
+		term2 = eliminate(term(expression, end_index1+1, &end_index2), variable, &term2);
 		printf("second term: %s\n", term(expression, end_index1+1, &end_index2));
-		printf("term2: %s\n", term2);
- 		sprintf(return_expression, "((S%s)%s)", term1, term2);
-		return return_expression;
+		printf("after recursive call: term2: %s pointer: %p\n", term2, &term2);
+ 		sprintf(*return_expression, "((S%s)%s)", term1, term2);
+		printf("after recursive call: return_expression: %p\n", return_expression);
+		free(term1);
+		printf("CCC\n");
+		free(term2);
+		return *return_expression;
 	} 
 }
 

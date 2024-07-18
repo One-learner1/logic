@@ -12,6 +12,7 @@ void variable_check(char* expression, int found_variables[]);
 int main(int argc, char* argv[]) {
 	int recursive_calls = 0;
 	char* expression = (char*)malloc(MAX_LENGTH);
+	char* return_expression = (char*)malloc(MAX_LENGTH);
 	char variables[MAX_VARIABLES];
 	int found_variables[26]; // array to track what variables have been entered
 	if (argc != 3) {
@@ -43,7 +44,7 @@ int main(int argc, char* argv[]) {
 	variable_check(argv[2], found_variables);
 	// now that we have ensured correct input, we successively eliminate the variables
 	for (int i = variable_count-1; i >= 0; i--) {
-		expression = x_eliminate(expression, variables[i]);
+		expression = x_eliminate(expression, variables[i], &return_expression);
 	}
 	printf("The eliminate is %s\n", expression);
 }
