@@ -65,7 +65,7 @@ int main(void){
 					t->operations);
 				return 1;
 			}
-			tape[loc]=*op++;
+			tape[loc]=*op;
 			break;
 		case 'E':
 			tape[loc]=' ';
