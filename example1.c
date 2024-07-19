@@ -10,6 +10,8 @@
 //
 #define	END	'\0'
 #define	START	'b'
+#define	NTAPE	256
+#define	NSTEP	80
 struct Tuple{
 	char config;
 	const char *symbols;
@@ -29,8 +31,6 @@ struct Tuple{
 #endif
 	END
 };
-#define	NTAPE	65536
-#define	NSTEP	1024
 int main(void){
 	char tape[NTAPE];
 	memset(tape, ' ', NTAPE);
