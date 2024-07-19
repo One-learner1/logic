@@ -8,43 +8,30 @@
 //
 // The second example in section 3
 //
-enum Config{
-	END, B, O, Q, P, F
-};
+#define	END	'\0'
+#define	START	'b'
 struct Tuple{
-	enum Config config;
+	char config;
 	const char *symbols;
 	const char *operations;
-	enum Config final;
+	char final;
 } tuple[]={
-B,	" ",	"Pe,R,Pe,R,P0,R,R,P0,L,L",	O,
+'b',	" ",	"Pe,R,Pe,R,P0,R,R,P0,L,L",	'o',
 
-O,	"1",	"R,Px,L,L,L",			O,
-O,	"0",	"",				Q,
+'o',	"1",	"R,Px,L,L,L",			'o',
+'o',	"0",	"",				'q',
 
-Q,	"01",	"R,R",				Q,
-Q,	" ",	"P1,L",				P,
+'q',	"01",	"R,R",				'q',
+'q',	" ",	"P1,L",				'p',
 
-P,	"x",	"E,R",				Q,
-P,	"e",	"R",				F,
-P,	" ",	"L,L",				P,
+'p',	"x",	"E,R",				'q',
+'p',	"e",	"R",				'f',
+'p',	" ",	"L,L",				'p',
 
-F,	"ex01",	"R,R",				F,
-F,	" ",	"P0,L,L",			O,
+'f',	"ex01",	"R,R",				'f',
+'f',	" ",	"P0,L,L",			'o',
 END
 };
-char name(enum Config c){
-	switch(c){
-	default:
-		fprintf(stderr, "Bad config %d\n", c);
-		exit(1);
-	case B: return 'b';
-	case O: return 'o';
-	case Q: return 'q';
-	case P: return 'p';
-	case F: return 'f';
-	}
-}
 #define	NTAPE	65536
 #define	NSTEP	1024
 int main(void){
@@ -52,18 +39,19 @@ int main(void){
 	memset(tape, ' ', NTAPE);
 	int loc=0;
 	int hwm=0;
-	enum Config config=B;
+	char config=START;
 	printf(" \n");
-	printf("%c\n", name(config));
+	printf("%c\n", config);
 	for(int nstep=0;nstep!=NSTEP;nstep++){
 		struct Tuple *t;
 		for(t=tuple;;t++){
 			if(t->config==END){
-				printf("Nothing for state %d, input %c\n",
+				printf("Nothing for state %c, input %c\n",
 					config, tape[loc]);
 				return 0;
 			}
-			if(t->config==config && strchr(t->symbols, tape[loc])!=0)
+			if(t->config==config
+			&& strchr(t->symbols, tape[loc])!=0)
 				break;
 		}
 		for(const char *op=t->operations;*op;op++) switch(*op){
@@ -99,7 +87,7 @@ int main(void){
 		for(int i=0;i<=hwm;i++) putchar(tape[i]);
 		putchar('\n');
 		for(int i=0;i!=loc;i++) putchar(' ');
-		printf("%c\n", name(config));
+		printf("%c\n", config);
 	}
 	printf("Stopped after %d steps, loc=%d, hwm=%d\n", NSTEP, loc, hwm);
 	return 0;
