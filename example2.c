@@ -53,6 +53,8 @@ int main(void){
 	int loc=0;
 	int hwm=0;
 	enum Config config=B;
+	printf(" \n");
+	printf("%c\n", name(config));
 	for(int nstep=0;nstep!=NSTEP;nstep++){
 		struct Tuple *t;
 		for(t=tuple;;t++){
