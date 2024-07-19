@@ -94,12 +94,10 @@ int main(void){
 			break;
 		}
 		config=t->final;
-		for(int i=0;i<=hwm;i++){
-				putchar(tape[i]);
-			if(i==loc)
-				printf("[%c]", name(config));
-		}
+		for(int i=0;i<=hwm;i++) putchar(tape[i]);
 		putchar('\n');
+		for(int i=0;i!=loc;i++) putchar(' ');
+		printf("%c\n", name(config));
 	}
 	printf("Stopped after %d steps, loc=%d, hwm=%d\n", NSTEP, loc, hwm);
 	return 0;
