@@ -1,4 +1,4 @@
-//*% $COMPP -o # %
+//*% $COM -o # %
 //
 // Turing machine, as in Turing's Computable Numbers paper
 //
