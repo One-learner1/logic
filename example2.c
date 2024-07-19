@@ -10,30 +10,31 @@
 //
 #define	END	'\0'
 #define	START	'b'
+#define	NTAPE	65536
+#define	NSTEP	1024
 struct Tuple{
 	char config;
 	const char *symbols;
 	const char *operations;
 	char final;
 } tuple[]={
-'b',	" ",	"Pe,R,Pe,R,P0,R,R,P0,L,L",	'o',
-
-'o',	"1",	"R,Px,L,L,L",			'o',
-'o',	"0",	"",				'q',
-
-'q',	"01",	"R,R",				'q',
-'q',	" ",	"P1,L",				'p',
-
-'p',	"x",	"E,R",				'q',
-'p',	"e",	"R",				'f',
-'p',	" ",	"L,L",				'p',
-
-'f',	"ex01",	"R,R",				'f',
-'f',	" ",	"P0,L,L",			'o',
-END
+//	config	symbols	operations			final
+	'b',	" ",	"Pe,R,Pe,R,P0,R,R,P0,L,L",	'o',
+	
+	'o',	"1",	"R,Px,L,L,L",			'o',
+	'o',	"0",	"",				'q',
+	
+	'q',	"01",	"R,R",				'q',
+	'q',	" ",	"P1,L",				'p',
+	
+	'p',	"x",	"E,R",				'q',
+	'p',	"e",	"R",				'f',
+	'p',	" ",	"L,L",				'p',
+	
+	'f',	"ex01",	"R,R",				'f',
+	'f',	" ",	"P0,L,L",			'o',
+	END
 };
-#define	NTAPE	65536
-#define	NSTEP	1024
 int main(void){
 	char tape[NTAPE];
 	memset(tape, ' ', NTAPE);
