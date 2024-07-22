@@ -305,11 +305,26 @@ are the first $n$ terms of the $g$-sequence, meaning $M$ is finite, in particula
 \section*{Section 7}
 
 \subsection*{Exercise 7.1}
-We can prove the equivalent statement that, if a set $S$ of natural numbers is not finite, then it is denumerable. Note that, because $\omega$ is the set of all natural numbers, $S\subseteq\omega$. 
-We can make a 1-1 correspondence between $S$ and $\omega$ as follows: pick some element $a_0$ of $S$ and pair it with $0$. Then pick another element $a_1$ of $S$ and pair it with $1$, and, in general, 
-we pair $n$ with some element $a_n$ of $S$, where $a_n$ is disitinct from all $a_m$ where $m<n$. If there was any $n$ for which it could not be paired to an $a_n$, this would mean that 
-$S$ only had $n-1$ elements, contrary to the assumption that it was infinite. If there was ever some $a_n$ for which no $n$ could be found, this would contradict the fact that $S\subseteq\omega$. Thus 
-this really is a 1-1 correspondence. 
+We can prove the equivalent statement that, if a set $S$ of natural numbers is not finite, then it is denumerable. By Theorem 5.5, $S$ has a least element $a$. Now define the 
+denumerable sequences $a_0,a_1,...,a_n,...$ and $S_0,S_1,...,S_n,...$ in the following way: $a_0=a$ and $S_0=S$, $S_1=S_0-\{a_0\}$ and $a_1$ is the least element of $S_1$, 
+and, in general, 
+$S_{n+1}=S_n-\{a_n\}$ and $a_{n+1}$ is the least element of $S_{n+1}$. 
+Then the 1-1 function $f$ between $\omega$ and $S$ is just the set of all ordered pairs $\langle n,a_n\rangle$ (for all natural numbers $n$). 
+To prove that this works, we need to show that if $x\in S$, then $x=a_i$ for some $i$. So consider any $x\in S$. Obviously, the class $A$ of elements in $S$ less than 
+$x$ must be finite (because there are only finitely many numbers less than $x$). Then $x$ would be the least element of $S-A$. We prove by induction on the size of 
+$A$ that $S-A$ must be some $S_i$, which in turns means that $x=a_i$ (because then $x$ would be the least element of $S_i$, and by definition, $a_i$ is the least element of 
+$S_i$). That is, we show that if $A$ is the set of all elements of $S$ less than $x$ for some $x\in A$, then $S-A$ is some $S_i$. 
+The base case is when $A$ is empty. Then $S-A=S$, and because, by definition, $S_0=S$, $x=a_0$. Now suppose the result holds for some $n$, that is, 
+if $A$ is of size $n$, then $S-A=S_i$ for some $i$. Now consider some $A$ of size $n+1$. By Theorem 5.4, $A$ has some greatest element $e$. Thus 
+$A-\{e\}$ is the set of all numbers in $S$ less than $e$, and thus, by the induction assumption, $S-(A-\{e\})=S_i$ for some $i$. Thus $e$ is the least element of 
+$S_i$.
+Then $S_{i+1}=S_i-\{a_i\}=(S-(A-\{e\}))-\{e\}$, and as can easily be shown, $(S-(A-\{e\}))-\{e\}=S-A$ (because $e\in A$). Thus $S_{i+1}=S-A$, meaning 
+$x$ is the least element of $S_{i+1}$. Thus, by induction, for any size $n$ of $A$, it is some $S_i$. Then it obviously follows that every $x\in S$ is 
+some $a_i$, hence proving that $f$ really is a 1-1 function. 
+
+
+The reason why all of the rest of these \textquote{proofs} are wrong in the rest of section 7 is that they don't actually show that there is a 1-1 function: the arguments don't actually 
+define a function.
 
 
 We can also show that every non-denumerable set has a denumerable proper subset. For consider any non-denumerable set $A$. We can show that some proper subset of $A$ can 

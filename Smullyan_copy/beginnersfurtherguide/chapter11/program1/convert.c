@@ -47,6 +47,7 @@ int main(int argc, char* argv[]) {
 		expression = x_eliminate(expression, variables[i], &return_expression);
 	}
 	printf("The eliminate is %s\n", expression);
+	printf("Simplified, it is: %s\n", simplify_sk(expression));
 }
 
 void read_variables(char* variables, char variable_array[], int found_variables[]) {

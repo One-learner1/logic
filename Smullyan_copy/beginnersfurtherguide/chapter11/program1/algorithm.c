@@ -16,11 +16,11 @@ int correct_syntax(char* expression) {
 		t2 = term(expression, first_index+1, &second_index);
 		// we check that both the terms t1 and t2 were found
 		if (t1 == NULL || t2 == NULL) {
-			return 0;
+			ret_val = 0;
 		}
 		// we also check that the end of the second term is the second to last character of the expression
 		if (second_index != (int)strlen(expression)-2) {
-			return 0;
+			ret_val = 0;
 		} 
 		// now we ensure that both t1 and t2 are terms
 		if (correct_syntax(t1) && correct_syntax(t2)) {
@@ -29,6 +29,8 @@ int correct_syntax(char* expression) {
 		else {
 			ret_val = 0;
 		}
+		free(t1);
+		free(t2);
 		return ret_val;
 	}
 	// otherwise the expression does not start with a valid character
@@ -81,9 +83,6 @@ int right_paren(char* expression, int index) {
 }
 
 char* simplify(char* expression) {
-        char* t1 = (char*)malloc((int)strlen(expression));
-        char* t2 = (char*)malloc((int)strlen(expression));
-        char* simplified = (char*)malloc(strlen(expression));
         int first_index, second_index;
         // if the expression is null, an error has occured
         if (expression == NULL) {
@@ -96,13 +95,18 @@ char* simplify(char* expression) {
         }
         // otherwise the expression must start with a left paren
         else if (expression[0] == '(') {
+		char* t1 = (char*)malloc((int)strlen(expression));
+		char* t2 = (char*)malloc((int)strlen(expression));
+		char* simplified = (char*)malloc(strlen(expression));
                 char* first_simplified = (char*)malloc((int)strlen(expression)); // to store the simplified form of t1
+		printf("before first_simplified: %p\n", first_simplified);
                 char* second_simplified = (char*)malloc((int)strlen(expression)); // to store the simplified form of t2
                 // we first find t1 and t2
                 t1 = term(expression, 1, &first_index);
                 t2 = term(expression, first_index+1, &second_index);
                 // we obtain the simplified version of t1
                 first_simplified = simplify(t1);
+		printf("first_simplified after: %p string: %s\n", first_simplified, first_simplified);
                 // if t2 is just a single character, then we let second_simplified equal it; otherwise we make a recursive call; also, if t2 is just three characters (meaning it is of the form 
 		// (x)), we also simplify accordingly
                 if (strlen(t2) == 1) {
@@ -114,6 +118,10 @@ char* simplify(char* expression) {
                         second_simplified = simplify(t2);
                         sprintf(simplified, "%s(%s)", first_simplified, second_simplified);
                 }
+		free(t1);
+		free(t2);
+		//free(first_simplified);
+		//free(second_simplified);
                 return simplified;
         }
         // otherwise an error has occured
