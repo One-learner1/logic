@@ -120,8 +120,8 @@ char* simplify(char* expression) {
                 }
 		free(t1);
 		free(t2);
-		//free(first_simplified);
-		//free(second_simplified);
+		free(first_simplified);
+		free(second_simplified);
                 return simplified;
         }
         // otherwise an error has occured

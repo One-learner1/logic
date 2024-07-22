@@ -1,1 +1,6 @@
 Directory for the program creating the combinator made of only $S$ and $K$ that realizes any term. 
+
+The input for convert.c should be two arguments: the first is the list of variables, and the second is the expression (containing only those variables and possibly any 
+constansts). In the program, variables are represented by the lower case letters, while constant are represented by the upper case letters.
+
+For example, we could have ./convert "xyz" "x(yz)"
