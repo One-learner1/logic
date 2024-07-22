@@ -1,5 +1,6 @@
 /* Program to, given a list of variables x1,...,x_n and an expression W made only out of those variables (and constants), find the 
-x1,...,xn eliminate of W */ 
+x1,...,xn eliminate of W. The input is of the form: "x_1,x_2,...,x_n" "t(x_1,x_2,...,x_n)" where every x_i is a variable, and t(x_1,x_2,...,x_n) is a non-term made out of only the 
+variable x_1,x_2,...,x_n (and, possibly, constants) */ 
 #include "algorithm.h"
 int variable_count; // global variable to store the number of variables
 
