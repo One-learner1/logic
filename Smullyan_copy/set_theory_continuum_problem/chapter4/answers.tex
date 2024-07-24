@@ -125,20 +125,20 @@ holds for some $n$, that is, $A$ has an infinite amount of subsets of size $n$. 
 infinite number of subsets of size 1 (by having proven the base case), and then, for each element $x\in A-S$, the subset $S\cup\{x\}$ is of size $n+1$, and because 
 there are infinitely many of these (because $A-S$ contains infinitely many elements), the induction is complete.
 
-Now consider any infinite set $A$. Then the class $C$ of all subsets of $A$ of size one that do not include the empty set 
+Now consider any infinite set $A$. Then the class $C$ of all subsets of $A$ of size one 
 is a set (because it is a subset of $\mathcal{P}(A)$). Then
 $\{C\}$ is a set, meaning, by the AC, there is some function $f^0_0$ such that $f^0_0(C)\in C$, that is, $f^0_0(C)$ is a subset of $A$ (that does not include the 
 empty set) of size one. Because 
 $f^0_0(C)$ is a set, so is $\{f^0_0(C)\}$ (which is a non-empty set of non-empty sets), 
-meaning, by the AC, there is some function $f^0_1$ such that $f^0_1(f_0(C))\in f^0_0(C)$, that is, 
+meaning, by the AC, there is some function $f^0_1$ such that $f^0_1(f^0_0(C))\in f^0_0(C)$, that is, 
 $f^0_1(f^0_0(C))$ is an element of $A$ ($f^0_1(f^0_0(C))$ is an element of a subset of $A$ of size one). 
 Then we can establish a denumerable sequence $a_0,a_1,...,a_n,...$ of elements of $A$ as follows: Take 
 $a_0$ to be $f^0_1(f^0_0(C))$, and let $S_0=A$ and $C_0=C$. 
-Then let $S_1=S_0-\{a_0\}$ and $C_1$ be the set of all subsets of $S_1$ of size one that do not include the empty set, 
+Then let $S_1=S_0-\{a_0\}$ and $C_1$ be the set of all subsets of $S_1$ of size one, 
 and, in a similar manner as in how we obtained $f^0_1(f^0_0(C))$, we can define functions $f^1_1$ and $f^1_0$ using the AC such that $f^1_1(f^1_0(C_1))$
 is an element of $S_1$ not equal to $a_0$ (because $S_1$ does not contain $a_1$). 
 Then take $a_1$ to be $f^1_1(f^1_0(C_1))$. In general, if we have $a_i$ and $S_i$ for all numbers $i$ less than 
-$n$, we take $S_{n+1}$ to be $S_n-\{a_n\}$, $C_{n+1}$ to be the set of all subsets of $S_{n+1}$ of size one that do not include the empty set, 
+$n$, we take $S_{n+1}$ to be $S_n-\{a_n\}$, $C_{n+1}$ to be the set of all subsets of $S_{n+1}$ of size one, 
 and we can define functions $f^{n+1}_1$ and $f^{n+1}_0$ using the AC such that 
 $f^{n+1}_1(f^{n+1}_0(C_{n+1}))$ is an element of $S_{n+1}$ not equal to $a_i$ for all $i\le n$. Obviously, each $a_i$ is distinct from all others in the 
 sequence. Thus the set of all $a_i$ is a denumerable subset of $A$.
