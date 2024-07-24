@@ -32,11 +32,115 @@
 
 \section*{Section 1}
 
-\subsection*{Exercise 1.8}
-Consider some infinite set $A$. It can be easily shown that $A$ must contain a subset of size $n$ for every natural number $n$. 
-Let $b_1$ be the set of all subsets of $A$ of size one (this is a set because $b_1\subseteq \mathcal{P}(A)$, and $\mathcal{P}(A)$ is a set by the power axiom)
-,and let $b$ be the class consisting only of $b_1$ (because it is a finite class, it is also a set). 
-Then, by the AC, there is some function $f_1$ such that 
-$f(b_1)\in b_1$ (that is, is a subset of size one of $A$). Now let $a_1$ be the class consisting of only $f(b_1)$ (because it is finite, it is also a set). 
-Then there is a function  
+\subsection*{Notes}
+Note that when Smullyan says: \textquote{Thus, for example, the class $V$ is partially ordered under inclusion,} by inclusion he means 
+\textit{set inclusion} (that is, being a subset), not \textit{set membership}.
 
+Here is the proof of part (2) of Proposition 1.3. For suppose that some element $x$ had two predecessors $y$ and $z$. Then 
+$y<x$ and $z<x$. If $y<z$, then $y<z<x$, contrary to the fact that $y$ is the predecessor of $x$. Similarly it cannot be that 
+$z<y$. But, because $\le$ is a linear ordering, either $y\le z$ or $z\le y$. In either case, because neither $y<z$ or $z<y$ hold, $y=z$, thus completing 
+the proof.
+
+Note that, for a linear ordering $\le $ of $A$, all finite non-empty subclasses of $A$ must have a least element. We prove this by induction on the size 
+of the subclass. The base case is obvious (because, by $O_1$, $x\le x$ for all $x$ in the field of $\le$). 
+Now suppose the result holds for some $n$. Consider some subclass $S$ of $A$ of size $n+1$. Then 
+for any element $x\in S$, suppose $x$ is not the least element. Then $S-\{x\}$, by the induction assumption, has a least element $a$. Because $x$ 
+is not the least element, $a\le x$ (by $O_4$), meaning $a$ is the least element of $S$. Thus, for every element $x\in S$, either $x$ is the least element of 
+$S$, or there is some other element least element $a$ of $S$. In any case, $S$ has a least element.
+
+Here is an explicit proof of Proposition 1.7: We can prove by induction that, for a well-ordering $\le$, every non-empty finite subclass of the field of 
+$\le$ has a greatest element. The base case, when the subclass has one element, is obvious (because, by $O_1$, $x\le x$ for all $x$ in the field of $\le$). 
+Now suppose that, for some non-empty subclass of size $n$, it 
+has a greatest element. Now consider some non-empty subclass $C$ of size $n+1$. By $O_5$, it has a least element $e$. Then $C-\{e\}$ is of size $n$, and thus 
+by the induction assumption, has a greatest element $a$. But because $e$ is the least element of $C$, $e\le a$. Hence, for all elements $x$ of 
+$C$, $x\le a$, meaning $a$ is the greatest element of $C$. This completes the induction.
+
+Now having proven this result, suppose that $x$ was a limit element of a well ordering $\le$ and $L_<(x)$ had finitely many elements. Then, by the above result, 
+$L_<(x)$ must have a greatest element, and thus, by Proposition 1.6, $x$ would not be a limit element, a contradiction.
+
+\subsection*{Exercise 1.1}
+Suppose that $\le$ is a partial ordering such that every non-empty subclass of the field of $\le$ has a least element. We need to show that, for every 
+$x$ and $y$ in the field of $\le$, $x\le y\vee y\le x$. If $x$ and $y$ are both in the field of $\le$, then we know that the class 
+$\{x,y\}$ has a least element. If $x$ is the least element, then $x\le y$, and if $y$ is the least element, then $y\le x$. Thus 
+either $x\le y$ or $y\le x$, therefore completing the proof.
+
+\subsection*{Exercise 1.2}
+I do not think the premise of this problem makes sense. For suppose that a linear ordering $\le$ of $A$ was such that, for every proper lower section $L$ of 
+$A$, there is a least element $x$ of $A$ not in $L$. In fact, we can then prove that $A$ has no proper lower sections. For suppose it has some proper lower 
+section $L$. 
+Then there would be a least element $x$ of $A$ not in $L$. Thus, for every element $y\in L$, $y\le x$. But, by the definition of a proper lower section, 
+also $x<y$, which contradicts $O_2$. Hence $A$ can have no proper lower sections. Then obviously $\le$ cannot be a well-ordering of $A$. For if it was, then 
+$A$ would have a least element $e$. But then $\{e\}$ would be a proper lower section of $A$, contrary to the fact that $A$ has no proper lower sections. Thus 
+$\le$ cannot be a well-ordering of $A$.
+
+\subsection*{Exercise 1.3}
+This problem had similar issues as in Exercise 1.2: assumption (c) of the problem implies that there can be no proper lower sections $L$ of $A$ such that 
+$L$ has no greatest element.
+
+\subsection*{Exercise 1.4}
+We prove that in a well ordering, all backward paths must be finite. What this amounts to saying is that, if $\le$ is a well-ordering, then 
+there can be no denumerable backward paths. So suppose there was some denumerable backwards path $a_0,a_1,...,a_n,...$. Because this is a well-ordering, 
+the class $\{a_0,a_1,...,a_n,...\}$ has a least element. Thus for some $m$, it must be the case that $a_m$ is the least element of 
+$\{a_0,a_1,...,a_n,...\}$. Because the sequence is denumerable, there must be a term $a_{m+1}$ of the sequence. By the definition of a backward path, 
+$a_{m+1}<a_m$. But also $a_m\le a_{m+1}$, which is a contradiction (by $O_2$, as this would imply $a_m=a_{m+1}$, but because 
+$a_{m+1}<a_m$, $a_m\ne a_{m+1}$).
+
+\subsection*{Exercise 1.5}
+(a): On the one hand, we assume the first form of the AC. Now consider any non-empty set $A$ of pairwise disjoint non-empty sets. 
+By the AC, there is some function $f$ such that $f(x)\in x$ for all elements $x\in A$. Then take $C$ to be the class of all $x$ such that 
+$x=f(y)$ for some $y\in A$. Because $A$ is a set of pairwise disjoint sets, and $f(y)\in y$ for every $y\in A$, it follows that $C$ contains exactly one element of 
+each element of $A$. 
+
+
+(b): On the other hand, suppose that the second form of the AC holds. Now consider any non-empty set $A$ of non-empty sets. 
+Note that for any set $x$, $\{x\}$ is a non-empty set of pairwise disjoint non-empty sets, and hence, there exists some set $C$ that consists of exactly one element 
+of $x$. Denote this set $C$ for this set $x$ as $C_x$, and let $a_x$ be the one element of $C_x$. Then take the function $f$ to be the set of all ordered pairs
+$\langle x,a_x\rangle$, which is clearly a function such that for each $x$ in $A$, $f(x)\in x$.
+
+\subsection*{Exercise 1.6}
+It suffices to show that this form is equivalent to the first form, and then, by Exercise 1.5, it follows that it is also equivalent to the form in that 
+problem.
+
+(a): On the one hand, suppose that the first form of the AC holds, and consider some non-empty set $A$ of non-empty sets. 
+Then, by the AC, there is some function $f$ such that 
+$f(x)\in x$ for all elements $x$ of $\mathcal{P}(A)-\{A\}$ (that is, the set of all proper subsets of $A$), that is, for all proper subsets $x$ of $A$, 
+$f(x)\in x$.
+
+(b): Now suppose that the second form (the one presented in this problem) 
+of the AC holds, and consider some non-empty set $A$ of non-empty sets. Then $\cup A$ is a set, and hence, by the 
+AC, there is some function $f$ such that $f(x)\in x$ for all proper subsets of $\cup A$. Then we take the function $g$ to be the set of all ordered pairs 
+$\langle x,f(x)\rangle$ for all elements $x$ of $A$, which works, as $x$ is a subset of $\cup A$. 
+
+\subsection*{Exercise 1.7}
+We wish to prove that every infinite set can be put into a 1-1 correspondence with itself (assuming the AC). So, consider any infinite set $A$. Then, by exercise 1.8,
+it has a denumerable subset $D$, and there is a 1-1 function $f$ from the natural numbers to elements of $D$. Pick some element of $D$ ($f(0)$, say). Then 
+$D-f(0)$ is still a denumerable subset. Now we can define a 1-1 function $g$ from $A$ to $A-\{f(0)\}$ (a proper subset of $A$) as follows: 
+Assume $x\in A$. If $x\in D$, then $x=f(n)$ for some $n$, and we add the ordered pair $\langle f(n),f(n^+)\rangle$ to the function $g$. If $x\notin D$, 
+then we add the ordered pair $\langle x,x\rangle$ to $g$. Thus this a 1-1 function $g$ from $A$ onto $A-\{f(0)\}$, therefore completing the proof. 
+
+\subsection*{Exercise 1.8}
+It can easily be shown by induction that every infinite set $A$ contains an infinite amount of subsets of size $n$ for every $n>0$. The base case, when $n=1$, holds, as, 
+because $A$ is infinite, there is, for every element $x$ of $A$, the subset $\{x\}$ of $A$, and there are infinitely many of these. Now suppose the result 
+holds for some $n$, that is, $A$ has an infinite amount of subsets of size $n$. For each of these subsets $S$ of size $n$, $A-S$ (which must also be infinite) has an 
+infinite number of subsets of size 1 (by having proven the base case), and then, for each element $x\in A-S$, the subset $S\cup\{x\}$ is of size $n+1$, and because 
+there are infinitely many of these (because $A-S$ contains infinitely many elements), the induction is complete.
+
+Now consider any infinite set $A$. Then the class $C$ of all subsets of $A$ of size one that do not include the empty set 
+is a set (because it is a subset of $\mathcal{P}(A)$). Then
+$\{C\}$ is a set, meaning, by the AC, there is some function $f^0_0$ such that $f^0_0(C)\in C$, that is, $f^0_0(C)$ is a subset of $A$ (that does not include the 
+empty set) of size one. Because 
+$f^0_0(C)$ is a set, so is $\{f^0_0(C)\}$ (which is a non-empty set of non-empty sets), 
+meaning, by the AC, there is some function $f^0_1$ such that $f^0_1(f_0(C))\in f^0_0(C)$, that is, 
+$f^0_1(f^0_0(C))$ is an element of $A$ ($f^0_1(f^0_0(C))$ is an element of a subset of $A$ of size one). 
+Then we can establish a denumerable sequence $a_0,a_1,...,a_n,...$ of elements of $A$ as follows: Take 
+$a_0$ to be $f^0_1(f^0_0(C))$, and let $S_0=A$ and $C_0=C$. 
+Then let $S_1=S_0-\{a_0\}$ and $C_1$ be the set of all subsets of $S_1$ of size one that do not include the empty set, 
+and, in a similar manner as in how we obtained $f^0_1(f^0_0(C))$, we can define functions $f^1_1$ and $f^1_0$ using the AC such that $f^1_1(f^1_0(C_1))$
+is an element of $S_1$ not equal to $a_0$ (because $S_1$ does not contain $a_1$). 
+Then take $a_1$ to be $f^1_1(f^1_0(C_1))$. In general, if we have $a_i$ and $S_i$ for all numbers $i$ less than 
+$n$, we take $S_{n+1}$ to be $S_n-\{a_n\}$, $C_{n+1}$ to be the set of all subsets of $S_{n+1}$ of size one that do not include the empty set, 
+and we can define functions $f^{n+1}_1$ and $f^{n+1}_0$ using the AC such that 
+$f^{n+1}_1(f^{n+1}_0(C_{n+1}))$ is an element of $S_{n+1}$ not equal to $a_i$ for all $i\le n$. Obviously, each $a_i$ is distinct from all others in the 
+sequence. Thus the set of all $a_i$ is a denumerable subset of $A$.
+
+\end{document}

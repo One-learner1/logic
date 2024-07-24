@@ -29,9 +29,9 @@ int correct_syntax(char* expression) {
 		else {
 			ret_val = 0;
 		}
+		return ret_val;
 		free(t1);
 		free(t2);
-		return ret_val;
 	}
 	// otherwise the expression does not start with a valid character
 	else {
