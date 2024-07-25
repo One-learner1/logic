@@ -146,15 +146,24 @@ sequence. Thus the set of all $a_i$ is a denumerable subset of $A$.
 \section*{Section 2}
 
 \subsection*{Notes}
-Note that $\omega$ is not super-inductive (under the successor function). This is because it is not the case that $\omega$ is closed under chain unions. 
+Note that $\omega$ is not superinductive (under the successor function). This is because it is not the case that $\omega$ is closed under chain unions. 
 For instance, consider the subset
 $C:\{1,2,...,n,...\}$ of $\omega$, which is obviously a chain. We show that it is not the case that $\cup C\in\omega$. For suppose $\cup C\in\omega$. Then, by definition 
 of $\omega$, $\cup C$ would be some natural number $n$. Obviously $n\ne 0$. Now, $n^+\notin n$ (by Theorem 5.6 of Chapter 3). But $n^{++}$, which includes 
 $n^+$, is an element of $C$; thus $n^+$ is an element of $\cup C$, a contradiction. Hence $\cup C\notin\omega$.
 
+Here is an explanation of why $M$ is minimally superinductive under $g$ in Theorem 2.8. We know that $M$ is the intersection of all 
+subsets of $S$ that are superinductive under $g$. Now, let $C$ be the set of all subsets of $S$ that are superinductive under $g$. 
+Then $M=\cap C$. Because every element of $C$ is superinductive under $g$, every element of $C$ is closed under $g$, and every element of $g$ 
+is closed under chain unions. Thus, by Lemma 2.7, $\cap C$, that is, $M$, is closed under $g$ and is closed under chain unions. Obviously 
+$\emptyset\in M$ (because $\emptyset$ is an element of all superinductive sets, and hence of all elements of $C$). Lastly, we must show that $M$ is minimally 
+superinductive under $g$. Suppose that some proper subset $A$ of $M$ was superinductive under $g$. Thus there must be some element $a\in M$
+such that $a\notin A$. Now, clearly $A$ must be a subset of $S$. Thus $A$ is a subset of $S$ which is superinductive under $g$. But then $A\in C$, and because 
+$a\in M$ ($a\in\cap C$), $a\in A$, a contradiction. Thus $M$ must be minimally superinductive under $g$ (and $M$ is a set because $M\subseteq S$). 
+
 Here is why $\cup M\in S$ in the proof of Theorem 2.8. As remarked in the proof, we know that $\cup M\in M$. But $M$ is the intersection of all 
 subsets of $S$ that are superinductive under $g$. But because $S$ itself is superinductive under $g$ (and is a subset of itself), 
-$\cup M\in M$ by the definition of $M$ implies that $\cup M\in S$. 
+$\cup M\in M$ implies that $\cup M\in S$. 
 
 There are multiple things to be noted for the proof of Theorem 2.10. First, the definition of $S_b$ is not correct. For, given the current definition, we cannot 
 definitively know that $S_b$ is closed under $g'$. For suppose that $x\in S_b$. Then either $x\ne\emptyset$ or $x=\emptyset$. In the first case, we know that 
@@ -162,11 +171,16 @@ $g'(x)=g(x)$, and because $x\subseteq g(x)$ (because $g$ is progressing), $x\sub
 definition of $S_b$), $g'(x)$ also includes $b$, meaning $g'(x)\in S_b$. However, if $x=\emptyset$, then $g'(x)=b$. But there is no guarantee that 
 $b\in S_b$: it very well could be the case that $b\notin b$. In fact, it very well could be that $S_b$ (defined in this way) only contains the empty set!
 
-The proof of Theorem 2.10 which I found is very similar to the one given in the book:
+I will remark that this (incorrect) definition of $S_b$ does make $S_b$ closed under chain unions. For consider any chain $C$ of elements of $S_b$. Then 
+consider $\cup C$. Each element of $C$ is either $\emptyset$ or a set $x$ such that $b\in x$. If $C$ only contains $\emptyset$, then $\cup C=\emptyset$, and 
+thus $\cup C\in S_b$. Otherwise, $C$ contains some element $x$ such that $b\in x$. But then $\cup C$ contains all elements of $x$, and hence contains $b$, meaning 
+$b\in\cup C$, and thus $\cup C\in S_b$.
+
+The proof of Theorem 2.10 which I found is very similar to the one given in the book, just with a slightly different definition of $S_b$:
 
 \textbf{Corrected Proof of Theorem 2.10}:\newline
 Assume the hypothesis. As in the original proof, the case when $b=\emptyset$ is just Thoerem 2.8; so assume $b\ne\emptyset$. We let $S_b$ be the set of all 
-elements of $S$ for which $b$ is a subset (and this \textit{does} include $b$), together with $\emptyset$. This is closed under chain unions for the following reason: 
+elements $x$ of $S$ for which $b\subseteq x$ (and this \textit{does} include $b$), together with $\emptyset$. This is closed under chain unions for the following reason: 
 Consider some chain $C$ of elements of $S_b$. Then consider $\cup C$. Each element of $C$ is either $\emptyset$ or a set that $b$ is a subset of. If $C$ only contains 
 $\emptyset$, then $\cup C=\emptyset$, and thus $\cup C\in S_b$. Otherwise, $C$ contains some element $x$ such that $b\subseteq x$. But then $\cup C$ contains all 
 of the elements of $x$, and thus also all of the elements of $b$, meaning $b\subseteq\cup C$, and thus $\cup C\in S_b$. Thus $S_b$ is closed under chain unions. 
@@ -178,8 +192,9 @@ $x\ne\emptyset$. Because $x\in S_b$ (and $x\ne\emptyset$), $b\subseteq x$. Thus,
 of $S_b$), $g'(x)\in S_b$. Thus $S_b$ is closed under $g'$. Lastly, here is why $S_b$ is a set: $S_b-\{\emptyset\}$ is a set because it is a subset of 
 $S$ (which is assumed to be a set), and thus $\cup\{(S_b-\{\emptyset\}),\{\emptyset\}\}$, that is, $S_b$, is also a set. Thus $S_b$ satisfies the criteria of 
 Theorem 2.8, meaning there is some element $x$ of $S_b$ such that $g'(x)=x$. Now, it cannot be that $x=\emptyset$, or else 
-$b=g'(x)=\emptyset$. Thus $x\ne\emptyset$, meaning (by the definition of $S_b$) $b\subseteq x$, therefore completing the proof (because, as 
-$x\ne\emptyset$, $g'(x)=g(x)$, so that $g(x)=x$).
+$b=g'(x)=x=\emptyset$. Thus $x\ne\emptyset$, meaning (by the definition of $S_b$) $b\subseteq x$. 
+Also, because $x\ne\emptyset$, $g'(x)=g(x)$, so that $g(x)=x$. Thus $b\subseteq x$ and $g(x)=x$, therefore completing the proof (and obviously 
+$x\in S$).
 
 It very well could be that the book simply contained a typo, and meant to define $S_b$ in the way it was defined in the correct proof.
 
@@ -190,7 +205,7 @@ Consider any set $S$:
 if $x\in\cap S$, then $g(x)\in\cap S$. So suppose $x\in\cap S$. Then $x$ is an element of every element of $S$. But every element of $S$ is closed under $g$. 
 Thus $g(x)$ is an element of every element of $S$, meaning $g(x)\in\cap S$.
 
-(2) Suppose that every element of $S$ is closed und chain unions. Now consider $\cap S$. To prove that $\cap S$ is also closed under chain unions, we need to show 
+(2) Suppose that every element of $S$ is closed under chain unions. Now consider $\cap S$. To prove that $\cap S$ is also closed under chain unions, we need to show 
 that for any chain $C$ of elements of $\cap S$, $\cup C\in A$. So consider some chain $C$ of elements of $\cap S$. Thus $C$ is also a chain of elements of every element of 
 $S$. But, because every element of $S$ is closed under chain unions, $\cup C$ is an element of every element of $S$. Thus $\cup C\in\cap S$. 
 
