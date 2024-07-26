@@ -147,14 +147,10 @@ void error(char *msg, ...){
 	va_end(args);
 	fprintf(stderr, " on line %d of %s\n", lineno, infile);
 	//
-	// Then print the line.
-	//
-	for(char *s=line;*s!='\n' && *s!='\0';s++) putc(*s, stderr);
-	putc('\n', stderr);
-	//
-	// Then indicate the position at which the message
+	// Then print the line and indicate the position at which the message
 	// was issued.
 	//
+	fprintf(stderr, "%s\n", line);
 	for(char *s=line;s!=inp && *s!='\n' && *s!='\0';s++)
 		putc(*s=='\t'?'\t':' ', stderr);
 	fprintf(stderr, "^\n");
@@ -240,10 +236,6 @@ int idchar(int c){
 }
 void skipwhite(void){
 	while(*inp==' ' || *inp=='\t' || *inp=='\n') inp++;
-	//
-	// Comments run from # to end of line
-	//
-	if(*inp=='#') while(*inp!='\0') inp++;
 }
 void skipid(void){
 	while(idchar(*inp)) inp++;
@@ -272,7 +264,6 @@ void savetoken(char *start){
 // Someone else will be responsible for that.
 //
 //
-// Caller is expected to save inp
 enum{
 	FNDEF, NAME, CALL, STRING, EOL, ERROR
 };
@@ -316,7 +307,6 @@ int gettoken(void){
 			strcpy(token, "\"\"");
 			return STRING;
 		}
-		skipid();
 		skipwhite();
 		if(*inp!='('){
 			savetoken(tokp);
@@ -465,17 +455,26 @@ void input(char *file){
 	MConfig *mconfig=0;
 	Config *econfig=0;
 	for(lineno=1;fgets(line, sizeof line, in)!=0;lineno++){
+		//
+		// Remove comments (# to end of line)
+		// and newline
+		//
+		for(char *s=line;*s;s++){
+			if(*s=='#' || *s=='\n'){
+				*s='\0';
+				break;
+			}
+		}
 		inp=line;
 		int t;
 
-		if(line[0]==' ' || line[0]=='\t' || line[0]=='#'){
+		if(line[0]==' ' || line[0]=='\t'){
 			//
 			// Two legal possibilities at this point:
 			//	a blank line, which we should ignore
 			//	another config for an mconfig or a function.
 			skipwhite();
-			if(*inp=='\n' || *inp=='\0')
-				continue;
+			if(*inp=='\0') continue;	// nothing on line
 			if(function){
 				FnConfig *f=getfnconfig();
 				if(efnconfig)
@@ -501,8 +500,7 @@ void input(char *file){
 			default:
 				error("unknown token. Cannot happen!!\n");
 				exit(1);
-			case EOL:
-				break;
+			case EOL: break;	// empty line
 			case FNDEF:
 				mconfig=0;
 				function=getfunction(token);
