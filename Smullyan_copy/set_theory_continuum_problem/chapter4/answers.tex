@@ -74,18 +74,18 @@ $A$ would have a least element $e$. But then $\{e\}$ would be a proper lower sec
 $\le$ cannot be a well-ordering of $A$.
 
 Now, if the problem instead said: for every proper lower section $L$ of $A$, there is a least element $x$ of $A-L$, the situation would be different. Here the problem 
-would not be contradictory, but the problem is not true. For instance, we can give the following counterexample. Consider the relation $x\ge y$ for all natural numbers $x$ and $y$. 
-Clearly this is a linear ordering. However, there is no natural number that is greater than all others. Thus $\ge$ is not a 
+would not be contradictory, but the problem is not true. For instance, we can give the following counterexample. Consider the relation $x\supseteq y$ for all natural numbers $x$ and $y$. 
+Clearly this is a linear ordering. However, there is no natural number that is greater than all others. Thus $\supseteq$ is not a 
 well ordering of the natural numbers. However, it is the case that, for every proper lower section $L$ of $\omega$, there is a least element of $A-L$ (that is, a natural number $n$ of $A-L$ such 
-that $n\ge x$ for all $x\in A-L$). For consider some proper lower section 
-$L$ of $\omega$. Then it is a set of natural numbers, and hence has an element $n$ such that $n\le x$ for all $x\in L$. Then $n-1$ is the least element of $A-L$, that is, 
-$n-1\ge x$ for all $x\in A-L$. Thus, in fact, 
+that $n\supseteq x$ for all $x\in A-L$). For consider some proper lower section 
+$L$ of $\omega$. Then it is a set of natural numbers, and hence has an element $n$ such that $n\subseteq x$ for all $x\in L$. Then $n-1$ is the least element of $A-L$, that is, 
+$n-1\supseteq x$ for all $x\in A-L$. Thus, in fact, 
 the problem does not hold for this particular linear ordering, meaning it is not true.
 
 Now consider any linear ordering $\le$ for some class $A$. If we were given (in addition to the premises of the problem), that $A$ itself had a least element $a$, the desired 
 result would follow. For then consider any non-empty subclass $C$ of $A$. If it was the entirety of $A$, then it would have a least element (by assumption). So suppose 
 $C\subset A$. Then let $S$ be the class of all elements of $A$ that are less than every element in $C$. If $S$ is empty, then $a\in C$, in which case 
-$a$ is the least element of $C$. Now suppose $S$ is not empty. Of course then $a\in S$. Because $S$ is a proper lower section of 
+$a$ is the least element of $C$. Now suppose $S$ is not empty. Because $S$ is a proper lower section of 
 $A$, it follows that $A-S$ has a least element $e$. But suppose $e\notin C$. Then $e$ would be an element that is $\le$ all elements in $C$ but not equal to any of them, meaning 
 $e$ is less than all elements of $C$; thus, by the definition of 
 $S$, $e\in S$, contrary to the fact that $e\in A-S$. Thus $e\in C$, meaning $e$ is the least element of $C$. Thus the proof is complete.
@@ -100,7 +100,7 @@ element of $A-L$.
 Suppose that $\le$ is a linear ordering of $A$.
 
 (1): On the one hand, suppose that $\le$ is a well ordering of $A$. (a) obviously holds (by $O_5$). As for (b), consider any element $x\in A$ which is not the greatest element 
-in $A$. If the set of all elements of $A$ that are $\le x$ was equal to $A-\{x\}$, then $x$ would be the greatest element of $A$. Thus the set $S$ of all elements of $A$ that are $\ge x$ is non-empty. Because 
+in $A$. If the set of all elements of $A$ that are $\ge x$ was empty, then $x$ would be the greatest element of $A$. Thus the set $S$ of all elements of $A$ that are $\ge x$ is non-empty. Because 
 $\le$ is a well ordering, $S$ must contain a least element $e$. Then obviously $e$ is the successor of $x$. As for (c), consider any proper lower section $L$ of $A$ such that 
 $L$ has no greatest element. Because it is a proper lower section, $A-L$ is non-empty, and hence, because $\le$ is a well ordering, contains a least element. This completes the first part of the 
 proof.
@@ -108,8 +108,8 @@ proof.
 (2): On the other hand, suppose that conditions (a-c) all hold. We must show that $\le$ is a well ordering for $A$. By (a), $A$ has some least element $a$. 
 Now consider any non-empty subclass $C$ of $A$. If $C=A$, then it would have a least 
 element (by assumption). So suppose $C\subset A$. Then let $S$ be the class of all elements of $A$ that are less than every element in $C$. If $S$ is empty, then $a\in A$, 
-in which case $a$ is the least element of $C$. Now suppose $S$ is not empty. Of course then $a\in S$. Clearly $S$ is a proper lower section of $A$. If $S$ had no greatest element, 
-then, by (c), $A-S$ would contain a least element $e$ (and of course $e\in S$). On the other hand, suppose that $S$ did contain a greatest element $b$ (and $b$ cannot be the greatest element of 
+in which case $a$ is the least element of $C$. Now suppose $S$ is not empty. Clearly $S$ is a proper lower section of $A$. If $S$ had no greatest element, 
+then, by (c), $A-S$ would contain a least element $e$ (and of course $e\in C$). On the other hand, suppose that $S$ did contain a greatest element $b$ (and $b$ cannot be the greatest element of 
 $A$). Then, by (b), it has a successor $c$. Of course, $c$ cannot be in $S$, as that would contradict the fact that $b$ was the greatest element of $S$. 
 First, $c$ must be in $C$. For suppose it weren't. Then there is some element $x\in C$ such that $x<c$ (because if this weren't true, then 
 $c$ would be in $S$). Then $b<x<c$, contrary to the fact that $c$ is the successor of $b$. Thus $c\in C$. Second, $c$ is the least element of $C$. For suppose it weren't. Then there would be 
