@@ -2,14 +2,14 @@
 # look for the first a on the tape and enter state C
 # if there are no a's, enter state B
 #
-def f(C,B,a)	# scan left for e (the beginning of the tape)
-	"e"	"L"		f1(C,B,a)
-	else	"L"		f(C,B,a)
+def f(C, B, a)	# scan left for e (the beginning of the tape)
+	"e"	"L"		f1(C, B, a)
+	else	"L"		f(C, B, a)
 
-def f1(C,B,a)	# scan right for a
+def f1(C, B, a)	# scan right for a
 	a	""		C
-	" "	"R"		f2(C,B,a)
-	else	"R"		f1(C,B,a)
+	" "	"R"		f2(C, B, a)
+	else	"R"		f1(C, B, a)
 
 #
 # After scanning a blank:
@@ -19,7 +19,7 @@ def f1(C,B,a)	# scan right for a
 #	If we see anything else, we need to advance to the right and
 #	keep looking, which is what f1(C,B,a) does.
 #
-def f2(C,B,a)
+def f2(C, B, a)
 	a	""		C
 	" "	"R"		B
-	else	"R"		f1(C,B,a)
+	else	"R"		f1(C, B, a)
