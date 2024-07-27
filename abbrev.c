@@ -60,7 +60,7 @@
 // want is the complete table for the m-configurations of the machine.
 // This is obtained by repeated substitution in the skeleton tables.
 //
-// Turing warns (bottom of pate 236) about infinite expansion, but I
+// Turing warns (bottom of page 236) about infinite expansion, but I
 // think if you only expand functions with literal arguments (guaranteed
 // to produce literal results) you should never run into trouble unless
 // you have a recursive definition. (The real problem is that m-functions
@@ -70,9 +70,6 @@
 typedef struct Name Name;
 typedef struct MConfig MConfig;
 typedef struct Config Config;
-//
-// Having two things names Function and FnConfig is stupid.
-//
 typedef struct Function Function;
 typedef	struct Param Param;
 typedef struct FnConfig FnConfig;
