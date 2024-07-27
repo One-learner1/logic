@@ -248,4 +248,66 @@ Thus $g(x)$ is an element of every element of $S$, meaning $g(x)\in\cap S$.
 that for any chain $C$ of elements of $\cap S$, $\cup C\in A$. So consider some chain $C$ of elements of $\cap S$. Thus $C$ is also a chain of elements of every element of 
 $S$. But, because every element of $S$ is closed under chain unions, $\cup C$ is an element of every element of $S$. Thus $\cup C\in\cap S$. 
 
+\section*{Sections 3 and 4}
+
+\subsection*{Notes}
+
+In the proof of Theorem 3.1, there is no guarantee that $L$ is a set (because we only know for sure that $M$ is a class). 
+Now, if we assumed that $M$ was a set, then $L$ certainly would also be a set. 
+But this means that the proof simply is incorrect if we assume $M$ is only a class. This is a major problem with the proof. Luckily, the main theorem proved by it is that
+the AC implies that every set can be well-ordered. Thus that theorem assumes we are dealing with sets, and so lessening the scope of Theorem 3.1 to only sets would still 
+prove the main result.
+
+In Theorem 3.1, here is why $M$ is linearly ordered under inclusion. In fact, every class is partially ordered under inclusion. Thus, by theorem 2.3, $O_4$ is also satisfied, 
+meaning $M$ is linearly ordered under inclusion.
+
+Note that $\emptyset$ can be well ordered under $\emptyset$.
+
+In the discussion of the proof of Theorem 4.4, here is why $a\le b$ iff either $a=b$ or $a$ comes into $A$ before $b$. On the one hand, suppose that $a\le b$. Also suppose $a\ne b$. 
+Then $F(a)\subset F(b)$. If $F(a)$ contained $b$, then $F(a)$ would be a lesser element of $N$ than $F(b)$ which contains $b$, a contradiction. Thus $F(a)$ must not contain $b$. On 
+the other hand, suppose that either $a=b$ or $a$ comes into $A$ before $b$. If $a=b$, obviously $a\le b$. Now suppose $a$ comes into $A$ before $b$. 
+Thus $F(a)$ does not contain $a$. Because $\le$ is a well ordering, either $a\le b$ or $b\le a$. If $a\le b$ did not hold, then we would have 
+$b<a$, in which case $F(b)\subset F(a)$, meaning $F(a)$ did contain $b$, a contradiction. Thus $a\le b$.
+
+\subsection*{Exercise 4.1}
+(a): On the one hand, suppose that $a\le b$. Thus $F(a)\subseteq F(b)$. Now consider some element $x$ of $N$ that contains $b$. It cannot be that 
+$x\subset F(a)$. For if that were true, then $F(a)\subseteq F(b)$ would be contradicted. Thsu $F(a)\subseteq x$, meaning $x$ contains $a$. On the other hand, 
+suppose that every element of $N$ that contains $b$ also contains $a$. Now consider $F(a)$ and $F(b)$. If $F(b)\subset F(a)$, then, because $F(b)$ was assumed 
+to contain $a$, $F(b)$ would be less than $F(a)$, contrary to the fact that $F(a)$ is the least element of $N$ that contains $a$. Thus 
+$F(a)\subseteq F(b)$, meaning $a\le b$.
+
+(b): This problem has a typo. It should say $x\in\cup N$, not $x\in N$: Suppose $x\in F(a)$ for some $x\in\cup N$ and $a\in\cup N$. Either 
+$a\le x$ or $x\le a$. If $a<x$, then $F(a)\subset F(x)$. But it was assumed that $x\in F(a)$; thus $F(a)$ would be less than $F(x)$, a 
+contradiction. Thus $x\le a$.
+
+(c): We first show, for any elements $a$ and $b$ in $\cup N$, if $b$ is the successor of $a$, then $F(b)$ is the successor of $F(a)$. 
+For suppose $b$ is the successor of $a$. Then $a<b$ and $F(a)\subset F(b)$, and for no $x\in\cup N$ is it the case that $a<x<b$. So suppose that 
+for some $x\in\cup N$ $F(a)\subset F(x)\subset F(b)$. Then $a<x<b$, a contradiction. Thus $F(b)$ is the successor of $F(a)$.
+
+
+Suppose $a\in\cup N$, and that $a$ is not the greatest element of $\cup N$. Now consider the successor $b$ of $a$ (and it must have some successor, as 
+it is the least element of the class of all elements greater than $a$, which exists as this is a well ordering). For every $x\in \cup N-F(a)$, either 
+$x\le b$ or $b\le x$. Suppose that $x<b$. Then $F(x)\subset F(b)$. Recall that, by the proof in the previous paragraph, $F(b)$ is the successor of 
+$F(a)$. Now, 
+either $F(x)\subseteq F(a)$ or $F(a)\subseteq F(x)$. If $F(a)\subset F(x)$, this would mean $F(a)\subset F(x)\subset F(b)$, contrary to the fact 
+that $F(b)$ is the successor of $F(a)$. Thus $F(x)\subseteq F(a)$, meaning $x\in F(a)$. But $\cup N-F(a)$ contains no elements of $F(a)$. Thus $x$ 
+is not in $\cup N-F(a)$. Hence for no element $x$ in $\cup N-F(a)$ is it the case that $F(x)\subset F(b)$, meaning $F(b)\subseteq F(x)$ for 
+all all $x\in \cup N-F(a)$, and thus $b$ is the least element of $\cup N-F(a)$.
+
+(d): This problem has a typo: It should say $a\in\cup N$, not $a\in N$. Suppose that $b$ is a successor element of $N$, and the predecessor of $b$ is 
+$m$. We are to show that $b=F(a)$ for some $a\in\cup N$. 
+Note that, because $N$ is slowly well ordered under $\subseteq$, $b$ contains exactly one more element $e$ than $m$. We can prove that 
+$F(e)=b$. For suppose that there was some $y\in N$ that contained $e$ such that $y\subset b$. Now, either 
+$y\subseteq m$ or $m\subseteq y$. But, because $e\notin m$, $m\subset y$. Thus $m\subset y\subset b$, contrary to the fact that 
+$b$ is the successor of $m$. Hence $F(e)=b$. 
+
+\subsection*{Exercise 4.2}
+Suppose that for some set $S$, there is a choice function $f$ for $\mathcal{P}(S)$. We define the choice function $g$ for $S$ as follows: 
+Consider some subset $C$ of $S$. The set $F$ of all elements 
+$y$ such that $y=\{x\}$ for some $x\in C$ is a subset of $\mathcal{P}(S)$. Thus $f(F)\in F$, that is, $f(F)=\{x\}$ for 
+some $x\in C$. Then we take $g(C)$ to be $x$. Thus $g$ is a choice function for $S$.
+
+\subsection*{Exercise 4.3}
+This I could not solve.
+
 \end{document}
