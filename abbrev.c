@@ -60,7 +60,7 @@
 // want is the complete table for the m-configurations of the machine.
 // This is obtained by repeated substitution in the skeleton tables.
 //
-// Turing warns (bottom of pate 236) about infinite expansion, but I
+// Turing warns (bottom of page 236) about infinite expansion, but I
 // think if you only expand functions with literal arguments (guaranteed
 // to produce literal results) you should never run into trouble unless
 // you have a recursive definition. (The real problem is that m-functions
@@ -70,9 +70,6 @@
 typedef struct Name Name;
 typedef struct MConfig MConfig;
 typedef struct Config Config;
-//
-// Having two things names Function and FnConfig is stupid.
-//
 typedef struct Function Function;
 typedef	struct Param Param;
 typedef struct FnConfig FnConfig;
@@ -91,7 +88,7 @@ struct Name{
 	Name *next;
 };
 struct Config{
-	char *symbols;
+	char *symbols;		// might be better if this were a bitmask
 	char *operations;
 	Name *final;
 	Config *next;
@@ -147,14 +144,10 @@ void error(char *msg, ...){
 	va_end(args);
 	fprintf(stderr, " on line %d of %s\n", lineno, infile);
 	//
-	// Then print the line.
-	//
-	for(char *s=line;*s!='\n' && *s!='\0';s++) putc(*s, stderr);
-	putc('\n', stderr);
-	//
-	// Then indicate the position at which the message
+	// Then print the line and indicate the position at which the message
 	// was issued.
 	//
+	fprintf(stderr, "%s\n", line);
 	for(char *s=line;s!=inp && *s!='\n' && *s!='\0';s++)
 		putc(*s=='\t'?'\t':' ', stderr);
 	fprintf(stderr, "^\n");
@@ -211,9 +204,11 @@ Function *newFunction(Name *name, Param *params, FnConfig *configs){
 	f->configs=configs;
 	return f;
 }
-Name *newName(char *name, Name *next){
+Name *newName(char *name, Function *fn, MConfig *config, Name *next){
 	Name *n=emalloc(sizeof(Name));
 	n->name=name;
+	n->fn=fn;
+	n->config=config;
 	n->next=next;
 	return n;
 }
@@ -226,7 +221,7 @@ Name *lookup(char *s){
 	//
 	// Not found, need to create a new name and add it to the namelist
 	//
-	n=newName(strdup(s), 0);
+	n=newName(strdup(s), 0, 0, 0);
 	if(enamelist!=0) enamelist->next=n;
 	else namelist=n;
 	enamelist=n;
@@ -240,24 +235,28 @@ int idchar(int c){
 }
 void skipwhite(void){
 	while(*inp==' ' || *inp=='\t' || *inp=='\n') inp++;
-	//
-	// Comments run from # to end of line
-	//
-	if(*inp=='#') while(*inp!='\0') inp++;
 }
 void skipid(void){
 	while(idchar(*inp)) inp++;
 }
 //
 // Save the token starting at start and ending at inp,
-// squishing out all white space
+// squishing out all white space.
+// Except we need to preserve white space in STRINGs
 //
 void savetoken(char *start){
 	char *tokp=token;
-	for(char *s=start;s!=inp;s++){
-		if(*s!=' ' && *s!='\t' && *s!='\n') *tokp++=*s;
-	}
+	if(*start=='"')
+		for(char *s=start;s!=inp;s++) *tokp++=*s;
+	else
+		for(char *s=start;s!=inp;s++)
+			if(*s!=' ' && *s!='\t' && *s!='\n') *tokp++=*s;
 	*tokp='\0';
+}
+void copyid(char *dst, char *src, char *esrc){
+	int len=esrc-src;
+	memcpy(dst, src, len);
+	dst[len]='\0';
 }
 //
 // get the next (top-level) token from the line.
@@ -272,7 +271,6 @@ void savetoken(char *start){
 // Someone else will be responsible for that.
 //
 //
-// Caller is expected to save inp
 enum{
 	FNDEF, NAME, CALL, STRING, EOL, ERROR
 };
@@ -316,7 +314,6 @@ int gettoken(void){
 			strcpy(token, "\"\"");
 			return STRING;
 		}
-		skipid();
 		skipwhite();
 		if(*inp!='('){
 			savetoken(tokp);
@@ -325,9 +322,10 @@ int gettoken(void){
 		int level=1;
 		inp++;
 		while(level!=0){
-			if(*inp=='\0') return ERROR;
+			skipwhite();
 			if(*inp=='(') level++;
-			if(*inp==')') --level;
+			else if(*inp==')') --level;
+			else if(*inp!=',' && !idchar(*inp)) return ERROR;
 			inp++;
 		}
 		savetoken(tokp);
@@ -344,6 +342,9 @@ int gettoken(void){
 		savetoken(tokp);
 		return STRING;
 	}
+	else if(*inp=='#'){
+		while(*inp!='\0') inp++;
+	}
 	else if(*inp!='\0') return ERROR;
 	//
 	// Don't advance past EOL -- if someone calls again,
@@ -353,9 +354,13 @@ int gettoken(void){
 }
 MConfig *getmconfig(char *token){
 	Name *name=lookup(token);
-	if(name->fn==0 && name->config==0) return newMConfig(name, 0, 0);
-	error("name %s already in use", name->name);
-	return 0;
+	if(name->fn!=0 || name->config!=0){
+		error("name %s already in use", name->name);
+		return 0;
+	}
+	MConfig *m=newMConfig(name, 0, 0);
+	name->config=m;
+	return m;
 }
 //
 // Read a config with the given name and add it to
@@ -392,8 +397,12 @@ Function *getfunction(char *token){
 	char *s=token;
 	while(idchar(*s)) s++;
 	char id[8192];
-	strncpy(id, token, s-token);
+	copyid(id, token, s);
 	name=lookup(id);
+	if(name->fn || name->config){
+		error("Name %s already in use", name->name);
+		return 0;
+	}
 	if(*s!='('){
 		error("Bad function header %s", token);	// should never happen
 		exit(1);
@@ -404,7 +413,7 @@ Function *getfunction(char *token){
 	for(;;){
 		char *t=s;
 		while(idchar(*t)) t++;
-		strncpy(id, s, t-s);
+		copyid(id, s, t);
 		Param *p=newParam(lookup(id), 0, 0);
 		if(eparams) eparams->next=p;
 		else params=p;
@@ -417,7 +426,8 @@ Function *getfunction(char *token){
 		error("Bad function header %s", token);	// should never happen
 		exit(1);
 	}
-	return newFunction(name, params, 0);
+	name->fn=newFunction(name, params, 0);
+	return name->fn;
 }
 FnConfig *getfnconfig(void){
 	Name *symname=0;
@@ -429,7 +439,8 @@ FnConfig *getfnconfig(void){
 	else if(t==STRING)
 		symbols=strdup(token);
 	else{
-		error("config in function def must specify symbols (or a parameter name)");
+		error("config in function def must specify symbols "
+			"(or a parameter name)");
 		return 0;
 	}
 	if(gettoken()!=STRING){
@@ -450,8 +461,7 @@ FnConfig *getfnconfig(void){
 	return newFnConfig(symname, symbols, operations, final, 0);
 }
 //
-// Read a config (possibly with embedded parameter names) and
-// add it to fn
+// Read a skeleton table file.
 //
 void input(char *file){
 	infile=file;
@@ -468,14 +478,13 @@ void input(char *file){
 		inp=line;
 		int t;
 
-		if(line[0]==' ' || line[0]=='\t' || line[0]=='#'){
+		if(line[0]==' ' || line[0]=='\t'){
 			//
 			// Two legal possibilities at this point:
 			//	a blank line, which we should ignore
 			//	another config for an mconfig or a function.
 			skipwhite();
-			if(*inp=='\n' || *inp=='\0')
-				continue;
+			if(*inp=='\0') continue;	// nothing on line
 			if(function){
 				FnConfig *f=getfnconfig();
 				if(efnconfig)
@@ -501,15 +510,19 @@ void input(char *file){
 			default:
 				error("unknown token. Cannot happen!!\n");
 				exit(1);
-			case EOL:
-				break;
+			case EOL: break;	// empty line
 			case FNDEF:
 				mconfig=0;
 				function=getfunction(token);
 				function->configs=getfnconfig();
 				efnconfig=function->configs;
 				break;
-			case CALL:	// Maybe this is an error?
+			case CALL:
+				//
+				// Not sure this is actually an error.
+				//
+				error("not expecting a call here");
+				break;
 			case NAME:
 				function=0;
 				mconfig=getmconfig(token);
@@ -527,6 +540,35 @@ void input(char *file){
 	}
 	fclose(in);
 }
+void show(FILE *f){
+	for(Name *n=namelist;n!=0;n=n->next){
+		if(n->fn!=0){
+			fprintf(f, "def %s", n->name);
+			int sep='(';
+			for(Param *p=n->fn->params;p!=0;p=p->next){
+				fprintf(f, "%c%s", sep, p->name->name);
+				sep=',';
+			}
+			fprintf(f, ")\n");
+			for(FnConfig *fn=n->fn->configs;fn!=0;fn=fn->next){
+				if(fn->symname!=0)
+					fprintf(f, "\t%s", fn->symname->name);
+				else
+					fprintf(f, "\t%s", fn->symbols);
+				fprintf(f, "\t%s", fn->operations);
+				fprintf(f, "\t%s\n", fn->final->name);
+			}
+		}
+		else if(n->config!=0){
+			fprintf(f, "%s\n", n->name);
+			for(Config *c=n->config->config;c!=0;c=c->next){
+				fprintf(f, "\t%s", c->symbols);
+				fprintf(f, "\t%s", c->operations);
+				fprintf(f, "\t%s\n", c->final->name);
+			}
+		}
+	}
+}
 int main(int argc, char *argv[]){
 	if(argc!=2){
 		fprintf(stderr, "Usage: %s machine-file\n", argv[0]);
@@ -534,5 +576,6 @@ int main(int argc, char *argv[]){
 	}
 	input(argv[1]);
 	if(nerror!=0) return 1;
+	show(stdout);
 	return 0;
 }
