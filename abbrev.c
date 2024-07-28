@@ -73,6 +73,20 @@ typedef struct Config Config;
 typedef struct Function Function;
 typedef	struct Param Param;
 typedef struct FnConfig FnConfig;
+typedef struct Unexpanded Unexpanded;
+//
+// Just like malloc, except prints a message and exits on error
+//
+void *emalloc(int n){
+	void *v;
+
+	v=malloc(n);
+	if(v==0){
+		fprintf(stderr, "Can't malloc\n");
+		exit(1);
+	}
+	return v;
+}
 struct Name{
 	char *name;
 	//
@@ -82,22 +96,43 @@ struct Name{
 	// what to do when the machine is in this configuration.
 	//
 	Function *fn;
-	MConfig *config;
-	int expand;		// if the name is a function call that
-				// has yet to be expanded
+	MConfig *config;	// If non-zero, has already been expanded.
 	Name *next;
 };
+Name *newName(char *name, Function *fn, MConfig *config, Name *next){
+	Name *n=emalloc(sizeof(Name));
+	n->name=name;
+	n->fn=fn;
+	n->config=config;
+	n->next=next;
+	return n;
+}
 struct Config{
 	char *symbols;		// might be better if this were a bitmask
 	char *operations;
 	Name *final;
 	Config *next;
 };
+Config *newConfig(char *symbols, char *operations, Name *final, Config *next){
+	Config *c=emalloc(sizeof(Config));
+	c->symbols=symbols;
+	c->operations=operations;
+	c->final=final;
+	c->next=next;
+	return c;
+}
 struct MConfig{
 	Name *name;
 	Config *config;
 	MConfig *next;
 };
+MConfig *newMConfig(Name *name, Config *config, MConfig *next){
+	MConfig *m=emalloc(sizeof(MConfig));
+	m->name=name;
+	m->config=config;
+	m->next=next;
+	return m;
+}
 struct FnConfig{
 	//
 	// Exactly one of symname and symbols should be non-null
@@ -108,26 +143,63 @@ struct FnConfig{
 	Name *final;		// might be a call
 	FnConfig *next;
 };
+FnConfig *newFnConfig(Name *symname, char *symbols, char *operations, Name *final, FnConfig *next){
+	FnConfig *f=emalloc(sizeof(FnConfig));
+	f->symname=symname;
+	f->symbols=symbols;
+	f->operations=operations;
+	f->final=final;
+	f->next=next;
+	return f;
+}
 struct Param{
 	Name *name;
 	char *value;
 	Param *next;
 };
+Param *newParam(Name *name, char *value, Param *next){
+	Param *p=emalloc(sizeof(Param));
+	p->name=name;
+	p->value=value;
+	p->next=next;
+	return p;
+}
 struct Function{
 	Name *name;
 	Param *params;
 	FnConfig *configs;
 };
-MConfig *mconfig;	// the machine's list of  m-configs
-Name *namelist;		// list of all names
-Name *enamelist;	// points to the last name on namelist or 0 if none.
-char line[8192];
-char token[8192];
-Name *def=0;
-char *inp;
-int lineno;
-int nerror;
-char *infile;
+Function *newFunction(Name *name, Param *params, FnConfig *configs){
+	Function *f=emalloc(sizeof(Function));
+	f->name=name;
+	f->params=params;
+	f->configs=configs;
+	return f;
+}
+struct Unexpanded{
+	Name *name;
+	Unexpanded *next;
+};
+Unexpanded *newUnexpanded(Name *name, Unexpanded *next){
+	Unexpanded *u=emalloc(sizeof(Unexpanded));
+	u->name=name;
+	u->next=next;
+	return u;
+}
+MConfig *start=0;		// the state in which the machine starts
+Name *namelist=0;		// list of all names
+Name *enamelist=0;		// last name on namelist, or 0 if none.
+Unexpanded *unexpanded=0;	// list of unexpanded calls
+Unexpanded *eunexpanded=0;	// end of the unexpanded list, or 0 if none.
+//
+// Used by input
+//
+char line[8192];	// the line currently being parsed
+int lineno;		// line number of the current line
+char token[8192];	// token most recently read
+char *inp;		// next character to be scanned on the line
+int nerror;		// total number of error messages
+char *infile;		// name of the input file
 //
 // Print an error message. It might be nice if this accepted
 // printf-like arguments.
@@ -152,65 +224,6 @@ void error(char *msg, ...){
 		putc(*s=='\t'?'\t':' ', stderr);
 	fprintf(stderr, "^\n");
 	nerror++;
-}
-//
-// Just like malloc, except prints a message and exits on error
-//
-void *emalloc(int n){
-	void *v;
-
-	v=malloc(n);
-	if(v==0){
-		fprintf(stderr, "Can't malloc\n");
-		exit(1);
-	}
-	return v;
-}
-MConfig *newMConfig(Name *name, Config *config, MConfig *next){
-	MConfig *m=emalloc(sizeof(MConfig));
-	m->name=name;
-	m->config=config;
-	m->next=next;
-	return m;
-}
-Config *newConfig(char *symbols, char *operations, Name *final, Config *next){
-	Config *c=emalloc(sizeof(Config));
-	c->symbols=symbols;
-	c->operations=operations;
-	c->final=final;
-	c->next=next;
-	return c;
-}
-Param *newParam(Name *name, char *value, Param *next){
-	Param *p=emalloc(sizeof(Param));
-	p->name=name;
-	p->value=value;
-	p->next=next;
-	return p;
-}
-FnConfig *newFnConfig(Name *symname, char *symbols, char *operations, Name *final, FnConfig *next){
-	FnConfig *f=emalloc(sizeof(FnConfig));
-	f->symname=symname;
-	f->symbols=symbols;
-	f->operations=operations;
-	f->final=final;
-	f->next=next;
-	return f;
-}
-Function *newFunction(Name *name, Param *params, FnConfig *configs){
-	Function *f=emalloc(sizeof(Function));
-	f->name=name;
-	f->params=params;
-	f->configs=configs;
-	return f;
-}
-Name *newName(char *name, Function *fn, MConfig *config, Name *next){
-	Name *n=emalloc(sizeof(Name));
-	n->name=name;
-	n->fn=fn;
-	n->config=config;
-	n->next=next;
-	return n;
 }
 //
 // Find the name in the symbol table
@@ -362,10 +375,6 @@ MConfig *getmconfig(char *token){
 	name->config=m;
 	return m;
 }
-//
-// Read a config with the given name and add it to
-// the machines MConfig list
-//
 Config *getconfig(void){
 	int t=gettoken();
 	if(t==EOL) return 0;
@@ -384,10 +393,17 @@ Config *getconfig(void){
 		error("mconfig must specify final config\n");
 		return 0;
 	}
-	Name *final=lookup(token);
 	if(gettoken()!=EOL)
 		error("junk past the end of a config\n");
-	return newConfig(symbols, operations, final, 0);
+	Name *final=lookup(token);
+	Config *c=newConfig(symbols, operations, final, 0);
+	if(t==CALL){
+		Unexpanded *u=newUnexpanded(final, 0);
+		if(eunexpanded==0) unexpanded=u;
+		else eunexpanded->next=u;
+		eunexpanded=u;
+	}
+	return c;
 }
 //
 // Crack a Function header
@@ -528,6 +544,7 @@ void input(char *file){
 				mconfig=getmconfig(token);
 				mconfig->config=getconfig();
 				econfig=mconfig->config;
+				if(start==0) start=mconfig;
 				break;
 			case STRING:
 				error("Not expecting a string here");
@@ -539,6 +556,35 @@ void input(char *file){
 		}
 	}
 	fclose(in);
+}
+void expand(Name *name){
+	if(name->config!=0) return;	// already expanded.
+	char buf[8192];
+	char *fnamep=buf;
+	char *callp=name->name;
+	while(idchar(*callp)) *fnamep++ = *callp++;
+	*fnamep='\0';
+	Name *fname=lookup(buf);
+	if(fname->fn==0){
+		error("Undefined function %s\n", buf);
+		return;
+	}
+	//
+	// crack arguments starting at callp
+	//
+
+	//
+	// do the expansion
+	//
+}
+void expandall(void){
+	while(unexpanded!=0){
+		expand(unexpanded->name);
+		Unexpanded *next=unexpanded->next;
+		free(unexpanded);
+		unexpanded=next;
+	}
+	eunexpanded=0;
 }
 void show(FILE *f){
 	for(Name *n=namelist;n!=0;n=n->next){
@@ -576,6 +622,7 @@ int main(int argc, char *argv[]){
 	}
 	input(argv[1]);
 	if(nerror!=0) return 1;
+	expandall();
 	show(stdout);
 	return 0;
 }
