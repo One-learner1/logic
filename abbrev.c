@@ -558,6 +558,7 @@ void input(char *file){
 	fclose(in);
 }
 void expand(Name *name){
+	if(name->config!=0) return;	// already expanded.
 	char buf[8192];
 	char *fnamep=buf;
 	char *callp=name->name;
