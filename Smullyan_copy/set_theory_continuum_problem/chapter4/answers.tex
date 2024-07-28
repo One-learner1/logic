@@ -313,6 +313,12 @@ a limit element of $N$, it must be a successor element. Thus $x$ is in the range
 if $F(a)=F(b)$, then $a=b$. But this was shown already in the proof of Theorem 4.4. Thus we have shown that $F$ is a 1-1 function from $\cup N$ 
 onto the class $M$.
 
+It is easy to see that if $a\in\cup N$ and $b\in\cup N$ and $b$ is the successor of $a$, then, for any $x\in N$, if 
+$F(a)\subset x\subset F(b)$, then $x$ is a limit element. For, $x$ obviously cannot be the least element (as 
+it is assumed to be $\emptyset$). Also, if $x$ were a successor element, then it would be $F(c)$ for some 
+$c$. Thus $F(a)\subset F(c)\subset F(b)$, in which case $a<c<b$, contradicting the fact that $b$ is the successor of 
+$a$. Thus $x$ is a limit element.
+
 \subsection*{Exercise 4.2}
 Suppose that for some set $S$, there is a choice function $f$ for $\mathcal{P}(S)$. We define the choice function $g$ for $S$ as follows: 
 Consider some subset $C$ of $S$. The set $F$ of all elements 
