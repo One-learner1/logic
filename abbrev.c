@@ -4,6 +4,13 @@
 #include <string.h>
 #include <stdarg.h>
 //
+// How many steps to run the machine,
+// and how much space to allocate for the tape.
+// Both of these should be command line parameters.
+//
+#define	NSTEP	1000
+#define	NTAPE	1000
+//
 // An ordinary tuple consists of
 //	config	the configuration the machine is in, currently
 //	symbols	a string of symbols it might see at a location on the tape
@@ -869,6 +876,98 @@ void show(FILE *f){
 #endif
 	}
 }
+void execute(void){
+	char tape[NTAPE];
+	memset(tape, ' ', sizeof(tape));
+	Name *state=start;
+	int loc=0;
+	int hwm=0;
+	//
+	// print the initial tape, loc and state
+	//
+	printf("%.*s\n", hwm, tape);
+	for(int i=0;i!=loc;i++) putchar(' ');
+	printf("^%s\n", state->name);
+	for(int step=0;step!=NSTEP;step++){
+		Config *config;
+		//
+		// Look for a config whose symbols match tape[loc]
+		//
+		for(config=state->config->config;config!=0;config=config->next){
+			if(config->symbols[0]!='"'){
+				error("symbols must be a quoted string:"
+					" state %s, symbols %s",
+					state->name,
+					config->symbols);
+				return;
+			}
+			if(config->symbols[1]=='"') goto FoundSymbol;
+			for(char *s=config->symbols+1;*s!='"';s++){
+				if(*s=='\0'){
+					error("symbols doesn't end with \":"
+						" state %s, symbols %s",
+						state->name,
+						config->symbols);
+					return;
+				}
+				if(*s=='\\') s++;
+				if(*s==tape[loc]) goto FoundSymbol;
+			}
+		}
+		error("Config for symbol %c not found in state %s",
+			tape[loc], state->name);
+		return;
+	FoundSymbol:
+		//
+		// Execute the operations, enter the new state, print the tape.
+		// Right now this ignores operations it doesn't understand.
+		// Someone should check them. But who?
+		//
+		for(char *o=config->operations;*o!='\0';o++) switch(*o){
+		default:	break;
+		case 'P':
+			o++;
+			if(*o=='\0'){
+				error("malformed operations %s in state %s",
+					config->operations, state->name);
+				return;
+			}
+			tape[loc]=*o;
+			break;
+		case 'L':
+			if(loc==0){
+				error("Moved left from the left end of"
+					" the tape in state %s operations %s",
+					state->name, config->operations);
+				return;
+			}
+			--loc;
+			break;
+		case 'R':
+			if(loc==NTAPE-1){
+				error("Fell of the right end of the tape"
+					" in state %s operations %s",
+					state->name, config->operations);
+				return;
+			}
+			loc++;
+			if(loc>hwm) hwm=loc;
+			break;
+		case 'E':
+			tape[loc]=' ';
+			break;
+		case 'H':	// Halt. Not one of Turing's actions.
+			return;
+		}
+		state=config->final;
+		//
+		// Print the tape and indicate the loc and the new state
+		//
+		printf("%.*s\n", hwm, tape);
+		for(int i=0;i!=loc;i++) putchar(' ');
+		printf("^%s\n", state->name);
+	}
+}
 int main(int argc, char *argv[]){
 	if(argc!=2){
 		fprintf(stderr, "Usage: %s machine-file\n", argv[0]);
@@ -878,5 +977,7 @@ int main(int argc, char *argv[]){
 	if(nerror!=0) return 1;
 	expandall();
 	show(stdout);
+	printf("=======================\n");
+	execute();
 	return 0;
 }
