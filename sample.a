@@ -23,3 +23,7 @@ def f2(C, B, a)
 	a	""		C
 	" "	"R"		B
 	else	"R"		f1(C, B, a)
+
+start	""	"Pe,R,Pe,R"	find
+find	""	""		f(found, find, "a")
+found	""	""		found
