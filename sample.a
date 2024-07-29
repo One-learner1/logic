@@ -24,6 +24,6 @@ def f2(C, B, a)
 	" "	"R"		B
 	else	"R"		f1(C, B, a)
 
-start	""	"Pe,R,Pe,R"	find
-find	""	""		f(found, find, "a")
-found	""	""		found
+start	""	"Pe,R,Pe,R,R,Pa,R"	f(found, notfound, "a")
+found	""	"H"		found
+notfound	""	"H"	notfound
