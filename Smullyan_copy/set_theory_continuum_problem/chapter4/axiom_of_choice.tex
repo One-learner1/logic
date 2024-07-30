@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{AC Notes}
+\begin{document}
+\date{}
+\maketitle
+
+The form of the axiom of choice I am using here is: Given any non-empty set $S$, there exists a choice function for $S$. The definition of a choice 
+function is that: A function $f$ is a choice function of $S$ is $f$ is from $\mathcal{P}(S)-\emptyset$ onto $S$. Now, the axiom of choice is not necessary 
+to establish the existence of choice functions for non-empty finite sets. For consider some finite set $S$. For any non-empty subset 
+$F$ of $S$, by definition, $\exists x(x\in F)$ holds. Also, $\mathcal{P}(S)$ is finite, say it contains $n$ elements (and these elements 
+can be arranged in some order $S_1,...,S_n$). Then the formula:
+\[ \textrm{(1) }\exists x_1...\exists x_n(x_1\in S_1\wedge ...\wedge x_n\in S_n) \] holds. By the separation principle,
+\[ \textrm{(2) }(\forall A_1)...(\forall A_m)(\exists B)(\forall x)[x\in B\equiv\phi(A_1,...,A_m,x)] \] holds for every $m$.  
+Now, (1) and (2) together imply that 
+\[ \textrm{(3) }\exists x_1...\exists x_n\exists B\forall x[x\in B\equiv \phi(x_1,...,x_n,S_1,...,S_n,x)] \]
+where
+\[ \phi(x_1,...,x_n,S_1,...,S_n,x) \] is
+\[ x=\langle S_1,x_1\rangle\vee ... x=\langle S_n,x_n\rangle \]
+Clearly then (3) proves the existence of a choice function for $S$.
+
+The reasoning used in the above cannot be extended to infinite sets, simply because first order logic does not allow formulas to include 
+infinitely many variables. Would I be correct in saying that, if we were working in infinitary logic instead of first order logic, the 
+existence of choice functions for infinite sets would also follow (and thus the axiom of choice would follow)?
+
+It should be noted that the existence of a choice function for a set $S$ does not mean that we have contstructed a specific choice 
+function. Thus the above argument is non-constructive. What this means is that, in saying: every finite set $S$ must have a choice function $f$,
+we know nothing more about $f$ other than $f(x)\in x$ for every $x\subseteq S$.

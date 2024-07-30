@@ -13,6 +13,7 @@
 \usepackage{comment}
 \usepackage{placeins}
 \usepackage{geometry}
+\usepackage{hyperref}
 \usepackage{tikz}
 \newcommand*{\oldneg}{\mathord{\sim}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -30,6 +31,8 @@
 \date{}
 \maketitle
 
+Note that online corrections for the book can be found at 
+\url{https://id144254.securedata.net/melvinfitting/errata/book_errors/RevisedSetBookErrors/RevisedSetCorrections.pdf}
 \section*{Section 1}
 
 \subsection*{Notes}
@@ -81,6 +84,8 @@ that $n\supseteq x$ for all $x\in A-L$). For consider some proper lower section
 $L$ of $\omega$. Then it is a set of natural numbers, and hence has an element $n$ such that $n\subseteq x$ for all $x\in L$. Then $n-1$ is the least element of $A-L$, that is, 
 $n-1\supseteq x$ for all $x\in A-L$. Thus, in fact, 
 the problem does not hold for this particular linear ordering, meaning it is not true.
+
+My doubts were confirmed by looking at the online corrections to the book: This problems was not correct.
 
 Now consider any linear ordering $\le$ for some class $A$. If we were given (in addition to the premises of the problem), that $A$ itself had a least element $a$, the desired 
 result would follow. For then consider any non-empty subclass $C$ of $A$. If it was the entirety of $A$, then it would have a least element (by assumption). So suppose 
@@ -326,7 +331,7 @@ $y$ such that $y=\{x\}$ for some $x\in C$ is a subset of $\mathcal{P}(S)$. Thus 
 some $x\in C$. Then we take $g(C)$ to be $x$. Thus $g$ is a choice function for $S$.
 
 \subsection*{Exercise 4.3}
-This I could not solve. If we were given the added condition that every element of $S$ had a choice function, then I am able to 
+This problem is incorrect (per the online corrections). If we were given the added condition that every element of $S$ had a choice function, then we are able to 
 prove this. For suppose that $S$ has a choice function $f$ and every element $x$ of $S$ has a choice function $f_x$. We can 
 define a choice function $g$ for $\cup S$ as follows: Consider any 
 subset $C$ of $\cup S$. Now consider the set $A$ of all elements $x$ of $S$ for which at least one element of $C$ is an element of 
@@ -335,4 +340,53 @@ $f(A)$ that are elements of $C$. Because $G$ is a subset of $f(A)$, and $f(A)$ w
 $f_{f(A)}$, we can choose an element $y=f_{f(A)}(G)$ such that $y\in G$, that is, $y\in C$. Thus we take 
 $g(C)$ to be $y$. 
 
+\section*{Section 5}
+
+\subsection*{Notes}
+Here is why in the proof of Proposition 5.10, $\cup C$ not being a maximal element of $S$ would imply that $C$ would be a proper subset of $C\cup\{x\}$ for 
+any $x$ for which $\cup C\subset x$. This is to the effect of saying that $x\notin C$. Now, suppose $x\in C$. Then $x\subseteq\cup C$, contrary 
+to the assumption that $\cup C\subset x$. Thus $\cup C$ must be a maximal element of $S$.
+
+\subsection*{Exercise 5.1}
+Assume Hausdorff's maximal principle. Thus, for every non-empty set $A$, the set $S$ of all chains of elements of $A$ is of type $M$. We are to prove the 
+axiom of choice. Given a non-empty set $S$, let $\Sigma$ be the set of all choice functions of all non-empty subsets of $S$. It is a set because it is a subset of 
+$\mathcal{P}(S)\times S$. Clearly $\Sigma$ is non-empty (as all finite subsets of $S$ must have a choice function). Next, we can show that $\Sigma$ is closed 
+
+I could not see how to prove the result with the given definition of $\Sigma$ (in particular, I could not show that it was closed under chain unions). However, 
+I found a proof using a slightly different definition of $\Sigma$. First, define a \textit{semi-choice function} for a set $S$ to be a function 
+$f$ such that $f(x)\in x$ for all $x$ in some subset of $\mathcal{P}(S)$. That is, a semi-choice function is a function from a subset of $\mathcal{P}(S)$ into 
+$S$. Thus a choice function is also a semi-choice function. Now we prove 
+the theorem:
+
+Assume Hausdorff's maximal principle. Now consider any non-empty set $S$. Let $\Sigma$ be the set of all semi-choice functions for all subsets of $S$ (it 
+is non-empty, as, for example, all finite subsets of $S$ have choice functions). 
+$\Sigma$ is a set, as it is a subset of $\mathcal{P}(\mathcal{P}(S)\times S)$. Next we show that $\Sigma$ is closed under chain unions. So 
+consider some chain $C$ of elements of $\Sigma$. Now consider $\cup C$. Each element of $\cup C$ is of the form 
+$\langle x,y\rangle $ where $x$ is a subset of $S$ and $y\in S$. Then consider the set $F$ of all elements $x$ such that 
+$x\in y$ for at least one $y$ such that $\langle y,z\rangle\in\cup C$ for at least one $z$. Obviously, $F\subseteq S$. We show that 
+$\cup C$ is a semi-choice function for $F$, which is to say, if $x$ is in the domain of $\cup C$, then $x$ is a subset of $F$, and if 
+$y$ is in the range of $\cup C$, then $y\in F$ (and that, if 
+$\cup C(x)\ne\cup C(y)$, then $x\ne y$). 
+For suppose $x$ is in the domain of $\cup C$. Then obviously $x$ is a subset of elements of $F$. Now suppose $y$ is in the range of 
+$\cup C$. Then, for some $x\subseteq F$, $\langle x,y\rangle\in\cup C$ such that $y\in x$. Thus $y\in F$. Lastly, 
+suppose $\cup C(x)\ne\cup C(y)$. We need to show that $x\ne y$. For some $n\in C$, $\langle x,\cup C(x)\rangle\in n$, and for some
+$m\in C$, $\langle y,\cup C(y)\rangle\in m$. Becuase $C$ is a chain, $m$ and $n$ are comparable. Without loss of generality, 
+suppose $m\subseteq n$. Thus $y$ is in the domain of $n$ and $n(y)=m(y)=\cup C(y)$. Also 
+$n(x)=\cup C(x)\ne\cup C(y)$. Then, because $n$ is a function, it follows that $x\ne y$. Thus, we have shown that 
+$\cup C$ is a semi-choice function for some subset of $S$, meaning $\cup C\in\Sigma$. This proves that $\Sigma$ is closed under chain 
+unions.
+
+Having shown the above, recall that Hausdorff's principle is equivalent to Kuratowski's maximal principle (which is that 
+every set closed under chain unions is of type $M$). Thus, because we assumed Hausdorff's principle, and we have shown that 
+$\Sigma$ is closed under chain unions, it follows that $\Sigma$ is of type $M$, that is, $\Sigma$ has some maximal element 
+$f$. We can show that $f$ is a choice function for $S$. First, by definition of $\Sigma$, $f$ is a semi-choice function for
+some subset $A$ of $S$. We show that, for whatever subset $A$ of $S$ that $f$ is a semi-choice function for, 
+$f$ is in fact a choice function for $A$. For suppose it weren't. Then there would be some non-empty subset $x$ of 
+$A$ for which $f$ was not defined. Then there exists some $a\in x$, and we let $g$ be the semi-choice function of $A$ 
+with all of the same ordered pairs as $f$, as well as the ordered pair $\langle x,a\rangle$. 
+Then $f$ is a subset of $g$, contrary to the fact that $f$ is a maximal element of $\Sigma$. Thus 
+$f$ must be a choice function for $A$. Now, clearly $f$ is a semi-choice function for $S$ (as all semi-choice functions of 
+subsets of $S$ are also semi-choice functions for $S$ itself). Thus, we have shown that $f$ is a choice function for $S$, 
+therefore completing the proof.
+ 
 \end{document}
