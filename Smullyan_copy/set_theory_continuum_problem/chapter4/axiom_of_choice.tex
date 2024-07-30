@@ -31,7 +31,7 @@
 \maketitle
 
 The form of the axiom of choice I am using here is: Given any non-empty set $S$, there exists a choice function for $S$. The definition of a choice 
-function is that: A function $f$ is a choice function of $S$ is $f$ is from $\mathcal{P}(S)-\emptyset$ onto $S$. Now, the axiom of choice is not necessary 
+function is that: A function $f$ is a choice function of $S$ if $f$ is from $\mathcal{P}(S)-\emptyset$ into $S$. Now, the axiom of choice is not necessary 
 to establish the existence of choice functions for non-empty finite sets. For consider some finite set $S$. For any non-empty subset 
 $F$ of $S$, by definition, $\exists x(x\in F)$ holds. Also, $\mathcal{P}(S)$ is finite, say it contains $n$ elements (and these elements 
 can be arranged in some order $S_1,...,S_n$). Then the formula:
@@ -41,7 +41,7 @@ Now, (1) and (2) together imply that
 \[ \textrm{(3) }\exists x_1...\exists x_n\exists B\forall x[x\in B\equiv \phi(x_1,...,x_n,S_1,...,S_n,x)] \]
 where
 \[ \phi(x_1,...,x_n,S_1,...,S_n,x) \] is
-\[ x=\langle S_1,x_1\rangle\vee ... x=\langle S_n,x_n\rangle \]
+\[ x=\langle S_1,x_1\rangle\vee ...\vee x=\langle S_n,x_n\rangle \]
 Clearly then (3) proves the existence of a choice function for $S$.
 
 The reasoning used in the above cannot be extended to infinite sets, simply because first order logic does not allow formulas to include 
@@ -51,3 +51,5 @@ existence of choice functions for infinite sets would also follow (and thus the 
 It should be noted that the existence of a choice function for a set $S$ does not mean that we have contstructed a specific choice 
 function. Thus the above argument is non-constructive. What this means is that, in saying: every finite set $S$ must have a choice function $f$,
 we know nothing more about $f$ other than $f(x)\in x$ for every $x\subseteq S$.
+
+\end{document}
