@@ -384,5 +384,37 @@ Then $f$ is a subset of $g$, contrary to the fact that $f$ is a maximal element 
 $f$ must be a choice function for $A$. Now, clearly $f$ is a semi-choice function for $S$ (as all semi-choice functions of 
 subsets of $S$ are also semi-choice functions for $S$ itself). Thus, we have shown that $f$ is a choice function for $S$, 
 therefore completing the proof.
- 
+
+\section*{Section 6}
+
+\subsection*{Notes}
+The proof of Theorem 6.2 as given in the book is not correct, though it can be easily fixed. As a prerequisite to using Theorem 2.10 (as done 
+in the proof), it needs to be established that $S$ is closed under $g$. But this is not shown in the proof. In fact, I am not sure that it can be 
+shown using the current definition of $E(x)$. However, this can easily be corrected, by giving $E(x)$ the following definition: 
+For any element $x$ of $S$, let $E(x)$ be the set of all elements $a\in A$ such that $x\cup\{a\}$ is an immediate extension of $S$, 
+and such that $x\cup\{a\}\in S$. Then the rest of the proof that $S$ is closed under $g$ is as follows: 
+Define $g(x)$ the same way as in the book. For any $x\in S$, we 
+can show that $g(x)\in S$. For, either $g(x)=x$ (if $x$ has no immediate extension in $S$), or 
+$g(x)=x\cup\{C(E(x))\}$ (if $x$ has an immediate extension in $S$). In the first case, obviously $g(x)\in S$. In the second case, 
+we know that $g(x)=x\cup\{a\}$ for some $a\in E(x)$. But, by definition of $E(x)$, $x\cup\{a\}\in S$ for all $a\in E(x)$. Thus $g(x)\in S$, 
+therefore showing that $S$ is closed under $g$.
+
+\subsection*{Exercise 6.1}
+First, note that $C$ is a chain of elements of $S$. $C$ is a set because it is just a subset of $S$. Now, suppose that $\cup C$ was not a 
+maximal element of $S$, that is, there was some $x\in S$ such that $\cup C\subset x$. Thus there must be some element $a$ in 
+$x$ that is not in $\cup C$. But $a\in D$, meaning $a=d_n$ for some $n$. If $b_{n+1}=b_n\cup\{d_n\}$, then $b_n\cup\{d_n\}\in C$, and 
+thus $d_n\in\cup C$, a contradiction. Thus $b_{n+1}\ne b_n\cup\{d_n\}$, meaning $b_n\cup\{d_n\}$ is not an element of 
+$S$. Now, because $b_n\in C$, and $\cup C\subset x$, $b_n\subset x$. Thus $b_n\cup\{d_n\}\subseteq x$, meaning, because 
+$S$ is swelled (because this is implied by $S$ being of finite character), $b_n\cup\{d_n\}\in S$. 
+Thus, in fact, $b_{n+1}=b_n\cup\{d_n\}$, a contradiction. Hence there can be no 
+$x$ such that $\cup C\subset x$, meaning $\cup C$ is a maximal element of $S$. This proof, however, does not show that $S$ is 
+of type $M$: it only shows that it has a maximal element. In order to complete the proof, a slight alteration is required (as done in the next paragraph).
+
+For any element $x\in S$, define $C(x)$ as $C$ was defined in the book: $x_0=x$. Then, assuming $x_n$ has been defined, we take 
+$x_{n+1}$ to be $x_n\cup\{d_n\}$, providing $x_n\cup\{d_n\}$ is an element of $S$; otherwise we take $x_{n+1}=x_n$. Then 
+we let $C(x)$ be the set $\{x_0,x_1,...,x_n,x_{n+1},...\}$. Then $C(x)$ is a chain, and thus $\cup C(x)\in S$ (because $S$ being of 
+finite character implies that it is closed under chain unions). Then, using identical reasoning as in the preceeding paragraph, we 
+can show that $\cup C(x)$ is a maximal element of $S$. Obviously $x\subseteq\cup C(x)$, meaning, for every element $x$ of $S$, 
+$x$ is a subset of a maximal of $S$, and thus $S$ is of type $M$. 
+
 \end{document}
