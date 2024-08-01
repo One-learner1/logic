@@ -417,4 +417,54 @@ finite character implies that it is closed under chain unions). Then, using iden
 can show that $\cup C(x)$ is a maximal element of $S$. Obviously $x\subseteq\cup C(x)$, meaning, for every element $x$ of $S$, 
 $x$ is a subset of a maximal of $S$, and thus $S$ is of type $M$. 
 
+\section*{Section 7}
+
+\subsection*{Notes}
+When the book reads: \textquote{Now, this definition of $g$-set involves quanitfying over all $classes$, hence it does not follow 
+from the separation principle,} a thing to note more generally about the separation principle arises. Now, in the definition of the principle, 
+it is in fact never defined what predicates the first-order formula could include! If it could include any predicates at all, it would in 
+fact follow that there was the class $C$ of all $g$-sets. For it would just be defined by the condition $x\in C\equiv Px$ where $P$ is the 
+property that $x$ is a $g$-set. So, I would interpret the statement that we cannot quanitfy over classes as meaning, the formula 
+cannot included quanitifiers over the classes, and that the predicates in the formula cannot quantify over classses (that is, 
+the predicate is not equivalent to a formula that quantifies over the classes).
+
+Note that Definition 7.1 is not correct. It should be: For any sets $y$ and $x$, we will say that $y$ is closed (under $g$) relative 
+to $x$ if for any $z\in y\cap\mathcal{P}(x)$ such that $g(z)\subseteq x$, then $g(z)\in y$.
+
+Note that, in all of Section 7, $g$ is assumed to be function whose domain includes all sets.
+
+Here is why, for any set $x$, $M_x$ is $x$-special (and hence closed under chain unions). 
+
+(1) Obviously $\emptyset\in M_x$.\newline
+
+(2) Now we show that $M_x$ is closed relative to $x$. For suppose $z\in M_x\cap\mathcal{P}(x)$ and $g(z)\subseteq x$. Thus, for every 
+$x$-special subset $v$ of $\mathcal{P}(x)$, $z\in v$. Thus, because $v$ is $x$-special, and $z\in v\cap\mathcal{P}(x)$, 
+$g(z)\in v$. Thus, for every $x$-special subset $v$ of $\mathcal{P}(x)$, $g(z)\in v$, meaning $g(z)\in M_x$.\newline
+
+(3) Lastly, we show that $M_x$ is closed under chain unions. For consider some chain $C$ of elements of $M_x$. Thus, for 
+every $x$-special subset $v$ of $\mathcal{P}(x)$, $C\subseteq v$. Thus $C$ is a chain of elements of $v$. But, because 
+$v$ is closed under chain unions, $\cup C\in v$. Hence, for every $x$-special subset $v$ of $\mathcal{P}(x)$, 
+$\cup C\in v$, meaning $\cup C\in M_x$. Thus $M_x$ is $x$-special. 
+
+In the proof of Proposition 7.5, it should specify that $\{\emptyset\}$ is the only $\emptyset$ special subset of 
+$\{\emptyset\}$. 
+
+Here is an explanation for why showing that $M$ is minimally inductive proves that it is the class of all $g$-sets.
+Now, it is obvious that, for any minimally superinductive class $A$ under $g$, all elements of $A$ are elements of 
+all superinductive classes under $g$ (this can be proven using superinduction). Also, any two minimally superinductive 
+classes are the same (again, this can be proven using superinduction). Thus, if we show that $M$ is minimally superinductive, 
+we have shown that all of its elements are elements of all superinductive classes. And obviously, if $x$ is a $g$-set, 
+then $x$ is an element of all minimally inductive classes under $g$. Thus, for a minimally inductive class $C$ under $g$, 
+$x\in C$ iff $x$ is a $g$-set, meaning $C$ would be the class of all $g$-sets, meaning, if we show that $M$ is minimally 
+superinductive, then it follows that it is the class of all $g$-sets.
+
+For reference, here is why the argument in in Lemma 7.6: \textquote{Since $z\in M_y$ and 
+$g(z)\subseteq y$, then $g(z)\in M_y$,} holds (this argument is used in many other places). As shown 
+above, $M_y$ is $y$-special. Also, $M_y\cap\mathcal{P}(y)=M_y$ (because all elements of $M_y$ are by definition 
+elements of $\mathcal{P}(y))$. Thus we have $z\in M_y\cap\mathcal{P}(y)$ and 
+$g(z)\subseteq y$, meaning, because $M_y$ is $y$-special, $g(z)\in M_y$.
+
+Note that, in Proposition 7.10, $x\cup g(x)=g(x)$, as $x\subseteq g(x)$ (because $g$ is assumed to be progressing). So, the proof 
+can be somewhat simplified with this in mind.
+
 \end{document}
