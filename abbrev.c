@@ -6,7 +6,8 @@
 //
 // How many steps to run the machine,
 // and how much space to allocate for the tape.
-// Both of these should be command line parameters.
+// NSTEP should be command a line parameter.
+// The tape should grow dynamically, which would obviate NTAPE.
 //
 #define	NSTEP	1000
 #define	NTAPE	1000
@@ -68,11 +69,30 @@
 // This is obtained by repeated substitution in the skeleton tables.
 //
 // Turing warns (bottom of page 236) about infinite expansion, but I
-// think if you only expand functions with literal arguments (guaranteed
+// think if you only solve6n1(); functions with literal arguments (guaranteed
 // to produce literal results) you should never run into trouble unless
 // you have a recursive definition. (The real problem is that m-functions
 // have no facility for conditional evaluation, and thus no way to stop
 // a runaway recursion.)
+//
+// Note that Turing uses phrases like "not e", "None", etc. to describe
+// sets of symbols. We probably don't want to go that far in emulating
+// Turing's notation, though it occasionally requires some rewriting
+// of his definitions. (For example, his definition of f1 on page 236
+// whose symbols are "a", "not a" and "None", have to be reordered
+// to be "a", " " and "else" because we have no way of knowing which
+// symbols are included in "not a".
+//
+// We use the ascii space character in a cell to
+// indicate Turing's blank (initially) or erased cells.
+//
+// It might be better to do away with all the quotation marks (").
+// Then this notation would look more like Turing's. 
+//
+// Turing overloads functions on their parameter count.
+// To accomodate this we need to have a list of functions on each name,
+// and an indicator of the parameter count. Then at each expansion,
+// we need to pick the variant with the appropriate parameter count.
 //
 typedef struct Name Name;
 typedef struct MConfig MConfig;
@@ -102,14 +122,16 @@ struct Name{
 	// config is the first of a list of MConfigs describing
 	// what to do when the machine is in this configuration.
 	//
-	Function *fn;
+	Function *fns;
+	Function *efns;
 	MConfig *config;	// If non-zero, has already been expanded.
 	Name *next;
 };
-Name *newName(char *name, Function *fn, MConfig *config, Name *next){
+Name *newName(char *name, Function *fns, Function *efns, MConfig *config, Name *next){
 	Name *n=emalloc(sizeof(Name));
 	n->name=name;
-	n->fn=fn;
+	n->fns=fns;
+	n->efns=efns;
 	n->config=config;
 	n->next=next;
 	return n;
@@ -173,14 +195,18 @@ Param *newParam(Name *name, char *value, Param *next){
 }
 struct Function{
 	Name *name;
+	int nparams;
 	Param *params;
 	FnConfig *configs;
+	Function *next;
 };
-Function *newFunction(Name *name, Param *params, FnConfig *configs){
+Function *newFunction(Name *name, int nparams, Param *params, FnConfig *configs, Function *next){
 	Function *f=emalloc(sizeof(Function));
 	f->name=name;
+	f->nparams=nparams;
 	f->params=params;
 	f->configs=configs;
+	f->next=next;
 	return f;
 }
 struct Unexpanded{
@@ -207,6 +233,7 @@ char token[8192];	// token most recently read
 char *inp;		// next character to be scanned on the line
 int nerror;		// total number of error messages
 char *infile;		// name of the input file
+int parsing;		// true during input
 //
 // Print an error message. Use it like printf.
 // Msg should not have any newlines!
@@ -221,15 +248,26 @@ void error(char *msg, ...){
 	va_start(args, msg);
 	vfprintf(stderr, msg, args);
 	va_end(args);
-	fprintf(stderr, " on line %d of %s\n", lineno, infile);
 	//
-	// Then print the line and indicate the position at which the message
-	// was issued.
+	// If we're not parsing, we've lost file/line information
+	// and should suppress printing them. We could store
+	// line/file information with functions & m-configs
+	// to allow non-parsing messages to suggest input locations.
 	//
-	fprintf(stderr, "%s\n", line);
-	for(char *s=line;s!=inp && *s!='\n' && *s!='\0';s++)
-		putc(*s=='\t'?'\t':' ', stderr);
-	fprintf(stderr, "^\n");
+	if(parsing){
+		fprintf(stderr, " on line %d of %s\n", lineno, infile);
+		//
+		// Then print the line and indicate the position at
+		// which the message
+		// was issued.
+		//
+		fprintf(stderr, "%s\n", line);
+		for(char *s=line;s!=inp && *s!='\n' && *s!='\0';s++)
+			putc(*s=='\t'?'\t':' ', stderr);
+		fprintf(stderr, "^\n");
+	}
+	else
+		printf("\n");
 	nerror++;
 }
 //
@@ -241,7 +279,7 @@ Name *lookup(char *s){
 	//
 	// Not found, need to create a new name and add it to the namelist
 	//
-	n=newName(strdup(s), 0, 0, 0);
+	n=newName(strdup(s), 0, 0, 0, 0);
 	if(enamelist!=0) enamelist->next=n;
 	else namelist=n;
 	enamelist=n;
@@ -255,6 +293,7 @@ int idchar(int c){
 }
 void skipwhite(void){
 	while(*inp==' ' || *inp=='\t' || *inp=='\n') inp++;
+	if(*inp=='#') while(*inp!='\0') inp++;
 }
 void skipid(void){
 	while(idchar(*inp)) inp++;
@@ -281,8 +320,12 @@ void skipstring(void){
 //
 void savetoken(char *start){
 	char *tokp=token;
-	if(*start=='"')
-		for(char *s=start;s!=inp;s++) *tokp++=*s;
+	if(*start=='"'){
+		for(char *s=start+1;s!=inp-1;s++){
+			if(*s=='\\') s++;
+			*tokp++=*s;
+		}
+	}
 	else
 		for(char *s=start;s!=inp;s++)
 			if(*s!=' ' && *s!='\t' && *s!='\n') *tokp++=*s;
@@ -313,7 +356,8 @@ int gettoken(void){
 	token[0]='\0';
 	skipwhite();
 	char *tokp=inp;
-	if(alpha(*inp)){
+	if(alpha(*inp) || *inp=='$'){
+		inp++;
 		skipid();
 		//
 		// If we see "def", it must be followed by
@@ -346,7 +390,7 @@ int gettoken(void){
 		// to mean any character at all.
 		//
 		if(inp-tokp==4 && strncmp(tokp, "else", 4)==0){
-			strcpy(token, "\"\"");
+			strcpy(token, "");
 			return STRING;
 		}
 		skipwhite();
@@ -361,7 +405,6 @@ int gettoken(void){
 			if(*inp=='(') level++;
 			else if(*inp==')') --level;
 			else if(*inp=='"') skipstring();
-			else if(*inp!=',' && !idchar(*inp)) return ERROR;
 			inp++;
 		}
 		savetoken(tokp);
@@ -377,9 +420,6 @@ int gettoken(void){
 		savetoken(tokp);
 		return STRING;
 	}
-	else if(*inp=='#'){
-		while(*inp!='\0') inp++;
-	}
 	else if(*inp!='\0') return ERROR;
 	//
 	// Don't advance past EOL -- if someone calls again,
@@ -389,7 +429,7 @@ int gettoken(void){
 }
 MConfig *getmconfig(char *token){
 	Name *name=lookup(token);
-	if(name->fn!=0 || name->config!=0){
+	if(name->fns!=0 || name->config!=0){
 		error("name %s already in use", name->name);
 		return 0;
 	}
@@ -437,10 +477,18 @@ Function *getfunction(char *token){
 	char id[8192];
 	copyid(id, token, s);
 	name=lookup(id);
-	if(name->fn || name->config){
+	//
+	// This check doesn't actually matter.
+	// We could delete this check if we need
+	// to overload a function name as an
+	// m-config name. I hope that doesn't
+	// come up in the paper.
+	//
+	if(name->config){
 		error("Name %s already in use", name->name);
 		return 0;
 	}
+
 	if(*s!='('){
 		error("Can't happen: bad function header %s", token);
 		exit(1);
@@ -448,11 +496,13 @@ Function *getfunction(char *token){
 	s++;
 	Param *params=0;
 	Param *eparams=0;
+	int nparams=0;
 	for(;;){
 		char *t=s;
 		while(idchar(*t)) t++;
 		copyid(id, s, t);
 		Param *p=newParam(lookup(id), 0, 0);
+		nparams++;
 		if(eparams) eparams->next=p;
 		else params=p;
 		eparams=p;
@@ -464,8 +514,24 @@ Function *getfunction(char *token){
 		error("Can't happen: bad function header %s", token);
 		exit(1);
 	}
-	name->fn=newFunction(name, params, 0);
-	return name->fn;
+	for(Function *f=name->fns;f!=0;f=f->next){
+		if(f->nparams==nparams){
+			error("Function %s with %d params already defined", name->name, nparams);
+			Param *next;
+			for(Param *p=params;p!=0;p=next){
+				next=p->next;
+				free(p);
+			}
+			return 0;
+		}
+	}
+	Function *fn=newFunction(name, nparams, params, 0, 0);
+	if(name->efns==0)
+		name->fns=fn;
+	else
+		name->efns->next=fn;
+	name->efns=fn;
+	return fn;
 }
 FnConfig *getfnconfig(void){
 	Name *symname=0;
@@ -516,7 +582,37 @@ void input(char *file){
 		inp=line;
 		int t;
 
-		if(line[0]==' ' || line[0]=='\t'){
+		if(strncmp(line, "include", 7)==0
+		     && (line[7]==' ' || line[7]=='\t')){
+			skipid();
+			skipwhite();
+			if(*inp!='"'){
+				error("bad include");
+				continue;
+			}
+			char *includename=inp+1;
+			skipstring();
+			if(*inp!='"'){
+				error("bad string in include");
+				continue;
+			}
+			*inp='\0';
+			//
+			// Recursive call.
+			// Save important globals first,
+			// do the call and restore them after.
+			// (We're done with line, token and inp at this point,
+			// so we don't need to save and restore them.)
+			// This would be mildly easier in C++.
+			//
+			char *savefile=file;
+			int savelineno=lineno;
+			input(includename);
+			file=savefile;
+			lineno=savelineno;
+			continue;
+		}
+		else if(line[0]==' ' || line[0]=='\t'){
 			//
 			// Two legal possibilities at this point:
 			//	a blank line, which we should ignore
@@ -595,12 +691,19 @@ void substitute(char *dst, char *src, Param *param){
 	char *dstp=dst;
 	char *namep=0;
 	for(;;){
-		if(alpha(*srcp)){
+		if(*srcp=='$'){
 			//
 			// copy the name into dst
 			//
 			namep=dstp;
+			srcp++;
+			if(!alpha(*srcp)){
+				error("$ must be followed by an identifier "
+					"in %s", src);
+				continue;
+			}
 			while(idchar(*srcp)) *dstp++=*srcp++;
+			if(*srcp=='.') srcp++;
 			//
 			// look for a substitution
 			//
@@ -626,6 +729,7 @@ void substitute(char *dst, char *src, Param *param){
 // Expand a FnConfig, producing a Config.
 // 
 Config *expandconfig(FnConfig *fc, Param *param){
+	char buf[8192];		// results of substitution will go here
 	char *symbols;
 	//
 	// Symbols either come from a literal in the FnConfig
@@ -637,7 +741,10 @@ Config *expandconfig(FnConfig *fc, Param *param){
 	// string. I don't think there's anywhere else we could have done
 	// that.
 	//
-	if(fc->symbols) symbols=fc->symbols;
+	if(fc->symbols){
+		substitute(buf, fc->symbols, param);
+		symbols=strdup(buf);
+	}
 	else{
 		symbols=findparam(fc->symname->name, param);
 		if(symbols==0){
@@ -652,14 +759,14 @@ Config *expandconfig(FnConfig *fc, Param *param){
 		}
 	}
 	char *operations;
-	operations=fc->operations;
+	substitute(buf, fc->operations, param);
+	operations=strdup(buf);
 	//
 	// Expand final.
 	// First make a copy of fc->final->name with any
 	// parameters substituted (that's the job of substitute).
 	//
 	Name *final;
-	char buf[8192];
 	substitute(buf, fc->final->name, param);
 	//
 	// What if, at this point, buf contains a string rather than a
@@ -671,10 +778,10 @@ Config *expandconfig(FnConfig *fc, Param *param){
 	final=lookup(buf);
 	//
 	// Then check whether the result is legit -- something that
-	// expands to the header of a fn definition is questionable. (There's
+	// expands to the name of a fn definition is questionable. (There's
 	// no real need for this, but it's pretty bogus.)
 	//
-	if(final->fn!=0){
+	if(final->fns!=0){
 		error("trying to expand %s, but that's just wrong",
 			final->name);
 		return 0;
@@ -696,6 +803,29 @@ Config *expandconfig(FnConfig *fc, Param *param){
 	// and return it.
 	//
 	return newConfig(symbols, operations, final, 0);
+}
+int argcount(char *call){
+	char *c=call;
+	while(idchar(*c)) c++;
+	if(*c!='('){
+		error("Can't happen: non-call %s in argcount", call);
+		exit(1);
+	}
+	c++;
+	int argc=1;
+	int level=1;
+	while(level!=0){
+		if(*c=='\0') goto Error;
+		if(level==1 && *c==',') argc++;
+		if(*c=='(') level++;
+		if(*c==')') --level;
+		c++;
+	}
+	return argc;
+Error:
+	error("Can't happen: ungrammatical call %s in argcount", call);
+	exit(1);
+	return 0;	// not reached
 }
 //
 // Process a call to an m-function.
@@ -727,15 +857,22 @@ void expand(Name *name){
 	// Get the function definition
 	//
 	Name *fname=lookup(call);
-	if(fname->fn==0){
-		error("Undefined function %s in call %s", fname->name, call);
+	int nargs=argcount(name->name);
+	Function *fn;
+	for(fn=fname->fns;fn!=0;fn=fn->next)
+		if(fn->nparams==nargs)
+			break;
+	if(fn==0){
+		error("Undefined function %s (with %d paramss) in call %s",
+			name, nargs, call);
 		return;
 	}
+fprintf(stderr, "expanding %s with %d params\n", fn->name->name, nargs);
 	//
 	// crack arguments starting at callp and set each
 	// Param::value to the corresponding argument.
 	//
-	Param *paramp=fname->fn->params;
+	Param *paramp=fn->params;
 	int done=0;
 	while(!done){
 		//
@@ -815,8 +952,8 @@ void expand(Name *name){
 	//
 	name->config=newMConfig(name, 0, 0);
 	Config *econfig=0;
-	for(FnConfig *fc=fname->fn->configs;fc;fc=fc->next){
-		Config *c=expandconfig(fc, fname->fn->params);
+	for(FnConfig *fc=fn->configs;fc;fc=fc->next){
+		Config *c=expandconfig(fc, fn->params);
 		if(econfig==0)
 			name->config->config=c;
 		else
@@ -850,27 +987,30 @@ void show(FILE *f){
 		if(n->config!=0){
 			fprintf(f, "%s\n", n->name);
 			for(Config *c=n->config->config;c!=0;c=c->next){
-				fprintf(f, "\t%s", c->symbols);
+				fprintf(f, "\t\"%s\"", c->symbols);
 				fprintf(f, "\t%s", c->operations);
 				fprintf(f, "\t%s\n", c->final->name);
 			}
 		}
-#if 0
-		else if(n->fn!=0){
-			fprintf(f, "def %s", n->name);
-			int sep='(';
-			for(Param *p=n->fn->params;p!=0;p=p->next){
-				fprintf(f, "%c%s", sep, p->name->name);
-				sep=',';
-			}
-			fprintf(f, ")\n");
-			for(FnConfig *fn=n->fn->configs;fn!=0;fn=fn->next){
-				if(fn->symname!=0)
-					fprintf(f, "\t%s", fn->symname->name);
-				else
-					fprintf(f, "\t%s", fn->symbols);
-				fprintf(f, "\t%s", fn->operations);
-				fprintf(f, "\t%s\n", fn->final->name);
+#if 1
+		else if(n->fns!=0){
+			for(Function *fn=n->fns;fn!=0;fn=fn->next){
+				fprintf(f, "def %s", n->name);
+				int sep='(';
+				for(Param *p=fn->params;p!=0;p=p->next){
+					fprintf(f, "%c%s", sep, p->name->name);
+					sep=',';
+				}
+				fprintf(f, ")\n");
+				for(FnConfig *c=fn->configs;c!=0;c=c->next){
+					if(c->symname!=0)
+						fprintf(f, "\t%s",
+							c->symname->name);
+					else
+						fprintf(f, "\t\"%s\"", c->symbols);
+					fprintf(f, "\t%s", c->operations);
+					fprintf(f, "\t%s\n", c->final->name);
+				}
 			}
 		}
 #endif
@@ -880,6 +1020,10 @@ void execute(void){
 	char tape[NTAPE];
 	memset(tape, ' ', sizeof(tape));
 	Name *state=start;
+	if(state==0){
+		error("no start state!");
+		return;
+	}
 	int loc=0;
 	int hwm=0;
 	//
@@ -889,30 +1033,22 @@ void execute(void){
 	for(int i=0;i!=loc;i++) putchar(' ');
 	printf("^%s\n", state->name);
 	for(int step=0;step!=NSTEP;step++){
+		if(state->config==0){
+			error("Undefined m-config %s", state->name);
+			return;
+		}
 		Config *config;
 		//
 		// Look for a config whose symbols match tape[loc]
 		//
 		for(config=state->config->config;config!=0;config=config->next){
-			if(config->symbols[0]!='"'){
-				error("symbols must be a quoted string:"
-					" state %s, symbols %s",
-					state->name,
-					config->symbols);
-				return;
-			}
-			if(config->symbols[1]=='"') goto FoundSymbol;
-			for(char *s=config->symbols+1;*s!='"';s++){
-				if(*s=='\0'){
-					error("symbols doesn't end with \":"
-						" state %s, symbols %s",
-						state->name,
-						config->symbols);
-					return;
-				}
-				if(*s=='\\') s++;
-				if(*s==tape[loc]) goto FoundSymbol;
-			}
+			//
+			// An empty string means anything will do
+			//
+			if(config->symbols[0]=='\0') goto FoundSymbol;
+			for(char *s=config->symbols;*s!='\0';s++)
+				if(*s==tape[loc])
+					goto FoundSymbol;
 		}
 		error("Config for symbol %c not found in state %s",
 			tape[loc], state->name);
@@ -967,17 +1103,21 @@ void execute(void){
 		for(int i=0;i!=loc;i++) putchar(' ');
 		printf("^%s\n", state->name);
 	}
+	printf("Stopped after %d steps\n", NSTEP);
 }
 int main(int argc, char *argv[]){
 	if(argc!=2){
 		fprintf(stderr, "Usage: %s machine-file\n", argv[0]);
 		return 1;
 	}
+	parsing=1;
 	input(argv[1]);
+	parsing=0;
 	if(nerror!=0) return 1;
 	expandall();
+	if(nerror!=0) return 1;
 	show(stdout);
 	printf("=======================\n");
 	execute();
-	return 0;
+	return nerror!=0;
 }

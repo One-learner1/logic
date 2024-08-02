@@ -1,0 +1,55 @@
+#
+# Definitions from
+#	A. M. Turing,
+#	On Computable Numbers, With an Application To the Entscheidungsproblem
+#	Proceedings of the London Mathematical Society, 58: 236-265
+#
+
+#
+# p 236.
+# f(C, B, a)
+#	Scan from the left end of the tape for the first occurrence of symbol a.
+#	Enter state C when found.
+#	Enter state B if not found anywhere.
+#
+# if there are no a's, enter state B
+#
+
+def f(C, B, a)	# scan left for e (the beginning of the tape)
+	"e"	"L"		f1($C, $B, $a)
+	else	"L"		f($C, $B, $a)
+
+def f1(C, B, a)	# scan right for a
+	"$a"	""		$C
+	" "	"R"		f2($C, $B, $a)
+	else	"R"		f1($C, $B, $a)
+
+#
+# After scanning a blank:
+#	if we find an a, we enter state C.
+#	If we see another blank, we're at the right end of the tape
+#	and enter state B (after moving right, which is weird).
+#	If we see anything else, we need to advance to the right and
+#	keep looking, which is what f1(C,B,a) does.
+#
+
+def f2(C, B, a)
+	"$a"	""		$C
+	" "	"R"		$B
+	else	"R"		f1($C, $B, $a)
+
+#
+# Page 237
+# e(C, B, a)
+#	Erase the first a and enter state C. If there is no a, enter state B.
+#
+
+def e(C,B,a)	""	""	f(e1($C,$B,$a),$B,$a)
+def e1(C,B,a)	""	"E"	C
+
+#
+# e(B,a)
+#	erase all occurrences of a and enter state B
+#
+
+def e(B,a)	""	""	e(e($B,$a),$B,$a)
