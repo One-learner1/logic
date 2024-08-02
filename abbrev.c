@@ -319,8 +319,12 @@ void skipstring(void){
 //
 void savetoken(char *start){
 	char *tokp=token;
-	if(*start=='"')
-		for(char *s=start;s!=inp;s++) *tokp++=*s;
+	if(*start=='"'){
+		for(char *s=start+1;s!=inp-1;s++){
+			if(*s=='\\') s++;
+			*tokp++=*s;
+		}
+	}
 	else
 		for(char *s=start;s!=inp;s++)
 			if(*s!=' ' && *s!='\t' && *s!='\n') *tokp++=*s;
@@ -385,7 +389,7 @@ int gettoken(void){
 		// to mean any character at all.
 		//
 		if(inp-tokp==4 && strncmp(tokp, "else", 4)==0){
-			strcpy(token, "\"\"");
+			strcpy(token, "");
 			return STRING;
 		}
 		skipwhite();
@@ -736,7 +740,10 @@ Config *expandconfig(FnConfig *fc, Param *param){
 	// string. I don't think there's anywhere else we could have done
 	// that.
 	//
-	if(fc->symbols) symbols=fc->symbols;
+	if(fc->symbols){
+		substitute(buf, fc->symbols, param);
+		symbols=strdup(buf);
+	}
 	else{
 		symbols=findparam(fc->symname->name, param);
 		if(symbols==0){
@@ -979,7 +986,7 @@ void show(FILE *f){
 		if(n->config!=0){
 			fprintf(f, "%s\n", n->name);
 			for(Config *c=n->config->config;c!=0;c=c->next){
-				fprintf(f, "\t%s", c->symbols);
+				fprintf(f, "\t\"%s\"", c->symbols);
 				fprintf(f, "\t%s", c->operations);
 				fprintf(f, "\t%s\n", c->final->name);
 			}
@@ -999,7 +1006,7 @@ void show(FILE *f){
 						fprintf(f, "\t%s",
 							c->symname->name);
 					else
-						fprintf(f, "\t%s", c->symbols);
+						fprintf(f, "\t\"%s\"", c->symbols);
 					fprintf(f, "\t%s", c->operations);
 					fprintf(f, "\t%s\n", c->final->name);
 				}
@@ -1034,25 +1041,13 @@ void execute(void){
 		// Look for a config whose symbols match tape[loc]
 		//
 		for(config=state->config->config;config!=0;config=config->next){
-			if(config->symbols[0]!='"'){
-				error("symbols must be a quoted string:"
-					" state %s, symbols %s",
-					state->name,
-					config->symbols);
-				return;
-			}
-			if(config->symbols[1]=='"') goto FoundSymbol;
-			for(char *s=config->symbols+1;*s!='"';s++){
-				if(*s=='\0'){
-					error("symbols doesn't end with \":"
-						" state %s, symbols %s",
-						state->name,
-						config->symbols);
-					return;
-				}
-				if(*s=='\\') s++;
-				if(*s==tape[loc]) goto FoundSymbol;
-			}
+			//
+			// An empty string means anything will do
+			//
+			if(config->symbols[0]=='\0') goto FoundSymbol;
+			for(char *s=config->symbols;*s!='\0';s++)
+				if(*s==tape[loc])
+					goto FoundSymbol;
 		}
 		error("Config for symbol %c not found in state %s",
 			tape[loc], state->name);
