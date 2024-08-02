@@ -6,7 +6,8 @@
 //
 // How many steps to run the machine,
 // and how much space to allocate for the tape.
-// Both of these should be command line parameters.
+// NSTEP should be command a line parameter.
+// The tape should grow dynamically, which would obviate NTAPE.
 //
 #define	NSTEP	1000
 #define	NTAPE	1000
