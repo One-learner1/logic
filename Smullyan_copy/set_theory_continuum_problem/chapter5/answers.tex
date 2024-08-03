@@ -52,7 +52,7 @@ $\alpha\in\beta$. The first possibility is ruled out by the assumption that $\be
 by Theorem 1.12, $\alpha<\beta$, contrary to $\beta<\alpha$. Thus $\alpha\notin\beta^+$, a contradiction. Hence 
 $\beta^+\ne\alpha^+$. 
 
-For suppose $\alpha^+=\beta^+$. Thus $\alpha\cup\{\alpha\}=\beta\cup\{\beta\}$. Thus, if $x\in\alpha$, then 
+Now suppose $\alpha^+=\beta^+$. Thus $\alpha\cup\{\alpha\}=\beta\cup\{\beta\}$. Thus, if $x\in\alpha$, then 
 either $x\in\beta$ or $x=\beta$. If $x=\beta$, then, because $\alpha$ and $\beta$ are ordinals (and by Theorem 1.12), 
 $\beta<\alpha$. But, by the above lemma, this means that $\beta^+\ne\alpha^+$, a contradiction. Hence $x\ne\beta$, meaning 
 $x\in\beta$ (and thus $\alpha\subseteq\beta$). Similar reasoning shows that $\beta\subseteq\alpha$, meaning 
@@ -87,7 +87,7 @@ in all elements of $A$, meaning all elements $z$ of $x$ are in $\cap A$. Thus $B
 meaning it is an ordinal.
 
 \subsection*{Exercise 2.3}
-(a): On the one hand, we show that every ordinal (which is of course a set) 
+(a): On the one hand, we show that every ordinal $x$ (which is of course a set) 
 can be well ordered in such a way that each element $y$ of 
 $x$ is the set of all elements of $x$ that precede $y$ in the ordering. We show that every ordinal 
 can be well ordered under $\subseteq$ so that the required conditions are satisfied. We prove this 
@@ -95,14 +95,15 @@ using superinduction. First, recall that $On$ is well ordered under $\subseteq$.
 (1): Clearly $\emptyset$ is well ordered under $\subseteq$ such that the required condition is 
 satisfied (in fact, $\subseteq\restriction\emptyset=\emptyset$).\newline
 (2): Now suppose $\alpha$ is well ordered such that the required condition is satisfied. Now consider 
-$\alpha^+$. It has already been shown that $\alpha^+$ is a transitive class of ordinals. Thus, because 
+$\alpha^+$. It has already been shown that $\alpha^+$ is a transitive set of ordinals. Thus, because 
 it is a subclass of $On$, it is well ordered under $\subseteq$ (because $On$ is well ordered under 
 $\subseteq$). We need to show that $\subseteq\restriction\alpha^+$ satisfies the required condition. 
 If $x\in\alpha^+$, either $x\in\alpha$ or $x=\alpha$ (because $\alpha^+=\alpha\cup\{\alpha\}$). 
 If $x\in\alpha$, then $x$ is the set of all lesser elements in $\alpha$ by assumption. But it has 
 already been shown that $x<\alpha$ (because $x\in\alpha$ iff $x<\alpha$), meaning 
 $x$ is the set of all elements of $\alpha^+$ less than $x$. If $x=\alpha$, then obviously 
-$x$ is the set of all lesser elements of $\alpha^+$.\newline
+$x$ is the set of all lesser elements of $\alpha^+$. Hence, for every $x\in\alpha^+$, $x$ is the set of all 
+lesser elements of $\alpha^+$.\newline
 (3): Lastly, suppose that some chain $C$ of ordinals is well ordered under $\subseteq$ and satisfies
 the required conditions. Thus, by assumption, every element $x\in C$ is the set of all lesser elements 
 of $C$. Consider any element $y\in\cup C$. Then it is an element of some $x\in C$, and thus, by assumption, 
@@ -111,7 +112,8 @@ element in $\cup C$ is an element of $C$, meaning $\cup C\subseteq C$ and thus $
 under $\subseteq$ (as $C$ was assumed to be well ordered under $\subseteq$). Now we show that for any $y\in\cup C$ (and 
 recall that we have also shown that $y\in C$), the 
 set of all elements in $\cup C$ less than $y$ is equal to the set of all elements in $C$ less than $y$. For suppose 
-$x$ is an element in $\cup C$ less than $y$. Then, as we have shown, $x$ is also an element in $C$. Thus $x\in C$. 
+$x$ is an element in $\cup C$ less than $y$. Then, as we have shown, $x$ is also an element in $C$. Thus $x\in C$, meaning $x$ is 
+a lesser element of $y$ that is in $C$. 
 On the other hand, if $x$ is an element in $C$ less than $y$, then, because $y\in C$, $x\in y$, meaning $x\in\cup C$. Thus we 
 have shown that, for every $y\in\cup C$, it is the set of all lesser elements in $C$, and also the set of all lesser 
 elements in $\cup C$. Thus $\subseteq\restriction\cup C$ satisfies the required condition.
