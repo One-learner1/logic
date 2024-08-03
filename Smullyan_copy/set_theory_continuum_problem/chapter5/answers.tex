@@ -143,7 +143,7 @@ $\omega\times x+y$ is a set for every $x>0$ and every $y$. In this section, we p
 First, we prove that for every 
 $x>0$ and every $y$, $\omega\times x+y$ is transitive, and $\omega\times x+y\notin\omega\times x+y$. 
 
-an ordinal. Recall that
+Recall that
 \[ \omega\times n=0,1,2,...,\omega,\omega+1,\omega+2,...,\omega\times 2,\omega\times 2+1,\omega\times 2+2,...,\omega\times (n-1),\omega\times (n-1)+1,\omega\times (n-1)+2,... \]
 \begin{lemma} $\omega\times n+m=\omega\times n\cup\{\omega\times n,...,\omega\times n+(m-1)\}$ for all $m>0$.
 \end{lemma}
@@ -156,24 +156,24 @@ holds for some $m>0$. Then
 therefore completing the induction. 
 \end{proof}
 
-\begin{lemma} If for some $x$, if for $m<x$, then $\omega\times m+n\in\omega\times x$ for every $n$,
-then for every $y$, if $m<x$ or $m=x$ and $n<y$, then $\omega\times m+n\in\omega\times x+y$.
+\begin{lemma} If for some $x$, if for every $0<m<x$, then $\omega\times m+n\in\omega\times x$ for every $n$,
+then for every $y$, if $0<m<x$ or $m=x$ and $n<y$, then $\omega\times m+n\in\omega\times x+y$.
 \end{lemma}
 \begin{proof}
 Suppose the hypothesis. We prove that the result holds by induction on $y$. The base case holds
 by assumption. Now suppose that the result holds for some $y$. Then
 \[ \textrm{(1) }\omega\times x+(y+1)=\omega\times x+y\cup\{\omega\times x,...,\omega\times x+y\} \] by 
-Lemma 0.1. By assumption, all sets of the form $\omega\times m+n$ where $m<x$ are elements of
+Lemma 0.1. By assumption, all sets of the form $\omega\times m+n$ where $0<m<x$ are elements of
 $\omega\times x$, and hence also elements of $\omega\times x+(y+1)$ (by (1)). Also, all sets of the form
 $\omega\times m+n$ where $m=x$ and $n<y$ are elements of $\omega\times x+(y+1)$ by $(1)$. Hence the result holds
 for $y+1$, meaning the induction is complete.
 \end{proof}
 
-Note that this above lemma implies that for every $x>0$ and every $y$, if $m<x$ or $m=x$ and $n<y$, then
-$\omega\times m+n\in\omega\times x+y$, because, by definition, for every $m<x$, then
+Note that this above lemma implies that for every $x>0$ and every $y$, if $0<m<x$ or $m=x$ and $n<y$, then
+$\omega\times m+n\in\omega\times x+y$, because, by definition, for every $0<m<x$, then
 $\omega\times m+n\subset\omega\times x$, meaning the hypothesis of the lemma is satisfied for every $x$. And of course the converse holds
 as well: every element of $\omega\times x+y$ is either a natural number, or a set of the form
-$\omega\times m+n$ where either $m<x$ or $m=x$ and $n<y$.
+$\omega\times m+n$ where either $0<m<x$ or $m=x$ and $n<y$.
 
 Now, note that, because $\omega$ is a transitive set of ordinals, it is also an ordinal.
 \begin{theorem} For every $x>0$ and every $y$, $\omega\times x+y$ is transitive.
@@ -241,6 +241,11 @@ $\omega\times x$ is just the set of all natural numbers (which are all ordinals)
 which are ordinals by the induction assumption. Thus $\omega\times x$ is a transitive set of ordinals, meaning it is also an ordinal, 
 therefore completing the induction.
 \end{proof}
+
+As a consequence of Theorem 0.7, Theorem 0.5 immediately follows, as for all ordinals $\alpha$, $\alpha\notin\alpha$. Also, note that 
+Theorem 0.7 proves that, for every $x>0$ and $y$, if either $0<m<x$ or $m=x$ and $n<y$, then $\omega\times m+n<\omega\times x+y$. This is 
+because, by Lemma 0.2, if either $0<m<x$ or $m=x$ and $n<y$, then $\omega\times m+n\in\omega\times x+y$. But, because 
+$\omega\times x+y$ is an ordinal, it follows that $\omega\times m+n<\omega\times x+y$.
 
 Lastly, we show that all sets of the form $\omega\times n$ are limit ordinals, whereas all sets of the form 
 $\omega\times n+m$ where $m>0$ are successor ordinals.
