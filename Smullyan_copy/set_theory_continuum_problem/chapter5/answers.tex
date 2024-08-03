@@ -1,0 +1,155 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 5 Notes}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Section1}
+
+\subsection*{Notes}
+After Corollary 1.9 it reads: \textquote{"We thus see that the function $\sigma$ is strictly progressing."} Certainly, this was shown for 
+\textit{ordinals}, but we have not shown this for any sets in general. In fact, $\sigma$ being strictly progressing for all sets 
+is equivalent to $x\in x$ not holding for any set $x$. For, on the one hand, if $\sigma$ is strictly progressing for all sets, 
+suppose $x\in x$ for some set $x$. Now, $x^+=x\cup\{x\}$. Also, $x\subset x^+$ (by assumption). But consider any element $y$
+of $x^+$. Either $y\in x$ or $y=x$. In either case, because we assumed $x\in x$, $y\in x$. Thus $x^+\subseteq x$, contrary to the 
+assumption that $x\subset x^+$. Hence $x\ne x$ for all sets $x$. On the other hand, suppose that $x\ne x$ for all sets 
+$x$. Then it must be that $x\subset x^+$. For obviously $x\subseteq x^+$, and if $x=x^+$, then, because $x\in x^+$, 
+$x\in x$, a contradiction. Thus $\sigma$ would be strictly progressing.
+
+Hence $\sigma$ being strictly progressing for all sets is equivalent to $x\in x$ holding for no sets, which we have not shown.
+
+In the proof of Theorem 1.17, it is said that no two distinct elements (of $On$) can have the same successor. To prove this, we 
+first prove the lemma that (for any two ordinals), if $\beta<\alpha$, then $\beta^+\ne\alpha^+$. For suppose 
+$\beta<\alpha$ and $\beta^+=\alpha^+$. Thus $\alpha\cup\{\alpha\}=\beta\cup\{\beta\}$. Thus either $\alpha=\beta$ or 
+$\alpha\in\beta$. The first possibility is ruled out by the assumption that $\beta<\alpha$. Also, if $\alpha\in\beta$, the, 
+by Theorem 1.12, $\alpha<\beta$, contrary to $\beta<\alpha$. Thus $\alpha\notin\beta^+$, a contradiction. Hence 
+$\beta^+\ne\alpha^+$. 
+
+For suppose $\alpha^+=\beta^+$. Thus $\alpha\cup\{\alpha\}=\beta\cup\{\beta\}$. Thus, if $x\in\alpha$, then 
+either $x\in\beta$ or $x=\beta$. If $x=\beta$, then, because $\alpha$ and $\beta$ are ordinals (and by Theorem 1.12), 
+$\beta<\alpha$. But, by the above lemma, this means that $\beta^+\ne\alpha^+$, a contradiction. Hence $x\ne\beta$, meaning 
+$x\in\beta$ (and thus $\alpha\subseteq\beta$). Similar reasoning shows that $\beta\subseteq\alpha$, meaning 
+$\alpha=\beta$, therefore completing the proof.
+
+In Theorem 1.19, it was remakred that $\alpha<\beta$ implies that $\alpha^+\le\beta$. For suppose that 
+$\alpha<\beta$. Then, by Theorem 1.12, $\alpha\in\beta$. Hence $\alpha\in\beta$ and for all $x\in\alpha$, 
+$x\in\beta$, meaning $\alpha^+\le\beta$.
+
+In Theorem 1.20, it is remarked that $\beta<\alpha^+$ implies that $\beta\le\alpha$. Here is why that is: For suppose that 
+$\beta<\alpha^+$. Thus every element of $\beta$ is either an element of $\alpha$, or is equal to $\alpha$. Suppose 
+some element $x$ of $\beta$ was equal to $\alpha$. Because every ordinal is transitive, that would mean, for every 
+$y\in\alpha$, $y\in\beta$. Hence $\beta=\alpha\cup\{\alpha\}$, contrary to the fact that $\beta<\alpha^+$. Thus all elements of 
+$\beta$ are elements of $\alpha$ (and none are equal to $\alpha$) meaning $\beta\le\alpha$.
+
+\section*{Section 2}
+
+\subsection*{Notes}
+Note that Theorem 2.3 presupposes that $x$ is a set, as this means that there is at least one ordinal outside of 
+$x$ (because $On$ is not a set).
+
+\subsection*{Exercise 2.1}
+This is an easy consequence of Theorem 2.2. For, by Theorem 2.2, every transitive subset of $On$ is an element of $On$, and 
+thus $On$ is $T$-closed. Hence, if $x$ belongs to all $T$-closed classes, then $x\in On$, meaning $x$ is an ordinal.
+
+\subsection*{Exercise 2.2}
+This is another easy consequence of Theorem 2.2. For consider any non-empty set $A$ of ordinals. 
+Let $B=\cap A$. Obviously, $B$ is a set of ordinals. It suffices to show that $B$ is transitive (and hence is an 
+ordinal by Theorem 2.2). Consider any $x\in B$. Thus, for every $y\in A$, $x\in y$. But, because $y$ is an 
+ordinal (and thus it is transitive), all elements $z$ of $x$ are in $y$. Thus all elements $z$ of $x$ are 
+in all elements of $A$, meaning all elements $z$ of $x$ are in $\cap A$. Thus $B$ is transitive, 
+meaning it is an ordinal.
+
+\subsection*{Exercise 2.3}
+(a): On the one hand, we show that every ordinal (which is of course a set) 
+can be well ordered in such a way that each element $y$ of 
+$x$ is the set of all elements of $x$ that precede $y$ in the ordering. We show that every ordinal 
+can be well ordered under $\subseteq$ so that the required conditions are satisfied. We prove this 
+using superinduction. First, recall that $On$ is well ordered under $\subseteq$.\newline
+(1): Clearly $\emptyset$ is well ordered under $\subseteq$ such that the required condition is 
+satisfied (in fact, $\subseteq\restriction\emptyset=\emptyset$).\newline
+(2): Now suppose $\alpha$ is well ordered such that the required condition is satisfied. Now consider 
+$\alpha^+$. It has already been shown that $\alpha^+$ is a transitive class of ordinals. Thus, because 
+it is a subclass of $On$, it is well ordered under $\subseteq$ (because $On$ is well ordered under 
+$\subseteq$). We need to show that $\subseteq\restriction\alpha^+$ satisfies the required condition. 
+If $x\in\alpha^+$, either $x\in\alpha$ or $x=\alpha$ (because $\alpha^+=\alpha\cup\{\alpha\}$). 
+If $x\in\alpha$, then $x$ is the set of all lesser elements in $\alpha$ by assumption. But it has 
+already been shown that $x<\alpha$ (because $x\in\alpha$ iff $x<\alpha$), meaning 
+$x$ is the set of all elements of $\alpha^+$ less than $x$. If $x=\alpha$, then obviously 
+$x$ is the set of all lesser elements of $\alpha^+$.\newline
+(3): Lastly, suppose that some chain $C$ of ordinals is well ordered under $\subseteq$ and satisfies
+the required conditions. Thus, by assumption, every element $x\in C$ is the set of all lesser elements 
+of $C$. Consider any element $y\in\cup C$. Then it is an element of some $x\in C$, and thus, by assumption, 
+it is also an element of $C$. Hence, by assumption, $y$ is the set of all lesser elements of $C$. Thus every 
+element in $\cup C$ is an element of $C$, meaning $\cup C\subseteq C$ and thus $\cup C$ is well ordered 
+under $\subseteq$ (as $C$ was assumed to be well ordered under $\subseteq$). Now we show that for any $y\in\cup C$ (and 
+recall that we have also shown that $y\in C$), the 
+set of all elements in $\cup C$ less than $y$ is equal to the set of all elements in $C$ less than $y$. For suppose 
+$x$ is an element in $\cup C$ less than $y$. Then, as we have shown, $x$ is also an element in $C$. Thus $x\in C$. 
+On the other hand, if $x$ is an element in $C$ less than $y$, then, because $y\in C$, $x\in y$, meaning $x\in\cup C$. Thus we 
+have shown that, for every $y\in\cup C$, it is the set of all lesser elements in $C$, and also the set of all lesser 
+elements in $\cup C$. Thus $\subseteq\restriction\cup C$ satisfies the required condition.
+
+Hence, by superinduction, it follows that every ordinal is well ordered and satisfies the given condition under 
+$\subseteq$. 
+
+(b): On the other hand, we show that every set $x$ that can be well ordered under $\le$ in such a way that each element $y$ of $x$ 
+is the set of all elements of $x$ that precede $y$ in the ordering, is an ordinal. It can be shown by transfinite induction 
+on $x$ that every element $y$ of $x$ is an ordinal. For suppose that for all elements $z$ less than $y$, $z$ is an ordinal. 
+Then, by definition of $x$, $y$ is the set of all lesser elements of $x$. Thus $y$ is a set of ordinals. And 
+$y$ is transitive (because if $z\in y$ and $v\in z$, then $z\in x$, and thus $v<z$ and $z<y$, meaning 
+$v<y$ (because $\le$ is transitive) and thus $v\in y$). Thus $y$ is a transitive set of ordinals, meaning it is an ordinal.
+Thus every element of $x$ is an ordinal. Obviously $x$ is transitive (because, by definition of $x$, if 
+$y\in x$ and $z\in y$, then $z<y$ and $z\in x$). Thus $x$ is a transitive set of ordinals, meaning it is an ordinal. 
+This completes the proof.
+
+\section*{Section 3}
+
+\subsection*{Notes}
+It is remarked that $\omega$ is a limit ordinal. Here is why that is. Obviously it is not the least ordinal. Suppose that 
+it was a successor ordinal. Then, for some $\alpha$, $\alpha<\omega$, and for no $\beta$ is it the case that 
+$\alpha<\beta<\omega$. Hence, by Theorem 1.12, $\alpha\in\omega$. But then $\alpha=n$ for some natural number $n$. Thus 
+$n^+$ is another ordinal. But also (by Corollary 1.9) $n<n^+$ (and obviously $n^+<\omega$, because all elements of $n^+$ are 
+themselves natural numbers). Thus $\alpha<n^+<\omega$, a contradiction to the fact that $\omega$ is the successor of $\alpha$. Hence 
+$\omega$ is not a successor ordinal nor the least ordinal, and consequently, $\omega$ is a limit ordinal.
+
+It is remakred that $\omega\times 2$ is a transitive class of ordinals. Here is why this is. By definition, 
+$\omega\times 2$ is a class of ordinals. If $x\in\omega\times 2$, then either $x\in\omega$ or 
+$x\in\omega+n$ for some $n$. In the first, case, all elements of $x$ are also in $\omega$ (and hence also in $\omega\times 2$). 
+In the second case, we prove by induction on $n$ that all elements of all elements of $\omega+n$ for all $n$ are elements of 
+$\omega\times 2$. The base case is when $\omega+n=\omega$ (when $n=0$), and we showed this above. Now suppose that for all numbers $m$ less than  
+$n+1$, all elements of all elements of $\omega+m$ are elements of $\omega\times 2$. Then
+$\omega+(n+1)=(\omega+n)^+=\omega+n\cup\{\omega+n\}$. Thus, if $x$ is an element of some element $y\in\omega+(n+1)$, either 
+$x$ is an element of $\omega+n$ (and thus either $x=\omega+(n-1)$, in which case $x\in\omega\times 2$ by definition, or 
+$x\in\omega+(n-1)$, that is, $x$ is an element of $\omega+(n-1)$, an element of $\omega+n$, and hence it is an element of $\omega\times 2$ by assumption), 
+or $x$ is an element of an element of $\omega+n$, in which case $x\in\omega\times 2$ by assumption. 
+
+The above argument can be generalized to show that each $\omega\times n$ is a transitive class of ordinals.
+
+\end{document}
