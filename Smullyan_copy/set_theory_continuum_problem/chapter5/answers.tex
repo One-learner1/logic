@@ -34,7 +34,7 @@
 \section*{Section1}
 
 \subsection*{Notes}
-After Corollary 1.9 it reads: \textquote{"We thus see that the function $\sigma$ is strictly progressing."} Certainly, this was shown for 
+After Corollary 1.9 it reads: \textquote{We thus see that the function $\sigma$ is strictly progressing.} Certainly, this was shown for 
 \textit{ordinals}, but we have not shown this for any sets in general. In fact, $\sigma$ being strictly progressing for all sets 
 is equivalent to $x\in x$ not holding for any set $x$. For, on the one hand, if $\sigma$ is strictly progressing for all sets, 
 suppose $x\in x$ for some set $x$. Now, $x^+=x\cup\{x\}$. Also, $x\subset x^+$ (by assumption). But consider any element $y$
@@ -139,17 +139,24 @@ $n^+$ is another ordinal. But also (by Corollary 1.9) $n<n^+$ (and obviously $n^
 themselves natural numbers). Thus $\alpha<n^+<\omega$, a contradiction to the fact that $\omega$ is the successor of $\alpha$. Hence 
 $\omega$ is not a successor ordinal nor the least ordinal, and consequently, $\omega$ is a limit ordinal.
 
-It is remakred that $\omega\times 2$ is a transitive class of ordinals. Here is why this is. By definition, 
-$\omega\times 2$ is a class of ordinals. If $x\in\omega\times 2$, then either $x\in\omega$ or 
-$x\in\omega+n$ for some $n$. In the first, case, all elements of $x$ are also in $\omega$ (and hence also in $\omega\times 2$). 
-In the second case, we prove by induction on $n$ that all elements of all elements of $\omega+n$ for all $n$ are elements of 
-$\omega\times 2$. The base case is when $\omega+n=\omega$ (when $n=0$), and we showed this above. Now suppose that for all numbers $m$ less than  
-$n+1$, all elements of all elements of $\omega+m$ are elements of $\omega\times 2$. Then
-$\omega+(n+1)=(\omega+n)^+=\omega+n\cup\{\omega+n\}$. Thus, if $x$ is an element of some element $y\in\omega+(n+1)$, either 
-$x$ is an element of $\omega+n$ (and thus either $x=\omega+(n-1)$, in which case $x\in\omega\times 2$ by definition, or 
-$x\in\omega+(n-1)$, that is, $x$ is an element of $\omega+(n-1)$, an element of $\omega+n$, and hence it is an element of $\omega\times 2$ by assumption), 
-or $x$ is an element of an element of $\omega+n$, in which case $x\in\omega\times 2$ by assumption. 
+It is remakred that $\omega\times 2$ is a transitive class of ordinals. Here is why this is. For $n>1$, 
+\[ \omega\times n=0,1,2,...,\omega,\omega+1,\omega+2,...,\omega\times 2,\omega\times 2+1,\omega\times 2+2,...,\omega\times (n-1),\omega\times (n-1)+1,\omega\times (n-1)+2,... \]
+and $\omega\times 1=\omega$. From this definition it is obvious that $\omega\times n\subset\omega\times m$ if $m>n$. Also, we can show that if $n>m$, then 
+$\omega\times a+m\subset\omega\times a+n$. This can be shown by induction on $n$. We let $\omega\times x+0=\omega\times x$. Then 
+the base case vacuously holds (as there are no $m<0$). Now suppose the result holds for some $n$. Then
+\[ \omega\times a+(n+1)=\omega\times a\cup\{\omega\times a+n\} \] So suppose $m<n+1$. Then either $m<n$ or $m=n$. In the first case, 
+by assumption, because $\omega\times a+n\subset\omega\times a+(n+1)$ (because if this was not the case, this would imply that 
+$\omega\times a+n\in\omega\times a+n$, contradicting the fact that $\omega\times a+n$ is an ordinal), 
+and $\omega\times a+m\subset\omega\times a+n$, it follows that $\omega\times a+m\subset\omega\times a+(n+1)$. Then, if $m=n$, because 
+$\omega\times a+n\subset\omega\times a+(n+1)$, $\omega\times a+m\subset\omega\times a+(n+1)$. Hence, in any case, 
+$\omega\times a+m\subset\omega\times a+(n+1)$.
 
-The above argument can be generalized to show that each $\omega\times n$ is a transitive class of ordinals.
+An obvious induction argument shows that, if $n<m$, then $\omega\times n+x\subset\omega\times m$ for all $x$. Then we have, if 
+$m<n$, then $\omega\times m+x\subset\omega\times n+y$ for all $x$ and $y$. From this it immediately follows that 
+$\omega\times x+y$ is transitive for every $x$ and $y$. For, by definition, if $a\in\omega\times x+y$ and 
+$b\in a$, then either $a$ is a natural number of $a=\omega\times m+n$ for some $m<x$ and $n$. If 
+$b$ is an element of a natural number, then it is also a natural number, so that $b\in\omega\times x+y$. If 
+$b\in\omega\times m+n$, then, because $\omega\times m+n\subset\omega\times x+y$, 
+$b\in\omega\times x+y$.
 
 \end{document}
