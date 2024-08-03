@@ -22,6 +22,9 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
 
 \setlength{\parindent}{.5in}
 \geometry{margin=0.5in}
@@ -31,7 +34,7 @@
 \date{}
 \maketitle
 
-\section*{Section1}
+\section*{Section 1}
 
 \subsection*{Notes}
 After Corollary 1.9 it reads: \textquote{We thus see that the function $\sigma$ is strictly progressing.} Certainly, this was shown for 
@@ -134,31 +137,134 @@ This completes the proof.
 \section*{Section 3}
 
 \subsection*{Notes}
-It is remarked that $\omega$ is a limit ordinal. Here is why that is. Obviously it is not the least ordinal. Suppose that 
-it was a successor ordinal. Then, for some $\alpha$, $\alpha<\omega$, and for no $\beta$ is it the case that 
-$\alpha<\beta<\omega$. Hence, by Theorem 1.12, $\alpha\in\omega$. But then $\alpha=n$ for some natural number $n$. Thus 
-$n^+$ is another ordinal. But also (by Corollary 1.9) $n<n^+$ (and obviously $n^+<\omega$, because all elements of $n^+$ are 
-themselves natural numbers). Thus $\alpha<n^+<\omega$, a contradiction to the fact that $\omega$ is the successor of $\alpha$. Hence 
-$\omega$ is not a successor ordinal nor the least ordinal, and consequently, $\omega$ is a limit ordinal.
+Let $\omega\times 1=\omega$, and, for all $x>1$, $\omega\times x+0=\omega\times x$. As the book notes, $\omega\times x+y$ being a set 
+for every $x>0$ and every $y$ can be proven using the axiom of substitution. So, for this section, assume the axiom of substitution, so that we know that 
+$\omega\times x+y$ is a set for every $x>0$ and every $y$. In this section, we prove some additional results about these sets.
+First, we prove that for every 
+$x>0$ and every $y$, $\omega\times x+y$ is transitive, and $\omega\times x+y\notin\omega\times x+y$. 
 
-It is remakred that $\omega\times 2$ is a transitive class of ordinals. Here is why this is. For $n>1$, 
+an ordinal. Recall that
 \[ \omega\times n=0,1,2,...,\omega,\omega+1,\omega+2,...,\omega\times 2,\omega\times 2+1,\omega\times 2+2,...,\omega\times (n-1),\omega\times (n-1)+1,\omega\times (n-1)+2,... \]
-and $\omega\times 1=\omega$. From this definition it is obvious that $\omega\times n\subset\omega\times m$ if $m>n$. Also, we can show that if $n>m$, then 
-$\omega\times a+m\subset\omega\times a+n$. This can be shown by induction on $n$. We let $\omega\times x+0=\omega\times x$. Then 
-the base case vacuously holds (as there are no $m<0$). Now suppose the result holds for some $n$. Then
-\[ \omega\times a+(n+1)=\omega\times a\cup\{\omega\times a+n\} \] So suppose $m<n+1$. Then either $m<n$ or $m=n$. In the first case, 
-by assumption, because $\omega\times a+n\subset\omega\times a+(n+1)$ (because if this was not the case, this would imply that 
-$\omega\times a+n\in\omega\times a+n$, contradicting the fact that $\omega\times a+n$ is an ordinal), 
-and $\omega\times a+m\subset\omega\times a+n$, it follows that $\omega\times a+m\subset\omega\times a+(n+1)$. Then, if $m=n$, because 
-$\omega\times a+n\subset\omega\times a+(n+1)$, $\omega\times a+m\subset\omega\times a+(n+1)$. Hence, in any case, 
-$\omega\times a+m\subset\omega\times a+(n+1)$.
+\begin{lemma} $\omega\times n+m=\omega\times n\cup\{\omega\times n,...,\omega\times n+(m-1)\}$ for all $m>0$.
+\end{lemma}
+\begin{proof}
+The base case, when $m=1$, follows by definition, as $\omega\times n+1=\omega\times n\cup\{\omega\times n\}$. Now supose the result 
+holds for some $m>0$. Then
+\[ \omega\times n+(m+1)=\omega\times n+m\cup\{\omega\times n+m\} \]
+\[ =\cup\{\omega\times n,\{\omega\times n,...,\omega\times n+(m-1)\}\}\cup\{\omega\times n+m\} \]
+\[ =\omega\times n\cup\{\omega\times n,...,\omega\times n+(m-1),\omega\times n+m\} \]
+therefore completing the induction. 
+\end{proof}
 
-An obvious induction argument shows that, if $n<m$, then $\omega\times n+x\subset\omega\times m$ for all $x$. Then we have, if 
-$m<n$, then $\omega\times m+x\subset\omega\times n+y$ for all $x$ and $y$. From this it immediately follows that 
-$\omega\times x+y$ is transitive for every $x$ and $y$. For, by definition, if $a\in\omega\times x+y$ and 
-$b\in a$, then either $a$ is a natural number of $a=\omega\times m+n$ for some $m<x$ and $n$. If 
-$b$ is an element of a natural number, then it is also a natural number, so that $b\in\omega\times x+y$. If 
-$b\in\omega\times m+n$, then, because $\omega\times m+n\subset\omega\times x+y$, 
-$b\in\omega\times x+y$.
+\begin{lemma} If for some $x$, if for $m<x$, then $\omega\times m+n\in\omega\times x$ for every $n$,
+then for every $y$, if $m<x$ or $m=x$ and $n<y$, then $\omega\times m+n\in\omega\times x+y$.
+\end{lemma}
+\begin{proof}
+Suppose the hypothesis. We prove that the result holds by induction on $y$. The base case holds
+by assumption. Now suppose that the result holds for some $y$. Then
+\[ \textrm{(1) }\omega\times x+(y+1)=\omega\times x+y\cup\{\omega\times x,...,\omega\times x+y\} \] by 
+Lemma 0.1. By assumption, all sets of the form $\omega\times m+n$ where $m<x$ are elements of
+$\omega\times x$, and hence also elements of $\omega\times x+(y+1)$ (by (1)). Also, all sets of the form
+$\omega\times m+n$ where $m=x$ and $n<y$ are elements of $\omega\times x+(y+1)$ by $(1)$. Hence the result holds
+for $y+1$, meaning the induction is complete.
+\end{proof}
+
+Note that this above lemma implies that for every $x>0$ and every $y$, if $m<x$ or $m=x$ and $n<y$, then
+$\omega\times m+n\in\omega\times x+y$, because, by definition, for every $m<x$, then
+$\omega\times m+n\subset\omega\times x$, meaning the hypothesis of the lemma is satisfied for every $x$. And of course the converse holds
+as well: every element of $\omega\times x+y$ is either a natural number, or a set of the form
+$\omega\times m+n$ where either $m<x$ or $m=x$ and $n<y$.
+
+Now, note that, because $\omega$ is a transitive set of ordinals, it is also an ordinal.
+\begin{theorem} For every $x>0$ and every $y$, $\omega\times x+y$ is transitive.
+\end{theorem}
+\begin{proof}
+By Lemma 0.2, we know that that, for every $x>1$ and every $y$, $\omega\times x+y$ is just the set of all natural numbers, 
+as well as the set of all $\omega\times m+n$, where either $0<m<x$, or $m=x$ and $n<y$. Now consider any element $e$ of an element of 
+$\omega\times x+y$. Thus it is either an element of a natural number (in which case it is also a natural number, and hence also 
+a member of $\omega\times x+y$), or an element of the form $\omega\times m+n$ where either $0<m<x$ or $m=x$ and $n<y$. In the latter case, 
+if it is not a natural number, it must be an element of the form $\omega\times v+w$ where either $0<v<m$ or $v=m$ and $w<n$. But that means 
+it would be of the form $\omega\times v+w$ where either $0<v<x$ or $v=x$ and $w<y$, meaning $e$ is an element of $\omega\times x+y$. Hence 
+$\omega\times x+y$ is transitive.
+\end{proof}
+
+\begin{lemma} If $\omega\times x\notin\omega\times x$, then $\omega\times x+y\notin\omega\times x+y$ for every $y$.
+\end{lemma}
+\begin{proof}
+Suppose $\omega\times x\notin\omega\times x$. We prove by induction that $\omega\times x+y\notin\omega\times x+y$ for every $y$.
+The base case, when $y=0$, is given by the assumption. Now suppose the result holds for some $y$. 
+Then $\omega\times x+(y+1)=\omega\times x+y\cup\{\omega\times x+y\}$. If $\omega\times x+(y+1)\in\omega\times x+(y+1)$, then 
+either $\omega\times x+(y+1)=\omega\times x+y$, or $\omega\times x+(y+1)\in\omega\times x+y$. In the first case, we would 
+have $\omega\times x+y\in\omega\times x+y$, a contradiction. In the second case, because, by Theorem 0.3, 
+$\omega\times x+y$ is transitive,
+$\omega\times x+y\in\omega\times x+y$, a contradiction. Thus
+$\omega\times x+(y+1)\notin\omega\times x+(y+1)$, therefore completing the proof. 
+\end{proof}
+
+\begin{theorem} For every $x>0$ and every $y$, $\omega\times x+y\notin\omega\times x+y$.
+\end{theorem}
+\begin{proof}
+We prove this by induction on $x$. The base case is when $x=1$, that is, when 
+$\omega\times x+y=\omega$. But $\omega\notin\omega$. Thus, by Lemma 0.4, 
+$\omega+y\notin\omega+y$ for all $y$. Thus the base case holds. Now supose the result holds for all numbers less 
+than $x$, for $x>1$. Then $\omega\times x$ is the set of all natural numbers, together with 
+every $\omega\times m+n$ for some $m<x$. So suppose $\omega\times x\in\omega\times x$. Obviously it cannot be that 
+$\omega\times x$ was a natural number, meaning $\omega\times x=\omega\times m+n$ for some $m<x$. But then, because 
+$\omega\times m+n$ is transitive, $\omega\times m+n\in\omega\times m+n$, contradicting the induction assumption. Hence 
+$\omega\times x\notin\omega\times x$, and consequently, $\omega\times x+y\notin\omega\times x+y$ for every $y$, as a consequence 
+of Lemma 0.4. 
+\end{proof}
+
+Assuming that, for every $x>0$ and every $y$, $\omega\times x+y$ is a set, we now prove that it is also an ordinal.
+
+\begin{lemma} If $\omega\times x$ is an ordinal, then $\omega\times x+y$ is an ordinal for every $y$.
+\end{lemma}
+\begin{proof}
+Suppose the hypothesis. Then we prove, by induction on $y$, that $\omega\times x+y$ is an ordinal for every $y$. The 
+base case, when $y=0$, holds by assumption. Now suppose the result holds all numbers less than $y$, for $y>0$. By 
+Lemma 0.1, 
+\[ \omega\times x+y=\omega\times x\cup\{\omega\times x,\omega,...,\omega\times x+(y-1)\} \] Now, because 
+$\omega\times x$ was assumed to be an ordinal, it follows that it is the set of all lesser ordinals, meaning all of its elements are also ordinals. 
+Also, by the induction assumption, all elements of $\{\omega\times x,\omega,...,\omega\times x+(y-1)\}$ are ordinals, meaning 
+all elements of $\omega\times x+y$ are ordinals. By Theorem 0.5, $\omega\times x+y$ is transitive. Thus it is a transitive set of 
+ordinals, meaning it is also an ordinal.
+\end{proof}
+
+\begin{theorem} For every $x>0$ and every $y$, $\omega\times x+y$ is an ordinal.
+\end{theorem}
+\begin{proof}
+This can be proven by induction on $x$, proving that the property: $\omega\times x+y$ holds for every $y$, holds for every $x>0$. 
+The base is when $x=1$, that is, when 
+$\omega\times x=\omega$. But $\omega$ is an ordinal (because it is a transitive set of ordinals). Thus, by Lemma 0.6,
+$\omega+y$ is an ordinal for every $y$. Now suppose the result holds for all numbers less than $x$, for $x>1$. Then 
+$\omega\times x$ is just the set of all natural numbers (which are all ordinals), and all sets of the form $\omega\times m+n$ where $m<x$, 
+which are ordinals by the induction assumption. Thus $\omega\times x$ is a transitive set of ordinals, meaning it is also an ordinal, 
+therefore completing the induction.
+\end{proof}
+
+Lastly, we show that all sets of the form $\omega\times n$ are limit ordinals, whereas all sets of the form 
+$\omega\times n+m$ where $m>0$ are successor ordinals.
+
+\begin{theorem} (1) All ordinals of the form $\omega\times n$ are limit ordinals. (2) All ordinals of the form
+$\omega\times n+m$ for $m>0$ are successor ordinals, in particular, they are successors of the ordinal 
+$\omega\times n+(m-1)$.
+\end{theorem}
+\begin{proof}
+(1) Consider some ordinal of the form $\omega\times n$. Clearly it is not the least ordinal. Now, suppose it was a successor ordinal. Hence, 
+for some $\alpha$, $\alpha<\omega\times n$ and for no $\beta$ is it the case that $\alpha<\beta<\omega\times n$. But, because 
+$\omega\times n$ is an ordinal, $\alpha\in\omega\times n$. Thus it is either a natural number $a$, or of the form 
+$\omega\times x+y$ where $x<n$. In the first case, then $a<a^+<\omega\times x$, a contradiction to the assumption that 
+$\omega\times n$ was the successor of $\alpha$. In the second case, then 
+$\omega\times x+y<\omega\times x+(y+1)<\omega\times n$, another contradiction. Thus $\omega\times n$ cannot be a successor ordinal, 
+and is consequently a limit ordinal.
+
+(2) Now consider some ordinal of the form $\omega\times n+m$ for $m>0$. We show that 
+$\omega\times n+m$ is the successor of $\omega\times n+(m-1)$. Clearly $\omega\times n+(m-1)<\omega\times n+m$. But 
+suppose there was some $\alpha$ such that $\omega\times n+(m-1)<\alpha<\omega\times n+m$. Now, 
+$\omega\times n+m$ has exactly one more element than $\omega\times n+(m-1)$, namely $\omega\times n+(m-1)$ itself. Thus, 
+it must be that $\alpha=\omega\times n+m$, a contradiction. Hence there can be no $\alpha$ such that 
+$\omega\times n+(m-1)<\alpha<\omega\times n+m$, meaning $\omega\times n+m$ is the successor ordinal of 
+$\omega\times n+(m-1)$.
+\end{proof}
 
 \end{document}
