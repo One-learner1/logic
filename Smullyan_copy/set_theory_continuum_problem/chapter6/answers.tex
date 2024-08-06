@@ -45,11 +45,31 @@ but there can only be one $y$ for which $\langle x,y\rangle\in F\restriction A$.
 It is remarked that:\textquote{If $\phi_1$ and $\phi_2$ are functions from a class $A$ onto a class $B$ and if $\phi_1\phi_2^{-1}$ is an identity 
 function, then obviously $\phi_1=\phi_2$.} Here is why this is. Now, note that this assumes that $\phi_2^{-1}$, is, in fact, a function. Then, for 
 every element $y$ in the range of $\phi_2$, we have $\phi_2^{-1}(y)=x$ for some $x$ in the domain of $\phi_2$, and 
-\[ \phi_1\phi_2^{-1}(y)=\phi_1(x)=y \] But also, $\phi_2(x)=y$. Thus $\phi_1(x)=\phi_2(x)$ for every $x$ in the domain of $\phi_2$, and 
+$\phi_1\phi_2^{-1}(y)=\phi_1(x)=y$. But also, $\phi_2(x)=y$. Thus $\phi_1(x)=\phi_2(x)$ for every $x$ in the domain of $\phi_2$, and 
 because they have the same domains, the functions are the same.
 
 Note that if a class $A$ is well ordered under $\subseteq$, then it is also properly well ordered under $\subseteq$. The proof of this is the same as 
 the proof of Proposition 1.3.
+
+\subsection*{Exercise 1.1}
+Let $\mathcal{N}$ be a nest of functions.
+
+(1): We first show that $\cup\mathcal{N}$ is function. Obviously $\cup\mathcal{N}$ is a relation. Now, suppose we 
+had $\langle x,y\rangle$ and $\langle x,z\rangle$ both in $\cup\mathcal{N}$ for some $y\ne z$. Then $x$ is in the domain of some 
+function $f$. Without loss of generality, suppose $\langle x,y\rangle\in f$. Then $\langle x,z\rangle\notin f$. Now, this would mean 
+that $\langle x,z\rangle$ was in some other function $g$. But, because $\mathcal{N}$ is a nest, either $f\subseteq g$ or $g\subseteq f$. Without 
+loss of generality, suppose $f\subseteq g$. Then we would have $g(x)=y$ and $g(x)=z$, a contradiction to $g$ being a function. Hence $\cup\mathcal{N}$
+must be a function.
+
+(2): We now show that the domain of $\cup\mathcal{N}N$ is the union of the class of domains of the elements of $\mathcal{N}$ (call this $D$). Suppose 
+$x\in\textrm{Dom}(\cup\mathcal{N})$. Then, for some $y$ and some function $f$, $\langle x,y\rangle\in f$, meaning $x\in D$. On the other hand, suppose 
+$x\in D$. Then, for some $y$ and some function $f$, $langle x,y\rangle\in f$, meaning $x\in\textrm{Dom}(\cup\mathcal{N})$. Thus $\textrm{Dom}(\cup\mathcal{N})=D$. 
+Similar reasoning shows $\textrm{Ran}(\cup\mathcal{N})$ is the union of the class of ranges of the elements of $\mathcal{N}$.
+
+(3): Lastly, suppose that every element of $\mathcal{N}$ was 1-1. Now, suppose $x$ and $y$ are in the domain of $\cup\mathcal{N}$, and that $x\ne y$, and 
+for some $v$ and $w$, $\langle x,v\rangle\in\cup\mathcal{N}$ and $\langle y,w\rangle\in\cup\mathcal{N}$. 
+Then, for some functions $f$ and $g$ in $\mathcal{N}$, $\langle x,v\rangle\in f$ and $\langle y,w\rangle\in g$. 
+Without loss of generality, suppose that $f\subseteq g$. Then $g$ is 1-1, meaning $v\ne w$. Hence $\cup\mathcal{N}$ is 1-1.
 
 \subsection*{Exercise 1.2}
 First, let us note that $On$ is not a set. For if it were, it would then be a transitive set of ordinals, and thus would be an ordinal. Then that would mean 
@@ -80,3 +100,5 @@ ordered under inclusion), $B$ has a least element.
 Thus $\le$ is a well ordering of $A$. Now, $On$ is a proper lower section of $A$: It is a proper subclass of $A$, and 
 $x<\{\{\emptyset\}\}$ for all elements in $On$. But $On$ is not a set. Thus we have an example of a well ordering which 
 is not a proper well ordering.
+
+\end{document}
