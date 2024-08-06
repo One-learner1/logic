@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 6 Notes}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Section 1}
+
+\subsection*{Notes}
+Note that $F\restriction A$ does not necessarily equal $A\times F''(A)$. In fact, if 
+$F''(A)$ contains more than one element (say it contains at least the two elements $b,c$), then obviously $F\restriction A\ne A\times F''(A)$, as, 
+for any element $x\in A$, we would have $\langle x,b\rangle$ and $\langle x,c\rangle$ both in $A\times F''(A)$, 
+but there can only be one $y$ for which $\langle x,y\rangle\in F\restriction A$.
+
+It is remarked that:\textquote{If $\phi_1$ and $\phi_2$ are functions from a class $A$ onto a class $B$ and if $\phi_1\phi_2^{-1}$ is an identity 
+function, then obviously $\phi_1=\phi_2$.} Here is why this is. Now, note that this assumes that $\phi_2^{-1}$, is, in fact, a function. Then, for 
+every element $y$ in the range of $\phi_2$, we have $\phi_2^{-1}(y)=x$ for some $x$ in the domain of $\phi_2$, and 
+\[ \phi_1\phi_2^{-1}(y)=\phi_1(x)=y \] But also, $\phi_2(x)=y$. Thus $\phi_1(x)=\phi_2(x)$ for every $x$ in the domain of $\phi_2$, and 
+because they have the same domains, the functions are the same.
+
+Note that if a class $A$ is well ordered under $\subseteq$, then it is also properly well ordered under $\subseteq$. The proof of this is the same as 
+the proof of Proposition 1.3.
+
+\subsection*{Exercise 1.2}
+First, let us note that $On$ is not a set. For if it were, it would then be a transitive set of ordinals, and thus would be an ordinal. Then that would mean 
+$On\in On$, contrary to Theorem 1.8 (of Chapter 5). Thus $On$ is not a set.
+
+Now, let $A$ be the class $On\cup\{\{\{\emptyset\}\}\}$. Thus $x\in A$ iff either $x$ is an ordinal, or $x=\{\{\emptyset\}\}$. Note that 
+$\{\{\emptyset\}\}$ is not an ordinal, as if it were, then it would be transitive, which would imply that $\emptyset\in\{\{\emptyset\}\}$, which 
+is not the case. Hence $On$ is a proper subclass of $A$.
+
+Then define the relation $x\le y$ as follows: $x\le y$ iff $x$ and $y$ are both ordinals and $x\subseteq y$, or $y=\{\{\emptyset\}\}$. Note that this defintion 
+implies that $\{\{\emptyset\}\}\le y$ only holds if $y=\{\{\emptyset\}\}$. We first show that 
+$\le$ is a well ordering of $A$.
+
+$O_1$: If $x$ is an ordinal, then $x\subseteq x$, so that $x\le x$ holds. If $x=\{\{\emptyset\}\}$, then $x\le x$ by definition.
+
+$O_2$: Suppose $(x\le y)\wedge (y\le z)$. If all of $x,y$ and $z$ are ordinals, then obviously $x\le z$. In fact, the only one of $x,y$ and $z$ which 
+could be $\{\{\emptyset\}\}$ is $z$. In that case, $x\le z$ holds by definition.
+
+$O_3$: Suppose $x\le y$ and $y\le x$. Then either $x=y=\{\{\emptyset\}\}$, or both $x$ and $y$ are ordinals, in which case 
+$x\subseteq y$ and $y\subseteq x$, so that $x=y$. Thus $x=y$.
+
+$O_4$: If $x$ and $y$ are both ordinals, then of course either $x\le y$ or $y\le x$. If $y=\{\{\emptyset\}\}$, then $x\le y$ (similarly with $x$).
+
+$O_5$: For any subclass $B$ of $A$, either $\{\{\emptyset\}\}\in B$ or not. If it is, then, $\{\{\emptyset\}\}$ is the least element of $B$ 
+(as $x\le\{\{\emptyset\}\}$ holds for all elements in $A$). If it is not in $B$, then $B$ is a subclass of $On$, hence (because $On$ is well 
+ordered under inclusion), $B$ has a least element. 
+
+Thus $\le$ is a well ordering of $A$. Now, $On$ is a proper lower section of $A$: It is a proper subclass of $A$, and 
+$x<\{\{\emptyset\}\}$ for all elements in $On$. But $On$ is not a set. Thus we have an example of a well ordering which 
+is not a proper well ordering.
