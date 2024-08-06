@@ -55,15 +55,14 @@ the proof of Proposition 1.3.
 Let $\mathcal{N}$ be a nest of functions.
 
 (1): We first show that $\cup\mathcal{N}$ is function. Obviously $\cup\mathcal{N}$ is a relation. Now, suppose we 
-had $\langle x,y\rangle$ and $\langle x,z\rangle$ both in $\cup\mathcal{N}$ for some $y\ne z$. Then $x$ is in the domain of some 
-function $f$. Without loss of generality, suppose $\langle x,y\rangle\in f$. Then $\langle x,z\rangle\notin f$. Now, this would mean 
-that $\langle x,z\rangle$ was in some other function $g$. But, because $\mathcal{N}$ is a nest, either $f\subseteq g$ or $g\subseteq f$. Without 
-loss of generality, suppose $f\subseteq g$. Then we would have $g(x)=y$ and $g(x)=z$, a contradiction to $g$ being a function. Hence $\cup\mathcal{N}$
+had $\langle x,y\rangle$ and $\langle x,z\rangle$ both in $\cup\mathcal{N}$. Thus, for some functions $f$ and $g$, 
+$\langle x,y\rangle\in f$ and $\langle x,z\rangle\in g$. But, because $\mathcal{N}$ is a nest, either $f\subseteq g$ or $g\subseteq f$. Without 
+loss of generality, suppose $f\subseteq g$. Then we would have $g(x)=y$ and $g(x)=z$, and because $g$ is a function, $y=z$. Hence $\cup\mathcal{N}$
 must be a function.
 
-(2): We now show that the domain of $\cup\mathcal{N}N$ is the union of the class of domains of the elements of $\mathcal{N}$ (call this $D$). Suppose 
-$x\in\textrm{Dom}(\cup\mathcal{N})$. Then, for some $y$ and some function $f$, $\langle x,y\rangle\in f$, meaning $x\in D$. On the other hand, suppose 
-$x\in D$. Then, for some $y$ and some function $f$, $langle x,y\rangle\in f$, meaning $x\in\textrm{Dom}(\cup\mathcal{N})$. Thus $\textrm{Dom}(\cup\mathcal{N})=D$. 
+(2): We now show that the domain of $\cup\mathcal{N}$ is the union of the class of domains of the elements of $\mathcal{N}$ (call this $D$). Suppose 
+$x\in\textrm{Dom}(\cup\mathcal{N})$. Then, for some $y$ and some function $f\in\mathcal{N}$, $\langle x,y\rangle\in f$, meaning $x\in D$. On the other hand, suppose 
+$x\in D$. Then, for some $y$ and some function $f\in\mathcal{N}$, $\langle x,y\rangle\in f$, meaning $x\in\textrm{Dom}(\cup\mathcal{N})$. Thus $\textrm{Dom}(\cup\mathcal{N})=D$. 
 Similar reasoning shows $\textrm{Ran}(\cup\mathcal{N})$ is the union of the class of ranges of the elements of $\mathcal{N}$.
 
 (3): Lastly, suppose that every element of $\mathcal{N}$ was 1-1. Now, suppose $x$ and $y$ are in the domain of $\cup\mathcal{N}$, and that $x\ne y$, and 
@@ -73,29 +72,30 @@ Without loss of generality, suppose that $f\subseteq g$. Then $g$ is 1-1, meanin
 
 \subsection*{Exercise 1.2}
 First, let us note that $On$ is not a set. For if it were, it would then be a transitive set of ordinals, and thus would be an ordinal. Then that would mean 
-$On\in On$, contrary to Theorem 1.8 (of Chapter 5). Thus $On$ is not a set.
+$On\in On$, which never holds for ordinals. Thus $On$ is not a set.
 
 Now, let $A$ be the class $On\cup\{\{\{\emptyset\}\}\}$. Thus $x\in A$ iff either $x$ is an ordinal, or $x=\{\{\emptyset\}\}$. Note that 
 $\{\{\emptyset\}\}$ is not an ordinal, as if it were, then it would be transitive, which would imply that $\emptyset\in\{\{\emptyset\}\}$, which 
 is not the case. Hence $On$ is a proper subclass of $A$.
 
-Then define the relation $x\le y$ as follows: $x\le y$ iff $x$ and $y$ are both ordinals and $x\subseteq y$, or $y=\{\{\emptyset\}\}$. Note that this defintion 
+Then define the relation $x\le y$ (on $A$) as follows: $x\le y$ iff $x$ and $y$ are both ordinals and $x\subseteq y$, or $y=\{\{\emptyset\}\}$. Note that this defintion 
 implies that $\{\{\emptyset\}\}\le y$ only holds if $y=\{\{\emptyset\}\}$. We first show that 
 $\le$ is a well ordering of $A$.
 
 $O_1$: If $x$ is an ordinal, then $x\subseteq x$, so that $x\le x$ holds. If $x=\{\{\emptyset\}\}$, then $x\le x$ by definition.
 
-$O_2$: Suppose $(x\le y)\wedge (y\le z)$. If all of $x,y$ and $z$ are ordinals, then obviously $x\le z$. In fact, the only one of $x,y$ and $z$ which 
-could be $\{\{\emptyset\}\}$ is $z$. In that case, $x\le z$ holds by definition.
+$O_2$: Suppose $(x\le y)\wedge (y\le z)$. If all of $x,y$ and $z$ are ordinals, then obviously $x\le z$. If any of 
+$x,y$ and $z$ were equal to $\{\{\emptyset\}\}$, then $z=\{\{\emptyset\}\}$ must hold, which of course implies that 
+$x\le z$. 
 
 $O_3$: Suppose $x\le y$ and $y\le x$. Then either $x=y=\{\{\emptyset\}\}$, or both $x$ and $y$ are ordinals, in which case 
 $x\subseteq y$ and $y\subseteq x$, so that $x=y$. Thus $x=y$.
 
 $O_4$: If $x$ and $y$ are both ordinals, then of course either $x\le y$ or $y\le x$. If $y=\{\{\emptyset\}\}$, then $x\le y$ (similarly with $x$).
 
-$O_5$: For any subclass $B$ of $A$, either $\{\{\emptyset\}\}\in B$ or not. If it is, then, $\{\{\emptyset\}\}$ is the least element of $B$ 
-(as $x\le\{\{\emptyset\}\}$ holds for all elements in $A$). If it is not in $B$, then $B$ is a subclass of $On$, hence (because $On$ is well 
-ordered under inclusion), $B$ has a least element. 
+$O_5$: For any subclass $B$ of $A$ that only contains ordinals, then, because $On$ is well ordered under $\subseteq$, it contains a least element. 
+If $\{\{\emptyset\}\}\in B$, then $B-\{\{\{\emptyset\}\}\}$ contains a least element $e$, and $e$ is also the least element of $B$ itself, as 
+$e<\{\{\emptyset\}\}$. Thus every subclass $B$ of $A$ contains a least element.
 
 Thus $\le$ is a well ordering of $A$. Now, $On$ is a proper lower section of $A$: It is a proper subclass of $A$, and 
 $x<\{\{\emptyset\}\}$ for all elements in $On$. But $On$ is not a set. Thus we have an example of a well ordering which 
