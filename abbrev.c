@@ -3,14 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
-//
-// How many steps to run the machine,
-// and how much space to allocate for the tape.
-// NSTEP should be command a line parameter.
-// The tape should grow dynamically, which would obviate NTAPE.
-//
-#define	NSTEP	1000
-#define	NTAPE	1000
+#define	INCR	8192	// how much tape to add when we reach the right end.
+int nstep=-1;		// How many steps to run the machine. -1 means forever.
 //
 // An ordinary tuple consists of
 //	config	the configuration the machine is in, currently
@@ -99,7 +93,6 @@ typedef struct MConfig MConfig;
 typedef struct Config Config;
 typedef struct Function Function;
 typedef	struct Param Param;
-typedef struct FnConfig FnConfig;
 typedef struct Unexpanded Unexpanded;
 //
 // Just like malloc, except prints a message and exits on error
@@ -117,27 +110,32 @@ void *emalloc(int n){
 struct Name{
 	char *name;
 	//
-	// Only one of fn and config should be non-zero
-	// fn is a configuration function.
-	// config is the first of a list of MConfigs describing
-	// what to do when the machine is in this configuration.
+	// At most one of fns and mconfig should be non-zero.
+	// fns is a list of configuration functions,each with a
+	// different parameter count.
+	// configs is the first of a list of Configs describing
+	// what to do when the machine is in this state.
 	//
 	Function *fns;
-	Function *efns;
 	MConfig *config;	// If non-zero, has already been expanded.
 	Name *next;
 };
-Name *newName(char *name, Function *fns, Function *efns, MConfig *config, Name *next){
+Name *newName(char *name, Function *fns, MConfig *config, Name *next){
 	Name *n=emalloc(sizeof(Name));
 	n->name=name;
 	n->fns=fns;
-	n->efns=efns;
 	n->config=config;
 	n->next=next;
 	return n;
 }
+//
+// Naming is confused. An MConfig the name of a state.
+// It has an associated list of Configs that determine what
+// happens when the machine is in this MConfig and sees
+// one of the given symbols.
+//
 struct Config{
-	char *symbols;		// might be better if this were a bitmask
+	char *symbols;
 	char *operations;
 	Name *final;
 	Config *next;
@@ -150,36 +148,17 @@ Config *newConfig(char *symbols, char *operations, Name *final, Config *next){
 	c->next=next;
 	return c;
 }
+//
+// This is useless & pointers to it should be replaced by direct pointers
+// to the configs.
+//
 struct MConfig{
-	Name *name;
-	Config *config;
-	MConfig *next;
+	Config *configs;
 };
-MConfig *newMConfig(Name *name, Config *config, MConfig *next){
+MConfig *newMConfig(Config *configs){
 	MConfig *m=emalloc(sizeof(MConfig));
-	m->name=name;
-	m->config=config;
-	m->next=next;
+	m->configs=configs;
 	return m;
-}
-struct FnConfig{
-	//
-	// Exactly one of symname and symbols should be non-null
-	//
-	Name *symname;
-	char *symbols;
-	char *operations;
-	Name *final;		// might be a call
-	FnConfig *next;
-};
-FnConfig *newFnConfig(Name *symname, char *symbols, char *operations, Name *final, FnConfig *next){
-	FnConfig *f=emalloc(sizeof(FnConfig));
-	f->symname=symname;
-	f->symbols=symbols;
-	f->operations=operations;
-	f->final=final;
-	f->next=next;
-	return f;
 }
 struct Param{
 	Name *name;
@@ -197,10 +176,10 @@ struct Function{
 	Name *name;
 	int nparams;
 	Param *params;
-	FnConfig *configs;
+	Config *configs;
 	Function *next;
 };
-Function *newFunction(Name *name, int nparams, Param *params, FnConfig *configs, Function *next){
+Function *newFunction(Name *name, int nparams, Param *params, Config *configs, Function *next){
 	Function *f=emalloc(sizeof(Function));
 	f->name=name;
 	f->nparams=nparams;
@@ -221,7 +200,6 @@ Unexpanded *newUnexpanded(Name *name, Unexpanded *next){
 }
 Name *start=0;			// the state in which the machine starts
 Name *namelist=0;		// list of all names
-Name *enamelist=0;		// last name on namelist, or 0 if none.
 Unexpanded *unexpanded=0;	// list of unexpanded calls
 Unexpanded *eunexpanded=0;	// end of the unexpanded list, or 0 if none.
 //
@@ -234,6 +212,7 @@ char *inp;		// next character to be scanned on the line
 int nerror;		// total number of error messages
 char *infile;		// name of the input file
 int parsing;		// true during input
+char *allsymbols=0;	// every symbol that might appear. Used in getconfig
 //
 // Print an error message. Use it like printf.
 // Msg should not have any newlines!
@@ -279,10 +258,8 @@ Name *lookup(char *s){
 	//
 	// Not found, need to create a new name and add it to the namelist
 	//
-	n=newName(strdup(s), 0, 0, 0, 0);
-	if(enamelist!=0) enamelist->next=n;
-	else namelist=n;
-	enamelist=n;
+	n=newName(strdup(s), 0, 0, namelist);
+	namelist=n;
 	return n;
 }
 int alpha(int c){
@@ -291,44 +268,28 @@ int alpha(int c){
 int idchar(int c){
 	return alpha(c) || '0'<=c && c<='9' || c=='\'';
 }
+int iswhite(int c){
+	return c==' ' || c=='\t' || c=='\n';
+}
 void skipwhite(void){
-	while(*inp==' ' || *inp=='\t' || *inp=='\n') inp++;
-	if(*inp=='#') while(*inp!='\0') inp++;
+	while(iswhite(*inp)) inp++;
 }
 void skipid(void){
 	while(idchar(*inp)) inp++;
 }
-void skipstring(void){
-	if(*inp!='"'){
-		error("Can't happen: skipstring called on non-string");
-		exit(1);
-	}
-	inp++;
-	while(*inp!='"'){
-		if(*inp=='\0'){
-			error("end of line in string");
-			return;
-		}
-		if(*inp=='\\') inp++;
-		inp++;
-	}
-}
 //
 // Save the token starting at start and ending at inp,
-// squishing out all white space.
-// Except we need to preserve white space in STRINGs
+// squishing out all unescaped white space.
 //
 void savetoken(char *start){
 	char *tokp=token;
-	if(*start=='"'){
-		for(char *s=start+1;s!=inp-1;s++){
-			if(*s=='\\') s++;
+	for(char *s=start;s!=inp;s++){
+		if(*s=='\\' && s+1!=inp){
+			s++;
 			*tokp++=*s;
 		}
+		else if(!iswhite(*s)) *tokp++=*s;
 	}
-	else
-		for(char *s=start;s!=inp;s++)
-			if(*s!=' ' && *s!='\t' && *s!='\n') *tokp++=*s;
 	*tokp='\0';
 }
 void copyid(char *dst, char *src, char *esrc){
@@ -337,95 +298,92 @@ void copyid(char *dst, char *src, char *esrc){
 	dst[len]='\0';
 }
 //
-// get the next (top-level) token from the line.
-// Token types are:
-//	FNDEF	the word def followed by name(params)
-//	NAME	just a naked name
-//	CALL	name(args). An arg can be a name or a string or a nested call
-//	STRING	a quoted string -- either an input list or an operation list
-//	EOL	end of line
-//	ERROR	something else
-// This doesn't try too hard to understand the internals of CALLs.
-// Someone else will be responsible for that.
+// get the next entry from the line.
+// An entry is a string of non-white characters (a backslash quotes any
+// character, including white space) with balanced parentheses (which may
+// enclose white space, which is ignored). A right paren
+// unmatched by a left paren is a syntax error.
 //
-//
-enum{
-	FNDEF, NAME, CALL, STRING, EOL, ERROR
-};
 int gettoken(void){
-	token[0]='\0';
 	skipwhite();
-	char *tokp=inp;
-	if(alpha(*inp) || *inp=='$'){
-		inp++;
-		skipid();
-		//
-		// If we see "def", it must be followed by
-		// a function header
-		//
-		if(inp-tokp==3 && strncmp(tokp, "def", 3)==0){
-			skipwhite();
-			tokp=inp;
-			skipid();
-			skipwhite();
-			if(*inp!='(') return ERROR;
+	if(*inp=='\0') return 0;
+	char *start=inp;
+	int level=0;
+	while(level>0 || !iswhite(*inp)){
+		if(*inp=='(') level++;
+		if(*inp==')'){
+			if(level==0){
+				error("Unbalanced parentheses");
+				inp++;		// skip over the bad paren.
+				return 0;
+			}
+			--level;
+		}
+		if(*inp=='\\'){
 			inp++;
-			for(;;){
-				skipwhite();
-				if(!alpha(*inp)) return ERROR;
-				skipid();
-				skipwhite();
-				if(*inp==')'){
-					inp++;
-					savetoken(tokp);
-					return FNDEF;
-				}
-				if(*inp!=',') return ERROR;
-				inp++;
+			if(*inp=='\0'){
+				error("backslash at end of line");
+				return 0;
 			}
 		}
-		//
-		// If we see "else", pretend that we saw the
-		// empty string, which we use in the symbol field
-		// to mean any character at all.
-		//
-		if(inp-tokp==4 && strncmp(tokp, "else", 4)==0){
-			strcpy(token, "");
-			return STRING;
-		}
-		skipwhite();
-		if(*inp!='('){
-			savetoken(tokp);
-			return NAME;
-		}
-		int level=1;
 		inp++;
-		while(level!=0){
-			skipwhite();
-			if(*inp=='(') level++;
-			else if(*inp==')') --level;
-			else if(*inp=='"') skipstring();
-			inp++;
-		}
-		savetoken(tokp);
-		return CALL;
 	}
-	else if(*inp=='"'){
-		skipstring();
-		if(*inp!='"'){
-			error("Can't happen: no terminating \" on string");
-			exit(1);
+	char *tokp=token;
+	for(char *s=start;s!=inp;s++){
+		if(!iswhite(*s)){
+			if(*s=='\\') s++;
+			*tokp++=*s;
 		}
-		inp++;
-		savetoken(tokp);
-		return STRING;
 	}
-	else if(*inp!='\0') return ERROR;
-	//
-	// Don't advance past EOL -- if someone calls again,
-	// just return EOL again
-	//
-	return EOL;
+	*tokp='\0';
+	return 1;	
+}
+//
+// Check what kind of token we have.
+// These overlap, so there are separate routines checking whether the token
+// could be each type. They will be called as appropriate.
+//
+int iskw(char *kw){
+	return strcmp(token, kw)==0;
+}
+int isname(void){
+	char *s=token;
+	if(*s=='$') s++;	// not sure this is ok.
+	if(!alpha(*s)) return 0;
+	while(idchar(*s)) s++;
+	return *s=='\0';
+}
+//
+// A header is a name followed by a parenthesis-enclosed, comma-separated
+// list of names.
+//
+int isheader(void){
+	char *s=token;
+	if(!alpha(*s)) return 0;
+	while(idchar(*s)) s++;
+	if(*s!='(') return 0;
+	s++;
+	for(;;){
+		if(!alpha(*s)) return 0;
+		while(idchar(*s)) s++;
+		if(*s==')') return s[1]=='\0';
+		if(*s!=',') return 0;
+		s++;
+	}
+}
+//
+// A call is a name followed by a string of balanced parentheses.
+// Balance is guaranteed by gettoken(), so we just check that the
+// last character is a right paren.
+//
+int iscall(void){
+	char *s=token;
+	if(*s=='$') s++;	// not sure this is ok
+	if(!alpha(*s)) return 0;
+	while(idchar(*s)) s++;
+	if(*s!='(') return 0;
+	while(s[1]!='\0') s++;
+	return *s==')';
 }
 MConfig *getmconfig(char *token){
 	Name *name=lookup(token);
@@ -433,33 +391,73 @@ MConfig *getmconfig(char *token){
 		error("name %s already in use", name->name);
 		return 0;
 	}
-	MConfig *m=newMConfig(name, 0, 0);
+	MConfig *m=newMConfig(0);
 	name->config=m;
 	return m;
 }
-Config *getconfig(void){
-	int t=gettoken();
-	if(t==EOL) return 0;
-	if(t!=STRING){
-		error("mconfig must specify symbols");
-		return 0;
-	}
-	char *symbols=strdup(token);	// should strip quotes
-	if(gettoken()!=STRING){
-		error("mconfig must specify operations");
+//
+// Return a copy of src with c substituted for every '*'.
+//
+char *starsubst(char *src, int c){
+	char *dst=strdup(src);
+	for(char *dp=dst;*dp!='\0';dp++) if(*dp=='*') *dp=c;
+	return dst;
+}
+Config *getconfig(int expandcall){
+	if(!gettoken()) return 0;
+	char *symbols=strdup(token);
+	if(!gettoken()){
+		error("config must specify operations");
 		return 0;
 	}
 	char *operations=strdup(token);	// should check syntax
-	t=gettoken();
-	if(t!=NAME && t!=CALL){
-		error("mconfig must specify final config");
+	if(!gettoken()){
+		error("config must specify final config");
+		return 0;
+	}
+	int call=iscall();
+	if(!call && !isname()){
+		error("final config must be a name or a call");
 		return 0;
 	}
 	Name *final=lookup(token);
-	if(gettoken()!=EOL)
+	if(gettoken())
 		error("junk past the end of a config");
+	//
+	// If symbols contains a *, we make a list of configs,
+	// one for each of the machine's symbols.
+	//
+	if(strcmp(symbols, "*")==0){
+		Config *clist=0;
+		Config *eclist=0;
+		if(allsymbols==0){
+			error("no symbols declaration");
+			return 0;
+		}
+		for(char *sym=allsymbols;*sym!='\0';sym++){
+			char *finalstring=starsubst(final->name, *sym);
+			Name *substfinal=lookup(finalstring);
+			free(finalstring);
+			Config *c=newConfig(starsubst(symbols, *sym),
+					    starsubst(operations, *sym),
+					    substfinal,
+					    0);
+			if(eclist!=0) eclist->next=c;
+			else clist=c;
+			eclist=c;
+			if(expandcall && call){
+				Unexpanded *u=newUnexpanded(substfinal, 0);
+				if(eunexpanded==0) unexpanded=u;
+				else eunexpanded->next=u;
+				eunexpanded=u;
+			}
+		}
+		free(symbols);
+		free(operations);
+		return clist;
+	}
 	Config *c=newConfig(symbols, operations, final, 0);
-	if(t==CALL){
+	if(expandcall && call){
 		Unexpanded *u=newUnexpanded(final, 0);
 		if(eunexpanded==0) unexpanded=u;
 		else eunexpanded->next=u;
@@ -525,44 +523,17 @@ Function *getfunction(char *token){
 			return 0;
 		}
 	}
-	Function *fn=newFunction(name, nparams, params, 0, 0);
-	if(name->efns==0)
-		name->fns=fn;
-	else
-		name->efns->next=fn;
-	name->efns=fn;
+	Function *fn=newFunction(name, nparams, params, 0, name->fns);
+	name->fns=fn;
 	return fn;
 }
-FnConfig *getfnconfig(void){
-	Name *symname=0;
-	char *symbols=0;
-	int t=gettoken();
-	if(t==EOL) return 0;
-	if(t==NAME)
-		symname=lookup(token);
-	else if(t==STRING)
-		symbols=strdup(token);
-	else{
-		error("config in function def must specify symbols "
-			"(or a parameter name)");
-		return 0;
-	}
-	if(gettoken()!=STRING){
-		error("config in function def must specify operations");
-		return 0;
-	}
-	char *operations=strdup(token);
-	t=gettoken();
-	Name *final;
-	if(t==NAME || t==CALL)
-		final=lookup(token);
-	else{
-		error("config in function def must specify final");
-		return 0;
-	}
-	if(gettoken()!=EOL)
-		error("junk at the end of config in function");
-	return newFnConfig(symname, symbols, operations, final, 0);
+//
+// Return the last in the argument list of configs or 0 if the argument is 0.
+//
+Config *last(Config *c){
+	if(c==0) return 0;
+	while(c->next!=0) c=c->next;
+	return c;
 }
 //
 // Read a skeleton table file.
@@ -574,103 +545,123 @@ void input(char *file){
 		perror(file);
 		exit(1);
 	}
+	Name noname;
+	noname.name="*gok*";
+	noname.fns=0;
+	noname.config=0;
+	noname.next=0;
 	Function *function=0;
-	FnConfig *efnconfig=0;
+	Function nofunction;
+	nofunction.name=&noname;
+	nofunction.nparams=0;
+	nofunction.configs=0;
+	nofunction.next=0;
 	MConfig *mconfig=0;
 	Config *econfig=0;
 	for(lineno=1;fgets(line, sizeof line, in)!=0;lineno++){
 		inp=line;
-		int t;
+		char *comment=strchr(line, '#');
+		if(comment) *comment='\0';
 
-		if(strncmp(line, "include", 7)==0
-		     && (line[7]==' ' || line[7]=='\t')){
-			skipid();
-			skipwhite();
-			if(*inp!='"'){
-				error("bad include");
-				continue;
-			}
-			char *includename=inp+1;
-			skipstring();
-			if(*inp!='"'){
-				error("bad string in include");
-				continue;
-			}
-			*inp='\0';
-			//
-			// Recursive call.
-			// Save important globals first,
-			// do the call and restore them after.
-			// (We're done with line, token and inp at this point,
-			// so we don't need to save and restore them.)
-			// This would be mildly easier in C++.
-			//
-			char *savefile=file;
-			int savelineno=lineno;
-			input(includename);
-			file=savefile;
-			lineno=savelineno;
-			continue;
-		}
-		else if(line[0]==' ' || line[0]=='\t'){
+		if(iswhite(*inp)){	// continuation of mconfig/function def
 			//
 			// Two legal possibilities at this point:
 			//	a blank line, which we should ignore
-			//	another config for an mconfig or a function.
+			//	a config for an mconfig or a function.
 			skipwhite();
 			if(*inp=='\0') continue;	// nothing on line
-			if(function){
-				FnConfig *f=getfnconfig();
-				if(efnconfig)
-					efnconfig->next=f;
-				else
-					function->configs=f;
-				efnconfig=f;
-			}
-			else if(mconfig){
-				Config *c=getconfig();
-				if(econfig)
-					econfig->next=c;
-				else
-					mconfig->config=c;
-				econfig=c;
-			}
-			else
+			if(function==0 && mconfig==0)
 				error("orphan continuation line");
+			else{
+				Config *c=getconfig(mconfig!=0);
+				if(c!=0){
+					if(econfig) econfig->next=c;
+					else if(function) function->configs=c;
+					else mconfig->configs=c;
+					econfig=last(c);
+				}
+			}
 		}
 		else{
-			t=gettoken();
-			switch(t){
-			default:
-				error("Can't happen: unknown token");
-				exit(1);
-			case EOL: break;	// empty line
-			case FNDEF:
-				mconfig=0;
-				function=getfunction(token);
-				function->configs=getfnconfig();
-				efnconfig=function->configs;
-				break;
-			case CALL:
+			//
+			// The line is unindented, so it must be
+			// an include, a def or an mconfig (which starts with
+			// and unadorned name).
+			//
+			if(!gettoken()) continue;
+			if(iskw("include")){
+				skipwhite();
+				if(*inp!='"'){
+					error("bad include");
+					continue;
+				}
+				char *includename=inp+1;
+				while(*inp!='"' && *inp!='\0'){
+					if(*inp=='\\' && inp[1]!='\0') inp++;
+					inp++;
+				}
+				if(*inp!='"'){
+					error("unterminated include file name");
+					return;
+				}
+				savetoken(includename);
 				//
-				// Not sure this is actually an error.
+				// Recursive call.
+				// Save important globals first,
+				// do the call and restore them after.
+				// (We're done with line, token and inp at this point,
+				// so we don't need to save and restore them.)
+				// This would be mildly easier in C++.
 				//
-				error("not expecting a call here");
-				break;
-			case NAME:
+				char *savefile=file;
+				int savelineno=lineno;
+				input(token);
+				file=savefile;
+				lineno=savelineno;
+			}
+			else if(iskw("def")){
+				if(!gettoken())
+					error("function def must name "
+						"a function");
+				else if(!isheader())
+					error("function def must have a name "
+						"and parameters (saw %s)",
+						token);
+				else{
+					mconfig=0;
+					function=getfunction(token);
+					//
+					// on error, we want to continue
+					// reading the definition and stash
+					// it someplace innocuous
+					//
+					if(function==0)
+						function=&nofunction;
+					// works even if getconfig returns 0
+					function->configs=getconfig(0);
+					econfig=last(function->configs);
+				}
+			}
+			else if(iskw("symbols")){
+				if(!gettoken())
+					error("symbols line must a "
+						"symbol list");
+				else if(allsymbols!=0)
+					error("can only specify symbols once");
+				else
+					allsymbols=strdup(token);
+			}
+			else if(isname()){
+				Name *configname=lookup(token);
 				function=0;
 				mconfig=getmconfig(token);
-				mconfig->config=getconfig();
-				econfig=mconfig->config;
-				if(start==0) start=mconfig->name;
-				break;
-			case STRING:
-				error("Not expecting a string here");
-				break;
-			case ERROR:
-				error("unrecognized token");
-				break;
+				// works even if getconfig returns 0
+				mconfig->configs=getconfig(1);
+				econfig=last(mconfig->configs);
+				if(start==0) start=configname;
 			}
+			else if(token[0]!='\0')
+				error("unrecognized line, token '%s'", token);
 		}
 	}
 	fclose(in);
@@ -726,38 +717,16 @@ void substitute(char *dst, char *src, Param *param){
 	*dstp='\0';
 }
 //
-// Expand a FnConfig, producing a Config.
+// Expand a Config
 // 
-Config *expandconfig(FnConfig *fc, Param *param){
+Config *expandconfig(Config *fc, Param *param){
 	char buf[8192];		// results of substitution will go here
 	char *symbols;
 	//
-	// Symbols either come from a literal in the FnConfig
-	// or by looking up a parameter.
-	// Someone should have checked that the parameter is
-	// legit earlier, but no one did, so we have to do the check here.
+	// Symbols come from substituting into fc's symbols.
 	//
-	// We also have to theck that the parameter value is a legit
-	// string. I don't think there's anywhere else we could have done
-	// that.
-	//
-	if(fc->symbols){
-		substitute(buf, fc->symbols, param);
-		symbols=strdup(buf);
-	}
-	else{
-		symbols=findparam(fc->symname->name, param);
-		if(symbols==0){
-			error("Can't expand symbols -- no param %s",
-				fc->symname);
-			return 0;
-		}
-		if(symbols[0]!='"'){
-			error("Can't expand symbols -- param %s=%s is not "
-				"a string", fc->symname->name, symbols);
-			return 0;
-		}
-	}
+	substitute(buf, fc->symbols, param);
+	symbols=strdup(buf);
 	char *operations;
 	substitute(buf, fc->operations, param);
 	operations=strdup(buf);
@@ -768,24 +737,7 @@ Config *expandconfig(FnConfig *fc, Param *param){
 	//
 	Name *final;
 	substitute(buf, fc->final->name, param);
-	//
-	// What if, at this point, buf contains a string rather than a
-	// name or a call? I think it might be possible for that to happen
-	// if the FnConfig's final is a param that has a string value. But
-	// I don't think there's any plausible way that an m-config should have
-	// a quoted string for a name.
-	//
 	final=lookup(buf);
-	//
-	// Then check whether the result is legit -- something that
-	// expands to the name of a fn definition is questionable. (There's
-	// no real need for this, but it's pretty bogus.)
-	//
-	if(final->fns!=0){
-		error("trying to expand %s, but that's just wrong",
-			final->name);
-		return 0;
-	}
 	//
 	// If final is a call that has yet to be expanded,
 	// put it on the unexpanded list for later processing.
@@ -898,32 +850,6 @@ fprintf(stderr, "expanding %s with %d params\n", fn->name->name, nargs);
 			}
 			if(*callp=='(') level++;
 			if(*callp==')') --level;
-			if(*callp=='"'){
-				//
-				// Soak up a quoted string -- in particular
-				// don't count parentheses inside the string.
-				// This almost duplicates code in skipstring
-				// which is annoying and should be fixed.
-				//
-				callp++;
-				while(*callp!='"'){
-					//
-					// This can't happen because
-					// input has already verified
-					// that every string has a
-					// closing quote
-					//
-					if(*callp=='\0'){
-						error("Can't happen: end of "
-							"token in string while "
-							"expanding %s",
-							name->name);
-						exit(1);
-					}
-					if(*callp=='\\') callp++;
-					callp++;
-				}
-			}
 			callp++;
 		}
 		if(*callp==')') done=1;
@@ -948,14 +874,14 @@ fprintf(stderr, "expanding %s with %d params\n", fn->name->name, nargs);
 		exit(1);
 	}
 	//
-	// do the expansion for each FnConfig in fc->fn
+	// do the expansion for each Config in fc->fn
 	//
-	name->config=newMConfig(name, 0, 0);
+	name->config=newMConfig(0);
 	Config *econfig=0;
-	for(FnConfig *fc=fn->configs;fc;fc=fc->next){
+	for(Config *fc=fn->configs;fc;fc=fc->next){
 		Config *c=expandconfig(fc, fn->params);
 		if(econfig==0)
-			name->config->config=c;
+			name->config->configs=c;
 		else
 			econfig->next=c;
 		econfig=c;
@@ -978,6 +904,23 @@ void expandall(void){
 	}
 	eunexpanded=0;
 }
+void showstring(FILE *f, char *str){
+	for(char *s=str;*s!='\0';s++){
+		if(iswhite(*s)) fprintf(f, "\\");
+		putc(*s, f);
+	}
+}
+void showconfigs(FILE *f, Config *config){
+	for(Config *c=config;c!=0;c=c->next){
+		fprintf(f, "\t");
+		showstring(f, c->symbols);
+		fprintf(f, "\t");
+		showstring(f, c->operations);
+		fprintf(f, "\t");
+		showstring(f, c->final->name);
+		fprintf(f, "\n");
+	}
+}
 void show(FILE *f){
 	if(start)
 		fprintf(f, "# start %s\n", start->name);
@@ -985,40 +928,63 @@ void show(FILE *f){
 		fprintf(f, "# No start symbol!\n");
 	for(Name *n=namelist;n!=0;n=n->next){
 		if(n->config!=0){
-			fprintf(f, "%s\n", n->name);
-			for(Config *c=n->config->config;c!=0;c=c->next){
-				fprintf(f, "\t\"%s\"", c->symbols);
-				fprintf(f, "\t%s", c->operations);
-				fprintf(f, "\t%s\n", c->final->name);
-			}
+			showstring(f, n->name);
+			showconfigs(f, n->config->configs);
 		}
 #if 1
 		else if(n->fns!=0){
 			for(Function *fn=n->fns;fn!=0;fn=fn->next){
-				fprintf(f, "def %s", n->name);
+				fprintf(f, "def ");
+				showstring(f, n->name);
 				int sep='(';
 				for(Param *p=fn->params;p!=0;p=p->next){
-					fprintf(f, "%c%s", sep, p->name->name);
+					fprintf(f, "%c", sep);
+					showstring(f, p->name->name);
 					sep=',';
 				}
 				fprintf(f, ")\n");
-				for(FnConfig *c=fn->configs;c!=0;c=c->next){
-					if(c->symname!=0)
-						fprintf(f, "\t%s",
-							c->symname->name);
-					else
-						fprintf(f, "\t\"%s\"", c->symbols);
-					fprintf(f, "\t%s", c->operations);
-					fprintf(f, "\t%s\n", c->final->name);
-				}
+				showconfigs(f, fn->configs);
 			}
 		}
 #endif
 	}
 }
+void checkchar(int c){
+	if(strchr(allsymbols, c)==0)
+		error("symbol '%c' not in symbols \"%s\"", c, allsymbols);
+}
+//
+// Verify that allsymbols includes all the symbols of the machine.
+//
+void checkallsymbols(void){
+	//
+	// It's not actually an error for there to by no symbols
+	// declaration. It's only wrong to 
+	if(allsymbols==0) return;
+	for(Name *name=namelist;name!=0;name=name->next) if(name->config){
+		for(Config *c=name->config->configs;c!=0;c=c->next){
+			for(char *s=c->symbols;*s!='\0';s++)
+				checkchar(*s);
+			for(char *s=c->operations;*s!='\0';s++){
+				if(*s=='P'){
+					//
+					// Someone should report an error if P
+					// is not followed by a character.
+					// That should happen in 
+					// Let execute do it for now.
+					//
+					s++;
+					if(*s=='\0') break;
+					checkchar(*s);
+				}
+			}
+		}
+	}
+}
 void execute(void){
-	char tape[NTAPE];
-	memset(tape, ' ', sizeof(tape));
+	int ntape=INCR;
+	char *tape=emalloc(ntape*sizeof(char));
+	memset(tape, '_', ntape*sizeof(char));
 	Name *state=start;
 	if(state==0){
 		error("no start state!");
@@ -1032,35 +998,49 @@ void execute(void){
 	printf("%.*s\n", hwm, tape);
 	for(int i=0;i!=loc;i++) putchar(' ');
 	printf("^%s\n", state->name);
-	for(int step=0;step!=NSTEP;step++){
+	for(int step=0;step!=nstep;step++){
 		if(state->config==0){
 			error("Undefined m-config %s", state->name);
 			return;
 		}
 		Config *config;
-		//
-		// Look for a config whose symbols match tape[loc]
-		//
-		for(config=state->config->config;config!=0;config=config->next){
-			//
-			// An empty string means anything will do
-			//
-			if(config->symbols[0]=='\0') goto FoundSymbol;
-			for(char *s=config->symbols;*s!='\0';s++)
-				if(*s==tape[loc])
-					goto FoundSymbol;
+		for(config=state->config->configs;config!=0;config=config->next){
+			char *sym=config->symbols;
+			if(*sym=='^'){
+				sym++;
+				int found=0;
+				while(*sym){
+					if(*sym==tape[loc]) found=1;
+					sym++;
+				}
+				if(!found) goto FoundSymbol;
+			}
+			else{
+				for(;*sym!='\0';sym++)
+					if(*sym==tape[loc])
+						goto FoundSymbol;
+			}
 		}
+		//
+		// If we fall out of the loop, no config matched
+		//
 		error("Config for symbol %c not found in state %s",
 			tape[loc], state->name);
 		return;
 	FoundSymbol:
 		//
+		// At this point, config has a match.
+		//
 		// Execute the operations, enter the new state, print the tape.
 		// Right now this ignores operations it doesn't understand.
-		// Someone should check them. But who?
+		// We need to have some symbol indicating no operations to
+		// do, because input won't let the string be empty.
 		//
 		for(char *o=config->operations;*o!='\0';o++) switch(*o){
 		default:	break;
+		case 'N': break;	// no operation
+		case 'H':	// Halt. Not one of Turing's actions.
+			return;
 		case 'P':
 			o++;
 			if(*o=='\0'){
@@ -1069,6 +1049,9 @@ void execute(void){
 				return;
 			}
 			tape[loc]=*o;
+			break;
+		case 'E':
+			tape[loc]='_';
 			break;
 		case 'L':
 			if(loc==0){
@@ -1080,20 +1063,19 @@ void execute(void){
 			--loc;
 			break;
 		case 'R':
-			if(loc==NTAPE-1){
-				error("Fell of the right end of the tape"
-					" in state %s operations %s",
-					state->name, config->operations);
-				return;
+			if(loc==ntape-1){
+				tape=realloc(tape, (ntape+INCR)*sizeof(char));
+				if(tape==0){
+					error("Can't grow tape to %d cells\n",
+						ntape+INCR);
+					exit(1);
+				}
+				memset(tape+ntape, '_', INCR);
+				ntape+=INCR;
 			}
 			loc++;
 			if(loc>hwm) hwm=loc;
 			break;
-		case 'E':
-			tape[loc]=' ';
-			break;
-		case 'H':	// Halt. Not one of Turing's actions.
-			return;
 		}
 		state=config->final;
 		//
@@ -1103,18 +1085,33 @@ void execute(void){
 		for(int i=0;i!=loc;i++) putchar(' ');
 		printf("^%s\n", state->name);
 	}
-	printf("Stopped after %d steps\n", NSTEP);
+	printf("Stopped after %d steps\n", nstep);
 }
 int main(int argc, char *argv[]){
-	if(argc!=2){
-		fprintf(stderr, "Usage: %s machine-file\n", argv[0]);
-		return 1;
+	if(argc>1 && strncmp(argv[1], "-s", 2)==0){
+		if(argv[1][2]){
+			if(argc!=3) goto Usage;
+			nstep=atoi(argv[1]+2);
+		}
+		else{
+			if(argc!=4) goto Usage;
+			nstep=atoi(argv[2]);
+		}
+	}
+	else if(argc!=2){
+	Usage:
+		fprintf(stderr,
+			"Usage: %s [-s nstep] machine-file\n",
+			argv[0]);
+	return 1;
 	}
 	parsing=1;
-	input(argv[1]);
+	input(argv[argc-1]);
 	parsing=0;
 	if(nerror!=0) return 1;
 	expandall();
+	if(nerror!=0) return 1;
+	checkallsymbols();
 	if(nerror!=0) return 1;
 	show(stdout);
 	printf("=======================\n");
