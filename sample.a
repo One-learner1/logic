@@ -1,5 +1,5 @@
 symbols	ex
 include "defs.a"
-start		*	"Pe,R,Pe,R,Px,R"	f(found, notfound, "x")
-found		*	"H"	found
-notfound	*	"H"	notfound
+start		*	Pe,R,Pe,R,Px,R	f(found, notfound, x)
+found		*	H	found
+notfound	*	H	notfound
