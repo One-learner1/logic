@@ -1,4 +1,4 @@
-//*% $COM -o # %
+//*% $COM -O0 -o # %
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -595,7 +595,8 @@ void input(char *file){
 					error("bad include");
 					continue;
 				}
-				char *includename=inp+1;
+				inp++;
+				char *includename=inp;
 				while(*inp!='"' && *inp!='\0'){
 					if(*inp=='\\' && inp[1]!='\0') inp++;
 					inp++;
@@ -609,17 +610,19 @@ void input(char *file){
 				// Recursive call.
 				// Save important globals first,
 				// do the call and restore them after.
-				// (We're done with line, token and inp at this point,
-				// so we don't need to save and restore them.)
-				// This would be mildly easier in C++.
+				// (We're done with line, token and inp at this
+				// point, so we don't need to save and restore
+				// them.) This would all be mildly easier in
+				// C++.
 				//
 				char *savefile=file;
 				int savelineno=lineno;
 				input(token);
 				file=savefile;
 				lineno=savelineno;
+				continue;
 			}
-			else if(iskw("def")){
+			if(iskw("def")){
 				if(!gettoken())
 					error("function def must name "
 						"a function");
@@ -648,8 +651,14 @@ void input(char *file){
 						"symbol list");
 				else if(allsymbols!=0)
 					error("can only specify symbols once");
-				else
-					allsymbols=strdup(token);
+				else{
+					int toklen=strlen(token);
+					allsymbols=emalloc(toklen+2);
+					strcpy(allsymbols, token);
+					allsymbols[toklen]='_';
+					allsymbols[toklen+1]='\0';
+fprintf(stderr, "allsymbols=%s\n", allsymbols);
+				}
 			}
 			else if(isname()){
 				Name *configname=lookup(token);
@@ -819,7 +828,6 @@ void expand(Name *name){
 			name, nargs, call);
 		return;
 	}
-fprintf(stderr, "expanding %s with %d params\n", fn->name->name, nargs);
 	//
 	// crack arguments starting at callp and set each
 	// Param::value to the corresponding argument.
@@ -950,7 +958,7 @@ void show(FILE *f){
 	}
 }
 void checkchar(int c){
-	if(strchr(allsymbols, c)==0)
+	if(c!= '_' && strchr(allsymbols, c)==0)
 		error("symbol '%c' not in symbols \"%s\"", c, allsymbols);
 }
 //
