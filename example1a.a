@@ -1,0 +1,6 @@
+#
+# Example I, p234
+#
+b	_	P0	b
+	0	R,R,P1	b
+	1	R,R,P0	b

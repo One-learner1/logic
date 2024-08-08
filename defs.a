@@ -4,6 +4,7 @@
 #	On Computable Numbers, With an Application To the Entscheidungsproblem
 #	Proceedings of the London Mathematical Society, 58: 236-265
 #
+symbols ab01		# standin while debugging
 
 #
 # p 236.
@@ -14,15 +15,14 @@
 #
 # if there are no a's, enter state B
 #
-
 def f(C, B, a)	# scan left for e (the beginning of the tape)
-	"e"	"L"		f1($C, $B, $a)
-	else	"L"		f($C, $B, $a)
+	e	L		f1($C, $B, $a)
+	*	L		f($C, $B, $a)
 
 def f1(C, B, a)	# scan right for a
-	"$a"	""		$C
-	" "	"R"		f2($C, $B, $a)
-	else	"R"		f1($C, $B, $a)
+	$a	N		$C
+	_	R		f2($C, $B, $a)
+	*	R		f1($C, $B, $a)
 
 #
 # After scanning a blank:
@@ -34,9 +34,9 @@ def f1(C, B, a)	# scan right for a
 #
 
 def f2(C, B, a)
-	"$a"	""		$C
-	" "	"R"		$B
-	else	"R"		f1($C, $B, $a)
+	$a	N		$C
+	_	R		$B
+	*	R		f1($C, $B, $a)
 
 #
 # Page 237
@@ -44,12 +44,30 @@ def f2(C, B, a)
 #	Erase the first a and enter state C. If there is no a, enter state B.
 #
 
-def e(C,B,a)	""	""	f(e1($C,$B,$a),$B,$a)
-def e1(C,B,a)	""	"E"	C
+def e(C,B,a)	*	N	f(e1($C,$B,$a),$B,$a)
+def e1(C,B,a)	*	E	C
 
 #
 # e(B,a)
 #	erase all occurrences of a and enter state B
 #
 
-def e(B,a)	""	""	e(e($B,$a),$B,$a)
+def e(B,a)	*	N	e(e($B,$a),$B,$a)
+
+#
+# Print b at the end of the sequence of symbols and enter state C
+#
+def pe(C,b)	*	N	f(pe1($C,$b),$C,e)
+def pe1(C,b)	_	P$b	C
+		*	R,R	pe1($C,$b)
+#
+#
+#
+def l(C)		*	L	C
+def r(C)		*	R	C
+
+def f'(C,B,a)	*	N	f(l($C),$B,$a)
+def f''(C,B,a)	*	N	f(r($C),$B,$a)
+
+def c(C,B,a)	*	N	f'(c1($C),$B,$a)
+def c1(C)	*	N	C

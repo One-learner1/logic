@@ -1,13 +1,13 @@
 #
 # Example II, p234
 #
-b	""	"Pe,R,Pe,R,P0,R,R,P0,L,L"	o
-o	"1"	"R,Px,L,L,L"			o
-	"0"	""				q
-q	"01"	"R,R"				q
-	" "	"P1,L"				p
-p	"x"	"E,R"				q
-	"e"	"R"				f
-	" "	"L,L"				p
-f	"01"	"R,R"				f
-	" "	"P0,L,L"			o
+b	_	Pe,R,Pe,R,P0,R,R,P0,L,L	o
+o	1	R,Px,L,L,L			o
+	0	N				q
+q	01	R,R				q
+	_	P1,L				p
+p	x	E,R				q
+	e	R				f
+	_	L,L				p
+f	01	R,R				f
+	_	P0,L,L				o

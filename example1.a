@@ -1,6 +1,7 @@
 #
 # Example I, p234
 #
-b	" "	"P0"		b
-	"0"	"R,R,P1"	b
-	"1"	"R,R,P0"	b
+b	_	P0,R	c
+c	_	R	e
+e	_	P1,R	f
+f	_	R	b
