@@ -1,7 +1,7 @@
 #
 # Example II, p234
 #
-b	_	Pe,R,Pe,R,P0,R,R,P0,L,L	o
+b	_	Pe,R,Pe,R,P0,R,R,P0,L,L		o
 o	1	R,Px,L,L,L			o
 	0	N				q
 q	01	R,R				q
