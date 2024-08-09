@@ -424,10 +424,16 @@ Config *getconfig(int expandcall){
 	if(gettoken())
 		error("junk past the end of a config");
 	//
-	// If symbols contains a *, we make a list of configs,
+	// If symbols is * and final also contains a *,
+	// we make a list of configs,
 	// one for each of the machine's symbols.
+	// (In the case where final contains no *, the interpreter takes a *
+	// in symbols to mean any non-blank and in operations to mean the
+	// scanned symbol.  The only reason to do it this way is to avoid
+	// proliferating states when the situation can be handled easily
+	// in the interpreter.)
 	//
-	if(strcmp(symbols, "*")==0){
+	if(strcmp(symbols, "*")==0 && strchr(final->name, '*')==0){
 		Config *clist=0;
 		Config *eclist=0;
 		if(allsymbols==0){
@@ -652,12 +658,7 @@ void input(char *file){
 				else if(allsymbols!=0)
 					error("can only specify symbols once");
 				else{
-					int toklen=strlen(token);
-					allsymbols=emalloc(toklen+2);
-					strcpy(allsymbols, token);
-					allsymbols[toklen]='_';
-					allsymbols[toklen+1]='\0';
-fprintf(stderr, "allsymbols=%s\n", allsymbols);
+					allsymbols=strdup(token);
 				}
 			}
 			else if(isname()){
@@ -934,13 +935,11 @@ void show(FILE *f){
 		fprintf(f, "# start %s\n", start->name);
 	else
 		fprintf(f, "# No start symbol!\n");
+	//
+	// Print all the defs first, then all the MConfigs
+	//
 	for(Name *n=namelist;n!=0;n=n->next){
-		if(n->config!=0){
-			showstring(f, n->name);
-			showconfigs(f, n->config->configs);
-		}
-#if 1
-		else if(n->fns!=0){
+		if(n->fns!=0){
 			for(Function *fn=n->fns;fn!=0;fn=fn->next){
 				fprintf(f, "def ");
 				showstring(f, n->name);
@@ -954,11 +953,17 @@ void show(FILE *f){
 				showconfigs(f, fn->configs);
 			}
 		}
-#endif
+	}
+	printf("----------\n");
+	for(Name *n=namelist;n!=0;n=n->next){
+		if(n->config!=0){
+			showstring(f, n->name);
+			showconfigs(f, n->config->configs);
+		}
 	}
 }
 void checkchar(int c){
-	if(c!= '_' && strchr(allsymbols, c)==0)
+	if(c!= '_' && c!='*' && strchr(allsymbols, c)==0)
 		error("symbol '%c' not in symbols \"%s\"", c, allsymbols);
 }
 //
@@ -1012,28 +1017,30 @@ void execute(void){
 			return;
 		}
 		Config *config;
+		int scannedloc=tape[loc];
 		for(config=state->config->configs;config!=0;config=config->next){
 			char *sym=config->symbols;
-			if(*sym=='^'){
+			if(*sym=='~'){
 				sym++;
 				int found=0;
 				while(*sym){
-					if(*sym==tape[loc]) found=1;
+					if(*sym==scannedloc) found=1;
 					sym++;
 				}
 				if(!found) goto FoundSymbol;
 			}
 			else{
 				for(;*sym!='\0';sym++)
-					if(*sym==tape[loc])
+					if(*sym=='*' && scannedloc!='_'
+					|| *sym==scannedloc)
 						goto FoundSymbol;
 			}
 		}
 		//
-		// If we fall out of the loop, no config matched
+		// If we fall out of the loop, no config matched.
 		//
 		error("Config for symbol %c not found in state %s",
-			tape[loc], state->name);
+			scannedloc, state->name);
 		return;
 	FoundSymbol:
 		//
@@ -1056,7 +1063,7 @@ void execute(void){
 					config->operations, state->name);
 				return;
 			}
-			tape[loc]=*o;
+			tape[loc]=*o=='*'?scannedloc:*o;
 			break;
 		case 'E':
 			tape[loc]='_';
