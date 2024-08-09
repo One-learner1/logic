@@ -101,4 +101,56 @@ Thus $\le$ is a well ordering of $A$. Now, $On$ is a proper lower section of $A$
 $x<\{\{\emptyset\}\}$ for all elements in $On$. But $On$ is not a set. Thus we have an example of a well ordering which 
 is not a proper well ordering.
 
+\section*{Section 2}
+
+\subsection*{Notes}
+Obviously, if $A$ is isomorphic to $B$, then $B$ is isomorphic to $A$ (as seen in the next paragraph).
+
+Note that any subclass of an isomorphism from $A$ onto $B$ is an isomorphism from a subclass of $A$ onto a 
+subclass of $B$.
+
+Note that, if $\phi$ is an isomorphism from $A$ onto $B$, then $\phi^{-1}$ is an isomorphism from $B$ onto $A$. For, clearly 
+$\phi^{-1}$ is a 1-1 function from $B$ onto $A$. And suppose $\phi$ is an isomorphism from the system $\langle A,\le_1\rangle$ to 
+the system $\langle B,\le_2\rangle$. Then, for any $a_1,a_2$ in $B$, $a_1<_2a_2$ iff $\phi(a_1)<_1\phi(a_2)$.
+
+The above fact is used, for instance, in Corollary 2.2. Also, in Corollary 2.2, note that $(2')$ follows 
+because $\phi(\phi^{-1}(a))=a$. 
+
+I think there is an error in the proof of Corollary 2.3. It claims that $\phi_1\phi_2^{-1}$ is an isomorphism from $A$ onto $A$, but this 
+is clearly not the case. For $\phi_2^{-1}$ is from $B$ onto $A$, and $\phi_1$ is from $A$ onto $B$, meaning 
+$\phi_1\phi_2^{-1}$ is actually from $B$ onto $B$ (now, this would also work, as then, by Corollary 2.2, $\phi_1=\phi_2$, but 
+it is explicitly said in the proof that $\phi_1\phi_2^{-1}$ is from $A$ onto $A$). If we wanted to get a function from $A$ onto 
+$A$, we would need to pick $\phi_2^{-1}\phi_1$ (for example; there are others).
+
+Also, here is why (as said in Corollary 2.3), if $\phi_1\phi_2^{-1}$ is the identity map (for $\phi_1$ and $\phi_2$ both from $A$ onto $B$), 
+then $\phi_1=\phi_2$. For suppose that $\phi_1\phi_2^{-1}$ is the identity map. Then, for any $x\in B$, 
+$\phi_2^{-1}(x)=y$ for some $y\in A$, and $\phi_1(y)=x$, but also $\phi_2(y)=x$, meaning $\phi_1=\phi_2$. 
+
+Corollary 2.5 holds, as, for any two distinct ordinals $\alpha,\beta$, they are comparable. Without loss of generality, suppose $\alpha<\beta$.
+Now, $\alpha$ must be an initial segment of $\beta$ (clearly, all elements of $\alpha$ are in $\beta$, due to the transitivity of ordinals). This is 
+because, for any element $x\in\alpha$, for any element $y\in\beta$ but not in $\alpha$, $x<y$ holds because $x<\alpha$ (by assumption), and, if 
+$x\ge y$, then $y<\alpha$. But, this would mean $y\in\alpha$, a contradiction. Hence $\alpha$ is an initial segment of $\beta$, and thus there 
+can be no isomorphism from $\beta$ to $\alpha$. 
+
+Corollary 2.6 holds, as, between two distinct lower sections of the same well ordered system, one is an initial segment of the other. For supppose
+the two lower sections were $L_<(x)$ and $L_<(y)$. Now, without loss of generality, suppose $x<y$. Then $L_<(x)$ is an initial segment of $L_<(y)$, 
+as, for every $z\in L_<(x)$, obviously $z<w$ for every $w\in L_<(y)$ but not in $L_<(x)$ (for if not, then $z\ge x$), meaning $L_<(x)$ is proper lower 
+section of $L_<(y)$, and hence also an initial segment of $L_<(y)$. Thus, if two distinct lower sections of the same well ordered system are isomorphic 
+to each other, then one of them would be isomorphic to one of its initial segments, contrary to Corollary 2.4.
+
+If $A$ is isomorphic to $B$, and $B$ isomorphic to $C$, then $A$ is obviously isomorphic to $C$. For suppose $A$ is isomorphic to $B$ under $\phi_1$, 
+and $B$ is isomorphic to $C$ under $\phi_2$. Then let $\phi_3$ be the class of all orderd pairs $\langle x,\phi_2(\phi_1(x))\rangle$ where $x\in A$; 
+$\phi_3$ is the isomorphism from $A$ to $C$.
+
+This explains Corollary 2.7: For suppose a lower section of $A$ was isomorphic to two distinct lower sections $C$ and $D$ of $B$. Then it would follow that 
+$A$ is isomorphic to $C$, and $A$ is isomorphic to $D$, meaning $C$ is isomorphic to $D$. But this would contradict Corollary 2.6.
+
+In Corollary 2.8, here is why $I_2\restriction D_1$ is an isomorphism from $D_1$ onto a lower section of $B$: Clearly $I_2\restriction D_1$ is an 
+isomorphism from $D_1$ onto a subclass of $I_2$. Also, suppose that $A$ was well ordered under $\le_1$ and $B$ was well ordered under $\le_2$. 
+Now, suppose $C$ is the range of $I_2$, and $C'$ is the range of $I_2\restriction D_1$. Suppose that 
+$C'$ was not a lower section of $C$. Then, for some $x\in C'$, there would be some $y\in C-C'$ such that $y<_2x$. But, because $I_2$ is an isomorphism, 
+$I_2^{-1}(y)<_1I_2^{-1}(x)$. But $I_2^{-1}(x)\in D_1$, and it was assumed that $D_1\subseteq D_2$, meaning $I_2^{-1}(x)<_1I_2^{-1}(y)$ (because 
+$D_1$ and $D_2$ are both lower sections of $A$), meaning it cannot be that $y<_2x$, and thus $y<x$, and hence $I_2\restriction D_1$ must be an isomorphism onto 
+a lower section of $B$ (that is, a lower section of $C$, but because $C$ is a lower section of $B$, then $C'$ is also a lower section of $B$).
+
 \end{document}
