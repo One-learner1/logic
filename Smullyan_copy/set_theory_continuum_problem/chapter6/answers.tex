@@ -104,10 +104,10 @@ is not a proper well ordering.
 \section*{Section 2}
 
 \subsection*{Notes}
-Obviously, if $A$ is isomorphic to $B$, then $B$ is isomorphic to $A$ (as seen in the next paragraph).
-
-Note that any subclass of an isomorphism from $A$ onto $B$ is an isomorphism from a subclass of $A$ onto a 
+Note that any subclass of an isomorphism from $A$ onto $B$ is an isomorphism from a subclass of $A$ onto a
 subclass of $B$.
+
+Obviously, if $A$ is isomorphic to $B$, then $B$ is isomorphic to $A$ (as seen in the next paragraph).
 
 Note that, if $\phi$ is an isomorphism from $A$ onto $B$, then $\phi^{-1}$ is an isomorphism from $B$ onto $A$. For, clearly 
 $\phi^{-1}$ is a 1-1 function from $B$ onto $A$. And suppose $\phi$ is an isomorphism from the system $\langle A,\le_1\rangle$ to 
@@ -121,6 +121,10 @@ is clearly not the case. For $\phi_2^{-1}$ is from $B$ onto $A$, and $\phi_1$ is
 $\phi_1\phi_2^{-1}$ is actually from $B$ onto $B$ (now, this would also work, as then, by Corollary 2.2, $\phi_1=\phi_2$, but 
 it is explicitly said in the proof that $\phi_1\phi_2^{-1}$ is from $A$ onto $A$). If we wanted to get a function from $A$ onto 
 $A$, we would need to pick $\phi_2^{-1}\phi_1$ (for example; there are others).
+
+Here is why $\phi_1\phi_2^{-1}$ is in fact an isomorphism. For, if $a_1$ precedes $a_2$ in $B$, then $\phi_2^{-1}(a_1)$ precedes 
+$\phi_2^{-1}(a_2)$ in $A$, and $\phi_1(\phi_2^{-1}(a_1))$ precedes $\phi_1(\phi_2^{-1}(a_2))$ in $B$ (more generally, if 
+$f$ is an isomorphism from $A$ onto $B$, and $g$ is an isomorphism from $B$ onto $A$, then $fg$ is an isomorphism from $B$ onto $B$).
 
 Also, here is why (as said in Corollary 2.3), if $\phi_1\phi_2^{-1}$ is the identity map (for $\phi_1$ and $\phi_2$ both from $A$ onto $B$), 
 then $\phi_1=\phi_2$. For suppose that $\phi_1\phi_2^{-1}$ is the identity map. Then, for any $x\in B$, 
