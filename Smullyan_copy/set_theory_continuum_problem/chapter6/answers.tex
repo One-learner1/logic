@@ -165,4 +165,24 @@ $x$ in the domain of $\mathcal{I}$, there would be some $y\in A$ not in the doma
 some $f\in\mathcal{N}$ which is an isomorphism from a lower section of $A$, which would mean that $y$ is in the domain of $f$ (and thus also of $\cup\mathcal{N}$), a contradiction. Hence 
 the domain of $\mathcal{I}$ is a lower section of $A$. Similarly, it can be seen that $\mathcal{I}$ is onto a lower section of $B$.
 
+\section*{Section 3}
+
+\subsection*{Exercise 3.1}
+(a): On the one hand, suppose the axiom of substitution. Now, suppose $F$ is a function and $x$ is a set. Then $F\restriction x$ is a subclass of 
+$x\times F''(x)$. But $F''(x)$ is a set by the axiom of substitution, meaning $x\times F''(x)$ is a set, and hence so is $F\restriction x$. On the other hand, 
+suppose that for any function $F$ and any set $x$, the function $F\restriction x$ is a set. Then consider any function $F$ and any set $x$. Note that 
+$F''(x)$ is a subclass of $\cup(F\restriction x)$. Thus, because $F\restriction x$ is a set, so is $\cup(F\restriction x)$, and hence so is $F''(x)$.
+
+(b): On the one hand, suppose the axiom of substitution. Now consider some function $F$ whose domain $D$ is a set. Then $F''(D)=\textrm{Ran}(F)$. Because 
+$F''(D)$ is a set, then, because $D\times F''(D)$ is a set, and $F$ is a subclass of $D\times F''(D)$, $F$ is a set. On the other hand, suppose that 
+any function whose domain is a set is also a set. Now consider any function $F$ and any set $x$. Then $F''(x)$ is a function whose domain is $x$, which is a set, 
+and thus $F''(x)$ is also a set by assumption.
+
+\subsection*{Exercise 3.2}
+Suppose the axiom of choice, and that any class that can be put into a 1-1 correspondence with a set is a set. Now consider any function $F$ and 
+any set $x$. Let $C$ be the choice function for $x$. For each $y\in F''(x)$, let $S(y)$ be the set of all $z\in x$ such that $F(z)=y$ (and $S(y)$ is a set, as it is a subset of $x$, which 
+is a set by assumption). Then $C(S(y))\in S(y)$, that is, $C(S(y))$ is some $z\in x$ such that $F(z)=y$. Then let $f$ be the set of all ordered pairs 
+$\langle y,C(S(y))\rangle$ for $y\in F''(x)$. This is a 1-1 correspondence between $F''(x)$ and the set of all elements $z\in x$ such that $z=C(S(y))$ for some $y\in F''(x)$. Hence, 
+because $F''(x)$ can be put into a 1-1 correspondence with a set, it is a set.
+
 \end{document}
