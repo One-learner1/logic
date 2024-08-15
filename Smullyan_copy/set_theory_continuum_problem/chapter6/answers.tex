@@ -191,4 +191,39 @@ because $F''(x)$ can be put into a 1-1 correspondence with a set, it is a set.
 Note that every well ordered set is also properly well ordered, because obviously every proper lower section of the well ordered set would be a subset of the 
 set, and hence also a set.
 
+\section*{Section 5}
+Note that, if a class $M$ is well ordered under $\subseteq$, then it is also properly well ordered under $\subseteq$. For consider any proper lower section $L$ of 
+$M$. Then it is also an initial segment of $x$ for some $x\in M$. Hence, for every $y\in L$, $y\subseteq x$, meaning $L\subseteq\mathcal{P}(x)$, and thus 
+$L$ is a set.
+
+The above explains why $M$ (as defined on page 84) is not only well ordered, but properly well ordered.
+
+Note that, for Theorem 5.1, we of course do not necessarily need that $M$ be minimally superinductive, as long as $M$ is both a set and well orderd under 
+$\subseteq$.
+
+\subsection*{Lemma 5.2}
+(1): First, consider some chain $C$ of ordinal sequences. Then $\cup C$ is a function (by Proposition 1.4) and a set. Thus the domain of $\cup C$ is a 
+set. Now suppose $\alpha\in\cup C$ and $\beta\in\alpha$. Then, for some $f\in C$, $\alpha\in C$. But $\beta<\alpha$, and by definition of $f$, it follows that 
+$\beta\in f$ (and thus $\beta\in\cup C$). Hence $\cup C$ is transitive, meaning, because it is a transitive set of ordinals, it is also some ordinal $\alpha$. 
+Then $\cup C$ is an ordinal sequence of length $\alpha^+$.
+
+Suppose that $\lambda$ is a limit ordinal such that all elements of $C$ are of length less than $\lambda$, and if for every $\alpha<\lambda$ 
+there is a an element of $C$ of length $\alpha$. We need to show that $\cup C$ is of length $\lambda$, that is, $\alpha\in\textrm{Dom}(\cup C)$ iff 
+$\alpha<\lambda$. On the one hand, suppose that $\alpha\in\textrm{Dom}(\cup C)$. Then $\alpha\in f$ for some $f\in C$. By definition of $C$, 
+$f$ is of a length less than $\lambda$, meaning $\alpha<\lambda$. On the other hand, suppose that $\alpha<\lambda$. Then there is an element 
+of $C$ length $\alpha$. Then there also must be an element $f$ of $C$ of length $\alpha^+$, as $\alpha^+<\lambda$ (or else $\lambda$ would not be a limit element), 
+and $\alpha\in f$, that is, $\alpha\in\textrm{Dom}(\cup C)$. Thus $\cup C$ is of length $\lambda$.
+
+(2): Suppose that $\mathcal{N}$ is a nest of ordinal sequences and that $\mathcal{N}$ is not a set. Again, by Proposition 1.4, $\cup\mathcal{N}$ is a function.
+First, we show that $\mathcal{N}$ is properly well ordered under $\subseteq$. Because it is a nest, it is linearly ordered under $\subseteq$. Now consider 
+any subclass $C$ of $\mathcal{N}$. Then consider the class $F$ of ordinals $\alpha$ such that a function of length $\alpha$ is in $C$. Then $F$ has a least element 
+$\beta$. Then the function $f$ which is of length $\beta$ is clearly the least element of $C$. Hence $\mathcal{N}$ is well ordered under $\subseteq$ (because 
+the well ordering is under $\subseteq$, it is also properly well ordered under $\subseteq$). Then, because $\mathcal{N}$ is not a set, by the counting 
+theorem, there is an isomorphism from $\mathcal{N}$ onto $On$. Now consider the $A$ class of all ordinals $\alpha$ such that a function $f$ of length $\alpha$ is in 
+$\mathcal{N}$. Because $\mathcal{N}$ is a nest, there can be at most one $f\in\mathcal{N}$ of length $\alpha$. Hence $A$ can be put into 1-1 correspondence with 
+$\mathcal{N}$, which in turn can be put into a 1-1 correspondence with $On$. Hence $A$, a class of ordinals, can be put into a 1-1 corresponence with $On$. Thus 
+$A$ is a transitive class of ordinals (for, if $\alpha\in\textrm{Dom}(\cup\mathcal{N})$ and $\beta\in\alpha$, then $\alpha\in f$ for some $f\in\mathcal{N}$ and 
+$\beta<\alpha$, meaning $\beta\in f$) which is not a set (by the axiom of substitution), and is therefore equal to $On$. Hence, for every $\alpha$, 
+there is a function of length $\alpha$ in $\mathcal{N}$, which obviously implies that the domain of $\cup\mathcal{N}$ is $On$. 
+
 \end{document}
