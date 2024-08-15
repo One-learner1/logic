@@ -201,6 +201,12 @@ The above explains why $M$ (as defined on page 84) is not only well ordered, but
 Note that, for Theorem 5.1, we of course do not necessarily need that $M$ be minimally superinductive, as long as $M$ is both a set and well orderd under 
 $\subseteq$ such that the three conditions of Theorem 3.3 of Chapter 4 hold.
 
+Here is why, on page 84, if $\lambda$ is a limit ordinal, then $M_\lambda$ must be a limit element of $M$. This follows by the definition of the isomorphism: 
+It cannot be a least element (or else $\lambda$ would be the least ordinal), and it cannot be a successor element (or else $\lambda$ would be a successor ordinal). 
+Then, here is why this means that $M_\lambda$ is the set of all $M_\alpha$, where $\alpha<\lambda$. For, if $\alpha<\lambda$, then 
+$M_\alpha<M_\lambda$, and hence $M_\alpha\subseteq M_\lambda$. On the other hand, if $x\in M_\lambda$, then $x\in M$ for some $M<M_\lambda$, 
+and it must be that $M=M_\alpha$ for some $\alpha<\lambda$ (or else $M\ge M_\lambda$).
+
 \subsection*{Lemma 5.2}
 (1): First, consider some chain $C$ of ordinal sequences. Then $\cup C$ is a function (by Proposition 1.4) and a set. Thus the domain $D$ of $\cup C$ is a 
 set. Now suppose $\alpha\in D$ and $\beta\in\alpha$. Then, for some $f\in C$, $\alpha\in C$. But $\beta<\alpha$, and by definition of $f$, it follows that 
