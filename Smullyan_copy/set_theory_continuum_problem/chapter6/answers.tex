@@ -221,6 +221,13 @@ axiom of substitution, the range is also a set. Then, for every ordinal sequence
 is a set. This explains why we can speak of functions whose domain includes all ordinal sequences, as, because all ordinal sequences are sets, we can 
 quantify over them (in the separation princple).
 
+It is remarked that, for every function $F$ on $On$, $F\restriction\lambda=\cup_{\alpha<\lambda}F\restriction\alpha$ for a limit ordinal $\lambda$. Here is why this 
+is. On the one hand, suppose that $x\in F\restriction\lambda$. Then, for some $\alpha$, $x=\langle\alpha,F(\alpha)\rangle$, and thus 
+$x\in F\restriction\alpha^+$, meaning $x\in\cup_{\alpha<\lambda}F\restriction\alpha$. On the other hand, suppose that
+$x\in\cup_{\alpha<\lambda}F\restriction\alpha$. Then, for some $\alpha<\lambda$, $x\in F\restriction\alpha$. Consequently 
+$x=\langle\beta,F(\beta)\rangle$ for some $\beta<\alpha$, meaning $\beta<\lambda$, and thus $x\in F\restriction\lambda$ as well. Hence 
+$F\restriction\lambda=\cup_{\alpha<\lambda}F\restriction\alpha$. 
+
 \subsection*{Uniqueness of Functions}
 Here is why the function in Theorem 5.3 is unique. For suppose we had two functions $F$ and $G$ satisfying the desired conditions. We show 
 by transfinite induction that $F=G$. The case for 0 follows in this way: $F\restriction 1=E(F\restriction 0)=E(0)$. Similarly 
