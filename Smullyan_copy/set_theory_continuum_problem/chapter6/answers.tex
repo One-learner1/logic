@@ -211,6 +211,39 @@ On a side note, it seems to me that, in defining the separation principle, the b
 be capable of defining $\subseteq$ and $=$ with set quantification). This seems to work, as all sets and classes defined with that principle thus far would only need 
 the relation $\in$ for the definition.
 
+There is a discrepancy in the definitions of an extending operation. The first only says that $E$ must be defined on all ordinal sequences, and 
+that if applied to a sequence of length $\alpha$, it yields one of length $\alpha^+$. However, the second definition specifies that 
+$E$ must yield, from a sequence $\theta_1$ of length $\alpha$, a sequence $\theta_2$ of length $\alpha^+$ such that $\theta_1\subseteq\theta_2$.
+
+It should be noted that (with the axiom of substitution), every ordinal sequence is a set. Obviously the domain of every ordinal sequence is a set
+(because the domain is just an ordinal). Thus the range of every ordinal sequence can be put into a 1-1 correspondence with a set, meaning, by the 
+axiom of substitution, the range is also a set. Then, for every ordinal sequence $\theta$, $\theta\subseteq\textrm{Dom}(\theta)\times\textrm{Ran}(\theta)$, which 
+is a set. This explains why we can speak of functions whose domain includes all ordinal sequences, as, because all ordinal sequences are sets, we can 
+quantify over them (in the separation princple).
+
+\subsection*{Uniqueness of Functions}
+Here is why the function in Theorem 5.3 is unique. For suppose we had two functions $F$ and $G$ satisfying the desired conditions. We show 
+by transfinite induction that $F=G$. The case for 0 follows in this way: $F\restriction 1=E(F\restriction 0)=E(0)$. Similarly 
+$G\restriction 1=E(0)$. Thus $F\restriction 1=G\restriction 1$. But $F\restriction 1=\langle 0,F(0)\rangle$ and 
+$G\restriction 1=\langle 0,G(0)\rangle$, and thus $F(0)=G(0)$. Now suppose that, for some $\alpha$, $F(\beta)=G(\beta)$ for all 
+$\beta<\alpha$. Then $F\restriction\alpha^+=E(F\restriction\alpha)$ and $G\restriction\alpha^+=E(G\restriction\alpha)$. But, by assumption, 
+$F\restriction\alpha=G\restriction\alpha$, meaning $F\restriction\alpha^+=G\restriction\alpha^+$. Hence 
+$\langle\alpha,F(\alpha)\rangle=\langle\alpha,G(\alpha)\rangle$, meaning $F(\alpha)=G(\alpha)$. Thus, by transfinite induction, 
+$F=G$. 
+
+Here is why the function in Theorem 5.5 is unqiue. For assume the hypotheses of Theorem 5.5, and that we had two functions $F$ and $G$ such that 
+$F(\alpha)=g(F\restriction\alpha)$ and $G(\alpha)=g(G\restriction\alpha)$ such that the domains of $F$ and $G$ are both $On$. Then we use 
+transfinite induction to show that $F=G$. The case for the least element holds, as $F(0)=g(F\restriction 0)=g(0)=g(G\restriction 0)=G(0)$.
+Now suppose that for all ordinals $\beta<\alpha$, $F(\beta)=G(\beta)$. Then $F(\alpha)=g(F\restriction\alpha)$ and $G(\alpha)=g(G\restriction\alpha)$. 
+But, by definition of $\alpha$, the domain of $F\restriction\alpha$ is every $\beta$ such that $\beta<\alpha$. 
+Hence, by the assumption that $F(\beta)=G(\beta)$ for every $\beta<\alpha$, $F\restriction\alpha=G\restriction\alpha$, and 
+thus $F(\alpha)=G(\alpha)$. By transfinite induction, it follows that $F(\alpha)=G(\alpha)$ for all $\alpha$, meaning $F=G$.
+
+Here is the argument showing that the $On$-sequence in Theorem 5.7 is unique: Suppose we had two $On$ functions $F$ and $G$ satisfying the required conditions. 
+Obviously $F(0)=G(0)$. If $F(\alpha)=G(\alpha)$, then $F(\alpha^+)=g(F(\alpha))=g(G(\alpha))=G(\alpha^+)$. If $F(\alpha)=G(\alpha)$ for every 
+$\alpha<\lambda$ for a limit ordinal $\lambda$, then $F(\lambda)=\cup_{\alpha<\lambda}F(\alpha)=\cup_{\alpha<\lambda}G(\alpha)=G(\lambda)$. Thus, 
+by transfinite induction, $F=G$.
+
 \subsection*{Lemma 5.2}
 (1): First, consider some chain $C$ of ordinal sequences. Then $\cup C$ is a function (by Proposition 1.4) and a set. Thus the domain $D$ of $\cup C$ is a 
 set. Now suppose $\alpha\in D$ and $\beta\in\alpha$. Then, for some $f\in C$, $\alpha\in C$. But $\beta<\alpha$, and by definition of $f$, it follows that 
@@ -235,5 +268,23 @@ $\mathcal{N}$, which in turn can be put into a 1-1 correspondence with $On$. Hen
 $A$ is a transitive class of ordinals (for, if $\alpha\in\textrm{Dom}(\cup\mathcal{N})$ and $\beta\in\alpha$, then $\alpha\in f$ for some $f\in\mathcal{N}$ and 
 $\beta<\alpha$, meaning $\beta\in f$) which is not a set (by the axiom of substitution), and is therefore equal to $On$. Hence, for every $\alpha$, 
 there is a function of length $\alpha$ in $\mathcal{N}$, which obviously implies that the domain of $\cup\mathcal{N}$ is $On$. 
+
+\subsection*{Theorem 5.3}
+Here is why we can conclude that, if $\lambda$ is a limit ordinal and if for each $\alpha<\lambda$, $M_\alpha$ is an $\alpha$-sequence, 
+then $M_\lambda$ is a $\lambda$ sequence. First, note that, by Theorem 5.1, $M_\lambda=\cup_{\alpha<\lambda}M_\alpha$. Thus 
+$M_\lambda$ is the union of a chain of ordinal sequence (namely, the chain of all ordinal sequence of length $\alpha<\lambda$ where the sequence is in 
+$M$). Clearly all elements of $C$ are of length less than $\lambda$. It remains to show (in order to use part (1) of Lemma 5.2) that for every 
+$\alpha<\lambda$ there is an element of $C$ of length $\alpha$. This can be proven by transfinite induction on the ordinals: we show that if 
+$\alpha<\lambda$, then there is an ordinal sequence of length $\alpha$ in $C$. This holds for the 0, as by definition of $M$, $0\in M$ (and thus also 
+in $C$). For any $\alpha$, if $\alpha<\lambda$ and there is some ordinal sequence of length $\alpha$ in $M$, then, if $\alpha^+<\lambda$, by definition 
+of $M$, there is an ordinal sequence of length $\alpha^+$ in $M$. If for all $\alpha<\lambda_1$ for some limit ordinal $\lambda_1$, there is some ordinal 
+sequence of length $\alpha$ in $M$, then, if $\lambda_1<\lambda$, by definition of $M$, there is an ordinal sequence of length $\lambda_1$ in $M$. Thus, 
+for every $\alpha<\lambda$, there is an element of $C$ of length $\alpha$, meaning $\cup C$, that is $M_\lambda$, is of length $\lambda$. 
+
+\subsection*{Theorem 5.8}
+The proof of this theorem is incorrect (and the theorem itself is incorrect). Now, the proof says:\textquote{By Theorem 5.5, taking $g(x)=h(\textrm{Ran}(x))$,
+if $x$ is a function (otherwise take $g(x)=x$).} However, this is not correct, as it very well may be that $h$ is not defined for $\textrm{Ran}(x)$ for some function 
+$x$. A counter example to this theorem is simply the function $f=\{\langle 1,1\rangle\}$. For, by the Theorem, we would have a function $F$ such that
+$F(0)=f(F''(0))=f(0)$, but 0 is not defined for $f$.
 
 \end{document}
