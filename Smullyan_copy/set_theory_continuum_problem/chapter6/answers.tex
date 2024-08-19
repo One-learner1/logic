@@ -294,4 +294,42 @@ if $x$ is a function (otherwise take $g(x)=x$).} However, this is not correct, a
 $x$. A counter example to this theorem is simply the function $f=\{\langle 1,1\rangle\}$. For, by the Theorem, we would have a function $F$ such that
 $F(0)=f(F''(0))=f(0)$, but 0 is not defined for $f$.
 
+\subsection*{Exercise 5.1}
+Because Theorem 5.8 is not correct, the premise of this problem would not be correct. However, if we took, for instance, Theorem 5.7 as the axiom instead of 
+Theorem 5.8, the proof would then follow.
+
+On the one hand, suppose that $A$ is a properly well ordered proper class. By the comparability theorem, either $A$ is isomorphic to a lower section of 
+$On$, or $On$ is isomorphic to a lower section of $A$. Suppose that $A$ was isomorphic to some lower section of $On$. Then some ordinal $\gamma$ would be 
+isomorphic to $A$ under some $\phi$. Define the function $g$ as follows: if $x$ is a lower section of $A$, and $y$ is the least element of $A-x$, then 
+let $g(x)=x\cup\{y\}$. Otherwise take $g(x)=x$. Now, let $e$ be the least element of $A$. By Theorem 5.7, 
+there is an $On$-sequence $S_0,S_1,...,S_\alpha,...,$ such that:\newline
+(1) $S_0=\emptyset$;\newline
+(2) for each $\alpha$, $S_{\alpha+1}=g(S_\alpha)$;\newline
+(3) for each limit ordinal $\lambda$, $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$.\newline 
+We wish to show that $S_\gamma=A$, and thus $A$ would be a set, a contradiction. Note that the $On$-sequence above is obviously such that 
+every $S_\alpha$ is a lower section (perhaps proper) of $A$.
+
+We first show that $x\in S_\alpha$ iff the $\beta$ for which $x=\phi(\beta)$ is such that $\beta<\alpha$.
+
+On the one hand, suppose that $x=\phi(\beta)$ for some $\beta$. We show that if $\beta<\alpha$, then $x\in S_\alpha$.
+$\beta$ cannot be less than $0$, meaning the case for $S_0$ vacuously holds. Now suppose that some successor ordinal $\alpha^+$ is such 
+that $\beta<\alpha^+$, and that the result holds for $\alpha$. Then obviously $x\in S_\alpha^+$. Now suppose that, for some 
+limit ordinal $\lambda$, the result holds for all ordinals $\alpha<\lambda$. Then $x\in S_\alpha$ for all $\alpha<\lambda$, and 
+because $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$, obviously $x\in S_\lambda$. Thus, by transfinite induction, $x\in S_\alpha$ for all 
+$\alpha>\beta$. 
+
+On the other hand, we show that if $x\in S_\alpha$, then the $\beta$ for which $x=\phi(\beta)$ is such that $\beta<\alpha$. We show by 
+transfinite induction that this holds for all $S_\alpha$. It vacuously holds for $S_0$. Suppose it holds for some $\alpha$. Then the only element 
+in $S_\alpha^+$ not in $S_\alpha$ is the least element of $A-S_\alpha$ (if there is one). Consider the $\beta$ for which that 
+element is equal to $\phi(\beta)$. Then $\beta$ is the set of all ordinals less than $\alpha$, obviously meaning $\alpha^+>\beta$. Now 
+suppose that, for some limit ordinal $\lambda$, the result holds for all $S_\alpha$ for $\alpha<\lambda$. Then if $x\in S_\lambda$, 
+$x\in S_\alpha$ for some $\alpha<\lambda$, meaning the $\beta$ for which $x=\phi(\beta)$ is such that $\beta<\alpha<\lambda$ (by assumption).
+
+Thus $x\in S_\alpha$ iff the $\beta$ for which $x=\phi(\beta)$ is such that $\beta<\alpha$. If $x\in A$, then 
+the $\beta$ for whcih $x=\phi(\beta)$ is such that $\beta<\gamma$, meaning $x\in S_\gamma$. On the other hand, 
+if $x\in S_\gamma$, then obviously $x\in A$ (because $S_\gamma$ is a lower section of $A$). Thus $S_\gamma=A$. But 
+this would mean $A$ was a set, contrary to the assumption that it wasn't. Hence it cannot be that $A$ is isomorphic to a lower section of $On$. Thus 
+$On$ must be isomorphic to a lower section of $A$. But it cannot be a lower section of $A$; for, because $A$ is properly well ordered, $On$ would then 
+be isomorphic to a set, which cannot occur (by part (1) of this exercise), meaning $On$ must be isomorphic to the whole of $A$. 
+
 \end{document}
