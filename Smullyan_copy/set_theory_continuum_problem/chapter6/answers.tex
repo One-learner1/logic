@@ -294,6 +294,8 @@ if $x$ is a function (otherwise take $g(x)=x$).} However, this is not correct, a
 $x$. A counter example to this theorem is simply the function $f=\{\langle 1,1\rangle\}$. For, by the Theorem, we would have a function $F$ such that
 $F(0)=f(F''(0))=f(0)$, but 0 is not defined for $f$.
 
+If we added that $h$ must be defined on all sets as a prerequisite to the theorem, then the theorem obviously is correct.
+
 \subsection*{Exercise 5.1}
 Because Theorem 5.8 is not correct, the premise of this problem would not be correct. However, if we took, for instance, Theorem 5.7 as the axiom instead of 
 Theorem 5.8, the proof would then follow.
@@ -372,7 +374,7 @@ that $g$ is a progressing function and that (1) $g$ is defined on $\emptyset$; (
 Consider any function $g$ satisfying the above three conditions. By Theorem 5.7, there is an $On$-sequence $S_0,S_1,...,S_\alpha,...$ such that:\newline
 (1) $S_0=\emptyset$;\newline
 (2) for each $\alpha$, $S_{\alpha+1}=g(S_\alpha)$;\newline
-(3) for each limit ordinal $\lambda$, S_\lambda=\cup_{\alpha<\lambda}S_\alpha$.\newline
+(3) for each limit ordinal $\lambda$, $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$.\newline
 We aim to show that the class $S$ of all $S_\alpha$ for all ordinals $\alpha$ is minimally superinductive under $g$.
 
 (1') By (1), $S_0\in S$.\newline
@@ -404,5 +406,39 @@ $S\subseteq C$. Obviously $S_0\in C$. Suppose that some $S_\alpha\in C$. Then $g
 $\lambda$, for all $\alpha<\lambda$, $S_\alpha\in C$. Then $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$, that is, $S_\lambda$ is a chain of elements of $C$, meaning 
 $S_\lambda\in C$. Hence, for all ordinals $\alpha$, $S_\alpha\in C$, meaning $S\subseteq C$. Thus we have shown that $S$ is minimally inductive under $g$, therefore completing the 
 proof.
+
+\subsection*{Exercise 5.3}
+Note that, for this problem, I will assume that, in order to use Theorem 5.8 on some function $h$, $h$ must be defined for all sets (as is done in this proof).
+
+(a): Suppose, on the contrary, that for all ordinals $\alpha$, $F(\alpha)\in S$. We show that this would mean $On$ was a set. Let $C$ be the class of all $F''(\alpha)$. Note that, 
+So, if for all ordinals $\alpha$, $F(\alpha)\in S$, by definition of $h$, this would mean that, for all ordinals $\alpha$, $F''(\alpha)\in\mathcal{P}(S)$, and thus 
+$C\subseteq S$, meaning $C$ is a set.
+
+We now show that, if $\alpha\ne\beta$, then $F(\alpha)\ne F(\beta)$. Without loss of generality, suppose that $\alpha<\beta$. Then 
+$F(\alpha)\in F''(\beta)$. But $F(\beta)=h(F''(\beta))$. By assumption, $F''(\beta)$ must be a proper subset of $S$, so that 
+$F(\beta)=h(F''(\beta))=S-F''(\beta)$, meaning it cannot be that $F(\beta)=F(\alpha)$ (because $F(\alpha)\notin S-F''(\beta))$ (Note that this argument shows that, 
+if $\alpha\ne\beta$ and $F(\alpha)\in S$ and $F(\beta)\in S$, then $F(\alpha)\ne F(\beta)$. This fact will be used in part (b)). 
+
+Thus, for all $\alpha$ and $\beta$, $F(\alpha)\ne F(\beta)$. Hence the class $F$ of $F(\alpha)$ for all $\alpha$ can be put into a 1-1 
+correspondence with $On$. But, because $F(\alpha)\in S$ for all $\alpha$, $F$ is a set. Thus, by the axiom of substitution, $On$ would be 
+a set, which is impossible.
+
+Thus it cannot be that $F(\alpha)\in S$ for all $F(\alpha)$, meaning $F(\delta)\notin S$ for some $\delta$.
+
+(b): Let $\beta$ be the least ordinal such that $F(\beta)\notin S$. Because $F(\beta)=h(F''(\beta))$, either $F''(\beta)=S$, or $F''(\beta)$ is not a subset of $S$. 
+Now, clearly $F''(\beta)\subset S$. For, by the assumption that $\beta$ is the least ordinal such that $F(\beta)\notin S$, for all $\alpha<\beta$, 
+$F(\alpha)\in S$. But $F''(\beta)=\{F_\alpha|\alpha<\beta\}$, meaning $F''(\beta)\subset S$. Thus, because it is the case that $F''(\beta)\subset S$, and either 
+$F''(\beta)=S$ of $F''(\beta)$ is not a subset of $S$, it follows that $F''(\beta)=S$. Next, we show that $F\restriction\beta$ is 1-1. Now, for all $\alpha_1\in\beta$ and 
+$\alpha_2\in\beta$, if $\alpha_1\ne\alpha_2$, then $F(\alpha_1)\ne F(\alpha_2)$ (as shown in part (a)). This shows that $F\restriction\beta$ is 1-1, meaning 
+$\beta$ can be put into a 1-1 correspondence with $S$, and so $S$ can be well ordered.
+
+This completes the proof that every set which has a choice function can be well ordered. 
+
+\subsection*{Exercise 5.4}
+We aim to show that for any ordinals $\alpha$ and $\beta$, if $\alpha\le\beta$ then $F(\alpha)\subseteq F(\beta)$. This can be proven by transfinite induction on the ordinals. 
+That is, we show that, for all $\beta$, $F(\alpha)\subseteq F(\beta)$ holds for all $\alpha\le\beta$. The case for $0$ obviously holds. Now suppose it holds for all 
+ordinals less than some ordinal $\gamma$. On the one hand, consider the successor of some ordinal $\alpha$. Then by (a), $F(\alpha)\subseteq F(\alpha^+)$. By assumption, for all 
+$\beta\le\alpha$, $F(\beta)\subseteq F(\alpha)\subseteq F(\alpha^+)$. Hence for all $\beta\le\alpha^+$, $F(\beta)\subseteq F(\alpha^+)$. On the other hand, suppose that the result holds for all 
+ordinals less than some limit ordinal $\lambda$, then by (b), for all $\alpha<\lambda$, $F(\alpha)\subseteq F(\lambda)$.
 
 \end{document}
