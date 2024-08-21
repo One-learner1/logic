@@ -80,11 +80,11 @@ def c(C,B,a)	*	N	f'(c1($C),$B,$a)
 def c1(C)	*	N	pe($C,*)
 
 #
-# cc(B,a) copies down in order at the end all symbols marked a,
+# ce(B,a) copies down in order at the end all symbols marked a,
 # erases the letters a and enters state B
 #
-def cc(C,B,a)		*_	N	c(e($C,$B,$a),$B,$a)
-def cc(B,a)		*_	N	ce(ce($B,$a),$B,$a)
+def ce(C,B,a)		*_	N	c(e($C,$B,$a),$B,$a)
+def ce(B,a)		*_	N	ce(ce($B,$a),$B,$a)
 
 #
 # re(C,B,a,b) replaces the first a by b and enters state C.
@@ -154,6 +154,10 @@ def ce2(B,a,b)	*_	N	ce(ce($B,$b),$a)
 # erasing a, b, and c.
 #
 def ce3(B,a,b,c)	*_	N	ce(ce2($B,$b,$c),$a)
+
+def ce4(B, a, b, c, d)	*_	N	ce(ce3($B, $b, $c, $d), $a)
+
+def ce5(B, a, b, c, d, e) *_	N	ce(ce4($B, $b, $c, $d, $e), $a)
 
 #
 # Erase all the marks

@@ -89,7 +89,6 @@ int nstep=-1;		// How many steps to run the machine. -1 means forever.
 // we need to pick the variant with the appropriate parameter count.
 //
 typedef struct Name Name;
-typedef struct MConfig MConfig;
 typedef struct Config Config;
 typedef struct Function Function;
 typedef	struct Param Param;
@@ -116,13 +115,15 @@ struct Name{
 	// configs is the first of a list of Configs describing
 	// what to do when the machine is in this state.
 	//
+	int index;	// state number used by compiler, 0 if not yet assigned
 	Function *fns;
-	MConfig *config;	// If non-zero, has already been expanded.
+	Config *config;	// If non-zero, has already been expanded.
 	Name *next;
 };
-Name *newName(char *name, Function *fns, MConfig *config, Name *next){
+Name *newName(char *name, Function *fns, Config *config, int index, Name *next){
 	Name *n=emalloc(sizeof(Name));
 	n->name=name;
+	n->index=index;
 	n->fns=fns;
 	n->config=config;
 	n->next=next;
@@ -147,18 +148,6 @@ Config *newConfig(char *symbols, char *operations, Name *final, Config *next){
 	c->final=final;
 	c->next=next;
 	return c;
-}
-//
-// This is useless & pointers to it should be replaced by direct pointers
-// to the configs.
-//
-struct MConfig{
-	Config *configs;
-};
-MConfig *newMConfig(Config *configs){
-	MConfig *m=emalloc(sizeof(MConfig));
-	m->configs=configs;
-	return m;
 }
 struct Param{
 	Name *name;
@@ -202,6 +191,7 @@ Name *start=0;			// the state in which the machine starts
 Name *namelist=0;		// list of all names
 Unexpanded *unexpanded=0;	// list of unexpanded calls
 Unexpanded *eunexpanded=0;	// end of the unexpanded list, or 0 if none.
+int nstate;			// # of state names so far
 //
 // Used by input
 //
@@ -246,7 +236,7 @@ void error(char *msg, ...){
 		fprintf(stderr, "^\n");
 	}
 	else
-		printf("\n");
+		fprintf(stderr, "\n");
 	nerror++;
 }
 //
@@ -258,7 +248,7 @@ Name *lookup(char *s){
 	//
 	// Not found, need to create a new name and add it to the namelist
 	//
-	n=newName(strdup(s), 0, 0, namelist);
+	n=newName(strdup(s), 0, 0, 0, namelist);
 	namelist=n;
 	return n;
 }
@@ -384,16 +374,6 @@ int iscall(void){
 	if(*s!='(') return 0;
 	while(s[1]!='\0') s++;
 	return *s==')';
-}
-MConfig *getmconfig(char *token){
-	Name *name=lookup(token);
-	if(name->fns!=0 || name->config!=0){
-		error("name %s already in use", name->name);
-		return 0;
-	}
-	MConfig *m=newMConfig(0);
-	name->config=m;
-	return m;
 }
 //
 // Return a copy of src with c substituted for every '*'.
@@ -562,28 +542,28 @@ void input(char *file){
 	nofunction.nparams=0;
 	nofunction.configs=0;
 	nofunction.next=0;
-	MConfig *mconfig=0;
+	Name *statename=0;
 	Config *econfig=0;
 	for(lineno=1;fgets(line, sizeof line, in)!=0;lineno++){
 		inp=line;
 		char *comment=strchr(line, '#');
 		if(comment) *comment='\0';
 
-		if(iswhite(*inp)){	// continuation of mconfig/function def
+		if(iswhite(*inp)){	// continuation of statename/function def
 			//
 			// Two legal possibilities at this point:
 			//	a blank line, which we should ignore
-			//	a config for an mconfig or a function.
+			//	a config for an statename or a function.
 			skipwhite();
 			if(*inp=='\0') continue;	// nothing on line
-			if(function==0 && mconfig==0)
+			if(function==0 && statename==0)
 				error("orphan continuation line");
 			else{
-				Config *c=getconfig(mconfig!=0);
+				Config *c=getconfig(statename!=0);
 				if(c!=0){
 					if(econfig) econfig->next=c;
 					else if(function) function->configs=c;
-					else mconfig->configs=c;
+					else statename->config=c;
 					econfig=last(c);
 				}
 			}
@@ -591,7 +571,7 @@ void input(char *file){
 		else{
 			//
 			// The line is unindented, so it must be
-			// an include, a def or an mconfig (which starts with
+			// an include, a def or an statename (which starts with
 			// and unadorned name).
 			//
 			if(!gettoken()) continue;
@@ -637,7 +617,7 @@ void input(char *file){
 						"and parameters (saw %s)",
 						token);
 				else{
-					mconfig=0;
+					statename=0;
 					function=getfunction(token);
 					//
 					// on error, we want to continue
@@ -663,11 +643,17 @@ void input(char *file){
 			}
 			else if(isname()){
 				Name *configname=lookup(token);
+				nstate++;
+				configname->index=nstate;
 				function=0;
-				mconfig=getmconfig(token);
+				statename=lookup(token);
+				if(statename->fns!=0 || statename->config!=0){
+					error("name %s already in use", statename->name);
+					continue;
+				}
 				// works even if getconfig returns 0
-				mconfig->configs=getconfig(1);
-				econfig=last(mconfig->configs);
+				statename->config=getconfig(1);
+				econfig=last(statename->config);
 				if(start==0) start=configname;
 			}
 			else if(token[0]!='\0')
@@ -798,6 +784,8 @@ Error:
 //
 void expand(Name *name){
 	if(name->config!=0) return;	// already expanded.
+	nstate++;
+	name->index=nstate;
 	char call[8192];
 	//
 	// We copy the call into a local buffer, because we
@@ -885,12 +873,12 @@ void expand(Name *name){
 	//
 	// do the expansion for each Config in fc->fn
 	//
-	name->config=newMConfig(0);
+	name->config=0;
 	Config *econfig=0;
 	for(Config *fc=fn->configs;fc;fc=fc->next){
 		Config *c=expandconfig(fc, fn->params);
 		if(econfig==0)
-			name->config->configs=c;
+			name->config=c;
 		else
 			econfig->next=c;
 		econfig=c;
@@ -932,7 +920,7 @@ void showconfigs(FILE *f, Config *config){
 }
 void show(FILE *f){
 	if(start)
-		fprintf(f, "# start %s\n", start->name);
+		fprintf(f, "# start %s (state # %d)\n", start->name, start->index);
 	else
 		fprintf(f, "# No start symbol!\n");
 	//
@@ -955,15 +943,19 @@ void show(FILE *f){
 		}
 	}
 	printf("----------\n");
+	//
+	// Should sort these in index order
+	//
 	for(Name *n=namelist;n!=0;n=n->next){
 		if(n->config!=0){
+			printf("# state %d\n", n->index);
 			showstring(f, n->name);
-			showconfigs(f, n->config->configs);
+			showconfigs(f, n->config);
 		}
 	}
 }
 void checkchar(int c){
-	if(c!= '_' && c!='*' && strchr(allsymbols, c)==0)
+	if(c!= '_' && c!='~' && c!='*' && strchr(allsymbols, c)==0)
 		error("symbol '%c' not in symbols \"%s\"", c, allsymbols);
 }
 //
@@ -975,7 +967,7 @@ void checkallsymbols(void){
 	// declaration. It's only wrong to 
 	if(allsymbols==0) return;
 	for(Name *name=namelist;name!=0;name=name->next) if(name->config){
-		for(Config *c=name->config->configs;c!=0;c=c->next){
+		for(Config *c=name->config;c!=0;c=c->next){
 			for(char *s=c->symbols;*s!='\0';s++)
 				checkchar(*s);
 			for(char *s=c->operations;*s!='\0';s++){
@@ -994,7 +986,7 @@ void checkallsymbols(void){
 		}
 	}
 }
-void execute(void){
+void execute(char *initfile){
 	int ntape=INCR;
 	char *tape=emalloc(ntape*sizeof(char));
 	memset(tape, '_', ntape*sizeof(char));
@@ -1018,7 +1010,7 @@ void execute(void){
 		}
 		Config *config;
 		int scannedloc=tape[loc];
-		for(config=state->config->configs;config!=0;config=config->next){
+		for(config=state->config;config!=0;config=config->next){
 			char *sym=config->symbols;
 			if(*sym=='~'){
 				sym++;
@@ -1102,24 +1094,46 @@ void execute(void){
 	}
 	printf("Stopped after %d steps\n", nstep);
 }
+void compile(void){
+}
 int main(int argc, char *argv[]){
-	if(argc>1 && strncmp(argv[1], "-s", 2)==0){
-		if(argv[1][2]){
-			if(argc!=3) goto Usage;
-			nstep=atoi(argv[1]+2);
+	char *tapefile=0;	// initial contents of the tape, if nonzero
+	int docompile=0;	// compile the TM into input for the Universal machine
+	int i=1;
+	while(i<argc && argv[i][0]=='-'){
+		switch(argv[i][1]){
+		default:
+		Usage:
+			fprintf(stderr,
+				"Usage: %s [-s nstep] [-c] [-r tape] "
+				"machine-file\n",
+				argv[0]);
+			return 1;
+		case 's':
+			if(argv[i][2]!='\0'){
+				nstep=atoi(argv[i]+2);
+				break;
+			}
+			if(i+1>=argc) goto Usage;
+			nstep=atoi(argv[i+1]);
+			i++;
+			break;
+		case 'c':
+			docompile=1;
+			break;
+		case 'r':
+			if(argv[i][2]!='\0'){
+				tapefile=argv[i]+2;
+				break;
+			}
+			if(i+1>=argc) goto Usage;
+			tapefile=argv[i+1];
+			i++;
+			break;
 		}
-		else{
-			if(argc!=4) goto Usage;
-			nstep=atoi(argv[2]);
-		}
+		i++;
 	}
-	else if(argc!=2){
-	Usage:
-		fprintf(stderr,
-			"Usage: %s [-s nstep] machine-file\n",
-			argv[0]);
-	return 1;
-	}
+	if(i!=argc-1) goto Usage;
 	parsing=1;
 	input(argv[argc-1]);
 	parsing=0;
@@ -1128,8 +1142,9 @@ int main(int argc, char *argv[]){
 	if(nerror!=0) return 1;
 	checkallsymbols();
 	if(nerror!=0) return 1;
+	if(docompile) compile();
 	show(stdout);
 	printf("=======================\n");
-	execute();
+	execute(tapefile);
 	return nerror!=0;
 }
