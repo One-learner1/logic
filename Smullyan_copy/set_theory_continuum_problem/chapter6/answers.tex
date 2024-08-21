@@ -298,7 +298,39 @@ $F(0)=f(F''(0))=f(0)$, but 0 is not defined for $f$.
 Because Theorem 5.8 is not correct, the premise of this problem would not be correct. However, if we took, for instance, Theorem 5.7 as the axiom instead of 
 Theorem 5.8, the proof would then follow.
 
-On the one hand, suppose that $A$ is a properly well ordered proper class. By the comparability theorem, either $A$ is isomorphic to a lower section of 
+We need a preliminary before the proof of the counting theorem. First, define a class $A$ to be \textit{generally superinductive} (under $g$) if $A$ is 
+non-empty, and the following three conditions hold:\newline
+(1) $A$ contains an element $c$ such that $c\subseteq x$ for all $x\in A$;\newline
+(2) for all $x\in A$, $g(x)\in A$;\newline
+(3) $A$ is closed under chain unions.\newline
+Call a class $A$ minimally generally superinductive under $g$ if $A$ is generally 
+superinductive under $g$ and no proper subclass of $A$ is generally superinductive under $g$. Call a class $A$ a \textit{general $g$-tower} if 
+$A$ is generally superinductive under $g$ and $g$ is progressing. In order to show that a propery $P$ holds for all elements of a superinductive 
+class $A$, it suffices to show the following three things:\newline
+(1) $P$ holds for $c$;\newline
+(2) for any $x\in A$, if $P$ holds for $x$, then $P$ holds for $g(x)$;\newline
+(3) for any chain $C$ of elements of $A$, if $P$ holds for every element of $C$, then $P$ holds for $\cup C$.\newline
+
+With this definition, one can, in a similar manner as was done in section 2 of chapter 4 (just by replacing the occurences of $0$ by $c$), 
+prove that if $A$ is generally superinductive under a strictly gprogressing function $g$, then $A$ is not a set.
+
+(1): For the first part of the theorem, we wish to show that every well ordered set is isomorphic to exactly one ordinal number $\alpha$. By the 
+comparability theorem, either $A$ is isomorphic to a lower section of $On$, or $On$ is isomorphic to a lower section of $A$. Suppose that 
+$On$ was isomorphic to a lower section $L$ of $A$ under $\phi$. We define $g$ as 
+follows: if $x$ is a lower section of $A$, and $y$ is the least element of $A-x$, then let $g(x)=x\cup\{y\}$. Otherwise take $g(x)=x$. 
+Let $e$ be the least element of $A$. By Theorem 5.7,
+there is an $On$-sequence $S_0,S_1,...,S_\alpha,...,$ such that:\newline
+(1) $S_0=\emptyset$;\newline
+(2) for each $\alpha$, $S_{\alpha+1}=g(S_\alpha)$;\newline
+(3) for each limit ordinal $\lambda$, $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$.\newline
+Let $S$ be the class of all $S_\alpha$'s. It is a set as it is a subset of $\mathcal{P}(A)$. We aim to show that $S$ minimally generally 
+superinductive under $g$, and hence not a set. Clearly there is an element of $S_\alpha$ less than all others ($S_0$). Also, by (2), 
+$S$ is closed under $g$. Suppose now we have some chain $C$ of elements of $S$. Then if $C$ contains a greatest element, clearly 
+$\cup C\in S$, as $\cup C$ is just the greatest element of $C$. On the other hand, if $\cup C$ contains no greatest element, I was unable to 
+show that $\cup\in S$.
+
+(2): For the second part of the theorem, we wish to show that every properly well orderd proper class is isomorphich to the class $On$ of all ordinals. 
+By the comparability theorem, either $A$ is isomorphic to a lower section of 
 $On$, or $On$ is isomorphic to a lower section of $A$. Suppose that $A$ was isomorphic to some lower section of $On$. Then some ordinal $\gamma$ would be 
 isomorphic to $A$ under some $\phi$. Define the function $g$ as follows: if $x$ is a lower section of $A$, and $y$ is the least element of $A-x$, then 
 let $g(x)=x\cup\{y\}$. Otherwise take $g(x)=x$. Now, let $e$ be the least element of $A$. By Theorem 5.7, 
@@ -331,5 +363,46 @@ if $x\in S_\gamma$, then obviously $x\in A$ (because $S_\gamma$ is a lower secti
 this would mean $A$ was a set, contrary to the assumption that it wasn't. Hence it cannot be that $A$ is isomorphic to a lower section of $On$. Thus 
 $On$ must be isomorphic to a lower section of $A$. But it cannot be a lower section of $A$; for, because $A$ is properly well ordered, $On$ would then 
 be isomorphic to a set, which cannot occur (by part (1) of this exercise), meaning $On$ must be isomorphic to the whole of $A$. 
+
+\subsection*{Exercise 5.2}
+The problem, as stated, is clearly incorrect. For we can obviously find functions that are not minimally superinductive under any class. For the problem, I assume 
+that $g$ is a progressing function and that (1) $g$ is defined on $\emptyset$; (2) if $g$ is defined on $x$ then $g$ is defined on $g(x)$; 
+(3) for any chain $C$ of elements that $g$ is defined for, $g$ must be defined on $\cup C$.
+
+Consider any function $g$ satisfying the above three conditions. By Theorem 5.7, there is an $On$-sequence $S_0,S_1,...,S_\alpha,...$ such that:\newline
+(1) $S_0=\emptyset$;\newline
+(2) for each $\alpha$, $S_{\alpha+1}=g(S_\alpha)$;\newline
+(3) for each limit ordinal $\lambda$, S_\lambda=\cup_{\alpha<\lambda}S_\alpha$.\newline
+We aim to show that the class $S$ of all $S_\alpha$ for all ordinals $\alpha$ is minimally superinductive under $g$.
+
+(1') By (1), $S_0\in S$.\newline
+
+(2') Suppose that $x\in S$. Then, for some $\alpha$, $x=S_\alpha$. Then $g(x)\in S$ by (2).\newline
+
+\begin{lemma}
+For any non-empty chain $C$ of ordinals containing no greatest element, $\cup C$ is a limit ordinal
+\end{lemma}
+\begin{proof}
+Consider some chain $C$ of ordinals containing no greatest element. Obviously $\cup C\ne\emptyset$. Suppose that 
+$\cup C$ was a successor ordinal for some $\alpha$. Then $\cup C=\alpha\cup\{\alpha\}$. But this would mean that, for some 
+$\beta\in C$, $\alpha\in\beta$. Clearly $\beta=\cup C$ (or else $\beta>\cup C$, meaning $\cup C\in\beta$ and $\cup C\in\cup C$, which is impossible). 
+Because $\cup C$ would then be the greatest element of $C$, this contradicts the assumption that $C$ contains no greatest element. Thus, because $\cup C$ is 
+neither the least ordinal nor a successor ordinal, it must be a limit ordinal. 
+\end{proof}
+
+(3') Consider some chain $C$ of elements of $S$. Consider the class $O$ of ordinals $\alpha$ such that 
+$S_\alpha\in C$. $O$ is a set, as it can be placed in a 1-1 correspondence with $C$. If $O$ contains a greatest 
+ordinal $\alpha$, then $\cup C=S_\alpha$. If it does not contain a greatest ordinal, then note that $\cup O$ is a limit ordinal by the preceeding Lemma. 
+Let $\lambda=\cup O$. Hence, by (3), $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$. We wish to show that $S_\lambda=\cup C$. Obviously, if 
+$x\in O$, then $x\in S_\lambda$. On the other hand, suppose that $x\in S_\lambda$. Thus, for some $\alpha<\lambda$, $x\in S_\alpha$. We know that 
+$\alpha\in\lambda$, that is, $\alpha\in\cup O$. Hence, for some $\beta\in O$, $\alpha\in\beta$. But $S_\alpha\subseteq S_\beta$ if $\alpha<\beta$ (this can easily be 
+seen, assuming $g$ is progressing), meaning $x\in S_\beta$ and hence $x\in\cup C$. Thus $\cup C=S_\lambda$, meaning $\cup C\in S$.
+
+Hence we have shown that $S$ is superinductive under $g$. It remains to be shown that $S$ is minimally superinductive under $g$. Consider any class $C$ that 
+is superinductive under $g$. We can show by transfinite induction on the $On$-sequence $S_0,S_1,...,S_\alpha,...$ that, for every $\alpha$, $S_\alpha\in C$, meaning 
+$S\subseteq C$. Obviously $S_0\in C$. Suppose that some $S_\alpha\in C$. Then $g(S_\alpha)\in C$, that is, $S_{\alpha^+}\in C$. Now suppose that for some limit ordinal 
+$\lambda$, for all $\alpha<\lambda$, $S_\alpha\in C$. Then $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$, that is, $S_\lambda$ is a chain of elements of $C$, meaning 
+$S_\lambda\in C$. Hence, for all ordinals $\alpha$, $S_\alpha\in C$, meaning $S\subseteq C$. Thus we have shown that $S$ is minimally inductive under $g$, therefore completing the 
+proof.
 
 \end{document}
