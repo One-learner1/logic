@@ -115,13 +115,15 @@ struct Name{
 	// configs is the first of a list of Configs describing
 	// what to do when the machine is in this state.
 	//
+	int index;	// state number used by compiler, 0 if not yet assigned
 	Function *fns;
 	Config *config;	// If non-zero, has already been expanded.
 	Name *next;
 };
-Name *newName(char *name, Function *fns, Config *config, Name *next){
+Name *newName(char *name, Function *fns, Config *config, int index, Name *next){
 	Name *n=emalloc(sizeof(Name));
 	n->name=name;
+	n->index=index;
 	n->fns=fns;
 	n->config=config;
 	n->next=next;
@@ -189,6 +191,7 @@ Name *start=0;			// the state in which the machine starts
 Name *namelist=0;		// list of all names
 Unexpanded *unexpanded=0;	// list of unexpanded calls
 Unexpanded *eunexpanded=0;	// end of the unexpanded list, or 0 if none.
+int nstate;			// # of state names so far
 //
 // Used by input
 //
@@ -245,7 +248,7 @@ Name *lookup(char *s){
 	//
 	// Not found, need to create a new name and add it to the namelist
 	//
-	n=newName(strdup(s), 0, 0, namelist);
+	n=newName(strdup(s), 0, 0, 0, namelist);
 	namelist=n;
 	return n;
 }
@@ -539,28 +542,28 @@ void input(char *file){
 	nofunction.nparams=0;
 	nofunction.configs=0;
 	nofunction.next=0;
-	Name *mconfig=0;
+	Name *statename=0;
 	Config *econfig=0;
 	for(lineno=1;fgets(line, sizeof line, in)!=0;lineno++){
 		inp=line;
 		char *comment=strchr(line, '#');
 		if(comment) *comment='\0';
 
-		if(iswhite(*inp)){	// continuation of mconfig/function def
+		if(iswhite(*inp)){	// continuation of statename/function def
 			//
 			// Two legal possibilities at this point:
 			//	a blank line, which we should ignore
-			//	a config for an mconfig or a function.
+			//	a config for an statename or a function.
 			skipwhite();
 			if(*inp=='\0') continue;	// nothing on line
-			if(function==0 && mconfig==0)
+			if(function==0 && statename==0)
 				error("orphan continuation line");
 			else{
-				Config *c=getconfig(mconfig!=0);
+				Config *c=getconfig(statename!=0);
 				if(c!=0){
 					if(econfig) econfig->next=c;
 					else if(function) function->configs=c;
-					else mconfig->config=c;
+					else statename->config=c;
 					econfig=last(c);
 				}
 			}
@@ -568,7 +571,7 @@ void input(char *file){
 		else{
 			//
 			// The line is unindented, so it must be
-			// an include, a def or an mconfig (which starts with
+			// an include, a def or an statename (which starts with
 			// and unadorned name).
 			//
 			if(!gettoken()) continue;
@@ -614,7 +617,7 @@ void input(char *file){
 						"and parameters (saw %s)",
 						token);
 				else{
-					mconfig=0;
+					statename=0;
 					function=getfunction(token);
 					//
 					// on error, we want to continue
@@ -640,15 +643,17 @@ void input(char *file){
 			}
 			else if(isname()){
 				Name *configname=lookup(token);
+				nstate++;
+				configname->index=nstate;
 				function=0;
-				mconfig=lookup(token);
-				if(mconfig->fns!=0 || mconfig->config!=0){
-					error("name %s already in use", mconfig->name);
+				statename=lookup(token);
+				if(statename->fns!=0 || statename->config!=0){
+					error("name %s already in use", statename->name);
 					continue;
 				}
 				// works even if getconfig returns 0
-				mconfig->config=getconfig(1);
-				econfig=last(mconfig->config);
+				statename->config=getconfig(1);
+				econfig=last(statename->config);
 				if(start==0) start=configname;
 			}
 			else if(token[0]!='\0')
@@ -779,6 +784,8 @@ Error:
 //
 void expand(Name *name){
 	if(name->config!=0) return;	// already expanded.
+	nstate++;
+	name->index=nstate;
 	char call[8192];
 	//
 	// We copy the call into a local buffer, because we
@@ -913,7 +920,7 @@ void showconfigs(FILE *f, Config *config){
 }
 void show(FILE *f){
 	if(start)
-		fprintf(f, "# start %s\n", start->name);
+		fprintf(f, "# start %s (state # %d)\n", start->name, start->index);
 	else
 		fprintf(f, "# No start symbol!\n");
 	//
@@ -936,8 +943,12 @@ void show(FILE *f){
 		}
 	}
 	printf("----------\n");
+	//
+	// Should sort these in index order
+	//
 	for(Name *n=namelist;n!=0;n=n->next){
 		if(n->config!=0){
+			printf("# state %d\n", n->index);
 			showstring(f, n->name);
 			showconfigs(f, n->config);
 		}
