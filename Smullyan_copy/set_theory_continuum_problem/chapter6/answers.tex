@@ -316,67 +316,69 @@ $F(0)=f(F''(0))=f(0)$, but 0 is not defined for $f$.
 If we added that $h$ must be defined on all sets as a prerequisite to the theorem, then the theorem obviously is correct.
 
 \subsection*{Exercise 5.1}
-Because Theorem 5.8 is not correct, the premise of this problem would not be correct. However, if we took, for instance, Theorem 5.7 as the axiom instead of 
-Theorem 5.8, the proof would then follow.
-
-We need a preliminary before the proof of the counting theorem. First, define a class $A$ to be \textit{generally superinductive} (under $g$) if $A$ is 
-non-empty, and the following three conditions hold:\newline
-(1) $A$ contains an element $c$ such that $c\subseteq x$ for all $x\in A$;\newline
-(2) for all $x\in A$, $g(x)\in A$;\newline
-(3) $A$ is closed under chain unions.\newline
-Call a class $A$ minimally generally superinductive under $g$ if $A$ is generally 
-superinductive under $g$ and no proper subclass of $A$ is generally superinductive under $g$. Call a class $A$ a \textit{general $g$-tower} if 
-$A$ is generally superinductive under $g$ and $g$ is progressing. In order to show that a propery $P$ holds for all elements of a superinductive 
-class $A$, it suffices to show the following three things:\newline
-(1) $P$ holds for $c$;\newline
-(2) for any $x\in A$, if $P$ holds for $x$, then $P$ holds for $g(x)$;\newline
-(3) for any chain $C$ of elements of $A$, if $P$ holds for every element of $C$, then $P$ holds for $\cup C$.\newline
-
-With this definition, one can, in a similar manner as was done in section 2 of chapter 4 (just by replacing the occurences of $0$ by $c$), 
-prove that if $A$ is generally superinductive under a strictly gprogressing function $g$, then $A$ is not a set.
+I could not prove this using Theorem 5.8 (or Theorem 5.7). The following proves that, if part (1) of the counting theorem holds, then we can use 
+Theorem 5.7 to prove part (2) (and Theorem 5.8 basically allows us to make the same argument).
 
 (1): For the first part of the theorem, we wish to show that every well ordered set is isomorphic to exactly one ordinal number $\alpha$. By the 
 comparability theorem, either $A$ is isomorphic to a lower section of $On$, or $On$ is isomorphic to a lower section of $A$. Suppose that 
 $On$ was isomorphic to a lower section $L$ of $A$ under $\phi$. We define $g$ as 
-follows: if $x$ is a lower section of $A$, and $y$ is the least element of $A-x$, then let $g(x)=x\cup\{y\}$. Otherwise take $g(x)=x$. 
-Let $e$ be the least element of $A$. By Theorem 5.7,
+follows: if $x$ is a proper lower section of $A$, and $y$ is the least element of $A-x$, then let $g(x)=x\cup\{y\}$. Otherwise take $g(x)=x$. 
+By Theorem 5.7,
 there is an $On$-sequence $S_0,S_1,...,S_\alpha,...,$ such that:\newline
 (1) $S_0=\emptyset$;\newline
 (2) for each $\alpha$, $S_{\alpha+1}=g(S_\alpha)$;\newline
 (3) for each limit ordinal $\lambda$, $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$.\newline
-Let $S$ be the class of all $S_\alpha$'s. It is a set as it is a subset of $\mathcal{P}(A)$. We aim to show that $S$ minimally generally 
-superinductive under $g$, and hence not a set. Clearly there is an element of $S_\alpha$ less than all others ($S_0$). Also, by (2), 
+Let $S$ be the class of all $S_\alpha$'s. It is a set as it is a subset of $\mathcal{P}(A)$. We aim to show that $S$ is minimally 
+superinductive under $g$, and hence not a set, which is a contradiction. By (1), $\emptyset\in S$. Also, by (2), 
 $S$ is closed under $g$. Suppose now we have some chain $C$ of elements of $S$. Then if $C$ contains a greatest element, clearly 
 $\cup C\in S$, as $\cup C$ is just the greatest element of $C$. On the other hand, if $\cup C$ contains no greatest element, I was unable to 
-show that $\cup\in S$.
+show that $\cup C\in S$.
 
-(2): For the second part of the theorem, we wish to show that every properly well orderd proper class is isomorphich to the class $On$ of all ordinals. 
+(2): For the second part of the theorem, we wish to show that every properly well ordered proper class is isomorphic to the class $On$ of all ordinals. 
 By the comparability theorem, either $A$ is isomorphic to a lower section of 
 $On$, or $On$ is isomorphic to a lower section of $A$. Suppose that $A$ was isomorphic to some lower section of $On$. Then some ordinal $\gamma$ would be 
-isomorphic to $A$ under some $\phi$. Define the function $g$ as follows: if $x$ is a lower section of $A$, and $y$ is the least element of $A-x$, then 
-let $g(x)=x\cup\{y\}$. Otherwise take $g(x)=x$. Now, let $e$ be the least element of $A$. By Theorem 5.7, 
+isomorphic to $A$ under some function $\phi$. Define the function $g$ as follows: if $x$ is a proper lower section of $A$, and $y$ is the least element of $A-x$, then 
+let $g(x)=x\cup\{y\}$. Otherwise take $g(x)=x$. By Theorem 5.7, 
 there is an $On$-sequence $S_0,S_1,...,S_\alpha,...,$ such that:\newline
 (1) $S_0=\emptyset$;\newline
 (2) for each $\alpha$, $S_{\alpha+1}=g(S_\alpha)$;\newline
 (3) for each limit ordinal $\lambda$, $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$.\newline 
 We wish to show that $S_\gamma=A$, and thus $A$ would be a set, a contradiction. Note that the $On$-sequence above is obviously such that 
-every $S_\alpha$ is a lower section (perhaps proper) of $A$.
+every $S_\alpha$ is a lower section (perhaps proper) of $A$. Also, it can easily be seen that if $\alpha<\gamma$, then 
+$S_\alpha$ is a proper lower section of $A$.
+
+\begin{lemma}
+For every ordinal $\alpha$ such that $\alpha<\gamma$, $S_{\alpha^+}=S_\alpha\cup\phi(\alpha)$.
+\end{lemma}
+\begin{proof}
+We prove this by transfinite induction. Clearly this holds for $\emptyset$. Suppose it holds for some $\alpha$. Thus 
+$S_{\alpha^+}=S_\alpha\cup\phi(\alpha)$. Suppose that $\alpha^+<\gamma$. But then $\phi(\alpha^+)$ is the least element outside of $A-S_{\alpha^+}$, meaning 
+$S_{\alpha^{++}}=S_{\alpha^+}\cup\phi(\alpha^+)$. On the other hand, suppose it holds for all $\alpha<\lambda$ for a limit ordinal 
+$\lambda$ such that $\lambda<\gamma$. Then $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$, meaning for every $\alpha<\lambda$, $\phi(\alpha)\in S_\lambda$. Hence 
+the least element of $A-S_\lambda$ is $\phi(\lambda)$, meaning $S_{\lambda^+}=S_\lambda\cup\{\phi(\lambda)\}$.
+\end{proof}
 
 We first show that $x\in S_\alpha$ iff the $\beta$ for which $x=\phi(\beta)$ is such that $\beta<\alpha$.
-
-On the one hand, suppose that $x=\phi(\beta)$ for some $\beta$. We show that if $\beta<\alpha$, then $x\in S_\alpha$.
+\begin{proof}
+(a) On the one hand, suppose that $x=\phi(\beta)$ for some $\beta$. We show that if $\beta<\alpha$, then $x\in S_\alpha$.
 $\beta$ cannot be less than $0$, meaning the case for $S_0$ vacuously holds. Now suppose that some successor ordinal $\alpha^+$ is such 
-that $\beta<\alpha^+$, and that the result holds for $\alpha$. Then obviously $x\in S_\alpha^+$. Now suppose that, for some 
-limit ordinal $\lambda$, the result holds for all ordinals $\alpha<\lambda$. Then $x\in S_\alpha$ for all $\alpha<\lambda$, and 
-because $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$, obviously $x\in S_\lambda$. Thus, by transfinite induction, $x\in S_\alpha$ for all 
+that $\beta<\alpha^+$, and that the result holds for $\alpha$. Then, using Lemma 0.1, $x\in S_{\alpha^+}$. Now suppose that, for some 
+limit ordinal $\lambda$, the result holds for all ordinals $\alpha<\lambda$ and that $\beta<\lambda$. 
+Then $\beta^+<\lambda$, and by assumption, $x\in S_{\beta^+}$. Because $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$, it then follows that 
+$x\in S_\lambda$.
+Thus, by transfinite induction, $x\in S_\alpha$ for all 
 $\alpha>\beta$. 
 
-On the other hand, we show that if $x\in S_\alpha$, then the $\beta$ for which $x=\phi(\beta)$ is such that $\beta<\alpha$. We show by 
-transfinite induction that this holds for all $S_\alpha$. It vacuously holds for $S_0$. Suppose it holds for some $\alpha$. Then the only element 
-in $S_\alpha^+$ not in $S_\alpha$ is the least element of $A-S_\alpha$ (if there is one). Consider the $\beta$ for which that 
-element is equal to $\phi(\beta)$. Then $\beta$ is the set of all ordinals less than $\alpha$, obviously meaning $\alpha^+>\beta$. Now 
-suppose that, for some limit ordinal $\lambda$, the result holds for all $S_\alpha$ for $\alpha<\lambda$. Then if $x\in S_\lambda$, 
+(b) On the other hand, we show that if $x\in S_\alpha$, then the $\beta$ for which $x=\phi(\beta)$ is such that $\beta<\alpha$. We show by 
+transfinite induction that this holds for all $S_\alpha$. It vacuously holds for $S_0$. Suppose it holds for some $\alpha$. Using this assumption, 
+as well as part (a) of this proof, we have that $x\in S_\alpha$ iff the $\beta$ for which $x=\phi(\beta)$ is such that $\beta<\alpha$. Consider the $\beta$ for 
+which the least element of $A-S_\alpha$ (if there is one) is equal to $\phi(\beta)$. Then $\beta$ contains only ordinals less than $\alpha$. For suppose that 
+$\beta$ contained some ordinal $\delta\ge\alpha$. Now, $\phi(\delta)\notin S_\alpha$ (by assumption), meaning $\phi(\delta)\in A-S_\alpha$. But 
+$\delta<\beta$ and thus $\phi(\delta)$ preceedes $\phi(\beta)$, contrary to the assumption that $\phi(\beta)$ was the least element of $A-S_\alpha$. Thus 
+$\beta$ contains only ordinals less than $\alpha$, meaning $\beta<\alpha^+$. 
+Now suppose that, for some limit ordinal $\lambda$, the result holds for all $S_\alpha$ for $\alpha<\lambda$, and that $\beta<\lambda$. Then if $x\in S_\lambda$, 
 $x\in S_\alpha$ for some $\alpha<\lambda$, meaning the $\beta$ for which $x=\phi(\beta)$ is such that $\beta<\alpha<\lambda$ (by assumption).
+\end{proof}
 
 Thus $x\in S_\alpha$ iff the $\beta$ for which $x=\phi(\beta)$ is such that $\beta<\alpha$. If $x\in A$, then 
 the $\beta$ for whcih $x=\phi(\beta)$ is such that $\beta<\gamma$, meaning $x\in S_\gamma$. On the other hand, 
