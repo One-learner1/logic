@@ -192,6 +192,8 @@ Note that every well ordered set is also properly well ordered, because obviousl
 set, and hence also a set.
 
 \section*{Section 5}
+
+\subsection*{Notes}
 Note that, if a class $M$ is well ordered under $\subseteq$, then it is also properly well ordered under $\subseteq$. For consider any proper lower section $L$ of 
 $M$. Then it is also an initial segment of $x$ for some $x\in M$. Hence, for every $y\in L$, $y\subseteq x$, meaning $L\subseteq\mathcal{P}(x)$, and thus 
 $L$ is a set.
@@ -213,7 +215,8 @@ the relation $\in$ for the definition.
 
 There is a discrepancy in the definitions of an extending operation. The first only says that $E$ must be defined on all ordinal sequences, and 
 that if applied to a sequence of length $\alpha$, it yields one of length $\alpha^+$. However, the second definition specifies that 
-$E$ must yield, from a sequence $\theta_1$ of length $\alpha$, a sequence $\theta_2$ of length $\alpha^+$ such that $\theta_1\subseteq\theta_2$.
+$E$ must yield, from a sequence $\theta_1$ of length $\alpha$, a sequence $\theta_2$ of length $\alpha^+$ such that $\theta_1\subseteq\theta_2$ (the second 
+definition is clearly the one being used).
 
 It should be noted that (with the axiom of substitution), every ordinal sequence is a set. Obviously the domain of every ordinal sequence is a set
 (because the domain is just an ordinal). Thus the range of every ordinal sequence can be put into a 1-1 correspondence with a set, meaning, by the 
@@ -227,6 +230,9 @@ $x\in F\restriction\alpha^+$, meaning $x\in\cup_{\alpha<\lambda}F\restriction\al
 $x\in\cup_{\alpha<\lambda}F\restriction\alpha$. Then, for some $\alpha<\lambda$, $x\in F\restriction\alpha$. Consequently 
 $x=\langle\beta,F(\beta)\rangle$ for some $\beta<\alpha$, meaning $\beta<\lambda$, and thus $x\in F\restriction\lambda$ as well. Hence 
 $F\restriction\lambda=\cup_{\alpha<\lambda}F\restriction\alpha$. 
+
+Note that the above does not also hold in the case of successor ordinals. That is, $F\restriction\alpha^+\ne\cup_{\beta<\alpha^+}\restriction\beta$. This is because 
+$\alpha$ is in the domain of $F\restriction\alpha^+$, but for no ordinal $\beta$ less than $\alpha^+$ is it the case that $\alpha$ is in the domain of $F\restriction\beta$. 
 
 \subsection*{Uniqueness of Functions}
 Here is why the function in Theorem 5.3 is unique. For suppose we had two functions $F$ and $G$ satisfying the desired conditions. We show 
@@ -277,15 +283,28 @@ $\beta<\alpha$, meaning $\beta\in f$) which is not a set (by the axiom of substi
 there is a function of length $\alpha$ in $\mathcal{N}$, which obviously implies that the domain of $\cup\mathcal{N}$ is $On$. 
 
 \subsection*{Theorem 5.3}
+Here is why we know that there is a minimally superinductive class under $E$ (which is an extending operation, whose domain includes all ordinal sequences). 
+In order to use the necessary theorem presented in chapter 4, we would need to know that 
+(1) $E$ is defined on 0; (2) if $E$ is defined on an ordinal sequence $x$, then $E$ is defined on $E(x)$; (3) for any chain $C$ of ordinal sequences that $E$ is defined on, $E$ is defined on 
+$\cup C$; (4) $E$ is progressing for all ordinal sequences. 
+(1) follows because $0$ is an ordinal sequence. (2) follows because $E$ is an extending operation. (3) Consider some chain $C$ of 
+ordinal sequences that $E$ is defined on. Then, by Lemma 5.2 (1), $\cup C$ is an ordinal sequence, and thus $E$ is defined for 
+$\cup C$. (4) follows by the definition of an extending operation.
+
+Note that this above argument acutally shows that there is a class that is minimally inductive under $E\restriction On$, but this class is of course also minimally inductive 
+under $E$.
+
 Here is why we can conclude that, if $\lambda$ is a limit ordinal and if for each $\alpha<\lambda$, $M_\alpha$ is an $\alpha$-sequence, 
 then $M_\lambda$ is a $\lambda$ sequence. First, note that, by Theorem 5.1, $M_\lambda=\cup_{\alpha<\lambda}M_\alpha$. Thus 
-$M_\lambda$ is the union of a chain of ordinal sequence (namely, the chain of all ordinal sequence of length $\alpha<\lambda$ where the sequence is in 
-$M$). Clearly all elements of $C$ are of length less than $\lambda$. It remains to show (in order to use part (1) of Lemma 5.2) that for every 
+$M_\lambda$ is the union of a chain $C$ of ordinal sequences. Clearly all elements of $C$ are of length less than $\lambda$ (by the induction assumption). 
+It remains to show (in order to use part (1) of Lemma 5.2) that for every 
 $\alpha<\lambda$ there is an element of $C$ of length $\alpha$. This can be proven by transfinite induction on the ordinals: we show that if 
-$\alpha<\lambda$, then there is an ordinal sequence of length $\alpha$ in $C$. This holds for the 0, as by definition of $M$, $0\in M$ (and thus also 
+$\alpha<\lambda$, then there is an ordinal sequence of length $\alpha$ in $C$. This holds for 0, as by definition of $M$, $0\in M$ (and thus also 
 in $C$). For any $\alpha$, if $\alpha<\lambda$ and there is some ordinal sequence of length $\alpha$ in $M$, then, if $\alpha^+<\lambda$, by definition 
-of $M$, there is an ordinal sequence of length $\alpha^+$ in $M$. If for all $\alpha<\lambda_1$ for some limit ordinal $\lambda_1$, there is some ordinal 
-sequence of length $\alpha$ in $M$, then, if $\lambda_1<\lambda$, by definition of $M$, there is an ordinal sequence of length $\lambda_1$ in $M$. Thus, 
+of $M$ and the induction assumption, there is an ordinal sequence of length $\alpha^+$ in $M$ (namely $M_{\alpha^+}$). 
+If for all $\alpha<\lambda_1$ for some limit ordinal $\lambda_1$, there is some ordinal 
+sequence of length $\alpha$ in $M$, then, if $\lambda_1<\lambda$, by definition of $M$ and the induction assumption, there is an ordinal sequence (namely $M_{\lambda_1}$) 
+of length $\lambda_1$ in $M$. Thus, 
 for every $\alpha<\lambda$, there is an element of $C$ of length $\alpha$, meaning $\cup C$, that is $M_\lambda$, is of length $\lambda$. 
 
 \subsection*{Theorem 5.8}
@@ -377,7 +396,7 @@ Consider any function $g$ satisfying the above three conditions. By Theorem 5.7,
 (3) for each limit ordinal $\lambda$, $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$.\newline
 We aim to show that the class $S$ of all $S_\alpha$ for all ordinals $\alpha$ is minimally superinductive under $g$.
 
-(1') By (1), $S_0\in S$.\newline
+(1') By (1), $0\in S$.\newline
 
 (2') Suppose that $x\in S$. Then, for some $\alpha$, $x=S_\alpha$. Then $g(x)\in S$ by (2).\newline
 
@@ -386,19 +405,20 @@ For any non-empty chain $C$ of ordinals containing no greatest element, $\cup C$
 \end{lemma}
 \begin{proof}
 Consider some chain $C$ of ordinals containing no greatest element. Obviously $\cup C\ne\emptyset$. Suppose that 
-$\cup C$ was a successor ordinal for some $\alpha$. Then $\cup C=\alpha\cup\{\alpha\}$. But this would mean that, for some 
-$\beta\in C$, $\alpha\in\beta$. Clearly $\beta=\cup C$ (or else $\beta>\cup C$, meaning $\cup C\in\beta$ and $\cup C\in\cup C$, which is impossible). 
-Because $\cup C$ would then be the greatest element of $C$, this contradicts the assumption that $C$ contains no greatest element. Thus, because $\cup C$ is 
-neither the least ordinal nor a successor ordinal, it must be a limit ordinal. 
+$\cup C$ was a successor ordinal for some $\alpha$. Then $\cup C=\alpha\cup\{\alpha\}$, in which case $\alpha$ would be the greatest 
+element of $\cup C$. Then consider the least ordinal $\beta$ such that $\beta\in C$ and $\alpha\in\beta$. Clearly $\beta$ must be the 
+greatest element of $C$, as if there was an element in $C$ greater than $\beta$, then $\beta$ would be in $\cup C$, contrary to the assumption that 
+$\alpha$ was the greatest element of $\cup C$. Hence $C$ contains a greatest element, a contradiction. Thus $\cup C$ is neither the least ordinal 
+nor a successor ordinal, and is consequently a limit ordinal. 
 \end{proof}
 
 (3') Consider some chain $C$ of elements of $S$. Consider the class $O$ of ordinals $\alpha$ such that 
 $S_\alpha\in C$. $O$ is a set, as it can be placed in a 1-1 correspondence with $C$. If $O$ contains a greatest 
 ordinal $\alpha$, then $\cup C=S_\alpha$. If it does not contain a greatest ordinal, then note that $\cup O$ is a limit ordinal by the preceeding Lemma. 
 Let $\lambda=\cup O$. Hence, by (3), $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$. We wish to show that $S_\lambda=\cup C$. Obviously, if 
-$x\in O$, then $x\in S_\lambda$. On the other hand, suppose that $x\in S_\lambda$. Thus, for some $\alpha<\lambda$, $x\in S_\alpha$. We know that 
+$x\in\cup C$, then $x\in S_\lambda$. On the other hand, suppose that $x\in S_\lambda$. Thus, for some $\alpha<\lambda$, $x\in S_\alpha$. We know that 
 $\alpha\in\lambda$, that is, $\alpha\in\cup O$. Hence, for some $\beta\in O$, $\alpha\in\beta$. But $S_\alpha\subseteq S_\beta$ if $\alpha<\beta$ (this can easily be 
-seen, assuming $g$ is progressing), meaning $x\in S_\beta$ and hence $x\in\cup C$. Thus $\cup C=S_\lambda$, meaning $\cup C\in S$.
+seen, assuming $g$ is progressing; in fact, this is just Exercise 5.4), meaning $x\in S_\beta$ and hence $x\in\cup C$. Thus $\cup C=S_\lambda$, meaning $\cup C\in S$.
 
 Hence we have shown that $S$ is superinductive under $g$. It remains to be shown that $S$ is minimally superinductive under $g$. Consider any class $C$ that 
 is superinductive under $g$. We can show by transfinite induction on the $On$-sequence $S_0,S_1,...,S_\alpha,...$ that, for every $\alpha$, $S_\alpha\in C$, meaning 
@@ -410,13 +430,11 @@ proof.
 \subsection*{Exercise 5.3}
 Note that, for this problem, I will assume that, in order to use Theorem 5.8 on some function $h$, $h$ must be defined for all sets (as is done in this proof).
 
-(a): Suppose, on the contrary, that for all ordinals $\alpha$, $F(\alpha)\in S$. We show that this would mean $On$ was a set. Let $C$ be the class of all $F''(\alpha)$. Note that, 
-So, if for all ordinals $\alpha$, $F(\alpha)\in S$, by definition of $h$, this would mean that, for all ordinals $\alpha$, $F''(\alpha)\in\mathcal{P}(S)$, and thus 
-$C\subseteq S$, meaning $C$ is a set.
+(a): Suppose, on the contrary, that for all ordinals $\alpha$, $F(\alpha)\in S$. We show that this would mean $On$ was a set. 
 
 We now show that, if $\alpha\ne\beta$, then $F(\alpha)\ne F(\beta)$. Without loss of generality, suppose that $\alpha<\beta$. Then 
 $F(\alpha)\in F''(\beta)$. But $F(\beta)=h(F''(\beta))$. By assumption, $F''(\beta)$ must be a proper subset of $S$, so that 
-$F(\beta)=h(F''(\beta))=S-F''(\beta)$, meaning it cannot be that $F(\beta)=F(\alpha)$ (because $F(\alpha)\notin S-F''(\beta))$ (Note that this argument shows that, 
+$F(\beta)=h(F''(\beta))=C(S-F''(\beta))$, meaning it cannot be that $F(\beta)=F(\alpha)$ (because $F(\alpha)\notin S-F''(\beta))$ (Note that this argument shows that, 
 if $\alpha\ne\beta$ and $F(\alpha)\in S$ and $F(\beta)\in S$, then $F(\alpha)\ne F(\beta)$. This fact will be used in part (b)). 
 
 Thus, for all $\alpha$ and $\beta$, $F(\alpha)\ne F(\beta)$. Hence the class $F$ of $F(\alpha)$ for all $\alpha$ can be put into a 1-1 
@@ -426,9 +444,9 @@ a set, which is impossible.
 Thus it cannot be that $F(\alpha)\in S$ for all $F(\alpha)$, meaning $F(\delta)\notin S$ for some $\delta$.
 
 (b): Let $\beta$ be the least ordinal such that $F(\beta)\notin S$. Because $F(\beta)=h(F''(\beta))$, either $F''(\beta)=S$, or $F''(\beta)$ is not a subset of $S$. 
-Now, clearly $F''(\beta)\subset S$. For, by the assumption that $\beta$ is the least ordinal such that $F(\beta)\notin S$, for all $\alpha<\beta$, 
-$F(\alpha)\in S$. But $F''(\beta)=\{F_\alpha|\alpha<\beta\}$, meaning $F''(\beta)\subset S$. Thus, because it is the case that $F''(\beta)\subset S$, and either 
-$F''(\beta)=S$ of $F''(\beta)$ is not a subset of $S$, it follows that $F''(\beta)=S$. Next, we show that $F\restriction\beta$ is 1-1. Now, for all $\alpha_1\in\beta$ and 
+Now, clearly $F''(\beta)\subseteq S$. For, by the assumption that $\beta$ is the least ordinal such that $F(\beta)\notin S$, for all $\alpha<\beta$, 
+$F(\alpha)\in S$. But $F''(\beta)=\{F_\alpha|\alpha<\beta\}$, meaning $F''(\beta)\subseteq S$. Thus, because it is the case that $F''(\beta)\subseteq S$, and either 
+$F''(\beta)=S$ or $F''(\beta)$ is not a subset of $S$, it follows that $F''(\beta)=S$. Next, we show that $F\restriction\beta$ is 1-1. For all $\alpha_1\in\beta$ and 
 $\alpha_2\in\beta$, if $\alpha_1\ne\alpha_2$, then $F(\alpha_1)\ne F(\alpha_2)$ (as shown in part (a)). This shows that $F\restriction\beta$ is 1-1, meaning 
 $\beta$ can be put into a 1-1 correspondence with $S$, and so $S$ can be well ordered.
 
@@ -436,9 +454,9 @@ This completes the proof that every set which has a choice function can be well 
 
 \subsection*{Exercise 5.4}
 We aim to show that for any ordinals $\alpha$ and $\beta$, if $\alpha\le\beta$ then $F(\alpha)\subseteq F(\beta)$. This can be proven by transfinite induction on the ordinals. 
-That is, we show that, for all $\beta$, $F(\alpha)\subseteq F(\beta)$ holds for all $\alpha\le\beta$. The case for $0$ obviously holds. Now suppose it holds for all 
-ordinals less than some ordinal $\gamma$. On the one hand, consider the successor of some ordinal $\alpha$. Then by (a), $F(\alpha)\subseteq F(\alpha^+)$. By assumption, for all 
-$\beta\le\alpha$, $F(\beta)\subseteq F(\alpha)\subseteq F(\alpha^+)$. Hence for all $\beta\le\alpha^+$, $F(\beta)\subseteq F(\alpha^+)$. On the other hand, suppose that the result holds for all 
-ordinals less than some limit ordinal $\lambda$, then by (b), for all $\alpha<\lambda$, $F(\alpha)\subseteq F(\lambda)$.
+That is, we show that, for all $\beta$, $F(\alpha)\subseteq F(\beta)$ holds for all $\alpha\le\beta$. The case for $0$ obviously holds. 
+On the one hand, suppose that the result holds for some $\alpha$. Then by (a), $F(\alpha)\subseteq F(\alpha^+)$. By assumption, for all 
+$\beta\le\alpha$, $F(\beta)\subseteq F(\alpha)\subseteq F(\alpha^+)$. Hence for all $\beta\le\alpha^+$, $F(\beta)\subseteq F(\alpha^+)$. On the other hand, 
+for any limit ordinal $\lambda$, by (b), for all $\alpha<\lambda$, $F(\alpha)\subseteq F(\lambda)$.
 
 \end{document}
