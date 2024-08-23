@@ -15,11 +15,11 @@
 #
 # if there are no a's, enter state B
 #
-def f(C, B, a)	# scan left for e (the beginning of the tape)
+f(C, B, a)	# scan left for e (the beginning of the tape)
 	e	L		f1($C, $B, $a)
 	*_	L		f($C, $B, $a)
 
-def f1(C, B, a)	# scan right for a
+f1(C, B, a)	# scan right for a
 	$a	N		$C
 	*	R		f1($C, $B, $a)
 	_	R		f2($C, $B, $a)
@@ -33,7 +33,7 @@ def f1(C, B, a)	# scan right for a
 #	keep looking, which is what f1(C,B,a) does.
 #
 
-def f2(C, B, a)
+f2(C, B, a)
 	$a	N		$C
 	*	R		f1($C, $B, $a)
 	_	R		$B
@@ -44,67 +44,67 @@ def f2(C, B, a)
 #	Erase the first a and enter state C. If there is no a, enter state B.
 #
 
-def e(C,B,a)	*_	N	f(e1($C,$B,$a),$B,$a)
-def e1(C,B,a)	*_	E	C
+e(C,B,a)	*_	N	f(e1($C,$B,$a),$B,$a)
+e1(C,B,a)	*_	E	C
 
 #
 # e(B,a)
 #	erase all occurrences of a and enter state B
 #
 
-def e(B,a)	*_	N	e(e($B,$a),$B,$a)
+e(B,a)	*_	N	e(e($B,$a),$B,$a)
 
 #
 # Print b at the end of the sequence of symbols and enter state C
 #
-def pe(C,b)	*_	N	f(pe1($C,$b),$C,e)
-def pe1(C,b)	*	R,R	pe1($C,$b)
+pe(C,b)	*_	N	f(pe1($C,$b),$C,e)
+pe1(C,b)	*	R,R	pe1($C,$b)
 		_	P$b	C
 #
 # l and r move to the left or right and enter state C
 #
-def l(C)	*_	L	C
-def r(C)	*_	R	C
+l(C)	*_	L	C
+r(C)	*_	R	C
 
 # f' is the same as f but moves left after finding the symbol.
 # f'' is like f but moves to the right after finding the symbol.
-def f'(C,B,a)	*	N	f(l($C),$B,$a)
-def f''(C,B,a)	*	N	f(r($C),$B,$a)
+f'(C,B,a)	*	N	f(l($C),$B,$a)
+f''(C,B,a)	*	N	f(r($C),$B,$a)
 
 #
 # Copy the first symbol marked a (i.e. with an a on its right)
 # to the end of the tape and enter state C.
 # If there is no such symbol, enter state B
 #
-def c(C,B,a)	*	N	f'(c1($C),$B,$a)
-def c1(C)	*	N	pe($C,*)
+c(C,B,a)	*	N	f'(c1($C),$B,$a)
+c1(C)	*	N	pe($C,*)
 
 #
 # ce(B,a) copies down in order at the end all symbols marked a,
 # erases the letters a and enters state B
 #
-def ce(C,B,a)		*_	N	c(e($C,$B,$a),$B,$a)
-def ce(B,a)		*_	N	ce(ce($B,$a),$B,$a)
+ce(C,B,a)		*_	N	c(e($C,$B,$a),$B,$a)
+ce(B,a)		*_	N	ce(ce($B,$a),$B,$a)
 
 #
 # re(C,B,a,b) replaces the first a by b and enters state C.
 # If there is no a, it enters state B.
 #
-def re(C,B,a,b)		*_	N	f(re1($C,$B,$a,$b),$B,$a)
-def re1(C,B,a,b)	*_	E,P*	$C
+re(C,B,a,b)		*_	N	f(re1($C,$B,$a,$b),$B,$a)
+re1(C,B,a,b)	*_	E,P*	$C
 
 #
 # re(B,a,b) replaces all letters a by b and enters state $B
 #
-def re(B,a,b)		*_	N	re(re($B,$a,$b), $B, $a, $b)
+re(B,a,b)		*_	N	re(re($B,$a,$b), $B, $a, $b)
 
 #
 # Like ce(B,a) only letters $a are not erased.
 # If there are no letters a, enters state cr($B,$a)
 # WRONG according to Ya, but I don't understand his correction.
 #
-def cr(C,B,a)	*_	N	c(re($c,$b,$a,a),$B,$a)
-def cr(B,a)		*_	N	cr(cr($B,$a),re($B,$a,a),$a)
+cr(C,B,a)	*_	N	c(re($c,$b,$a,a),$B,$a)
+cr(B,a)		*_	N	cr(cr($B,$a),re($B,$a,a),$a)
 
 #
 # cp(C,A,E,a,b) compares the first symbol marked a and the first marked b.
@@ -112,57 +112,57 @@ def cr(B,a)		*_	N	cr(cr($B,$a),re($B,$a,a),$a)
 # If both exist and are alike, enter state C,
 # otherwise enter state A
 #
-def cp(C,A,E,a,b)	*	N	f'(cp1($C,$A,$b),f($A,$E,$b),$a)
-def cp1(C,A,b)	*	N	f'(cp2($C,$A,*),$a,$b)
-def cp2(C,A,g)	$g	N	$C
+cp(C,A,E,a,b)	*	N	f'(cp1($C,$A,$b),f($A,$E,$b),$a)
+cp1(C,A,b)	*	N	f'(cp2($C,$A,*),$a,$b)
+cp2(C,A,g)	$g	N	$C
 		~$g	N	$A
 
 #
 # cpe(C,A,E,a,b) is like cp(C,A,E,a,b) except that it when
 # the marked symbols are equal, it erases a and b
 #
-def cpe(C,A,E,a,b)	*_	N	cp(e(e($C,$C,$b),$C,$a),$A,$C,$a,$b)
+cpe(C,A,E,a,b)	*_	N	cp(e(e($C,$C,$b),$C,$a),$A,$C,$a,$b)
 #
 # cpe(A,E,a,b) compares the sequence of symbols marked a with the
 # sequence marked b, entering E if they are similar and entering A
 # if not. Some of the symbols a and b are erased.
 #
-def cpe(A,E,a,b)	*_	N	cp(e(e($C,$C,$b), $C, $a), $A, $E, $a, $b)
+cpe(A,E,a,b)	*_	N	cp(e(e($C,$C,$b), $C, $a), $A, $E, $a, $b)
 
 #
 # q(C)	moves to the end of the tape and enters state C
 #
-def q(C)	*	R	q($C)
+q(C)	*	R	q($C)
 		_	R	q1($C)
-def q1(C)		*	R	q($C)
+q1(C)		*	R	q($C)
 		_	N	$C
 
 #
 # q(C,a) finds the last symbol a and enters state C
 #
-def q(C,a)	*_	N	q(q1($C,$a))
-def q1(C,a)	$a	N	$c
+q(C,a)	*_	N	q(q1($C,$a))
+q1(C,a)	$a	N	$c
 		~$a	L	q1($c,$a)
 #
 # pe2(C,a,b) prints a b at the end.
 #
-def pe2(C,a,b)	*_	N	pe(pe($C,$b),$a)
+pe2(C,a,b)	*_	N	pe(pe($C,$b),$a)
 
-def ce2(B,a,b)	*_	N	ce(ce($B,$b),$a)
+ce2(B,a,b)	*_	N	ce(ce($B,$b),$a)
 #
 # ce3(B,a,b,c) copies the symbols marked a then b then c to the end of the tape
 # erasing a, b, and c.
 #
-def ce3(B,a,b,c)	*_	N	ce(ce2($B,$b,$c),$a)
+ce3(B,a,b,c)	*_	N	ce(ce2($B,$b,$c),$a)
 
-def ce4(B, a, b, c, d)	*_	N	ce(ce3($B, $b, $c, $d), $a)
+ce4(B, a, b, c, d)	*_	N	ce(ce3($B, $b, $c, $d), $a)
 
-def ce5(B, a, b, c, d, e) *_	N	ce(ce4($B, $b, $c, $d, $e), $a)
+ce5(B, a, b, c, d, e) *_	N	ce(ce4($B, $b, $c, $d, $e), $a)
 
 #
 # Erase all the marks
 #
-def e(C)		e	R	e1($C)
+e(C)		e	R	e1($C)
 		~e	L	e($C)
-def e1(C)		*	R,E,R	e1($C)
+e1(C)		*	R,E,R	e1($C)
 		_	N	$C

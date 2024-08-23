@@ -608,28 +608,19 @@ void input(char *file){
 				lineno=savelineno;
 				continue;
 			}
-			if(iskw("def")){
-				if(!gettoken())
-					error("function def must name "
-						"a function");
-				else if(!isheader())
-					error("function def must have a name "
-						"and parameters (saw %s)",
-						token);
-				else{
-					statename=0;
-					function=getfunction(token);
-					//
-					// on error, we want to continue
-					// reading the definition and stash
-					// it someplace innocuous
-					//
-					if(function==0)
-						function=&nofunction;
-					// works even if getconfig returns 0
-					function->configs=getconfig(0);
-					econfig=last(function->configs);
-				}
+			if(isheader()){
+				statename=0;
+				function=getfunction(token);
+				//
+				// on error, we want to continue
+				// reading the definition and stash
+				// it someplace innocuous
+				//
+				if(function==0)
+					function=&nofunction;
+				// works even if getconfig returns 0
+				function->configs=getconfig(0);
+				econfig=last(function->configs);
 			}
 			else if(iskw("symbols")){
 				if(!gettoken())
@@ -929,7 +920,6 @@ void show(FILE *f){
 	for(Name *n=namelist;n!=0;n=n->next){
 		if(n->fns!=0){
 			for(Function *fn=n->fns;fn!=0;fn=fn->next){
-				fprintf(f, "def ");
 				showstring(f, n->name);
 				int sep='(';
 				for(Param *p=fn->params;p!=0;p=p->next){
@@ -1094,7 +1084,21 @@ void execute(char *initfile){
 	}
 	printf("Stopped after %d steps\n", nstep);
 }
+//
+// This compiles an input file into a Standard Description
+// that can be executed by the Universal Machine
+//
 void compile(void){
+	//
+	// First, make all configs canonical by breaking their
+	// actions into primitive actions (Px,L or Px,R or Px,N),
+	// adding new mconfigs as needed to continue with actions.
+	//
+	// Second, sort all names into numeric order.
+	//
+	// Third, go through all configs spitting out their
+	// Standard Descriptions
+	//
 }
 int main(int argc, char *argv[]){
 	char *tapefile=0;	// initial contents of the tape, if nonzero
