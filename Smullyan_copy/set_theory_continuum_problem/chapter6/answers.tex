@@ -344,8 +344,9 @@ there is an $On$-sequence $S_0,S_1,...,S_\alpha,...,$ such that:\newline
 (2) for each $\alpha$, $S_{\alpha+1}=g(S_\alpha)$;\newline
 (3) for each limit ordinal $\lambda$, $S_\lambda=\cup_{\alpha<\lambda}S_\alpha$.\newline 
 We wish to show that $S_\gamma=A$, and thus $A$ would be a set, a contradiction. Note that the $On$-sequence above is obviously such that 
-every $S_\alpha$ is a lower section (perhaps proper) of $A$. Also, it can easily be seen that if $\alpha<\gamma$, then 
-$S_\alpha$ is a proper lower section of $A$.
+every $S_\alpha$ is a lower section (perhaps proper) of $A$ (this can be seen by using transfinite induction). Also, it can be seen that if $\alpha<\gamma$, then 
+$S_\alpha$ is a proper lower section of $A$ (one way to directly show this is first by showing that if $\alpha<\gamma$, then $S_\alpha$ can be placed in a 1-1 correspondence with 
+$\alpha$).
 
 \begin{lemma}
 For every ordinal $\alpha$ such that $\alpha<\gamma$, $S_{\alpha^+}=S_\alpha\cup\phi(\alpha)$.
@@ -460,5 +461,67 @@ That is, we show that, for all $\beta$, $F(\alpha)\subseteq F(\beta)$ holds for 
 On the one hand, suppose that the result holds for some $\alpha$. Then by (a), $F(\alpha)\subseteq F(\alpha^+)$. By assumption, for all 
 $\beta\le\alpha$, $F(\beta)\subseteq F(\alpha)\subseteq F(\alpha^+)$. Hence for all $\beta\le\alpha^+$, $F(\beta)\subseteq F(\alpha^+)$. On the other hand, 
 for any limit ordinal $\lambda$, by (b), for all $\alpha<\lambda$, $F(\alpha)\subseteq F(\lambda)$.
+
+\section*{Section 6}
+
+\subsection*{Theorem 6.1}
+Here is a proof of Theorem 6.1. First, define the class $G$ as follows: $x\in G$ iff $\exists\alpha\exists\beta(x=\{\alpha\}\times\beta)$. Thus 
+$G$ is the class of $\{\alpha\}\times\beta$ for all ordinals $\alpha$ and $\beta$. Define an \textit{altered ordinal sequence} to simply be an function whose 
+domain is an element of $G$ (which will be called a \textit{$G$-element}). And, for any altered ordinal sequence with a domain of $\{\alpha\}\times\beta$, we say that it of length 
+$\beta$. Define an altered extending operation to be a function defined on all altered ordinal seqeunces, and such that, when applied to an altered ordinal sequence $\theta_1$ whose domain is 
+$\{\alpha\}\times\beta$, yields an altered ordinal sequence $\theta_2$ whose domain is $\{\alpha\}\times\beta^+$ and such that $\theta_1\subseteq\theta_2$.
+
+We first wish to prove a variant of Theorem 5.3: For any altered extending operation $E$ there exists an $F$ on $G$ such that for every $G$-element 
+$\{\alpha\}\times\beta$, $F\restriction(\{\alpha\}\times\beta^+)=E(F\restriction(\{\alpha\}\times\beta))$. Let us call the \textit{$\gamma$-element} of any nest $N$ of 
+altered ordinal sequences the ordinal $\gamma$ such that all members of the domain of $\cup N$ are of the form $\{\gamma\}\times\alpha$ for some ordinal $\alpha$ (obviously 
+such a $\gamma$ exists). 
+
+To prove this, we need to first prove a variant of Lemma 5.2.
+\begin{lemma}
+(1) The union of any chain $C$ of altered ordinal sequences is an ordinal sequence. If $\lambda$ is a limit ordinal such that all elements of $C$ are of length less 
+than $\lambda$, and if for every $\alpha<\lambda$ there is an element of $C$ of length $\alpha$, then $\cup C$ is of length $\lambda$.
+
+(2) If $\mathcal{N}$ is a nest of ordinal sequences, and $\mathcal{N}$ is not a set, then $\cup\mathcal{N}$ is a function whose domain is $\{\gamma\}\times On$, for 
+the $\gamma$-element of $\cup\mathcal{N}$.
+\end{lemma}
+\begin{proof}
+The proof of this is mostly similar to the proof of Lemma 5.2
+
+(1) First, consider some chain $C$ of altered ordinal sequences. Then $\cup C$ is a function (by Proposition 1.4) and a set. Thus the domain $D$ of 
+$\cup C$ is a set. We wish to show that $\cup C$ is an altered ordinal sequence. It suffices to show that $D=\{\alpha\}\times\beta$ for some $\alpha$ and 
+$\beta$. Now, for each $x\in D$, $x=\{\alpha\}\times\beta$ for some $\alpha$ and $\beta$ (by definition of $C$). It is obvious that, for all 
+$x\in D4, the $\alpha$ for which $x=\{\alpha\}times\beta$ for some $\beta$ is the same for all $x$. Let $\gamma$ be that $\alpha$. Let $H$ be the class of all ordinals $\alpha$ such that 
+$\{\gamma\}\times\alpha\in D$. It can easily be seen that $H$ is a transitive set of ordinals, hence also an ordinal (say $\epsilon$). Obviously then 
+$\{\gamma\}\times H=D$, thus proving $\cup C$ is an altered ordinal sequence.
+
+Now suppose that $\lambda$ is a limit ordinal such that all elements of $C$ are of length $\lambda$, and that for every $\alpha<\lambda$ there is an element 
+of $C$ of length $\alpha$. We need to show that $\cup C$ is of length $\lambda$, that is, $\{\gamma\}\times\alpha\in\textrm{Dom}(\cup C)$ iff $\alpha<\lambda$.
+On the one hand, suppose that $\{\gamma\}\times\alpha\in\textrm{Dom}(\cup C)$. Then $\{\gamma\}\times\alpha\in f$ for some $f\in C$. By definition of $C$, 
+$f$ is of a length less than $\lambda$, meaning $\alpha<lambda$. On the other hand, suppose that $\alpha<\lambda$. Then there is an element of $C$ of length $\alpha$. Then 
+there must also be an element $f$ of $C$ of length $\alpha^+$. Then $\{\gamma\}\times\alpha\in f$, that is, $\{\gamma\}\times\alpha\in\textrm{Dom}(\cup C)$. Thus 
+$\cup C$ is of length $\lambda$.
+
+(2) Suppose now that $\mathcal{N}$ is a nest of ordinal sequences that is not a set. Again, by Proposition 1.4, $\cup\mathcal{N}$ is a funciton. First, we show that 
+$\mathcal{N}$ is properly well ordered under $\subseteq$. Because it is a nest, it is linearly ordered under $\subseteq$. Now consider any subclass $C$ of 
+$\mathcal{N}$. Then consider the class $F$ of ordinals such that a function of length $\alpha$ is in $C$. Then $F$ has a least element $\beta$. Then the function $f$ which is of 
+length $\beta$ is clearly the least element of $C$. Hence $\mathcal{N}$ is well ordered under $\subseteq$ (because the well ordering is under $\subseteq$, it is also 
+properly well ordered under $\subseteq$). Then, because $\mathcal{
+
+Now we prove the variant of Theorem 5.3:
+
+\begin{theorem}
+For any altered extending operation $E$ there exists an $F$ on $G$ such that for every $G$-element            
+$\{\alpha\}\times\beta$, $F\restriction(\{\alpha\}\times\beta^+)=E(F\restriction(\{\alpha\}\times\beta))$.
+\end{theorem}
+\begin{proof}
+Let $M$ be the class that is minimally superinducitve under $E$ (such a class exists). We use Theorem 5.1. We know $M_0=0$, so 
+$M_0$ is a altered $0$-sequence. If $M_\alpha$ is an altered $\alpha$-sequence then $M_{\alpha^+}$ is an $\alpha^+$-sequence 
+(because $M_{\alpha^+}=E(M_\alpha)$). If $\lambda$ is a limit ordinal, and if for each $\alpha<\lambda$, $M_\alpha$ is an 
+altered $\alpha$-sequence, then $M_\lambda$ is an altered $\lambda$-seqeunce (by Lemma 5.2). By transfinite induction it then follows that for every 
+$\alpha$, $M_\alpha$ is an altered ordinal sequence of length $\alpha$. Let $F=\cup M$. Then $F$ is a function on $\{\gamma\}\times On$ for the 
+$\gamma$ element of $F$ (by Lemma 5.2 again). Since 
+each $M_\alpha\subseteq F$, and $\textrm{Dom}(M_\alpha)=\{\beta\}\times\alpha$ for some $\beta$, then $M_\alpha=F\restriction(\{\beta\}\times\alpha)$. 
+Thus condition (2) of Theorem 5.1 yields $F\restriction(\{\alpha\}\times\beta^+)=E(F\restriction(\{\alpha\}\times\beta))$.
+\end{proof}
 
 \end{document}
