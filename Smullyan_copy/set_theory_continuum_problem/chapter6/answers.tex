@@ -486,7 +486,7 @@ The proof of this is mostly similar to the proof of Lemma 5.2
 (1) First, consider some chain $C$ of altered ordinal sequences. Then $\cup C$ is a function (by Proposition 1.4) and a set. Thus the domain $D$ of 
 $\cup C$ is a set. We wish to show that $\cup C$ is an altered ordinal sequence. It suffices to show that $D=\{\alpha\}\times\beta$ for some $\alpha$ and 
 $\beta$. Now, for each $x\in D$, $x=\{\alpha\}\times\beta$ for some $\alpha$ and $\beta$ (by definition of $C$). It is obvious that, for all 
-$x\in D4, the $\alpha$ for which $x=\{\alpha\}times\beta$ for some $\beta$ is the same for all $x$. Let $\gamma$ be that $\alpha$. Let $H$ be the class of all ordinals $\alpha$ such that 
+$x\in D$, the $\alpha$ for which $x=\{\alpha\}times\beta$ for some $\beta$ is the same for all $x$. Let $\gamma$ be that $\alpha$. Let $H$ be the class of all ordinals $\alpha$ such that 
 $\{\gamma\}\times\alpha\in D$. It can easily be seen that $H$ is a transitive set of ordinals, hence also an ordinal (say $\epsilon$). Obviously then 
 $\{\gamma\}\times H=D$, thus proving $\cup C$ is an altered ordinal sequence.
 
@@ -523,5 +523,23 @@ $\gamma$ element of $F$ (by Lemma 5.2 again). Since
 each $M_\alpha\subseteq F$, and $\textrm{Dom}(M_\alpha)=\{\beta\}\times\alpha$ for some $\beta$, then $M_\alpha=F\restriction(\{\beta\}\times\alpha)$. 
 Thus condition (2) of Theorem 5.1 yields $F\restriction(\{\alpha\}\times\beta^+)=E(F\restriction(\{\alpha\}\times\beta))$.
 \end{proof}
+
+Now for the variant of Lemma 5.4:
+\begin{lemma}
+For any function $g$, whose domain includes all altered ordinal sequences, there is an altered extending operation $E$ such that for every function $F$ on 
+$\{\gamma\}\times On$ for every (for any $\gamma$) and every ordinal $\alpha$, $(E(F\restriction(\{\gamma\}\times\alpha)))(\gamma,\alpha)=g(\gamma,(F\restriction(\{\gamma\}\times\alpha)))$.
+\end{lemma}
+
+\begin{proof}
+For each altered ordinal sequence $\theta_\alpha$ of length $\alpha$ with a $\gamma$-element of $\gamma$, define $E(\theta_\alpha)$ to be
+$\theta_\alpha\cup\{\langle\gamma,\alpha,g(\gamma,\theta_\alpha)\}$. Thus $E(\theta_\alpha)$ is an altered ordinal sequence of length $\alpha^+$ and, for any 
+$\beta<\alpha$, $(E(\theta_\alpha))(\gamma,\beta)=\theta_\alpha(\beta)$, but $((E(\theta_\alpha)))(\gamma,\alpha)=g(\gamma,\theta_\alpha)$. Then for any $\gamma$ and any function 
+$F$ on $\{\gamma\}\times On$, $F\restriction(\{\gamma\}\times\alpha)$ is an altered ordinal sequence of length $\alpha$, hence
+$(E(F\restriction(\{\gamma\}\times\alpha)))(\gamma,\alpha)=g(\gamma,F\restriction(\{\gamma\}\times\alpha))$.
+\end{proof}
+
+Next, the variant of Theorem 5.5:
+\begin{theorem}
+For any function $g$ whose domain includes all altered ordinal sequences there is a (unique) function $F$ on 
 
 \end{document}
