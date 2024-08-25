@@ -275,12 +275,8 @@ First, we show that $\mathcal{N}$ is properly well ordered under $\subseteq$. Be
 any subclass $C$ of $\mathcal{N}$. Then consider the class $F$ of ordinals $\alpha$ such that a function of length $\alpha$ is in $C$. Then $F$ has a least element 
 $\beta$. Then the function $f$ which is of length $\beta$ is clearly the least element of $C$. Hence $\mathcal{N}$ is well ordered under $\subseteq$ (because 
 the well ordering is under $\subseteq$, it is also properly well ordered under $\subseteq$). Then, because $\mathcal{N}$ is not a set, by the counting 
-theorem, there is an isomorphism from $\mathcal{N}$ onto $On$. Now consider the class $A$ of all ordinals $\alpha$ such that a function $f$ of length $\alpha$ is in 
-$\mathcal{N}$. Because $\mathcal{N}$ is a nest, there can be at most one $f\in\mathcal{N}$ of length $\alpha$. Hence $A$ can be put into 1-1 correspondence with 
-$\mathcal{N}$, which in turn can be put into a 1-1 correspondence with $On$. Hence $A$, a class of ordinals, can be put into a 1-1 corresponence with $On$. Thus 
-$A$ is a transitive class of ordinals (for, if $\alpha\in\textrm{Dom}(\cup\mathcal{N})$ and $\beta\in\alpha$, then $\alpha\in f$ for some $f\in\mathcal{N}$ and 
-$\beta<\alpha$, meaning $\beta\in f$) which is not a set (by the axiom of substitution), and is therefore equal to $On$. Hence, for every $\alpha$, 
-there is a function of length $\alpha$ in $\mathcal{N}$, which obviously implies that the domain of $\cup\mathcal{N}$ is $On$. 
+theorem, there is an isomorphism from $\mathcal{N}$ onto $On$. Now consider the class $A$ of all ordinals in the domain of $\cup\mathcal{N}$. An obvious transfinite induction 
+argument shows that $A=On$. This obviously implies that the domain of $\cup\mathcal{N}$ is $On$. 
 
 \subsection*{Theorem 5.3}
 Here is why we know that there is a minimally superinductive class under $E$ (which is an extending operation, whose domain includes all ordinal sequences). 
@@ -505,7 +501,11 @@ $\cup C$ is of length $\lambda$.
 $\mathcal{N}$ is properly well ordered under $\subseteq$. Because it is a nest, it is linearly ordered under $\subseteq$. Now consider any subclass $C$ of 
 $\mathcal{N}$. Then consider the class $F$ of ordinals such that a function of length $\alpha$ is in $C$. Then $F$ has a least element $\beta$. Then the function $f$ which is of 
 length $\beta$ is clearly the least element of $C$. Hence $\mathcal{N}$ is well ordered under $\subseteq$ (because the well ordering is under $\subseteq$, it is also 
-properly well ordered under $\subseteq$). Then, because $\mathcal{
+properly well ordered under $\subseteq$). Then, because $\mathcal{N}$ is not a set, by the counting theorem, there is an isomorphism from $\mathcal{N}$ onto $On$. Now consider 
+the class $A$ of all ordinals $\alpha$ such that $\langle\gamma,\alpha\rangle\in\textrm{Dom}\cup\mathcal{N}$. An obvious transfinite induction argument shows that 
+$A=On$ (using the fact that $\mathcal{N}$ can be put into a 1-1 correspondencew with $On$). This obviously means that the domain of $\cup\mathcal{N}$ is 
+$\{\gamma\}\times On$. 
+\end{proof}
 
 Now we prove the variant of Theorem 5.3:
 
