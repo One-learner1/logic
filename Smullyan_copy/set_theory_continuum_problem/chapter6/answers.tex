@@ -467,8 +467,8 @@ able to prove this in a similar manner to the double analogue of Theorem 8.1 in 
 \begin{theorem}
 For any functions $h$ (on $(On\times On)\times On$), $f$ and $g$ (from ordinals), there is a unique two-place function $F$ defined on all ordinals, 
 such that:\newline
-(1) $F(\alpha,0)=g(\alpha);\newline
-(2) $F(\alpha,\beta^+)=g(F(\alpha,\beta),\alpha,\beta);\newline
+(1) $F(\alpha,0)=g(\alpha)$;\newline
+(2) $F(\alpha,\beta^+)=g(F(\alpha,\beta),\alpha,\beta)$;\newline
 (3) for a limit ordinal $\lambda$, $F(\alpha,\lambda)=f(\{F(\alpha,\beta)|\beta<\lambda\})$.
 \end{theorem}
 
@@ -490,7 +490,7 @@ Next we show that for each $\alpha$, $f_\alpha\subseteq f_{\alpha^+}$ and that f
 $f_\beta\subseteq f_\lambda$. First, we show that $f_\alpha\subseteq f_{\alpha^+}$, which is to say, for every ordinal $\beta\le\alpha$, 
 $f_\alpha(\gamma,\beta)=f_{\alpha^+}(\gamma,\beta)$ holds for all ordinals $\gamma$. This is shown by an obvious transfinite induction argument. 
 Similarly, it can easily be shown that for each limit ordinal $\lambda$ and all $\beta<\lambda$, $f_\beta\subseteq f_\lambda$. Thus 
-$f_\alpha(\gamma,\beta)=f_{\alpha^+}(\gamma,\beta)$ for all $\beta<\alpha$ and all $\gamma$, and $f_\alpha(\gamma,\beta}=f_\lambda(\gamma,\beta)$, for 
+$f_\alpha(\gamma,\beta)=f_{\alpha^+}(\gamma,\beta)$ for all $\beta<\alpha$ and all $\gamma$, and $f_\alpha(\gamma,\beta)=f_\lambda(\gamma,\beta)$, for 
 a limit ordinal $\lambda$, holds for all $\alpha<\lambda$, all $\gamma$, and all $\beta\le\alpha$.
 
 Then take $F$ to be the class of all triples $\langle\alpha,\beta,f_\beta(\beta,\alpha)\rangle$ (for all $\alpha$ and $\beta$). 
@@ -499,7 +499,10 @@ We need to show that the three conditions of the theorem hold. (1) holds, as $F(
 \[ F(\alpha,\beta^+)=f_{\beta^+}(\alpha,\beta^+)=h(f_{\beta^+}(\alpha,\beta),\alpha,\beta)=h(f_\beta(\alpha,\beta),\alpha,\beta)=h(F(\alpha,\beta),\alpha,\beta) \]
 (3) holds, as \[ F(\alpha,\lambda)=f(\{f_\lambda(\gamma,beta)|\beta<\lambda\})=f(\{f_\beta(\gamma,\beta)|\beta<\lambda\})=f(\{F(\gamma,\beta)|\beta<\lambda\}) \]
 Thus $F$ is the desired function.
+\end{proof}
 
 \textbf{Remark}: When we are defining $f_\lambda$ in the limit ordinal case, note that $\{F(\alpha,\beta)|\beta<\lambda\}$ is a set because it can be 
-placed in a 1-1 correspondence with $\lambda$. This is why $f(\{F(\alpha,\beta)\}|\beta<\lambda\})$ is defined. Also, an obvious transfinite induction argument shows 
+placed in a 1-1 correspondence with $\lambda$. This is why $f(\{F(\alpha,\beta)\}|\beta<\lambda\})$ is defined. Also, an easy transfinite induction argument shows 
 that $F$ is a unique function.
+
+\end{document}
