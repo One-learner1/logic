@@ -461,85 +461,45 @@ for any limit ordinal $\lambda$, by (b), for all $\alpha<\lambda$, $F(\alpha)\su
 \section*{Section 6}
 
 \subsection*{Theorem 6.1}
-Here is a proof of Theorem 6.1. First, define the class $G$ as follows: $x\in G$ iff $\exists\alpha\exists\beta(x=\{\alpha\}\times\beta)$. Thus 
-$G$ is the class of $\{\alpha\}\times\beta$ for all ordinals $\alpha$ and $\beta$. Define an \textit{altered ordinal sequence} to simply be an function whose 
-domain is an element of $G$ (which will be called a \textit{$G$-element}). And, for any altered ordinal sequence with a domain of $\{\alpha\}\times\beta$, we say that it of length 
-$\beta$. Define an altered extending operation to be a function defined on all altered ordinal seqeunces, and such that, when applied to an altered ordinal sequence $\theta_1$ whose domain is 
-$\{\alpha\}\times\beta$, yields an altered ordinal sequence $\theta_2$ whose domain is $\{\alpha\}\times\beta^+$ and such that $\theta_1\subseteq\theta_2$.
-
-We first wish to prove a variant of Theorem 5.3: For any altered extending operation $E$ there exists an $F$ on $G$ such that for every $G$-element 
-$\{\alpha\}\times\beta$, $F\restriction(\{\alpha\}\times\beta^+)=E(F\restriction(\{\alpha\}\times\beta))$. Let us call the \textit{$\gamma$-element} of any nest $N$ of 
-altered ordinal sequences the ordinal $\gamma$ such that all members of the domain of $\cup N$ are of the form $\{\gamma\}\times\alpha$ for some ordinal $\alpha$ (obviously 
-such a $\gamma$ exists). 
-
-To prove this, we need to first prove a variant of Lemma 5.2.
-\begin{lemma}
-(1) The union of any chain $C$ of altered ordinal sequences is an ordinal sequence. If $\lambda$ is a limit ordinal such that all elements of $C$ are of length less 
-than $\lambda$, and if for every $\alpha<\lambda$ there is an element of $C$ of length $\alpha$, then $\cup C$ is of length $\lambda$.
-
-(2) If $\mathcal{N}$ is a nest of ordinal sequences, and $\mathcal{N}$ is not a set, then $\cup\mathcal{N}$ is a function whose domain is $\{\gamma\}\times On$, for 
-the $\gamma$-element of $\cup\mathcal{N}$.
-\end{lemma}
-\begin{proof}
-The proof of this is mostly similar to the proof of Lemma 5.2
-
-(1) First, consider some chain $C$ of altered ordinal sequences. Then $\cup C$ is a function (by Proposition 1.4) and a set. Thus the domain $D$ of 
-$\cup C$ is a set. We wish to show that $\cup C$ is an altered ordinal sequence. It suffices to show that $D=\{\alpha\}\times\beta$ for some $\alpha$ and 
-$\beta$. Now, for each $x\in D$, $x=\{\alpha\}\times\beta$ for some $\alpha$ and $\beta$ (by definition of $C$). It is obvious that, for all 
-$x\in D$, the $\alpha$ for which $x=\{\alpha\}times\beta$ for some $\beta$ is the same for all $x$. Let $\gamma$ be that $\alpha$. Let $H$ be the class of all ordinals $\alpha$ such that 
-$\{\gamma\}\times\alpha\in D$. It can easily be seen that $H$ is a transitive set of ordinals, hence also an ordinal (say $\epsilon$). Obviously then 
-$\{\gamma\}\times H=D$, thus proving $\cup C$ is an altered ordinal sequence.
-
-Now suppose that $\lambda$ is a limit ordinal such that all elements of $C$ are of length $\lambda$, and that for every $\alpha<\lambda$ there is an element 
-of $C$ of length $\alpha$. We need to show that $\cup C$ is of length $\lambda$, that is, $\{\gamma\}\times\alpha\in\textrm{Dom}(\cup C)$ iff $\alpha<\lambda$.
-On the one hand, suppose that $\{\gamma\}\times\alpha\in\textrm{Dom}(\cup C)$. Then $\{\gamma\}\times\alpha\in f$ for some $f\in C$. By definition of $C$, 
-$f$ is of a length less than $\lambda$, meaning $\alpha<lambda$. On the other hand, suppose that $\alpha<\lambda$. Then there is an element of $C$ of length $\alpha$. Then 
-there must also be an element $f$ of $C$ of length $\alpha^+$. Then $\{\gamma\}\times\alpha\in f$, that is, $\{\gamma\}\times\alpha\in\textrm{Dom}(\cup C)$. Thus 
-$\cup C$ is of length $\lambda$.
-
-(2) Suppose now that $\mathcal{N}$ is a nest of ordinal sequences that is not a set. Again, by Proposition 1.4, $\cup\mathcal{N}$ is a funciton. First, we show that 
-$\mathcal{N}$ is properly well ordered under $\subseteq$. Because it is a nest, it is linearly ordered under $\subseteq$. Now consider any subclass $C$ of 
-$\mathcal{N}$. Then consider the class $F$ of ordinals such that a function of length $\alpha$ is in $C$. Then $F$ has a least element $\beta$. Then the function $f$ which is of 
-length $\beta$ is clearly the least element of $C$. Hence $\mathcal{N}$ is well ordered under $\subseteq$ (because the well ordering is under $\subseteq$, it is also 
-properly well ordered under $\subseteq$). Then, because $\mathcal{N}$ is not a set, by the counting theorem, there is an isomorphism from $\mathcal{N}$ onto $On$. Now consider 
-the class $A$ of all ordinals $\alpha$ such that $\langle\gamma,\alpha\rangle\in\textrm{Dom}\cup\mathcal{N}$. An obvious transfinite induction argument shows that 
-$A=On$ (using the fact that $\mathcal{N}$ can be put into a 1-1 correspondencew with $On$). This obviously means that the domain of $\cup\mathcal{N}$ is 
-$\{\gamma\}\times On$. 
-\end{proof}
-
-Now we prove the variant of Theorem 5.3:
+The book claims that the proof of Theorem 6.1 is proved in \textit{essentially the same way} as Theorem 5.6 - this I could not verify. Instead, I was only 
+able to prove this in a similar manner to the double analogue of Theorem 8.1 in Chapter 3.
 
 \begin{theorem}
-For any altered extending operation $E$ there exists an $F$ on $G$ such that for every $G$-element            
-$\{\alpha\}\times\beta$, $F\restriction(\{\alpha\}\times\beta^+)=E(F\restriction(\{\alpha\}\times\beta))$.
+For any functions $h$ (on $(On\times On)\times On$), $f$ and $g$ (from ordinals), there is a unique two-place function $F$ defined on all ordinals, 
+such that:\newline
+(1) $F(\alpha,0)=g(\alpha);\newline
+(2) $F(\alpha,\beta^+)=g(F(\alpha,\beta),\alpha,\beta);\newline
+(3) for a limit ordinal $\lambda$, $F(\alpha,\lambda)=f(\{F(\alpha,\beta)|\beta<\lambda\})$.
 \end{theorem}
-\begin{proof}
-Let $M$ be the class that is minimally superinducitve under $E$ (such a class exists). We use Theorem 5.1. We know $M_0=0$, so 
-$M_0$ is a altered $0$-sequence. If $M_\alpha$ is an altered $\alpha$-sequence then $M_{\alpha^+}$ is an $\alpha^+$-sequence 
-(because $M_{\alpha^+}=E(M_\alpha)$). If $\lambda$ is a limit ordinal, and if for each $\alpha<\lambda$, $M_\alpha$ is an 
-altered $\alpha$-sequence, then $M_\lambda$ is an altered $\lambda$-seqeunce (by Lemma 5.2). By transfinite induction it then follows that for every 
-$\alpha$, $M_\alpha$ is an altered ordinal sequence of length $\alpha$. Let $F=\cup M$. Then $F$ is a function on $\{\gamma\}\times On$ for the 
-$\gamma$ element of $F$ (by Lemma 5.2 again). Since 
-each $M_\alpha\subseteq F$, and $\textrm{Dom}(M_\alpha)=\{\beta\}\times\alpha$ for some $\beta$, then $M_\alpha=F\restriction(\{\beta\}\times\alpha)$. 
-Thus condition (2) of Theorem 5.1 yields $F\restriction(\{\alpha\}\times\beta^+)=E(F\restriction(\{\alpha\}\times\beta))$.
-\end{proof}
-
-Now for the variant of Lemma 5.4:
-\begin{lemma}
-For any function $g$, whose domain includes all altered ordinal sequences, there is an altered extending operation $E$ such that for every function $F$ on 
-$\{\gamma\}\times On$ for every (for any $\gamma$) and every ordinal $\alpha$, $(E(F\restriction(\{\gamma\}\times\alpha)))(\gamma,\alpha)=g(\gamma,(F\restriction(\{\gamma\}\times\alpha)))$.
-\end{lemma}
 
 \begin{proof}
-For each altered ordinal sequence $\theta_\alpha$ of length $\alpha$ with a $\gamma$-element of $\gamma$, define $E(\theta_\alpha)$ to be
-$\theta_\alpha\cup\{\langle\gamma,\alpha,g(\gamma,\theta_\alpha)\}$. Thus $E(\theta_\alpha)$ is an altered ordinal sequence of length $\alpha^+$ and, for any 
-$\beta<\alpha$, $(E(\theta_\alpha))(\gamma,\beta)=\theta_\alpha(\beta)$, but $((E(\theta_\alpha)))(\gamma,\alpha)=g(\gamma,\theta_\alpha)$. Then for any $\gamma$ and any function 
-$F$ on $\{\gamma\}\times On$, $F\restriction(\{\gamma\}\times\alpha)$ is an altered ordinal sequence of length $\alpha$, hence
-$(E(F\restriction(\{\gamma\}\times\alpha)))(\gamma,\alpha)=g(\gamma,F\restriction(\{\gamma\}\times\alpha))$.
-\end{proof}
+This can be proven in the following way. We first show that for every ordinal $\alpha$, there is a function 
+$f_\alpha(\beta,\gamma)$ defined on all ordinals $\beta$ and all ordinals $\gamma\le\alpha$ such that 
+$(1')$ $f_\alpha(\beta,0)=g(\alpha)$ (for all $\beta$); $(2')$ for all ordinals $\beta$ and for each ordinal $\gamma<\alpha$, 
+$f_\alpha(\beta,\gamma^+)=h(f_\alpha(\beta,\gamma),\beta,\gamma)$; $(3')$ for every limit ordinal $\lambda<\alpha$, 
+$f_\alpha(\beta,\lambda)=f(\{f_\lambda(\gamma,\beta)|\gamma<\lambda\})$. We prove this by transfinite induction. The base case is when 
+$\alpha=0$. Then we just take $f_0$ to be the class of all triples $\langle\beta,0,g(\beta)\rangle$ (for all ordinals $\beta$).
+Now suppose the result holds for some $\alpha$. Then we take $f_{\alpha^+}$ to be the class of all triples that $f_\alpha$ was defined
+on, as well as the triples $\langle\beta,\alpha^+,h(f_\alpha(\beta,\alpha))$ for all ordinals $\beta$. On the other hand, suppose that 
+the result holds for all ordinals less than some limit ordinal $\lambda$. Then take $f_\lambda$ to be the set of all triples 
+$\langle\alpha,\beta,f_\beta(\alpha,\beta)\rangle$ for all ordinals $\alpha$ and $\beta$, as well as all triples 
+$\langle\alpha,\lambda,f(\{f_\beta(\alpha,\beta)\}|\beta<\lambda\})$ for all ordinals $\alpha$. An obvious transfinite induction argument shows that 
+this definition of $f_\alpha$ really works. 
 
-Next, the variant of Theorem 5.5:
-\begin{theorem}
-For any function $g$ whose domain includes all altered ordinal sequences there is a (unique) function $F$ on 
+Next we show that for each $\alpha$, $f_\alpha\subseteq f_{\alpha^+}$ and that for each limit ordinal $\lambda$ and all $\beta<\lambda$, 
+$f_\beta\subseteq f_\lambda$. First, we show that $f_\alpha\subseteq f_{\alpha^+}$, which is to say, for every ordinal $\beta\le\alpha$, 
+$f_\alpha(\gamma,\beta)=f_{\alpha^+}(\gamma,\beta)$ holds for all ordinals $\gamma$. This is shown by an obvious transfinite induction argument. 
+Similarly, it can easily be shown that for each limit ordinal $\lambda$ and all $\beta<\lambda$, $f_\beta\subseteq f_\lambda$. Thus 
+$f_\alpha(\gamma,\beta)=f_{\alpha^+}(\gamma,\beta)$ for all $\beta<\alpha$ and all $\gamma$, and $f_\alpha(\gamma,\beta}=f_\lambda(\gamma,\beta)$, for 
+a limit ordinal $\lambda$, holds for all $\alpha<\lambda$, all $\gamma$, and all $\beta\le\alpha$.
 
-\end{document}
+Then take $F$ to be the class of all triples $\langle\alpha,\beta,f_\beta(\beta,\alpha)\rangle$ (for all $\alpha$ and $\beta$). 
+We need to show that the three conditions of the theorem hold. (1) holds, as $F(\alpha,0)=f_0(\alpha,0)=g(\alpha)$. 
+(2) holds, as 
+\[ F(\alpha,\beta^+)=f_{\beta^+}(\alpha,\beta^+)=h(f_{\beta^+}(\alpha,\beta),\alpha,\beta)=h(f_\beta(\alpha,\beta),\alpha,\beta)=h(F(\alpha,\beta),\alpha,\beta) \]
+(3) holds, as \[ F(\alpha,\lambda)=f(\{f_\lambda(\gamma,beta)|\beta<\lambda\})=f(\{f_\beta(\gamma,\beta)|\beta<\lambda\})=f(\{F(\gamma,\beta)|\beta<\lambda\}) \]
+Thus $F$ is the desired function.
+
+\textbf{Remark}: When we are defining $f_\lambda$ in the limit ordinal case, note that $\{F(\alpha,\beta)|\beta<\lambda\}$ is a set because it can be 
+placed in a 1-1 correspondence with $\lambda$. This is why $f(\{F(\alpha,\beta)\}|\beta<\lambda\})$ is defined. Also, an obvious transfinite induction argument shows 
+that $F$ is a unique function.
