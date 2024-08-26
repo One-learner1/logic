@@ -460,12 +460,40 @@ for any limit ordinal $\lambda$, by (b), for all $\alpha<\lambda$, $F(\alpha)\su
 
 \section*{Section 6}
 
+\subsection*{Notes}
+On page 88, here is why the well orderind described is really a well ordering. In particular, we are attempting to evaluate $\alpha+\beta$ where $\alpha$ 
+and $\beta$ are ordinals. We take two well ordered sets $a$ and $b$ such that $a$ is isomorphic to $\alpha$, $b$ is isomorphic to $\beta$, and 
+$a$ and $b$ are disjoint. Let $\le_1$ and $\le_2$ be the well orderings on $a$ and $b$, respectively. Then we define the ordering $\prec$ as follows: 
+if $x,y\in a,x\prec y$ iff $x<y$ in the ordering on $a$; if $x,y\in b,x\prec y$ iff $x<y$ in the ordering on $b$; if $x\in a$ and $y\in b$, $x<y$ is true; and 
+if $x\in b$ and $y\in a$, $x\prec y$ is false. We show that $\prec$ is a well ordering for $a\cup b$. 
+
+(1) Obviously $\prec$ is reflexive. For if 
+$x\in a$, then $x\le_1 x$ and thus $x\prec x$, and if $x\in b$, then $x\le_2 x$ and thus $x\prec x$. 
+
+(2) The relation is also anti-symmetric. For if 
+both $x\prec y$ and $y\prec x$, then either both of $x,y$ are in $a$, or both of $x,y$ are in $b$, meaning $x=y$ by the assumption of $\le_1$ and $\le_2$ being 
+well orderings. 
+
+(3) The relation is also transitive. For if $x\prec y$ and $y\prec z$, then either (1) all of $x,y,z$ are in $a$; (2) all of $x,y,z$ are in $b$; 
+(3) $x,y$ are in $a$ and $z$ is in $b$; (4) $x$ is in $a$ and $y,z$ are in $b$. In case (1), $x\prec z$ by the well ordering of $a$. Similarly 
+case (2) implies $x\prec z$. Case (3) implies $x\prec z$ because $u\prec v$ holds if $u\in a$ and $z\in b$. Case (4) implies $x\prec z$ holds for the 
+same reason as case (3). Thus $\prec$ is transitive. 
+
+(4) The relation is also linear. Obviously this is the case if $x,y$ are either both in $a$ or $b$. On the other 
+hand, suppose one of $x,y$ are not both in $a$ and not both in $b$. Without loss of generality, suppose $x\in a$. Then $x\prec y$. Thus $\prec$ is a linear 
+ordering on $a\cup b$. 
+
+(5) Lastly, we must show that it is a well ordering on $a\cup b$. Consider any subclass $C$ of $a\cup b$. If $C$ contains any elements of 
+$a$, then the class of all elements of $a$ in $C$ contains a least element (under $\le_1$) $e$. Then $e$ is the least element of $C$. If $C$ does not contain 
+any elements of $a$, then $C$ is a subclass of $b$, hence contains a least element (under $\le_2$), which is also the least element of $C$ under $\prec$. Thus 
+$\prec$ is a well ordering on $a\cup b$. 
+
 \subsection*{Theorem 6.1}
-The book claims that the proof of Theorem 6.1 is proved in \textit{essentially the same way} as Theorem 5.6 - this I could not verify. Instead, I was only 
+The book claims that the proof of Theorem 6.1 is proved in \textquote{essentially the same way} as Theorem 5.6 - this I could not verify. Instead, I was only 
 able to prove this in a similar manner to the double analogue of Theorem 8.1 in Chapter 3.
 
 \begin{theorem}
-For any functions $h$ (on $(On\times On)\times On$), $f$ and $g$ (from ordinals), there is a unique two-place function $F$ defined on all ordinals, 
+For any functions $h$ (whose domain includes $(On\times On)\times On$), $f$ and $g$ (whose domains include $On$), there is a unique two-place function $F$ defined on all ordinals, 
 such that:\newline
 (1) $F(\alpha,0)=g(\alpha)$;\newline
 (2) $F(\alpha,\beta^+)=g(F(\alpha,\beta),\alpha,\beta)$;\newline
@@ -501,8 +529,9 @@ We need to show that the three conditions of the theorem hold. (1) holds, as $F(
 Thus $F$ is the desired function.
 \end{proof}
 
-\textbf{Remark}: When we are defining $f_\lambda$ in the limit ordinal case, note that $\{F(\alpha,\beta)|\beta<\lambda\}$ is a set because it can be 
-placed in a 1-1 correspondence with $\lambda$. This is why $f(\{F(\alpha,\beta)\}|\beta<\lambda\})$ is defined. Also, an easy transfinite induction argument shows 
-that $F$ is a unique function.
+\textbf{Remark}: When we are defining $f_\lambda$ in the limit ordinal case, note that $\{f_\beta(\alpha,\beta)|\beta<\lambda\}$ is a set because it can be 
+placed in a 1-1 correspondence with $\lambda$. This is why $f(\{f_\beta(\alpha,\beta)\}|\beta<\lambda\})$ is defined. Also, an easy transfinite induction argument shows 
+that $F$ is a unique function. The original Theorem 5.6 can also be proven using a similar idea as the above; but, as was done in the book, if the various other forms 
+of the trasfinite recursion theorem are proven first, the proof of Theorem 5.6 follows more easily.
 
 \end{document}
