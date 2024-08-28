@@ -590,23 +590,22 @@ and \[ (\alpha+\beta)+\gamma^+=((\alpha+\beta)+\gamma)^+ \] that is, $\alpha+(\b
 Now suppose the result holds for all $\gamma<\lambda$ for some limit ordinal $\lambda$. Then 
 \[ \alpha+(\beta+\lambda)=\alpha+\cup_{\gamma<\lambda}(\beta+\gamma) \] and
 \[ (\alpha+\beta)+\lambda=\cup_{\gamma<\lambda}((\alpha+\beta)+\gamma) \]
+\[ =\cup_{\gamma<\lambda}(\alpha+(\beta+\gamma))\textrm{ (by the induction assumption)} \]
 
-Let $O=\cup_{\gamma<\lambda}(\beta+\gamma)$. Now, $O$ must be a limit ordinal. For suppose it was a successor ordinal for some $\delta$. Then 
-$O=\delta\cup\{\delta\}$. Hence, for some $\gamma<\lambda$, $\delta\in\beta+\gamma$. But that means $\beta+\gamma\in O$, which contradicts the fact that 
-$\delta$ would be the greatest element of $O$. Thus $O$ cannot be a successor ordinal, and hence is a limit ordinal.
-
-We now aim to show that 
+Let $O=\cup_{\gamma<\lambda}(\beta+\gamma)$. By Lemma 0.5, $O$ is a limit ordinal. We now aim to show that 
 $\alpha+\cup_{\gamma<\lambda}(\beta+\gamma)=\cup_{\gamma<\lambda}(\alpha+(\beta+\gamma))$. Note that, because $O$ is a limit ordinal, 
 $\alpha+\cup_{\gamma<\lambda}(\beta+\gamma)=\cup_{\delta<O}(\alpha+\delta)$.
 
 On the one hand, suppose that $x\in\cup_{\delta<O}(\alpha+\delta)$. Then $x\in\alpha+\delta$ for some 
 $\delta\in O$, that is, for some $\delta\in\cup_{\gamma<\lambda}(\beta+\gamma)$. Thus, for some 
-$\beta+\gamma$ where $\gamma<\lambda$, $\delta<\beta+\gamma$, meaning $\alpha+\delta<\alpha+(\beta+\gamma)$ (because, in general, 
-for all $\alpha,\beta,$ and $\gamma$, if $\beta<\gamma$, then $\alpha+\beta<\alpha+\gamma$), and 
+$\beta+\gamma$ where $\gamma<\lambda$, $\delta<\beta+\gamma$, meaning $\alpha+\delta<\alpha+(\beta+\gamma)$ 
+(by Lemma 0.4) 
 thus $\alpha+\delta\in\cup_{\gamma<\lambda}(\alpha+(\beta+\gamma))$.
 
 On the other hand, suppose that $x\in\cup_{\gamma<\lambda}(\alpha+(\beta+\gamma))$. Then, for some 
 $\gamma<\lambda$, $x\in\alpha+(\beta+\gamma)$. But $\beta+\gamma<O$, meaning $x\in\cup_{\delta<O}(\alpha+\delta)$.
+Thus $\cup_{\delta<O}(\alpha+\delta)=\cup_{\gamma<\lambda}(\alpha+(\beta+\gamma))$, therefore completing the transfinite 
+induction.
 
 (d) Suppose $\alpha\le\beta$. We prove this by induction on $\gamma$. The case for $0$ holds, as $\alpha+0=\alpha$ and $\beta+0=\beta$, meaning 
 $\alpha+0\le\beta+0$. Suppose it holds for some $\gamma$. Then $\alpha+\gamma^+=(\alpha+\gamma)^+$ and 
