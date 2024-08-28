@@ -710,7 +710,8 @@ $1^0=1$. Suppose it holds for some $\alpha$. Then $1^{\alpha^+}=1^{\alpha}\times
 Now suppose that for all $\alpha<\lambda$ for a limit ordinal $\lambda$, the result holds. 
 Then $1^\lambda=\cup_{\alpha<\lambda}(1^\alpha)=\cup_{\alpha<\lambda}1=1$.
 
-(c) We prove this by transfinite induction on $\gamma$. Clearly this holds when $\gamma=0$. Suppose it holds for some 
+(c) We prove this by transfinite induction on $\gamma$. Clearly this holds when $\gamma=0$. The cases where 
+$\alpha\le 1$ are obvious, so we suppose that $\alpha>1$. Suppose it holds for some 
 $\gamma$. Then
 \[ \alpha^{\beta+\gamma^+}=\alpha^{(\beta+\gamma)^+}=\alpha^{\beta+\gamma}\times\alpha \]
 \[ =(\alpha^\beta\times\alpha^\gamma)\times\alpha \]
@@ -728,14 +729,14 @@ $\cup_{\gamma<O}(\alpha^\gamma)=\cup_{\gamma<J}(\alpha^\beta\times\gamma)$.
 
 On the one hand, suppose that $x\in\cup_{\gamma<O}(\alpha^\gamma)$. Then, for some 
 $\gamma<O$, $x<\alpha^\gamma$. By definition of $O$, for some $\delta<\lambda$, $\gamma<\beta+\delta$, meaning
-$x<\alpha^\gamma<\alpha^{\beta+\delta}<\alpha^\beta\times\alpha^\delta$ (by the induction assumption). Then, by the definition of 
+$x<\alpha^\gamma<\alpha^{\beta+\delta}=\alpha^\beta\times\alpha^\delta$ (by the induction assumption). Then, by the definition of 
 $J$, $x\in\cup_{\gamma<J}(\alpha^\beta\times\gamma)$. Thus $\cup_{\gamma<O}(\alpha^\gamma)\subseteq\cup_{\gamma<J}(\alpha^\beta\times\gamma)$.
 
 On the other hand, suppose that $x\in\cup_{\gamma<J}(\alpha^\beta\times\gamma)$. Then, for some $\gamma<J$, 
 $x<\alpha^\beta\times\gamma$. By the definition of $J$, $\gamma<\alpha^\delta$ for some $\delta<\lambda$. Hence 
 $x<\alpha^\beta\times\gamma<\alpha^\beta\times\alpha^\delta=\alpha^{\beta+\delta}$, and by definition of $\cup_{\gamma<O}(\alpha^\gamma)$, 
 it follows that $x\in\cup_{\gamma<O}(\alpha^\gamma)$. Thus $\cup_{\gamma<J}(\alpha^\beta\times\gamma)\subseteq\cup_{\gamma<O}(\alpha^\gamma)$, 
-and consequently, $\cup_{\gamma<J}(\alpha^\beta\times\gamma=\cup_{\gamma<O}(\alpha^\gamma)$. Thus the transfinite induction is complete.
+and consequently, $\cup_{\gamma<J}(\alpha^\beta\times\gamma)=\cup_{\gamma<O}(\alpha^\gamma)$. Thus the transfinite induction is complete.
 
 
 \end{document}
