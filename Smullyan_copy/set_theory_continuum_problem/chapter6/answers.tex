@@ -464,7 +464,7 @@ for any limit ordinal $\lambda$, by (b), for all $\alpha<\lambda$, $F(\alpha)\su
 On page 88, here is why the well orderind described is really a well ordering. In particular, we are attempting to evaluate $\alpha+\beta$ where $\alpha$ 
 and $\beta$ are ordinals. We take two well ordered sets $a$ and $b$ such that $a$ is isomorphic to $\alpha$, $b$ is isomorphic to $\beta$, and 
 $a$ and $b$ are disjoint. Let $\le_1$ and $\le_2$ be the well orderings on $a$ and $b$, respectively. Then we define the ordering $\prec$ as follows: 
-if $x,y\in a,x\prec y$ iff $x<y$ in the ordering on $a$; if $x,y\in b,x\prec y$ iff $x<y$ in the ordering on $b$; if $x\in a$ and $y\in b$, $x<y$ is true; and 
+if $x,y\in a,x\prec y$ iff $x<y$ in the ordering on $a$; if $x,y\in b,x\prec y$ iff $x<y$ in the ordering on $b$; if $x\in a$ and $y\in b$, $x\prec y$ is true; and 
 if $x\in b$ and $y\in a$, $x\prec y$ is false. We show that $\prec$ is a well ordering for $a\cup b$. 
 
 (1) Obviously $\prec$ is reflexive. For if 
@@ -480,7 +480,7 @@ case (2) implies $x\prec z$. Case (3) implies $x\prec z$ because $u\prec v$ hold
 same reason as case (3). Thus $\prec$ is transitive. 
 
 (4) The relation is also linear. Obviously this is the case if $x,y$ are either both in $a$ or $b$. On the other 
-hand, suppose one of $x,y$ are not both in $a$ and not both in $b$. Without loss of generality, suppose $x\in a$. Then $x\prec y$. Thus $\prec$ is a linear 
+hand, suppose that $x,y$ are not both in $a$ and not both in $b$. Without loss of generality, suppose $x\in a$. Then $x\prec y$. Thus $\prec$ is a linear 
 ordering on $a\cup b$. 
 
 (5) Lastly, we must show that it is a well ordering on $a\cup b$. Consider any subclass $C$ of $a\cup b$. If $C$ contains any elements of 
@@ -623,11 +623,11 @@ $\cup_{\gamma<\lambda}((\alpha\times\beta)\times\gamma)=\alpha\times O$, therefo
 transfinite induction.
 
 \begin{lemma}
-If $\lambda$ is a limit ordinal, then $\alpha\times\lambda$ and $\alpha+\lambda$ are both limit ordinals 
+If $\lambda$ is a limit ordinal, then $\alpha\times\lambda,\alpha+\lambda$ and $\alpha^\lambda$ are all limit ordinals 
 (for all ordinals $\alpha>0$).
 \end{lemma}
 \begin{proof}
-We give the proof for addition. The proof for multiplication is similar.
+We give the proof for addition. The proofs for multiplication and exponentiation are similar.
 
 Suppose that $\lambda$ is a limit ordinal. Clearly $\alpha+\lambda$ is not the least ordinal. 
 Suppose that $\alpha+\lambda$ was a successor ordinal of some $\delta$. Then 
@@ -639,20 +639,21 @@ ordinal, and is consequently a limit ordinal.
 \end{proof}
 
 \begin{lemma}
-If $\beta<\gamma$, then $\alpha\times\beta<\alpha\times\gamma$ and 
-$\alpha+\beta<\alpha+\gamma$.
+If $\beta<\gamma$, then $\alpha\times\beta<\alpha\times\gamma,\alpha+\beta<\alpha+\gamma$, and 
+$\alpha^\beta<\alpha^\gamma$. The cases for multiplication and exponentiation require $\alpha\ne 0$. The case for 
+exponentiation also requires $\alpha\ne 1$.
 \end{lemma}
 \begin{proof}
-We give the proof using transfinite induction for the addition case. The case for multiplciation is similar.
+We give the proof using transfinite induction for the addition case. The proofs for multiplciation and exponentiation are similar.
 
 We prove this by induction on $\gamma$. This vacuously holds for $0$. Now suppose it holds for some 
 $\gamma$. Then $\alpha+\gamma^+=\alpha+\gamma\cup\{\alpha+\gamma\}$. By the induction assumption, for all 
 $\beta<\gamma$, $\alpha\times\beta<\alpha+\gamma<\alpha+\gamma^+$. The only other $\beta<\gamma^+$ is 
 $\alpha+\gamma$ itself, which is less than $\alpha+\gamma^+$ by definition of $\alpha+\gamma^+$.
 
-On the other hand, suppose that it holds for some limit ordinal $\lambda$. Then 
-$\alpha+\lambda=\cup_{\gamma<\lambda}(\alpha+\gamma)$. Then suppose $\beta<\lambda$. Hence 
-$\alpha+\beta\le\alpha+\lambda$. But also $\alpha+\beta^+\le\alpha+\lambda$, meaning 
+On the other hand, suppose that it holds for all ordinals less than some limit ordinal $\lambda$. Then 
+$\alpha+\lambda=\cup_{\gamma<\lambda}(\alpha+\gamma)$. Then suppose $\beta<\lambda$. Now, 
+$\alpha+\beta<\alpha+\beta^+$. But also $\alpha+\beta^+<\alpha+\lambda$, meaning 
 $\alpha+\beta<\alpha+\lambda$.
 \end{proof}
 
@@ -705,6 +706,32 @@ $1^0=1$. Suppose it holds for some $\alpha$. Then $1^{\alpha^+}=1^{\alpha}\times
 Now suppose that for all $\alpha<\lambda$ for a limit ordinal $\lambda$, the result holds. 
 Then $1^\lambda=\cup_{\alpha<\lambda}(1^\alpha)=\cup_{\alpha<\lambda}1=1$.
 
-(c) 
+(c) We prove this by transfinite induction on $\gamma$. Clearly this holds when $\gamma=0$. Suppose it holds for some 
+$\gamma$. Then
+\[ \alpha^{\beta+\gamma^+}=\alpha^{(\beta+\gamma)^+}=\alpha^{\beta+\gamma}\times\alpha \]
+\[ =(\alpha^\beta\times\alpha^\gamma)\times\alpha \]
+\[ =\alpha^\beta\times(\alpha^\gamma\times\alpha) \]
+\[ =\alpha^\beta\times\alpha^{\gamma^+} \]
+On the other hand, suppose that it holds for all ordinals less than some limit ordinal $\lambda$. 
+Then
+\[ \alpha^{\beta+\lambda}=\alpha^{\cup_{\gamma<\lambda}(\beta+\gamma)} \]
+and
+\[ \alpha^\beta\times\alpha^\lambda=\alpha^\beta\times\cup_{\gamma<\lambda}(\alpha^\gamma) \]
+Let $O=\cup_{\gamma<\lambda}(\beta+\gamma)$. Note that $O$ is a limit ordinal. Thus
+$\alpha^{\beta+\lambda}=\alpha^{O}=\cup_{\gamma<O}(\alpha^\gamma)$. Let $J=\cup_{\gamma<\lambda}(\alpha^\gamma)$, which is 
+also a limit ordinal. Thus $\alpha^\beta\times J=\cup_{\gamma<J}(\alpha^\beta\times\gamma)$. We aim to show that 
+$\cup_{\gamma<O}(\alpha^\gamma)=\cup_{\gamma<J}(\alpha^\beta\times\gamma)$.
+
+On the one hand, suppose that $x\in\cup_{\gamma<O}(\alpha^\gamma)$. Then, for some 
+$\gamma<O$, $x<\alpha^\gamma$. By definition of $O$, for some $\delta<\lambda$, $\gamma<\beta+\delta$, meaning
+$x<\alpha^\gamma<\alpha^{\beta+\delta}<\alpha^\beta\times\alpha^\delta$ (by the induction assumption). Then, by the definition of 
+$J$, $x\in\cup_{\gamma<J}(\alpha^\beta\times\gamma)$. Thus $\cup_{\gamma<O}(\alpha^\gamma)\subseteq\cup_{\gamma<J}(\alpha^\beta\times\gamma)$.
+
+On the other hand, suppose that $x\in\cup_{\gamma<J}(\alpha^\beta\times\gamma)$. Then, for some $\gamma<J$, 
+$x<\alpha^\beta\times\gamma$. By the definition of $J$, $\gamma<\alpha^\delta$ for some $\delta<\lambda$. Hence 
+$x<\alpha^\beta\times\gamma<\alpha^\beta\times\alpha^\delta=\alpha^{\beta+\delta}$, and by definition of $\cup_{\gamma<O}(\alpha^\gamma)$, 
+it follows that $x\in\cup_{\gamma<O}(\alpha^\gamma)$. Thus $\cup_{\gamma<J}(\alpha^\beta\times\gamma)\subseteq\cup_{\gamma<O}(\alpha^\gamma)$, 
+and consequently, $\cup_{\gamma<J}(\alpha^\beta\times\gamma=\cup_{\gamma<O}(\alpha^\gamma)$. Thus the transfinite induction is complete.
+
 
 \end{document}
