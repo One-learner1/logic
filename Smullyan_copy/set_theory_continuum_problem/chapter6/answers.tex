@@ -496,7 +496,7 @@ able to prove this in a similar manner to the double analogue of Theorem 8.1 in 
 For any functions $h$ (whose domain includes $(On\times On)\times On$), $f$ and $g$ (whose domains include $On$), there is a unique two-place function $F$ defined on all ordinals, 
 such that:\newline
 (1) $F(\alpha,0)=g(\alpha)$;\newline
-(2) $F(\alpha,\beta^+)=g(F(\alpha,\beta),\alpha,\beta)$;\newline
+(2) $F(\alpha,\beta^+)=h(F(\alpha,\beta),\alpha,\beta)$;\newline
 (3) for a limit ordinal $\lambda$, $F(\alpha,\lambda)=f(\{F(\alpha,\beta)|\beta<\lambda\})$.
 \end{theorem}
 
@@ -504,13 +504,13 @@ such that:\newline
 This can be proven in the following way. We first show that for every ordinal $\alpha$, there is a function 
 $f_\alpha(\beta,\gamma)$ defined on all ordinals $\beta$ and all ordinals $\gamma\le\alpha$ such that 
 $(1')$ $f_\alpha(\beta,0)=g(\alpha)$ (for all $\beta$); $(2')$ for all ordinals $\beta$ and for each ordinal $\gamma<\alpha$, 
-$f_\alpha(\beta,\gamma^+)=h(f_\alpha(\beta,\gamma),\beta,\gamma)$; $(3')$ for every limit ordinal $\lambda<\alpha$, 
+$f_\alpha(\beta,\gamma^+)=h(f_\alpha(\beta,\gamma),\beta,\gamma)$; $(3')$ for every limit ordinal $\lambda\le\alpha$, 
 $f_\alpha(\beta,\lambda)=f(\{f_\lambda(\gamma,\beta)|\gamma<\lambda\})$. We prove this by transfinite induction. The base case is when 
 $\alpha=0$. Then we just take $f_0$ to be the class of all triples $\langle\beta,0,g(\beta)\rangle$ (for all ordinals $\beta$).
 Now suppose the result holds for some $\alpha$. Then we take $f_{\alpha^+}$ to be the class of all triples that $f_\alpha$ was defined
-on, as well as the triples $\langle\beta,\alpha^+,h(f_\alpha(\beta,\alpha))$ for all ordinals $\beta$. On the other hand, suppose that 
+on, as well as the triples $\langle\beta,\alpha^+,h(f_\alpha(\beta,\alpha),\alpha,\beta))$ for all ordinals $\beta$. On the other hand, suppose that 
 the result holds for all ordinals less than some limit ordinal $\lambda$. Then take $f_\lambda$ to be the set of all triples 
-$\langle\alpha,\beta,f_\beta(\alpha,\beta)\rangle$ for all ordinals $\alpha$ and $\beta$, as well as all triples 
+$\langle\alpha,\beta,f_\beta(\alpha,\beta)\rangle$ for all ordinals $\alpha$ and $\beta$, where $\beta<\lambda$, as well as all triples 
 $\langle\alpha,\lambda,f(\{f_\beta(\alpha,\beta)\}|\beta<\lambda\})$ for all ordinals $\alpha$. An obvious transfinite induction argument shows that 
 this definition of $f_\alpha$ really works. 
 
@@ -518,14 +518,14 @@ Next we show that for each $\alpha$, $f_\alpha\subseteq f_{\alpha^+}$ and that f
 $f_\beta\subseteq f_\lambda$. First, we show that $f_\alpha\subseteq f_{\alpha^+}$, which is to say, for every ordinal $\beta\le\alpha$, 
 $f_\alpha(\gamma,\beta)=f_{\alpha^+}(\gamma,\beta)$ holds for all ordinals $\gamma$. This is shown by an obvious transfinite induction argument. 
 Similarly, it can easily be shown that for each limit ordinal $\lambda$ and all $\beta<\lambda$, $f_\beta\subseteq f_\lambda$. Thus 
-$f_\alpha(\gamma,\beta)=f_{\alpha^+}(\gamma,\beta)$ for all $\beta<\alpha$ and all $\gamma$, and $f_\alpha(\gamma,\beta)=f_\lambda(\gamma,\beta)$, for 
+$f_\alpha(\gamma,\beta)=f_{\alpha^+}(\gamma,\beta)$ for all $\beta\le\alpha$ and all $\gamma$, and $f_\alpha(\gamma,\beta)=f_\lambda(\gamma,\beta)$, for 
 a limit ordinal $\lambda$, holds for all $\alpha<\lambda$, all $\gamma$, and all $\beta\le\alpha$.
 
 Then take $F$ to be the class of all triples $\langle\alpha,\beta,f_\beta(\beta,\alpha)\rangle$ (for all $\alpha$ and $\beta$). 
 We need to show that the three conditions of the theorem hold. (1) holds, as $F(\alpha,0)=f_0(\alpha,0)=g(\alpha)$. 
 (2) holds, as 
 \[ F(\alpha,\beta^+)=f_{\beta^+}(\alpha,\beta^+)=h(f_{\beta^+}(\alpha,\beta),\alpha,\beta)=h(f_\beta(\alpha,\beta),\alpha,\beta)=h(F(\alpha,\beta),\alpha,\beta) \]
-(3) holds, as \[ F(\alpha,\lambda)=f(\{f_\lambda(\gamma,beta)|\beta<\lambda\})=f(\{f_\beta(\gamma,\beta)|\beta<\lambda\})=f(\{F(\gamma,\beta)|\beta<\lambda\}) \]
+(3) holds, as \[ F(\alpha,\lambda)=f(\{f_\lambda(\gamma,\beta)|\beta<\lambda\})=f(\{f_\beta(\gamma,\beta)|\beta<\lambda\})=f(\{F(\gamma,\beta)|\beta<\lambda\}) \]
 Thus $F$ is the desired function.
 \end{proof}
 
