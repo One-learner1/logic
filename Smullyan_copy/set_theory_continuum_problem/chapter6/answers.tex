@@ -488,6 +488,8 @@ $a$, then the class of all elements of $a$ in $C$ contains a least element (unde
 any elements of $a$, then $C$ is a subclass of $b$, hence contains a least element (under $\le_2$), which is also the least element of $C$ under $\prec$. Thus 
 $\prec$ is a well ordering on $a\cup b$. 
 
+It should be noted that obvious transfinite induction arguments show that ordinal addition, multiplication, and exponentiation are all closed under $On$.
+
 \subsection*{Theorem 6.1}
 The book claims that the proof of Theorem 6.1 is proved in \textquote{essentially the same way} as Theorem 5.6 - this I could not verify. Instead, I was only 
 able to prove this in a similar manner to the double analogue of Theorem 8.1 in Chapter 3.
@@ -616,22 +618,22 @@ $1<2$, but $1+\omega=\omega$ and $2+\omega=\omega$, meaning only $1+\omega\le 2+
 
 \subsection*{Exercise 6.2}
 (a) \[ \omega\times 2=(\omega\times 1)+\omega=\omega+\omega=\cup_{\alpha<\omega}(\omega+\alpha) \] but
-\[ 2\times\omega=\cup_{\alpha<\omega}(2\times\beta) \] From the above, $\omega\in\omega\times 2$, but 
+\[ 2\times\omega=\cup_{\alpha<\omega}(2\times\alpha) \] From the above, $\omega\in\omega\times 2$, but 
 $\omega\notin 2\times\omega$, meaning $\omega\times 2\ne 2\times\omega$.
 
 (b) \[ \alpha\times 1=(\alpha\times 0)+\alpha=0+\alpha=\alpha \] We prove by transfinite induction on $\alpha$ 
 that $1\times\alpha=\alpha$. Clearly this holds for $0$. Suppose it holds for some $\alpha$. Then 
 $1\times\alpha^+=(1\times\alpha)+1=\alpha+1=\alpha^+$. Now suppose it holds for all $\alpha<\lambda$ for a limit ordinal 
 $\lambda$. Then $1\times\lambda=\cup_{\alpha<\lambda}(1\times\alpha)=\cup_{\alpha<\lambda}\alpha=\lambda$. Thus 
-$1\times\alpha=\alpha$ holds for all $\alpha$, and thus $1\times\alpha=\alpha\times 1=\alpha$.
+$1\times\alpha=\alpha$ holds for all $\alpha$, meaning $1\times\alpha=\alpha\times 1=\alpha$.
 
 \begin{lemma}
 Ordinal multiplication is left-distributive.
 \end{lemma}
 \begin{proof}
-We first that ordinal multiplication is left-distributive. That is, we show that
+We show that ordinal multiplication is left-distributive. That is, we show that
 $\alpha\times(\beta+\gamma)=\alpha\times\beta+\alpha\times\gamma$. We prove this by transfinite induction on
-$\gamma$. Clearly this holds for $0$. Now suppose it holds for all ordinals less than $\delta$. On the one hand, suppose that
+$\gamma$. Clearly this holds for $0$ and $1$. Now suppose it holds for all ordinals less than $\delta>1$. On the one hand, suppose that
 $\delta$ is a successor ordinal of some $\gamma$. Then
 \[ \alpha\times(\beta+\gamma^+)=\alpha\times(\beta+\gamma)^+ \]
 \[ =(\alpha\times(\beta+\gamma))+\alpha \]
@@ -640,14 +642,15 @@ $\delta$ is a successor ordinal of some $\gamma$. Then
 \[ =\alpha\times\beta+\alpha\times\gamma^+\textrm{ (Transfinite induction assumption)} \]
 On the other hand, suppose that $\delta$ is a limit ordinal $\lambda$. Then
 \[ \alpha\times(\beta+\lambda)=\alpha\times\cup_{\gamma<\lambda}(\beta+\gamma) \]
-Let $O=\cup_{\gamma<\lambda}(\beta+\gamma)$. It can be seen that $O$ is a limit ordinal. Thus
+Let $O=\cup_{\gamma<\lambda}(\beta+\gamma)$. $O$ is a limit ordinal by Lemma 0.5. Thus
 \[ \alpha\times O=\cup_{\delta<O}(\alpha\times\delta) \]
 Also
 \[ \alpha\times\beta+\alpha\times\lambda=\alpha\times\beta+\cup_{\gamma<\lambda}(\alpha\times\gamma) \]
-Let $J=\cup_{\gamma<\lambda}(\alpha\times\gamma)$. It can be seen that $J$ is a limit ordinal. Thus
+Let $J=\cup_{\gamma<\lambda}(\alpha\times\gamma)$, which is also a limit ordinal by Lemma 0.5. Thus
 \[ \alpha\times\beta+\cup_{\gamma<\lambda}(\alpha\times\gamma)=\cup_{\epsilon<J}(\alpha\times\beta+\epsilon) \]
 We need to show that $\alpha\times O=\alpha\times\beta+J$, that is,
 \[ \cup_{\delta<O}(\alpha\times\delta)=\cup_{\epsilon<J}(\alpha\times\beta+\epsilon) \]
+
 On the one hand, suppose that $x\in\cup_{\delta<O}(\alpha\times\delta)$. Then, for some
 $\delta<O$, $x<\alpha\times\delta$. By definition of $O$, $\delta<\beta+\gamma$ for some $\gamma<\lambda$. Thus
 $x<\alpha\times\delta\le\alpha\times(\beta+\gamma)=\alpha\times\beta+\alpha\times\gamma$ by the induction assumption.
@@ -658,25 +661,26 @@ $\cup_{\delta<O}(\alpha\times\delta)\subseteq\cup_{\epsilon<J}(\alpha\times\beta
 On the other hand, suppose that $x\in\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)$.
 Then $x<\alpha\times\beta+\epsilon$ for some $\epsilon<J$. By definition of $J$,
 $\epsilon<\alpha\times\gamma$ for some $\gamma<\lambda$.
-Thus $x<\alpha\times\beta+\epsilon\le\alpha\times\beta+\alpha\times\gamma=\alpha\times(\beta+\gamma)$ by the induction assumption.
+Thus $x<\alpha\times\beta+\epsilon<\alpha\times\beta+\alpha\times\gamma=\alpha\times(\beta+\gamma)$ by the induction assumption.
 Now, $\alpha\times(\beta+\gamma)\subseteq\cup_{\delta<O}(\alpha\times\delta)$. Hence
 $x\in\cup_{\delta<O}(\alpha\times\delta)$, therefore showing that
-$\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)\le\cup_{\delta<O}(\alpha\times\delta)$.
+$\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)\subseteq\cup_{\delta<O}(\alpha\times\delta)$.
 Thus $\cup_{\delta<O}(\alpha\times\delta)=\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)$, completing the transfinite induction
 that ordinal multiplication is left distributive.
 \end{proof}
 
 (c) We prove this by transfinite induction on $\gamma$. The case for $0$ holds, as 
-$\alpha\times(\beta\times 0)=\alpha\times 0$ and $(\alpha\times\beta)\times 0=0$ (becauase 
-$\alpha\times 0=0$ for all $\alpha$, as can easily be shown by trasnfinite induction). Suppose the result holds for some 
+$\alpha\times(\beta\times 0)=\alpha\times 0$ and $(\alpha\times\beta)\times 0=0$. 
+Suppose the result holds for some 
 $\gamma$. Then 
 \[ \alpha\times(\beta\times\gamma^+)=\alpha\times((\beta\times\gamma)+\beta) \]
 \[ =\alpha\times(\beta\times\gamma)+\alpha\times\beta\textrm{ (Left distributivity)} \]
 \[ =(\alpha\times\beta)\times\gamma+\alpha\times\beta\textrm{ (Induction assumption)} \]
+and
 \[ (\alpha\times\beta)\times\gamma^+=(\alpha\times\beta)\times\gamma+\alpha\times\beta \]
 That is, $\alpha\times(\beta\times\gamma^+)=(\alpha\times\beta)\times\gamma^+$.
 
-On the other hand, suppose that the result holds for some limit ordinal $\lambda$. Then 
+On the other hand, suppose that the result holds for all ordinals less than some limit ordinal $\lambda$. Then 
 $\alpha\times(\beta\times\lambda)=\alpha\times\cup_{\gamma<\lambda}(\beta\times\gamma)$ and 
 $(\alpha\times\beta)\times\lambda=\cup_{\gamma<\lambda}((\alpha\times\beta)\times\gamma)$. Let 
 $O=\cup_{\gamma<\lambda}(\beta\times\gamma)$. Because $\lambda$ is a limit ordinal, $O$ is also a limit 
@@ -686,14 +690,14 @@ $\alpha\times O=\cup_{\gamma<\lambda}((\alpha\times\beta)\times\gamma)$.
 
 On the one hand, suppose that $x\in\alpha\times O$. Then $x<\alpha\times\delta$ for some $\delta<O$. By 
 definition of $O$, this means that $\delta<\beta\times\gamma$ for some $\gamma<\lambda$, meaning 
-$x<\alpha\times\delta<\alpha\times(\beta\times\gamma)=(\alpha\times\beta)\times\gamma$. Hence 
-$x\in\cup_{\gamma<\lambda}((\alpha\times\beta)\times\gamma)$. Thus 
+$x<\alpha\times\delta<\alpha\times(\beta\times\gamma)=(\alpha\times\beta)\times\gamma$ (by the transfinite induction assumption). 
+Hence $x\in\cup_{\gamma<\lambda}((\alpha\times\beta)\times\gamma)$. Thus 
 $\alpha\times O\subseteq\cup_{\gamma<\lambda}((\alpha\times\beta)\times\gamma)$.
 
 On the other hand, suppose that $x\in\cup_{\gamma<\lambda}((\alpha\times\beta)\times\gamma)$. Then 
 $x<(\alpha\times\beta)\times\gamma$ for some $\gamma<\lambda$. Thus, by the induction assumption, 
 $x<\alpha\times(\beta\times\gamma)$. Now, $\beta\times\gamma<\beta\times\gamma^+$, meaning 
-$\beta\times\gamma<O$, and consequently, $\alpha\times(\beta\times\gamma)\in\alpha\times O$. Thus 
+$\beta\times\gamma<O$, and consequently, $x\in\alpha\times O$. Thus 
 $\cup_{\gamma<\lambda}((\alpha\times\beta)\times\gamma)\subseteq\alpha\times O$, meaning 
 $\cup_{\gamma<\lambda}((\alpha\times\beta)\times\gamma)=\alpha\times O$, therefore completing the 
 transfinite induction.
