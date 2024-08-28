@@ -534,19 +534,55 @@ placed in a 1-1 correspondence with $\lambda$. This is why $f(\{f_\beta(\alpha,\
 that $F$ is a unique function. The original Theorem 5.6 can also be proven using a similar idea as the above; but, as was done in the book, if the various other forms 
 of the trasfinite recursion theorem are proven first, the proof of Theorem 5.6 follows more easily.
 
+\subsection*{Lemmas}
+\begin{lemma}
+If $\beta<\gamma$, then $\alpha\times\beta<\alpha\times\gamma,\alpha+\beta<\alpha+\gamma$, and
+$\alpha^\beta<\alpha^\gamma$. The cases for multiplication and exponentiation require $\alpha\ne 0$. The case for
+exponentiation also requires $\alpha\ne 1$.
+\end{lemma}
+\begin{proof}
+We give the proof using transfinite induction for the addition case. The proofs for multiplciation and exponentiation are similar.
+
+We prove this by induction on $\gamma$. This vacuously holds for $0$. Now suppose it holds for some
+$\gamma$. Then $\alpha+\gamma^+=\alpha+\gamma\cup\{\alpha+\gamma\}$. By the induction assumption, for all
+$\beta<\gamma$, $\alpha+\beta<\alpha+\gamma<\alpha+\gamma^+$. The only other $\beta<\gamma^+$ is
+$\alpha+\gamma$ itself, which is less than $\alpha+\gamma^+$ by definition of $\alpha+\gamma^+$.
+
+On the other hand, suppose that it holds for all ordinals less than some limit ordinal $\lambda$. Then
+$\alpha+\lambda=\cup_{\gamma<\lambda}(\alpha+\gamma)$. Then suppose $\beta<\lambda$. Now,
+$\alpha+\beta<\alpha+\beta^+$. But also $\alpha+\beta^+<\alpha+\lambda$, meaning
+$\alpha+\beta<\alpha+\lambda$.
+\end{proof}
+
+\begin{lemma}
+If $\lambda$ is a limit ordinal, then $\alpha\times\lambda,\alpha+\lambda$ and $\alpha^\lambda$ are all limit ordinals
+(in the cases of multiplication and exponentiation, for all ordinals $\alpha>0$, and, in the case of exponentiation, for all ordinals $\alpha>1$).
+\end{lemma}
+\begin{proof}
+We give the proof for addition. The proofs for multiplication and exponentiation are similar.
+
+Suppose that $\lambda$ is a limit ordinal. Clearly $\alpha+\lambda$ is not the least ordinal.
+Suppose that $\alpha+\lambda$ was a successor ordinal of some $\delta$. Then
+$\alpha+\lambda=\cup_{\gamma<\lambda}(\alpha+\gamma)=\delta\cup\{\delta\}$. Hence, for some
+$\gamma<\lambda$, $\delta<\alpha+\gamma$. Then $\delta^+\le\alpha+\gamma$. But then
+$\delta^+<\alpha+\gamma^+$, and thus $\delta^+\in\alpha+\lambda$, contradicting the fact that
+$\delta$ is the greatest element of $\alpha+\lambda$. Hence $\alpha+\lambda$ cannot be a successor
+ordinal, and is consequently a limit ordinal.
+\end{proof}
+
 \subsection*{Exercise 6.1}
 (a) We prove this by transfinite induction on $\alpha$. The case for $0$ holds as $0+0=0$ by definition. Suppose it holds for some 
 $\alpha$. Then $0+\alpha^+=(0+\alpha)^+=\alpha^+$. Now suppose that, for some limit ordinal $\lambda$, it holds for all 
 $\alpha<\lambda$. Then $0+\lambda=\cup_{\alpha<\lambda}(0+\alpha)=\cup_{\alpha<\lambda}\alpha=\lambda$. Hence the proof is complete.
 
 (b) We prove this by transfinite induction on $\beta$. That is, we show that, for all ordinals $\beta$,
-$\alpha\le\alpha+\beta$ holds. The case for $0$ holds, as $\alpha+0=0$. Suppose that the result holds for some 
+$\alpha\le\alpha+\beta$ holds. The case for $0$ holds, as $\alpha+0=\alpha$. Suppose that the result holds for some 
 $\beta$. Then $\alpha\le\alpha+\beta$. Also $\alpha+\beta^+=(\alpha+\beta)^+$, and thus 
 $\alpha\le\alpha+\beta^+$. Now suppose that for all $\beta<\lambda$ for a limit ordinal $\lambda$, the result holds. 
 Thus $\alpha\le\alpha+\beta$ for all $\beta<\lambda$. Then $\alpha+\lambda=\cup_{\beta<\lambda}(\alpha+\beta)$, and clearly 
 this means $\alpha\le\alpha+\lambda$.
 
-(c) We prove thsi by transfinite induction on $\gamma$. The case for $0$ holds, as 
+(c) We prove this by transfinite induction on $\gamma$. The case for $0$ holds, as 
 $\alpha+(\beta+0)=\alpha+\beta$ and $(\alpha+\beta)+0=\alpha+\beta$. Suppose the result holds for some 
 $\gamma$. Then 
 \[ \alpha+(\beta+\gamma^+)=\alpha+(\beta+\gamma)^+=(\alpha+(\beta+\gamma))^+=((\alpha+\beta)+\gamma)^+ \]
@@ -590,6 +626,47 @@ $1\times\alpha^+=(1\times\alpha)+1=\alpha+1=\alpha^+$. Now suppose it holds for 
 $\lambda$. Then $1\times\lambda=\cup_{\alpha<\lambda}(1\times\alpha)=\cup_{\alpha<\lambda}\alpha=\lambda$. Thus 
 $1\times\alpha=\alpha$ holds for all $\alpha$, and thus $1\times\alpha=\alpha\times 1=\alpha$.
 
+\begin{lemma}
+Ordinal multiplication is left-distributive.
+\end{lemma}
+\begin{proof}
+We first that ordinal multiplication is left-distributive. That is, we show that
+$\alpha\times(\beta+\gamma)=\alpha\times\beta+\alpha\times\gamma$. We prove this by transfinite induction on
+$\gamma$. Clearly this holds for $0$. Now suppose it holds for all ordinals less than $\delta$. On the one hand, suppose that
+$\delta$ is a successor ordinal of some $\gamma$. Then
+\[ \alpha\times(\beta+\gamma^+)=\alpha\times(\beta+\gamma)^+ \]
+\[ =(\alpha\times(\beta+\gamma))+\alpha \]
+\[ =(\alpha\times\beta+\alpha\times\gamma)+\alpha \]
+\[ =\alpha\times\beta+(\alpha\times\gamma+\alpha)\textrm{ (Associativity of ordinal addition)} \]
+\[ =\alpha\times\beta+\alpha\times\gamma^+\textrm{ (Transfinite induction assumption)} \]
+On the other hand, suppose that $\delta$ is a limit ordinal $\lambda$. Then
+\[ \alpha\times(\beta+\lambda)=\alpha\times\cup_{\gamma<\lambda}(\beta+\gamma) \]
+Let $O=\cup_{\gamma<\lambda}(\beta+\gamma)$. It can be seen that $O$ is a limit ordinal. Thus
+\[ \alpha\times O=\cup_{\delta<O}(\alpha\times\delta) \]
+Also
+\[ \alpha\times\beta+\alpha\times\lambda=\alpha\times\beta+\cup_{\gamma<\lambda}(\alpha\times\gamma) \]
+Let $J=\cup_{\gamma<\lambda}(\alpha\times\gamma)$. It can be seen that $J$ is a limit ordinal. Thus
+\[ \alpha\times\beta+\cup_{\gamma<\lambda}(\alpha\times\gamma)=\cup_{\epsilon<J}(\alpha\times\beta+\epsilon) \]
+We need to show that $\alpha\times O=\alpha\times\beta+J$, that is,
+\[ \cup_{\delta<O}(\alpha\times\delta)=\cup_{\epsilon<J}(\alpha\times\beta+\epsilon) \]
+On the one hand, suppose that $x\in\cup_{\delta<O}(\alpha\times\delta)$. Then, for some
+$\delta<O$, $x<\alpha\times\delta$. By definition of $O$, $\delta<\beta+\gamma$ for some $\gamma<\lambda$. Thus
+$x<\alpha\times\delta\le\alpha\times(\beta+\gamma)=\alpha\times\beta+\alpha\times\gamma$ by the induction assumption.
+Now, $\alpha\times\beta+\alpha\times\gamma\subseteq\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)$. Hence
+$x\in\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)$, therefore showing that
+$\cup_{\delta<O}(\alpha\times\delta)\subseteq\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)$.
+
+On the other hand, suppose that $x\in\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)$.
+Then $x<\alpha\times\beta+\epsilon$ for some $\epsilon<J$. By definition of $J$,
+$\epsilon<\alpha\times\gamma$ for some $\gamma<\lambda$.
+Thus $x<\alpha\times\beta+\epsilon\le\alpha\times\beta+\alpha\times\gamma=\alpha\times(\beta+\gamma)$ by the induction assumption.
+Now, $\alpha\times(\beta+\gamma)\subseteq\cup_{\delta<O}(\alpha\times\delta)$. Hence
+$x\in\cup_{\delta<O}(\alpha\times\delta)$, therefore showing that
+$\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)\le\cup_{\delta<O}(\alpha\times\delta)$.
+Thus $\cup_{\delta<O}(\alpha\times\delta)=\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)$, completing the transfinite induction
+that ordinal multiplication is left distributive.
+\end{proof}
+
 (c) We prove this by transfinite induction on $\gamma$. The case for $0$ holds, as 
 $\alpha\times(\beta\times 0)=\alpha\times 0$ and $(\alpha\times\beta)\times 0=0$ (becauase 
 $\alpha\times 0=0$ for all $\alpha$, as can easily be shown by trasnfinite induction). Suppose the result holds for some 
@@ -621,82 +698,6 @@ $\beta\times\gamma<O$, and consequently, $\alpha\times(\beta\times\gamma)\in\alp
 $\cup_{\gamma<\lambda}((\alpha\times\beta)\times\gamma)\subseteq\alpha\times O$, meaning 
 $\cup_{\gamma<\lambda}((\alpha\times\beta)\times\gamma)=\alpha\times O$, therefore completing the 
 transfinite induction.
-
-\begin{lemma}
-If $\lambda$ is a limit ordinal, then $\alpha\times\lambda,\alpha+\lambda$ and $\alpha^\lambda$ are all limit ordinals 
-(for all ordinals $\alpha>0$).
-\end{lemma}
-\begin{proof}
-We give the proof for addition. The proofs for multiplication and exponentiation are similar.
-
-Suppose that $\lambda$ is a limit ordinal. Clearly $\alpha+\lambda$ is not the least ordinal. 
-Suppose that $\alpha+\lambda$ was a successor ordinal of some $\delta$. Then 
-$\alpha+\lambda=\cup_{\gamma<\lambda}(\alpha+\gamma)=\delta\cup\{\delta\}$. Hence, for some 
-$\gamma<\lambda$, $\delta<\alpha+\gamma$. Then $\delta^+\le\alpha+\gamma$. But then 
-$\delta^+<\alpha+\gamma^+$, and thus $\delta^+\in\alpha+\lambda$, contradicting the fact that 
-$\delta$ is the greatest element of $\alpha+\lambda$. Hence $\alpha+\lambda$ cannot be a successor 
-ordinal, and is consequently a limit ordinal. 
-\end{proof}
-
-\begin{lemma}
-If $\beta<\gamma$, then $\alpha\times\beta<\alpha\times\gamma,\alpha+\beta<\alpha+\gamma$, and 
-$\alpha^\beta<\alpha^\gamma$. The cases for multiplication and exponentiation require $\alpha\ne 0$. The case for 
-exponentiation also requires $\alpha\ne 1$.
-\end{lemma}
-\begin{proof}
-We give the proof using transfinite induction for the addition case. The proofs for multiplciation and exponentiation are similar.
-
-We prove this by induction on $\gamma$. This vacuously holds for $0$. Now suppose it holds for some 
-$\gamma$. Then $\alpha+\gamma^+=\alpha+\gamma\cup\{\alpha+\gamma\}$. By the induction assumption, for all 
-$\beta<\gamma$, $\alpha\times\beta<\alpha+\gamma<\alpha+\gamma^+$. The only other $\beta<\gamma^+$ is 
-$\alpha+\gamma$ itself, which is less than $\alpha+\gamma^+$ by definition of $\alpha+\gamma^+$.
-
-On the other hand, suppose that it holds for all ordinals less than some limit ordinal $\lambda$. Then 
-$\alpha+\lambda=\cup_{\gamma<\lambda}(\alpha+\gamma)$. Then suppose $\beta<\lambda$. Now, 
-$\alpha+\beta<\alpha+\beta^+$. But also $\alpha+\beta^+<\alpha+\lambda$, meaning 
-$\alpha+\beta<\alpha+\lambda$.
-\end{proof}
-
-\begin{lemma}
-Ordinal multiplication is left-distributive.
-\end{lemma}
-\begin{proof}
-We first that ordinal multiplication is left-distributive. That is, we show that 
-$\alpha\times(\beta+\gamma)=\alpha\times\beta+\alpha\times\gamma$. We prove this by transfinite induction on 
-$\gamma$. Clearly this holds for $0$. Now suppose it holds for all ordinals less than $\delta$. On the one hand, suppose that 
-$\delta$ is a successor ordinal of some $\gamma$. Then
-\[ \alpha\times(\beta+\gamma^+)=\alpha\times(\beta+\gamma)^+ \]
-\[ =(\alpha\times(\beta+\gamma))+\alpha \]
-\[ =(\alpha\times\beta+\alpha\times\gamma)+\alpha \]
-\[ =\alpha\times\beta+(\alpha\times\gamma+\alpha)\textrm{ (Associativity of ordinal addition)} \]
-\[ =\alpha\times\beta+\alpha\times\gamma^+\textrm{ (Transfinite induction assumption)} \]
-On the other hand, suppose that $\delta$ is a limit ordinal $\lambda$. Then
-\[ \alpha\times(\beta+\lambda)=\alpha\times\cup_{\gamma<\lambda}(\beta+\gamma) \]
-Let $O=\cup_{\gamma<\lambda}(\beta+\gamma)$. It can be seen that $O$ is a limit ordinal. Thus
-\[ \alpha\times O=\cup_{\delta<O}(\alpha\times\delta) \]
-Also
-\[ \alpha\times\beta+\alpha\times\lambda=\alpha\times\beta+\cup_{\gamma<\lambda}(\alpha\times\gamma) \]
-Let $J=\cup_{\gamma<\lambda}(\alpha\times\gamma)$. It can be seen that $J$ is a limit ordinal. Thus
-\[ \alpha\times\beta+\cup_{\gamma<\lambda}(\alpha\times\gamma)=\cup_{\epsilon<J}(\alpha\times\beta+\epsilon) \]
-We need to show that $\alpha\times O=\alpha\times\beta+J$, that is, 
-\[ \cup_{\delta<O}(\alpha\times\delta)=\cup_{\epsilon<J}(\alpha\times\beta+\epsilon) \]
-On the one hand, suppose that $x\in\cup_{\delta<O}(\alpha\times\delta)$. Then, for some 
-$\delta<O$, $x<\alpha\times\delta$. By definition of $O$, $\delta<\beta+\gamma$ for some $\gamma<\lambda$. Thus 
-$x<\alpha\times\delta\le\alpha\times(\beta+\gamma)=\alpha\times\beta+\alpha\times\gamma$ by the induction assumption.
-Now, $\alpha\times\beta+\alpha\times\gamma\subseteq\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)$. Hence 
-$x\in\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)$, therefore showing that 
-$\cup_{\delta<O}(\alpha\times\delta)\subseteq\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)$.
-
-On the other hand, suppose that $x\in\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)$. 
-Then $x<\alpha\times\beta+\epsilon$ for some $\epsilon<J$. By definition of $J$, 
-$\epsilon<\alpha\times\gamma$ for some $\gamma<\lambda$. 
-Thus $x<\alpha\times\beta+\epsilon\le\alpha\times\beta+\alpha\times\gamma=\alpha\times(\beta+\gamma)$ by the induction assumption.
-Now, $\alpha\times(\beta+\gamma)\subseteq\cup_{\delta<O}(\alpha\times\delta)$. Hence 
-$x\in\cup_{\delta<O}(\alpha\times\delta)$, therefore showing that 
-$\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)\le\cup_{\delta<O}(\alpha\times\delta)$.
-Thus $\cup_{\delta<O}(\alpha\times\delta)=\cup_{\epsilon<J}(\alpha\times\beta+\epsilon)$, completing the transfinite induction 
-that ordinal multiplication is left distributive.
-\end{proof}
 
 \subsection*{Exercise 6.3}
 (a) $\alpha^1=\alpha^0\times\alpha=1\times\alpha=\alpha$
