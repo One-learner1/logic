@@ -35,9 +35,8 @@
 \maketitle
 
 \section*{Section 1}
-In the Remarks are page 91, here is the \textquote{easy induction}: Obviously this holds for $R_1$. Now suppose that it holds for some 
-$R_n$ where $n>1$. Then $R_n$ has $2^{n-1}$ elements. By definition, $R_{n+1}=\mathcal{P}(R_n)$, which has 
-$2^{2^{n-1}}$ elements, which is equal to $2^n$, therefore completing the induction.
+In the Remarks are page 91, it is said that there is an \textquote{easy induction} showing that $R_{n+1}$ has $2^n$ elements. However, this is clearly 
+not the case. For, as remakred, $R_3$ has 4 elements. Then $R_4$ has $2^4=16$ elements, which is not equal to $2^3=8$. 
 
 The proof of Proposition 1.3 is problematic. It uses Cantor's Theorem, though this hasn't even been stated (let alone proven) in the context of 
 Zermelo-Frankel Universes. Proposition 1.3 can also be proven without using Cantor's Theorem. In particular, we first show that $R_\alpha\not\in R_\alpha$.
