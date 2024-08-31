@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 7 Notes}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Section 1}
+In the Remarks are page 91, here is the \textquote{easy induction}: Obviously this holds for $R_1$. Now suppose that it holds for some 
+$R_n$ where $n>1$. Then $R_n$ has $2^{n-1}$ elements. By definition, $R_{n+1}=\mathcal{P}(R_n)$, which has 
+$2^{2^{n-1}}$ elements, which is equal to $2^n$, therefore completing the induction.
+
+The proof of Proposition 1.3 is problematic. It uses Cantor's Theorem, though this hasn't even been stated (let alone proven) in the context of 
+Zermelo-Frankel Universes. Proposition 1.3 can also be proven without using Cantor's Theorem. In particular, we first show that $R_\alpha\not\in R_\alpha$.
+
+\begin{proof}
+By transfinite induction. Clearly this holds for 0. Suppose it holds for some $\alpha$. Then, if $R_{\alpha+1}\in R_{\alpha+1}$, by definition 
+of $R_{\alpha+1}$, $R_{\alpha+1}$ would be a subset of $R_\alpha$. But $R_\alpha\in R_{\alpha+1}$. Thus this would mean that 
+$R_\alpha\in R_\alpha$, contradicting the induction assumption. Hence $R_{\alpha+1}\notin R_{\alpha+1}$. On the other hand, suppose it held for all 
+ordinals less than some limit ordinal $\lambda$. Then, by definition, $R_\lambda=\cup_{\alpha<\lambda}R_\alpha$. Suppose 
+$R_\lambda\in R_\lambda$. Then, for some $\alpha<\lambda$, $R_\lambda\in R_\alpha$. But $R_{\alpha+1}\subset R_\lambda$, and 
+$R_\alpha\in R_{\alpha+1}$, meaning $R_\alpha\in R_\lambda$. Thus, because $R_\alpha$ is transitive, $R_\alpha\in R_\alpha$, contradicting the 
+induction assumption. Thus $R_\lambda\notin R_\lambda$, completing the transfinite induction.
+\end{proof}
+
+Then, in the proof of Proposition 1.3, $R_\alpha\ne R_{\alpha+1}$ follows for the following reason: We know that 
+$R_\alpha\in R_{\alpha+1}$ and $R_\alpha\notin R_\alpha$ (by the above result), meaning 
+$R_\alpha\ne R_{\alpha+1}$.
+
+\section*{Section 2}
+Note that, at a minimum, the $R_\alpha$ sequence discussed in this section is an $On$-sequence of subsets of $V$ (and of course, all $On$-sequences for any 
+particular class are also $On$-sequences for $V$ itself).
+
+Note that the proof of $O_6$ uses Theorem 1.18 of Chapter 5.
+
+\end{document}
