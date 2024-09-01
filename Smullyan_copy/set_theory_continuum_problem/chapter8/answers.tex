@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 8 Notes}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Section 1}
+
+\subsection*{Notes}
+Here is why, for any non-empty class of ordinals $B$, the smallest ordinal $\alpha\in B$ is an initial element of $B$. 
+If $\alpha=\emptyset$, then $\alpha\cap B=\emptyset$. 
+If $\alpha\ne\emptyset$, then all members of $\alpha$ are ordinals less than $\alpha$. But, by assumption, there are no ordinals in $B$ less than 
+$\alpha$, meaning $\alpha\cap B=\emptyset$.
+
+\subsection*{Exercise 1.1}
+(1) We first show that $R_\Omega$ is well-founded. Consider any non-empty subclass $A$ of $R_\Omega$. Then let $\alpha$ be the 
+lowest rank that any of the elements in $A$ have. Now consider any element $x\in A$ which has rank $\alpha$. 
+Suppose that there was some element $y$ of $A$ in $x$. Then $y$ would have rank $\ge\alpha$. But this is not possible, as, by 
+$P_6$ of Chapter 7 (and the fact that $x$ is a set), $y$ would have a rank $<\alpha$, a contradiction. Thus 
+all elements of $x$ are not in $y$, meaning $x\cap A=\emptyset$. Thus every element $x\in A$ with rank $\alpha$ is an 
+initial element of $A$.
+
+(2) The fact that every $R_\alpha$ (where $\alpha>0$) is well-founded follows because every $R_\alpha$ is a non-empty subclass of 
+$R_\Omega$. 
+
+If now it was the case that $R_\Omega$ was in fact equal to $V$, this exercise would prove that 
+$V$ was well-founded.
+
+\end{document}
