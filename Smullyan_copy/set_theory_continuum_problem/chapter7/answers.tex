@@ -82,6 +82,16 @@ $\mathcal{P}(x)\in R_{\alpha+2}$, and thus $\mathcal{P}(x)$ has rank.
 \section*{Section 4}
 
 \subsection*{Notes}
+Here is why if $C$ is a class of ordinals such that there is no ordinal greater than all ordinals in $C$, then $C$ cannot be a set. For suppose it were a 
+set. Then $C$ would be a chain of ordinals, hence $\cup C$ would be an ordinal. But $\cup C=On$. Obviously $\cup C\subseteq On$. On the other hand, for any 
+ordinal $\alpha$, there must be some ordinal $\beta\in C$ such that $\alpha<\beta$, meaning $\alpha\in\cup C$. Thus this would mean that $On$ was an ordinal, which 
+is impossible. 
+
+
+Note that if $x$ has rank and $y\subseteq x$, then $y$ also has rank. Say $x$ has rank $\alpha$. Then $x\subseteq R_\alpha$, meaning 
+all elements of $x$ are elements of $R_\alpha$, hence have rank. Now, $x$ is a set, so $y$ is also a set. Thus $y$ is a set of elements which 
+have rank, meaning, by $Q_4$, $y$ has rank. 
+ 
 Here is why $\omega\times 2$ is the least limit ordinal $>\omega$. For suppose we had some limit ordinal $\lambda$ such that 
 $\omega<\lambda<\omega\times 2$. Thus, for some $x\in\omega\times 2$, $\lambda\in\omega\times 2$. By definition of 
 $\omega\times 2$, either $\lambda$ is a natural number, or $\lambda=\omega+n$ for some natural number $n$. The former case is ruled out because 
@@ -108,18 +118,18 @@ rank, which is impossible. Thus $R_\Omega$ is not a set.
 Suppose we tried to define a new $On$-sequence as follows:
 (1) $\mathcal{O}_0=R_\Omega$;\newline
 (2) $\mathcal{O}_{\alpha^+}=\mathcal{P}(\mathcal{O}_\alpha)$;\newline
-(3) $\mahtcal{O}_\lambda=\cup_{\alpha<\lambda}R_\alpha$ (for any limit ordinal $\lambda$).\newline
+(3) $\mathcal{O}_\lambda=\cup_{\alpha<\lambda}R_\alpha$ (for any limit ordinal $\lambda$).\newline
 This doesn't work, because $R_\Omega$ is not a set.
 
 We can also prove that none of the $R_\alpha$'s are Zermelo-\textit{Fraenkel} universes.
 
 \begin{proof} For suppose that some $R_\alpha$ was a Zermelo-Fraenkel universe. Then, for any function $F$ from sets in $R_\alpha$ to sets in $R_\alpha$, and for any 
-$x\in R_\alpha$, $F''(x)$ is a set in $R_\alpha$. But consider the function identity function $f$ from $R_\alpha$ onto $R_\alpha. Then, because $R_\alpha$ is a set, 
+$x\in R_\alpha$, $F''(x)$ is a set in $R_\alpha$. But consider the function identity function $f$ from $R_\alpha$ onto $R_\alpha$. Then, because $R_\alpha$ is a set, 
 $f(R_\alpha)''$ is in $R_\alpha$. But, by definition of $f$, $f(R_\alpha)''$ is just $R_\alpha$. Thus we would have $R_\alpha\in R_\alpha$, which contradicts the fact that 
 $R_\alpha$ has rank $\alpha$. Hence $R_\alpha$ is not a Zermelo-Fraenkel universe.
 \end{proof}
 
-This is a question I could not solve: It is true that no Zermelo-Fraenkel universes are sets?
+This is a question I could not solve: Is it true that no Zermelo-Fraenkel universe can be a set?
 
 Certinaly, we can show that for a Zermelo-Fraenkel universe $U$, $U\notin U$.
 
@@ -144,7 +154,7 @@ We show that $R_\Omega$ is the intersection of all subclasses $C$ of $V$ such th
 Zermelo-Fraenkel universe containing all ordinals of $V$. So consider any sublcass $C$ of $V$ such that $C$ is a 
 Zermelo-Fraenkel universe containing all ordinals of $V$.
 
-We first show that $R_\alpha\in C$ for all $\alpha$. Becuase $R_0=\emtpyset$, and $\emptyset\in C$, $R_0\in C$. 
+We first show that $R_\alpha\in C$ for all $\alpha$. Becuase $R_0=\emptyset$, and $\emptyset\in C$, $R_0\in C$. 
 Suppose now for some $\alpha$, $R_\alpha\in C$. Then $R_{\alpha^+}=\mathcal{P}(R_\alpha)$. But, by the power axiom, 
 $\mathcal{P}(R_\alpha)\in C$, meaning $R_{\alpha^+}\in C$. On the other hand, suppose that $R_\alpha\in C$ for all 
 $\alpha<\lambda$ for a limit ordinal $\lambda$. Then $R_\lambda=\cup_{\alpha<\lambda}R_\alpha$. Now, $\lambda\in C$ by assumption, 
@@ -162,5 +172,28 @@ the intersection of all subclasses $C$ of $V$ such that $C$ is a Zermelo-Fraekne
 Consequently, $R_\Omega$ is the intersection of all subclasses $C$ of $V$ such that $C$ is a Zermelo-Fraenkel universe containing all ordinals of $V$.
 
 \subsection*{Exercise 4.2}
+I did not know what a Cauchy sequence was. Instead of solving the exact problem, I proved that the set of all rationals is a set with rank.
 
+First, every fraction is a set with rank. For consider some fraction $\langle m,n\rangle$. Then $m$ and $n$ are both ordinals. Without loss of generality, suppose that 
+$m\ge n$. Thus $m\in R_{m+1}$ and $n\in R_{m+1}$. Now, $\langle m,n\rangle=\{\{m\},\{m,n\}\}$. Thus 
+$\langle m,n\rangle\in\mathcal{P}(\mathcal{P}(R_{m+1}))$, that is, $\langle m,n\rangle\in R_{m+3}$, hence $\langle m,n\rangle$ has rank.
+
+Now consider $\mathbb{F}$. Clearly $\mathbb{F}$ does not have rank $n$ for a natural number $n$. We show that $\mathbb{F}$ has rank 
+$\omega$. That is, we show that $\langle m,n\rangle\in R_\omega$ for all positive integers $m$ and $n$, which would mean that 
+$\mathbb{F}\subseteq R_\omega$. 
+
+Consider any $\langle m,n\rangle$, that is, $\{\{m\},\{m,n\}\}$. Without loss of generality, let $m$ be the maximum of $m,n$. 
+Then $m\in R_{m+1}$ and $n\in R_{m+1}$. Hence $\{\{m\},\{m,n\}\}\in R_{m+3}$, meaning (by the definition of $R_\omega$) that 
+$\langle m,n\rangle\in R_\omega$. Thus $\mathbb{F}$ has rank $\omega$.
+
+For our purposes, let $\mathbb{Q}$ be the set of all sets of fractions, that is, $\mathcal{P}(\mathbb{F})$. We show that 
+$\mathbb{Q}$ has rank $\omega+1$. Clearly $\mathbb{Q}\subseteq R_{\omega+1}$ (because 
+$R_{\omega+1}=\mathcal{P}(R_\omega)$ and $\mathbb{F}\subseteq R_\omega$, and thus 
+$\mathcal{P}(\mathbb{F})\subseteq \mathcal{P}(R_\omega)$). Clearly $\mathbb{Q}$ does not have rank $n$ where $n$ is a natural number. 
+Then the only possiblity other than $\omega+1$ would be $\omega$. But by $P_6$, this would mean 
+(because $\mathbb{F}\in\mathbb{Q}$) that $\mathbb{F}$ had rank lower than $\omega$, contradicting the fact that $\mathbb{F}$ has rank 
+$\omega$. Hence $\mathbb{Q}$ does not have rank $\omega$, and consequently, $\mathbb{Q}$ has rank $\omega+1$.
+
+\subsection*{Exercise 4.3}
+I did not do this, as I did not know what a Cauchy sequence was.
 \end{document}
