@@ -56,4 +56,25 @@ $R_\Omega$.
 If now it was the case that $R_\Omega$ was in fact equal to $V$, this exercise would prove that 
 $V$ was well-founded.
 
+\subsection*{Theorem 2.3}
+Here is a more formal proof of Theorem 2.3 (a more formal form of the second paragraph of the proof).
+
+Since $B$ is non-empty, it contains an element $e$. We now form the denumerable sequence 
+$b_1,b_2,...,b_n,...$ as follows: $b_1=e$; if $b_n$ is an initial element of $B$, then 
+$b_{n+1}=b_n$; if $b_n$ is not an initial element of $B$, then we take $b_{n+1}$ to be the least element (under the well-ordering of $A$) of 
+$b_n$ that is in $B$.
+
+As remarked before the proof of Theorem 2.3, $A$ satisfying the descending $\in$-chain condition means that 
+$A$ contains no $\in$-cycles. If all elements of the above 
+denumerable sequence are distinct, then clearly that sequence is an infinite descending $\in$-chain, contradicting the assumption that 
+$A$ satisfies the descending $\in$-chain condition. 
+
+Suppose, on the other hand, that two elements of the sequence were the same 
+(say the elements $b_m$ and $b_n$, where $m<n$), and that $b_m$ was not an initial element of $B$. Then, for all $i$ where $m\le i<n$, 
+it must be that $b_i\in b_{i+1}$. But that means we would have an $\in$-cycle $b_m,b_{m+1},...,b_n$, which cannot happen. 
+
+Thus it cannot be that all elements of the sequence are distinct, or that two elements of the sequence were the same where one of them 
+was not an initial element of $B$. Hence it must be that a pair of elements of the sequence are the same, where one of the elements of the 
+pair is an initial element.
+
 \end{document}
