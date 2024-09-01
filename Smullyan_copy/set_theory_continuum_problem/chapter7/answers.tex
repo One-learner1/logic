@@ -61,4 +61,62 @@ particular class are also $On$-sequences for $V$ itself).
 
 Note that the proof of $O_6$ uses Theorem 1.18 of Chapter 5.
 
+\section*{Section 3}
+
+\subsection*{Notes}
+Here is a proof of part (3) of $Q_1$: Suppose that both $x\in R_\Omega$ and $y\in R_\Omega$. Let $\alpha_1$ and $\alpha_2$ be the ranks of 
+$x$ and $y$, respectively. Let $\alpha$ be the maximum of $\alpha_1,\alpha_2$. Thus $x\in R_{\alpha^+}$ and $y\in R_{\alpha^+}$. Hence 
+$\{x,y\}\in R_{\alpha^{++}}$, meaning $\{x,y\}$ has rank, hence $\{x,y\}\in R_\Omega$.
+
+Here is a proof of part (5) of $Q_2$: Suppose that $x\in R_\Omega$ (say it is of rank $\alpha$). Then $x\in R_{\alpha^+}$, meaning, by $Q_2$ (3), 
+$\cup x\in R_\alpha$, and thus $\cup x$ has rank.
+
+Here are the proofs of part (2) and (3) of $Q_3$:
+
+(2) Suppose $x\in R_\lambda$. Then $x\in R_\alpha$ for some $\alpha<\lambda$. Hence $x\in R_\alpha^+$, meaning 
+$\mathcal{P}(x)\in R_{\alpha+2}$ by $Q_3$ (1), and because $\alpha+2<\lambda$, $\mathcal{P}(x)\in R_\lambda$.
+
+(3) Suppose $x\in R_\Omega$. Then $x\in R_{\alpha^+}$ for some $\alpha$, meaning, by $Q_3$ (1), 
+$\mathcal{P}(x)\in R_{\alpha+2}$, and thus $\mathcal{P}(x)$ has rank.
+
+\section*{Section 4}
+
+\subsection*{Notes}
+Here is why $\omega\times 2$ is the least limit ordinal $>\omega$. For suppose we had some limit ordinal $\lambda$ such that 
+$\omega<\lambda<\omega\times 2$. Thus, for some $x\in\omega\times 2$, $\lambda\in\omega\times 2$. By definition of 
+$\omega\times 2$, either $\lambda$ is a natural number, or $\lambda=\omega+n$ for some natural number $n$. The former case is ruled out because 
+$\lambda$ is a limit ordinal. Because $\lambda\ne\omega$ by assumption, this would mean that $\lambda=\omega+n$ for some $n>0$. But this would mean that 
+$\lambda$ was a successor ordinal, a contradiction. Hence there can be no limit ordinal $\lambda$ such that $\omega<\lambda<\omega\times 2$.
+
+In the proof of Theorem 4.1, here is why $\omega\in R_\lambda$ (if $\lambda>\omega$ and $\lambda$ is a limit ordinal). This is because $R_{\omega^+}\subset R_\lambda$, and 
+$\omega\in R_{\omega^+}$.
+
+In the proof of Theorem 4.2, here is why, if $Z$ is a Zermelo universe and if $\beta\in Z$, then $\beta^+\in Z$. For suppose $\beta\in Z$. Then, because $Z$ is a Zermelo universe, 
+$\{\beta\}\in Z$, and also $\{\beta,\{\beta\}\}\in Z$, and thus also $\cup\{\beta,\{\beta\}\}\in Z$. But 
+$\cup\{\beta,\{\beta\}\}=\beta^+$, meaning $\beta^+\in Z$.
+
+It can also be proven that $R_\Omega$ does not have rank.
+\begin{proof}
+For suppose it had some rank $\alpha$. Thus $R_\Omega\subseteq R_\alpha\subset R_{\alpha^+}$, meaning there is some element $x$ in 
+$R_{\alpha^+}$ not in $R_\Omega$. But, because $x\in R_{\alpha^+}$, $x$ has rank (by $P_4$), meaning, by the definition of 
+$R_\Omega$, $x\in R_\Omega$, a contradiction. Thus it cannot be that $R_\Omega$ has rank.
+\end{proof}
+
+With this, it easily follows that $R_\Omega$ is not a set. For suppose it were. Then it would be a set of elements with rank, meaning, by $O_6$, $R_\Omega$ would have 
+rank, which is impossible. Thus $R_\Omega$ is not a set.
+
+Suppose we tried to define a new $On$-sequence as follows:
+(1) $\mathcal{O}_0=R_\Omega$;\newline
+(2) $\mathcal{O}_{\alpha^+}=\mathcal{P}(\mathcal{O}_\alpha)$;\newline
+(3) $\mahtcal{O}_\lambda=\cup_{\alpha<\lambda}R_\alpha$ (for any limit ordinal $\lambda$).\newline
+This doesn't work, because $R_\Omega$ is not a set.
+
+We can also prove that none of the $R_\alpha$'s are Zermelo-\textit{Frankel} universes.
+
+\begin{proof} For suppose that some $R_\alpha$ was a Zermelo-Frankel universe. Then, for any function $F$ from sets in $R_\alpha$ to sets in $R_\alpha$, and for any 
+$x\in R_\alpha$, $F''(x)$ is a set in $R_\alpha$. But consider the function identity function $f$ from $R_\alpha$ onto $R_\alpha. Then, because $R_\alpha$ is a set, 
+$f(R_\alpha)''$ is in $R_\alpha$. But, by definition of $f$, $f(R_\alpha)''$ is just $R_\alpha$. Thus we would have $R_\alpha\in R_\alpha$, which contradicts the fact that 
+$R_\alpha$ has rank $\alpha$. Hence $R_\alpha$ is not a Zermelo-Frankel universe.
+\end{proof}
+
 \end{document}
