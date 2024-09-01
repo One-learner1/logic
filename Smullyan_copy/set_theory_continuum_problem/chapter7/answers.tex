@@ -73,7 +73,7 @@ $\cup x\in R_\alpha$, and thus $\cup x$ has rank.
 
 Here are the proofs of part (2) and (3) of $Q_3$:
 
-(2) Suppose $x\in R_\lambda$. Then $x\in R_\alpha$ for some $\alpha<\lambda$. Hence $x\in R_\alpha^+$, meaning 
+(2) Suppose $x\in R_\lambda$. Then $x\in R_\alpha$ for some $\alpha<\lambda$. Hence $x\in R_{\alpha^+}$, meaning 
 $\mathcal{P}(x)\in R_{\alpha+2}$ by $Q_3$ (1), and because $\alpha+2<\lambda$, $\mathcal{P}(x)\in R_\lambda$.
 
 (3) Suppose $x\in R_\Omega$. Then $x\in R_{\alpha^+}$ for some $\alpha$, meaning, by $Q_3$ (1), 
@@ -129,7 +129,16 @@ $f(R_\alpha)''$ is in $R_\alpha$. But, by definition of $f$, $f(R_\alpha)''$ is 
 $R_\alpha$ has rank $\alpha$. Hence $R_\alpha$ is not a Zermelo-Fraenkel universe.
 \end{proof}
 
-This is a question I could not solve: Is it true that no Zermelo-Fraenkel universe can be a set?
+This is a question: Is it true that no Zermelo-Fraenkel universe can be a set? Now, to me it seems that 
+$V$ is a subclass of every Zermelo-Fraenkel universe (because $V$ is basically the smallest Zermelo-Fraenkel universe). If this was the 
+case, then obviously no Zermelo-Fraenkel universe could be a set (becuase if one was a set, then $V$ would also be a set).
+
+Basically, $V$ is the minimal Zermelo-Fraenkel universe, i.e., no proper subclass of $V$ is a Zermelo-Fraenkel universe. Then we 
+can show (using what we may call \textquote{Zermelo-Fraenkel} induction, which has the same underlying idea as 
+mathematical induction and superinduction), that all elements of $V$ are elements of every Zermelo-Fraenkel universe.
+
+Now, because $R_\Omega\subseteq V$, this would mean $R_\Omega$ is in fact equal to $V$. This was not mentioned in the book, which is why I 
+am suspicious of this conclusion.
 
 Certinaly, we can show that for a Zermelo-Fraenkel universe $U$, $U\notin U$.
 
@@ -139,12 +148,21 @@ $\mathcal{P}(U)$ could be put into a 1-1 correspondence with a subset of $U$. Bu
 $U\notin U$. 
 \end{proof}
 
-I was also able to prove the result that for any Zermelo-Fraenkel universe $U$ that contains all ordinals of 
+It is also clear that for any Zermelo-Fraenkel universe $U$ that contains all ordinals of 
 $V$, $U$ is not a set.
 
 \begin{proof}
 For suppose $U$ was a set. By Exercise 4.1, it follows that $R_\Omega\subseteq U$, which would mean that $R_\Omega$ is a set, a contradiction. 
 Hence $U$ is not a set.
+\end{proof}
+
+Actually, we can show that every Zermelo-Fraenkel universe $U$ must contain all ordinals of $V$.
+
+\begin{proof}
+By superinduction. Obviously $\emptyset\in U$. Also, if 
+$\alpha\in U$, then $\alpha^+=\{\alpha,\{\alpha\}\}$, meaning, because $U$ is a 
+Zermelo-Fraenkel universe, that $\alpha^+\in U$. Now suppose some chain $C$ of ordinals 
+is in $U$. Then, because $U$ is a Zermelo-Franekel universe, $\cup C\in U$.
 \end{proof}
 
 \subsection*{Exercise 4.1}
