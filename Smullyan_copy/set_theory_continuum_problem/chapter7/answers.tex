@@ -111,12 +111,56 @@ Suppose we tried to define a new $On$-sequence as follows:
 (3) $\mahtcal{O}_\lambda=\cup_{\alpha<\lambda}R_\alpha$ (for any limit ordinal $\lambda$).\newline
 This doesn't work, because $R_\Omega$ is not a set.
 
-We can also prove that none of the $R_\alpha$'s are Zermelo-\textit{Frankel} universes.
+We can also prove that none of the $R_\alpha$'s are Zermelo-\textit{Fraenkel} universes.
 
-\begin{proof} For suppose that some $R_\alpha$ was a Zermelo-Frankel universe. Then, for any function $F$ from sets in $R_\alpha$ to sets in $R_\alpha$, and for any 
+\begin{proof} For suppose that some $R_\alpha$ was a Zermelo-Fraenkel universe. Then, for any function $F$ from sets in $R_\alpha$ to sets in $R_\alpha$, and for any 
 $x\in R_\alpha$, $F''(x)$ is a set in $R_\alpha$. But consider the function identity function $f$ from $R_\alpha$ onto $R_\alpha. Then, because $R_\alpha$ is a set, 
 $f(R_\alpha)''$ is in $R_\alpha$. But, by definition of $f$, $f(R_\alpha)''$ is just $R_\alpha$. Thus we would have $R_\alpha\in R_\alpha$, which contradicts the fact that 
-$R_\alpha$ has rank $\alpha$. Hence $R_\alpha$ is not a Zermelo-Frankel universe.
+$R_\alpha$ has rank $\alpha$. Hence $R_\alpha$ is not a Zermelo-Fraenkel universe.
 \end{proof}
+
+This is a question I could not solve: It is true that no Zermelo-Fraenkel universes are sets?
+
+Certinaly, we can show that for a Zermelo-Fraenkel universe $U$, $U\notin U$.
+
+\begin{proof}
+For suppose $U\in U$. Then $\mathcal{P}(U)\in U$, meaning $\mathcal{P}(U)\subseteq U$, hence 
+$\mathcal{P}(U)$ could be put into a 1-1 correspondence with a subset of $U$. But, by Cantor's Theorem, this is impossible. Hence 
+$U\notin U$. 
+\end{proof}
+
+I was also able to prove the result that for any Zermelo-Fraenkel universe $U$ that contains all ordinals of 
+$V$, $U$ is not a set.
+
+\begin{proof}
+For suppose $U$ was a set. By Exercise 4.1, it follows that $R_\Omega\subseteq U$, which would mean that $R_\Omega$ is a set, a contradiction. 
+Hence $U$ is not a set.
+\end{proof}
+
+\subsection*{Exercise 4.1}
+We show that $R_\Omega$ is the intersection of all subclasses $C$ of $V$ such that $C$ is a Zermelo-Fraenkel universe containing all ordinals of $V$.
+
+(1) On the one hand, suppose that $x\in R_\Omega$. We need to show that $x$ is in the intersection of all subclasses $C$ of $V$ such that $C$ is a 
+Zermelo-Fraenkel universe containing all ordinals of $V$. So consider any sublcass $C$ of $V$ such that $C$ is a 
+Zermelo-Fraenkel universe containing all ordinals of $V$.
+
+We first show that $R_\alpha\in C$ for all $\alpha$. Becuase $R_0=\emtpyset$, and $\emptyset\in C$, $R_0\in C$. 
+Suppose now for some $\alpha$, $R_\alpha\in C$. Then $R_{\alpha^+}=\mathcal{P}(R_\alpha)$. But, by the power axiom, 
+$\mathcal{P}(R_\alpha)\in C$, meaning $R_{\alpha^+}\in C$. On the other hand, suppose that $R_\alpha\in C$ for all 
+$\alpha<\lambda$ for a limit ordinal $\lambda$. Then $R_\lambda=\cup_{\alpha<\lambda}R_\alpha$. Now, $\lambda\in C$ by assumption, 
+and $\cup_{\alpha<\lambda}R_\alpha$ can be put into a 1-1 correspondence with $\lambda$, hence is in $C$ (by the axiom of 
+substitution). Thus $R_\lambda\in C$. Hence, for all ordinals $\alpha$, $R_\alpha\in C$.
+
+Having shown this, because $x\in R_\Omega$, $x\in R_{\alpha+1}$ for some $\alpha$. But $R_{\alpha+1}\in C$, and because 
+$C$ is supercomplete, $R_{\alpha+1}\subset C$, meaning $x\in C$. Thus we have shown that $R_\Omega$ is a subset 
+of the intersection of all subclasses $C$ of $V$ such that $C$ is a Zermel-Fraenkel universe containing all ordinals of $V$.
+
+On the other hand, suppose that $x$ is in the intersection of all subclasses $C$ of $V$ such that $C$ is a Zermelo-Fraenkel universe containing all ordinals of $V$. Well, 
+$R_\Omega$ is a subclass of $V$ that is a Zermelo-Fraeknel universe containing all ordinals (by $P_7$ and Theorem 4.1), meaning $x\in R_\Omega$. Hence 
+the intersection of all subclasses $C$ of $V$ such that $C$ is a Zermelo-Fraeknel universe containing all ordinals of $V$ is a subclass of $R_\Omega$. 
+
+Consequently, $R_\Omega$ is the intersection of all subclasses $C$ of $V$ such that $C$ is a Zermelo-Fraenkel universe containing all ordinals of $V$.
+
+\subsection*{Exercise 4.2}
 
 \end{document}
