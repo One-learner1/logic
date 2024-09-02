@@ -134,6 +134,8 @@ axioms in $V$ that $x\in V$, it can also be proven using the axioms of $U$ that 
 This would then mean that $R_\Omega=V$, which was not mentioned in the book (and it seemed like they were presenting the material as if this was 
 not the case), so this is why I am suspicious of this conclusion.
 
+See the last paragraph of this section for why the preceeding three paragraphs are not correct.
+
 Certinaly, we can show that for a Zermelo-Fraenkel universe $U$, $U\notin U$.
 
 \begin{proof}
@@ -150,25 +152,20 @@ For suppose $U$ was a set. By Exercise 4.1, it follows that $R_\Omega\subseteq U
 Hence $U$ is not a set.
 \end{proof}
 
-If we assume that $V$ is a subclass of every Zermel-Fraenkel universe, we can also prove that none of the $R_\alpha$'s are Zermelo-\textit{Fraenkel} universes.
+Let $U$ be defined in the following way
+(1) $U$ is transitive;\newline
+(2) $U$ is swelled;\newline
+(3) $\emptyset\in U$;\newline
+(4) If $x\in U$ and $y\in U$, then $\{x,y\}\in U$;\newline
+(5) If $x\in U$, then $\cup x\in U$;\newline
+(6) If $x\in U$, then $\mathcal{P}(x)\in U$;\newline
+(7) $\omega\in U$;\newline
+(8) For any function $F$, from elements of $U$ to elements of $U$, if $x\in U$, then $F''(x)\in V$.\newline
+Then $x\in U$ iff it is an element of $V$ as a consequence of at least one of the above rules. 
 
-\begin{proof} For suppose that some $R_\alpha$ was a Zermelo-Fraenkel universe. Now, $\alpha\notin R_\alpha$. 
-But, because $V$ is a subclass of $R_\alpha$, $R_\alpha$ contains all ordinals of $V$, meaning 
-$\alpha\in R_\alpha$, a contradiction. Thus $R_\alpha$ is not a Zermelo-Fraenkel universe.
-\end{proof}
-
-In the above, I am assuming $V$ is defined in the following way:\newline
-(1) $V$ is transitive;\newline
-(2) $V$ is swelled;\newline
-(3) $\emptyset\in V$;\newline
-(4) If $x\in V$ and $y\in V$, then $\{x,y\}\in V$;\newline
-(5) If $x\in V$, then $\cup x\in V$;\newline
-(6) If $x\in V$, then $\mathcal{P}(x)\in V$;\newline
-(7) $\omega\in V$;\newline
-(8) For any function $F$, from elements of $V$ to elements of $V$, if $x\in V$, then $F''(x)\in V$.\newline
-Then $x\in V$ iff it is an element of $V$ as a consequence of at least one of the above rules. 
-
-If $V$ is defined in this way, it seems obvious to me that $V\subseteq A$ for all Zermelo-Fraenkel universes $A$. Maybe 
+Now, the $U$ defined above is a Zermelo-Fraenkel universe; but it is not the case that $V\subseteq U$. This is because the axiom 
+of separation is not assumed for $U$, so that, for instance, there is no way to define set $\omega\times 2$.
+If we did assume that each Zermelo-Fraenkel universe needs to include the axiom of separation, maybe 
 the book is assuming that the $V$ we are working with is any Zermelo-Fraenkel universe at all, and one that could possibly contain 
 more axioms than the above 8.
 
