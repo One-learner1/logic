@@ -131,4 +131,72 @@ pairs $\langle x,\{0,1\}\rangle$ where $x\in R_3$. Now, suppose we had a functio
 $F(0)=G(F''(0))=G(0)=\{0,1\}$ and thus (because $x\cap R_3=x$ for any $x\in R_3$, as $R_3$ is transitive)
 $F(1)=G(F''(1))=G(\{\{0,1\}\})$. But $G$ is not defined for $\{\{0,1\}\}$, which means this is an apparent contradiction.
 
+\section*{Section 4}
+
+\subsection*{Notes}
+In the proof of Theorem 4.6, $g(x)$ should be $g''x$ (which is just an abbreviation for $g''(x)$).
+
+Also, in the proof of Theorem 4.6, it is remarked that, because $V$ can be put into a 1-1 correspondence with $On$ (which 
+can be properly well ordered), $V$ itself can be properly well ordered. This reflects the fact that if $A$ can be put 
+into a 1-1 correspondence with $B$, and $B$ can be properly well ordered, so can $A$ (assuming the axiom of substitution). 
+This holds for the following 
+reason: $A$ can be well ordered. This was proven in Proposition 1.4 of Chapter 4. Reviewing the proof, it is easily seen 
+that the way in which the well ordering is constructed is such that any proper lower section of $A$ can be placed in a 
+1-1 correspondence with a proper lower section of $B$. 
+But, by assumption, $B$ is properly well orderd, meaning any proper lower section of 
+$A$ can be placed in a 1-1 correspondence with a set, meaning it is also a set (assuming the axiom of substitution), and 
+thus $A$ is properly well ordered. 
+
+\subsection*{Theorem 4.1}
+A sketch of the proof of Theorem 4.1 is given in the book. Here is a formal proof of the theorem (the only thing added 
+is basically the proof that the described proper well ordering of $R_\Omega$ is really such a proper well ordering).
+\begin{proof}
+For each $\alpha$, let $S_\alpha=R_{\alpha+1}-R_\alpha$. Obviously any set of rank $\alpha$ is in $S_\alpha$. On the 
+other hand, if $x\in S_\alpha$, clearly $x$ does not have a rank greater than $\alpha$, and if it had a rank less than $\alpha$, then 
+$x\in R_\alpha$. Hence $x$ would have a rank of $\alpha$. Thus $S_\alpha$ is the set of all sets of rank $\alpha$ (it is a set because it is a 
+subset of $R_{\alpha+1}$). Every 
+element of $R_\Omega$ is in one and only one of the sets $S_\alpha$ (because each set has at most one rank). Thus the class 
+$\Sigma$ of all sets $S_\alpha$ constitutes a partition of $R_\Omega$ into disjoint sets ($\Sigma$ is not a set, as it can be 
+placed into a 1-1 correspondence with $On$, which is not a set). Recall that we are assuming Axiom E (which obviously implies the 
+axiom of choice). By Zermelo's well ordering theorem, each $S_\alpha$ can be well ordered (because each $S_\alpha$ is a set). 
+Let $\mathcal{W}_\alpha$ be the class of all well orderings of $S_\alpha$. Then each $\mathcal{W}_\alpha$ is non-empty. Also each 
+$\mathcal{W}_\alpha$ is a set (because each element of $\mathcal{W}_\alpha$ is a \textit{subset} (not element, as the book 
+says) of $S_\alpha\times S_\alpha$, and thus $\mathcal{W}_\alpha\subseteq\mathcal{P}(S_\alpha\times S_\alpha))$. Now we need the axiom 
+of choice in the strong form given by Axiom E in order to simultaneously pick one element from each $\mathcal{W}_\alpha$. More precisely, 
+define $W(\alpha)=F(\mathcal{W}_\alpha)$, where $F$ is a function satisfying Axiom E. Thus, for each $\alpha$, $W(\alpha)$ is a well 
+ordering of the set of all elements of rank $\alpha$.
+	Now for every $x,y$ in $R_\Omega$, we define $x<y$ iff either $x$ is of lower rank than $y$ or $x,y$ have the same rank 
+$\alpha$ but $x$ preceedes $y$ in the well ordering $W(\alpha)$. For clarity, let $\prec_\alpha$ be the well ordering in 
+$W(\alpha)$. Now we show that the ordering $<$ is a proper well ordering of $R_\Omega$.
+
+	Clearly the ordering is reflexive. For, $x\prec_\alpha x$ for the rank $\alpha$ of $x$, as $\prec_\alpha$ is a well ordering.
+
+	The ordering is also anti-symmetric. For, if $x<y$ and $y<x$, it must be that $x$ and $y$ have the same rank (as $x$ cannot both have 
+lower and higher rank than $y$). Say they have rank $\alpha$. Then $x\prec_\alpha y$ and $y\prec_\alpha x$. Then, because 
+$\prec_\alpha$ is a well ordering, $x=y$.
+
+	The ordering is also transitive. For, if $x<y$ and $y<z$, there are multiple cases: (1) all of $x,y,z$ have the same rank; 
+(2) $x,y,z$ all have different ranks; (3) $x,y$ have the same rank, but $z$ has a different rank; (4) $y,z$ have the same rank, 
+but $x$ has a different rank (note that a case in which $x,z$ have the same rank, but $y$ has a different rank, cannot happen). In 
+(1) we would have $x\prec_\alpha y$ and $y\prec_\alpha z$ for some $\alpha$, and thus $x\prec_\alpha z$, hence $x<z$. In (2) we would have 
+$x<z$ because the rank of $x$ would be less than the rank of $z$. In (3) $x<z$ because $x$ would have a lower rank than $z$. In (4) 
+$x<z$ because again $x$ would have a lower rank than $z$. Thus, in any case, $x<z$.
+
+	The ordering is also linear. For consider any two sets with rank. Either they have the same rank, or they don't. If they have the 
+same rank $\alpha$, then either $x\prec_\alpha y$ or $y\prec_\alpha x$ (and thus either $x<y$ or $y<x$) because $\prec_\alpha$ is a well ordering. 
+If they have different ranks, suppose, without loss of generality that $x$ had the lower rank. Then $x<y$.
+	
+	This is also a well ordering. For consider any non-empty subclass $C$ of $R_\Omega$. Pick the lowest rank $\alpha$ that any of the elements in $C$ have. 
+Then consider the set $S$ of all elements of $C$ with rank $\alpha$. $S$ must have a least element $e$ (with respect to $\prec_\alpha$). Then obviously 
+$e$ is the least element of $C$.
+
+	This is also a proper well ordering. For consider any proper lower section $L$ of $R_\Omega$ under $<$. We wish to show that there must be some rank 
+that is greater than the ranks of all the elements of $L$. But suppose there wasn't. Because $L$ is a proper well ordering of $R_\Omega$, there must be some element 
+$x\in R_\Omega-L$. Let $\alpha$ be the rank of $x$. Then, by assumption, there must be some element $y\in L$ with a rank greater than $\alpha$. But that means 
+$y<x$ doesn't hold, contrary to the assumption that $L$ is a proper lower section. Thus there must be some rank that is greater than the ranks of all the 
+elements of $L$. Consider the least such rank $\alpha$. Then obviously $L\subseteq R_\alpha$, therefore meaning $L$ is a set.
+
+	Hence $<$ is a proper well ordering of $R_\Omega$.
+\end{proof}
+
 \end{document}
