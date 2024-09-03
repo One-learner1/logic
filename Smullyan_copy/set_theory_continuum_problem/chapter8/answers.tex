@@ -95,8 +95,9 @@ rank of every element of $V_0$ must be in $V_0$, which does require proof.
 \begin{proof}
 By the induction method of Theorem 3.2. Suppose the hypothesis holds for the ranks of all elements of some element $x$ in $V_0$. 
 Then the rank $\alpha$ of $x$ is the least ordinal that is greater than all the ranks of the elements of $x$. Either $\alpha$ is a 
-successor ordinal or $\alpha$ is a limit ordinal. Let $O$ be the set of all ranks of elements of $x$. Then $\cup O$ is an ordinal and 
-is in $V_0$ (because $V_0$ is a Zermelo-Fraenkel universe) 
+successor ordinal or $\alpha$ is a limit ordinal. Let $O$ be the set of all ranks of elements of $x$. 
+Note that $O\in V_0$ by the axiom of substitution (applied in $V_0$). Then $\cup O$ is an ordinal and 
+is in $V_0$ (because $V_0$ is a Zermelo-Fraenkel universe). 
 If $\alpha$ is a successor ordinal, then $\alpha=\cup O\cup\{\cup O\}$, which is also in $V_0$. If $\alpha$ is a limit ordinal, then 
 $\cup O=\alpha$. In any case, $\alpha\in V_0$, therefore completing the proof.
 \end{proof} 
@@ -104,32 +105,7 @@ Thus the rank of every element of $V_0$ is less than $\alpha$ (the $\alpha$ defi
 that $V_0\subseteq R_\alpha$. This is because all elements of $V_0$ have rank less than $\alpha$, meaning they are all members of $R_\alpha$.
 
 \subsection*{Exercise 3.1}
-\begin{lemma}
-If $x\subset R_\lambda$ for a limit ordinal $\lambda$ and $x$ is a set, then $x\in R_\lambda$.
-\end{lemma}
-\begin{proof}
-Suppose the hypothesis. Then all elements of $x$ have a rank less than $\lambda$. Then it can easily be seen that 
-$x\subseteq R_\alpha$ for the smallest ordinal $\alpha$ that is greater than all the ranks of the elemetns of $x$. Clearly 
-$\alpha$ is not greater than $\lambda$. For if it were, then an ordinal $\beta$ such that $\beta\ge\lambda$ would need to be 
-the rank of some element of $x$, contradicting the fact that all elements of $x$ are in $R_\lambda$. Hence $\alpha\le\lambda$.
-Also $\alpha<\lambda$, as $x\subset R_\lambda$ (that is, $x\ne R_\lambda$). Thus $\alpha<\lambda$. Hence 
-$\alpha+1<\lambda$, and $x\in R_{\alpha+1}$, meaning $x\in R_\lambda$.
-\end{proof}
-
-\begin{lemma}
-$R_\lambda$ for every limit ordinal $\lambda$ is a Zermelo-Fraenkel universe.
-\end{lemma}
-\begin{proof}
-Consider $R_\lambda$ for any limit ordinal $\lambda$. We already know that it is a Zermelo universe. It remains to be seen 
-that $R_\lambda$ satisfies the axiom of substitution. So let $F$ be any functions from $R_\lambda$ to $R_\lambda$. Take any 
-$x\in R_\lambda$. Since $x\in R_\lambda$, then $x$ is a set, and so by the axiom of substition (applied in $V$) $F''(x)$ is a set. 
-Thus $F''(x)$ is a set of all whose members are in $R_\lambda$. Also $F''(x)\ne R_\lambda$, as, for example, 
-$F(x)\notin F''(x)$ (because $x\notin x$, as if $x\in x$, then $x$ would have a smaller rank than $x$, which is impossible). Thus 
-$F''(x)\subset R_\lambda$, and thus, by Lemma 0.1, $F''(x)\in R_\lambda$. Hence $R_\lambda$ satisfies the axiom of substition, meaning it 
-is a Zermelo-Fraenkel univese.
-\end{proof} 
-
-Now we prove that, for any Zermelo-Fraenkel universe $V$, the intersection of all Zermelo sub-universes of $V$, each containing 
+We prove that, for any Zermelo-Fraenkel universe $V$, the intersection of all Zermelo sub-universes of $V$, each containing 
 all the ordinals of $V$, is well founded.
 \begin{proof}
 If $V$ contains all ordinals, then the above intersection is $R_\Omega$ (by Exercise 4.1 of Chapter 7), which is well founded 
@@ -140,10 +116,10 @@ $\mathcal{P}(R_\alpha)\in V$ (because $V$ is a Zermelo-Fraenkel universe), that 
 that for all ordinals $\alpha$ less than some limit ordinal $\lambda_1$ such that $\lambda_1<\lambda$, $R_\alpha\in V$. Then 
 $R_{\lambda_1}=\cup_{\alpha<\lambda_1}R_\alpha$. Because $\lambda_1<\lambda$, and $V$ contains all ordinals less than $\lambda$, 
 $\lambda_1\in V$. Thus the set of all $R_\alpha$ for all $\alpha<\lambda_1$ is in $V$ (by the axiom of substitution), meaning 
-so is $\cup_{\alpha<\lambda}R_\alpha$, that is, $R_\lambda_1$. Hence, for all $\alpha<\lambda$, $R_\alpha V$. By the transitivity of 
+so is $\cup_{\alpha<\lambda}R_\alpha$, that is, $R_{\lambda_1}$. Hence, for all $\alpha<\lambda$, $R_\alpha\in V$. By the transitivity of 
 $V$, it then obviously follows that $R_\lambda\subseteq V$.
 
-Now, $R_\lambda$ is a Zermelo-Fraenkely universe by Lemma 0.2, and contains all ordinals of $V$. Also $R_\lambda$ is well founded. 
+Now, $R_\lambda$ is a Zermelo universe (as shown in Chapter 7), and contains all ordinals of $V$. Also $R_\lambda$ is well founded. 
 Thus the intersection of all Zermelo sub-universes of $V$, each containing all the ordinals of $V$, is a subclass of $R_\lambda$, meaning 
 it is well founded (because all subclasses of a well founded class are well founded). 
 \end{proof}
@@ -153,6 +129,6 @@ This exercise does not seem correct to me. For example, consider the set $R_3=\{
 (by Exercise 1.1) and transitive, so it satisfies the assumptions of this exercise. Then we could let $G$ be the set of all ordered 
 pairs $\langle x,\{0,1\}\rangle$ where $x\in R_3$. Now, suppose we had a function $F$ satisfying the conditions of the exercise. Then
 $F(0)=G(F''(0))=G(0)=\{0,1\}$ and thus (because $x\cap R_3=x$ for any $x\in R_3$, as $R_3$ is transitive)
-$F(1)=G(F''(1))=G(\{\{0,1\})$. But $G$ is not defined for $\{\{0,1\}\}$, which means this is an apparent contradiction.
+$F(1)=G(F''(1))=G(\{\{0,1\}\})$. But $G$ is not defined for $\{\{0,1\}\}$, which means this is an apparent contradiction.
 
 \end{document}
