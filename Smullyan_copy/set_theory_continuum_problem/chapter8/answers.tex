@@ -79,6 +79,30 @@ pair is an initial element.
 
 \section*{Section 3}
 
+\subsection*{Notes}
+It is remarked that an infinite descending chain of ordinals cannot exist. This is because an infinite descending chain of ordinals 
+would not have a least element, contrary to the fact that every class of ordinals has a least element.
+
+\subsection*{Theorem 3.6}
+The proof of this theorem does not seem correct to me. It says: \textquote{Either $V_0$ contains all ordinals of $V$ or it does not. 
+Suppose it does. Then $R_\Omega\subseteq V_0$.} This is not correct, as it was not assumed that $V$ contains all ordinals. Thus 
+$V_0$ containing all ordinals of $V$ does not necessarily imply that $R_\Omega\subseteq V_0$ (because $R_\Omega$ contains all 
+ordinals). This shouldn't be an issue, as the case where $On$ is not a subclass of $V$ can then be proven in the way starting with 
+\textquote{If, on the other hand, $V_0$ does not contain all ordinals of $V$...} in the proof.
+
+However, the part of the proof starting with that sentence seems to be more complicated than the proof lets on. It claims that the 
+rank of every element of $V_0$ must be in $V_0$, which does require proof.
+\begin{proof}
+By the induction method of Theorem 3.2. Suppose the hypothesis holds for the ranks of all elements of some element $x$ in $V_0$. 
+Then the rank $\alpha$ of $x$ is the least ordinal that is greater than all the ranks of the elements of $x$. Either $\alpha$ is a 
+successor ordinal or $\alpha$ is a limit ordinal. Let $O$ be the set of all ranks of elements of $x$. Then $\cup O$ is an ordinal and 
+is in $V_0$ (because $V_0$ is a Zermelo-Fraenkel universe) 
+If $\alpha$ is a successor ordinal, then $\alpha=\cup O\cup\{\cup O\}$, which is also in $V_0$. If $\alpha$ is a limit ordinal, then 
+$\cup O=\alpha$. In any case, $\alpha\in V_0$, therefore completing the proof.
+\end{proof} 
+Thus the rank of every element of $V_0$ is less than $\alpha$ (the $\alpha$ defined in the proof). It is then concluded that this means 
+that $V_0\subseteq R_\alpha$. This is because all elements of $V_0$ have rank less than $\alpha$, meaning they are all members of $R_\alpha$.
+
 \subsection*{Exercise 3.1}
 \begin{lemma}
 If $x\subset R_\lambda$ for a limit ordinal $\lambda$ and $x$ is a set, then $x\in R_\lambda$.
