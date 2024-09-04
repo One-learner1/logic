@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 9 Notes}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Section 1}
+
+\subsection*{Notes}
+Here is why $A\cup B=A\cup (B-A)$.
+
+On the one hand, suppose that $x\in A\cup B$. Then either $x\in A$ or $x\in B$. In the first case, obviously 
+$x\in A\cup (B-A)$. In the second case, if $x\in A$, then we are done (by the first case). Otherwise $x\in B-A$, meaning 
+$x\in A\cup (B-A)$. On the other hand, suppose that $x\in A\cup (B-A)$. Then obviously $x\in A\cup B$.
+
+\end{document}

@@ -199,4 +199,29 @@ elements of $L$. Consider the least such rank $\alpha$. Then obviously $L\subset
 	Hence $<$ is a proper well ordering of $R_\Omega$.
 \end{proof}
 
+\section*{Section 5}
+
+\subsection*{Exercise 5.1}
+This (and the next exercise) follow basically the same method of proofs as Theorems 5.1, 5.2, and 5.3 given in the book. We suppose that 
+$A$ is well founded, transitive, and a proper class.
+
+(a) It suffices to show that every element of $A$ is an ordinal (for then $A$ would be a transitive proper class of ordinals, hence $A=On$). 
+Because $A$ is transitive and well founded, we can use the $\in$-induction property of Theorem 3.2. So suppose that, for some $x\in A$, all 
+elements of $x$ are ordinals. Then either $x=\emptyset$ (in which case $x$ is an ordinal) or $x$ is a transitive set of ordinals
+(as it was assumed that every element of $A$ is transitive). Thus $x$ is an ordinal.
+	Hence $A$ is a transitive proper class of ordinals, and is consequently equal to $On$.
+
+(b) We show that every element of $A$ is transitive, and thus $A=On$ by the first part of this exercise.
+	So suppose that $x\in A$, $y\in x$, and $z\in y$. Then $y\in A$ and $z\in A$ (by the transitivity of $A$). Because 
+$A$ is transitive and well founded, by Theorem 3.3, every element of $A$ has rank. Thus if $x$ had a rank less than or equal to $z$, so would 
+$y$, which contradicts the fact that $z\in y$. Thus $z$ has a lower rank than $x$, and by assumption, this means that $z\in x$.
+Hence every element of $A$ is transitive, meaning, by the first part of this exercise, $A=On$.
+
+\subsection*{Exercise 5.2}
+	Suppose that $A$ is a well founded, transitive, and $\in$-connected proper class. It suffices to show that $A$ satisfies the assumptions of 
+Exercise 5.1 (b), which would mean that $A=On$.
+	So suppose that $x$ is of lower rank than $y$. Then either $x\in y$ or $y\in x$ (as $A$ is $\in$-connected). But if $y\in x$, this would mean 
+that $y$ had lower rank than $x$, a contradiction. Thus it must be that $x\in y$. 
+	Hence, by Exercise 5.1 (b), $A=On$.
+
 \end{document}
