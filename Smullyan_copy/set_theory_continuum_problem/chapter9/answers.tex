@@ -43,4 +43,33 @@ On the one hand, suppose that $x\in A\cup B$. Then either $x\in A$ or $x\in B$. 
 $x\in A\cup (B-A)$. In the second case, if $x\in A$, then we are done (by the first case). Otherwise $x\in B-A$, meaning 
 $x\in A\cup (B-A)$. On the other hand, suppose that $x\in A\cup (B-A)$. Then obviously $x\in A\cup B$.
 
+\section*{Section 2}
+
+\subsection*{Notes}
+Note that Lemma 2.2 assumes that $h$ is defined on all subsets of $A$.
+
+In proof 2 of the Bernstein-Schröder theorem, here is why $A-[A-g''(B-f''(X))]=g''(B-f''(X))$. 
+Obviously, if $x\in A-[A-g''(B-f''(X))]$, then $x\in g''(B-f''(X))$. On the other hand, if 
+$x\in g''(B-f''(x))$, note that $x\in A$, as $g$ is a function from $B$ into $A$. Thus 
+$x\notin A-g''(B-f''(X))$, meaning $x\in A-[A-g''(B-f''(X))]$.
+
+\subsection*{Exercise 2.1}
+(a) Consider any fixed point $A$ of $h$. Then $h(A)=A$, meaning $A\subseteq h(A)$. Hence $A\in\Sigma$, and thus 
+$A\subseteq B$. Thus $B$ is the largest fixed point of $h$.
+
+(b) Let $\Sigma$ be the set of all subsets $X$ of $A$ such that $X\subseteq h(X)$ and that $X$ is a subset of all fixed 
+points of $h$. Let $B=\cup\Sigma$. We aim to show that $B$ is a fixed point of $h$. Obviously, $B$ is a subset of all fixed 
+points of $h$ (thus $B$ is the smallest fixed point of $h$).
+	
+	On the one hand, we show that $B\subseteq h(B)$ (this part is identical to the proof of the first part of the original lemma). 
+So suppose that $b\in B$. Then $b\in X$ for some $X\in\Sigma$.
+Because $X\in\Sigma$, then $X\subseteq h(X)$, hence $b\in h(X)$. But $X\subseteq B$, and because $h$ is monotone, 
+it follows that $h(X)\subseteq h(B)$. Thus $x\in h(B)$. Hence $B\subseteq h(B)$.
+	
+	On the other hand, we show that $h(B)\subseteq B$. Well, we have shown that $B\subseteq h(B)$, meaning 
+$h(B)\subseteq h(h(B))$ (because $h$ is monotone). Also, consider any fixed point $A$ of $h$. Then $B\subseteq A$. 
+Hence $h(B)\subseteq h(A)$. But $h(A)=A$, meaning $h(B)\subseteq A$. Thus $h(B)$ is a subset of every fixed point of 
+$h$, and $h(B)\subseteq h(h(B))$, meaning $h(B)\in\Sigma$, and thus $h(B)\subseteq B$.
+	Hence we have shown that $h(B)=B$, meaning $B$ is a fixed point of $h$ (and the smallest one).
+
 \end{document}
