@@ -72,4 +72,79 @@ Hence $h(B)\subseteq h(A)$. But $h(A)=A$, meaning $h(B)\subseteq A$. Thus $h(B)$
 $h$, and $h(B)\subseteq h(h(B))$, meaning $h(B)\in\Sigma$, and thus $h(B)\subseteq B$.
 	Hence we have shown that $h(B)=B$, meaning $B$ is a fixed point of $h$ (and the smallest one).
 
+\section*{Section 3}
+
+\begin{lemma}
+For any classes $A$ and $B$, $A\prec B$ and $B\prec A$ do not both hold.
+\end{lemma}
+\begin{proof}
+This is immediate from the Bernstein-Schröder theorem. For suppose $A\prec B$ and $B\prec A$ both held. 
+Then $A\preceq B$ and $B\preceq A$ both held, meaning, by the Bernstein-Schröder theorem, $A\cong B$. But this contradicts 
+the fact that $A\cong B$ was assumed to not hold (as $A\prec B$ was assumed to hold).
+\end{proof}
+
+\begin{lemma}
+For any class $A$, no subclass of $A$ is greater than $A$.
+\end{lemma}
+\begin{proof}
+Suppose a subclass $B$ of $A$ was greater than $A$. Then $A\prec B$ holds. Also 
+$B\prec A$ holds (this is because $B\preceq A$ holds as $B\subseteq A$, but
+$B\cong A$ does not hold by assumption). But this contradicts Lemma 0.1. Hence 
+$B$ is not greater than $A$.
+\end{proof}
+
+\begin{corollary}
+All subsets of any countable set are countable.
+\end{corollary}
+
+\begin{lemma}
+The set of all sets of natural numbers with $n$ as its greatest element is finite, in particular, it has 
+$2^n$ elements.
+\end{lemma}
+\begin{proof}
+By induction. Obviously the base case holds (as there is only one set of natural numbers with $0$ as its greatest element). 
+Suppose the result holds for some $n$. Let $S$ be the set of all sets of natural numbers with $n$ as its greatest element. 
+Note that the set of all sets of natural numbers whose greatest elements is 
+\textit{less than or equal} to $n$ is just the power set of $n^+$, which has $2^{n+1}$ elements. Now, the set of all sets of 
+natural numbers with $n+1$ as its greatest element is just all sets of the form $\cup\{\{n+1\},x\}$, where $x\in\mathcal{P}(n)$. But 
+there are $2^{n+1}$ elemetns in $\mathcal{P}(n)$. Hence the set of all sets of natural numbers with $n+1$ as its greatest element 
+has $2^{n+1}$ elements.
+\end{proof}
+
+\subsection*{Exercise 3.1}
+
+(1) Consider any denumerable set $A$. It can be placed in some sequence $a_0,a_1,...,a_n,...$. Then $A$ can be put into a 1-1 correspondence 
+with $A-\{a_0\}$, a proper subset of $A$.
+
+(2) Consider some finite set $S$ of denumerable sets. It can be placed in some sequence $a_0,a_1,...,a_n$. Also, each 
+set $a_i$ can be placed in some sequence $a^0_i,a^1_i,...,a^m_i,...$. Then we can put the first elements of each set in $S$ in a 
+1-1 correspondence with the first $n$ numbers, the second elemetns of each set in $S$ in a correspondence with the next $n$ numbers, and so on. 
+Formally, the 1-1 correspondence $f$ between $\cup S$ and $\omega$ is such that $f(a_^i_m)=n\times i+m$. 
+
+(3) Suppose that $A$ and $B$ are denumerable. Then $A$ can be placed in some sequence $a_0,a_1,...,a_n,...$ and $B$ can be placed in some 
+sequence $b_0,b_1,...,b_m,...$. Then the number of ordered pairs with $k$ as the greatest index of any elements $a_i$ or $b_i$ in the ordered pair 
+is finite (there are $2(k+1)$ such ordered pairs). Formally, the 1-1 correspondence $f$ between $A\times B$ and $\omega$ is such that 
+$f(\langle a_i,b_j\rangle )=\sum_{0\le k<i} 2(k+1)+i$ where $i\le j$, and $f(\langle a_i,b_j\rangle )=\sum_{0\le k<i} 2(k+1)+i+j+1$ where $i>j$ (this order can also be reversed).
+
+(4) Suppose that $A$ is denumerable. Then it can be placed in some sequence $a_0,a_1,...,a_n,...$. Then the set of all finite subsets of $A$ with $a_i$ as its greatest element is 
+finite. 
+
+(5) Suppose that $A$ is denumerable and $F$ is finite. Say $A$ can be enumerated in the sequence $a_0,a_1,...,a_n,...$ and $F$ can be enumerated in the sequence $b_0,...,b_m$. 
+Then, if $F-A$ has $k$ elements (it must be finite), we pair of the first $k$ numbers with the elements of $F-A$, and then the rest of the numbers can be placed in a 1-1 correspondence 
+with $A$ itself.
+
+\section*{Section 4}
+
+\subsection*{Exercise 4.1}
+Suppose that $A$ is infinite and there is a choice function for $A$. For any proper subset $x$ of $A$, let $g(x)=x\cup\{C(A-x)\}$, and let $g(A)=A$. By Theorem 8.1 of Chapter 3, 
+there is a function $h$ from $\omega$ into $\mathcal{P}(A)$ such that $h(0)=g(0)$, and for any $n$, $h(n^+)=g(h(n))$. Then take $a_0$ to be the sole element of of $h(0)$ and for 
+each $n$, take $a_{n^+})$ to be the sole element of $h(n^+)-h(n)$. Now, 
+$a_0$ is the sole element of $h(0)=g(0)=0\cup\{C(A-0)\}=0\cup\{C(A)\}=\{C(A)\}$, that is, $a_0$ is the $C$-chosen element of $A$. Also note that 
+$h(n^+)=g(h(n))=h(n)\cup\{C(A-h(n))\}$, that is, $h(n^+)$ is the set of all elements of $h(n)$, as well as the $C$-chosen element of $A-h(n)$. We aim to show that 
+$a_{n^+}$ is the $C$-chosen element of $A-\{a_0,...,a_n\}$. First we show that $h(n)=\{a_0,...,a_n\}$. We have already proven the base case. Now suppose the result holds 
+for some $n$. Then $h(n^+)=h(n)\cup\{C(A-h(n))\}=\{a_0,...,a_n,C(A-h(n))\}$. But this means $a_{n^+}=C(A-h(n))$, meaning $h(n^+)=\{a_0,...,a_n,a_{n^+}\}$, therefore completing 
+the induction. Then $a_{n^+}$ is the sole element of $h(n^+)-h(n)=(h(n)\cup\{C(A-\{a_0,...,a_n\})\})-h(n)=\{C(A-\{a_0,...,a_n)\}$, that is, $a_{n^+}$ is the $C$-chosen 
+element of $A-\{a_0,...,a_n\}$. Thus $a_0$ is the $C$-chosen element of $A$ and $a_{n^+}$ is the $C$-chosen element of $A-\{a_0,...,a_n\}$, meaning each $a_i$ is unique, 
+and thus the set of all $a_i$ is a denumerable subset of $A$. 
+
 \end{document}
