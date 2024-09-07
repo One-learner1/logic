@@ -93,9 +93,23 @@ $B\cong A$ does not hold by assumption). But this contradicts Lemma 0.1. Hence
 $B$ is not greater than $A$.
 \end{proof}
 
-\begin{corollary}
+\begin{lemma}
 All subsets of any countable set are countable.
-\end{corollary}
+\end{lemma}
+\begin{proof}
+Recall that, by Exercise 7.1 of Chapter 3, every set of natural numbers is either finite or denumerable. Now 
+consider any countable set $A$. Either it it finite or denumerable.
+
+(1) On the one hand, suppose that it is finite. If we had a non-finite subset $S$ of $A$, then 
+$S\subseteq A$ could not hold, or else $A$ would be infinite, which is a contradiction. Thus it must be 
+that $S$ is finite.
+
+(2) On the other hand, suppose that $A$ is denumerable. Then it can be enumerated in some 
+sequence $a_0,a_1,...,a_n,...$. Now consider any subset $S$ of $A$. Then 
+$S$ can be put into a 1-1 correspondence with the set $C$ of all $n$ such that 
+$a_n\in S$. But $C$ is a set of natural numbers, meaning it is countable. Thus $S$ is also 
+countable.
+\end{proof}
 
 \begin{lemma}
 The set of all sets of natural numbers with $n$ as its greatest element is finite, in particular, it has 
@@ -116,10 +130,11 @@ has $2^{n+1}$ elements.
 (1) Consider any denumerable set $A$. It can be placed in some sequence $a_0,a_1,...,a_n,...$. Then $A$ can be put into a 1-1 correspondence 
 with $A-\{a_0\}$, a proper subset of $A$.
 
-(2) Consider some finite set $S$ of denumerable sets. It can be placed in some sequence $a_0,a_1,...,a_n$. Also, each 
-set $a_i$ can be placed in some sequence $a^0_i,a^1_i,...,a^m_i,...$. Then we can put the first elements of each set in $S$ in a 
-1-1 correspondence with the first $n$ numbers, the second elemetns of each set in $S$ in a correspondence with the next $n$ numbers, and so on. 
-Formally, the 1-1 correspondence $f$ between $\cup S$ and $\omega$ is such that $f(a_^i_m)=n\times i+m$. 
+(2) Consider some finite set $S$ of denumerable sets. It can be placed in some sequence $a_0,...,a_n$. For each 
+$a_i$, let $a'_i$ be the set of all elements $x$ of $a_i$ such that $x\notin a_j$ for all $j\le n$ such that $j\ne i$. Obviously 
+$\cup S=\cup\{a'_0,...,a'_n\}$, and all elements $a'_i$ are disjoint with all other elements $a'_j$ where $j\le n$ and $j\ne i$. Each 
+$a_i$ is denumerable, and each $a'_i\subseteq a_i$, meaning (by Lemma 0.2) that each $a'_i$ is countable. Thus each $a'_i$ is either 
+finite or denumerable.
 
 (3) Suppose that $A$ and $B$ are denumerable. Then $A$ can be placed in some sequence $a_0,a_1,...,a_n,...$ and $B$ can be placed in some 
 sequence $b_0,b_1,...,b_m,...$. Then the number of ordered pairs with $k$ as the greatest index of any elements $a_i$ or $b_i$ in the ordered pair 
@@ -146,5 +161,7 @@ for some $n$. Then $h(n^+)=h(n)\cup\{C(A-h(n))\}=\{a_0,...,a_n,C(A-h(n))\}$. But
 the induction. Then $a_{n^+}$ is the sole element of $h(n^+)-h(n)=(h(n)\cup\{C(A-\{a_0,...,a_n\})\})-h(n)=\{C(A-\{a_0,...,a_n)\}$, that is, $a_{n^+}$ is the $C$-chosen 
 element of $A-\{a_0,...,a_n\}$. Thus $a_0$ is the $C$-chosen element of $A$ and $a_{n^+}$ is the $C$-chosen element of $A-\{a_0,...,a_n\}$, meaning each $a_i$ is unique, 
 and thus the set of all $a_i$ is a denumerable subset of $A$. 
+
+Note that the second proof of Theorem 4.2 provided in the book can be expanded in essentially the same was as this exercise.
 
 \end{document}
