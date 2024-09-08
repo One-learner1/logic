@@ -98,11 +98,10 @@ All subsets of any countable set are countable.
 \end{lemma}
 \begin{proof}
 Recall that, by Exercise 7.1 of Chapter 3, every set of natural numbers is either finite or denumerable. Now 
-consider any countable set $A$. Either it it finite or denumerable.
+consider any countable set $A$. Either it is finite or denumerable.
 
-(1) On the one hand, suppose that it is finite. If we had a non-finite subset $S$ of $A$, then 
-$S\subseteq A$ could not hold, or else $A$ would be infinite, which is a contradiction. Thus it must be 
-that $S$ is finite.
+(1) On the one hand, suppose that $A$ is finite. Then (by Exercise 6.1 of Chapter 3) all subsets of $A$ are also
+finite.
 
 (2) On the other hand, suppose that $A$ is denumerable. Then it can be enumerated in some 
 sequence $a_0,a_1,...,a_n,...$. Now consider any subset $S$ of $A$. Then 
@@ -117,9 +116,8 @@ $2^n$ elements.
 \end{lemma}
 \begin{proof}
 By induction. Obviously the base case holds (as there is only one set of natural numbers with $0$ as its greatest element). 
-Suppose the result holds for some $n$. Let $S$ be the set of all sets of natural numbers with $n$ as its greatest element. 
-Note that the set of all sets of natural numbers whose greatest elements is 
-\textit{less than or equal} to $n$ is just the power set of $n^+$, which has $2^{n+1}$ elements. Now, the set of all sets of 
+Suppose the result holds for some $n$. 
+Now, the set of all sets of 
 natural numbers with $n+1$ as its greatest element is just all sets of the form $\cup\{\{n+1\},x\}$, where $x\in\mathcal{P}(n)$. But 
 there are $2^{n+1}$ elemetns in $\mathcal{P}(n)$. Hence the set of all sets of natural numbers with $n+1$ as its greatest element 
 has $2^{n+1}$ elements.
@@ -129,14 +127,14 @@ has $2^{n+1}$ elements.
 The union of a denumerable set of disjoint finite sets is denumerable.
 \end{lemma}
 \begin{proof}
-Suppose we have a denumerable set $S$ of finite sets $F_0,F_1,...,F_n,...$. For each $F_i$, let 
+Suppose we have a denumerable set $S$ of disjoint finite sets $F_0,F_1,...,F_n,...$. For each $F_i$, let 
 $N(F_i)$ be the size of $F_i$. Then define $f_0$ to be a function which assigns the elements of 
 $F_0$ to the first $N(F_i)$ numbers. Then, for each $n$, let $f_{n^+}$ be a function containing the ordered pairs of 
-$f_n$, and if $f_n$ contains a finite number of elements, add the ordered pairs which assigns the elements of 
+$f_n$, and if $f_n$ contains a finite number of elements, add to $f_{n^+}$ the ordered pairs which assigns the elements of 
 $F_{n^+}$ to the first $N(F_{n^+})$ elements of $\omega-\textrm{card}(f_n)$. If $f_n$ is infinite, then 
 take $f_{n^+}=f_n$. An obvious induction argument shows that each $f_n$ must be finite, meaning another easy 
 induction argument shows that each $f_n$ has all elements of each $F_i$ for $i\le n$ in its domain. Then take the function 
-$f$ to be the set of all ordered pairs $\rangle x,f_n(x)\rangle$ where $n\in F_n$. An easy induction argument shows that 
+$f$ to be the set of all ordered pairs $\langle x,f_n(x)\rangle$ where $x\in F_n$. An easy induction argument shows that 
 $f$ is a 1-1 function between $\cup S$ and $\omega$.
 \end{proof}
 
@@ -149,8 +147,8 @@ with $A-\{a_0\}$, a proper subset of $A$.
 $a_i$, let $a'_i$ be the set of all elements $x$ of $a_i$ such that $x\notin a_j$ for all $j\le n$ such that $j\ne i$. Obviously 
 $\cup S=\cup\{a'_0,...,a'_n\}$, and all elements $a'_i$ are disjoint with all other elements $a'_j$ where $j\le n$ and $j\ne i$. Each 
 $a_i$ is denumerable, and each $a'_i\subseteq a_i$, meaning (by Lemma 0.2) that each $a'_i$ is countable. Thus each $a'_i$ is either 
-finite or denumerable. Then the union of the set $F$ of all finite $a'_i's$ is finite. Then there are only a finite number of 
-possible $a'_i's$ that are denumerable. Say the set $S$ of remaining $a'_i$'s can be enumerated by the sequence $b_0,...,b_m$, and, for each 
+finite or denumerable. Then the union of the set $F$ of all finite $a'_i$'s is finite. Then there are only a finite number of 
+possible $a'_i$'s that are denumerable. Say the set $S$ of remaining $a'_i$'s can be enumerated by the sequence $b_0,...,b_m$, and, for each 
 $b_i$, $b_i$ can be enumerated as $c^i_0,c^i_1,...,c^i_n,...$. Then, for each $k$, the set $S_k$ of all $c^i_k$ for every $k$ is finite. Also, 
 $\cup S=\{S_0,S_1,...,S_n,...\}$, which is denumerable by Lemma 0.4. Thus $\cup D=(\cup F)\cup (\cup S)$, which is denumerable by 
 part (5) of this exercise.
