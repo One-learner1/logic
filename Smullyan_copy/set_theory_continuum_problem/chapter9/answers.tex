@@ -125,6 +125,21 @@ there are $2^{n+1}$ elemetns in $\mathcal{P}(n)$. Hence the set of all sets of n
 has $2^{n+1}$ elements.
 \end{proof}
 
+\begin{lemma}
+The union of a denumerable set of finite sets is denumerable.
+\end{lemma}
+\begin{proof}
+Suppose we have a denumerable set $S$ of finite sets $F_0,F_1,...,F_n,...$. For each $F_i$, let 
+$N(F_i)$ be the size of $F_i$. Then define $f_0$ to be a function which assigns the elements of 
+$F_0$ to the first $N(F_i)$ numbers. Then, for each $n$, let $f_{n^+}$ be a function containing the ordered pairs of 
+$f_n$, and if $f_n$ contains a finite number of elements, add the ordered pairs which assigns the elements of 
+$F_{n^+}$ to the first $N(F_{n^+})$ elements of $\omega-\textrm{card}(f_n)$. If $f_n$ is infinite, then 
+take $f_{n^+}=f_n$. An obvious induction argument shows that each $f_n$ must be finite, meaning another easy 
+induction argument shows that each $f_n$ has all elements of each $F_i$ for $i\le n$ in its domain. Then take the function 
+$f$ to be the set of all ordered pairs $\rangle x,f_n(x)\rangle$ where $n\in F_n$. An easy induction argument shows that 
+$f$ is a 1-1 function between $\cup S$ and $\omega$.
+\end{proof}
+
 \subsection*{Exercise 3.1}
 
 (1) Consider any denumerable set $A$. It can be placed in some sequence $a_0,a_1,...,a_n,...$. Then $A$ can be put into a 1-1 correspondence 
