@@ -173,9 +173,10 @@ with $A$ itself.
 \section*{Section 4}
 
 \subsection*{Exercise 4.1}
-Suppose that $A$ is infinite and there is a choice function for $A$. For any proper subset $x$ of $A$, let $g(x)=x\cup\{C(A-x)\}$, and let $g(A)=A$. By Theorem 8.1 of Chapter 3, 
+Suppose that $A$ is infinite and there is a choice function $C$ for $A$. For any proper subset $x$ of $A$, 
+let $g(x)=x\cup\{C(A-x)\}$, and let $g(A)=A$. By Theorem 8.1 of Chapter 3, 
 there is a function $h$ from $\omega$ into $\mathcal{P}(A)$ such that $h(0)=g(0)$, and for any $n$, $h(n^+)=g(h(n))$. Then take $a_0$ to be the sole element of of $h(0)$ and for 
-each $n$, take $a_{n^+})$ to be the sole element of $h(n^+)-h(n)$. Now, 
+each $n$, take $a_{n^+}$ to be the sole element of $h(n^+)-h(n)$. Now, 
 $a_0$ is the sole element of $h(0)=g(0)=0\cup\{C(A-0)\}=0\cup\{C(A)\}=\{C(A)\}$, that is, $a_0$ is the $C$-chosen element of $A$. Also note that 
 $h(n^+)=g(h(n))=h(n)\cup\{C(A-h(n))\}$, that is, $h(n^+)$ is the set of all elements of $h(n)$, as well as the $C$-chosen element of $A-h(n)$. We aim to show that 
 $a_{n^+}$ is the $C$-chosen element of $A-\{a_0,...,a_n\}$. First we show that $h(n)=\{a_0,...,a_n\}$. We have already proven the base case. Now suppose the result holds 
