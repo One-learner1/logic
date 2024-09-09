@@ -187,4 +187,20 @@ and thus the set of all $a_i$ is a denumerable subset of $A$.
 
 Note that the second proof of Theorem 4.2 provided in the book can be expanded in essentially the same was as this exercise.
 
+\section*{Section 7}
+
+\subsection*{Exercise 7.1}
+(a) Suppose $L$ is a lower section of a well ordered system $\langle A,\le\rangle$ and $\phi$ is an isomoprhism (with respect to $\le$) from 
+$L$ into $A$. Say that an element $x$ of $L$ moves backwards if $x>\phi(x)$. Suppose some $x\in L$ moved backwards. Because $L$ is a lower section of 
+$A$, this would mean that $\phi(x)\in L$.
+Then, because $\phi$ is an isomorphism, $\phi(x)>\phi(\phi(x))$. Thus $\phi(x)$ also moves backwards. But this means that there is no least element of 
+$L$ which moves backwards, contrary to the fact that $L$ is well ordered (because it is a subclass of $A$, which is well ordered). Hence no element of 
+$x$ moves backwards, meaning for every $x\in L$, $x\le\phi(x)$.
+
+(b) Here is how the above result yields both Theorem 2.1 of Chapter 6, and Lemma 7.2 of this chapter. In the case of Lemma 7.2, $\alpha$ is a lower section of 
+$On$ (because every ordinal is a lower section of $On$), and $On$ is well ordered, and $\phi$ is an isomorphism (with respect to $\le$) from $L$ into $On$, meaning, 
+by the above result, that for all $x\in\alpha$, $x\le\phi(x)$. Now, recall that Theorem 2.1 of Chapter 6 stated that, for an isomorphism $\phi$ from a 
+well ordered system $\langle A,\le\rangle$ into itself, no element $a$ moves backwards under $\phi$. This follows from part (a) of this exercise, as 
+$\phi$ is assumed to be an isomorphism from the whole of $A$, which itself is a lower section of $A$.
+
 \end{document}
