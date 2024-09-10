@@ -187,6 +187,56 @@ and thus the set of all $a_i$ is a denumerable subset of $A$.
 
 Note that the second proof of Theorem 4.2 provided in the book can be expanded in essentially the same was as this exercise.
 
+\section*{Section 6}
+
+\subsection*{Theorem 6.1}
+Here is why $\Sigma$ is closed under chain unions. For consider some nest $\mathcal{N}$ of elements of $\Sigma$. 
+Then $\cup\mathcal{N}$ is a 1-1 function (by Proposition 1.4 of Chapter 6). 
+Consider the domain $D$ of $\cup\mathcal{N}$. We show that the range $R$ of $\cup\mathcal{N}$ is $D\cup D'$ (which would mean that 
+$\cup\mathcal{N}$ is a 1-1 function from some subset $S$ of $A$ onto $S\cup S'$, meaning $\cup\mathcal{N}\in\Sigma$). If 
+$x\in R$, then, for some function $f\in\mathcal{N}$, $x\in\textrm{Ran}(f)$. 
+But $\textrm{Ran}(f)=\textrm{Dom}(f)\cup\textrm{Dom}(f)'$. Also $\textrm{Dom}(f)\subseteq D$ and 
+$\textrm{Dom}(f)'\subseteq D'$. Thus $\textrm{Dom}(f)\cup\textrm{Dom}(f)'\subseteq D\cup D'$, meaning 
+$x\in D\cup D'$.
+On the other hand, if $x\in D\cup D'$, either $x\in D$ or $x\in D'$. If 
+$x\in D$, then for some function $f\in\Sigma$, $x\in\textrm{Dom}(f)$. But $f$ is 1-1 onto $\textrm{Dom}(f)\cup\textrm{Dom}(f)'$, meaning 
+$x\in\textrm{Ran}(f)$, and thus $x\in R$. If $x\in D'$, then for some $f\in\mathcal{N}$ and some $y\in\textrm{Dom}(f)$, $x=\pi(y)$. But 
+$f$ is 1-1 onto $\textrm{Dom}(f)\cup\textrm{Dom}(f)'$, meaning $x\in\textrm{Ran}(f)$, and thus $x\in R$. Hence $R=D\cup D'$, 
+meaning $\cup\mathcal{N}\in\Sigma$.
+
+It is remarked that $(M\cup M')\times (M\cup M')=(M\times M)\cup (M\times M')\cup (M'\times M)\cup (M'\times M')$. This is by 
+Exercise 7.1 of Chapter 2.
+
+It is remarked that $\phi\cup\psi$ is 1-1 from $M\cup M'$ onto $(M\times M)$. Here is why this is. We already know 
+$\phi$ is a 1-1 map from $M$ onto $M\times M$, and $\psi$ is a 1-1 map from $M'$ onto $N$. Because 
+$N=\cup\{M\times M',M'\times M,M'\times M'\}$, $N$ and $M\times M$ are disjoint (because $M$ and $M'$ are disjoint). This is 
+why $\phi\cup\psi$ is 1-1.
+
+\subsection*{Theorem 6.4}
+Here is why $\Sigma$ is closed under chain unions. For consider some chain $C$ of elements of $\Sigma$. Then $\cup C$ is a function, 
+in fact a 1-1 map (by Proposition 1.4 of Chapter 6). Let $D$ be the domain of $\cup C$. 
+We need to show that the range of $\cup C$ is $D\times D$ (which would mean that 
+$\cup C\in\Sigma$). On the one hand, suppose that $x\in\textrm{Ran}(C)$. Then, for some $f\in C$, $x\in\textrm{Ran}(f)$. 
+But $\textrm{Ran}(f)=\textrm{Dom}(f)\times\textrm{Dom}(f)$, meaning $x\in D\times D$. On the other hand, suppose that 
+$x\in D\times D$. Then $x=\langle y,z\rangle$ for some $y,z\in D$. Then, for some functions 
+$f$ and $g$ (both in $C$), $y\in\textrm{Dom}(f)$ and $z\in\textrm{Dom}(g)$. But, $f$ and $g$ are comparable (because $C$ is a chain).
+Without loss of generality, suppose that $f\subseteq g$. Then $y$ and $z$ are both in the domain of 
+$g$, and because $g$ is 1-1 onto $\textrm{Dom}(g)\times\textrm{Dom}(g)$, $x\in\textrm{Ran}(g)$, and thus 
+$x\in R$. Hence $D\times D=R$, meaning $\cup C\in\Sigma$.
+
+Note why, if we assumed that $A-M$ were not smaller than $M$, we could conclude that $A-M$ would include a subset $M'$ of the same 
+size as $M$. This is because we are assuming the axiom of choice, and thus the trichotomy of cardinals holds, meaning either 
+$A-M\preceq M$ or $M\preceq A-M$. Because $A-M\prec M$ doesn't hold, this means that $M\preceq A-M$ holds. 
+
+It should be noted that $M$ must be infinite (or else we could not use Theorem 6.3). For $M$ is the domain of some function 
+$\phi$ that is 1-1 from $M$ onto $M\times M$, which means $M$ must be infinite.
+
+It is concluded from $M\cong A$ (say $\phi$ places $M$ into a 1-1 correspondence with $A$)
+and $M\cong M\times M$, that $A\cong A\times A$. Here is why this is. 
+First, $M\times M\cong M\times A$. This is because the set of all ordered pairs of the form 
+$\langle \langle x,y\rangle,\langle x,\phi(y)\rangle\rangle$ where $x\in M$ and $y\in M$ is a 1-1 correspondence between 
+$M\times M$ and $M\times A$. In a similar fashion, $M\times A\cong A\times A$. Thus $M\times M\cong A\times A$.
+
 \section*{Section 7}
 
 \subsection*{Notes}
