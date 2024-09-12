@@ -269,4 +269,144 @@ by the above result, that for all $x\in\alpha$, $x\le\phi(x)$. Now, recall that 
 well ordered system $\langle A,\le\rangle$ into itself, no element $a$ moves backwards under $\phi$. This follows from part (a) of this exercise, as 
 $\phi$ is assumed to be an isomorphism from the whole of $A$, which itself is a lower section of $A$.
 
+\section*{Section 8}
+
+\subsection*{Notes}
+Here is why we can do cardinal addition, multiplicaiton, and exponentiation without the axiom of choice. 
+We know that $On$ can be properly well ordered, and so can $On^2$. This explains why, for any cardinals 
+$c_1$ and $c_2$, $c_1+c_2$ and $c_1\cdot c_2$ will have cardinality, even without assuming the axiom of choice.
+
+Now, the above paragraph explains why every function from an ordinal to another ordinal can be well ordered, as such 
+a function is a subset of $On^2$ (this means the function is properly well orderd by Proposition 1.2 of Chapter 4). 
+Let $S$ be the set of all functions from $d$ to $c$ for any cardinals $c$ and $d$. We can define a proper well ordering $\le$ on 
+$S$ in the following way: for any functions $f$ and $g$ in $S$, 
+$f\le g$ iff $f\subseteq g$ or, neither $f\subseteq g$ nor $g\subseteq f$ and 
+the least ordered pair $\langle x,y\rangle$ in $f$ but not in $g$ is less than the least ordered pair 
+$\langle p,q\rangle$ in $g$ but not in $f$. This can be seen to be a well ordering. Hence there really is some 
+cardinal $c^d$. 
+
+\subsection*{Theorem 8.6}
+It is remarked that, if $\alpha$ and $\beta$ are both less than $c$ (where $c$ is an infinite cardinal), then $P(\alpha,\beta)<c$. Here is why 
+this is.
+
+\begin{lemma}
+Every finite ordinal $\alpha$ is equal to $P(\beta,\gamma)$ for some finite ordinals $\beta,\gamma$.
+\end{lemma}
+\begin{proof}
+By induction. $0=P(0,0)$ obviously holds, meaning the base case holds. Suppose, for all ordinals $\epsilon$
+less than some ordinal $\alpha$, the $P(\beta,\gamma)$ for which $\epsilon=P(\beta,\gamma)$ is such that 
+$\beta$ and $\gamma$ are both finite. Suppose that the $P(\beta,\gamma)$ for which 
+$\alpha=P(\beta,\gamma)$ was such that at least one of $\beta,\gamma$ is infinte.
+Now, $\alpha$ must be the successor of some ordinal; 
+say it is the successor of $P(\delta,\epsilon)$. By assumption, $\delta$ and $\epsilon$ are both finite. 
+Without loss of generality, suppose that $\textrm{max}(\delta,\epsilon)=\delta$. Then 
+$P(\delta,\epsilon)<P(\delta+1,\epsilon)$. But also 
+$P(\delta+1,\epsilon)<P(\beta,\gamma)$. But this contradicts the fact that 
+$P(\beta,\gamma)$ is the successor of $P(\delta,\epsilon)$. Thus neither of $\beta$ or $\gamma$ can 
+be infinite, meaning both $\beta$ and $\gamma$ must be finite.
+\end{proof}
+
+\begin{lemma}
+For all finite ordinals $\alpha,\beta$, $P(\alpha,\beta)$ is a finite ordinal.
+\end{lemma}
+\begin{proof}
+This is proven noting the following fact about a relation $R(x,y)$ on natural 
+numbers $x$ and $y$. If:\newline
+$C_1$ $R(0,0)$ holds;\newline
+$C_2$ if $R(x,y)$ holds, then both $R(x+1,y)$ and $R(x,y+1)$ hold;\newline
+then $R(x,y)$ holds for all natural numbers $x$ and $y$.
+
+$C_1$ $P(0,0)$ is finite, as $P(0,0)=0$.
+
+$C_2$ Suppose $P(x,y)$ is a natural number for finite ordinals $x$ and $y$. 
+There are three cases: $\textrm{max}(x,y)=y$ and $x\ne y$; $x=y$;
+$\textrm{max}(x,y)=x$ and $x\ne y$. We give the proof of the first case - the other three 
+cases are similar.
+
+So suppose $\textrm{max}(x,y)=y$ and $x\ne y$. If $x=y-1$, then 
+the successor of $\langle x,y\rangle$ is $\langle x+1,0\rangle$, meaning 
+$P(x+1,0)$ is finite, and an obvious induction argument 
+shows that $\langle x+1,z\rangle $ for $z\le x+1$ is such that 
+$P(x+1,z)$ is finite. Hence $P(x+1,y)$ is finite (because $y=x+1$). 
+Then $\langle 0,y+1\rangle$ is the successor of $\langle x+1,y\rangle$, meaning 
+$P(0,y+1)$ is finite. An obvious induction argument then shows that $P(z,y+1)$ for all 
+$z\le y$ is finite, therefore meaning $P(x,y+1)$ is also finite. Hence both 
+$P(x+1,y)$ and $P(x,y+1)$ are finite.
+
+If $x<y-1$, then $\langle x+1,y\rangle$ is the successor of $\langle x,y\rangle$, meaning 
+$P(x+1,y)$ is finite. An obvious induction argument shows that $P(z,y)$ is finite for all 
+$z<y$, meaning $P(y-1,y)$ is finite. Then a similar argument as in the preceeding paragraph shows that 
+$P(x,y+1)$ is finite.
+\end{proof}
+
+Then, going back to Theorem 8.6, $P(\alpha,\beta)$ must be finite if $\alpha$ and $\beta$ are both finite, meaning 
+$P(\alpha,\beta)<c$.
+
+\subsection*{Exercise 8.1}
+Suppose that $a$ and $a'$ are the same size, and that $b$ and $b'$ are the same size, and $a$ and $b$ are disjoint. Suppose 
+$f$ is a 1-1 function from $a$ onto $a'$ and $g$ is a 1-1 function from $b$ onto $b'$.
+Then the function $\phi$ from $a\cup b$ onto $a'\cup b'$ such that $\phi(x)=f(x)$ if 
+$x\in a$ and $\phi(x)=g(x)$ if $x\in b$ is 1-1, meaning $a\cup b$ and $a'\cup b'$ are of the same size.
+
+\subsection*{Exercise 8.2}
+Suppose that $a$ and $a'$ are the same size, and $b$ and $b'$ are the same size. Suppose $f$ is a 1-1 function 
+from $a$ onto $a'$ and $g$ is a 1-1 function from $b$ onto $b'$.
+Then the function $\phi$ from $a\times b$ onto $a\times b'$ such that 
+$\phi(\langle x,y\rangle)=\langle x,g(y)\rangle$ where $x\in a$ and $y\in b$ is 1-1. Then the function 
+$\psi$ from $a\times b'$ onto $a'\times b'$ such that 
+$\psi(\langle x,y\rangle)=\langle f(x),y\rangle$ where $x\in a$ and $y\in b'$ is 1-1. Thus 
+$a\times b$ is the same size as $a'\times b'$. 
+
+\subsection*{Exercise 8.3}
+Suppose $a,b,$ and $c$ are cardinals.
+
+(a) We show that $a\times b$ is the same size as $b\times a$, which would mean that 
+$a\cdot b=b\cdot a$. Let $\phi$ be the function from 
+$a\times b$ onto $b\times a$ such that $\phi(\langle x,y\rangle)=\langle y,x\rangle$ where 
+$x\in a$ and $y\in b$. It is easy to show that $\phi$ is 1-1.
+
+(b) We show that $a\times (b\times c)$ is the same size as $(a\times b)\times c$, which would 
+mean that $a\cdot (b\cdot c)=(a\cdot b)\cdot c$. Let $\phi$ be the function from 
+$a\times (b\times c)$ onto $(a\times b)\times c$ such that 
+$\phi(\langle x,\langle y,z\rangle\rangle)=\langle\langle x,y\rangle,z\rangle$ where 
+$x\in a$, $y\in b$, and $z\in c$. It is easy to show that $\phi$ is 1-1.
+
+(c) $a\cdot 0=0$ as the cardinality of $a\times 0$ is 0.
+
+(d) $a\cdot 1=a$ as $a\times 1$ is just the set of all ordered pairs 
+$\langle x,0\rangle$, where $x\in a$, and that can be put into a 1-1 correspondence with 
+$a$.
+
+(e) If $a\le b$, then $a\times c$ can be placed into a 1-1 correspondence with the set of all ordered pairs 
+$\langle x,y\rangle$ where $x\in b$ and $x\in a$, and $y\in c$, and this is a subset of $b\times c$, meaning 
+$a\cdot c\le b\cdot c$. 
+
+$\le$ cannot be replaced by $<$ here. For instance, by Corollary 8.7, for any infinite cardinal $c$, 
+if $a<b\le c$, then $a\times c=c=b\times c$.
+
+\subsection*{Exercise 8.4}
+The definition of cardinal exponentiation reads: \textquote{For cardinals $c$ and $d$, by $c^d$ is meant the cardinality of 
+the set of all functions from $d$ to $c$.} I was unclear if \textquote{to} meant \textquote{into} or \textquote{onto} here. 
+I am assuming it meant \textquote{into}. My reasoning is that this makes exponentiation work out the same was as normal exponentiation. For 
+instnace, when interpreting exponentiation with \textquote{into}, $2^2=4$, as the set of all functions from $2$ into $2$ just contains 
+the functions $\{\langle 0,1\rangle,\langle 1,0\rangle\},\{\langle 0,0\rangle,\langle 1,1\rangle\}$,
+$\{\langle 1,1\rangle,\langle 0,1\rangle\},$ and $\{\langle 0,0\rangle,\langle 1,0\rangle\}$, that is, it contains 
+four functions.
+
+Suppose $a,b,$ and $c$ are cardinals. Let $A$ be the set of all functions from 
+$a$ to $b$, and $S$ be the set of all functions from $A$ to $c$. Then $(a^b)^c$ is the cardinality of $S$. Also, 
+$a^{(b\times c)}$ is the cardinality of the set of all functions from $a$ to $b\times c$. For any function 
+$f\in S$, let $\phi(f)=g$, where $g$ is the set of all ordered pairs
+$\langle x,\langle y,z\rangle\rangle$ where $\langle x,y\rangle\in\textrm{Dom}(f)$ and 
+$f(\langle x,y\rangle)=z$. It can be seen that $\phi$ is 1-1 from $S$ onto  
+the set of all functions from $a$ to $b\times c$, and thus $(a^b)^c=a^{(b\times c)}$
+(they have the same cardinality). 
+
+\subsection*{Exercise 8.5}
+Suppose $c$ is an infinite cardinal and $d$ is a non-zero cardinal $\le c$. This means 
+$d\cdot c\le c\times c$, as $d\times c\subseteq c\times c$. Also, by Theorem 8.6, 
+$c\cdot c=c$, meaning $d\cdot c\le c$. But, because $d$ is non-zero, 
+$c\preceq d\times c$. Hence $d\cdot c\cong c$. But, because $d\cdot c$ and $c$ are both cardinals, this 
+means $d\cdot c=c$.
+
 \end{document}
