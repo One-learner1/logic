@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 10 Notes}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Section 1}
+
+\subsection*{Exercise 1.1}
+Suppose that $(A,R)$ is isomoprhic to $(A',R')$ under $\phi$.
+In fact, the biconditional does not need to be proven for any of these - proving the
+implication also proves the converse.
+
+(a) Suppose $(A,R)$ is proper. Then, for every $x\in A$, $x^*$ is a set. Now consider any 
+$x\in A'$. If $y\in x^*$, then $\phi^{-1}(y)\in \phi^{-1}(x)^*$. And, if 
+$y\in\phi^{-1}(x)^*$, then $\phi(y)\in x^*$. Thus there is a 1-1 correspondence between 
+$x^*$ and $\phi^{-1}(x)^*$, and because $\phi^{-1}(x)^*$ is a set, so is 
+$x^*$ (by the axiom of substitution).
+
+(b) Suppose $(A,R)$ is extensional. Then, for all elements $x,y$ in $A$, if 
+$x\ne y$, then there is at least one element $z$ in $A$ such that $z$ is a component of 
+one of $x$ or $y$, but not of both. Consider any elements $x,y$ in $A'$. If $x\ne y$, 
+then $\phi^{-1}(x)\ne\phi^{-1}(y)$, meaning, because $(A,R)$ is extensional, there is some 
+$z\in A$ such that $z$ is a component of one of $\phi^{-1}(x)$ or $\phi^{-1}(y)$, but not of 
+both. But, because $(A,R)$ and $(A',R')$ are isomorphic, it follows that $\phi(z)$ is a component of 
+$x$ or $y$, but not both, meaning $(A',R')$ is extensional.
+
+(c) Suppose $(A,R)$ is well founded. Thus every subclass of $A$ has an initial element. 
+Consider any subclass $B'$ of $A'$. Then the class $B$ of all 
+$x\in A$ such that $\phi(x)\in B'$ is in a 1-1 correspondence to $A'$. Then 
+$B$ has some initial element $x$. Then $\phi(x)\in B'$. If, for any 
+$y\in\phi(x)^*$, $y\in B'$, we would have $\phi^{-1}(y)\in B$. But 
+$\phi^{-1}(y)\in x^*$, contradicting the fact that $x$ is an intial element of 
+$B$. Hence $\phi(x)^*\cap B=\emptyset$, meaning $(A',R')$ is extensional.
+
+\end{document}
