@@ -78,4 +78,116 @@ $p(x)=\mathcal{P}(x)\cap A$ (with respect to the relational system $(A,\in)$). B
 when considering the relational system $(A,\in)$, $p(x)$ is a set for every subset $x$ of $A$, as 
 $p(x)\subseteq\mathcal{P}\cap A$. 
 
+\section*{Section 3}
+
+\subsection*{Notes}
+The formulation of the $On$-sequence in the proof of Theorem 3.1 is clearly not correct. Clause (2) reads: 
+%\textquote{$f_{\alpha+1}=f_\alpha$ (the set of all ordered pairs $\langle x,g(f^{''}_\alpha(x^*))\rangle$ such that 
+%$x\in\Gamma_{\alpha+1}-\Gamma_\alpha$)}. Obviously, it should instead read: \textquote{$f_{\alpha+1}=f_\alpha\cup S$ where 
+$S$ is the set of all ordered pairs $\langle x,g(f^{''}_\alpha(x^*))\rangle$ such that 
+$x\in\Gamma_{\alpha+1}-\Gamma_\alpha$. Here is why this definition is permitted by Theorem 5.8 (or Theorem 5.7) of 
+Chapter 6. We define $h$ as follows (for all sets). For any $x\in A$, let $R(x)$ be the $\Gamma$ rank of $x$. Also let 
+$\textrm{Func}(x)$ stand for \textquote{$x$ is a function}. Then define 
+\[ \forall y(y\in h(x)\equiv (\textrm{Func}(x)\wedge (y\in x\vee \exists z(y=\langle z,g(h''(x^*))\rangle \]
+\[ \wedge(\forall z\in\textrm{Dom}x (R(z)<R(x)\wedge\oldneg \exists \alpha(\forall z\in\textrm{Dom}x(R(z)<\alpha)\wedge R(x)<\alpha))))))) \]
+Or, less formally, given any function $x$, $h(x)$ is the set of all $y$ such that either 
+$y\in h(x)$, or $y$ has $\Gamma$ rank $\alpha$, where $\alpha$ is the least ordinal greater than all of the ranks of the 
+elements in the domain of $x$. Then we let $f_{\alpha+1}=h(f_\alpha)$, which clearly works.
+
+It should be noted that Theorem 3.1 also assumes that $\Gamma$ be well founded - this is necessary when using Theorem 2.1 while 
+proving the uniqueness of $F$.
+
+\subsection*{Exercise 3.1}
+Recall that Theorem 5.8 of Chapter 6 states: \textquote{For any function $h$ defined on all sets, there is a unique function $F$ 
+on $On$ such that for every ordinal $\alpha$, $F(\alpha)=h(F''(\alpha))$.} Now, the class of ordinals is well founded, meaning 
+$(On,\in)$ is well founded. Also (as can easliy be seen), every ordinal still has $(On,\in)$ rank $\alpha$. Then, by Theorem 3.1, 
+there is a unique function $F$ on $On$ such that for every $x\in On$, $F(x)=g(F''(x^*))=g(F''(x))$ (because $x^*=x$ in any relational 
+system $(A,\in)$).
+
+\section*{Section 4}
+
+For the following three exercises, let us note that if $F$ is a Mostowski-Shepherdson mapping of $A$, 
+and $S\subseteq A$, then $F''(S)$ is a Mostowski-Shepherdson mapping of $S$.
+
+\subsection*{Exercise 4.1}
+We show that for a finite set $A$ of ordinals, the Mostowsi-Sheperdson mapping on $A$ maps onto the natural number 
+$n$, where $n$ is the number of elements in $A$.
+
+\begin{proof}
+Assume $A$ is a finite set of ordinals. It has a Mostowski-Shepherdson map $F$ by Theorem 4.1 (because, for every class 
+$A$ of ordinals, $(A,\in)$ is proper, extensional, and well founded). We show by induction on the size of $A$ that 
+$F''(A)=n$, where $n$ is the number of elements in $A$.
+
+The base case, when $n=0$, obviously holds.
+
+Suppose the result holds for some $n$. Now consider a set $A$ containing $n+1$ ordinals. Let $F$ be the Mostowski-Shepherdson 
+mapping of $A$. $A$ must contain some greatest ordinal 
+$\alpha$ (as can easily be seen). Then $A-\{\alpha\}$ has $n$ elements. Also, $F''(A-\{\alpha\})$ is a Mostowski-Shepherdson map of 
+$A-\alpha$. Hence, by the induction assumption. $F''(A-\{\alpha\})=n$. The only element of 
+$F''(A)$ not in $F''(A-\{\alpha\})$ is $F(\alpha)$. Now, 
+$F(\alpha)=F''(\alpha)=F''(A-\{\alpha\})=n$ (because $\alpha$ is the greatest element of $A$). Thus 
+$F''(A)=F''(A-\{\alpha\})\cup\{F(\alpha)\}=n\cup\{n\}=n^+$, therefore completing the proof.
+\end{proof}
+
+\subsection*{Exercise 4.2}
+Suppose that $A$ is an infinite set of natural numbers and $F$ is the Mostowski-Shepherdson mapping on $A$. We need 
+to show that $F''(A)=\omega$. We prove this by showing that $F''(A)\subseteq\omega$ and $\omega\subseteq F''(A)$.
+
+On the one hand, suppose that $x\in F''(A)$, that is, $x=F(y)$ for some $y\in A$. Then 
+$F(y)=F''(y\cap A)$. Also, $F''(y\cap A)$ is a Mostowski Sheperdson mapping of $y\cap A$. Clearly 
+$y\cap A$ is a finite set of ordinals. Then, by Exercise 4.1, $F''(y\cap A)=n$ for some natural number $n$, meaning 
+$F(y)=n$. Hence $F(y)\in\omega$, meaning $F''(A)\subseteq\omega$.
+
+On the other hand, we prove by induction that $\omega\subseteq F''(A)$.
+
+Becuase $A$ is a set of natural numbers, it must have a least element $e$ (which is also the initial element of 
+$(A,\in)$), and thus $F(e)=F''(e\cap A)=F''(0)=0$, meaning $0\in F''(A)$.
+
+Suppose that for all numbers $m$ less than $n$, $m\in F''(A)$. Thus, for each $m$, $m=F(x)$ for some $x$. 
+Let $S$ be the set of all such $x$. It must have a greatest element $y$ (because it is a finite set). 
+Then, because $A$ is infinite, it must contain some natural number greater than $y$ - let $z$ be the least such element. 
+Then $F(z)=F''(z\cap A)=F''(S)=n$, meaning $n\in F''(a)$. Thus, by complete induction, $\omega\subseteq F''(A)$.
+
+Hence $\omega=F''(A)$.
+
+\subsection*{Exercise 4.3}
+
+\begin{lemma}
+For any set $A$ of ordinals, the Mostowski-Shepherdson mapping $F$ on $A$ is such that $F$ maps $A$ onto some ordinal.
+\end{lemma}
+\begin{proof}
+Consider some set $A$ of ordinals. By the counting theorem, $A$ can be put into a 1-1 correspondence with some ordinal 
+$\alpha$. We show that $F''(A)=\alpha$. Because $F$ is 1-1 from $A$ onto $\alpha$, $A$ can be placed into some sequence 
+$F_0,...,F_\beta,...$. We prove by transfinite induction on all $F_\beta\in A$ that $F_\beta=\beta$, which would mean 
+$F''(A)=\alpha$.
+
+$F_0=0$ obviously holds.
+
+Suppose that for all ordinals $\beta$ less than $\gamma$ (where $\gamma<\alpha$), $F(F_\beta)=\beta$. Then 
+$F(F_\gamma)=F''(F_\gamma\cap A)$, which is equal to the set of all $F(F_\beta)$ where $\beta<\gamma$, and by the 
+assumption, this means $F(F_\gamma)=\gamma$. Thus the proof is complete.
+\end{proof}
+
+Suppose that $A$ is a class of ordinals and $A$ is not a set. Let $F$ be the Mostowski-Shepherdson mapping on $A$. We are to show that 
+$F$ maps $A$ onto the class $On$ of all ordinals. We show this by showing that $F''(A)\subseteq On$ and $On\subseteq F''(A)$.
+
+On the one hand, suppose that $x\in F''(A)$. Then $x=F(y)$ for some $y\in A$. Now, $F(y)=F''(y\cap A)$. Clearly 
+$y\cap A$ is a set of ordinals. Hence, by Lemma 0.0, $F''(y\cap A)=\beta$ for some ordinal $\beta$. Thus 
+$x\in On$, meaning $F''(A)\subseteq On$.
+
+On the other hand, we prove by transfinite induction that $On\subseteq F''(A)$. Note that, because $A$ is a proper class 
+of ordinals, it can be placed into a 1-1 order preserving correspondence with $On$ (under some function $\phi$ from $On$ onto $A$). We show that 
+for every ordinal $\alpha$, $F(\phi(\alpha))=\alpha$ (thus meaning $On\subseteq F''(A))$. We prove this by transfinite induction.
+
+Obviously $F(\phi(0))=0$.
+
+Suppose, for all ordinals $\beta<\alpha$, $F(\phi(\beta))=\beta$. Then 
+$F(\phi(\alpha))=F''(\phi(\alpha)\cap A)=F''(S)$, where $S$ is the set of all $F(\phi(\beta))$ for all 
+$\beta<\alpha$. But, by assumption, this contains all ordinals less than $\alpha$. Hence 
+$F(\phi(\alpha))=F''(S)=\alpha$.
+
+Thus, for every ordinal $\alpha$, $F(\phi(\alpha))=\alpha$, which clearly means $On\subseteq F''(A)$.
+
+Thus $F''(A)=On$.
+
 \end{document}
