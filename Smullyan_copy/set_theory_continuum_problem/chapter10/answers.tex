@@ -72,24 +72,20 @@ $A$-rank, as we have seen above.} This is not fully accurate, as the paragraph a
 any relational system $(A,\in)$ where $A$ is \textit{transitive} and well founded is such that 
 every element of $x$ has $A$-rank. However, in Theorem 2.7, we are not assuming $A$ is transitive.
 
-This is however not an issue. The reason why $A$ being transitive and well founded means every element 
-has $A$-rank is because, in that case, for every subset $x$ of $A$, 
-$p(x)=\mathcal{P}(x)\cap A$ (with respect to the relational system $(A,\in)$). But, even if $A$ is not transitive,
-when considering the relational system $(A,\in)$, $p(x)$ is a set for every subset $x$ of $A$, as 
-$p(x)\subseteq\mathcal{P}\cap A$. 
+To me, it seems that we need to assume that $A$ is transitive.
 
 \section*{Section 3}
 
 \subsection*{Notes}
 The formulation of the $On$-sequence in the proof of Theorem 3.1 is clearly not correct. Clause (2) reads: 
-%\textquote{$f_{\alpha+1}=f_\alpha$ (the set of all ordered pairs $\langle x,g(f^{''}_\alpha(x^*))\rangle$ such that 
-%$x\in\Gamma_{\alpha+1}-\Gamma_\alpha$)}. Obviously, it should instead read: \textquote{$f_{\alpha+1}=f_\alpha\cup S$ where 
+\textquote{$f_{\alpha+1}=f_\alpha$ (the set of all ordered pairs $\langle x,g(f^{''}_\alpha(x^*))\rangle$ such that 
+$x\in\Gamma_{\alpha+1}-\Gamma_\alpha$)}. Obviously, it should instead read: \textquote{$f_{\alpha+1}=f_\alpha\cup S$ where 
 $S$ is the set of all ordered pairs $\langle x,g(f^{''}_\alpha(x^*))\rangle$ such that 
-$x\in\Gamma_{\alpha+1}-\Gamma_\alpha$. Here is why this definition is permitted by Theorem 5.8 (or Theorem 5.7) of 
+$x\in\Gamma_{\alpha+1}-\Gamma_\alpha$}. Here is why this definition is permitted by Theorem 5.8 (or Theorem 5.7) of 
 Chapter 6. We define $h$ as follows (for all sets). For any $x\in A$, let $R(x)$ be the $\Gamma$ rank of $x$. Also let 
 $\textrm{Func}(x)$ stand for \textquote{$x$ is a function}. Then define 
 \[ \forall y(y\in h(x)\equiv (\textrm{Func}(x)\wedge (y\in x\vee \exists z(y=\langle z,g(h''(x^*))\rangle \]
-\[ \wedge(\forall z\in\textrm{Dom}x (R(z)<R(x)\wedge\oldneg \exists \alpha(\forall z\in\textrm{Dom}x(R(z)<\alpha)\wedge R(x)<\alpha))))))) \]
+\[ \wedge(\forall z\in\textrm{Dom}(x) (R(z)<R(x))\wedge\oldneg \exists \alpha(\forall z\in\textrm{Dom}(x)(R(z)<\alpha)\wedge R(x)<\alpha)))))) \]
 Or, less formally, given any function $x$, $h(x)$ is the set of all $y$ such that either 
 $y\in h(x)$, or $y$ has $\Gamma$ rank $\alpha$, where $\alpha$ is the least ordinal greater than all of the ranks of the 
 elements in the domain of $x$. Then we let $f_{\alpha+1}=h(f_\alpha)$, which clearly works.
