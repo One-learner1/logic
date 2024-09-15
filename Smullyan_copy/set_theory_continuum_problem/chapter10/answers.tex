@@ -106,7 +106,7 @@ For the following three exercises, let us note that if $F$ is a Mostowski-Shephe
 and $S\subseteq A$, then $F''(S)$ is a Mostowski-Shepherdson mapping of $S$.
 
 \subsection*{Exercise 4.1}
-We show that for a finite set $A$ of ordinals, the Mostowsi-Sheperdson mapping on $A$ maps onto the natural number 
+We show that for a finite set $A$ of ordinals, the Mostowski-Shepherdson mapping on $A$ maps onto the natural number 
 $n$, where $n$ is the number of elements in $A$.
 
 \begin{proof}
@@ -119,9 +119,9 @@ The base case, when $n=0$, obviously holds.
 Suppose the result holds for some $n$. Now consider a set $A$ containing $n+1$ ordinals. Let $F$ be the Mostowski-Shepherdson 
 mapping of $A$. $A$ must contain some greatest ordinal 
 $\alpha$ (as can easily be seen). Then $A-\{\alpha\}$ has $n$ elements. Also, $F''(A-\{\alpha\})$ is a Mostowski-Shepherdson map of 
-$A-\alpha$. Hence, by the induction assumption. $F''(A-\{\alpha\})=n$. The only element of 
+$A-\alpha$. Hence, by the induction assumption, $F''(A-\{\alpha\})=n$. The only element of 
 $F''(A)$ not in $F''(A-\{\alpha\})$ is $F(\alpha)$. Now, 
-$F(\alpha)=F''(\alpha)=F''(A-\{\alpha\})=n$ (because $\alpha$ is the greatest element of $A$). Thus 
+$F(\alpha)=F''(\alpha\cap A)=F''(A-\{\alpha\})=n$ (because $\alpha$ is the greatest element of $A$). Thus 
 $F''(A)=F''(A-\{\alpha\})\cup\{F(\alpha)\}=n\cup\{n\}=n^+$, therefore completing the proof.
 \end{proof}
 
