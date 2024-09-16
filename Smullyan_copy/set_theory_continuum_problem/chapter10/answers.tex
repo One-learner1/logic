@@ -105,9 +105,26 @@ system $(A,\in)$).
 For the following three exercises, let us note that if $F$ is a Mostowski-Shepherdson mapping of $A$, 
 and $S\subseteq A$, then $F''(S)$ is a Mostowski-Shepherdson mapping of $S$.
 
+\begin{lemma}
+For any set $A$ of ordinals, the Mostowski-Shepherdson mapping $F$ on $A$ is such that $F$ maps $A$ onto some ordinal. More
+specifically, if $A$ is isomorphic to the ordinal $\alpha$, then $F''(A)=\alpha$.
+\end{lemma}
+\begin{proof}
+Consider some set $A$ of ordinals. By the counting theorem, $A$ is isomorphic to some ordinal
+$\alpha$ (let $\phi$ be an isomorphism from $\alpha$ onto $A$). We show that $F''(A)=\alpha$.
+Because $\phi$ is 1-1 from $\alpha$ onto $A$, $A$ can be put into the sequence $\phi(0),...,\phi(\beta),...$. We prove 
+by transfinite induction on all $\phi(\beta)\in A$ that $F(\phi(\beta))=\beta$, which would mean $F''(A)=\alpha$.
+
+$F(\phi(0))=0$ obviously holds.
+
+Suppose that for all ordinals $\beta$ less than $\gamma$ (where $\gamma<\alpha$), $F(\phi(\beta))=\beta$. Then
+$F(\phi(\gamma))=F''(\phi(\gamma)\cap A)$, which is equal to the set of all $F(\phi(\beta))$ where $\beta<\gamma$, and by the
+assumption, this means $F(\phi(\gamma))=\gamma$. Thus the proof is complete.
+\end{proof}
+
 \subsection*{Exercise 4.1}
 We show that for a finite set $A$ of ordinals, the Mostowski-Shepherdson mapping on $A$ maps onto the natural number 
-$n$, where $n$ is the number of elements in $A$.
+$n$, where $n$ is the number of elements in $A$. In fact, this is immediate from Lemma 0.1 - we provide an alternative proof below.
 
 \begin{proof}
 Assume $A$ is a finite set of ordinals. It has a Mostowski-Shepherdson map $F$ by Theorem 4.1 (because, for every class 
@@ -126,49 +143,27 @@ $F''(A)=F''(A-\{\alpha\})\cup\{F(\alpha)\}=n\cup\{n\}=n^+$, therefore completing
 \end{proof}
 
 \subsection*{Exercise 4.2}
+
 Suppose that $A$ is an infinite set of natural numbers and $F$ is the Mostowski-Shepherdson mapping on $A$. We need 
-to show that $F''(A)=\omega$. We prove this by showing that $F''(A)\subseteq\omega$ and $\omega\subseteq F''(A)$.
+to show that $F''(A)=\omega$. We prove this by showing that $F''(A)\subseteq\omega$ and $\omega\subseteq F''(A)$. Like 
+Exercise 4.1, this is in fact immediate from Lemma 0.1. An alternative proof is provided below.
 
 On the one hand, suppose that $x\in F''(A)$, that is, $x=F(y)$ for some $y\in A$. Then 
 $F(y)=F''(y\cap A)$. Also, $F''(y\cap A)$ is a Mostowski Sheperdson mapping of $y\cap A$. Clearly 
 $y\cap A$ is a finite set of ordinals. Then, by Exercise 4.1, $F''(y\cap A)=n$ for some natural number $n$, meaning 
 $F(y)=n$. Hence $F(y)\in\omega$, meaning $F''(A)\subseteq\omega$.
 
-On the other hand, we prove by induction that $\omega\subseteq F''(A)$.
-
-Becuase $A$ is a set of natural numbers, it must have a least element $e$ (which is also the initial element of 
-$(A,\in)$), and thus $F(e)=F''(e\cap A)=F''(0)=0$, meaning $0\in F''(A)$.
-
-Suppose that for all numbers $m$ less than $n$, $m\in F''(A)$. Thus, for each $m$, $m=F(x)$ for some $x$. 
-Let $S$ be the set of all such $x$. It must have a greatest element $y$ (because it is a finite set). 
-Then, because $A$ is infinite, it must contain some natural number greater than $y$ - let $z$ be the least such element. 
-Then $F(z)=F''(z\cap A)=F''(S)=n$, meaning $n\in F''(a)$. Thus, by complete induction, $\omega\subseteq F''(A)$.
+On the other hand, because $A$ is infinite, it can be placed in some sequence $a_0,a_1,...,a_n,...$. Using the same method as in 
+Lemma 0.1, we can show that each $a_i=i$, meaning $\omega\subseteq F''(A)$.
 
 Hence $\omega=F''(A)$.
 
 \subsection*{Exercise 4.3}
-
-\begin{lemma}
-For any set $A$ of ordinals, the Mostowski-Shepherdson mapping $F$ on $A$ is such that $F$ maps $A$ onto some ordinal.
-\end{lemma}
-\begin{proof}
-Consider some set $A$ of ordinals. By the counting theorem, $A$ can be put into a 1-1 correspondence with some ordinal 
-$\alpha$. We show that $F''(A)=\alpha$. Because $F$ is 1-1 from $A$ onto $\alpha$, $A$ can be placed into some sequence 
-$F_0,...,F_\beta,...$. We prove by transfinite induction on all $F_\beta\in A$ that $F_\beta=\beta$, which would mean 
-$F''(A)=\alpha$.
-
-$F_0=0$ obviously holds.
-
-Suppose that for all ordinals $\beta$ less than $\gamma$ (where $\gamma<\alpha$), $F(F_\beta)=\beta$. Then 
-$F(F_\gamma)=F''(F_\gamma\cap A)$, which is equal to the set of all $F(F_\beta)$ where $\beta<\gamma$, and by the 
-assumption, this means $F(F_\gamma)=\gamma$. Thus the proof is complete.
-\end{proof}
-
 Suppose that $A$ is a class of ordinals and $A$ is not a set. Let $F$ be the Mostowski-Shepherdson mapping on $A$. We are to show that 
 $F$ maps $A$ onto the class $On$ of all ordinals. We show this by showing that $F''(A)\subseteq On$ and $On\subseteq F''(A)$.
 
 On the one hand, suppose that $x\in F''(A)$. Then $x=F(y)$ for some $y\in A$. Now, $F(y)=F''(y\cap A)$. Clearly 
-$y\cap A$ is a set of ordinals. Hence, by Lemma 0.0, $F''(y\cap A)=\beta$ for some ordinal $\beta$. Thus 
+$y\cap A$ is a set of ordinals. Hence, by Lemma 0.1, $F''(y\cap A)=\beta$ for some ordinal $\beta$. Thus 
 $x\in On$, meaning $F''(A)\subseteq On$.
 
 On the other hand, we prove by transfinite induction that $On\subseteq F''(A)$. Note that, because $A$ is a proper class 
