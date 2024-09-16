@@ -148,15 +148,39 @@ Suppose that $A$ is an infinite set of natural numbers and $F$ is the Mostowski-
 to show that $F''(A)=\omega$. We prove this by showing that $F''(A)\subseteq\omega$ and $\omega\subseteq F''(A)$. Like 
 Exercise 4.1, this is in fact immediate from Lemma 0.1. An alternative proof is provided below.
 
+\begin{proof}
+
 On the one hand, suppose that $x\in F''(A)$, that is, $x=F(y)$ for some $y\in A$. Then 
 $F(y)=F''(y\cap A)$. Also, $F''(y\cap A)$ is a Mostowski Sheperdson mapping of $y\cap A$. Clearly 
 $y\cap A$ is a finite set of ordinals. Then, by Exercise 4.1, $F''(y\cap A)=n$ for some natural number $n$, meaning 
 $F(y)=n$. Hence $F(y)\in\omega$, meaning $F''(A)\subseteq\omega$.
 
-On the other hand, because $A$ is infinite, it can be placed in some sequence $a_0,a_1,...,a_n,...$. Using the same method as in 
-Lemma 0.1, we can show that each $a_i=i$, meaning $\omega\subseteq F''(A)$.
+On the other hand, we use induction to show $\omega\subseteq F''(A)$. 
+
+In the base case, obviously $F(e)=0$ for the least element $e$ of $A$. 
+
+Suppose $m\in F''(A)$ for all $m<n$. So 
+$n-1=F(x)$ for some $x\in A$. Because $A$ is infinite, there must be some element $y$ in $A$ such that 
+$y$ is greater than $x$ - let $y$ be the least such element. We show that 
+$F(y)=n$. Well, $F(y)=F''(y\cap A)$. 
+
+Clearly $F''(y\cap A)$ contains all natural numbers less than 
+$n$. For, by assumption, all numbers $m$ less than $n$ are $F(z)$ for some $z\in A$. Because $F$ is 1-1, 
+it must be that either $z=x$ or $z\in x$ (because either $F(z)=n-1$ or $F(z)\in F(x)$); 
+because $x<y$, $z<y$ ($z\in y$, meaning $F(z)\in F''(y\cap A)$).
+
+Next, we need to show that, if $z\in F''(y\cap A)$, then $z$ is a natural number less than $n$. But suppose we had 
+some $z\in F''(y\cap A)$ such that $F(z)\notin\omega$. Now, $z$ must be less than $y$. Hence either 
+$z=x$ or $z<x$. $z\ne x$ because $F(x)$ is a natural number. If $z<x$, then $z\in x$, which would mean 
+$F(z)\in F''(x\cap A)=F(x)$, contrary to the fact that $F(x)$ is a natural number. Thus all members of 
+$F''(y\cap A)$ are natural numbers.
+
+Hence the members of $F''(y\cap A)$ are those and only those natural numbers less than $n$, meaning 
+$F(y)=F''(y\cap A)=n$. Thus the induction is complete. 
 
 Hence $\omega=F''(A)$.
+
+\end{proof}
 
 \subsection*{Exercise 4.3}
 Suppose that $A$ is a class of ordinals and $A$ is not a set. Let $F$ be the Mostowski-Shepherdson mapping on $A$. We are to show that 
