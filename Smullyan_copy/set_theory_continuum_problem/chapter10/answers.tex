@@ -101,9 +101,8 @@ there is a unique function $F$ on $On$ such that for every $x\in On$, $F(x)=g(F'
 system $(A,\in)$).
 
 \section*{Section 4}
-
-For the following three exercises, let us note that if $F$ is a Mostowski-Shepherdson mapping of $A$, 
-and $S\subseteq A$, then $F''(S)$ is a Mostowski-Shepherdson mapping of $S$.
+Let us note that if $F$ is a Mostowski-Shepherdson mapping of $A$, and $S\subseteq A$, it does not necessarily 
+follow that $F''(S)$ is a Mostowski-Shepherdson mapping of $S$.
 
 \begin{lemma}
 For any set $A$ of ordinals, the Mostowski-Shepherdson mapping $F$ on $A$ is such that $F$ maps $A$ onto some ordinal. More
@@ -146,14 +145,10 @@ $F''(A)=F''(A-\{\alpha\})\cup\{F(\alpha)\}=n\cup\{n\}=n^+$, therefore completing
 
 Suppose that $A$ is an infinite set of natural numbers and $F$ is the Mostowski-Shepherdson mapping on $A$. We need 
 to show that $F''(A)=\omega$. We prove this by showing that $F''(A)\subseteq\omega$ and $\omega\subseteq F''(A)$. Like 
-Exercise 4.1, this is in fact immediate from Lemma 0.1. An alternative proof is provided below.
+Exercise 4.1, this is in fact immediate from Lemma 0.1. An alternative proof that 
+$\omega\subseteq F''(A)$ is provided below.
 
 \begin{proof}
-
-On the one hand, suppose that $x\in F''(A)$, that is, $x=F(y)$ for some $y\in A$. Then 
-$F(y)=F''(y\cap A)$. Also, $F''(y\cap A)$ is a Mostowski Sheperdson mapping of $y\cap A$. Clearly 
-$y\cap A$ is a finite set of ordinals. Then, by Exercise 4.1, $F''(y\cap A)=n$ for some natural number $n$, meaning 
-$F(y)=n$. Hence $F(y)\in\omega$, meaning $F''(A)\subseteq\omega$.
 
 On the other hand, we use induction to show $\omega\subseteq F''(A)$. 
 
