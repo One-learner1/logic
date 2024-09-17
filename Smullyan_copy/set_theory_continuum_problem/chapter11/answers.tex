@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{tikz}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 11 Notes}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Section 0}
+
+\subsection*{Notes}
+Note that elementarily equivalence only requires pure formulas 
+to be equivalent for the following reason: $A_1\ne A_2$ may be true, and if it is, 
+then if $a\in A_1$ and $a\notin A_2$, then there are formulas either true or false in 
+$(A_1,R_1)$ (formulas involving $a$ as a constant) where truth in $(A_2,R_2)$ isn't 
+even defined.
+
+\subsection*{Exercise 0.1}
+Suppose $\pi$ is an isomoprhism from $(A_1,R_1)$ to $(A_2,R_2)$. 
+We show by complete induction on the degrees of 
+formulas that for any pure formula $\phi(x_1,...,x_n)$ 
+and any elements $a_1,...,a_n$ of 
+$A_1$, the sentence $\phi(a_1,...,a_n)$ 
+is true in $(A_1,R_1)$ iff 
+$\phi(\pi(a_1),...,\pi(a_n))$ is true in 
+$(A_2,R_2)$, and, for any pure sentence $\phi$, 
+$\phi$ is true in $(A_1,R_1)$ iff $\phi$ is true 
+in $(A_2,R_2)$. 
+
+In the base case, $Pab$ (for elements $a,b$ in $A_1$) is true in $(A_1,R_1)$ iff 
+$aR_1b$ iff $\pi(a)R_2\pi(b)$ (because $\pi$ is an isomorphism) iff $P\pi(a)\pi(b)$ is true in 
+$(A_2,R_2)$. Thus the base case holds.
+
+Now suppose that the result holds for all formulas of degree less than $n$. That is, 
+for any pure formula $\phi(x_1,...,x_m)$ (of a degree less than $n$) and any elements 
+$a_1,...,a_m$ of $A_1$, $\phi(a_1,...,a_n)$ is true in $(A_1,R_1)$ iff
+$\phi(\pi(a_1),...,\pi(a_m))$ is true in $(A_2,R_2)$, and for any pure sentence $\phi$, 
+$\phi$ is true in $(A_1,R_1)$ iff $\phi$ is true in $(A_2,R_2)$. On the one hand, we consider a 
+pure formula with free variables of degree $n$. That is, we consider some pure formula 
+$\phi(x_1,...,x_m)$ and elements $a_1,...,a_m$ of $A_1$. There are then multiple cases.
+
+In the first case, $\phi(x_1,...,x_m)=(\psi\wedge\gamma)$ for some pure formulas 
+$\psi$ and $\gamma$ of degrees less than $n$. Either (1) 
+neither $\psi$ nor $\gamma$ are sentences; (2) $\psi$ is a sentence and 
+$\gamma$ is not; (3) $\psi$ is not a sentence and $\gamma$ is a sentence. We consider the first 
+case - the other two are nearly identical. In that case, because neither $\psi$ nor 
+$\gamma$ are sentences, $\psi=\psi(y_1,...,y_k)$ for some $k<n$.
+Similarly $\gamma=\gamma(z_1,...,z_l)$ for some $l<n$. Then 
+$\phi(x_1,...,x_m)=(\psi(y_1,...,y_k)\wedge\gamma(z_1,...,z_l))$. Then 
+$\phi(a_1,...,a_m)=(\psi(b_1,...,b_k)\wedge\gamma(c_1,...,c_l))$ where 
+each $b_i=a_j$ for some $j$ (and each $c_i=a_j$ for some $j$). Then 
+$\phi(a_1,...,a_m)$ is true in $(A_1,R_1)$ iff 
+$(\psi(b_1,...,b_k)\wedge\gamma(c_1,...,c_l))$ is true in $(A_1,R_1)$ iff 
+$(\psi(\pi(b_1,...,\pi(b_k)))\wedge\gamma(\pi(c_1),...,\pi(c_l)))$ is true in 
+$(A_2,R_2)$ (by the induction assumption) iff $\phi(\pi(a_1),...,\pi(a_m))$ is true 
+in $(A_2,R_2)$.
+
+The second case, where $\phi(x_1,...,x_m)=\oldneg\psi(x_1,...,x_m)$ 
+(for some formula $\psi(x_1,...,x_m)$, is similar to the first case.
+
+The third case is when $\phi(x_1,...,x_m)=(\exists x)\phi(x,x_1,...,x_m)$. Then 
+$(\exists x)\phi(x,x_1,...,x_m)$ is true iff $\phi(a,a_1,...,a_m)$ is true for some 
+$a\in A_1$, iff $\phi(\pi(a),\pi(a_1),...,\pi(a_m))$ is true in $(A_2,R_2)$ iff 
+$(\exists x)\phi(x,\pi(a_1),...,\pi(a_m))$ is true in $(A_2,R_2)$.
+
+On the other hand, we consider a pure sentence $\phi$ of degree $n$. The cases here are nearly 
+identical to the above three cases - we give the case for existential quantification.
+
+In that case, $\phi=(\exists x)\psi(x)$ for some $\psi$. Then
+$\phi$ is true in $(A_1,R_1)$ iff $\psi(a)$ is true in $(A_1,R_1)$ for some 
+$a\in A_1$ iff $\psi(\pi(a))$ is true in $(A_2,R_2)$ (by the induction assumption) iff 
+$(\exists x)\psi(x)$ is true in $(A_2,R_2)$.
+
+\end{document}
+
+ 
