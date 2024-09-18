@@ -106,16 +106,18 @@ In the proof, it is remarked that there are only $c$ formulas with constants in 
 than $S$. In the non-denumerable case, this does not at all seem obvious to me, so here is an explanation.
 
 Let $F_n$ be the set of all formulas (with constants in $S$) of length $n$.
-Informally, the set of all set of all sequences of length $n$ (where $n>0$) made up of only $(,),\exists,\oldneg,\vee,$ and constants in $S$, 
+Informally, the set of all sequences of length $n$ (where $n>0$) made up of only $(,),\exists,\oldneg,\vee,$ and constants in $S$, 
 has the same cardinality as $C^n$, where $C=\cup\{\{(\},\{)\},\{\oldneg\},\{\vee\},\{\exists\},\}$ (and $C$ has cardinality $c$). 
 Now, $\overline{\overline{C\times C}}=c$, 
 as $C\times C\cong C$ (by the fundemental theorem of cardinal arithmetic). Obviously the set of all formulas (with constants in $S$) 
 of length $n$ is not equal to $C^n$, but it is (informally) a subset of it. So $F_n\preceq C^n\cong c$. But it is obvious that 
 there is a subset of $F_n$ of cardinality $c$, meaning $c\preceq F_n$, and thus $F_n\cong c$ (by the Bernstein-Schröder Theorem).
 
-Then the set of all formulas with constants in $S$ is equal to $F:\cup\{F_1,F_2,...,F_n,...\}$. We can show that 
+Thus we know that, for each $i$, $\overline{\overline{F_i}}=c$. 
+Now, the set of all formulas with constants in $S$ is equal to $F:\cup\{F_1,F_2,...,F_n,...\}$. We can show that 
 $F\cong c$ in the following way. We show that $F\cong\mathbb{N}\times F_j$ (for any $j$; which one doesn't matter), and 
-$\mathbb{N}\times F_i\cong c$ (by the law of multiplicative absorpition). Well, we know that each 
+because $\mathbb{N}\times F_i\cong c$ (by the law of multiplicative absorpition), this would imply 
+$F\cong c$. Well, we know that each 
 $F_i$ is well ordered (because they have some cardinality at all). Note that $F$ is a union of pairwise disjoint sets. 
 So, for each $x\in F$, let $\phi(x)=\langle i,y\rangle$ where $i$ is the $F_i$ such that $x\in F_i$, and, if 
 $x$ is the $\alpha$th element of $F_i$, let $y$ be the $\alpha$th element of $F_j$. Because $\phi$ is a 1-1 
@@ -124,9 +126,9 @@ correspondence between $F$ and $\mathbb{N}\times F_j$, it follows that $F\cong c
 The above argument is certainly informal, and not technically correct (for instance, we are using cardinality theorems on things that 
 are not even formally sets). If we wanted to be more formal about it, we could try to represent the connectives (and parentheses) as sets.
 To do this, consider any set $S$. We must be able to find some five sets $a_0,a_1,a_2,a_3,a_4$ outside of $S$ (or else $V$ would be a set). 
-The we let $(=a_0,)=a_1,\exists=a_2,\oldneg=a_3,$ and $\vee=a_4$, and then the set of all formulas with constants in $S$ would just be 
-a subset of $H\times H$ where $H=\cup\{\{(\},\{)\},\{\exists\},\{\oldneg\},\{\vee\},S\}$, and we can proceed in a similar way as we did 
-in the informal argument.
+Then we let $(=a_0,)=a_1,\exists=a_2,\oldneg=a_3,$ and $\vee=a_4$, and then the set of all formulas with constants in $S$ would just be 
+a subset of $H\times H$ where $H=\cup\{\{(\},\{)\},\{\exists\},\{\oldneg\},\{\vee\},S\}$ (which has cardinality $c$), 
+and we can proceed in a similar way as we did in the informal argument.
 
 \end{document}
 
