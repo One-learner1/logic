@@ -130,6 +130,23 @@ Then we let $(=a_0,)=a_1,\exists=a_2,\oldneg=a_3,$ and $\vee=a_4$, and then the 
 a subset of $H\times H$ where $H=\cup\{\{(\},\{)\},\{\exists\},\{\oldneg\},\{\vee\},S\}$ (which has cardinality $c$), 
 and we can proceed in a similar way as we did in the informal argument.
 
+\subsection*{Exercise 1.1}
+This is just a matter of redifining truth over $A$ so that a sentence $X$ with constants in $A$ is true over 
+$A$ iff it is true in the relational system $(A,R)$. Then the rest of the proof is the same.
+
+\subsection*{Exercise 1.2}
+Assuming the axiom of choice, this means that every infinite set has a denumerable subset. Now, recall that the
+Skolem-Löwenheim theorem states that if $\phi$ (having no constants) 
+is satisfiable in any infinite relational system at all, 
+then it is satisfiable in a denumerable relational system. Well, suppose $\phi$ is satisfiable in 
+some infinite relational system $(A,R)$. Then $A$ can be well ordered (as the axiom of choice is assumed). Suppose that 
+$\phi$ has $n$ free variables, meaning it can be written as $\phi(x_1,...,x_n)$. Because it is satisfiable in 
+$(A,R)$, $\phi(a_1,...,a_n)$ is true in $(A,R)$ for some $a_1,...,a_n$ in $A$. Then, by the axiom of choice, there is a 
+denumerable subset $A_0$ of $A$ which includes all of $a_1,...,a_n$. By Exercise 1.1, there is some denumerable subset 
+$B$ of $A$ such that $B$ reflects $A$, and $B$ is an extension of $A_0$. 
+This means that, because $\phi(a_1,...,a_n)$ is true in $(A,R)$, 
+$\phi(a_1,...,a_n)$ will be true in $(B,R)$. Thus $\phi$ is satisfiable in the denumerable domain $B$.
+
 \end{document}
 
  
