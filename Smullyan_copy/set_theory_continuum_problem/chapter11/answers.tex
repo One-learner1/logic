@@ -130,6 +130,21 @@ Then we let $(=a_0,)=a_1,\exists=a_2,\oldneg=a_3,$ and $\vee=a_4$, and then the 
 a subset of $H\times H$ where $H=\cup\{\{(\},\{)\},\{\exists\},\{\oldneg\},\{\vee\},S\}$ (which has cardinality $c$), 
 and we can proceed in a similar way as we did in the informal argument.
 
+Also, we are using the fundemental theorem of cardinal arithmetic (FTCA), which requires the axiom of choice. 
+Actually, we can alter the proof of the FTCA (in chapter 9) so that $A\cong A\times A$ follows if 
+$A$ is infinite and we only know that that $A$ itself has a choice function. This works as, importantly, 
+Kuratowski's maximal principle (which is used in the proof of Theorem 6.1 of Chapter 9) does not require 
+AC to hold; only that $A$ is closed under chain unions and has a choice function. Throughout the proof of 
+the FTCA (and the preceeding lemmas), whenever we use the fact that AC holds, for whatever set 
+we need to have a choice function, we can show that it is also well ordered. 
+
+In particular, the additional assumptions to get the result in the preceeding paragraph would be
+(the below theorems and lemmas are from chapter 9):\newline
+Theorem 6.1: $A$ is well orderable and $A'$ is well orderable.\newline
+Theorem 6.2: $A$ and $B$ are well orderable (actually we don't need to know that $B$ is well orderable).\newline
+Lemma 6.3: $M$ and $M'$ are well orderable.\newline
+Theorem 6.4: $A$ is well orderable.
+
 \subsection*{Exercise 1.1}
 This is just a matter of redifining truth over $A$ so that a sentence $X$ with constants in $A$ is true over 
 $A$ iff it is true in the relational system $(A,R)$. Then the rest of the proof is the same.
