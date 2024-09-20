@@ -193,7 +193,18 @@ all elements of $\mathcal{P}(A)$ are definable, and because $\mathcal{P}(A)$ has
 $\overline{\overline{\mathcal{F}(A)}}=2^n$.
 
 For any elements $a$ and $b$ of $A$, let $a=b$ be an abbreviation for the formula
-\[ \forall x(x\in b\equiv x\in a) \]
+\[ \textrm{(1) }\forall x(x\in b\equiv x\in a) \]
+It should be noted why $=$ can only be defined because $A$ is extensional. That is,
+(1) is true iff $a=b$. Because $A$ is extensional, for all $a,b$ in $A$, 
+if $a\ne b$, then $a^*\ne b^*$. But recall that $a^*$ is the set of all $x\in A$ such that 
+$x\in a$ (and similarly for $b^*$),  
+as we are considering truth \textit{over} $A$, that is, 
+in the relational system $(A,\in)$. Obviously, if $a=b$, then (1) is true (over $A$). On the 
+other hand, if (1) is true over $A$, then it must be that $a^*=b^*$, and thus, by the 
+assumption of extensionality, $a=b$. The important thing is, if $A$ was not assumed to be 
+extensional, (1) could be true for all $a$ and $b$ in $A$ (whether or not $a=b$), because 
+it could be that $a^*$ and $b^*$ are both the emptyset!
+
 Now consider any finite subset $S$ of $A$. Either it is empty or it isn't.
 
 If it is empty, then it can be defined by the formula $x\in a\wedge x\notin a$ (for some 
@@ -221,14 +232,14 @@ $B$ reflects $A$ with respect to it.
 (3) It is obvious that the conjunction of any two good formulas is good.
 
 (4) Now consider a formula of the form $(\exists x)\phi(x,y_1,...,y_n)$
-($x,y_1,...,y_n)$ are the free variables of $\phi$) such that $\phi(x,y_1,...,y_n)$ is good. 
+$x,y_1,...,y_n)$ are the free variables of $\phi$) such that $\phi(x,y_1,...,y_n)$ is good. 
 We must show that the formula $(\exists x)\phi(x,y_1...,y_n)$ is good, i.e, that for any 
 elements $b_1,...,b_n$ of $B$, the sentence $(\exists x)\phi(x,b_1,...,b_n)$ is true over $B$ iff 
 it is true over $A$.
 
-\tab (a) Suppose it is true over $B$. Then it is obviously also true over $A$.
+(a) Suppose it is true over $B$. Then it is obviously also true over $A$.
 
-\tab (b) Conversely, suppose the sentence $(\exists x)\phi(x,b_1,...,b_n)$ is true over 
+(b) Conversely, suppose the sentence $(\exists x)\phi(x,b_1,...,b_n)$ is true over 
 $A$. Now, $\phi(x,b_1,...,b_n)$ defines some $B$-definable subset of $A$ (because it 
 has only constants in $B$). But, by the hypothesis, this means that there is some $b\in B$
 such that $\phi(b,b_1,...,b_n)$ is true over $A$. But, by the induction assumption, this means 
@@ -246,7 +257,7 @@ $\phi(b)$ is true over $B$. But $\phi(b)$ is true over $A$ for all
 $b\in C\cap B$. And it cannot be true for any element outside of $C\cap B$ (For, if 
 $\phi(a)$ were true over $B$ for some $a\notin C\cap B$ (and $a$ must be in $B$, so 
 $a\notin C$), then, because $B$ is an 
-elementary subsytem of $A$, $\phi(a)$ would be true over $A$, contradicting the fact that 
+elementary subsytem of $A$, $\phi(a)$ would be true over $A$, where $a\notin C$, contradicting the fact that 
 $\phi(x)$ defines $C$). Thus $\phi(x)$ defines $C\cap B$ over $B$.
 
 \end{document}
