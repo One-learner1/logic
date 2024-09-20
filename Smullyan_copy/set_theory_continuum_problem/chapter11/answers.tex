@@ -15,6 +15,7 @@
 \usepackage{geometry}
 \usepackage{hyperref}
 \usepackage{tikz}
+\usepackage{tabto}
 \newcommand*{\oldneg}{\mathord{\sim}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
@@ -138,6 +139,9 @@ AC to hold; only that $A$ is closed under chain unions and has a choice function
 the FTCA (and the preceeding lemmas), whenever we use the fact that AC holds, for whatever set 
 we need to have a choice function, we can show that it is also well ordered. 
 
+The above argument can also be expanded so that variables are accounted for; i.e, findining a denumerable 
+number of elements not in $A$ (this can be done, by the axiom of substitution).
+
 In particular, the additional assumptions to get the result in the preceeding paragraph would be
 (the below theorems and lemmas are from chapter 9):\newline
 Theorem 6.1: $A$ is well orderable and $A'$ is well orderable.\newline
@@ -161,6 +165,89 @@ denumerable subset $A_0$ of $A$ which includes all of $a_1,...,a_n$. By Exercise
 $B$ of $A$ such that $B$ reflects $A$, and $B$ is an extension of $A_0$. 
 This means that, because $\phi(a_1,...,a_n)$ is true in $(A,R)$, 
 $\phi(a_1,...,a_n)$ will be true in $(B,R)$. Thus $\phi$ is satisfiable in the denumerable domain $B$.
+
+\section*{Section 2}
+
+\subsection*{Exercise 2.1}
+This exercise does not seem solvable (whether or not $A$ is denumerable). For instance, suppose that no elements of 
+$A$ are $\in$-connected; that is, for all elements $x$ and $y$ of $A$, $x\notin y$ and $y\notin x$ both hold.
+Then, for all elements $a$ and $b$ of $A$, $Pab$ is always false (over $A$). An obvious induction then shows that, for 
+any formula $\phi(x)$ with constants in $A$, $\phi(a)$ has the same truth value for all elements $a$ of 
+$A$. What that means is that the only definable sets over $A$ are $\emptyset$ and $A$ itself.
+
+However, if $A$ was extensional, the situation would be different. Then (as can easily be seen), 
+$\phi(x)$: 
+\[ \forall y(y\in x\equiv y\in a) \]
+for some element $a$ of $A$, defines the subset $\{a\}$ of $A$. Thus, because $A$ is denumerable, it must at 
+least have a denumerable number of definable subsets. But the number of definable subsets of $A$ is at most denumerable
+(Reason: There are only a denumerable number of formulas with constants in $A$, hence there are at most a denumerable 
+number of formulas that define some subset of $A$, hence there are at most a denumerable number of definable 
+subsets of $A$). Thus, by the Bernstein-Schröder theorem, $\overline{\overline{\mathcal{F}(A)}}=\aleph_0$.
+
+I would assume that the exercise was really meant to assume that $A$ was extensional.
+
+\subsection*{Exercise 2.2}
+Suppose that $A$ is finite and extensional and $n$ is the number of elements of $A$. We will show that all finite 
+subsets of $A$ are definable (this argument also carries over to Exercise 2.1); that is, we show that 
+all elements of $\mathcal{P}(A)$ are definable, and because $\mathcal{P}(A)$ has $2^n$ elements, this means that 
+$\overline{\overline{\mathcal{F}(A)}}=2^n$.
+
+For any elements $a$ and $b$ of $A$, let $a=b$ be an abbreviation for the formula
+\[ \forall x(x\in b\equiv x\in a) \]
+Now consider any finite subset $S$ of $A$. Either it is empty or it isn't.
+
+If it is empty, then it can be defined by the formula $x\in a\wedge x\notin a$ (for some 
+$a\in A$).
+
+If it isn't empty, then it can be enumerated in some sequence $a_1,...,a_k$ of elements of 
+$A$. Then the formula
+\[ x=a_1\vee ...\vee x=a_k \] defines $S$.
+
+Thus $\overline{\overline{\mathcal{F}(A)}}=2^n$.
+
+\subsection*{Exercise 2.3}
+We suppose that every non-empty subset of $A$ which is $B$-definable over $A$ contains at least one 
+element of $B$. We prove by complete induction that $B$ reflects $A$ (the proof closely follows the proof of 
+Lemma 1.2). 
+
+\begin{proof}
+Call a formula (with constants in $B$) \textit{good} if 
+$B$ reflects $A$ with respect to it.
+
+(1) It is obvious that any atomic formula is good.
+
+(2) It is obvious that the negation of any good formula is good.
+
+(3) It is obvious that the conjunction of any two good formulas is good.
+
+(4) Now consider a formula of the form $(\exists x)\phi(x,y_1,...,y_n)$
+($x,y_1,...,y_n)$ are the free variables of $\phi$) such that $\phi(x,y_1,...,y_n)$ is good. 
+We must show that the formula $(\exists x)\phi(x,y_1...,y_n)$ is good, i.e, that for any 
+elements $b_1,...,b_n$ of $B$, the sentence $(\exists x)\phi(x,b_1,...,b_n)$ is true over $B$ iff 
+it is true over $A$.
+
+\tab (a) Suppose it is true over $B$. Then it is obviously also true over $A$.
+
+\tab (b) Conversely, suppose the sentence $(\exists x)\phi(x,b_1,...,b_n)$ is true over 
+$A$. Now, $\phi(x,b_1,...,b_n)$ defines some $B$-definable subset of $A$ (because it 
+has only constants in $B$). But, by the hypothesis, this means that there is some $b\in B$
+such that $\phi(b,b_1,...,b_n)$ is true over $A$. But, by the induction assumption, this means 
+$\phi(b,b_1,...,b_n)$ is also true over $B$. Thus $(\exists x)\phi(x,b_1,...,b_n)$ is true over 
+$B$.
+\end{proof}
+
+\subsection*{Exercise 2.4}
+Suppose that $B$ is an elementary subsystem of $A$. Let $C$ be any subset of $A$ that is 
+$B$-definable over $A$ (by some $\phi(x)$). We are to show that $C\cap B$ is definable over $B$. In fact, 
+$C\cap B$ is definable by $\phi(x)$ over $B$. For, because $\phi(x)$ $B$-defines $C$, 
+all constants of $\phi(x)$ are in $B$. But then, because $B$ is an elementary subsytem of 
+$A$, this means that for all $b\in C\cap B$, $\phi(b)$ is true over $A$ iff 
+$\phi(b)$ is true over $B$. But $\phi(b)$ is true over $A$ for all 
+$b\in C\cap B$. And it cannot be true for any element outside of $C\cap B$ (For, if 
+$\phi(a)$ were true over $B$ for some $a\notin C\cap B$ (and $a$ must be in $B$, so 
+$a\notin C$), then, because $B$ is an 
+elementary subsytem of $A$, $\phi(a)$ would be true over $A$, contradicting the fact that 
+$\phi(x)$ defines $C$). Thus $\phi(x)$ defines $C\cap B$ over $B$.
 
 \end{document}
 
