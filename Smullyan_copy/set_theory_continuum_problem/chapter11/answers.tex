@@ -260,6 +260,54 @@ $a\notin C$), then, because $B$ is an
 elementary subsytem of $A$, $\phi(a)$ would be true over $A$, where $a\notin C$, contradicting the fact that 
 $\phi(x)$ defines $C$). Thus $\phi(x)$ defines $C\cap B$ over $B$.
 
+\section*{Section 3}
+
+\subsection*{Notes}
+It is remarked (in the addendum to part 1) that a well ordering $W$ of $A$ could be 
+definable, in particular, by some formula $\phi(x,y)$. But the book has yet to 
+provide a definition of what it means for a set to be defined by 
+a formula with \textit{two} free variables. I would assume it means: 
+$\phi(x,y)$ defines (over $K$) the set of all ordered pairs $\langle x,y\rangle$ such that 
+$\phi(x,y)$ is true over $K$. This would match up with how it is used in the book.
+
+\subsection*{Theorem 3.3}
+The proof offered in the book of Theoerem 3.3 is not correct. In particular, consider the proof of Fact 1. In it, we are trying to 
+show that $a_0$ is $B$-describable over $A$. Now, the formula claimed to prove this is
+\[ \phi(x)\wedge (\forall y)(\phi(y)\supset w(x,y)) \] Now, in order for this to show that $a_0$ is $B$-describable over 
+$A$, that formula must only include constants in $B$ (by definition). However, we have no guarantee that 
+$w(x,y)$ has only constants in $B$, so this formula is incorrect.
+
+I suspect that this proof can be salvaged - particularly, if a well ordering $W$ (of $A$) is definable over $A$
+at all, then it seems likely that it must be defined by some formula $\phi(x,y)$ with \textit{no} constants. But I am 
+not able to prove this (or find a counterexample).
+
+\subsection*{Exercise 3.1}
+\begin{lemma}
+For any set $A$, any $\phi(x,y)$ (with constants in $A$), and any sets $x,y$ in $A$, 
+if $x^*=y^*$, $x\ne y$, and $\phi(x,y)$ is false (over $A$), then 
+\end{lemma}
+
+(a) We suppose that the relation $x=y$ is definable over $A$, and are to show that for any subset 
+$B$ of $A$, $B\subseteq B^*$.
+First, note that $A$ must be extensional. For suppose it weren't. Then, for some 
+$x,y$ in $A$ such that $x\ne y$, $x^*=y^*$. Now, suppose $\phi(x,y)$ defines the relation 
+$x=y$ over $A$. Then we would 
+
+(b) Suppose $A$ is extensional. Then (as we have seen in the exercises of section 2) $x=y$ is definable over 
+$A$. Hence, by part (a) of this exercise, $B\subseteq B^*$.
+
+(c) Note that the proof of Theorem 3.3 in the book is not correct (see the section 
+\textquote{Theorem 3.3} of these notes). So, for this exercise, let us assume the theorem 
+can in fact be proven. So suppose some well ordering of $A$ is definable over 
+$A$ and the relation $x=y$ is definable over $A$. Thus, by part (a) of this exercise, $B\subseteq B^*$ for any subset 
+$B$ of $A$. Consider any infinite subset $A_0$ of $A$. By Theorem 3.3, $A_0^*$ reflects $A$. Also 
+$A_0\subseteq A_0^*$, hence $A_0\preceq A_0^*$. But also $A_0^*\preceq A_0$ (Reason: $x\in B^*$ iff  
+$\{x\}$ is definable over $A$ by some formula $\phi(x)$ with constants in $B$. But, because 
+$A_0$ is infinite, there are $\overline{\overline{A_0}}$ formulas with constants in $A_0$, meaning 
+there are at most $\overline{\overline{A_0}}$ elements of $A_0^*$). Thus, by the Bernstein Schröder Theorem, 
+$A_0\cong A_0^*$, meaning $A_0^*$ is a superset of $A_0$ of no higher cardinality than $A_0$ such that 
+$A_0^*$ reflects $A$.
+
 \end{document}
 
  
