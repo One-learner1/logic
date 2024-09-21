@@ -301,6 +301,30 @@ there are at most $\overline{\overline{A_0}}$ elements of $A_0^*$). Thus, by the
 $A_0\cong A_0^*$, meaning $A_0^*$ is a superset of $A_0$ of no higher cardinality than $A_0$ such that 
 $A_0^*$ reflects $A$.
 
-\end{document}
+\section*{Section 5}
 
- 
+\subsection*{Theorem 5.1}
+Note that the first use of Theorem 3.2 (when $S$ may be finite) is not exactly what 
+the theorem states (as it only deals with infinite sets). However, the same proof actually 
+proves the statement being used in the proof of Theorem 5.1 which may include finite sets.
+
+Here is why $\beta$ is a limit ordinal. For $\beta$ is the smallest ordinal greater than all the 
+$\beta_n$. Clearly it is not the least ordinal. If it was a successor ordinal, then it would be the 
+successor of some $\alpha$. Then $\alpha$ would be some $b_n$. But then $b_{n+1}\ge\beta$, contradicting the 
+fact that $\beta$ was greater than all the $\beta_n$.
+
+\subsection*{Theorem 5.3}
+Here is why (2) is true. For suppose $\phi$ is good. Thus, for every $\alpha$ there is a limit ordinal 
+$\beta>\alpha$ such that $w_\beta$ completely reflects $W$ with respect to $\phi$. But, if 
+$w_\beta$ completely reflects $W$ with respect to $\phi$, then it also completely reflects 
+$W$ with respect to $\oldneg\phi$, meaning $\oldneg\phi$ is good.
+
+In the proof, we take $\beta_2$ to be the first ordinal after $\beta_1$ such that 
+$\cup\Gamma''(w_{\beta_1})\subseteq w_{\beta_2}$. Now, such a $\beta_2$ exists, as it is just 
+$\beta_1^+$. For, 
+if $x\in\cup\Gamma''(w_{\beta_1})$, then $x\in\Gamma(b_1,...,b_n)$ for some elements 
+$b_1,...,b_n$ in $w_{\beta_1}$. But, by definition, this means $x\in w_n$. But $\beta_1$ is a limit 
+ordinal, meaning $w_n\subseteq w_{\beta_1}$, and thus $w_n\subseteq w_{\beta_1^+}$, hence 
+$x\in w_{\beta_1^+}$.
+
+\end{document}
