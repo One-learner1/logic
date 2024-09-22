@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tabto}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 12 Notes}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Section 0}
+
+\subsection*{Notes}
+Note that when the relation $x=y$ is used (for instnace in $P_1$), this is a substitute for the formula
+\[ \forall z(z\in x\equiv z\in y) \]
+
+\section*{Section 1}
+
+\subsection*{Exercise 1.1}
+We show that for finite $\alpha$, $L_\alpha=R_\alpha$.
+\begin{proof}
+By induction. $L_0=R_0$ by definition. Suppose $L_n=R_n$ where $n$ is finite. By $C_0$, $L_n$ is transitive
+(and thus also extensional), and hence by $P_3$, $\mathcal{F}(L_n)=\mathcal{P}(L_n)=\mathcal{P}(R_n)=R_{n+1}$, 
+therefore completing the induction.
+\end{proof}
+
+\subsection*{Exercise 1.2}
+By Exercise 1.1, for finite $\alpha$, $L_\alpha=R_\alpha$. Then it obviously follows that 
+$L_\omega=R_\omega$. However, $L_{\omega+1}\ne R_{\omega+1}$. For recall that, if 
+a set $A$ is infinite, then $\mathcal{F}(A)\preceq A$. 
+Thus $L_{\omega+1}=\mathcal{F}(L_\omega)\preceq L_\omega$ (because $L_\omega$ is infinite). But
+$R_{\omega+1}=\mathcal{P}(R_\omega)\succ R_\omega$ ($\succ L_\omega$) by 
+Cantor's Theorem. Hence $L_{\omega+1}\ne R_{\omega+1}$, and $R_{\omega+1}\succ L_{\omega+1}$.
+\end{document}
