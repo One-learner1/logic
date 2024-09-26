@@ -58,4 +58,36 @@ a set $A$ is infinite, then $\mathcal{F}(A)\preceq A$.
 Thus $L_{\omega+1}=\mathcal{F}(L_\omega)\preceq L_\omega$ (because $L_\omega$ is infinite). But
 $R_{\omega+1}=\mathcal{P}(R_\omega)\succ R_\omega$ ($\succ L_\omega$) by 
 Cantor's Theorem. Hence $L_{\omega+1}\ne R_{\omega+1}$, and $R_{\omega+1}\succ L_{\omega+1}$.
+
+\subsection*{Section 2}
+
+\subsection*{Notes}
+It seems that $\phi$ being absolute over $K$ is in fact equivalent to 
+saying that $K$ reflects $V$ with respect to $\phi$.
+
+Note the following fallacious argument: \textquote{In fact, after showing that $x\in y$ is absolute, 
+it immediately follows that $x\in y^+$ is absolute, as it is a special case of $x\in y$ being 
+absolute.} This fails because $y^+$ is not a variable.
+
+It is remarked in (15) that \textquote{We already know that the condition \textquote{$x$ is transitive} is 
+absolute over any transitive class}. I do not know where we established this before this exercise.
+
+The formula provided in (26) does not seem correct. For, in fact, under this definition, it would follow that all ordered pairs were 
+unordered pairs. Because, for any ordered pair $x:\langle y,z\rangle=\{\{y\},\{y,z\}\}$, there are some 
+$w$ and $v$ such that $x=\{w,v\}$, namely when $w=\{y\}$ and $v=\{y,z\}$ (or the other way around). A better definition would be, intuitively, 
+$x$ is an ordered pair iff there are no elements $y,z$ such that $x=\langle y,z\rangle$, or, formally:
+\[ (\forall y\in x)(\forall z_1\in y)(\forall z_2\in y)(x\ne\langle z_1,z_2\rangle) \]
+
+The formula given for (29) does not seem correct to me. It needs to show that there are no 
+$\langle y,z_1\rangle\in x$ and $\langle y,z_2\rangle\in x$ where $z_1\ne z_2$, yet it does not guarantee this. Instead, we 
+can define (29) using (30) and (31). $x$ is a function iff
+\[ \textrm{$x$ is a relation}\wedge(\forall y\in\textrm{Dom}(x))(\forall z_1\in\textrm{Ran}(x))(\forall z_2\in\textrm{Ran}(x)) \]
+\[ ((\langle y,z_1\rangle\in x\wedge\langle y,z_2\rangle\in x)\supset z_1=z_2) \] 
+
+Here is the proof of (31). First, note that $y\in\textrm{Ran}(x)$ is $\Sigma_0$, as 
+$y\in\textrm{Ran}(x)$ iff $(\exists z\in x)(\exists w\in z)(\exists v\in w)(z=\langle v,y\rangle)$. Then 
+$y=\textrm{Ran}(x)$ iff
+\[ (\forall z\in y)(z\in\textrm{Ran}(x))\wedge(\forall z_1\in x)(\forall z_2\in z_1)(\forall z_3\in z_2) \]
+\[ (z_3\in\textrm{Dom}(x)\subset z_3\in y) \]
+
 \end{document}
