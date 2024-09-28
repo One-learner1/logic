@@ -65,6 +65,20 @@ Cantor's Theorem. Hence $L_{\omega+1}\ne R_{\omega+1}$, and $R_{\omega+1}\succ L
 It seems that $\phi$ being absolute over $K$ is in fact equivalent to 
 saying that $K$ reflects $V$ with respect to $\phi$.
 
+The definition given here of the absoluteness of a class over $K$ is clearly not correct. For, it says that:
+\textquote{We shall say that a class is absolute over $K$ if it is defined over $K$ by at least one formula that is absolute over 
+$K$.} But, under this definition, it would then follow that the only absolute class is $\emptyset$! For suppose we had an absolute class 
+$A$. Then, for every transitive class $K$, $A$ would be definable \textit{over K}. But $\emptyset$ is transitive. Thus $A$ would be definable 
+over $\emptyset$, meaning $A=\emptyset$.
+
+It seems clear to me that the definition of a class being absolute should be changed to:
+\textquote{We shall say that a class is absolute over $K$ if it is defined \textit{over V} by at least one formula that is 
+absolute over $K$.} This seems to be how the book is using the notion of absoluteness. Taking this definition also solves a problem with 
+Theorem 2.2. It is claimed that this proves that every $\Sigma_0$-class and relation is absolute; however, the proof only handles the case of 
+formulas. With the previous definition, we certainly would be unable to prove the desired result. But, with the altered definition, consider 
+any $\Sigma_0$ class $A$. Thus it is definable over $V$ by some $\Sigma_0$ formula $\phi(x)$. But we have already shown that 
+$\phi(x)$ is absolute (over any transitive class $K$). Thence it follows that $A$ is absolute.
+
 Note the following fallacious argument: \textquote{In fact, after showing that $x\in y$ is absolute, 
 it immediately follows that $x\in y^+$ is absolute, as it is a special case of $x\in y$ being 
 absolute.} This fails because $y^+$ is not a variable.
@@ -89,5 +103,31 @@ $y\in\textrm{Ran}(x)$ iff $(\exists z\in x)(\exists w\in z)(\exists v\in w)(z=\l
 $y=\textrm{Ran}(x)$ iff
 \[ (\forall z\in y)(z\in\textrm{Ran}(x))\wedge(\forall z_1\in x)(\forall z_2\in z_1)(\forall z_3\in z_2) \]
 \[ (z_3\in\textrm{Dom}(x)\subset z_3\in y) \]
+
+\section*{Section 3}
+
+\subsection*{Lemma $3.5^*$}
+The proof of this is not correct. In particular, it is claimed that $b=R''(a)$. However, because $R$ is only a relation, it 
+could be that, for some $x\in a$, $xRy$ for some $y\notin b$, which means it is possible that $b\ne R''(a)$. This is, however, not 
+an issue, as obviously $b\subseteq R''(a)$ (by definition of $a$).
+
+\subsection*{Lemma 3.6}
+The proof of this Lemma requires a correction. It is claimed that, because the relation $\mathcal{Q}(x)=y$ is absolute, it follows that 
+it is defined by some absolute formula $\phi(x,y)$. However, this was not the definition of a relation being absolute. Instead, 
+the definition said that it is absolute over every transitive class $K$ by \textit{some} formula $\phi$ (which is absolute over $K$). 
+This does not seem to necessarily imply 
+that the relation is defined by $\phi(x,y)$ \textit{simultaneously} over every transitive class $K$. However, consider $L_\alpha$ in the proof of this 
+Lemma. We know that it is transitive, so there is indeed some $\phi(x,y)$ that is absolute over $L_\alpha$ that defines the relation.
+
+Then clearly the formula \[ \textrm{(1) }\exists y(y\in c\wedge \phi(y,x)) \] defines $\mathcal{Q}''(c)$ over $L_\alpha$, as all 
+constants in (1) are in $L_\alpha$. Also $\phi(y,x)$ is absolute over $L_\alpha$, meaning (1) is true over $L_\alpha$ iff 
+$\phi(y,x)$ is true over $L_\alpha$ for some $y\in c$ iff $\phi(y,x)$ is true over $V$ for some $y\in c$ iff $x\in\mathcal{Q}''(x)$. 
+
+\subsection*{Proposition 3.7}
+There is an error in the proof of this proposition. The $\Sigma_0$ formula said to define the relation $\mathcal{Q}(x)=y$ actually 
+defines the more general relation: $\mathcal{Q}(\langle a,b\rangle)=a$, but we do not necessarily need to have that $a,b$ be constructible 
+sets (as the definition in the book is given). This is not an issue, as this altered relation still works with Lemma 3.6: In fact, even 
+if $\mathcal{Q}$ is not a function from constructible sets to constructible sets, the proof of Lemma 3.6 still works (or if it is a functions 
+whose domain or range is not just $L$).
 
 \end{document}
