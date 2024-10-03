@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{calc}
+\usepackage{amsfonts}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\title{Truth Table}
+\begin{document}
+\maketitle
+
+\newlength{\lena}
+\newlength{\lenb}
+\newlength{\lenc}
+\newlength{\lend}
+\newlength{\lene}
+\newlength{\lenf}
+\newlength{\leng}
+
+\settowidth{\lena}{$0$}
+\settowidth{\lenb}{$1$}
+\settowidth{\lenc}{$\supset$}
+\settowidth{\lend}{$\equiv$}
+\settowidth{\lene}{$\vee$}
+\settowidth{\lenf}{$\wedge$}
+\settowidth{\leng}{$\oldneg$}
+\newlength{\lenA}
+\settowidth{\lenA}{$A$}
+\newlength{\lenB}
+\settowidth{\lenB}{$B$}
+\newlength{\lenC}
+\settowidth{\lenC}{$C$}
+\newlength{\lenD}
+\settowidth{\lenD}{$D$}
+\newlength{\lenE}
+\settowidth{\lenE}{$E$}
+\newlength{\lenF}
+\settowidth{\lenF}{$F$}
+\newlength{\lenG}
+\settowidth{\lenG}{$G$}
+\newlength{\lenH}
+\settowidth{\lenH}{$H$}
+\newlength{\lenI}
+\settowidth{\lenI}{$I$}
+\newlength{\lenJ}
+\settowidth{\lenJ}{$J$}
+\newlength{\lenK}
+\settowidth{\lenK}{$K$}
+\newlength{\lenL}
+\settowidth{\lenL}{$L$}
+\newlength{\lenM}
+\settowidth{\lenM}{$M$}
+\newlength{\lenN}
+\settowidth{\lenN}{$N$}
+\newlength{\lenO}
+\settowidth{\lenO}{$O$}
+\newlength{\lenP}
+\settowidth{\lenP}{$P$}
+\newlength{\lenQ}
+\settowidth{\lenQ}{$Q$}
+\newlength{\lenR}
+\settowidth{\lenR}{$R$}
+\newlength{\lenS}
+\settowidth{\lenS}{$S$}
+\newlength{\lenT}
+\settowidth{\lenT}{$T$}
+\newlength{\lenU}
+\settowidth{\lenU}{$U$}
+\newlength{\lenV}
+\settowidth{\lenV}{$V$}
+\newlength{\lenW}
+\settowidth{\lenW}{$W$}
+\newlength{\lenX}
+\settowidth{\lenX}{$X$}
+\newlength{\lenY}
+\settowidth{\lenY}{$Y$}
+\newlength{\lenZ}
+\settowidth{\lenZ}{$Z$}
+\newlength{\leftlen}
+\newlength{\rightlen}
+\settowidth{\leftlen}{$($}
+\settowidth{\rightlen}{$)$}
+Truth table for:
+\[(X\supset Y)\]
+\begin{center}
+\begin{tabular}{lll}
+$X$ & $Y$ & $(X\supset Y)$ \\
+$1$ & $1$ & $\hspace{\leftlen}\hspace{\lenX}1\hspace{\lenc}\hspace{\lenY}\hspace{\rightlen}$\\
+$1$ & $0$ & $\hspace{\leftlen}\hspace{\lenX}0\hspace{\lenc}\hspace{\lenY}\hspace{\rightlen}$\\
+$0$ & $1$ & $\hspace{\leftlen}\hspace{\lenX}1\hspace{\lenc}\hspace{\lenY}\hspace{\rightlen}$\\
+$0$ & $0$ & $\hspace{\leftlen}\hspace{\lenX}1\hspace{\lenc}\hspace{\lenY}\hspace{\rightlen}$\\
+\end{tabular}
+\end{center}
+
+\end{document}

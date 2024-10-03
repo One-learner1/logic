@@ -1,0 +1,450 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{calc}
+\usepackage{amsfonts}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\title{Truth Tables}
+\begin{document}
+\maketitle
+
+
+\section*{Truth Table 1}
+Truth table for:
+\[(P\vee \oldneg P)\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}cccccc}
+$P$ & $($ & $P$ & $\vee $ & $\oldneg $ & $P$ & $)$ \\
+$1$ &  &  & $1$ & $0$ &  & \\
+$0$ &  &  & $1$ & $1$ &  & \\
+&  &  & $1$ & $2$ &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 2}
+Truth table for:
+\[X\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}}
+$X$ \\
+$1$ \\
+$0$ \\
+
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 3}
+Truth table for:
+\[Y\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}}
+$Y$ \\
+$1$ \\
+$0$ \\
+
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 4}
+Truth table for:
+\[\oldneg (Q\vee \oldneg Q)\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}ccccccc}
+$Q$ & $\oldneg $ & $($ & $Q$ & $\vee $ & $\oldneg $ & $Q$ & $)$ \\
+$1$ & $0$ &  &  & $1$ & $0$ &  & \\
+$0$ & $0$ &  &  & $1$ & $1$ &  & \\
+& $1$ &  &  & $2$ & $3$ &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 5}
+Truth table for:
+\[((P\wedge Q)\supset W)\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}c@{\hspace{10pt}}ccccccccc}
+$P$ & $Q$ & $W$ & $($ & $($ & $P$ & $\wedge $ & $Q$ & $)$ & $\supset $ & $W$ & $)$ \\
+$1$ & $1$ & $1$ &  &  &  & $1$ &  &  & $1$ &  & \\
+$1$ & $1$ & $0$ &  &  &  & $1$ &  &  & $0$ &  & \\
+$1$ & $0$ & $1$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$1$ & $0$ & $0$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$0$ & $1$ & $1$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$0$ & $1$ & $0$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$0$ & $0$ & $1$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$0$ & $0$ & $0$ &  &  &  & $0$ &  &  & $1$ &  & \\
+& & &  &  &  & $2$ &  &  & $1$ &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 6}
+Truth table for:
+\[((\oldneg Q\vee \oldneg P)\equiv (Q\supset \oldneg P))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}cccccccccccccccc}
+$P$ & $Q$ & $($ & $($ & $\oldneg $ & $Q$ & $\vee $ & $\oldneg $ & $P$ & $)$ & $\equiv $ & $($ & $Q$ & $\supset $ & $\oldneg $ & $P$ & $)$ & $)$ \\
+$1$ & $1$ &  &  & $0$ &  & $0$ & $0$ &  &  & $1$ &  &  & $0$ & $0$ &  &  & \\
+$1$ & $0$ &  &  & $1$ &  & $1$ & $0$ &  &  & $1$ &  &  & $1$ & $0$ &  &  & \\
+$0$ & $1$ &  &  & $0$ &  & $1$ & $1$ &  &  & $1$ &  &  & $1$ & $1$ &  &  & \\
+$0$ & $0$ &  &  & $1$ &  & $1$ & $1$ &  &  & $1$ &  &  & $1$ & $1$ &  &  & \\
+& &  &  & $3$ &  & $2$ & $4$ &  &  & $1$ &  &  & $5$ & $6$ &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 7}
+Truth table for:
+\[\oldneg ((Q\equiv P)\supset A)\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}c@{\hspace{10pt}}cccccccccc}
+$A$ & $P$ & $Q$ & $\oldneg $ & $($ & $($ & $Q$ & $\equiv $ & $P$ & $)$ & $\supset $ & $A$ & $)$ \\
+$1$ & $1$ & $1$ & $0$ &  &  &  & $1$ &  &  & $1$ &  & \\
+$1$ & $1$ & $0$ & $0$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$1$ & $0$ & $1$ & $0$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$1$ & $0$ & $0$ & $0$ &  &  &  & $1$ &  &  & $1$ &  & \\
+$0$ & $1$ & $1$ & $1$ &  &  &  & $1$ &  &  & $0$ &  & \\
+$0$ & $1$ & $0$ & $0$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$0$ & $0$ & $1$ & $0$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$0$ & $0$ & $0$ & $1$ &  &  &  & $1$ &  &  & $0$ &  & \\
+& & & $1$ &  &  &  & $3$ &  &  & $2$ &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 8}
+Truth table for:
+\[\oldneg ((B\wedge A)\supset (B\vee C))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}c@{\hspace{10pt}}cccccccccccccc}
+$A$ & $B$ & $C$ & $\oldneg $ & $($ & $($ & $B$ & $\wedge $ & $A$ & $)$ & $\supset $ & $($ & $B$ & $\vee $ & $C$ & $)$ & $)$ \\
+$1$ & $1$ & $1$ & $0$ &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & \\
+$1$ & $1$ & $0$ & $0$ &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & \\
+$1$ & $0$ & $1$ & $0$ &  &  &  & $0$ &  &  & $1$ &  &  & $1$ &  &  & \\
+$1$ & $0$ & $0$ & $0$ &  &  &  & $0$ &  &  & $1$ &  &  & $0$ &  &  & \\
+$0$ & $1$ & $1$ & $0$ &  &  &  & $0$ &  &  & $1$ &  &  & $1$ &  &  & \\
+$0$ & $1$ & $0$ & $0$ &  &  &  & $0$ &  &  & $1$ &  &  & $1$ &  &  & \\
+$0$ & $0$ & $1$ & $0$ &  &  &  & $0$ &  &  & $1$ &  &  & $1$ &  &  & \\
+$0$ & $0$ & $0$ & $0$ &  &  &  & $0$ &  &  & $1$ &  &  & $0$ &  &  & \\
+& & & $1$ &  &  &  & $3$ &  &  & $2$ &  &  & $4$ &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 9}
+Truth table for:
+\[((W\equiv Q)\vee W)\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}ccccccccc}
+$Q$ & $W$ & $($ & $($ & $W$ & $\equiv $ & $Q$ & $)$ & $\vee $ & $W$ & $)$ \\
+$1$ & $1$ &  &  &  & $1$ &  &  & $1$ &  & \\
+$1$ & $0$ &  &  &  & $0$ &  &  & $0$ &  & \\
+$0$ & $1$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$0$ & $0$ &  &  &  & $1$ &  &  & $1$ &  & \\
+& &  &  &  & $2$ &  &  & $1$ &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 10}
+Truth table for:
+\[(E\wedge \oldneg E)\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}cccccc}
+$E$ & $($ & $E$ & $\wedge $ & $\oldneg $ & $E$ & $)$ \\
+$1$ &  &  & $0$ & $0$ &  & \\
+$0$ &  &  & $0$ & $1$ &  & \\
+&  &  & $1$ & $2$ &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 11}
+Truth table for:
+\[((\oldneg W\supset Q)\supset (Q\supset \oldneg Q))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}ccccccccccccccc}
+$Q$ & $W$ & $($ & $($ & $\oldneg $ & $W$ & $\supset $ & $Q$ & $)$ & $\supset $ & $($ & $Q$ & $\supset $ & $\oldneg $ & $Q$ & $)$ & $)$ \\
+$1$ & $1$ &  &  & $0$ &  & $1$ &  &  & $0$ &  &  & $0$ & $0$ &  &  & \\
+$1$ & $0$ &  &  & $1$ &  & $1$ &  &  & $0$ &  &  & $0$ & $0$ &  &  & \\
+$0$ & $1$ &  &  & $0$ &  & $1$ &  &  & $1$ &  &  & $1$ & $1$ &  &  & \\
+$0$ & $0$ &  &  & $1$ &  & $0$ &  &  & $1$ &  &  & $1$ & $1$ &  &  & \\
+& &  &  & $3$ &  & $2$ &  &  & $1$ &  &  & $4$ & $5$ &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 12}
+Truth table for:
+\[((S\vee E)\wedge (\oldneg R\wedge T))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}c@{\hspace{10pt}}c@{\hspace{10pt}}cccccccccccccc}
+$E$ & $R$ & $S$ & $T$ & $($ & $($ & $S$ & $\vee $ & $E$ & $)$ & $\wedge $ & $($ & $\oldneg $ & $R$ & $\wedge $ & $T$ & $)$ & $)$ \\
+$1$ & $1$ & $1$ & $1$ &  &  &  & $1$ &  &  & $0$ &  & $0$ &  & $0$ &  &  & \\
+$1$ & $1$ & $1$ & $0$ &  &  &  & $1$ &  &  & $0$ &  & $0$ &  & $0$ &  &  & \\
+$1$ & $1$ & $0$ & $1$ &  &  &  & $1$ &  &  & $0$ &  & $0$ &  & $0$ &  &  & \\
+$1$ & $1$ & $0$ & $0$ &  &  &  & $1$ &  &  & $0$ &  & $0$ &  & $0$ &  &  & \\
+$1$ & $0$ & $1$ & $1$ &  &  &  & $1$ &  &  & $1$ &  & $1$ &  & $1$ &  &  & \\
+$1$ & $0$ & $1$ & $0$ &  &  &  & $1$ &  &  & $0$ &  & $1$ &  & $0$ &  &  & \\
+$1$ & $0$ & $0$ & $1$ &  &  &  & $1$ &  &  & $1$ &  & $1$ &  & $1$ &  &  & \\
+$1$ & $0$ & $0$ & $0$ &  &  &  & $1$ &  &  & $0$ &  & $1$ &  & $0$ &  &  & \\
+$0$ & $1$ & $1$ & $1$ &  &  &  & $1$ &  &  & $0$ &  & $0$ &  & $0$ &  &  & \\
+$0$ & $1$ & $1$ & $0$ &  &  &  & $1$ &  &  & $0$ &  & $0$ &  & $0$ &  &  & \\
+$0$ & $1$ & $0$ & $1$ &  &  &  & $0$ &  &  & $0$ &  & $0$ &  & $0$ &  &  & \\
+$0$ & $1$ & $0$ & $0$ &  &  &  & $0$ &  &  & $0$ &  & $0$ &  & $0$ &  &  & \\
+$0$ & $0$ & $1$ & $1$ &  &  &  & $1$ &  &  & $1$ &  & $1$ &  & $1$ &  &  & \\
+$0$ & $0$ & $1$ & $0$ &  &  &  & $1$ &  &  & $0$ &  & $1$ &  & $0$ &  &  & \\
+$0$ & $0$ & $0$ & $1$ &  &  &  & $0$ &  &  & $0$ &  & $1$ &  & $1$ &  &  & \\
+$0$ & $0$ & $0$ & $0$ &  &  &  & $0$ &  &  & $0$ &  & $1$ &  & $0$ &  &  & \\
+& & & &  &  &  & $2$ &  &  & $1$ &  & $4$ &  & $3$ &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 13}
+Truth table for:
+\[\oldneg (W\equiv Q)\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}cccccc}
+$Q$ & $W$ & $\oldneg $ & $($ & $W$ & $\equiv $ & $Q$ & $)$ \\
+$1$ & $1$ & $0$ &  &  & $1$ &  & \\
+$1$ & $0$ & $1$ &  &  & $0$ &  & \\
+$0$ & $1$ & $1$ &  &  & $0$ &  & \\
+$0$ & $0$ & $0$ &  &  & $1$ &  & \\
+& & $1$ &  &  & $2$ &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 14}
+Truth table for:
+\[\oldneg (\oldneg W\equiv W)\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}ccccccc}
+$W$ & $\oldneg $ & $($ & $\oldneg $ & $W$ & $\equiv $ & $W$ & $)$ \\
+$1$ & $1$ &  & $0$ &  & $0$ &  & \\
+$0$ & $1$ &  & $1$ &  & $0$ &  & \\
+& $1$ &  & $3$ &  & $2$ &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 15}
+Truth table for:
+\[((Q\vee \oldneg Q)\equiv (Q\supset Q))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}cccccccccccccc}
+$Q$ & $($ & $($ & $Q$ & $\vee $ & $\oldneg $ & $Q$ & $)$ & $\equiv $ & $($ & $Q$ & $\supset $ & $Q$ & $)$ & $)$ \\
+$1$ &  &  &  & $1$ & $0$ &  &  & $1$ &  &  & $1$ &  &  & \\
+$0$ &  &  &  & $1$ & $1$ &  &  & $1$ &  &  & $1$ &  &  & \\
+&  &  &  & $2$ & $3$ &  &  & $1$ &  &  & $4$ &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 16}
+Truth table for:
+\[((P\wedge \oldneg P)\equiv (P\supset \oldneg P))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}ccccccccccccccc}
+$P$ & $($ & $($ & $P$ & $\wedge $ & $\oldneg $ & $P$ & $)$ & $\equiv $ & $($ & $P$ & $\supset $ & $\oldneg $ & $P$ & $)$ & $)$ \\
+$1$ &  &  &  & $0$ & $0$ &  &  & $1$ &  &  & $0$ & $0$ &  &  & \\
+$0$ &  &  &  & $0$ & $1$ &  &  & $0$ &  &  & $1$ & $1$ &  &  & \\
+&  &  &  & $2$ & $3$ &  &  & $1$ &  &  & $4$ & $5$ &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 17}
+Truth table for:
+\[(((Q\wedge W)\equiv W)\equiv (W\vee Q))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}ccccccccccccccccc}
+$Q$ & $W$ & $($ & $($ & $($ & $Q$ & $\wedge $ & $W$ & $)$ & $\equiv $ & $W$ & $)$ & $\equiv $ & $($ & $W$ & $\vee $ & $Q$ & $)$ & $)$ \\
+$1$ & $1$ &  &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & \\
+$1$ & $0$ &  &  &  &  & $0$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & \\
+$0$ & $1$ &  &  &  &  & $0$ &  &  & $0$ &  &  & $0$ &  &  & $1$ &  &  & \\
+$0$ & $0$ &  &  &  &  & $0$ &  &  & $1$ &  &  & $0$ &  &  & $0$ &  &  & \\
+& &  &  &  &  & $3$ &  &  & $2$ &  &  & $1$ &  &  & $4$ &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 18}
+Truth table for:
+\[((\oldneg E\wedge \oldneg S)\equiv (Q\vee \oldneg S))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}c@{\hspace{10pt}}cccccccccccccccc}
+$E$ & $Q$ & $S$ & $($ & $($ & $\oldneg $ & $E$ & $\wedge $ & $\oldneg $ & $S$ & $)$ & $\equiv $ & $($ & $Q$ & $\vee $ & $\oldneg $ & $S$ & $)$ & $)$ \\
+$1$ & $1$ & $1$ &  &  & $0$ &  & $0$ & $0$ &  &  & $0$ &  &  & $1$ & $0$ &  &  & \\
+$1$ & $1$ & $0$ &  &  & $0$ &  & $0$ & $1$ &  &  & $0$ &  &  & $1$ & $1$ &  &  & \\
+$1$ & $0$ & $1$ &  &  & $0$ &  & $0$ & $0$ &  &  & $1$ &  &  & $0$ & $0$ &  &  & \\
+$1$ & $0$ & $0$ &  &  & $0$ &  & $0$ & $1$ &  &  & $0$ &  &  & $1$ & $1$ &  &  & \\
+$0$ & $1$ & $1$ &  &  & $1$ &  & $0$ & $0$ &  &  & $0$ &  &  & $1$ & $0$ &  &  & \\
+$0$ & $1$ & $0$ &  &  & $1$ &  & $1$ & $1$ &  &  & $1$ &  &  & $1$ & $1$ &  &  & \\
+$0$ & $0$ & $1$ &  &  & $1$ &  & $0$ & $0$ &  &  & $1$ &  &  & $0$ & $0$ &  &  & \\
+$0$ & $0$ & $0$ &  &  & $1$ &  & $1$ & $1$ &  &  & $1$ &  &  & $1$ & $1$ &  &  & \\
+& & &  &  & $3$ &  & $2$ & $4$ &  &  & $1$ &  &  & $5$ & $6$ &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 19}
+Truth table for:
+\[(((Q\equiv P)\supset P)\equiv (P\supset (Q\equiv P)))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}ccccccccccccccccccccc}
+$P$ & $Q$ & $($ & $($ & $($ & $Q$ & $\equiv $ & $P$ & $)$ & $\supset $ & $P$ & $)$ & $\equiv $ & $($ & $P$ & $\supset $ & $($ & $Q$ & $\equiv $ & $P$ & $)$ & $)$ & $)$ \\
+$1$ & $1$ &  &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  &  & \\
+$1$ & $0$ &  &  &  &  & $0$ &  &  & $1$ &  &  & $0$ &  &  & $0$ &  &  & $0$ &  &  &  & \\
+$0$ & $1$ &  &  &  &  & $0$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $0$ &  &  &  & \\
+$0$ & $0$ &  &  &  &  & $1$ &  &  & $0$ &  &  & $0$ &  &  & $1$ &  &  & $1$ &  &  &  & \\
+& &  &  &  &  & $3$ &  &  & $2$ &  &  & $1$ &  &  & $4$ &  &  & $5$ &  &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 20}
+Truth table for:
+\[(\oldneg (B\wedge A)\equiv (\oldneg B\vee \oldneg A))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}cccccccccccccccc}
+$A$ & $B$ & $($ & $\oldneg $ & $($ & $B$ & $\wedge $ & $A$ & $)$ & $\equiv $ & $($ & $\oldneg $ & $B$ & $\vee $ & $\oldneg $ & $A$ & $)$ & $)$ \\
+$1$ & $1$ &  & $0$ &  &  & $1$ &  &  & $1$ &  & $0$ &  & $0$ & $0$ &  &  & \\
+$1$ & $0$ &  & $1$ &  &  & $0$ &  &  & $1$ &  & $1$ &  & $1$ & $0$ &  &  & \\
+$0$ & $1$ &  & $1$ &  &  & $0$ &  &  & $1$ &  & $0$ &  & $1$ & $1$ &  &  & \\
+$0$ & $0$ &  & $1$ &  &  & $0$ &  &  & $1$ &  & $1$ &  & $1$ & $1$ &  &  & \\
+& &  & $2$ &  &  & $3$ &  &  & $1$ &  & $5$ &  & $4$ & $6$ &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 21}
+Truth table for:
+\[(((W\equiv Q)\vee W)\equiv (W\supset Q))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}ccccccccccccccccc}
+$Q$ & $W$ & $($ & $($ & $($ & $W$ & $\equiv $ & $Q$ & $)$ & $\vee $ & $W$ & $)$ & $\equiv $ & $($ & $W$ & $\supset $ & $Q$ & $)$ & $)$ \\
+$1$ & $1$ &  &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & \\
+$1$ & $0$ &  &  &  &  & $0$ &  &  & $0$ &  &  & $0$ &  &  & $1$ &  &  & \\
+$0$ & $1$ &  &  &  &  & $0$ &  &  & $1$ &  &  & $0$ &  &  & $0$ &  &  & \\
+$0$ & $0$ &  &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & \\
+& &  &  &  &  & $3$ &  &  & $2$ &  &  & $1$ &  &  & $4$ &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 22}
+Truth table for:
+\[(((E\wedge \oldneg Q)\vee S)\equiv ((Q\wedge \oldneg S)\vee E))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}c@{\hspace{10pt}}ccccccccccccccccccccccc}
+$E$ & $Q$ & $S$ & $($ & $($ & $($ & $E$ & $\wedge $ & $\oldneg $ & $Q$ & $)$ & $\vee $ & $S$ & $)$ & $\equiv $ & $($ & $($ & $Q$ & $\wedge $ & $\oldneg $ & $S$ & $)$ & $\vee $ & $E$ & $)$ & $)$ \\
+$1$ & $1$ & $1$ &  &  &  &  & $0$ & $0$ &  &  & $1$ &  &  & $1$ &  &  &  & $0$ & $0$ &  &  & $1$ &  &  & \\
+$1$ & $1$ & $0$ &  &  &  &  & $0$ & $0$ &  &  & $0$ &  &  & $0$ &  &  &  & $1$ & $1$ &  &  & $1$ &  &  & \\
+$1$ & $0$ & $1$ &  &  &  &  & $1$ & $1$ &  &  & $1$ &  &  & $1$ &  &  &  & $0$ & $0$ &  &  & $1$ &  &  & \\
+$1$ & $0$ & $0$ &  &  &  &  & $1$ & $1$ &  &  & $1$ &  &  & $1$ &  &  &  & $0$ & $1$ &  &  & $1$ &  &  & \\
+$0$ & $1$ & $1$ &  &  &  &  & $0$ & $0$ &  &  & $1$ &  &  & $0$ &  &  &  & $0$ & $0$ &  &  & $0$ &  &  & \\
+$0$ & $1$ & $0$ &  &  &  &  & $0$ & $0$ &  &  & $0$ &  &  & $0$ &  &  &  & $1$ & $1$ &  &  & $1$ &  &  & \\
+$0$ & $0$ & $1$ &  &  &  &  & $0$ & $1$ &  &  & $1$ &  &  & $0$ &  &  &  & $0$ & $0$ &  &  & $0$ &  &  & \\
+$0$ & $0$ & $0$ &  &  &  &  & $0$ & $1$ &  &  & $0$ &  &  & $1$ &  &  &  & $0$ & $1$ &  &  & $0$ &  &  & \\
+& & &  &  &  &  & $3$ & $4$ &  &  & $2$ &  &  & $1$ &  &  &  & $6$ & $7$ &  &  & $5$ &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 23}
+Truth table for:
+\[((\oldneg Q\wedge (\oldneg Q\wedge Q))\equiv (Q\equiv \oldneg Q))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}cccccccccccccccccccc}
+$Q$ & $($ & $($ & $\oldneg $ & $Q$ & $\wedge $ & $($ & $\oldneg $ & $Q$ & $\wedge $ & $Q$ & $)$ & $)$ & $\equiv $ & $($ & $Q$ & $\equiv $ & $\oldneg $ & $Q$ & $)$ & $)$ \\
+$1$ &  &  & $0$ &  & $0$ &  & $0$ &  & $0$ &  &  &  & $1$ &  &  & $0$ & $0$ &  &  & \\
+$0$ &  &  & $1$ &  & $0$ &  & $1$ &  & $0$ &  &  &  & $1$ &  &  & $0$ & $1$ &  &  & \\
+&  &  & $3$ &  & $2$ &  & $5$ &  & $4$ &  &  &  & $1$ &  &  & $6$ & $7$ &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 24}
+Truth table for:
+\[(((S\vee E)\vee U)\equiv (S\vee (E\vee U)))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}c@{\hspace{10pt}}ccccccccccccccccccccc}
+$E$ & $S$ & $U$ & $($ & $($ & $($ & $S$ & $\vee $ & $E$ & $)$ & $\vee $ & $U$ & $)$ & $\equiv $ & $($ & $S$ & $\vee $ & $($ & $E$ & $\vee $ & $U$ & $)$ & $)$ & $)$ \\
+$1$ & $1$ & $1$ &  &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  &  & \\
+$1$ & $1$ & $0$ &  &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  &  & \\
+$1$ & $0$ & $1$ &  &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  &  & \\
+$1$ & $0$ & $0$ &  &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  &  & \\
+$0$ & $1$ & $1$ &  &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  &  & \\
+$0$ & $1$ & $0$ &  &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $0$ &  &  &  & \\
+$0$ & $0$ & $1$ &  &  &  &  & $0$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  &  & \\
+$0$ & $0$ & $0$ &  &  &  &  & $0$ &  &  & $0$ &  &  & $1$ &  &  & $0$ &  &  & $0$ &  &  &  & \\
+& & &  &  &  &  & $3$ &  &  & $2$ &  &  & $1$ &  &  & $4$ &  &  & $5$ &  &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 25}
+Truth table for:
+\[(((W\wedge C)\wedge T)\equiv (W\wedge (C\wedge T)))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}c@{\hspace{10pt}}ccccccccccccccccccccc}
+$C$ & $T$ & $W$ & $($ & $($ & $($ & $W$ & $\wedge $ & $C$ & $)$ & $\wedge $ & $T$ & $)$ & $\equiv $ & $($ & $W$ & $\wedge $ & $($ & $C$ & $\wedge $ & $T$ & $)$ & $)$ & $)$ \\
+$1$ & $1$ & $1$ &  &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  &  & \\
+$1$ & $1$ & $0$ &  &  &  &  & $0$ &  &  & $0$ &  &  & $1$ &  &  & $0$ &  &  & $1$ &  &  &  & \\
+$1$ & $0$ & $1$ &  &  &  &  & $1$ &  &  & $0$ &  &  & $1$ &  &  & $0$ &  &  & $0$ &  &  &  & \\
+$1$ & $0$ & $0$ &  &  &  &  & $0$ &  &  & $0$ &  &  & $1$ &  &  & $0$ &  &  & $0$ &  &  &  & \\
+$0$ & $1$ & $1$ &  &  &  &  & $0$ &  &  & $0$ &  &  & $1$ &  &  & $0$ &  &  & $0$ &  &  &  & \\
+$0$ & $1$ & $0$ &  &  &  &  & $0$ &  &  & $0$ &  &  & $1$ &  &  & $0$ &  &  & $0$ &  &  &  & \\
+$0$ & $0$ & $1$ &  &  &  &  & $0$ &  &  & $0$ &  &  & $1$ &  &  & $0$ &  &  & $0$ &  &  &  & \\
+$0$ & $0$ & $0$ &  &  &  &  & $0$ &  &  & $0$ &  &  & $1$ &  &  & $0$ &  &  & $0$ &  &  &  & \\
+& & &  &  &  &  & $3$ &  &  & $2$ &  &  & $1$ &  &  & $4$ &  &  & $5$ &  &  &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 26}
+Truth table for:
+\[((B\supset A)\equiv (A\supset B))\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}ccccccccccccc}
+$A$ & $B$ & $($ & $($ & $B$ & $\supset $ & $A$ & $)$ & $\equiv $ & $($ & $A$ & $\supset $ & $B$ & $)$ & $)$ \\
+$1$ & $1$ &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & \\
+$1$ & $0$ &  &  &  & $1$ &  &  & $0$ &  &  & $0$ &  &  & \\
+$0$ & $1$ &  &  &  & $0$ &  &  & $0$ &  &  & $1$ &  &  & \\
+$0$ & $0$ &  &  &  & $1$ &  &  & $1$ &  &  & $1$ &  &  & \\
+& &  &  &  & $2$ &  &  & $1$ &  &  & $3$ &  &  & 
+\end{tabular}
+\end{center}
+
+
+\end{document}
