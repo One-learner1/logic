@@ -20,7 +20,7 @@ the updated sub) and then another recursive call for "Y" (which would be next2->
 
 This example would work in a similar way if main->expresison was "(A^(A>B))", sub->expression was "(A>B)", 
 a remove of "(X>Y"), and a replace of "(~XvY)". In that case, main->expression would be changed to "(A^(~AvB))". */ 
-void replace(formula* main, formula* sub, list* off_limits, list* original_subs, char replace[], char remove[]);
+void single_replace(formula* main, formula* sub, list* off_limits, list* original_subs, char replace[], char remove[]);
 
 // this functions creates a linked list of all the sub-formulas of a given formula f
 list* formula_list(formula* f, list* linked_list);
@@ -29,41 +29,55 @@ list* formula_list(formula* f, list* linked_list);
 "((X=Y)=(Y=X))", a replace of "((A>B)^(B>A))" and a remove of "(A=B)", main->expression would first be changed to 
 "(((X=Y)>(Y=X))^((Y=X)>(X=Y)))" and then eventually to
 "((((X>Y)^(Y>X))>((Y>X)^(X>Y)))^(((Y>X)^(X>Y))>((X>Y)^(Y>X))))" */
-void full_replace(formula* main, formula* current, list* original_subs, char replace[], char remove[]);
+void full_replace(formula* main, formula* current, list* off_limits, list* original_subs, char replace[], char remove[]);
+
+// function to check if a given string has correct syntax (exit if it does not), and print an error if it
+// does not have correct syntax
+void syntax_error(char* expression) {
+	if (!syntax(expression)) {
+		printf("\"%s\": Invalid syntax.\n", expression);
+		exit(1);
+	}
+}
 
 int main() {
 	char remove[MAX_LENGTH]; // the type of expression to be replaced
 	char replace[MAX_LENGTH]; // the type of expression to replace remove with
 	formula* f = new formula;
+	list* off_limits = nullptr;
 	printf("What is the formula?\n");
-	scanf("%s", f->expression)
+	scanf("%s", f->expression);
 	f = alt_tree(f->expression, 0);
 	printf("What will be replaced?\n");
 	scanf("%s", remove);
 	printf("What will replace it?\n");
 	scanf("%s", replace);
-	list* original_subs = formula_list(f);
-	full_replace(f, original_subs, replace, remove);
+	syntax_error(f->expression);
+	syntax_error(remove);
+	syntax_error(replace);
+	list* original_subs = formula_list(f, original_subs);
+	full_replace(f, f, off_limits, original_subs, replace, remove);
 	printf("The updated formula is:\n%s\n", f->expression);
 }
 
-void full_replace(formula* main, formula* current, list* original_subs, char replace[], char remove[]) {
+void full_replace(formula* main, formula* current, list* off_limits, list* original_subs, char replace[], char remove[]) {
 	if (main == nullptr || current == nullptr)
 		return;
+	// now we initialize the off_limits linked list
 	int start_index = current->start_index;
-	replace(main, current, original_subs, replace, remove);
+	single_replace(main, current, off_limits, original_subs, replace, remove);
 	// because the main formula may have changed, we need to find the potentially updated current
 	current = main->start_find(start_index);
 	if (current->next1 == nullptr)
 		return;
-	replace(main, current->next1, original_subs, replace, remove);
+	full_replace(main, current->next1, off_limits, original_subs, replace, remove);
 	current = main->start_find(start_index);
 	if (current->next2 == nullptr)
 		return;
-	replace(main, current->next2, original_subs, replace, remove);
+	full_replace(main, current->next2, off_limits, original_subs, replace, remove);
 } 
 
-list* formula_list(formula* f, linked_list) {
+list* formula_list(formula* f, list* linked_list) {
 	// if we have made no recursive calls, we must ensure that linked_list starts out as nullptr (or else there might already be 
 	// other things on the list, which we don't want
 	if (f->previous == nullptr && linked_list != nullptr)
@@ -72,28 +86,28 @@ list* formula_list(formula* f, linked_list) {
 	if (f->next1 == nullptr)
 		return linked_list;
 	linked_list = formula_list(f->next1, linked_list);
-	if (f->next2 = nullptr)
+	if (f->next2 == nullptr)
 		return linked_list;
 	return formula_list(f->next2, linked_list);
 }
 
 int var_comp(char string1[], char string2[]) {
-	char variable variables1[MAX_VARIABLES]; // to store the variables in string1
-	char variable variables2[MAX_VARIABLES]; // to store the variables in string2
+	variable variables1[MAX_VARIABLES]; // to store the variables in string1
+	variable variables2[MAX_VARIABLES]; // to store the variables in string2
 	int i;
 	bool same = true;
 	variable_find(string1, variables1);
 	variable_find(string2, variables2);
-	for (i = 0; i < MAX_LENGTH && isupper(variables2[i]); i++) {
+	for (i = 0; i < MAX_LENGTH && isupper(variables2[i].var); i++) {
 		// if the variable in the current index of varibles2 is not in variables1, we return -1
-		if (variable_check(variables1, variables2[i]) == -1)
+		if (variable_check(variables1, variables2[i].var) == -1)
 			return -1;
-		if (variables1[i] != variables2[i])
+		if (variables1[i].var != variables2[i].var)
 			same = false;
 	}
 	// if we have not returned in the loop, we know that string2 does not have any variables that string1 does not 
 	// contain. Now we see if they contain the same exact variables
-	if (i == MAX_LENGTH || !isupper(variables1[i]))
+	if (i == MAX_LENGTH || !isupper(variables1[i].var))
 		return same?0:1;
 	// otherwise string1 has more variables
 	return 1;
@@ -118,18 +132,18 @@ bool replaceable(formula* main, formula* sub, char replace[], char remove[]) {
 	for (int i = 0; i < strlen(remove); i++) {
 		// if the character in remove is not standing for a regular expression (i.e., either a connective or parenthesis)
 		// we ensure that this character is the same as that in the sub expression
-		if (!isupper(remove[i]) {
+		if (!isupper(remove[i])) {
 			if (sub->expression[i] != remove[i])
 				return false;
 			count++;
 		}
 		// otherwise we have a regular expression
 		// we first check if the regular expression has already been used
-		if (used[remove[i]-65) {
+		if (used[remove[i]-65]) {
 			// if the potential formula of the sub-formula at the current index does not match the 
 			// stored regular expression, we return false;
 			potential(sub->expression, count, end_index, temp_expression); 
-			if (strcmp(expression[remove[i]-65], temp_expression) != 0)
+			if (strcmp(expressions[remove[i]-65], temp_expression) != 0)
 				return false;
 			// othwerwise we concatenate the expression onto the thing we will replace with
 			strcat(replace_with, temp_expression);
@@ -148,39 +162,35 @@ bool replaceable(formula* main, formula* sub, char replace[], char remove[]) {
 	     (strlen(main->expression)-strlen(sub->expression))+strlen(replace_with) > MAX_LENGTH)
 		return false;
 	// otherwise we need to replace the formula
-	strcpy(temp_expression, &main->expression[start_index+strlen(sub->expression));
+	strcpy(temp_expression, &main->expression[start_index+strlen(sub->expression)]);
 	strcpy(&main->expression[start_index], replace_with);
 	strcpy(&main->expression[start_index+strlen(replace_with)], temp_expression);
 	return true;
 }
 	
 
-void replace(formula* main, formula* sub, list* off_limits, list* original_subs, char replace[], char remove[]) {
-	int index = -1;
+void single_replace(formula* main, formula* sub, list* off_limits, list* original_subs, char replace[], char remove[]) {
 	int start_index = sub->start_index; // to store the start index of the given sub_formula
 	list* alt_offlimits = new list;
-	if (formula == nullptr || sub == nullptr)
+	if (main == nullptr || sub == nullptr)
 		return;
 	// if sub is not found to be a sub_formula of main formula or original formula, we return
 	if (!main->sub_find(sub))
 		return; // we should not be returning here
 	// if this was in the original formula, and is not off limits, then we see if we can replace the current sub formula
-	if (original_subs->find_expression(sub->expression) && !off_limits->find_exppression(sub->expression)) {
-		ret_val = replacable(main, sub, replace, remove);
-		if (ret_val > 0) {
-			off_limits = add_beg(off_limits, sub);
-			num_offlimits++;
-			index = sub->start_index;
-			main = altree(main->expression, 0);	
+	if (original_subs->find_expression(sub->expression) && !off_limits->find_expression(sub->expression)) {
+		if (replaceable(main, sub, replace, remove)) {
+			off_limits = off_limits->add_beg(off_limits, sub);
+			main = alt_tree(main->expression, 0);	
 			sub = main->start_find(start_index);
 		}
 	}
 	if (sub->next1 == nullptr)
 		return;
-	alt_offlimits = off_limits->copy();
-	replace(main, sub->next1, alt_offlimits, original_subs, replace, remove);
+	alt_offlimits = off_limits->create_copy();
+	single_replace(main, sub->next1, alt_offlimits, original_subs, replace, remove);
 	sub = main->start_find(start_index);
 	if (sub->next2 == nullptr)
 		return;
-	replace(main, sub->next2, off_limits, original_subs, freplace, remove);
+	single_replace(main, sub->next2, off_limits, original_subs, replace, remove);
 }
