@@ -422,5 +422,3 @@ inline bool list::find_expression(char* expression) {
 	}
 	return false;
 }
-
-	
