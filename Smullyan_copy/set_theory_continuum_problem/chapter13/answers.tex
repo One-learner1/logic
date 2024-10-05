@@ -1,0 +1,133 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tabto}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 13 Notes}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Section 1}
+
+\subsection*{Notes}
+Note that, on page 170, the separation axioms are listed incorrectly. They should use the 
+formula $\phi(y,y_1,...,y_n)$, not $\phi(x,y_1,...,y_n)$.
+
+\subsection*{Exercise 1.1 (a)}
+We prove that $K$ has property $F'_2$ iff all the separation axioms are true over $K$.
+
+(a) On the one hand, suppose that $K$ has property $F'_2$. Now consider any set $x\in K$ and any 
+formula $\phi(y,y_1,...,y_n)$ (for some elements $y_1,...,y_n$ of $K$). Then let $A$ be the class of all $y$ such that 
+$\phi(y,y_1,...,y_n)$ is true over $K$ ($A$ is defined by $\phi(y,y_1,...,y_n)$ over $K$). By 
+$F'_2$, $A\cap x\in K$. But $A\cap x$ satisfies the formula in $\textbf{Ax\, 2}$. Thus, for each 
+formula $\phi(y,y_1,...,y_n)$ and $x\in K$, the separation axiom for that formula and element 
+holds over $K$. 
+
+(b) On the other hand, suppose that all the separation axioms are true over $K$. Then consider any 
+first-order definable subclass $A$ of $K$ and any element $b$ of $K$. $A$ must be definable over $K$ by 
+some formula $\phi(x)$. Then, by the separation axiom, there is some $z\in K$ such that, for all 
+$x\in K$, $x\in z\equiv(x\in b\wedge\phi(x))$. This formula works as, if 
+$x\in b\cap A$, then $x\in A$, and thus $x\in K$, meaning the formula would hold true. Of course, if 
+the formula is true, then $x\in b\cap A$.
+
+\subsection*{Exercise 1.1 (b)}
+We prove that $K$ (where $K$ is transitive) is a first-order universe iff all the axioms of $ZF$ are true over $K$.
+
+(a) On the one hand, suppose that $K$ is a first-order universe. We show that all the $ZF$ axioms 
+are true over $K$.
+ 
+$\textbf{Ax\, 1}$: Suppose that $(\forall z)(z\in x\equiv z\in y)$. Then, because $K$ is transitive
+(by $F_1$), it follows that $x=y$.
+
+$\textbf{Ax\, 2}$: We show that this holds by showing that $F'_2$ holds (in $K$), and consequently 
+$\textbf{Ax\, 2}$ would hold by Exercise 1.1 (a). So suppose $A$ is a first-order definable subclass of 
+$K$ and $b$ is an element of $K$. Then, because $K$ is first-order swelled, it follows that 
+$A\cap b\in K$ (because $A\cap b$ is first-order definable over $K$, as it is defined by the 
+formula $(y\in z\equiv(y\in x\wedge\phi(y)))$ where $\phi(y)$ is some formula that defines 
+$A$ over $K$).
+
+$\textbf{Ax\, 3}$: This follows by $F_3$.
+
+$\textbf{Ax\, 4}$: This follows by $F_4$.
+
+$\textbf{Ax\, 5}$: This follows by $F_5$, as $K$ is transitive. This is because, as $K$ is transitive, 
+the set $y$ defined by
+\[ (\exists y)(\forall z)(z\in y\equiv(\exists w)(z\in w\wedge w\in x)) \] is 
+precisely the union of $x$.
+
+$\textbf{Ax\, 6}$: This follows by $F_6$. For, if $x\in K$, then 
+$\mathcal{P}(x)\cap K\in K$. But $\mathcal{P}(x)\cap K$ is precisely the $y$ defined by the formula
+\[ (\exists y)(\forall z)(z\in y\equiv z\subseteq x) \]
+
+$\textbf{Ax\, 7}$: This follows by $F_7$.
+
+$\textbf{Ax\, 8}$: This follows by $F_8$.
+
+$\textbf{Ax\, 9}$: This follows by $F_9$.
+
+(b) On the other hand, suppose that all the $ZF$ axioms are true over $K$. We show that 
+$K$ is a first order universe.
+
+$F_1$: This holds by assumption.
+
+$F_2$: Consider any $x\in K$ and some first-order definable (over $K$) subset $A$ of $x$. By Lemma 1.1, 
+condition $F'_2$ holds, which means that $A\cap x=A$ is in $K$. Thus $K$ is first-order swelled.
+
+$F_3$: This follows by $\textbf{Ax\, 3}$ (because $K$ is transitive).
+
+$F_4$: This follows by $\textbf{Ax\, 4}$ (again because $K$ is transitive).
+
+$F_5$: This follows by $\textbf{Ax\, 5}$ (again because $K$ is transitive).
+
+$F_6$: This follows by $\textbf{Ax\, 6}$.
+
+$F_7$: This follows by $\textbf{Ax\, 7}$.
+
+$F_8$: If $F$ is a function that is first-order definable over $K$, then it is defined by 
+some formula $\phi(x,y)$. Then, for every $w\in K$, by $\textbf{Ax\; 8}$ there is a $v\in K$ such that
+\[ (\forall y)(y\in v\equiv(\exists x)(x\in w)\wedge\phi(x,y)) \]
+which is just saying $F''(w)\in K$.
+
+$F_9$: This follows by $\textbf{Ax\, 9}$ (because $K$ is transitive).
+
+\subsection*{Exercise 1.2}
+It is not clear what is being asked here. Are the $ZF$ axioms being discussed the first-order ones, or the ones introduced at the beginning 
+of the book? If they are the former, clearly we cannot be using Theorems from chapters 7 and 8, where the first-order axioms 
+were not yet introduced. For the problem, I am therefore assuming we are speaking of the intial $ZF$ axioms. Well, suppose we 
+add the axiom of well foundedness. By Theorem 3.5 of Chapter 8, it follows that $V=R_\Omega$, which is a Zermelo-Fraenkel Universe
+by Theorem 4.3 of Chapter 7. Thus these new axioms are consistent by assumption.
+
+This means that the axiom of well foundedness cannot be disproved in $ZF$ for the following reason: For suppose it could be. 
+Then adding the axiom of well foundedness to the $ZF$ axioms would introduce a contradiction, contrary to the result of this 
+exercise.
+
+\end{document}
+
