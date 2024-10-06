@@ -88,7 +88,7 @@ formula* alt_tree(char* expression, int index);
 int syntax(char* expression);
 
 // To check if a given value of i corresponds to any interpretation for a given var_count
-int i_check(int i);
+int i_check(int i, int vars);
 
 // prints n tabs
 void tabs(int n);
@@ -276,7 +276,7 @@ inline void formula::print_tree(int i) {
                 return;
         list* components = nullptr;
         formula* g = this;
-	if (!i_check(i))
+	if (!i_check(i, this->var_count))
 		return;
         while (1) {
                 g->print();
@@ -301,8 +301,8 @@ inline void formula::print_tree(int i) {
         }
 }			
 
-int i_check(int i) {
-	if (i < 0 || i > pow(2, var_count)) {
+int i_check(int i, int vars) {
+	if (i < 0 || i > pow(2, vars)) {
 		return 0;
         }
 	return 1;
@@ -311,7 +311,7 @@ int i_check(int i) {
 inline int formula::op_find(int index, bool& value, int i) {
 	list* components = nullptr;
 	formula* g = this;
-	if (!i_check(i)) {
+	if (!i_check(i, this->var_count)) {
 		return 0;
 	}
 	while (1) {

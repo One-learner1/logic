@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
 	interpretations = (int)pow(2, var_count);
 	// this ensures that the second argument was input properly
 	i = atoi(argv[2]);
-	if (!i_check(i) || strlen(argv[2]) != 1) {
+	if (!i_check(i, var_count) || strlen(argv[2]) != 1) {
 		printf("i was input incorrectly.\n");
 		exit(1);
 	}
