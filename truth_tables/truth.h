@@ -25,8 +25,9 @@ be in alphabetical order. */
 void var_insert(variable variables[], char var);
 
 /* Function to, given an expression, find all of the distinct variables in the expression, and 
-put them into the variables array. Will check if the formula contains too many variables. */
-void variable_find(char* expression, variable variables[]);
+put them into the variables array. Will check if the formula contains too many variables. If there was a valid amount of 
+variables, it returns the number of variables found. */
+int variable_find(char* expression, variable variables[]);
 
 /* Function to, given an array of variables, compute the truth values of those variables (according to 
 the number of variables in the array). */
@@ -51,10 +52,10 @@ inline int variable::num_vars(variable variables[]) {
 	return i;
 }
 
-void variable_find(char* expression, variable variables[]) {
+int variable_find(char* expression, variable variables[]) {
 	int vars = 0;
 	if (!syntax(expression))
-		return;
+		return -1;
 	for (int i = 0; i < strlen(expression); i++) {
 		if (expression[i] >= 'A' && expression[i] <= 'Z') {
 			if (variable_check(variables, expression[i]) == -1) {
@@ -67,6 +68,7 @@ void variable_find(char* expression, variable variables[]) {
 		}
 	}
 	var_count = vars;
+	return vars;
 }
 
 void var_insert(variable variables[], char var) {

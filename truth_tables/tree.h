@@ -172,11 +172,11 @@ formula* alt_tree(char* expression, int index) {
 	formula* f = new formula;
 	int end_index;
 	potential(expression, index, end_index, f->expression);
+	f->start_index = index;
 	// this is the case for an atomic formula
 	if (strlen(f->expression) == 1) {
 		f->op = '\0';
 		f->op_index = -1;
-		f->start_index = 0;
 		f->next1 = f->next2 = nullptr;
 		return f;
 	}
@@ -186,7 +186,6 @@ formula* alt_tree(char* expression, int index) {
 		f->next1->previous = f;
 		f->op = '~';
 		f->op_index = index;
-		f->start_index = index;
 		return f;
 	}
 	else {
@@ -195,7 +194,6 @@ formula* alt_tree(char* expression, int index) {
 		f->op = expression[f->op_index];
 		f->next2 = alt_tree(expression, f->op_index+1);
 		f->next1->previous = f->next2->previous = f;
-		f->start_index = index;
 		return f;
 	}
 }

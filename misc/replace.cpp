@@ -60,6 +60,10 @@ int main(int argc, char* argv[]) {
 	printf("remove: %s replace: %s\n", remove, replace);
 	syntax_error(remove);
 	syntax_error(replace);
+	if (var_comp(remove, replace) < 0) {
+                printf("Error: The remove string has less variables than the replace string.\n");
+                exit(1);
+        }
 	printf("GGG\n");
 	original_subs = formula_list(f, original_subs);
 	original_subs->print_list();
@@ -113,21 +117,24 @@ list* formula_list(formula* f, list* linked_list) {
 int var_comp(char string1[], char string2[]) {
 	variable variables1[MAX_VARIABLES]; // to store the variables in string1
 	variable variables2[MAX_VARIABLES]; // to store the variables in string2
+	int var2; // to store the number of variables in string2
 	int i;
 	bool same = true;
 	variable_find(string1, variables1);
-	variable_find(string2, variables2);
+	var2 = variable_find(string2, variables2);
 	printf("TTT\n");
-	for (i = 0; i < MAX_LENGTH && isupper(variables2[i].var); i++) {
+	for (i = 0; i < var2; i++) {
 		// if the variable in the current index of varibles2 is not in variables1, we return -1
-		if (variable_check(variables1, variables2[i].var) == -1)
+		if (variable_check(variables1, variables2[i].var) == -1) {
+			printf("var2: %d variable not found: %c index: %d\n", var2, variables2[i].var, i);
 			return -1;
+		}
 		if (variables1[i].var != variables2[i].var)
 			same = false;
 	}
 	// if we have not returned in the loop, we know that string2 does not have any variables that string1 does not 
 	// contain. Now we see if they contain the same exact variables
-	if (i == MAX_LENGTH || !isupper(variables1[i].var))
+	if (i == MAX_VARIABLES || !isupper(variables1[i].var))
 		return same?0:1;
 	// otherwise string1 has more variables
 	return 1;
@@ -142,7 +149,7 @@ bool replaceable(formula* main, formula* sub, char replace[], char remove[]) {
 		return false;
 	// we ensure that the thing to replace with has no more variables than the thing to remove
 	// if it doesn't, we exit, as this is an input error
-	if (var_comp(replace, remove) > 0) {
+	if (var_comp(remove, replace) < 0) {
 		printf("Error: The remove string has less variables than the replace string.\n");
 		exit(1);
 	} 
@@ -158,6 +165,7 @@ bool replaceable(formula* main, formula* sub, char replace[], char remove[]) {
 	char replace_with[MAX_LENGTH]; // if the sub formula can be replaced, what it will be replaced with will be stored here
 	for (int i = 0; i < MAX_LENGTH; i++) replace_with[i] = '\0';
 	char temp_expression[MAX_LENGTH]; // to store the potential sub-formulas of the sub-formula
+	printf("remove: %s length: %lu\n", remove, strlen(remove)); 
 	for (int i = 0; i < strlen(remove); i++) {
 		// if the character in remove is not standing for a regular expression (i.e., either a connective or parenthesis)
 		// we ensure that this character is the same as that in the sub expression
@@ -183,11 +191,13 @@ bool replaceable(formula* main, formula* sub, char replace[], char remove[]) {
 			count += strlen(temp_expression);
 			continue;
 		}
+		printf("111\n");
 		// othwerise we add the current expression to the expressions array
 		potential(sub->expression, count, end_index, expressions[remove[i]-65]);
 		used[remove[i]-65] = true;
 		// we also remember to update count and replace_with
 		count += strlen(expressions[remove[i]-65]);
+		printf("expression: %s\n", expressions[remove[i]-65]);
 	}
 	printf("ZZZ\n");
 	// if we haven't reached the end of the sub formula, we return false
@@ -208,6 +218,7 @@ bool replaceable(formula* main, formula* sub, char replace[], char remove[]) {
 			count += strlen(expressions[replace[i]-65]);
 		}
 	}
+	printf("replace_with: %s\n", replace_with);
 	// if the replaced string would be too long (or less than 0), we return false
 	if ((strlen(main->expression)-strlen(sub->expression))+strlen(replace_with) < 0 ||
 	     (strlen(main->expression)-strlen(sub->expression))+strlen(replace_with) > MAX_LENGTH)
@@ -243,7 +254,12 @@ void single_replace(formula** main, formula* sub, list* off_limits, list* origin
 			printf("FFF\n");
 			off_limits = off_limits->add_beg(off_limits, sub);
 			*main = alt_tree((*main)->expression, 0);	
+			(*main)->print_tree();
 			printf("main->expression: %s\n", (*main)->expression);
+			printf("main_index: %d next1 index: %d\n", (*main)->start_index, (*main)->next1->start_index);
+			printf("sub1 index: %d\n", (*main)->next1->next1->start_index);
+			printf("start_index: %d\n", start_index);
+			printf("sub: %s\n", sub->expression);
 			sub = (*main)->start_find(start_index);
 		}
 	}
@@ -251,7 +267,7 @@ void single_replace(formula** main, formula* sub, list* off_limits, list* origin
 	if (sub->next1 == nullptr)
 		return;
 	alt_offlimits = off_limits->create_copy();
-	printf("next1: %s\n", sub->next1->expression);
+	printf("next1: %s start_index: %d\n", sub->next1->expression, sub->next1->start_index);
 	single_replace(main, sub->next1, alt_offlimits, original_subs, replace, remove);
 	sub = (*main)->start_find(start_index);
 	printf("EEE\n");
