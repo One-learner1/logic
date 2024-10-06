@@ -106,6 +106,7 @@ int syntax(char* expression) {
         return 1;
 }
 
+// note: this function should not be used. it is old
 void tree(char* expression, formula* start, list* components) {
         if (!syntax(expression))
                 return;
@@ -118,7 +119,7 @@ void tree(char* expression, formula* start, list* components) {
                         f->next1 = new formula;
                         f->next1->start_index = f->start_index+1;
                         f->next1->previous = f;
-                        potential(expression, f->next1->start_index, end_index1, f->next1->expression);
+                        potential(expression, f->next1->start_index, f->next1->expression);
                         f->op = '~';
                         f->op_index = f->start_index;
                         //f->print();
@@ -136,7 +137,7 @@ void tree(char* expression, formula* start, list* components) {
                         f->op_index = end_index1;
                         f->next2->start_index = end_index1+1;
                         f->next1->previous = f->next2->previous = f;
-                        potential(expression, f->next2->start_index, end_index2, f->next2->expression);
+                        potential(expression, f->next2->start_index, f->next2->expression);
                         //printf("sub2: %s\n", f->next2->expression);
                         components = components->add_beg(components, f->next2);
                         //f->print();
@@ -170,8 +171,7 @@ formula* alt_tree(char* expression, int index) {
 		exit(1);
 	}
 	formula* f = new formula;
-	int end_index;
-	potential(expression, index, end_index, f->expression);
+	potential(expression, index, f->expression);
 	f->start_index = index;
 	// this is the case for an atomic formula
 	if (strlen(f->expression) == 1) {

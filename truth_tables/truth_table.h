@@ -113,7 +113,7 @@ void improved_latex(formula* f, variable variables[], FILE* g, int size) {
 }
 				
 	
-
+// note: this function should not be used
 void latex(formula* f, variable variables[], FILE* g, int size) {
 	if (g == nullptr) {
 		printf("Error creating latex file.\n");

@@ -141,7 +141,6 @@ bool replaceable(formula* main, formula* sub, char replace[], char remove[]) {
 		used[i] = false;
 	char expressions[26][MAX_LENGTH];
 	int start_index = sub->start_index;
-	int end_index; // to be passed in to potential
 	int count = 0; // to track the index we are at in the sub-formula
 	char replace_with[MAX_LENGTH]; // if the sub formula can be replaced, what it will be replaced with will be stored here
 	// this loop initializes replace_with will null characters
@@ -162,7 +161,7 @@ bool replaceable(formula* main, formula* sub, char replace[], char remove[]) {
 		if (used[remove[i]-65]) {
 			// if the potential formula of the sub-formula at the current index does not match the 
 			// stored regular expression, we return false;
-			potential(sub->expression, count, end_index, temp_expression); 
+			potential(sub->expression, count, temp_expression); 
 			if (strcmp(expressions[remove[i]-65], temp_expression) != 0) {
 				return false;
 			}
@@ -170,7 +169,7 @@ bool replaceable(formula* main, formula* sub, char replace[], char remove[]) {
 			continue;
 		}
 		// othwerise we add the current expression to the expressions array
-		potential(sub->expression, count, end_index, expressions[remove[i]-65]);
+		potential(sub->expression, count, expressions[remove[i]-65]);
 		used[remove[i]-65] = true;
 		// we also remember to update count and replace_with
 		count += strlen(expressions[remove[i]-65]);

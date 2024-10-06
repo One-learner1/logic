@@ -23,6 +23,9 @@ with index 7, it would return "X". If it were given the (incorrect) formula
 expression), NULL is returned. This function also updates the index directly after the end of the potential formula. */
 int potential(char* formula, int index, int& end_index, char term[]);
 
+/* Same as the above function, but does not take end_index as a parameter */
+int potential(char* expression, int index, char term[]);
+
 int negation(char* formula, int index) {
         if (formula == nullptr)
                 return -1;
@@ -56,6 +59,31 @@ int potential(char* formula, int index, int& end_index, char term[]) {
 	// we ensure that the string is null-terminated
 	term[end_index-index] = '\0';
         return 1;
+}
+
+int potential(char* expression, int index, char term[]) {
+	int end_index = 0; // we still track the end_index, so that we can null-terminate the string
+	if (expression == nullptr)
+		return 0;
+	if (index >= strlen(expression) || index < 0)
+		return 0;
+	int current_index = negation(expression, index);
+	if (current_index == -1)
+		return 0;
+	if (expression[current_index] != '(') {
+		strncpy(term, &expression[index], (current_index-index)+1);
+		end_index = current_index+1;
+	}
+	else {
+		int right = right_paren(expression, current_index);
+		if (right == -1)
+			return 0;
+		strncpy(term, &expression[index], (right-index)+1);
+		end_index = right+1;
+	}
+	// we ensure that the string is null-terminated
+	term[end_index-index] = '\0';
+	return 1;
 }
 
 

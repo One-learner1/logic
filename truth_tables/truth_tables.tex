@@ -11,32 +11,50 @@
 
 \section*{Truth Table 1}
 Truth table for:
-\[(\oldneg X\wedge \oldneg (\oldneg X\wedge \oldneg Y))\]
+\[(X\supset Y)\]
 \setlength\tabcolsep{0pt}
 \begin{center}
-\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}ccccccccccccc}
-$X$ & $Y$ & $($ & $\oldneg $ & $X$ & $\wedge $ & $\oldneg $ & $($ & $\oldneg $ & $X$ & $\wedge $ & $\oldneg $ & $Y$ & $)$ & $)$ \\
-$1$ & $1$ &  & $0$ &  & $0$ & $1$ &  & $0$ &  & $0$ & $0$ &  &  & \\
-$1$ & $0$ &  & $0$ &  & $0$ & $1$ &  & $0$ &  & $0$ & $1$ &  &  & \\
-$0$ & $1$ &  & $1$ &  & $1$ & $1$ &  & $1$ &  & $0$ & $0$ &  &  & \\
-$0$ & $0$ &  & $1$ &  & $0$ & $0$ &  & $1$ &  & $1$ & $1$ &  &  & \\
-& &  & $2$ &  & $1$ & $3$ &  & $5$ &  & $4$ & $6$ &  &  & 
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}ccccc}
+$X$ & $Y$ & $($ & $X$ & $\supset $ & $Y$ & $)$ \\
+$1$ & $1$ &  &  & $1$ &  & \\
+$1$ & $0$ &  &  & $0$ &  & \\
+$0$ & $1$ &  &  & $1$ &  & \\
+$0$ & $0$ &  &  & $1$ &  & \\
+& &  &  & $1$ &  & 
 \end{tabular}
 \end{center}
 
 
 \section*{Truth Table 2}
 Truth table for:
-\[\oldneg (X\vee \oldneg (X\vee Y))\]
+\[((X\wedge Y)\supset Z)\]
 \setlength\tabcolsep{0pt}
 \begin{center}
-\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}ccccccccccc}
-$X$ & $Y$ & $\oldneg $ & $($ & $X$ & $\vee $ & $\oldneg $ & $($ & $X$ & $\vee $ & $Y$ & $)$ & $)$ \\
-$1$ & $1$ & $0$ &  &  & $1$ & $0$ &  &  & $1$ &  &  & \\
-$1$ & $0$ & $0$ &  &  & $1$ & $0$ &  &  & $1$ &  &  & \\
-$0$ & $1$ & $1$ &  &  & $0$ & $0$ &  &  & $1$ &  &  & \\
-$0$ & $0$ & $0$ &  &  & $1$ & $1$ &  &  & $0$ &  &  & \\
-& & $1$ &  &  & $2$ & $3$ &  &  & $4$ &  &  & 
+\begin{tabular}{c@{\hspace{10pt}}c@{\hspace{10pt}}c@{\hspace{10pt}}ccccccccc}
+$X$ & $Y$ & $Z$ & $($ & $($ & $X$ & $\wedge $ & $Y$ & $)$ & $\supset $ & $Z$ & $)$ \\
+$1$ & $1$ & $1$ &  &  &  & $1$ &  &  & $1$ &  & \\
+$1$ & $1$ & $0$ &  &  &  & $1$ &  &  & $0$ &  & \\
+$1$ & $0$ & $1$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$1$ & $0$ & $0$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$0$ & $1$ & $1$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$0$ & $1$ & $0$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$0$ & $0$ & $1$ &  &  &  & $0$ &  &  & $1$ &  & \\
+$0$ & $0$ & $0$ &  &  &  & $0$ &  &  & $1$ &  & \\
+& & &  &  &  & $2$ &  &  & $1$ &  & 
+\end{tabular}
+\end{center}
+
+
+\section*{Truth Table 3}
+Truth table for:
+\[(X\vee \oldneg X)\]
+\setlength\tabcolsep{0pt}
+\begin{center}
+\begin{tabular}{c@{\hspace{10pt}}cccccc}
+$X$ & $($ & $X$ & $\vee $ & $\oldneg $ & $X$ & $)$ \\
+$1$ &  &  & $1$ & $0$ &  & \\
+$0$ &  &  & $1$ & $1$ &  & \\
+&  &  & $1$ & $2$ &  & 
 \end{tabular}
 \end{center}
 
