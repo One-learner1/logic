@@ -70,6 +70,7 @@ public:
 	inline list* create_copy(); // to create a copy of a given list
 	inline bool find_expression(char* expression); // to search for a given expression (in a formula) in the linked list.
 						      // returns 1 if found, 0 if not found
+	inline void print_list(); // function to print a list
 	
 
         formula* f;
@@ -194,6 +195,7 @@ formula* alt_tree(char* expression, int index) {
 		f->op = expression[f->op_index];
 		f->next2 = alt_tree(expression, f->op_index+1);
 		f->next1->previous = f->next2->previous = f;
+		f->start_index = index;
 		return f;
 	}
 }
@@ -421,4 +423,12 @@ inline bool list::find_expression(char* expression) {
 		l = l->next;
 	}
 	return false;
+}
+
+inline void list::print_list() {
+	list* l = this;
+	while (l != nullptr && l->f != nullptr) {
+		printf("%s\n", l->f->expression);
+		l = l->next;
+	}
 }

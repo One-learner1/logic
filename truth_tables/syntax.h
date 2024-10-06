@@ -53,6 +53,8 @@ int potential(char* formula, int index, int& end_index, char term[]) {
                 end_index = right+1;
                 strncpy(term, &formula[index], (right-index)+1);
         }
+	// we ensure that the string is null-terminated
+	term[end_index-index] = '\0';
         return 1;
 }
 

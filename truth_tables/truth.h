@@ -52,12 +52,13 @@ inline int variable::num_vars(variable variables[]) {
 }
 
 void variable_find(char* expression, variable variables[]) {
+	int vars = 0;
 	if (!syntax(expression))
 		return;
 	for (int i = 0; i < strlen(expression); i++) {
 		if (expression[i] >= 'A' && expression[i] <= 'Z') {
 			if (variable_check(variables, expression[i]) == -1) {
-				if (var_count++ >= MAX_VARIABLES) {
+				if (vars++ >= MAX_VARIABLES) {
 					printf("\"%s\": %d exceeds maximum number %d of variables.\n", expression, var_count, MAX_VARIABLES);
 					exit(1);
 				}
@@ -65,6 +66,7 @@ void variable_find(char* expression, variable variables[]) {
 			}
 		}
 	}
+	var_count = vars;
 }
 
 void var_insert(variable variables[], char var) {
