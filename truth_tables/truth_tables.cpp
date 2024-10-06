@@ -78,10 +78,9 @@ void input(formula* formulas[], FILE* f, variable variables[MAX_FORMULAS][MAX_VA
 		formulas[formula_count] = alt_tree(expression, 0);
 		formulas[formula_count]->prec_init(1);
 		variables[formula_count]->init_vars(variables[formula_count]);
-		variable_find(expression, variables[formula_count]);
-		formulas[formula_count]->interpretations = (int)pow(2, var_count);
-		formulas[formula_count]->var_count = var_count;
-		variable_values(variables[formula_count], formulas[formula_count]->interpretations); 
+		formulas[formula_count]->var_count = variable_find(expression, variables[formula_count]);
+		formulas[formula_count]->interpretations = (int)pow(2, formulas[formula_count]->var_count);
+		variable_values(variables[formula_count], formulas[formula_count]->interpretations, formulas[formula_count]->var_count); 
 		for (int j = 0; j < formulas[formula_count]->interpretations; j++) {
 			formula_values(formulas[formula_count], variables[formula_count], j);
 		}

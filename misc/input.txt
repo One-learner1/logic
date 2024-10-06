@@ -2,3 +2,4 @@
 ((X=Y)=(Y=X)) (A=B) ((A>B)^(B>A))
 (~X>(Y>X)) (V>W) (V^W)
 ~X X (X^~X)
+(((X>Y)^(X>~Y))>~X) (C>D) ((~CvD)^(~CvD))

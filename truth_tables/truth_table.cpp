@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
         variables->init_vars(variables);
         variable_find(argv[1], variables);
         f->interpretations = (int)pow(2, var_count);
-        variable_values(variables, f->interpretations);
+        variable_values(variables, f->interpretations, var_count);
 	for (int j = 0; j < f->interpretations; j++) {
                 formula_values(f, variables, j);
         }

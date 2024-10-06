@@ -31,7 +31,7 @@ int variable_find(char* expression, variable variables[]);
 
 /* Function to, given an array of variables, compute the truth values of those variables (according to 
 the number of variables in the array). */
-void variable_values(variable variables[]);
+void variable_values(variable variables[], int interpretations, int vars);
 
 /* Function to assign the truth values of the sub-formulas for the ith interpretation. */
 void formula_values(formula* f, variable variables[], int i);
@@ -60,14 +60,13 @@ int variable_find(char* expression, variable variables[]) {
 		if (expression[i] >= 'A' && expression[i] <= 'Z') {
 			if (variable_check(variables, expression[i]) == -1) {
 				if (vars++ >= MAX_VARIABLES) {
-					printf("\"%s\": %d exceeds maximum number %d of variables.\n", expression, var_count, MAX_VARIABLES);
+					printf("\"%s\": %d exceeds maximum number %d of variables.\n", expression, vars, MAX_VARIABLES);
 					exit(1);
 				}
 				var_insert(variables, expression[i]);
 			}
 		}
 	}
-	var_count = vars;
 	return vars;
 }
 
@@ -107,13 +106,13 @@ inline void variable::right_shift(variable variables[], int i) {
 	}
 }
 
-void variable_values(variable variables[], int interpretations) {
+void variable_values(variable variables[], int interpretations, int vars) {
 	bool value = true;
 	int count = 1;
-	for (int i = 0; i < var_count; i++) {
+	for (int i = 0; i < vars; i++) {
 		for (int j = 0; j < interpretations; j++, count++) {
 			variables[i].values[j] = value;
-			if (count == (int)pow(2, var_count-(i+1))) {
+			if (count == (int)pow(2, vars-(i+1))) {
 				count = 0;
 				value = !value;
 			}
