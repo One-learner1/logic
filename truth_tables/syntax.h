@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h> // for isupper function
-#define MAX_LENGTH 75
+#define MAX_LENGTH 125
 
 /* Function to attempt to find a right paren matching a given left paren, and return the index of the right paren */
 int right_paren(char* formula, int index);

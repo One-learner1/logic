@@ -1,7 +1,8 @@
-all: replace
+all: test
 
-replace: replace.cpp ../truth_tables/truth_table.h
-	g++ replace.cpp -o replace
+test: test.cpp replace.h
+	g++ test.cpp -o test
+
 
 clean:
 	rm -fr `ls -l|awk '/^-..x/{print $$NF}'` *.o *.dSYM

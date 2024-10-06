@@ -1,0 +1,4 @@
+(X>Y) (A>B) (~AvB)
+((X=Y)=(Y=X)) (A=B) ((A>B)^(B>A))
+(~X>(Y>X)) (V>W) (V^W)
+~X X (X^~X)
