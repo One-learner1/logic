@@ -129,5 +129,47 @@ This means that the axiom of well foundedness cannot be disproved in $ZF$ for th
 Then adding the axiom of well foundedness to the $ZF$ axioms would introduce a contradiction, contrary to the result of this 
 exercise.
 
-\end{document}
+\section*{Section 3}
 
+\subsection*{Notes}
+When we are discussing Lemma 3.2, the formulas $x_i\in x_j$, $x_i\in a$, and $a\in x_i$ are discussed. Using 
+$x_i$ and $x_j$ is possible in the formulas, as they are just two of the denumerably many variables assumed to be available.
+
+The first paragraph of page 177 is confusing. It says that $F_7$ is the first-order substitution axioms, but it is in reality 
+the axiom of infinity. The book says that $F_1-F_5$ all follow easily from results of the last chapter, and here is why this is.
+
+$F_1$: This follows because we know that $L$ is transitive.
+
+$F_2$: Consider any constructible set $x$ (say it is in some $L_\alpha$), and any first-order definable (over $L$) subset $y$ of $x$. Then 
+$y\in\mathcal{F}(L_\alpha)$ and thus $y\in L_{\alpha+1}$, meaning $y$ is constructible. This means $L$ is first-order swelled.
+
+$F_3$: Obvious.
+
+$F_4$: Suppose $x\in L$ and $y\in L$. Suppose $\alpha$ is an ordinal such that both $x\in L_\alpha$ and 
+$y\in L_\alpha$. Then $\{x,y\}$ is first order definable over $L_\alpha$, meaning $\{x,y\}\in\mathcal{F}(L_\alpha)$ and 
+thus $\{x,y\}\in L_{\alpha+1}$.
+
+$F_5$: Suppose $x$ is constructible. Then $(\exists y)(z\in y\wedge y\in x)$ defines $\cup x$ over $L$
+(because $L$ is transitive).
+
+$F_7$ also follows as $\omega\in L$. This is because 
+$\omega\in\mathcal{F}(L_\omega)$, as the $\textrm{Num}(x)$ defined in Section 2 of Chapter 12 is absolute, hence 
+absolute over $L_\omega$, and because all natural numbers are in $L_\omega$, $\textrm{Num}(x)$ defines 
+$\omega$ over $L_\omega$.
+
+In the paragraph below, when explaining how $F_6$ follows, here is why $x\subseteq a$ is absolute (over $L_\alpha$). Recall that 
+$x\subseteq y$ was shown to be absolute in Chapter 12. But what this means is that, for every transitive class $K$, and any 
+elements $a,b$ of $K$, $a\subseteq b$ is absolute over $K$. But this obviously implies that $x\subseteq a$ is also 
+absolute (over $L_\alpha$) (for, this would happen if, for any element $b$ of $L_\alpha$, $b\subseteq a$ is absolute
+over $L_\alpha$). 
+
+\section*{Section 4}
+
+\subsection*{Notes}
+It is remarked that the sentence $(\forall x)(\exists y)(\textrm{Ordinal}(y)\wedge\oldneg(y\in x))$ is a theroem of $ZF$. No 
+justification is given for this, though the proof would supposedly be pretty much identical to that given proving that, 
+for any set of ordinals, there is some ordinal outside of the set (because, ultimately, the $ZF$ axioms considered here in 
+formula form are basically exactly the same as the less formal ones given at the beginning of the book, which we used to prove 
+that result).
+
+\end{document}
