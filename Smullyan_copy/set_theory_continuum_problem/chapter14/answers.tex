@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tabto}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 14 Notes}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Section 1}
+
+\subsection*{Notes}
+Let $K$ and $K'$ be classes, $K$ be transitive, $K\subseteq K'$, and $\phi(x_1,...,x_n)$ a 
+formula whose constants are all in $K$. Note that, even if we assume $\phi(a_1,...,a_n)$ is true over $K$ iff 
+it is true over $K'$ (for all constants $a_1,...,a_n$ in $K$), we \textit{cannot} prove that 
+$(\exists x)(\phi(x,x_1,...,x_n))$ is such that $(\exists x)(\phi(x,a_1,...,a_n))$ is true over $K$ iff it is true 
+over $K'$ (for all constants $a_1,...,a_n$ in $K$); call any $\phi$ \textit{good} if this property does hold for it. 
+For, let $a_1,...,a_n$ be constants in $K$. On the one hand, 
+suppose that $(\exists x)(\phi(x,a_1,...,a_n))$ is true over $K$. Then for some $a\in K$, 
+$\phi(a,a_1,...,a_n)$ is true over $K$, and thus by assumption, $\phi(a,a_1,...,a_n)$ is true over $K'$, hence 
+$(\exists x)(\phi(x,a_1,...,a_n))$ is true over $K'$. However, on the other hand, suppose that 
+$(\exists x)(\phi(x,a_1,...,a_n))$ is true over $K'$. Then for some $a\in K'$, 
+$\phi(a,a_1,...,a_n)$ is true over $K'$. However, unlike in Exercise 1.1 (a), we \textit{cannot} conclude that 
+$a\in K$, meaning it does not necessarily follow that $\phi(a,a_1,...,a_n)$ is true over $K$ (and thus it does not 
+necessarily follow that $(\exists x)(\phi(x,a_1,...,a_n))$ is true over $K$.
+
+Using the same definitions as in the preceeding paragraph, note the following. Suppose $\phi(x_1,...,x_n)$ is only 
+such that if $\phi(a_1,...,a_n)$ is true over $K$ (for constants $a_1,...,a_n$ in $K$), then $\phi(a_1,...,a_n)$ is true over $K'$. 
+It certainly does \textit{not} follow that $\oldneg\phi$ is good (or even satisfies the weaker property if 
+if $\oldneg\phi(a_1,...,a_n)$ is true over $K$, then it is true over $K'$). For, if 
+$\oldneg\phi(a_1,...,a_n)$ is true over $K$, then $\phi(a_1,...,a_n)$ is false over $K$. But because we do not have that 
+$\phi$ is good, we cannot conclude that $\phi(a_1,...,a_n)$ is false over $K'$ (now, if $\oldneg\phi(a_1,...,a_n)$ was true over 
+$K'$, then $\phi(a_1,...,a_n)$ would be false over $K'$, and then by assumption, $\phi(a_1,...,a_n)$ would also need to be false over $K$, hence 
+$\oldneg\phi(a_1,...,a_n)$ would be true over $K$).
+
+The above paragraph explains why $\Sigma$-formulas do not include negations (unless the subformlula the negation is the main operator of 
+is itself a $\Sigma_0$ formula).
+
+\subsection*{Proposition 1.1}
+Note that part (3) of this proposition follows in a similar way as part (3) of Exercise 1.1 (b) is proven below.
+
+\subsection*{Exercise 1.1 (a)}
+Suppose $K$ and $K'$ are classes, such that $K$ is transitive, $K\subseteq K'$,
+$a_1,...,a_n$ are elements of $K$, and $\phi(x_1,...,x_n)$ is a formula whose constants are all in 
+$K$. Suppose also that $\phi(x_1,...,x_n)$ is $\Sigma_0$. We are to show that $\phi(a_1,...,a_n)$ is true 
+over $K$ iff it is true over $K'$. We prove this by induction on the degree of $\phi(x_1,...,x_n)$.
+
+Base Case: If $\phi(x_1,...,x_n)$ is of the form $x\in y$, then $a_1\in a_2$ is true over $K$ iff 
+it is true over $K'$ (as $a_1$ and $a_2$ are both in $K'$, as $K\subseteq K'$).
+
+If the result holds for some $\phi$, then obviously it also holds for $\oldneg\phi$.
+
+If the result holds for $\phi$ and $\psi$, then obviously it also holds for $\phi\wedge\psi$.
+
+Suppose the result holds for some $\phi(x,y,x_1,...,x_n)$ (whose free variables are all in the set 
+$\{x,y,x_1,...,x_n\}$). We must show that the result also holds for 
+\[ (\exists x\in y)(\phi(x,y,x_1,...,x_n)) \]
+Take any constants $a,b_1,...,b_n$ of $K$. We must show that
+$(\exists x\in a)(\phi(x,a,b_1,...,b_n))$ is true over $K$ iff it is true over $K'$. 
+On the one hand, suppose that it is true over $K$. Then for some $b\in a$, 
+$\phi(b,a,b_1,...,b_n)$ is true over $K$. But the constants $b,a,b_1,...,b_n$ are all in 
+$K$, meaning by assumption, $\phi(b,a,b_1,...,b_n)$ is true over $K'$, and thus 
+$(\exists x\in a)(\phi(x,a,b_1,...,b_n))$ is true over $K'$. On the other hand, suppose that 
+$(\exists x\in a)(\phi(x,a,b_1,...,b_n))$ is true over $K'$. Then for some $b\in a$, 
+$\phi(b,a,b_1,...,b_n)$ is true over $K'$. But $K$ is transitive, and $a\in K$, meaning 
+$b\in K$. Thus the constants $b,a,b_1,...,b_n$ are all in $K$, meaning, by assumption, 
+$\phi(b,a,b_1,...,b_n)$ is true over $K$, and thus 
+$(\exists x\in a)(\phi(x,a,b_1,...,b_n))$ is true over $K$.
+
+\subsection*{Exercise 1.1 (b)} 
+Suppose $K$ and $K'$ are classes, such that $K$ is transitive, $K\subseteq K'$, 
+$a_1,...,a_n$ are elements of $K$, and $\phi(x_1,...,x_n)$ is a formula whose constants are all in
+$K$. Suppose also that $\phi(x_1,...,x_n)$ is $\Sigma$. We are to show that $\phi(a_1,...,a_n)$ is 
+true over $K$ iff it is true over $K'$. Call a formula $\phi$ good if it satisfies this result. 
+We prove this by induction on the degree of 
+$\phi(x_1,...,x_n)$. In fact, we prove:
+
+(1) Every $\Sigma_0$ formula is good.
+
+(2) If $\phi,\psi$ are good, then so are $\phi\wedge\psi$ and $\phi\vee\psi$.
+
+(3) If $\phi$ is good, so is $(\exists x)\phi$.
+
+(4) If $\phi$ is good, so are $(\forall x\in y)\phi$ and $(\exists x\in y)\phi$.
+
+\begin{proof}
+(1) This follows by Exercise 1.1 (a).
+
+(2) Obvious.
+
+(3) Suppose $\phi(x,x_1,...,x_n)$ is good (where all free variables of $\phi$ are in the set $\{x,x_1,...,x_n\}$). 
+We must show that $(\exists x)\phi(x,x_1,...,x_n)$ is good. So suppose $(\exists x)\phi(x,a_1,...,a_n)$ was true over 
+$K$. Then, for some $a\in K$, $\phi(a,a_1,...,a_n)$ is true over $K$, hence by assumption, $\phi(a,a_1,...,a_n)$ is true over 
+$K'$, meaning $(\exists x)\phi(x,a_1,...,a_n)$ is true over $K'$.
+
+(4) Suppose $\phi(x,y,z_1,...,z_n)$ is good. We wish to show that $(\forall x\in y)\phi(x,y,z_1,...,z_n)$ is also good. 
+Well, let $a,b_1,...,b_n$ be constants in $K$. Suppose $(\forall x\in a)\phi(x,a,b_1,...,b_n)$ is true over $K$. Because $K$ is transitive, 
+it follows that $\phi(c,a,b_1,...,b_n)$ is true over $K$ for all elements $c\in a$. Then, by the assumption that $\phi$ is good, 
+it follows that $(\forall x\in a)\phi(x,a,b_1,...,b_n)$ is true over $K'$.
+
+As for the formula $(\exists x\in y)\phi$, this is $(\exists x)(x\in y\wedge\phi)$, which is good by parts (1), (2), and (3) of this exercise.
+\end{proof}
+
+\end{document}
