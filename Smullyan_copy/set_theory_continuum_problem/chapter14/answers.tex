@@ -129,4 +129,52 @@ it follows that $(\forall x\in a)\phi(x,a,b_1,...,b_n)$ is true over $K'$.
 As for the formula $(\exists x\in y)\phi$, this is $(\exists x)(x\in y\wedge\phi)$, which is good by parts (1), (2), and (3) of this exercise.
 \end{proof}
 
+\section*{Section 2}
+
+\subsection*{Notes}
+It is remarked in the last paragraph of this section that once we show $y=\mathcal{F}(x)$ is $\Sigma$, it will 
+follow by Theorem 2.8 that the relation $y=L_\alpha$ is also $\Sigma$, and absolute. It does follow that it is $\Sigma$, but 
+it does not immediately follow by the theorem that it is absolute - only that it is \textit{upwards} absolute.
+
+\subsection*{Propositions 2.6 and 2.7}
+There are multiple problems with these two propositions. First, the propositions, as stated, are clearly incorrect, as the proofs given 
+require $f$ to be $\Sigma$, which is not assumed (because $f$ here is being treated as a constant, not a variable). To fix this, for any 
+set $x$, let us define $x''(y)$ for any set $y$ to be the set of all $z\in\textrm{Ran}(x)$ such that $\rangle w,z\rangle\in x$ for 
+some $w\in y$. This more general definiton allows us to correct the proof.
+
+In particular, we show that the relation $y=z''(x)$ (this time, $z$ is a \textit{variable}, meaning this is a legitimate equation, without 
+any prior assumptions of being $\Sigma$) is $\Sigma$ (in fact, $\Sigma_0$).
+
+\begin{proof}
+$y=z''(x)$ is the conjunction of the following two $\Sigma_0$ conditions:
+\[ \textrm{(1) }(\forall v\in x)(\forall w\in z)(\langle v,w\rangle\in z\supset w\in y) \]
+\[ \textrm{(2) }(\forall v\in y)(\exists w\in x)(\langle v,w\rangle\in z) \]
+\end{proof}
+If we were to restrict $z$ to functions, then the proof would involve adding the condition 
+that $z$ is a function (that is, add in $\textrm{Fun}(z)$, which is $\Sigma_0$ by results from Chapter 12).
+
+\subsection*{Theorem 2.8}
+There is an issue with the proof of this theorem. In particular, $f(\beta+1)=F(f\restriction\beta)$ is used in the 
+supposed $\Sigma$ formula, yet it was never established that $f(\beta+1)=F(f\restriction\beta)$ is itself $\Sigma$. Here is why this is.
+
+First, note that the relation $y=f\restriction x$ is $\Sigma$ (in fact $\Sigma_0$), as it is equivalent to the conjunction of the 
+following two formulas:
+\[ \textrm{(1) }(\forall z\in y)(\exists w\in\textrm{Dom}(f))(\exists v\in\textrm{Ran}(f))(w\in x\wedge z=\langle w,v\rangle) \]
+\[ \textrm{(2) }(\forall z\in f)((\exists w\in x)(\exists v\in\textrm{Ran}(f))(z=\langle w,v\rangle)\supset z\in y) \] 
+
+It is obvious that the above result means $f(\beta+1)=F(f\restriction\beta)$ is $\Sigma$. To be specific, it is 
+then represented by the conjunction of the following three formulas:
+\[ \textrm{(1) }(\exists z\textrm{Ran}(f))(\langle\beta+1,z\rangle\in f) \]
+\[ \textrm{(2) }(\exists y)(\exists w)(w=f\restriction\beta\wedge y=F(w)) \]
+\[ \textrm{(3) }x=y \]
+
+There is another error in the proof of this theorem. The occurences of $(\forall\beta\in\alpha+1)$ should be 
+replace by $(\forall\beta\in\alpha)$ for the following reason: If we took the previous formula
+($(\forall\beta\in\alpha+1)$), the formula in the proof would tell us that, for $\alpha$, $f(\alpha+1)=F(f\restriction\alpha)$, 
+meaning $f(\alpha+1)$ is defined. But that is not how we defined $f$, as we needed $\textrm{Dom}(f)=\alpha+1$, meaning 
+$\alpha+1$ would \textit{not} be in the domain of $f$.
+
+In fact, it seems that $F(f\restriction\beta)$ is just a typo, and really should be $F(f(b))$. This is due to the definition of 
+$F^*$: $F^*(\alpha+1)$ is not equal to $F(F^*\restriction\alpha)$, but is equal to $F(F^*(\alpha))$.
+
 \end{document}
