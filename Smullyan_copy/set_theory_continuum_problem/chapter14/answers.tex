@@ -139,16 +139,20 @@ it does not immediately follow by the theorem that it is absolute - only that it
 \subsection*{Propositions 2.6 and 2.7}
 There are multiple problems with these two propositions. First, the propositions, as stated, are clearly incorrect, as the proofs given 
 require $f$ to be $\Sigma$, which is not assumed (because $f$ here is being treated as a constant, not a variable). To fix this, for any 
-set $x$, let us define $x''(y)$ for any set $y$ to be the set of all $z\in\textrm{Ran}(x)$ such that $\rangle w,z\rangle\in x$ for 
+set $x$, let us define $x''(y)$ for any set $y$ to be the set of all $z\in\textrm{Ran}(x)$ such that $\langle w,z\rangle\in x$ for 
 some $w\in y$. This more general definiton allows us to correct the proof.
 
 In particular, we show that the relation $y=z''(x)$ (this time, $z$ is a \textit{variable}, meaning this is a legitimate equation, without 
-any prior assumptions of being $\Sigma$) is $\Sigma$ (in fact, $\Sigma_0$).
+any prior assumptions of being $\Sigma$) is $\Sigma$ (in fact $\Sigma_0$).
 
 \begin{proof}
 $y=z''(x)$ is the conjunction of the following two $\Sigma_0$ conditions:
-\[ \textrm{(1) }(\forall v\in x)(\forall w\in z)(\langle v,w\rangle\in z\supset w\in y) \]
-\[ \textrm{(2) }(\forall v\in y)(\exists w\in x)(\langle v,w\rangle\in z) \]
+\begin{center}
+\begin{tabular}{l}
+$\textrm{(1) }(\forall v\in x)(\forall w\in z)(\langle v,w\rangle\in z\supset w\in y)$ \\
+$\textrm{(2) }(\forall v\in y)(\exists w\in x)(\langle w,v\rangle\in z)$
+\end{tabular}
+\end{center}
 \end{proof}
 If we were to restrict $z$ to functions, then the proof would involve adding the condition 
 that $z$ is a function (that is, add in $\textrm{Fun}(z)$, which is $\Sigma_0$ by results from Chapter 12).
@@ -157,19 +161,25 @@ that $z$ is a function (that is, add in $\textrm{Fun}(z)$, which is $\Sigma_0$ b
 There is an issue with the proof of this theorem. In particular, $f(\beta+1)=F(f\restriction\beta)$ is used in the 
 supposed $\Sigma$ formula, yet it was never established that $f(\beta+1)=F(f\restriction\beta)$ is itself $\Sigma$. Here is why this is.
 
-First, note that the relation $y=f\restriction x$ is $\Sigma$ (in fact $\Sigma_0$), as it is equivalent to the conjunction of the 
+First, note that the relation $y=f\restriction x$ is $\Sigma$, as it is equivalent to the conjunction of the 
 following two formulas:
-\[ \textrm{(1) }(\forall z\in y)(\exists w\in\textrm{Dom}(f))(\exists v\in\textrm{Ran}(f))(w\in x\wedge z=\langle w,v\rangle) \]
-\[ \textrm{(2) }(\forall z\in f)((\exists w\in x)(\exists v\in\textrm{Ran}(f))(z=\langle w,v\rangle)\supset z\in y) \] 
+\begin{center}
+\begin{tabular}{l}
+$\textrm{(1) }(\forall z\in y)(\exists w\in\textrm{Dom}(f))(\exists v\in\textrm{Ran}(f))(w\in x\wedge z=\langle w,v\rangle)$ \\
+$\textrm{(2) }(\forall z\in f)((\exists w\in x)(\exists v\in\textrm{Ran}(f))(z=\langle w,v\rangle)\supset z\in y)$
+\end{tabular}
+\end{center}
 
 It is obvious that the above result means $f(\beta+1)=F(f\restriction\beta)$ is $\Sigma$. To be specific, it is 
-then represented by the conjunction of the following three formulas:
-\[ \textrm{(1) }(\exists z\textrm{Ran}(f))(\langle\beta+1,z\rangle\in f) \]
-\[ \textrm{(2) }(\exists y)(\exists w)(w=f\restriction\beta\wedge y=F(w)) \]
-\[ \textrm{(3) }x=y \]
+then represented by the following $\Sigma$ formula:
+\begin{center}
+\begin{tabular}{l}
+$\textrm{(1) }(\exists z\in\textrm{Ran}(f))(\exists y)(\exists w)(\langle\beta+1,z\rangle\in f\wedge w=f\restriction\beta\wedge y=F(w)\wedge y=z)$
+\end{tabular}
+\end{center}
 
 There is another error in the proof of this theorem. The occurences of $(\forall\beta\in\alpha+1)$ should be 
-replace by $(\forall\beta\in\alpha)$ for the following reason: If we took the previous formula
+replaced by $(\forall\beta\in\alpha)$ for the following reason: If we took the previous formula
 ($(\forall\beta\in\alpha+1)$), the formula in the proof would tell us that, for $\alpha$, $f(\alpha+1)=F(f\restriction\alpha)$, 
 meaning $f(\alpha+1)$ is defined. But that is not how we defined $f$, as we needed $\textrm{Dom}(f)=\alpha+1$, meaning 
 $\alpha+1$ would \textit{not} be in the domain of $f$.
