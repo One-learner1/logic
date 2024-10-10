@@ -110,8 +110,7 @@ int syntax(char* expression) {
 void tree(char* expression, formula* start, list* components) {
         if (!syntax(expression))
                 return;
-        int current_index = 0;
-        int end_index1, end_index2;
+        int end_index1;
         formula* f = start;
         while (1) {
                 if (f->expression[0] == '~') {

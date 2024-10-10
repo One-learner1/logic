@@ -9,51 +9,58 @@ is a regular expression (standing for any propositional formula that matches the
 
 class axiom {
 public:
-	axiom(char expression[], char n[]) :f{new formula(expression)}, name{n} {} // construct an axiom for a given formula
+	axiom() :f(new formula), name(new char[MAX_LENGTH]) {}
+	axiom(char expression[], char n[]) :f(new formula(expression)) {
+			name = new char[MAX_LENGTH];
+			strcpy(name, n); }; // construct an axiom for a given formula
 
 	formula* f;
 	char* name;
-}
+};
 
 // this struct stores a set of axioms, as well as the number of axioms in the set
-typedef struct axiom_set {
+class axiom_set {
+public:
 	axiom aset[MAX_AXIOMS];
 	int a_count;
-} axiom_set;
+};
 
 /* This is the class to store the inference rules from the input file. Each inference rules consists of the following: a set of premises (each 
 propositional formulas); a conclusion (also a propositional formula); a name for how we should refer to this rule; and a count for the 
 number of premises. */
 class inference_rule {
 public:
-	axiom(char* expression) :premises{new formula[MAX_PREMISES]}, conclusion{new formula}, name{expression}, premise_count{0} {} // construct an inference rule
+	inference_rule() :premises(new formula[MAX_PREMISES]), conclusion(new formula), name(new char[MAX_LENGTH]) {}
+	inference_rule(char* expression) :premises(new formula[MAX_PREMISES]), conclusion(new formula), name(expression), premise_count(0) {} // construct an inference rule
 
 	formula* premises;
 	formula* conclusion;
 	char* name;
 	int premise_count;
-}
+};
 
 // this struct stores a set of inference rules, a well as the number of inference rules in the set
-typedef struct inference_set {
+class inference_set {
+public:
 	inference_rule rules[MAX_INFERENCE];
 	int i_count;
-} inferenece_set;
+};
 
 /* This is the class to store a single line of a proof. Each line should consist of the following: a step; a formula; a deductive reason
 (i.e., an inference rule and the previous lines of the proof used in the inference rule to obtain the formula); the deductive reason is made out of 
 an array of steps, as well as an inference rule. */
 class p_line {
 public:
-	p_line(int i, char* expression, int* steps, char* rule) :f{new formula(expression)}, 
-								    step{i}, d_steps{steps}, d_rule{rule} {}
+	p_line() : f(new formula), d_steps(new int[MAX_STEPS]), d_rule(new char[MAX_LENGTH]) {}
+	p_line(int i, char* expression, int* steps, char* rule) :f(new formula(expression)), 
+								    step(i), d_steps(steps), d_rule(rule) {}
 
 	formula* f;
 	int step;
 	int* d_steps; // to store the steps listed in the proof
 	char* d_rule; // to store the name of the rule used. Set to 0 if no rule was used (i.e., if the formula is being reiterated from an eariler 
 		    // step in the proof
-}
+};
 
 /* This is a function to input axioms and inference rules from a given input file.
 Any input errors will be handled in the function, and if any are encountered, the function will exit. 
@@ -82,7 +89,7 @@ MT ~Y, (X>Y)
    ~X
 END INFERENCE"
 would be acceptable input for the inference rules. */
-void system_input(FILE* f, axiom axioms[], inference_rule i_rules[]);
+void system_input(FILE* f, axiom_set* axioms, inference_set* i_set);
 
 /* This is a function to input a proof from a given input file. Any input errors will be handled in the function, 
 and if any are encountered, the function will exit. */
@@ -111,7 +118,7 @@ int main(int argc, char* argv[]) {
 	axiom_set* axioms = new axiom_set;
 	inference_set* i_rules = new inference_set;
 	p_line proof[MAX_STEPS];
-	f = fopen(argv[1]);
+	f = fopen(argv[1], "r");
 	if (f == nullptr) {
 		printf("Error opening input file: \"%s\"\n", argv[1]);
 		exit(EXIT_FAILURE);
@@ -119,18 +126,19 @@ int main(int argc, char* argv[]) {
 	// we input the axioms and inference rules
 	system_input(f, axioms, i_rules);	
 	// now we input the proof
-	proof_input(f, proof); 
+	//proof_input(f, proof); 
 	// for now, the proof_check function will note if the proof is invalid, so we only need to print out in main the case when the proof is valid
-	if (proof_check(proof, axioms, i_rules))
-		printf("The proof is correct.\n");
+	//if (proof_check(proof, axioms, i_rules))
+	//	printf("The proof is correct.\n");
+	fclose(f);
 }
 
 bool positive_string(char* string) {
 	if (string == NULL)
 		return false;
 	bool num = true;
-	for (auto x: string)
-		num &= isdigit(x);
+	for (int i = 0; i < strlen(string); i++)
+		num &= isdigit(string[i]);
 	return num;
 }
 
@@ -150,13 +158,13 @@ void system_input(FILE* f, axiom_set* axioms, inference_set* i_rules) {
 	// first we input the axioms
 	axiom_input(f, axioms);
 	// then we input the inference rules
-	inference_input(f, i_rules);
+	//inference_input(f, i_rules);
 }
 
 void inference_input(FILE* f, inference_set* i_rules) {
 	if (f == nullptr) {
 		printf("No input file provided to system input.\n");
-		exit(EXIT FAILURE);	
+		exit(EXIT_FAILURE);	
 	}
 	if (i_rules == nullptr) {
 		printf("No inference rules parameter provided to inferece input.\n");
@@ -165,11 +173,12 @@ void inference_input(FILE* f, inference_set* i_rules) {
 	char stringbuf[MAX_LENGTH*MAX_PREMISES];
 	char name[MAX_LENGTH];
 	char* pch;
-	if (fscanf(f, "%*[\n]", stringbuf) != 1) {
+	int j = 0;
+	if (fscanf(f, "%[\n]", stringbuf) != 1) {
 		printf("The inference rules must be started by \"START INFERENCE\".\n");
 		exit(EXIT_FAILURE);
 	}
-	if (strcmp(stringvuf, "START AXIOMS") != 0) {
+	if (strcmp(stringbuf, "START AXIOMS") != 0) {
 		printf("The axioms cannot be started by \"%s\"\n", stringbuf);
 		printf("They must be started by \"START AXIOMS\"\n");
 		exit(EXIT_FAILURE);
@@ -186,7 +195,7 @@ void inference_input(FILE* f, inference_set* i_rules) {
                         return;
                 }
 		// we insure the name was input correctly
-		if (name == nullptr || strlen(name) == 0) {
+		if (strlen(name) == 0) {
 			printf("Inference rule %d: no name provided.\n", i+1);
 			exit(EXIT_FAILURE);
 		}
@@ -201,33 +210,35 @@ void inference_input(FILE* f, inference_set* i_rules) {
 			printf("Inference rule %d contains no premises.\n", i+1);
 			exit(EXIT_FAILURE);
 		}
-		i_rules->rules[i] = new premise(name);
+		i_rules->rules[i] = inference_rule(name);
+		j = 0;
 		do {
 			if (!syntax(pch)) {
 				printf("\"%s\" does not have correct syntax.\n", pch);
 				exit(EXIT_FAILURE);
 			}
-			strcpy(i_rules->rules[i].premises[j], pch);
+			strcpy(i_rules->rules[i].premises[j].expression, pch);
 			i_rules->rules[i].premise_count++;
 			if (i_rules->rules[i].premise_count > MAX_PREMISES) {
 				printf("Inference rule %d has too many premises (maximum number is %d).\n", i+1, MAX_PREMISES);
 				exit(EXIT_FAILURE);
 			}
 			pch = strtok(NULL, ",");	
+			j++;
 		} while (pch != NULL);
 		// now we input the conclusion of this inference rule
-		if (fscanf(f, "%*[\n]", stringbuf) != 1) {
+		if (fscanf(f, "%[\n]", stringbuf) != 1) {
 			printf("Inference rule %d does not have a conclusion.\n", i+1);
 			exit(EXIT_FAILURE);
 		}
 		if (!syntax(stringbuf)) {
-			pritnf("Inference rule %d: \"%s\" is not correct syntax.\n", i+1, stringbuf);
+			printf("Inference rule %d: \"%s\" is not correct syntax.\n", i+1, stringbuf);
 			exit(EXIT_FAILURE);
 		}
-		strcpy(i_rules->rules[i].conclusion, stringbuf); 
+		strcpy(i_rules->rules[i].conclusion->expression, stringbuf); 
 	}
 	// at this point we need to have reached a line reading "END INFERENCE"
-	if (fscanf(f, "%*[^\n], stringbuf) != 1 || strcmp(stringbuf, "END INFERENCE") != 0) {
+	if (fscanf(f, "%[^\n]", stringbuf) != 1 || strcmp(stringbuf, "END INFERENCE") != 0) {
                 printf("The inference rules must be ended by \"END INFERECE\".\n");
                 exit(EXIT_FAILURE);
         }
@@ -244,46 +255,54 @@ void axiom_input(FILE* f, axiom_set* axioms) {
 	}
 	char stringbuf[MAX_LENGTH];
 	char name[MAX_LENGTH];
-	bool num = true; // to track whether the name string contains only positive integers
-	if (fscanf(f, "%*[^\n]", stringbuf) != 1) {
+	if (fgets(stringbuf, MAX_LENGTH, f) == nullptr) {
 		printf("The axioms must be started by \"START AXIOMS\".\n");
 		exit(EXIT_FAILURE);
 	} 
+	stringbuf[strcspn(stringbuf, "\n")] = '\0';
 	if (strcmp(stringbuf, "START AXIOMS") != 0) {
+		printf("AAA\n");
 		printf("The axioms cannot be started by \"%s\"\n", stringbuf);
 		printf("They must be started by \"START AXIOMS\"\n");
 		exit(EXIT_FAILURE);
 	}
-	for (int i = 0; i < MAX_AXIOMS; i++, axioms->a_count++) {
-		if (fscanf(f, "%[^ \n]%[^ \n]", name, stringbuf) != 2) {
-			// if we have not found two pieces of input on the next line, and the first one does not end the 
-			// axioms, we have an input error
-			if (strcmp(name, "END AXIOMS") != 0) {
-				printf("The axioms must be ended by \"END AXIOMS\".\n");
-				exit(EXIT_FAILURE);
-			}
-			// if we have reached the end of the axioms, we return
-			return;
+	printf("stringbuf: %s\n", stringbuf);
+	int i = 0;
+	for (i = 0; i < MAX_AXIOMS; i++, axioms->a_count++) {
+		if (fscanf(f, "%s%s", name, stringbuf) != 2) {
+			printf("The axioms must be ended by \"END AXIOMS\".\n");
+			exit(EXIT_FAILURE);
 		}
+		printf("i: %d name: %s stringbuf: %s\n", i, name, stringbuf);
+		// we check if this possibly could end the string
+		if (!strcmp(name, "END") && !strcmp(stringbuf, "AXIOMS")) return;
 		// if the string was incorrect syntax, we have an error
 		if (!syntax(stringbuf)) {
 			printf("\"%s\" is incorrect syntax.\n", stringbuf);
 			exit(EXIT_FAILURE);
 		}
 		// now we ensure that the name is not a string of positive integers
-		if (name == nullptr || strlen(name) == 0) {
+		if (strlen(name) == 0) {
 			printf("Axiom %d: no name provided.\n", i+1);
 			exit(EXIT_FAILURE);
 		}
+		
 		if (positive_string(name)) {
 			printf("Error with name \"%s\": Names cannot be strings only consisting of positive integers.\n", name);
 			exit(EXIT_FAILURE);
 		}
-		axioms->aset[i] = new axiom(stringbuf, name);
+		//axioms->aset[i] = axiom(stringbuf, name);
 	}
+	printf("i: %d\n", i);
+	exit(1);
 	// at this point, we need to have reached a line with "END AXIOMS" on it
-	if (fscanf(f, "%*[^\n], stringbuf) != 1 || strcmp(stringbuf, "END AXIOMS") != 0) {
+	if (fgets(stringbuf, MAX_LENGTH, f) == nullptr) {
 		printf("The axioms must be ended by \"END AXIOMS\".\n");
-		exit(EXIT_FAILURE);
+                exit(EXIT_FAILURE);
+	}
+	stringbuf[strcspn(stringbuf, "\n")] = '\0';
+	if (strcmp(stringbuf, "END AXIOMS") != 0) {
+		printf("The axioms must be ended by \"END AXIOMS\".\n");
+                exit(EXIT_FAILURE);
 	}
 }

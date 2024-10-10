@@ -40,7 +40,7 @@ void improved_latex(formula* f, variable variables[], FILE* g, int size) {
 	// If the formula is atomic, it will still be set to f->var_count (1)
 	int end = f->op == '\0'?f->var_count:f->var_count+strlen(f->expression);
 	bool value;
-	int columns = fprintf(g, "Truth table for:\n\\[");
+	fprintf(g, "Truth table for:\n\\[");
 	int count = 0; // this will be used to track the index of the character in f->expression we are adding to the table
 	int precedence = -1; // will be used to test if a given index matches an operator with precedence
 	print_latex(f, g);
