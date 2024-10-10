@@ -1,11 +1,13 @@
 START AXIOMS
 S1 (Xv~X)
 SEE (X>Y) S2 (X>(Y>X))
-END AXIOMS
+END AXIOMS	
 
 START INFERENCE
 MP X, (X>Y)
 Y
-MT ~Y, (X>Y)
-~X
+MT X
+~X 
+MS Y, X, Z, V, W, A, (X>Y), ~X, ~V, ~Q, ~M
+Z
 END INFERENCE

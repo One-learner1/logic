@@ -109,6 +109,10 @@ void inference_input(FILE* f, inference_set* i_rules);
 otherwise. */
 bool positive_string(char* string);
 
+/* This function checks whether a string is made up just of whitespace characters. Returns true if that is the case, and false 
+otherwise. */
+bool whitespace_string(char* string);
+
 int main(int argc, char* argv[]) {
 	if (argc != 2) {
 		printf("Exactly one file name must be supplied.\n");
@@ -125,6 +129,7 @@ int main(int argc, char* argv[]) {
 	}
 	// we input the axioms and inference rules
 	system_input(f, axioms, i_rules);	
+	printf("System input files have correct syntax.\n");
 	// now we input the proof
 	//proof_input(f, proof); 
 	// for now, the proof_check function will note if the proof is invalid, so we only need to print out in main the case when the proof is valid
@@ -134,12 +139,21 @@ int main(int argc, char* argv[]) {
 }
 
 bool positive_string(char* string) {
-	if (string == NULL)
+	if (string == NULL || strlen(string) == 0)
 		return false;
 	bool num = true;
 	for (int i = 0; i < strlen(string); i++)
 		num &= isdigit(string[i]);
 	return num;
+}
+
+bool whitespace_string(char* string) {
+	if (string == NULL || strlen(string) == 0)
+		return false;
+	bool whitespace = true;
+	for (int i = 0; i < strlen(string); i++)
+		whitespace &= isspace(string[i]);
+	return whitespace;
 }
 
 void system_input(FILE* f, axiom_set* axioms, inference_set* i_rules) {
@@ -158,7 +172,7 @@ void system_input(FILE* f, axiom_set* axioms, inference_set* i_rules) {
 	// first we input the axioms
 	axiom_input(f, axioms);
 	// then we input the inference rules
-	//inference_input(f, i_rules);
+	inference_input(f, i_rules);
 }
 
 void inference_input(FILE* f, inference_set* i_rules) {
@@ -173,27 +187,37 @@ void inference_input(FILE* f, inference_set* i_rules) {
 	char stringbuf[MAX_LENGTH*MAX_PREMISES];
 	char name[MAX_LENGTH];
 	char* pch;
+	char t_string[MAX_LENGTH];
 	int j = 0;
-	if (fscanf(f, "%[\n]", stringbuf) != 1) {
-		printf("The inference rules must be started by \"START INFERENCE\".\n");
-		exit(EXIT_FAILURE);
+	// we find the next line in the input file that contains something other than a newline
+	while (1) {
+		if (fgets(stringbuf, MAX_LENGTH, f) == nullptr) {
+			printf("The inference rules must be started by \"START INFERENCE\".\n");
+			exit(EXIT_FAILURE);
+		}
+		if (!whitespace_string(stringbuf))
+			break;
 	}
-	if (strcmp(stringbuf, "START AXIOMS") != 0) {
+	printf("CCC\n");
+	stringbuf[strcspn(stringbuf, "\n")] = '\0';
+	if (strcmp(stringbuf, "START INFERENCE") != 0) {
 		printf("The axioms cannot be started by \"%s\"\n", stringbuf);
 		printf("They must be started by \"START AXIOMS\"\n");
 		exit(EXIT_FAILURE);
 	}
 	for (int i = 0; i < MAX_INFERENCE; i++, i_rules->i_count++) {
-		if (fscanf(f, "%[^ \n]%[^\n]", name, stringbuf) != 2) {
-                        // if we have not found two pieces of input on the next line, and the first one does not end the
-                        // inference rules, we have an input error
-                        if (strcmp(name, "END INFERENCE") != 0) {
-                                printf("The axioms must be ended by \"END AXIOMS\".\n");
-                                exit(EXIT_FAILURE);
-                        }
-                        // if we have reached the end of the axioms, we return
-                        return;
+		if (fscanf(f, "%s", name) != 1 || fgets(stringbuf, MAX_LENGTH, f) == nullptr) {
+			printf("The axioms must be ended by \"END AXIOMS\".\n");
+			exit(EXIT_FAILURE);
                 }
+		stringbuf[strcspn(stringbuf, "\n")] = '\0';
+		printf("i: %d name: %s stringbuf: %s\n", i, name, stringbuf);
+		// we check to see if we have reached the end of the inference rules. We do the sscanf as the string containing
+		// "INFERENCE" in "END INFERENCE" may also include space, so we sscanf from this string to just extract the
+		// "INFERENCE"
+		sscanf(stringbuf, "%s", t_string);
+		printf("t_string: %s\n", t_string);
+		if (!strcmp(name, "END") && !strcmp(t_string, "INFERENCE")) return;
 		// we insure the name was input correctly
 		if (strlen(name) == 0) {
 			printf("Inference rule %d: no name provided.\n", i+1);
@@ -204,7 +228,7 @@ void inference_input(FILE* f, inference_set* i_rules) {
                         exit(EXIT_FAILURE);
                 }
 		// we must ensure that stringbuf is of the following format: X, Y, Z, ... where X, Y, Z, are formulas.
-		pch = strtok(stringbuf, ",");
+		pch = strtok(stringbuf, ", ");
 		// if pch is already nullptr, we have an error
 		if (pch == nullptr) {
 			printf("Inference rule %d contains no premises.\n", i+1);
@@ -213,6 +237,7 @@ void inference_input(FILE* f, inference_set* i_rules) {
 		i_rules->rules[i] = inference_rule(name);
 		j = 0;
 		do {
+			printf("pch: %s\n", pch);
 			if (!syntax(pch)) {
 				printf("\"%s\" does not have correct syntax.\n", pch);
 				exit(EXIT_FAILURE);
@@ -223,25 +248,32 @@ void inference_input(FILE* f, inference_set* i_rules) {
 				printf("Inference rule %d has too many premises (maximum number is %d).\n", i+1, MAX_PREMISES);
 				exit(EXIT_FAILURE);
 			}
-			pch = strtok(NULL, ",");	
+			pch = strtok(NULL, " ,");	
 			j++;
 		} while (pch != NULL);
 		// now we input the conclusion of this inference rule
-		if (fscanf(f, "%[\n]", stringbuf) != 1) {
+		if (fscanf(f, "%s", stringbuf) != 1) {
 			printf("Inference rule %d does not have a conclusion.\n", i+1);
 			exit(EXIT_FAILURE);
 		}
+		stringbuf[strcspn(stringbuf, "\n")] = '\0';
 		if (!syntax(stringbuf)) {
 			printf("Inference rule %d: \"%s\" is not correct syntax.\n", i+1, stringbuf);
 			exit(EXIT_FAILURE);
 		}
 		strcpy(i_rules->rules[i].conclusion->expression, stringbuf); 
+		printf("conclusion: %s\n", stringbuf);
 	}
 	// at this point we need to have reached a line reading "END INFERENCE"
-	if (fscanf(f, "%[^\n]", stringbuf) != 1 || strcmp(stringbuf, "END INFERENCE") != 0) {
-                printf("The inference rules must be ended by \"END INFERECE\".\n");
+	if (fgets(stringbuf, MAX_LENGTH, f) == nullptr) {
+		printf("The inference rules must be ended by \"END INFERECE\".\n");
                 exit(EXIT_FAILURE);
-        }
+	}
+	stringbuf[strcspn(stringbuf, "\n")] = '\0';
+	if (strcmp(stringbuf, "END INFERENCE") != 0) {
+		printf("The inference rules must be ended by \"END INFERECE\".\n");
+                exit(EXIT_FAILURE);
+	}
 }
 
 void axiom_input(FILE* f, axiom_set* axioms) {
