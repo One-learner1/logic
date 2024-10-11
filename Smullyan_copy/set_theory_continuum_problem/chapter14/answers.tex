@@ -187,4 +187,40 @@ $\alpha+1$ would \textit{not} be in the domain of $f$.
 In fact, it seems that $F(f\restriction\beta)$ is just a typo, and really should be $F(f(b))$. This is due to the definition of 
 $F^*$: $F^*(\alpha+1)$ is not equal to $F(F^*\restriction\alpha)$, but is equal to $F(F^*(\alpha))$.
 
+\section*{Section 3}
+
+\subsection*{Proposition 3.3}
+Parts (3) and (4) of this proposition need some clarification. In particular, they are using $n$ as a constant, not a variable. 
+This works, as we recall that it was shown in Chapter 12 that $x=n,n\in x,x\in n$ are all $\Sigma_0$ (hence $\Sigma$).
+
+\subsection*{Types}
+It is remakred that the conditions of (0) can be collectively stated as 
+$t(m_1\in m_2)=\{\lceil m_1\rceil, \lceil m_2\rceil\}\cap\omega$. However, this is not correct. For instance, 
+$t(x_i\in x_j)=\{i,j\}$, but according to the other definition, it would equal
+\[ \{\lceil m_1\rceil, \lceil m_2\rceil\}\cap\omega \]
+\[ =\{\langle 0,i\rangle,\langle 0,j\rangle\}\cap\omega \] which may not be equal to $\{i,j\}$.
+
+\subsection*{Lemma 3.4}
+As remarked in the above Types section, the formula (2) is not correct. One way to correct this is by replacing it by the following method. First, 
+we need a relation $\textrm{Var}(x)$ (meaning $x$ is the code of some variable). This is just:
+\[ (\exists y\in x)(\exists z\in y)(\textrm{Num}(z)\wedge x=\langle 0,z\rangle) \]
+which is $\Sigma_0$.
+Then we need the relation $\textrm{Var}^n(x)$, meaning $x$ is the code of the variable $x_n$. This is just:
+\[ (\exists y\in x)(\exists z\in y))(z=n\wedge x=\langle 0,z\rangle) \] 
+which is $\Sigma_0$.
+Then we change (2) in the proof of the proposition to the conjunction of the following four formulas
+(for the sake of space, let \textquote{$\epsilon$} stand for $(\forall x\in c(a))(\forall y\in c(a))$):
+\begin{center}
+\begin{tabular}{l}
+$\textrm{(1) }\epsilon((\textrm{Var}(x)\wedge\textrm{Var}(y))\supset$ \\
+		$(\exists i\in\omega)(\exists j\in\omega)(\textrm{Var}^i(x)\wedge\textrm{Var}^j(y)\wedge f(\langle x,y,0\rangle)=\{i,j\}))$ \\
+$\textrm{(2) }\epsilon((\textrm{Var}(x)\wedge\oldneg\textrm{Var}(y))\supset$ \\
+		$(\exists i\in\omega)(\textrm{Var}^i(x)\wedge f(\langle x,y,0\rangle)=\{i\rangle\}))$ \\
+$\textrm{(3) }\epsilon((\oldneg\textrm{Var}(x)\wedge\textrm{Var}(y))\supset$ \\
+		$(\exists i\in\omega)(\textrm{Var}^i(y)\wedge f(\langle x,y,0\rangle)=\{i\rangle\}))$ \\
+$\textrm{(4) }\epsilon((\oldneg\textrm{Var}(x)\wedge\oldneg\textrm{Var}(y))\supset f(\langle x,y,0\rangle)=\emptyset)$
+\end{tabular}
+\end{center}
+We can use $\oldneg\textrm{Var}(x)$ in the above formulas, as $\textrm{Var}(x)$ is $\Sigma_0$, meaning so is $\oldneg\textrm{Var}(x)$. 
+
 \end{document}
