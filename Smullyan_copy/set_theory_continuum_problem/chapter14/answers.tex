@@ -229,4 +229,25 @@ $\Sigma$ formulas defining those relations. For instance, $y=\textrm{Neg}(x)$ (w
 and we would replace (3) with
 \[ (\forall x\in\mathcal{E}^a)(\exists y\in\mathcal{E}^a)(y=\textrm{Neg}(x)\wedge f(y)=f(x)) \]
 
+Also, I will note that I don't think the condition $z\in\mathcal{E}^a$ in the formula is needed, as $R(f,a)$ guarantees that 
+$\textrm{Dom}(f)=\mathcal{E}^a$, meaning $f(z)=y$ can only happen if $z\in\mathcal{E}^a$.
+
+\subsection*{Proposition 3.7}
+Here is an alternative proof of the proposition (though using the same idea, just slightly different formulas). 
+$\textrm{Sub}_a(x,i,y)=z$ iff the following condition holds:
+\begin{center}
+\begin{tabular}{ll}
+$(\exists f)[\textrm{Func}(f)\wedge\textrm{Dom}(f)=(\mathcal{E}^a\times\omega)\times a$ \\
+$\wedge(\forall w\in c(a))(\forall v\in c(a))(\forall i\in\omega)(\forall b\in a)$ \\
+$(f(\langle w,v,0\rangle,i,b\rangle)=\langle\Psi_a(w,i,b),\Psi_a(v,i,b),0\rangle)$ \\
+$\wedge(\forall w\in\mathcal{E}^a)(\forall k\in\omega)(\forall b\in a)(f(\textrm{Neg}(w),k,b)=\textrm{Neg}(f(w,k,b)))$ \\
+$\wedge(\forall w\in\mathcal{E}^a)(\forall v\in\mathcal{E}^a)(\forall k\in\omega)(\forall b\in a)$ \\
+$(f(\textrm{Con}(w,v),k,b)=\textrm{Con}(f(w,k,b),f(v,k,b)))$ \\
+$\wedge(\forall w\in\mathcal{E}^a)(\forall k\in\omega)(\forall j\in\omega)((j\ne k\supset$ \\
+$f(\textrm{E}_j(w),k,b)=\textrm{E}_j(f(w,k,b)))\wedge(j=k\supset f(\textrm{E}_j(w),k,b)=\textrm{E}_j(w)))$ \\
+$\wedge f(x,i,y)=z$
+\end{tabular}
+\end{center}
+
+
 \end{document}
