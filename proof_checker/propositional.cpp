@@ -228,7 +228,7 @@ void inference_input(FILE* f, inference_set* i_rules) {
                         exit(EXIT_FAILURE);
                 }
 		// we must ensure that stringbuf is of the following format: X, Y, Z, ... where X, Y, Z, are formulas.
-		pch = strtok(stringbuf, ", ");
+		pch = strtok(stringbuf, ", \t");
 		// if pch is already nullptr, we have an error
 		if (pch == nullptr) {
 			printf("Inference rule %d contains no premises.\n", i+1);
@@ -248,7 +248,7 @@ void inference_input(FILE* f, inference_set* i_rules) {
 				printf("Inference rule %d has too many premises (maximum number is %d).\n", i+1, MAX_PREMISES);
 				exit(EXIT_FAILURE);
 			}
-			pch = strtok(NULL, " ,");	
+			pch = strtok(NULL, " ,\t");	
 			j++;
 		} while (pch != NULL);
 		// now we input the conclusion of this inference rule

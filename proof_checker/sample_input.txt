@@ -8,6 +8,6 @@ MP X, (X>Y)
 Y
 MT X
 ~X 
-MS Y, X, Z, V, W, A, (X>Y), ~X, ~V, ~Q, ~M
+MS Y, X, Z, V, W, A, (X>Y)	
 Z
 END INFERENCE
