@@ -223,4 +223,10 @@ $\textrm{(4) }\epsilon((\oldneg\textrm{Var}(x)\wedge\oldneg\textrm{Var}(y))\sups
 \end{center}
 We can use $\oldneg\textrm{Var}(x)$ in the above formulas, as $\textrm{Var}(x)$ is $\Sigma_0$, meaning so is $\oldneg\textrm{Var}(x)$. 
 
+To be clear, the uses of $\textrm{Neg}(x)$, $\textrm{Con}(x,y)$, $\textrm{E}_i(x)$, in (3), (4), and (5) respectively, stand for 
+$\Sigma$ formulas defining those relations. For instance, $y=\textrm{Neg}(x)$ (where $x\in\mathcal{E}^a$) is
+\[ x\in\mathcal{E}^a\wedge y=\langle x,1\rangle \]
+and we would replace (3) with
+\[ (\forall x\in\mathcal{E}^a)(\exists y\in\mathcal{E}^a)(y=\textrm{Neg}(x)\wedge f(y)=f(x)) \]
+
 \end{document}
