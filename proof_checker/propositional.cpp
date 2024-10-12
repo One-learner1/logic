@@ -39,7 +39,7 @@ public:
 	int premise_count;
 };
 
-// this struct stores a set of inference rules, a well as the number of inference rules in the set
+// this class stores a set of inference rules, a well as the number of inference rules in the set
 class inference_set {
 public:
 	inference_rule rules[MAX_INFERENCE];
@@ -52,14 +52,22 @@ an array of steps, as well as an inference rule. */
 class p_line {
 public:
 	p_line() : f(new formula), d_steps(new int[MAX_STEPS]), d_rule(new char[MAX_LENGTH]) {}
-	p_line(int i, char* expression, int* steps, char* rule) :f(new formula(expression)), 
-								    step(i), d_steps(steps), d_rule(rule) {}
+	p_line(int i, char* expression) :f(new formula(expression)), 
+								    step(i), d_count(0), d_steps(new int[MAX_STEPS]), d_rule(new char[MAX_LENGTH]) {}
 
 	formula* f;
 	int step;
-	int* d_steps; // to store the steps listed in the proof
+	int d_count; // to store the number of things justifying this line (including both steps and inference rules)
+	int* d_steps; // to store the steps listed in this line of the proof
 	char* d_rule; // to store the name of the rule used. Set to 0 if no rule was used (i.e., if the formula is being reiterated from an eariler 
 		    // step in the proof
+};
+
+// this class stores a set of lines of a proof
+class p_set {
+public:
+	p_line lines[MAX_STEPS];
+	int l_count; // to store the number of lines in the proof
 };
 
 /* This is a function to input axioms and inference rules from a given input file.
@@ -92,8 +100,10 @@ would be acceptable input for the inference rules. */
 void system_input(FILE* f, axiom_set* axioms, inference_set* i_set);
 
 /* This is a function to input a proof from a given input file. Any input errors will be handled in the function, 
-and if any are encountered, the function will exit. */
-void proof_input(FILE* f, p_line proof[]);
+and if any are encountered, the function will exit. Each line in the input file must consist of a number (in chronological order) followed by a 
+period, then a formula, and lastly the steps and inference rule used to derive the formula. The last part should contain no more than one inference
+rule. The proof must be begun by "BEGIN PROOF", and ended by "END PROOF". */
+void proof_input(FILE* f, p_set* proof);
 
 /* This functions checks whether a proof in a given system is valid. If it is invalid, the function will give a description of why it is invalid, and 
 return false. If it is valid, it will return true. */
@@ -121,7 +131,7 @@ int main(int argc, char* argv[]) {
 	FILE* f;
 	axiom_set* axioms = new axiom_set;
 	inference_set* i_rules = new inference_set;
-	p_line proof[MAX_STEPS];
+	p_set* proof = new p_set;
 	f = fopen(argv[1], "r");
 	if (f == nullptr) {
 		printf("Error opening input file: \"%s\"\n", argv[1]);
@@ -129,13 +139,110 @@ int main(int argc, char* argv[]) {
 	}
 	// we input the axioms and inference rules
 	system_input(f, axioms, i_rules);	
+	// now we input the proof
+	proof_input(f, proof); 
 	printf("System input files have correct syntax.\n");
 	// now we input the proof
-	//proof_input(f, proof); 
 	// for now, the proof_check function will note if the proof is invalid, so we only need to print out in main the case when the proof is valid
 	//if (proof_check(proof, axioms, i_rules))
 	//	printf("The proof is correct.\n");
 	fclose(f);
+}
+
+void proof_input(FILE* f, p_set* proof) {
+	if (f == nullptr || proof == nullptr)
+		return;
+	char step[MAX_LENGTH]; // to store the step of the line in the proof
+	char g[MAX_LENGTH]; // to store the formula
+	char reasons[MAX_LENGTH*MAX_STEPS]; // to store the reasons for this line of the proof
+	char* pch;
+	int t_num, step_count; // used when parsing the justification of a given line in the proof
+	step_count = 0;
+	int inference_count = 0; // this tracks how many inference rules are counted in the justification for each line of the proof
+	if (fscanf(f, "%s%s", step, g) != 2) {
+		printf("The proof must be started by \"BEGIN PROOF\".\n");
+		exit(EXIT_FAILURE);
+	}
+	if (strcmp(step, "BEGIN") != 0 || strcmp(g, "PROOF") != 0) {
+		printf("The proof cannot begin with \"%s %s\"\n", step, g);
+		exit(EXIT_FAILURE);
+	}
+	// we initialize the proof->l_count
+	proof->l_count = 0;
+	for (int i = 0; i < MAX_STEPS; i++) {
+		inference_count = 0;
+		if (fscanf(f, "%s%s", step, g) != 2) {
+			printf("The proof must be ended by \"END PROOF\"\n");
+			exit(EXIT_FAILURE);
+		}
+		// we check if this is the end of the proof
+		if (!strcmp(step, "END") && !strcmp(g, "PROOF")) return;
+		// now we ensure the proof has been given justification
+		if (fgets(reasons, MAX_LENGTH*MAX_STEPS, f) == nullptr) {
+			printf("Error with line %d of the proof: no justification given.\n", i+1);
+			exit(EXIT_FAILURE);
+		}
+		// at this point, we can update proof->l_count. We needed to wait until now, or otherwise we may have 
+		// added one to l_count even though the line was ending the proof.
+		proof->l_count++;	
+		// now we ensure that the step was input correctly
+		// note that this also ensures that the digit in the step is equal to i+1 (so this ensures the steps are actually
+		// in chronological order)
+		if (strlen(step) != 2 || !isdigit(step[0]) || step[1] != '.' || atoi(step) != i+1) {
+			printf("Step %d of the proof was input improperly: It should be \"%d.\"\n", i+1, i+1);
+			exit(EXIT_FAILURE);
+		}
+		// now we ensure that the formula has correct syntax
+		if (!syntax(g)) {
+			printf("Step %d of the proof: \"%s\" has incorrect syntax.\n", i+1, g);
+			exit(EXIT_FAILURE);
+		}
+		pch = strtok(reasons, ", \t\n");
+                // if pch is already nullptr, we have an error
+                if (pch == nullptr) {
+			printf("Step %d of the proof contains no justification.\n", i+1);
+                        exit(EXIT_FAILURE);
+                }
+		proof->lines[i] = p_line(atoi(step), g);
+		// now we ensure the justification was input correctly
+		do {
+                        printf("pch: %s\n", pch);
+			// this handles the case where the current part of the string is an inference rule
+                        if (!positive_string(pch)) {
+				if (inference_count != 0) {
+					printf("inference_count: %d\n", inference_count);
+					printf("Line %d of the proof: The justification can contain at most one inference rule", i+1);
+					printf(" (repeated only once).\n");
+					exit(EXIT_FAILURE);
+				}
+				inference_count++;
+				strcpy(proof->lines[i].d_rule, pch);
+                        }
+			// this handles the case where the current part of the string is a previous step of the proof
+			else {
+				// if the step is greater than the current step of the proof, or less then 0, we have an error
+				t_num = atoi(pch);			
+				if (t_num <= 0 || t_num >= i+1) {
+					printf("Line %d of the proof: \"%d\" cannot be listed as a justifying step", i+1, t_num);
+					printf(" when the current step is %d.\n", i+1);
+					exit(EXIT_FAILURE);
+				}
+				proof->lines[i].d_steps[step_count] = t_num;
+				if (step_count++ > MAX_STEPS) {
+					printf("Line %d of the proof: Excessive number of justifying steps (max number is %d).\n", i+1, MAX_STEPS);
+					exit(EXIT_FAILURE);
+				}
+			}
+			proof->lines[i].d_count++;
+                        pch = strtok(NULL, " ,\t\n");    
+			
+                } while (pch != NULL);
+	}
+	// at this point we need to have reached the end of the proof
+	if (fscanf(f, "%s%s", step, g) != 2 || strcmp(step, "END") != 0 || strcmp(g, "PROOF") != 0) {
+		printf("The proof must be ended by \"END PROOF\".\n");
+		exit(EXIT_FAILURE);
+	}
 }
 
 bool positive_string(char* string) {
@@ -189,24 +296,18 @@ void inference_input(FILE* f, inference_set* i_rules) {
 	char* pch;
 	char t_string[MAX_LENGTH];
 	int j = 0;
-	// we find the next line in the input file that contains something other than a newline
-	while (1) {
-		if (fgets(stringbuf, MAX_LENGTH, f) == nullptr) {
-			printf("The inference rules must be started by \"START INFERENCE\".\n");
-			exit(EXIT_FAILURE);
-		}
-		if (!whitespace_string(stringbuf))
-			break;
+	if (fscanf(f, "%s%s", stringbuf, t_string) != 2) {
+                printf("The proof must be started by \"START INFERENCE\"\n");
+                exit(EXIT_FAILURE);
+	}
+	if (strcmp(stringbuf, "START") != 0 || strcmp(t_string, "INFERENCE") != 0) {
+		printf("The axioms cannot be started by \"%s %s\"\n", stringbuf, t_string);
+                printf("They must be started by \"START INFERENCE\"\n");
+                exit(EXIT_FAILURE);
 	}
 	printf("CCC\n");
-	stringbuf[strcspn(stringbuf, "\n")] = '\0';
-	if (strcmp(stringbuf, "START INFERENCE") != 0) {
-		printf("The axioms cannot be started by \"%s\"\n", stringbuf);
-		printf("They must be started by \"START AXIOMS\"\n");
-		exit(EXIT_FAILURE);
-	}
 	for (int i = 0; i < MAX_INFERENCE; i++, i_rules->i_count++) {
-		if (fscanf(f, "%s", name) != 1 || fgets(stringbuf, MAX_LENGTH, f) == nullptr) {
+		if (fscanf(f, "%s", name) != 1 || fgets(stringbuf, MAX_LENGTH*MAX_PREMISES, f) == nullptr) {
 			printf("The axioms must be ended by \"END AXIOMS\".\n");
 			exit(EXIT_FAILURE);
                 }
@@ -227,6 +328,7 @@ void inference_input(FILE* f, inference_set* i_rules) {
                         printf("Error with name \"%s\": Names cannot be strings only consisting of positive integers.\n", name);
                         exit(EXIT_FAILURE);
                 }
+		strcpy(i_rules->rules[i].name, name);
 		// we must ensure that stringbuf is of the following format: X, Y, Z, ... where X, Y, Z, are formulas.
 		pch = strtok(stringbuf, ", \t");
 		// if pch is already nullptr, we have an error
@@ -265,7 +367,7 @@ void inference_input(FILE* f, inference_set* i_rules) {
 		printf("conclusion: %s\n", stringbuf);
 	}
 	// at this point we need to have reached a line reading "END INFERENCE"
-	if (fgets(stringbuf, MAX_LENGTH, f) == nullptr) {
+	if (fgets(stringbuf, MAX_LENGTH*MAX_PREMISES, f) == nullptr) {
 		printf("The inference rules must be ended by \"END INFERECE\".\n");
                 exit(EXIT_FAILURE);
 	}
@@ -287,6 +389,16 @@ void axiom_input(FILE* f, axiom_set* axioms) {
 	}
 	char stringbuf[MAX_LENGTH];
 	char name[MAX_LENGTH];
+	if (fscanf(f, "%s%s", stringbuf, name) != 2) {
+                printf("The proof must be started by \"START AXIOMS\"\n");
+                exit(EXIT_FAILURE);
+        }
+        if (strcmp(stringbuf, "START") != 0 || strcmp(name, "AXIOMS") != 0) {
+                printf("The axioms cannot be started by \"%s %s\"\n", stringbuf, name);
+                printf("They must be started by \"START AXIOMS\"\n");
+                exit(EXIT_FAILURE);
+        }
+	/*
 	if (fgets(stringbuf, MAX_LENGTH, f) == nullptr) {
 		printf("The axioms must be started by \"START AXIOMS\".\n");
 		exit(EXIT_FAILURE);
@@ -297,7 +409,7 @@ void axiom_input(FILE* f, axiom_set* axioms) {
 		printf("The axioms cannot be started by \"%s\"\n", stringbuf);
 		printf("They must be started by \"START AXIOMS\"\n");
 		exit(EXIT_FAILURE);
-	}
+	}*/
 	printf("stringbuf: %s\n", stringbuf);
 	int i = 0;
 	for (i = 0; i < MAX_AXIOMS; i++, axioms->a_count++) {
@@ -323,7 +435,7 @@ void axiom_input(FILE* f, axiom_set* axioms) {
 			printf("Error with name \"%s\": Names cannot be strings only consisting of positive integers.\n", name);
 			exit(EXIT_FAILURE);
 		}
-		//axioms->aset[i] = axiom(stringbuf, name);
+		axioms->aset[i] = axiom(stringbuf, name);
 	}
 	printf("i: %d\n", i);
 	exit(1);

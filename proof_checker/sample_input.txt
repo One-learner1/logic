@@ -11,3 +11,8 @@ MT X
 MS Y, X, Z, V, W, A, (X>Y)	
 Z
 END INFERENCE
+
+BEGIN PROOF
+1. (X>Y) P
+2. (XY) MP, MP
+END PROOF
