@@ -77,4 +77,101 @@ using Theorem 1.3 to prove Theorem G, as we already know that $L_\alpha$ for all
 
 Note that $a'=a$ is due to Theorem 5.1 of Chapter 10.
 
+\section*{Section 2}
+
+\subsection*{Notes}
+Clearly $C_1$ should really be $K_0=\emptyset$, not $K_0\ne\emptyset$.
+
+\subsection*{Exercise 2.1}
+To prove the exercise, we first prove the following useful lemma.
+
+\begin{lemma}
+Suppose two classes $A$ and $B$ are $\in$-isomorphic under a function $\pi$. Then, for any subclass $C$ of $A$, if 
+a class $D$ is definable over $C$, then $\pi''(D)$ is definable over $\pi''(C)$. In particular, if a formula 
+$\phi$ (whose constants are $a_1,...,a_n$) defines $D$ over $C$, then $\psi$, which is the result of replacing 
+each $a_i$ in $\phi$ by $\pi(a_i)$, defines $\pi''(D)$ over $\pi''(C)$.
+\end{lemma}
+
+\begin{proof}
+Assume the hypothesis. Consider any subclass $C$ of $A$. We prove this by induction on the degree of the formulas.
+
+Atomic case: In this case, the formula would have to either be of the form $x\in a$ or $a\in x$, where $a\in C$. 
+Suppose that it is the first case; that is, the formula is of the form $x\in a$ (where $a\in C$). We show that 
+$\pi''(D)$ is definable over $\pi''(C)$ by $x\in\pi(a)$. Well, note that $\pi(a)$ is indeed a member of 
+$\pi''(C)$ (as $a\in C$). On the one hand, suppose that $\pi(b)\in\pi(a)$ holds for some $\pi(b)\in\pi''(C)$ (where $b\in C$). 
+Then, because $\pi$ is an $\in$-isomorphism, $b\in a$, meaning $b\in D$, and thus $\pi(b)\in\pi''(D)$. On the other hand, 
+suppose that $\pi(b)\in\pi''(D)$ (for some $b\in D$). Then $b\in D$, meaning $b\in a$, and thus, because $\pi$ is an 
+$\in$-isomorphism, $\pi(b)\in\pi(a)$. Thus $x\in\pi(a)$ defines $\pi''(D)$ over $\pi''(C)$, therefore completing the first case. The second 
+case (when the formula is of the form $a\in x$) is nearly identical.
+
+Negation case: In this case, suppose the result holds for some formula $\phi(x)$, and that $\oldneg\phi(x)$ defines 
+$D$ over $C$. Suppose also that the only constants in $\phi(x)$ are $a_1,...,a_n$. We show that 
+$\oldneg\psi(x)$, where $\psi$ is the result of replacing each $a_i$ in $\phi$ by $\pi(a_i)$, defines 
+$\pi''(D)$ over $\pi''(C)$. First note that all constants in $\oldneg\psi$ are in $\pi''(C)$ (as 
+each constant is of the form $\pi(a_i)$ where $a_i\in C$). On the one hand, suppose that 
+$\oldneg\psi(\pi(a))$ holds for some $\pi(a)\in\pi''(C)$ (where $a\in C$). By assumption, it follows that 
+$\pi(a)\in\pi''(D)$ (because $\phi(x)$ defines $C-D$, and because $\oldneg\psi(\pi(a))$ is true, we know that 
+$\psi(\pi(a))$ is false, hence $\pi(a)\in\pi''(C)$ but $\pi(a)\notin\pi''(C)-\pi''(D)$, meaning $\pi(a)\in\pi''(D)$).
+
+On the other hand, if $\pi(a)\in\pi''(D)$ (for some $a\in D$), then $a\in D$, meaning 
+$\oldneg\psi(\pi(a))$ is true over $\pi''(C)$ (by assumption of $\phi$).
+
+Conjunction case: In this case, suppose that the result holds for some formulas $\phi$ (with constants $a_1,...,a_n$, and which 
+defines some class $K$) and $\psi$
+(with constants $b_1,...,b_n$, and which defines some class $L$), and that the formula
+$\gamma(x)$: $\phi\wedge\psi$ defines $D$ over $C$. Let $\phi'$ and $\psi'$ be the results of replacing the occurences of all
+$a_i$ in $\phi$ with $\pi(a_i)$, and the occurences of all $b_i$ in $\psi$ with $\pi(b_i)$, respectively. Then let 
+$\gamma'(x)$ be $\phi'\wedge\psi'$. Then, of course, all constants of $\gamma'(x)$ are in $\pi''(C)$.
+
+On the one hand, suppose that $\gamma'(\pi(a))$ holds for some $\pi(a)\in\pi''(C)$. Then either 
+$\phi'(\pi(a))$ or $\psi'(\pi(a))$ is true over $\pi''(C)$. Suppose that $\phi'(\pi(a))$ is true over 
+$\pi''(C)$ (the case where $\psi'(\pi(a))$ is true over $\pi''(C)$ is identical). Then $\pi(a)\in\pi''(K)$ (by assumption), hence 
+$a\in K$, hence $\phi(a)$ is true over $C$, hence $\gamma(a)$ is true over $C$, hence $a\in D$, and therefore 
+$\pi(a)\in\pi''(D)$.
+
+On the other hand, suppose that $\pi(a)\in\pi''(D)$. Then $a\in D$, and hence either $\phi(a)$ or $\psi(a)$ is true over 
+$C$. Without loss of generality, suppose that $\phi(a)$ is true over $C$. Then $\phi'(\pi(a))$ is true over $\pi''(C)$ (by assumption), 
+meaning $\gamma'(\pi(a))$ is also true over $\pi''(C)$. 
+
+Existential case: In this case, consider some formula of the form $(\exists x)\phi(x,y)$ (with constants $a_1,...,a_n$) which 
+defines some class $D$ over $C$. Let $\phi'(x,y)$ be the result of replacing each occurence of a $a_i$ in $\phi(x,y)$ with 
+$\pi(a_i)$. Then, of course, all constants of $(\exists x)\phi'(x,y)$ are in $\pi''(C)$. 
+
+On the one hand, suppose that $(\exists x)\phi'(x,\pi(a))$ holds for some $\pi(a)\in\pi''(C)$. Then, for some 
+$\pi(b)\in\pi''(C)$, $\phi'(\pi(b),\pi(a))$ is true over $\pi''(C)$, meaning, by assumption (applied to $\phi(b,x)$),
+$\phi(b,a)$ is true over $C$, hence $(\exists x)\phi(x,a)$ is true over $C$, hence $a\in D$, hence $\pi(a)\in\pi''(D)$.
+
+On the other hand, suppose that $\pi(a)\in\pi''(D)$. Then $a\in D$, hence 
+$\phi(b,a)$ is true over $C$ for some $b\in C$. Then, by assumption (applied to $\phi(b,x)$), 
+it follows that $\phi'(\pi(b),\pi(a))$ is true over $\pi''(C)$, hence $(\exists x)(x,\pi(a))$ is true over 
+$\pi''(C)$.
+\end{proof}
+
+Now we can prove Exercise 2.1. That is, we suppose that $(K_0,K_1,...,K_\alpha,...)$ $(\alpha<\gamma)$ is a pseudo-construction 
+and that $K=\cup_\alpha<\gamma K_\alpha$, and that $\pi$ is a Mostowski-Shpepherdson map on $K$. We prove that
+
+(a) For each $\alpha<\gamma$, $\pi''(K_\alpha)=L_\alpha$.
+
+(b) $\pi''(K)=L_\gamma$
+
+\begin{proof}
+
+(a) By transfinite induction.
+
+The least ordinal case is given by $C_1$.
+
+Suppose the result holds for some $\alpha<\lambda$ (and that $\alpha^+<\lambda$), that is, 
+$\pi''(K_\alpha)=L_\alpha$. We must show that $\pi''(K_{\alpha^+})=L_{\alpha^+}=\mathcal{F}(L_\alpha)$.
+
+On the one hand, suppose that $x\in\pi''(K_{\alpha^+})$. Then $x=\pi(a)$ for some 
+$a\in K_{\alpha^+}$. By $C_2$, $a\cap K\in\mathcal{F}(K_\alpha)$. Also, because 
+$\pi$ is a Mostowski-Shepherdson map, $\pi(a)=\pi''(a\cap K)$. By the above lemma, it follows that 
+$\pi''(a\cap K)$ is definable over $\pi''(K_\alpha)=L_\alpha$, meaning $\pi''(a\cap K)\in\mathcal{F}(L_\alpha)=L_{\alpha^+}$, 
+that is, $\pi(a)\in L_{\alpha^+$. Hence $\pi''(K_{\alpha^+})\subseteq L_{\alpha^+}$.
+
+On the other hand, suppose that $x\in L_{\alpha^+}=\mathcal{F}(L_\alpha)$. By the above lemma, it follows that 
+$\pi^{-1}''(x)\in\mathcal{F}(K_\alpha)$.
+ 
+
+
 \end{document}
