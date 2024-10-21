@@ -158,20 +158,29 @@ and that $K=\cup_\alpha<\gamma K_\alpha$, and that $\pi$ is a Mostowski-Shpepher
 
 (a) By transfinite induction.
 
-The least ordinal case is given by $C_1$.
+Least ordinal case: This is given by $C_1$.
 
-Suppose the result holds for some $\alpha<\lambda$ (and that $\alpha^+<\lambda$), that is, 
+Successor case: Suppose the result holds for some $\alpha<\lambda$ (and that $\alpha^+<\lambda$), that is, 
 $\pi''(K_\alpha)=L_\alpha$. We must show that $\pi''(K_{\alpha^+})=L_{\alpha^+}=\mathcal{F}(L_\alpha)$.
 
 On the one hand, suppose that $x\in\pi''(K_{\alpha^+})$. Then $x=\pi(a)$ for some 
 $a\in K_{\alpha^+}$. By $C_2$, $a\cap K\in\mathcal{F}(K_\alpha)$. Also, because 
 $\pi$ is a Mostowski-Shepherdson map, $\pi(a)=\pi''(a\cap K)$. By the above lemma, it follows that 
 $\pi''(a\cap K)$ is definable over $\pi''(K_\alpha)=L_\alpha$, meaning $\pi''(a\cap K)\in\mathcal{F}(L_\alpha)=L_{\alpha^+}$, 
-that is, $\pi(a)\in L_{\alpha^+$. Hence $\pi''(K_{\alpha^+})\subseteq L_{\alpha^+}$.
+that is, $\pi(a)\in L_{\alpha^+}$. Hence $\pi''(K_{\alpha^+})\subseteq L_{\alpha^+}$.
 
 On the other hand, suppose that $x\in L_{\alpha^+}=\mathcal{F}(L_\alpha)$. By the above lemma, it follows that 
-$\pi^{-1}''(x)\in\mathcal{F}(K_\alpha)$.
+$(\pi^{-1})''(x)\in\mathcal{F}(K_\alpha)$. Thus (by $C_2$), for some $a\in K_{\alpha+1}$, 
+$a\cap K=(\pi^{-1})''(x)$. Then $\pi(a)\in\pi''(K_{\alpha+1})$. But $\pi(a)=\pi''(a\cap K)$ (because 
+$\pi$ is a Mostowski-Shepherdson mapping) and 
+$\pi''(a\cap K)=\pi''((\pi^{-1})''(x))=x$, and thus $x\in\pi''(K_{\alpha+1})$. Thus 
+$L_{\alpha^+1}\subseteq\pi''(K_{\alpha+1})$.
+
+Hence we have shown that $\pi''(K_{\alpha^+}=L_{\alpha^+}$.
+
+Limit ordinal case: This is obvious (by $C_3$).
+
+(b) Obvious (using part (a) of this exercise).
+\end{proof}
  
-
-
 \end{document}
