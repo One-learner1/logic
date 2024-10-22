@@ -182,5 +182,52 @@ Limit ordinal case: This is obvious (by $C_3$).
 
 (b) Obvious (using part (a) of this exercise).
 \end{proof}
+
+\subsection*{Exercise 2.2}
+Suppose $K$ and $M$ are sets, and $K$ is bound up with $M$. We prove that $\mathcal{F}(K\cap M)$ is the set of all 
+elements $a\cap K$ such that $a\in (K\cap\mathcal{F}(M))$.
+
+\begin{proof}
+
+On the one hand, suppose that $x\in\mathcal{F}(K\cap M)$. Because $K\cap M$ is Henkin closed with respct to $M$ (by $B_1$), it follows that 
+$x\in\mathcal{F}(M)$; more specifically, $x$ is definable over $M$ by a formula whose constants are all in $K\cap M$ (this is just the same 
+formula that defines $x$ over $K\cap M$). By $B_2$, it follows that $x\in K$. Thus $x\in (K\cap\mathcal{F}(M))$. 
+But also $x=x\cap K$ (because all elements of $x$ are in $K\cap M$, hence in $K$). Hence there is some $a$ (namely $x$ itself) such that 
+$x=a\cap K$ and $a\in (K\cap\mathcal{F}(M))$.
+
+On the other hand, suppose that $x=a\cap K$ where $a\in (K\cap\mathcal{F}(M))$. By $B_2$, it follows that $a$ is definable over 
+$M$ by a formula $\phi$ whose constants are all in $K\cap M$. Because $K\cap M$ is Henkin closed with respect to $M$, it follows that 
+$\phi$ defines $a\cap K$ over $K\cap M$, meaning $a\cap K\in\mathcal{F}(K\cap M)$. 
+
+Thus we have shown that $\mathcal{F}(K\cap M)$ is the set of all elements $a\cap K$ such that $a\in (K\cap\mathcal{F}(M))$.
+
+\end{proof}
+
+\subsection*{Exercise 2.3}
+We are to show that the $\gamma$-tuple $(K_0,...,K_\alpha,...)$ ($\alpha<\gamma$) is a pseudo-construction (of $K$).
+
+$C_1$: We show that $K_0=\emptyset$. Well, $K_0=K\cap L_{\overline{0}}$. Now, $\overline{0}$ is the least ordinal in $o(K)$, i.e., the lowest order of 
+any element in $K$. What this means is that $K\cap L_{\overline{0}}=\emptyset$, and thus $K_0=\emptyset$.
+
+$C_2$: Consider any $\alpha<\gamma$. Then $K$ is bound up with $L_{\overline{\alpha}}$. Also, 
+$K_{\alpha+1}=K\cap L_{\overline{\alpha+1}}$, $K_\alpha=K\cap L_{\overline{\alpha}}$. Note that 
+$L_{\overline{\alpha+1}}=\mathcal{F}(L_{\overline{\alpha}})$ (because $\overline{\alpha}+1\in o(K)$, meaning 
+$L_{\overline{\alpha+1}}=L_{\overline{\alpha}+1}=\mathcal{F}(L_{\overline{\alpha}})$). Then 
+$\mathcal{F}(K\cap L_{\overline{\alpha}})$ is the set of all elements $a\cap K$ such that $a\in (K\cap L_{\overline{\alpha+1}})$ (by Exercise 2.2).
+But $\mathcal{F}(K\cap L_{\overline{\alpha}})=\mathcal{F}(K_\alpha)$, and 
+$K\cap L_{\overline{\alpha+1}}=K_{\alpha+1}$. Thus $\mathcal{F}(K_\alpha)$ is the set of all elements $a\cap K$ where 
+$a\in K_{\alpha+1}$. 
+
+$C_3$: Consider some limit ordinal $\delta<\gamma$. Then $K_\delta=K\cap L_{\overline{\delta}}$. We are to show that 
+$K_\delta=\cup_{\alpha<\delta}K_\alpha$.
+
+On the one hand, suppose that $x\in\cup_{\alpha<\delta}K_\alpha$. Then $x\in K_\alpha$ for some $\alpha<\delta$. Now, 
+$K_\alpha=K\cap L_{\overline{\alpha}}$. But $\overline{\alpha}<\overline{\delta}$. Hence $x\in L_{\overline{\delta}}$, and thus 
+$x\in K_\delta$ (as $K_\delta=K\cap L_{\overline{\delta}})$. 
+
+On the other hand, suppose that $x\in K_\delta$. Now, $\overline{\delta}$ must be a limit ordinal. Hence, because 
+$x\in L_{\overline{\delta}}$, it follows that $x\in L_\alpha$ for some $\alpha<\overline{\delta}$. But, because also 
+$x\in K$, it follows that there must be some $\beta\in o(K)$, where $\beta<\delta$, such that $x\in L_{\overline{\beta}}$. 
+Hence $x\in K\cap L_{\overline{\beta}}$, meaning $x\in K_\beta$, for some $\beta<\delta$.
  
 \end{document}
