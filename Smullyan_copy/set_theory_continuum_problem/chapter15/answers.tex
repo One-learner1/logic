@@ -229,5 +229,80 @@ On the other hand, suppose that $x\in K_\delta$. Now, $\overline{\delta}$ must b
 $x\in L_{\overline{\delta}}$, it follows that $x\in L_\alpha$ for some $\alpha<\overline{\delta}$. But, because also 
 $x\in K$, it follows that there must be some $\beta\in o(K)$, where $\beta<\delta$, such that $x\in L_{\overline{\beta}}$. 
 Hence $x\in K\cap L_{\overline{\beta}}$, meaning $x\in K_\beta$, for some $\beta<\delta$.
+
+\subsection*{Exercise 2.4}
+We must show that $K$ is extensional, $B$-closed, and of the same cardinality as $A$.
+
+(a) We first show that $K$ is extensional. Consider any $x,y$ in $K$ such that $x\ne y$. Then there must be some $n$ such that 
+both $x$ and $y$ are in $A_n$. Then there is some element of $(x-y)\cup (y-x)$ in $A_{n+1}$, hence in $K$, meaning 
+$K$ is extensional.
+
+(b) We next show that $K$ is $B$-closed. We must therefore show that $K$ is bound up with $L_\alpha$ for every $\alpha\in o(K)$. Hence, for 
+every such $\alpha$, we must show that conditions $B_1$ and $B_2$ of Exercise 2.2 hold (taking $L_\alpha$ for $M$).
+
+$B_1$: We show that $K\cap L_\alpha$ is Henkin closed with respct to $M$. Because $\alpha\in o(K)$, it follows that 
+$\alpha\in o(A_n)$ for some $n$. Consider any formula $\phi$ (whose constants are all in $B$) of the form $(\exists x)\psi(x,y_1,...,y_n)$, and 
+suppose that for some elements $b_1,...,b_n$ of $K\cap L_\alpha$, there is an element $a$ of $L_\alpha$ such 
+that $\psi(a,b_1,...,b_n)$ is true over $L_\alpha$. Then by 3(a), it follows that there is some 
+$b\in A_{n+1}$ such that $b\in L_\alpha$ and $\psi(b,b_1,...,b_n)$ is true over $L_\alpha$. But this means there is some 
+$b\in K\cap L_\alpha$ ($b\in K$ as $b\in A_{n+1}$) such that $\psi(b,b_1,...,b_n)$ is true over $L_\alpha$, therefore meaning 
+$K\cap L_\alpha$ is Henkin closed with respect to $L_\alpha$.
+
+$B_2$: Now we show that for any $a\in\mathcal{F}(L_\alpha)$, $a\in K$ iff $a$ is definable over $L_\alpha$ by a formula whose constants are all in 
+$K\cap L_\alpha$. So suppose that $a\in\mathcal{F}(L_\alpha)$. On the one hand, suppose that $a\in K$. Then $a\in A_n$ for some $n$. Then, by 
+$3(b_1)$ tells us that there is a formula that defines $a$ over $L_\alpha$ such that all of its constants are in $A_{n+1}$ (hence also in $K$). But 
+this means that $a$ is definable over $L_\alpha$ by a formula whose constants are all in $K\cap L_\alpha$. On the other hand, suppose that 
+$a$ is definable over $L_\alpha$ by a formula whose constants are all in $K\cap L_\alpha$. Then there is some $A_n$ that contains all the constants of 
+that formula (because there are only finitely many constants in the formula). Hence the constants of that formula are all in $A_n\cap L_\alpha$, and thus, 
+by $3(b_2)$, $a\in A_{n+1}$, hence $a\in K$.
+
+Thus $K$ is bound up with $L_\alpha$ for every $\alpha\in o(K)$.
+
+(c) We lastly show that $K$ has the same cardinality has $A$. Because $A$ is infinite, it suffices to show that 
+$\overline{\overline{A_n}}=\overline{\overline{A}}$ for each $n$.
+
+Obviously this holds for $A_0$.
+
+Suppose it holds for some $A_n$. The news sets added into $A_{n+1}$ are obtained from (1), (2), $(3a)$, $(3b_1)$, and $(3b_2)$. 
+Because there are only $A$ distinct pairs of $x,y$ in $A_n$ (because $A_n\times A_n\cong A$ by assumption), it follows there are at most 
+$A$ elements added by (1). Next, $o(A_n)\cong A$ (as can easily be seen, because there are at most $A$ orders of the elements in $A_n$, 
+and, defining $D(\alpha)$ to be $\{\alpha,\alpha+1,\alpha+2,...,\alpha+n,...,\}$ for all orders of $A_n$, we get 
+$o(A_n)=\cup_{\alpha\textrm{ is the order of an element in $A_n$}}D(\alpha)$, and because each $D(\alpha)$ has cardinality at most 
+$A$, it follows that $o(A_n)$ has cardinality of most $A$), meaning there are at most $A$ elements added to $A_{n+1}$ by (2).
+
+As for $(3a)$, note that for every $\alpha\in o(A_n)$, there are only at most $A$ formulas $(\exists x)\phi(x)$ with constants in
+$A_n\cap L_\alpha$, meaning there are at most $A$ elements added to $A_n$ by 3(a) for that particular $\alpha$, and thus, because there are 
+only $A$ elements in $o(A_n)$, there are at most $A$ elements added to $A_n$ by 3(a) in total.
+
+As for $(3b_1)$, for each $\alpha\in o(A_n)$, there are at most $A$ element $a$'s such that $a\in A_n$ and is definable over 
+$L_\alpha$, meaning there are at most $A$ elements added by $(3b_1)$ (because for any formula defining some $a\in A_n$ over 
+$L_\alpha$, it must have only a finite number of constants, and the constants are what's added to $A_{n+1}$).
+
+Lastly, as for $(3b_2)$, for each $\alpha\in o(A_n)$, there are at most $A_n$ subsets of $L_\alpha$ that are definable over $L_\alpha$ by a formula with 
+constants in $A_n\cap L_\alpha$, meaning there are at most $A$ elements added by $(3b_2)$ (because 
+there are at most $A$ elements of $o(A_n)$).
+
+Thus there are at most $A$ elements added to $A_n$, and hence $A_{n+1}$ also contains $A$ elements.
+
+Thus we have shown that $K$ is extentional, $B$-closed, and has no higher cardinality than $A$.
+
+\subsection*{Exercise 2.5}
+Consider any infinite set $A$ whose members are constructible sets. Then, by Exercise 2.4, it is a subset of some extensional 
+set $K$ of constuctible sets such that $K$ has the same cardinality as $A$ and such that $K$ is $B$-closed. By Exercise 2.3, 
+it follows that $K$ is pseudo-constructible. Then, by Theorem 2.2, it follows that 
+$K$ is Mostowski-Shepherdson mappable to some $L_\gamma$ (meaning it is $\in$-isomorphic to $L_\gamma$). Hence 
+$A$ is a subset of some extensional set $K$ of constructible sets such that $K$ has the same cardinality as $A$ and 
+$K$ is $\in$-isomorphic to some $L_\alpha$.
+
+\subsection*{Exercise 2.6}
+Suppose that $m$ is a constructible subset of $L_c$ ($c$ infinite). Then, by Theorem GI, $L_c\cup\{m\}$ can be extended to an 
+extensional set $K$ of cardinality $c$ that is Mostowski-Shepherdson mappable to some $L_\alpha$. Let $\pi$ be this 
+Mostowski-Shepherdson map. We first show that $\pi(m)=m$. Well, $L_c$ is transitive, meaning, by Theorem 5.1 of Chapter 10, 
+$\pi(x)=x$ for each $x\in L_c$. Then, $\pi(m)=\pi''(m)$, and, because $m$ is a subset of $L_c$, 
+$\pi(m)=m$. Next we show that $\alpha<c^*$. Well, $K$ has the same cardinality as $L_c$, and $L_\alpha$ has the same 
+cardinality as $K$ (because $K$ is isomorphic to $L_\alpha$), meaning $L_\alpha$ has the same cardinality as 
+$L_c$. But $L_c$ has cardinality $c$, and $c^*$ is the next cardinal after $c$, meaning $L_\alpha$ has cardinality 
+less than $c^*$. But $\alpha$ must be infinite, meaning $L_\alpha$ has cardinality $\alpha$, and thus 
+$\alpha<c^*$, and hence $m\in L_{c^*}$.
  
 \end{document}
