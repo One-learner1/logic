@@ -69,4 +69,37 @@ $\mathcal{M}$, it follows that it is valid over $\mathcal{M}$. Similar reasoning
 (1) is valid over $\mathcal{M}$. Hence $(\exists x)\phi(x)\equiv(\exists x)\psi(x)$, that is, 
 $X\equiv Y$, is valid over $\mathcal{M}$. 
 
+\subsection*{Exercise 2.7}
+For this exercise, \textquote{Classical logic} as a reason in the derivation stands for something derived due to the 
+assumption that the axiom system we are working in contains the standard rules for classical logic.
+
+(a) \begin{center}
+\begin{tabular}{lll}
+1. & $((X\wedge Y)\supset X)$ & (Classical logic) \\
+2. & $\Box((X\wedge Y)\supset X)$ & (1, Necessitation rule) \\
+3. & $\Box(X\wedge Y)\supset\Box X$ & (2, K axiom)
+\end{tabular}
+\end{center}
+
+(b)
+For this, note that part (a) can of course be altered to prove that 
+$\Box (X\wedge Y)\supset\Box Y$.
+\begin{center}
+\begin{tabular}{lll}
+1. & $\Box (X\wedge Y)\supset\Box X$ & (Part (a)) \\
+2. & $\Box (X\wedge Y)\supset\Box Y$ & (Part (a)) \\
+3. & $\Box (X\wedge Y)\supset (\Box X\wedge\Box Y)$ & (1, 2, Classical logic)
+\end{tabular}
+\end{center}
+
+(c)
+\begin{center}
+\begin{tabular}{lll}
+1. & $((X\wedge Y)\supset (X\wedge Y))$ & (Classical logic) \\
+2. & $\Box((X\wedge Y)\supset (X\wedge Y))$ & (1, Necessitation rule) \\
+3. & $\Box (X\wedge Y)\supset\Box (X\wedge Y)$ & (2, K axiom) \\
+4. & $(\Box X\wedge\Box Y)\supset\Box (X\wedge Y)$ & (3, Part (b), Classical logic)
+\end{tabular}
+\end{center}
+
 \end{document}
