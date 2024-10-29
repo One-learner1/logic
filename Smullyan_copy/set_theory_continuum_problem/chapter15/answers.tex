@@ -306,48 +306,6 @@ less than $c^*$. But $\alpha$ must be infinite, meaning $L_\alpha$ has cardinali
 $\alpha<c^*$, and hence $m\in L_{c^*}$.
 
 \section*{Section 6}
-Note taht Theorem 3.2 requires $c>\omega$, as, for instance, $\omega\notin L_\omega$.
+Note that Theorem 3.2 requires $c>\omega$, as, for instance, $\omega\notin L_\omega$.
 
-\section*{Section 5}
-
-\subsection*{Every constructible set has a constructible well ordering}
-
-Suppose the result holds for some $L_\alpha$. Consider any constructible set $a\in L_{\alpha+1}$.
-If $a\in L_\beta$ for some $\beta<\alpha+1$, then $b$ can be well ordered under a constructable well ordering by 
-assumption, so suppose that $x\in L_{\alpha+1}-L_\alpha$ (note that all elements of $a$ have order less than 
-$\alpha$). Because 
-Recall the notion of the set $A^*$ defined in \S 14.6. Let us consider the set 
-$(L_\alpha\cup\omega)^*$. There must be some $\beta$ such that $(L_\alpha\cup\omega)^*\subseteq L_\beta$ (again, 
-it doesn't matter which one). Consider such a $\beta$ (note that, of course, there is still some formula that defines 
-$a$ over $L_\beta$). We want a \textit{constructible} well ordering of $a$. We will construct such a well ordering 
-by showing there is a well ordering of $b$ over 
-
-$\textrm{Decomp}^n(f,x)$ (meaning $f$ is an $n$th degree decomposition function for $x$)
-\[ \textrm{Func}(f)\wedge\textrm{Dom}(f)=n\wedge\textrm{Num}(n)\wedge[(\exists y)(\exists z)(x=\langle y,z\rangle\wedge \]
-\[ f(0)=y\wedge\wedge z\in b\cup\omega)]\wedge \]
-\[ [\forall (m<n)((\exists y)(\exists z)(f(m)=\langle y,z\rangle\wedge f(m^+)=y\wedge z\in b\cup\omega)]) \]
-
-$\textrm{Prec}(x,y)$ (with respect to some well ordering $W$ of $b$ definable over given $L_\alpha$)
-\[ x\ne y\wedge (\textrm{Num}(x)\wedge\textrm{Num}(y)\wedge x<y)\vee xWy \]
-
-$\textrm{Preceq}(x,y)$ (same as $\textrm{Preq}(x,y)$, but $x=y$ also makes it hold)
-\[ x=y\vee\textrm{Prec}(x,y) \]
-
-$\textrm{Ordered}(x,y,n)$ For the well ordering
-\[ (\exists f)(\exists g)[\textrm{Decomp}^n(f,x)\wedge\textrm{Decomp}^n(g,y)\wedge \]
-\[ (\exists m<n)(\textrm{Prec}(f(m),g(m))\wedge(\forall k\in\omega)(m<k\wedge k<n\supset\textrm{Preceq}(f(k),g(k))))] \] 
-
-$\textrm{Density}(x,n)$ (whether or not $n$ is the lowest degree decomposition function that exists for $x$)
-\[ \textrm{Num}(n)\wedge \exists f(\textrm{Decomp^n(f,x)\wedge(\forall y)\oldneg(\exists m)(\textrm{Num}(m)\wedge m<n\wedge \]
-\[ \textrm{Decomp}^m(y,x))) \]
-
-\[ x\in b\wedge y\in b\wedge (\exists n)(\exists m)(\textrm{Density}(x,n)\wedge\textrm{Density}(y,m)\wedge \]
-\[ n<m\vee (n=m\wedge\textrm{Ordered}(x,y,n))\wedge x=y) \] 
-
-
-
-
-The idea of the well ordering of $b$ is that an element $b_i$ of $b$ precedes another element $b_j$ of $b$ iff either: 
-(1) the length of the formula that defines $b_i$ (i.e., the number o 
- 
 \end{document}
