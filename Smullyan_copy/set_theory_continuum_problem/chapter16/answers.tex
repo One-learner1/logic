@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tabto}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 16 Notes}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Section 1}
+
+\subsection*{Theorem 2.7}
+Here is a proof of the classical part of this theorem. Consider some model modal 
+$\mathcal{M}$ for which the hypotheses of the problem hold
+
+Atomic case: In this case $X$ is atomic. Thus it must be that $A=X$ and $Y=B$, meaning, because 
+we have assumed $A\equiv B$ is valid in $\mathcal{M}$, $X\equiv Y$ (which is the same formula) is also valid in $\mathcal{M}$.
+
+Negation case: In this case $X$ is of the form $\oldneg\phi$. Then either $A=X$ or 
+$A$ is a subformula of $\phi$. In the first case, obviously it follows that $X\equiv Y$ is valid in 
+$\mathcal{M}$. In the second case, $Y$ must be of the form $\oldneg\psi$ (where $\phi\equiv\psi$ is valid over 
+$\mathcal{M}$ by assumption). Then $\phi\supset\psi$ is valid over $\mathcal{M}$ (by assumption), meaning 
+$\oldneg\psi\supset\oldneg\phi$ is valid over $\mathcal{M}$. Similarly, 
+$\oldneg\phi\supset\oldneg\psi$ is valid over $\mathcal{M}$ (because $\psi\supset\phi$ is valid over $\mathcal{M}$).
+Thus $\oldneg\phi\equiv\oldneg\psi$, that is, $X\equiv Y$, is valid over $\mathcal{M}$.
+
+Conjunction case: In this case $X$ is of the form $\phi\wedge\psi$. Then either $A=X$ or 
+$A$ is a subformula of either $\phi$ or $\psi$. In the first case, obviously it follwos that 
+$X\equiv Y$ is valid in $\mathcal{M}$. In the second case, $Y$ must be of the form 
+$\theta\wedge\gamma$, where both $\theta\equiv\phi$ and $\gamma\equiv\psi$ are true in $\mathcal{M}$.
+Then $(\phi\wedge\psi)\equiv(\theta\wedge\gamma)$, that is, $X\equiv Y$, being valid in $\mathcal{M}$ follows 
+easily.
+
+Existential case: In this case $X$ is of the form $(\exists x)\phi(x)$. Then either $A=X$ or 
+$A$ is a subformula of $\phi(x)$. Again, the first case is obvious. In the second case, we show that 
+(1) $(\exists x)\phi(x)\supset (\exists x)\psi(x)$ is valid over $\mathcal{M}$. So, for any world $p$ of the 
+model, suppose that $(\exists x)\phi(x)$ is true at $p$. Then $\phi(a)$ is true at $p$ for some 
+$a\in\mathcal{D}$. It is easy to see that this means $\psi(a)$ msut be true at $p$ (because $A\equiv B$ is assumed to be 
+valid over $\mathcal{M}$). Thus $(\exists x)\psi(x)$ is true at $p$. Hence, because (1) is true at all possible worlds of 
+$\mathcal{M}$, it follows that it is valid over $\mathcal{M}$. Similar reasoning shows that the converse of 
+(1) is valid over $\mathcal{M}$. Hence $(\exists x)\phi(x)\equiv(\exists x)\psi(x)$, that is, 
+$X\equiv Y$, is valid over $\mathcal{M}$. 
+
+\end{document}
