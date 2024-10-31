@@ -69,6 +69,53 @@ $\mathcal{M}$, it follows that it is valid over $\mathcal{M}$. Similar reasoning
 (1) is valid over $\mathcal{M}$. Hence $(\exists x)\phi(x)\equiv(\exists x)\psi(x)$, that is, 
 $X\equiv Y$, is valid over $\mathcal{M}$. 
 
+\subsection*{Exercise 2.1}
+(1) $p\vDash (X\vee Y)$ iff $p\vDash\oldneg(\oldneg X\wedge\oldneg Y)$ (by definition of $\vee$) iff 
+$p\nvDash (\oldneg X\wedge\oldneg Y)$ iff either $p\nvDash \oldneg X$ or $p\nvDash \oldneg Y$ iff 
+either $p\vDash X$ or $p\vDash Y$.
+
+(2) $p\vDash (X\supset Y)$ iff $p\vDash\oldneg(X\wedge\oldneg Y)$ (by definition of $\supset$) iff 
+$p\nvDash (X\wedge\oldneg Y)$ iff either $p\nvDash X$ or $p\nvDash\oldneg Y$ iff 
+either $p\nvDash X$ or $p\vDash Y$.
+
+(3) $p\vDash (\forall x)\phi(x)$ iff $p\vDash\oldneg(\exists x)\oldneg\phi(x)$ (by definition of $\forall$) iff 
+$p\nvDash (\exists x)\oldneg\phi(x)$ iff $p\nvDash\oldneg\phi(d)$ for each $d\in\mathcal{D}$ iff 
+$p\nvDash\phi(d)$ for each $d\in\mathcal{D}$.
+
+(4) $p\vDash \Diamond X$ iff $p\vDash\oldneg\Box\oldneg X$ (by definition of $\Diamond$) iff 
+$p\nvDash\Box\oldneg X$ iff for some $q\in\mathcal{G}$ with $p\mathcal{R}q$, $q\nvDash\oldneg X$ iff 
+for some $q\in\mathcal{G}$ with $p\mathcal{R}q$, $q\vDash X$.
+
+\subsection*{Exercise 2.2}
+(1) We first prove the validity of the $K$ axiom over every modal model. Consider some modal model $\mathcal{M}$, and one of its possible 
+worlds $p$. We must show that $p\vDash \Box(X\supset Y)\supset (\Box X\supset\Box Y)$. It suffices to show that, if 
+$p\vDash\Box(X\supset Y)$, then it follows that $p\vDash (\Box X\supset\Box Y)$. So suppose 
+$p\vDash\Box(X\supset Y)$. Then this means that, for every $q\in\mathcal{G}$ with $p\mathcal{R}q$, $q\vDash (X\supset Y)$. It suffices to show that, 
+if $p\vDash\Box X$, then it follows that $p\vDash\Box Y$. So suppose that $p\vDash\Box X$. Then, for every $q\in\mathcal{G}$ with 
+$p\mathcal{R}q$, $q\vDash X$. But also $q\vDash (X\supset Y)$, meaning $q\vDash Y$. Thus $p\vDash\Box Y$. Hence $p\vDash (\Box X\supset\Box Y)$ holds, 
+and consequently, $p\vDash\Box (X\supset Y)\supset (\Box\supset\Box Y)$ also holds, and thus $\Box (X\supset Y)\supset (\Box\supset\Box Y)$ is valid.
+
+(2) We now prove the validity of the Barcan formula over every modal model. Consider some modal model $\mathcal{M}$, and one of its possible worlds 
+$p$. We must show that $p\vDash (\forall x)\Box\phi(x)\supset\Box(\forall x)\phi(x)$. It suffices to show that, if 
+$p\vDash (\forall x)\Box\phi(x)$, then it follows that $p\vDash\Box(\forall x)\phi(x)$. So suppose that $p\vDash (\forall x)\Box\phi(x)$. 
+Thus $p\vDash\Box\phi(d)$ holds for each $d\in\mathcal{D}$, meaning $q\vDash\phi(d)$ holds for each 
+$q\in\mathcal{G}$ with $p\mathcal{R}q$. To show that $p\vDash\Box(\forall x)\phi(x)$ holds, we must show that, for every 
+$q\in\mathcal{G}$ with $p\mathcal{R}q$, $q\vDash (\forall x)\phi(x)$. So consider some such $q$. We must show that 
+$q\vDash\phi(d)$ holds for each $d\in\mathcal{D}$. But we have already shown this. Thus $q\vDash (\forall x)\phi(x)$, meaning 
+$p\vDash\Box (\forall x)\phi(x)$, and consequently, the Barcan formula is valid.
+
+\subsection*{Exercise 2.3}
+We show that the converse of the Barcan formula, that is, $\Box(\forall x)\phi(x)\supset (\forall x)\Box\phi(x)$, is valid over every 
+modal model. Consider any modal model $\mathcal{M}$, and one of its possible worlds $p$. It suffices to show that, if 
+$p\vDash\Box(\forall x)\phi(x)$ holds, then $p\vDash (\forall x)\Box\phi(x)$ also holds. So suppose that 
+$p\vDash\Box(\forall x)\phi(x)$ holds. Then, for every $q\in\mathcal{G}$ with $p\mathcal{R}q$, 
+$q\vDash (\forall x)\phi(x)$ holds, meaning $q\vDash \phi(d)$ holds for each $d\in\mathcal{D}$. To show that 
+$p\vDash (\forall x)\Box\phi(x)$ holds, we must show that 
+$p\vDash \Box\phi(d)$ holds for each $d\in\mathcal{D}$. So consider some such $d$. Then we must show that 
+$q\vDash \phi(d)$ holds for each $q\in\mathcal{G}$ with $p\mathcal{R}q$. So consider some such $q$. But we already know that 
+$q\vDash\phi(d)$ holds. Thus $p\vDash\Box\phi(d)$, meaning $p\vdash (\forall x)\Box\phi(x)$, meaning 
+$p\vDash \Box(\forall x)\phi(x)\supset (\forall x)\Box\phi(x)$, and thus the converse of the Barcan formula is valid. 
+
 \subsection*{Exercise 2.7}
 For this exercise, \textquote{Classical logic} as a reason in the derivation stands for something derived due to the 
 assumption that the axiom system we are working in contains the standard rules for classical logic.
@@ -95,10 +142,11 @@ $\Box (X\wedge Y)\supset\Box Y$.
 (c)
 \begin{center}
 \begin{tabular}{lll}
-1. & $((X\wedge Y)\supset (X\wedge Y))$ & (Classical logic) \\
-2. & $\Box((X\wedge Y)\supset (X\wedge Y))$ & (1, Necessitation rule) \\
-3. & $\Box (X\wedge Y)\supset\Box (X\wedge Y)$ & (2, K axiom) \\
-4. & $(\Box X\wedge\Box Y)\supset\Box (X\wedge Y)$ & (3, Part (b), Classical logic)
+1. & $(X\supset (Y\supset (X\wedge Y)))$ & (Classical logic) \\
+2. & $\Box (X\supset (Y\supset (X\wedge Y)))$ & (1, Necessitation rule) \\
+3. & $\Box X\supset\Box (Y\supset (X\wedge Y))$ & (2, K axiom) \\
+4. & $\Box X\supset (\Box Y\supset\Box (X\wedge Y))$ & (3, K axiom) \\
+5. & $(\Box X\wedge\Box Y)\supset\Box (X\wedge Y)$ & (4, Classical logic)
 \end{tabular}
 \end{center}
 
