@@ -116,6 +116,130 @@ $q\vDash \phi(d)$ holds for each $q\in\mathcal{G}$ with $p\mathcal{R}q$. So cons
 $q\vDash\phi(d)$ holds. Thus $p\vDash\Box\phi(d)$, meaning $p\vdash (\forall x)\Box\phi(x)$, meaning 
 $p\vDash \Box(\forall x)\phi(x)\supset (\forall x)\Box\phi(x)$, and thus the converse of the Barcan formula is valid. 
 
+\subsection*{Exercise 2.4}
+For this, we first prove by induction (using Exercise 2.3) that
+\[ (\forall x_1)...(\forall x_n)\Box\phi(x_1,...,x_n)\equiv\Box(\forall x_1)...(\forall x_n)\phi(x_1,...,x_n) \] 
+is valid.
+The base case is just Exercise 2.3. Now suppose the result holds for some $n$. Consider any modal model $\mathcal{M}$ and any of its possible 
+worlds $p$. We must show that 
+\[ p\vDash (\forall x_1)...(\forall x_{n+1})\Box\phi(x_1,...,x_{n+1})\equiv\Box(\forall x_1)...(\forall x_{n+1})\phi(x_1,...,x_{n+1})\]
+ is valid, meaning 
+we must show that both
+\[ p\vDash (\forall x_1)...(\forall x_{n+1})\Box\phi(x_1,...,x_{n+1})\supset\Box(\forall x_1)...(\forall x_{n+1})\phi(x_1,...,x_{n+1}) \]
+and
+\[ p\vDash \Box(\forall x_1)...(\forall x_{n+1})\phi(x_1,...,x_{n+1})\supset(\forall x_1)...(\forall x_{n+1})\Box\phi(x_1,...,x_{n+1}) \]
+are valid.
+
+On the one hand, we show that
+\[ p\vDash (\forall x_1)...(\forall x_{n+1})\Box\phi(x_1,...,x_{n+1})\supset\Box(\forall x_1)...(\forall x_{n+1})\phi(x_1,...,x_{n+1}) \] 
+is valid.
+So suppose \[ p\vDash (\forall x_1)...(\forall x_{n+1})\Box\phi(x_1,...,x_{n+1}) \] Then, by Exercise 2.3 and the Replacement Theorem,
+\[ p\vDash (\forall x_1)...(\forall x_n)\Box (\forall x_{n+1})\phi(x_1,...,x_{n+1}) \] meaning, by the induction assumption,
+\[ p\vDash\Box (\forall x_1)...(\forall x_{n+1})\phi(x_1,...,x_{n+1}) \] Hence 
+\[ p\vDash (\forall x_1)...(\forall x_{n+1})\Box\phi(x_1,...,x_{n+1})\supset\Box(\forall x_1)...(\forall x_{n+1})\phi(x_1,...,x_{n+1}) \] 
+is valid.
+
+On the other hand, we show that
+\[ p\vDash \Box(\forall x_1)...(\forall x_{n+1})\phi(x_1,...,x_{n+1})\supset(\forall x_1)...(\forall x_{n+1})\Box\phi(x_1,...,x_{n+1}) \] 
+is valid.
+So suppose that \[ p\vDash\Box(\forall x_1)...(\forall x_{n+1})\phi(x_1,...,x_{n+1}) \] Then
+\[ p\vDash (\forall x_1)\Box(\forall x_2)...(\forall x_{n+1})\phi(x_1,...,x_{n+1}) \] by Exercise 2.3,
+and then
+\[ p\vDash (\forall x_1)...(\forall x_{n+1}\Box\phi(x_1,...,x_{n+1}) \] by the induction assumption and the Replacement Theorem. Hence
+\[ p\vDash \Box(\forall x_1)...(\forall x_{n+1})\phi(x_1,...,x_{n+1})\supset(\forall x_1)...(\forall x_{n+1})\Box\phi(x_1,...,x_{n+1}) \] is valid.
+
+Thus we know that
+\[ (\forall x_1)...(\forall x_n)\Box\phi(x_1,...,x_n)\equiv\Box(\forall x_1)...(\forall x_n)\phi(x_1,...,x_n) \] is valid.
+Then $p\vDash\Box\phi(x_1,...,x_n)$ iff 
+$p\vDash (\forall x_1)...(\forall x_n)\Box\phi(x_1,...,x_n)$ iff 
+$p\vDash \Box(\forall x_1)...(\forall x_n)\phi(x_1,...,x_n)$ iff 
+$q\vDash (\forall x_1)...(\forall x_n)\phi(x_1,...,x_n)$ for all $q\in\mathcal{G}$ with $p\mathcal{R}q$ iff 
+$q\vDash \phi(x_1,...,x_n)$ for all $q\in\mathcal{G}$ with $p\mathcal{R}q$.
+
+\subsection*{Exercise 2.5}
+(a) We show that $\Box (X\wedge Y)\supset (\Box X\wedge\Box Y)$ is valid over every modal model. So consider some 
+modal model $\mathcal{M}$, and any of its possible worlds $p$. We must show that 
+$p\vDash \Box (X\wedge Y)\supset (\Box X\wedge\Box Y)$. It suffices to show that, if 
+$p\vDash\Box (X\wedge Y)$, then $p\vDash (\Box X\wedge\Box Y)$. So suppose that 
+$p\vDash\Box (X\wedge Y)$. Thus $q\vDash (X\wedge Y)$ holds for all $q\in\mathcal{G}$ with $p\mathcal{R}q$. This means 
+that $q\vDash X$ and $q\vDash Y$ both hold for all $q\in\mathcal{G}$ with $p\mathcal{R}q$, hence both 
+$p\vDash\Box X$ and $p\vDash\Box Y$ hold, and consequently, $p\vDash (\Box X\wedge\Box Y)$ holds. Thus 
+$p\vDash \Box (X\wedge Y)\supset (\Box X\wedge\Box Y)$, meaning 
+$\Box (X\wedge Y)\supset (\Box X\wedge\Box Y)$ is valid over $\mathcal{M}$, hence valid over 
+every modal model. 
+
+(b) We show that $(\Box X\wedge\Box Y)\supset\Box (X\wedge Y)$ is valid over every modal model. 
+So consider some modal model $\mathcal{M}$, and any of its possible worlds $p$. We must show that 
+$p\vDash(\Box X\wedge\Box Y)\supset\Box (X\wedge Y)$. It suffices to show that, if
+$p\vDash (\Box X\wedge\Box Y)$, then $p\vDash\Box (X\wedge Y)$. So suppose that
+$p\vDash (\Box X\wedge\Box Y)$. Then $p\vDash\Box X$ and $p\vDash\Box Y$. Hence 
+$q\vDash X$ and $q\vDash Y$ both hold for all $q\in\mathcal{G}$ with $p\mathcal{R}q$. This means 
+$q\vDash (X\wedge Y)$ holds for all $q\in\mathcal{G}$ with $p\mathcal{R}q$. But this means 
+$p\vDash\Box (X\wedge Y)$ holds, and thus $p\vDash(\Box X\wedge\Box Y)\supset\Box (X\wedge Y)$,
+meaning $(\Box X\wedge\Box Y)\supset\Box (X\wedge Y)$ is valid over $\mathcal{M}$, hence valid over 
+every modal model.
+
+(c) We show that $(\Diamond\vee\Diamond Y)\equiv\Diamond(X\vee Y)$ is valid over every modal model. Consider any 
+modal model $\mathcal{M}$, and any of its possible worlds $p$.
+
+On the one hand, we show that $p\vDash (\Diamond X\vee\Diamond Y)\supset\Diamond(X\vee Y)$. It suffices to show that, 
+if $p\vDash (\Diamond\vee\Diamond Y)$, then $p\vDash\Diamond(X\vee Y)$. So suppose that 
+$p\vDash (\Diamond X\vee\Diamond Y)$. Thus either $p\vDash\Diamond X$ or $p\vDash\Diamond Y$, hence 
+(1) there is either some $q\in\mathcal{G}$ with $p\mathcal{R}q$ such that $q\vDash X$, or there is some 
+$q\in\mathcal{G}$ with $p\mathcal{R}q$ such that $q\vDash Y$. To show that $p\vDash\Diamond (X\vee Y)$ holds, we 
+must show that there is some $q\in\mathcal{G}$ with $p\mathcal{R}q$ such that $q\vDash (X\vee Y)$. But, we are guaranteed to have 
+such a $q$ by (1). Hence $p\vDash\Diamond (X\vee Y)$ holds, meaning $p\vDash (\Diamond X\vee\Diamond Y)\supset\Diamond(X\vee Y)$, and 
+thus $(\Diamond X\vee\Diamond Y)\supset\Diamond(X\vee Y)$ is valid over all modal models.
+
+On the other hand, we show that $p\vDash\Diamond (X\vee Y)\supset (\Diamond X\vee\Diamond Y)$. It suffices to show that, 
+if $p\vDash \Diamond (X\vee Y)$, then $p\vDash\Diamond (X\vee Y)$. So suppose that 
+$p\vDash\Diamond (X\vee Y)$. Then, for some $q\in\mathcal{G}$ with $p\mathcal{R}q$, 
+$q\vDash (X\vee Y)$, meaning either $q\vDash X$ or $q\vDash Y$. But this means that there is either some 
+$q\in\mathcal{G}$ with $p\mathcal{R}q$ such that $q\vDash X$, or there is some 
+$q\in\mathcal{G}$ with $p\mathcal{R}q$ such that $q\vDash Y$, meaning 
+either $p\vDash\Diamond X$ or $p\vDash\Diamond Y$, and thus $p\vDash (\Diamond X\vee\Diamond Y)$. Hence 
+$p\vDash\Diamond (X\vee Y)\supset (\Diamond X\vee\Diamond Y)$, meaning 
+$\Diamond (X\vee Y)\supset (\Diamond X\vee\Diamond Y)$ is valid over all modal models. 
+
+(d) We first show that $(\Diamond X\wedge\Diamond Y)\supset\Diamond (X\wedge Y)$ is not valid. 
+Consider any modal model $\mathcal{M}$ and any of its possible worlds $p$. We must show that it could be the case 
+that $p\nvDash (\Diamond X\wedge\Diamond Y)\supset\Diamond (X\wedge Y)$, which is the same as saying that it could be the 
+case that $p\vDash (\Diamond X\wedge\Diamond Y)\wedge\oldneg\Diamond (X\wedge Y)$. Well, it certainly could be the case 
+that $p\vDash (\Diamond X\wedge\Diamond Y)$. If it is, then either 
+$p\vDash\Diamond X$ or $p\vDash\Diamond Y$, meaning either 
+$q\vDash X$ for some $q\in\mathcal{G}$ with $p\mathcal{R}q$, or 
+$q\vDash Y$ for some $q\in\mathcal{G}$ with $p\mathcal{R}q$. But this does not mean that 
+there must be some $q\in\mathcal{G}$ with $p\mathcal{R}q$ such that both $q\vDash X$ and $q\vDash Y$ hold, 
+which is what we would need to know that $p\vDash\Diamond (X\wedge Y)$. Hence we cannot necessarily conclude 
+$p\vDash\Diamond (X\wedge Y)$, meaning $(\Diamond X\wedge\Diamond Y)\supset\Diamond (X\wedge Y)$ is not valid.
+
+Second, we show that $\Box (X\vee Y)\supset (\Box X\vee\Box Y)$ is not valid. Consider any modal model 
+$\mathcal{M}$ and any of its possible worlds $p$. We must show that it could be the case that 
+$p\nvDash \Box (X\vee Y)\supset (\Box X\vee\Box Y)$, which is the same as saying that it could be the case that 
+$p\vDash \Box (X\vee Y)\wedge\oldneg (\Box X\vee\Box Y)$. Well, it certainly could be the case that 
+$\Box (X\vee Y)$. If it is, then $q\vDash (X\vee Y)$ for all $q\in\mathcal{G}$ with $p\mathcal{R}q$, meaning for each such $q$, 
+either $q\vDash X$ or $q\vDash Y$. But this does not mean that either $q\vDash X$ holds for all such $q$, or 
+$q\vDash Y$ holds for all such $q$, which is what we would need for $p\vDash (\Box X\vee\Box Y)$. Hence we cannot necessarily 
+conclude $p\vDash (\Box X\vee\Box Y)$, meaning $(\Box X\vee\Box Y)$ is not valid. 
+
+\subsection*{Exercise 2.6}
+We show that $\Box (X\equiv Y)\supset (\Box X\equiv\Box Y)$ is valid in every modal model (note that the converse is not valid). 
+Consider any modal model $\mathcal{M}$, and any of its possible worlds $p$. 
+We must show that $p\vDash \Box (X\equiv Y)\supset (\Box X\equiv\Box Y)$.
+It suffices to show that, if $p\vDash \Box (X\equiv Y)$, then $p\vDash (\Box X\equiv\Box Y)$. 
+So suppose that $p\vDash \Box(X\equiv Y)$. Thus (1) $q\vDash (X\equiv Y)$ for all $q\in\mathcal{G}$ with 
+$p\mathcal{R}q$. To show that $p\vDash (\Box X\equiv \Box Y)$, we must show that 
+$p\vDash (\Box X\supset \Box Y)$, and $p\vDash (\Box Y\supset \Box X)$.
+
+On the one hand, suppose that $p\vDash \Box X$. Thus $q\vDash X$ for all $q\in\mathcal{G}$ with 
+$p\mathcal{R}q$, but this also means (by (1)) that $q\vDash Y$ for all $q\in\mathcal{G}$ with 
+$p\mathcal{R}q$, and thus $p\vDash \Box Y$.
+
+The case for showing $p\vDash (\Box Y\supset\Box X)$ is similar to the first case.
+
+Thus we have both $p\vDash (\Box X\supset \Box Y)$ and $p\vDash (\Box Y\supset \Box X)$, meaning 
+$p\vDash (\Box X\equiv\Box Y)$, which is what we were trying to prove.
+
 \subsection*{Exercise 2.7}
 For this exercise, \textquote{Classical logic} as a reason in the derivation stands for something derived due to the 
 assumption that the axiom system we are working in contains the standard rules for classical logic.
