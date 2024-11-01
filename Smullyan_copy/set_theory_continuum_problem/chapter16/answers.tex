@@ -274,4 +274,66 @@ $\Box (X\wedge Y)\supset\Box Y$.
 \end{tabular}
 \end{center}
 
+\section*{Section 3}
+
+\subsection*{Exercise 3.1}
+(1) First we show that $\Box(\Box A\supset\Box A)$ is $S4$ valid. So consider any $S4$ model $\mathcal{M}$, and any 
+of its possible worlds $p$. We must show that 
+$p\vDash\Box(\Box A\supset\Box A)$. It suffices to show that 
+$q\vDash (\Box A\supset\Box A)$ for each $q$ accessible at $p$. So consider any such $q$.
+It suffices to show that, if $q\vDash\Box A$, then $q\vDash\Box A$. But this is obvious.
+Hence $p\vDash\Box(\Box A\supset\Box A)$, and, consequently, $\Box(\Box A\supset\Box A)$ si 
+$S4$ valid (indeed, it is valid over all modal models).
+
+(2) Next we show that $\Box(\Box A\vee\Box\oldneg\Box A)$ is not $S4$ valid. So consider any $S4$ model $\mathcal{M}$, and 
+any of its possible worlds $p$. Well, it certainly could be that 
+$q\nvDash A$ for some $q$ accessible at $p$, but also there could be some 
+$q$ accessible at $p$ such that $q'\vDash A$ for all $q'$ accessible at $q$, meaning it very well could be the case that 
+$p\nvDash\Box(\Box A\vee\Box\oldneg\Box A)$.
+
+\subsection*{Exercise 3.2}
+(1) First we show that $\Box X\supset X$ is $S4$ valid. Consider any $S4$ model $\mathcal{M}$ and any of its possible 
+worlds $p$. We must show that $p\vDash\Box X\supset X$. So suppose that 
+$p\vDash\Box X$. Then, for each $q$ accessible from $p$, $q\vDash X$. But, because $\mathcal{M}$ is an $S4$ model, its 
+accesibility relation is 
+reflexive, meaning $p$ is accessible from $p$, and thus $p\vDash X$. Hence $p\vDash\Box X\supset X$, meaning 
+$\Box X\supset X$ is $S4$ valid.
+
+(2) Next we show that $\Box X\supset\Box\Box X$ is $S4$ valid. Consider any $S4$ model $\mathcal{M}$ and any of its possible 
+worlds $p$. We must show that $p\vDash\Box X\supset\Box\Box X$. So suppose that 
+$p\vDash\Box X$. Then, for each $q$ accessible from $p$, $q\vDash X$. Also, for each $q'$ accessible from some $q$ accessible from 
+$p$, we have $q'\vDash X$, because $\mathcal{M}$ is $S4$, meaning its accessibility relation is transitive. But this means 
+$p\vDash\Box\Box X$, hence $p\vDash\Box X\supset\Box\Box X$, and thus 
+$\Box X\supset\Box\Box X$ is $S4$ valid.
+
+\subsection*{Exercise 3.3}
+We show that $\Diamond X\supset\Box\Diamond X$ is not $S4$ valid. Consider any $S4$ model $\mathcal{M}$ and any of its 
+possible worlds $p$. If $p\vDash\Diamond X$, all we know is that $q\vDash X$ for some 
+$q$ accessible from $p$. This does not mean that $q'\vDash X$ for some $q'$ accessible from $q$ for each $q$ accessible from 
+$p$, which is what we would need to know for $p\vDash\Box\Diamond X$.
+
+\subsection*{Exercise 3.4}
+(1) We first show the $S4$ validity of $\Box\Box X\equiv\Box X$. The first part, showing that 
+$\Box X\supset\Box\Box X$ is $S4$ valid, was done in Exercise 3.2. Thus we only need to show that 
+$\Box\Box X\supset\Box X$ is $S4$ valid. So consider any $S4$ model $\mathcal{M}$ and any of its possible worlds $p$.
+Suppose $p\vDash\Box\Box X$. Thus $q'\vDash X$ for each $q'$ accessible from each $q$ accessible from $p$. Well, 
+$q$ is accessible from $q$ for each $q$ accessible from $p$, because $\mathcal{M}$'s accessibility relation is 
+reflexive. Thus $q\vDash X$ for each $q$ accessible from $p$, meaning $p\vDash\Box X$, and consequently, 
+$p\vDash\Box\Box X\supset\Box X$, and thus
+$\Box\Box X\supset\Box X$ is $S4$ valid.
+
+(2) Next, we show that $\Diamond\Diamond X\equiv\Diamond X$ is $S4$ valid. Consider any $S4$ model 
+$\mathcal{M}$, and any of its accessible worlds $p$. We must show that 
+$p\vDash\Diamond\Diamond X\equiv\Diamond X$. 
+
+On the one hand, we show that $p\vDash\Diamond\Diamond X\supset\Diamond X$. So suppose that 
+$p\vDash\Diamond\Diamond X$. Thus $q'\vDash X$ for some $q'$ accessible from some $q$ accessible from $p$. For this 
+$q'$, we have $p\mathcal{R}q$ and $q\mathcal{R}q'$. But this means that $p\mathcal{R}q'$ (because $\mathcal{M}$ is 
+$S4$), and thus $q'$ is accessible from $p$, meaning $p\vDash\Diamond X$.
+
+On the other hand, we show that $p\vDash\Diamond X\supset\Diamond\Diamond X$. So suppose that 
+$p\vDash\Diamond X$. Thus $q\vDash X$ for some $q$ accessible from $p$. But $q$ is accessible from 
+$q$. Hence $q'\vDash X$ for some $q'$ (namely $q$ itself) that is accessible from some $q$ that is accessible from 
+$p$, meaning $p\vDash\Diamond\Diamond X$.
+
 \end{document}
