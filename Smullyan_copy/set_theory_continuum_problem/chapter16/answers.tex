@@ -276,6 +276,64 @@ $\Box (X\wedge Y)\supset\Box Y$.
 
 \section*{Section 3}
 
+\subsection*{Notes}
+
+I was unable to prove the $S4$ completeness of the system spoken of in this section (I tried using modal tableau, but was unable to 
+handle the $\Diamond$ case), but here 
+are some proofs in the system of some of the $S4$ valid formulas discussed in this chapter. 
+
+Let \textquote{Ref.} stand for reflexitivity axiom, \textquote{Trans.} stand for transitivity axiom, \textquote{K} stand for 
+K axiom, and \textquote{Nec.} stand for Necessitation rule.
+
+\subsubsection*{$X\supset\Diamond X$}
+\begin{center}
+\begin{tabular}{lll}
+1. & $\Box\oldneg X\supset\oldneg X$ & (Ref.) \\
+2. & $\oldneg\oldneg X\supset\oldneg\Box\oldneg X$ & (1, Classical logic) \\
+3. & $X\supset\oldneg\Diamond X$ & (2, Classical logic)
+\end{tabular}
+\end{center}
+
+\subsubsection*{$\Diamond\Diamond X\supset\Diamond X$}
+\begin{center}
+\begin{tabular}{lll}
+1. & $\Box\oldneg X\supset\Box\oldneg X$ & (Classical logic) \\
+2. & $\Box\oldneg X\supset\oldneg\oldneg\Box\oldneg X$ & (1, Classical logic) \\
+3. & $\Box(\Box\oldneg X\supset\oldneg\oldneg\Box\oldneg X)$ & (2, Nec.) \\
+4. & $\Box\Box\oldneg X\supset\Box\oldneg\oldneg\Box\oldneg X$ & (3, K) \\
+5. & $\Box\oldneg X\supset\Box\Box\oldneg X$ & (Ref.) \\
+6. & $\Box\oldneg X\supset\Box\oldneg\oldneg\Box\oldneg X$ & (4, 5, Classical logic) \\
+7. & $\oldneg\Box\oldneg\oldneg\Box\oldneg X\supset\oldneg\Box\oldneg X$ & (6, Classical logic) \\
+8. & $\Diamond\Diamond X\supset\Diamond X$ & (7, Def. of $\Diamond$)
+\end{tabular}
+\end{center}
+
+\subsubsection*{$\Diamond X\supset\Diamond\Diamond X$}
+\begin{center}
+\begin{tabular}{lll}
+1. & $\Box\oldneg X\supset\oldneg X$ & (Ref.) \\
+2. & $\oldneg\oldneg\Box\oldneg X\supset\oldneg X$ & (1, Classical logic) \\
+3. & $\Box(\oldneg\oldneg\Box\oldneg X\supset\oldneg X)$ & (2, Nec.) \\
+4. & $\Box\oldneg\oldneg\Box\oldneg X\supset\Box\oldneg X$ & (3, K) \\
+5. & $\oldneg\Box\oldneg X\supset\oldneg\Box\oldneg\oldneg\Box\oldneg X$ & (4, Classical logic) \\
+6. & $\Diamond X\supset\Diamond\Diamond X$ & (5, Def. of $\Diamond$)
+\end{tabular}
+\end{center}
+
+From the previous two proofs, we have proven $\Diamond\Diamond X\equiv\Diamond X$, and thus this is an alternative 
+proof of one part of Exercise 3.4 (note that the first part, showing $\Box\Box X\supset\Box X$, is immediate after we know that 
+the reflexivity and transitivity axioms are correct).
+
+\subsubsection*{$\Box(X\equiv Y)\supset (\Box X\equiv\Box Y)$}
+\begin{center}
+\begin{tabular}{lll}
+1. & $\Box(X\equiv Y)\supset\Box((X\supset Y)\wedge (Y\supset X))$ & (Def. of $\equiv$) \\
+2. & $\Box(X\equiv Y)\supset(\Box(X\supset Y)\wedge\Box(Y\supset X))$ & (1, Exercise 2.7(b)) \\
+3. & $\Box(X\equiv Y)\supset((\Box X\supset\Box Y)\wedge(\Box Y\supset\Box X))$ & (2, K) \\
+4. & $\Box (X\equiv Y)\supset(\Box X\equiv\Box Y)$ & (3, Def. of $\equiv$)
+\end{tabular}
+\end{center}
+
 \subsection*{Exercise 3.1}
 (1) First we show that $\Box(\Box A\supset\Box A)$ is $S4$ valid. So consider any $S4$ model $\mathcal{M}$, and any 
 of its possible worlds $p$. We must show that 
@@ -335,5 +393,17 @@ On the other hand, we show that $p\vDash\Diamond X\supset\Diamond\Diamond X$. So
 $p\vDash\Diamond X$. Thus $q\vDash X$ for some $q$ accessible from $p$. But $q$ is accessible from 
 $q$. Hence $q'\vDash X$ for some $q'$ (namely $q$ itself) that is accessible from some $q$ that is accessible from 
 $p$, meaning $p\vDash\Diamond\Diamond X$.
+
+\section*{Section 4}
+
+\subsection*{Exercise 4.2}
+We show that $\Box\Diamond X\supset\Box\Diamond\Box\Diamond X$ is $S4$ valid. Well, 
+$X\supset\Diamond X$ is $S4$ valid. Thus $\Box\Diamond X\supset\Diamond\Box\Diamond X$ is $S4$ valid.
+Thus, by Proposition 2.6, $\Box\Box\Diamond X\supset\Box\Diamond\Box\Diamond X$ is $S4$ valid. 
+But $\Box X\supset\Box\Box X$ is $S4$ valid. Hence 
+$\Box\Diamond X\supset\Box\Diamond\Box\Diamond X$ is $S4$ valid.
+
+\subsection*{Exercise 4.3}
+
 
 \end{document}
