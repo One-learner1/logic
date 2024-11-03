@@ -13,6 +13,7 @@
 \usepackage{comment}
 \usepackage{placeins}
 \usepackage{geometry}
+\usepackage{stmaryrd}
 \usepackage{hyperref}
 \usepackage{tikz}
 \usepackage{tabto}
@@ -20,8 +21,8 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 \let\oldemptyset\emptyset
-\let\lbc\llbracket
-\let\rbc\rrbracket
+\newcommand{\lbc}{\llbracket}
+\newcommand{\rbc}{\rrbracket}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
@@ -398,16 +399,16 @@ $p$, meaning $p\vDash\Diamond\Diamond X$.
 
 \section*{Section 4}
 
-\subsectioN*{Exercise 4.1}
+\subsection*{Exercise 4.1}
 (2) We verify the $S4$ validity of the translate of
-\[ (A\supset(B\supset C))\supset((A\suspet B)\supset(A\supset C)) \]
+\[ (A\supset(B\supset C))\supset((A\supset B)\supset(A\supset C)) \]
 Suppose that there was some $S4$ model and some possible world $p$ in it such that 
-\[ p\nvDash\lbc (A\supset(B\supset C))\supset((A\suspet B)\supset(A\supset C))\rbc \]
+\[ p\nvDash\lbc (A\supset(B\supset C))\supset((A\supset B)\supset(A\supset C))\rbc \]
 By (1) of Proposition 4.6, 
 this would mean that there was a possible world $p'$ accessible from $p$ such that 
 $p'\vDash\lbc (A\supset(B\supset C))\rbc$ and
-$p'\vDash\lbc \oldneg((A\suspet B)\supset(A\supset C))\rbc$, which implies
-$p'\vDash\oldneg\lbc((A\suspet B)\supset(A\supset C))\rbc$ (by Proposition 4.3). 
+$p'\vDash\lbc \oldneg((A\supset B)\supset(A\supset C))\rbc$, which implies
+$p'\vDash\oldneg\lbc((A\supset B)\supset(A\supset C))\rbc$ (by Proposition 4.3). 
 By Proposition 4.5, we also have
 \[\textrm{(1) }p'\vDash(\lbc A\rbc\supset\lbc(B\supset C)\rbc) \]
 Then again by Proposition 4.6,
@@ -427,9 +428,9 @@ $p'''\vDash\lbc B\rbc$. Also (1') yields us $p'''\vDash\lbc (B\supset C)\rbc$, a
 have $p'''\vDash (\lbc B\rbc\supset\lbc C\rbc)$, and because we have $p'''\vDash\lbc B\rbc$, we 
 therefore have $p'''\vDash\lbc C\rbc$. But we also have $p'''\vDash\oldneg\lbc C\rbc$, which is a contradiction.
 Hence it could not be that
-\[ p\nvDash\lbc (A\supset(B\supset C))\supset((A\suspet B)\supset(A\supset C))\rbc \]
+\[ p\nvDash\lbc (A\supset(B\supset C))\supset((A\supset B)\supset(A\supset C))\rbc \]
 and, consequently,
-\[ \lbc (A\supset(B\supset C))\supset((A\suspet B)\supset(A\supset C))\rbc \] is 
+\[ \lbc (A\supset(B\supset C))\supset((A\supset B)\supset(A\supset C))\rbc \] is 
 $S4$ valid.
 
 (3) We verify the $S4$ validity of the translate of
@@ -485,7 +486,7 @@ have $p'''\vDash\lbc\psi\rbc$, we also have $p'''\vDash\lbc\phi(d)\rbc$. But we 
 $p'''\vDash\oldneg\lbc\phi(d)\rbc$, a contradiction. Thus it cannot be that
 \[ p\nvDash\lbc (\forall x)(\psi\supset\phi(x))\supset (\psi\supset(\forall x)\phi(x)) \]
 and, consequently,
-$\lbc (\forall x)(\psi\supset\phi(x))\supset (\psi\supset(\forall x)\phi(x))\rbc \] is $S4$ valid. 
+\[ \lbc (\forall x)(\psi\supset\phi(x))\supset (\psi\supset(\forall x)\phi(x))\rbc \] is $S4$ valid. 
 
 \subsection*{Exercise 4.2}
 We show that $\Box\Diamond X\supset\Box\Diamond\Box\Diamond X$ is $S4$ valid. Well, 
@@ -552,7 +553,7 @@ is $S4$ valid.
 
 \subsection*{Exercise 4.4}
 (a) We first prove part (4) of Proposition 4.3. Consider some $\oldneg X$. Then 
-$\llbracket\oldneg X\rrbracket=\Box\Diamond\oldneg\ll\bracket X\rrbracket$. We must show that this implies
+$\llbracket\oldneg X\rrbracket=\Box\Diamond\oldneg\llbracket X\rrbracket$. We must show that this implies
 $\oldneg\llbracket X\rrbracket$. Well, $\llbracket X\rrbracket=\Box\Diamond Y$ for some $Y$ (by 
 definition of the translation). Thus
 $\llbracket\oldneg X\rrbracket=\Box\Diamond\oldneg\Box\Diamond Y$ and 
@@ -573,7 +574,7 @@ $\oldneg\llbracket X\rrbracket\supset\llbracket\oldneg X\rrbracket$. For conside
 $\mathcal{M}$ and any of its possible worlds $p$. Suppose that 
 $p\vDash\oldneg\llbracket X\rrbracket$. Then, for some $Y$ (such that $\llbracket X\rrbracket=\Box\Diamond Y$),
 (1) $p\vDash\oldneg\Box\Diamond Y$. We are trying to see if this implies that 
-(2) $p\vDashp\vDash\Box\Diamond\oldneg\Box\Diamond Y$. 
+(2) $p\vDash\Box\Diamond\oldneg\Box\Diamond Y$. 
 However, (2) means that, for 
 every $q'$ accessible from $p$, there is some $r$ accessible from $q'$ such that 
 (3) $r\vDash\oldneg\Box\Diamond Y$. But (1) does not imply this, as, if we only knew that, there could be 
@@ -678,7 +679,7 @@ it follows by the transitivity of the accessibility relation that all such $r$ a
 
 \subsection*{Exercise 4.7}
 (a) This formula is not $S4$ valid. For suppose $p\vDash\llbracket X\vee Y\rrbracket$, which is equivalent 
-to (1) $p\vDash\Box\Diamond(\llbracket X\rrbracket\vee \llbracketY\rrbracket)$ (by part (2) of Proposition 4.3). We need to show that 
+to (1) $p\vDash\Box\Diamond(\llbracket X\rrbracket\vee \llbracket Y\rrbracket)$ (by part (2) of Proposition 4.3). We need to show that 
 $p\vDash\llbracket X\rrbracket\vee\llbracket Y\rrbracket$, that is, 
 (2) $p\vDash\Box\Diamond\llbracket X\rrbracket\vee\Box\Diamond\llbracket Y\rrbracket$, does not necessarily follow. Well, 
 what (1) means is that, for every $q$ accessible from $p$, there is some $r$ accessible from $q$ such that 
