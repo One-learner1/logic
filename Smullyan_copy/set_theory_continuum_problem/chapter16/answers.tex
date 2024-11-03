@@ -440,7 +440,7 @@ $S4$ valid.
 (3) We verify the $S4$ validity of the translate of
 \[ (\oldneg A\supset\oldneg B)\supset (B\supset A) \]
 Suppose that there was some $S4$ model and some possible world $p$ in it such that 
-\[ p\nvDash\lbc (\oldneg A\supset\oldneg B)\supset (B\supset A) \]
+\[ p\nvDash\lbc (\oldneg A\supset\oldneg B)\supset (B\supset A)\rbc \]
 By (1) of Proposition 4.6, this would mean that there was a possible world $p'$ accessible from $p$ such that
 $p'\vDash\lbc \oldneg A\supset\oldneg B\rbc$ and $p'\vDash\lbc\oldneg(B\supset A)\rbc$, which implies
 $p'\vDash\oldneg\lbc B\supset A\rbc$. Then we have
@@ -454,20 +454,20 @@ $p''\vDash\lbc\oldneg B\rbc$, which implies $p''\vDash\oldneg\lbc B\rbc$. But we
 $p''\vDash\lbc B\rbc$, a contradiction. Hence it could not be that
 \[ p\nvDash\lbc (\oldneg A\supset\oldneg B)\supset (B\supset A) \]
 and, consequently,
-\[ \lbc (\oldneg A\supset\oldneg B)\supset (B\supset A) \]
+\[ \lbc (\oldneg A\supset\oldneg B)\supset (B\supset A)\rbc \]
 is $S4$ valid.
 
-(4) (Note that I did not understand why we need the requirenment that $y$ is a variable such that $x$ does not occur 
+(4) (Note that I did not understand why we need the requirement that $y$ is a variable such that $x$ does not occur 
 in the scope of $(\forall y)$ in $\phi(x)$). We verify the $S4$ validity of the translate of
 \[ (\forall x)\phi(x)\supset\phi(y) \]
 Suppose that there was some $S4$ model, some possible world $p$ in it, and some $d\in\mathcal{D}$, such that
-\[ p\nvDash\lbc (\forall x)\phi(x)\supset\phi(d) \]
+\[ p\nvDash\lbc (\forall x)\phi(x)\supset\phi(d)\rbc \]
 By (1) of Proposition 4.6, this would mean that there was a possible world $p'$ accessible from $p$ such that
 $p'\vDash\lbc (\forall x)\phi(x)\rbc$ and $p'\vDash\lbc\oldneg \phi(d)\rbc$, meaning $p'\vDash\oldneg\lbc\phi(d)\rbc$. Thus (by Proposition 4.5) 
 $p'\vDash(\forall x)\lbc \phi(x)\rbc$, meaning $p'\vDash\lbc\phi(d)\rbc$, a contradiction. Thus it cannot be that
-\[ p\nvDash\lbc (\forall x)\phi(x)\supset\phi(d) \]
+\[ p\nvDash\lbc (\forall x)\phi(x)\supset\phi(d)\rbc \]
 and, consequently,
-$\lbc (\forall x)\phi(x)\supset\phi(d)$ is $S4$ valid.
+$\lbc (\forall x)\phi(x)\supset\phi(d)\rbc$ is $S4$ valid.
 
 (5) We verify the $S4$ validity of the translate of 
 \[ (\forall x)(\psi\supset\phi(x))\supset (\psi\supset(\forall x)\phi(x)) \]
@@ -475,7 +475,8 @@ where $x$ does not occur free in $\psi$.
 Suppose that there was some $S4$ model and some possible world $p$ in it such that 
 \[ p\nvDash\lbc (\forall x)(\psi\supset\phi(x))\supset (\psi\supset(\forall x)\phi(x))\rbc \]
 By (1) of Proposition 4.6, this would mean that there was a possible world $p'$ accessible from $p$ such that 
-$p'\vDash\lbc (\forall x)(\psi\supset\phi(x))\rbc$ and $p'\vDash\lbc\oldneg(\psi\supset(\forall x)\phi(x))\rbc$.
+$p'\vDash\lbc (\forall x)(\psi\supset\phi(x))\rbc$ and $p'\vDash\lbc\oldneg(\psi\supset(\forall x)\phi(x))\rbc$,
+which implies that $p'\vDash\oldneg\lbc(\psi\supset(\forall x)\phi(x))\rbc$.
 Again by Proposition 4.6, there is some possible world $p''$ accessible from $p'$ such that
 $p''\vDash\lbc\psi\rbc$ and $p''\vDash\lbc\oldneg(\forall x)\phi(x)\rbc$, which is the same as saying
 $p''\vDash\lbc(\exists x)\oldneg\phi(x)\rbc$. By Proposition 4.6 (4), there is some $p'''$ accessible from $p''$ such that
@@ -488,7 +489,7 @@ $p'''\vDash\lbc\psi\supset\phi(d)\rbc$ ($\psi$ is unchanged because we assumed $
 Then, by Proposition 4.5, we also have $p'''\vDash(\lbc\psi\rbc\supset\lbc\phi(d)\rbc)$, which means, because we 
 have $p'''\vDash\lbc\psi\rbc$, we also have $p'''\vDash\lbc\phi(d)\rbc$. But we have 
 $p'''\vDash\oldneg\lbc\phi(d)\rbc$, a contradiction. Thus it cannot be that
-\[ p\nvDash\lbc (\forall x)(\psi\supset\phi(x))\supset (\psi\supset(\forall x)\phi(x)) \]
+\[ p\nvDash\lbc (\forall x)(\psi\supset\phi(x))\supset (\psi\supset(\forall x)\phi(x))\rbc \]
 and, consequently,
 \[ \lbc (\forall x)(\psi\supset\phi(x))\supset (\psi\supset(\forall x)\phi(x))\rbc \] is $S4$ valid. 
 
@@ -503,15 +504,15 @@ $\Box\Diamond X\supset\Box\Diamond\Box\Diamond X$ is $S4$ valid.
 (1) First, we prove that (2) of Lemma 4.2 is $S4$ valid, that is,
 \[ \Box\Diamond(\Box X\supset\Box\Diamond Y)\supset(\Box X\supset\Box\Diamond Y) \] 
 We do this by verifying the list of implications given in part (2) of the proof of Lemma 4.2.
-\[ \Box\Diamond(\Box\supset\Box\Diamond Y)\supset\Box\Diamond(\oldneg\Box X\vee\Box\Diamond Y) \]
+\[ \Box\Diamond(\Box X\supset\Box\Diamond Y)\supset\Box\Diamond(\oldneg\Box X\vee\Box\Diamond Y) \]
 follows by the definition of $\supset$. Next,
 \[ \Box\Diamond(\oldneg\Box X\vee\Box\Diamond Y)\supset\Box(\Diamond\oldneg\Box X\vee\Diamond\Box\Diamond Y) \]
-is valid by Exercise 3.4 and the Replacement Theorem. Next,
+is valid by Exercise 2.5 and the Replacement Theorem. Next,
 \[ \Box(\Diamond\oldneg\Box X\vee\Diamond\Box\Diamond Y)\supset\Box(\oldneg\Box\Box X\vee\Diamond\Box\Diamond Y) \]
 follows by the definition of $\Diamond$. Next,
-\[ \Box(\oldneg\Box\Box X\vee\Diamond\Box\Diamond Y)\supset\Box(\Box\Box X\supset\Diamond\Box\Diamond) \]
+\[ \Box(\oldneg\Box\Box X\vee\Diamond\Box\Diamond Y)\supset\Box(\Box\Box X\supset\Diamond\Box\Diamond Y) \]
 follows by the definition of $\supset$. Next,
-\[ \Box(\Box\Box X\supset\Diamond\Box\Diamond)\supset\Box\Box\Box X\supset\Box\Diamond\Box\Diamond Y \]
+\[ \Box(\Box\Box X\supset\Diamond\Box\Diamond Y)\supset(\Box\Box\Box X\supset\Box\Diamond\Box\Diamond Y) \]
 Follows by the K axiom. Lastly,
 \[ (\Box\Box\Box X\supset\Box\Diamond\Box\Diamond Y)\supset(\Box X\supset\Box\Diamond Y) \]
 follows by using the Transitivity axiom as well as part (1) of Lemma 4.2.
@@ -522,18 +523,19 @@ follows by using the Transitivity axiom as well as part (1) of Lemma 4.2.
 \[ \Box\Diamond (\Box\Diamond X\wedge\Box\Diamond Y)\supset (\Box\Diamond X\wedge\Box\Diamond Y) \] is 
 $S4$ valid. Now,
 \[ \Box\Diamond (\Box\Diamond X\wedge\Box\Diamond Y)\supset\Box\Diamond\Box\Diamond X \]
-is of course valid, and likewise
+is $S4$ valid (by Exercise 2.5(a) and the fact that $\Diamond(X\wedge Y)\supset (\Diamond X\wedge\Diamond Y)$ is valid), 
+and likewise
 \[ \Box\Diamond (\Box\Diamond X\wedge\Box\Diamond Y)\supset\Box\Diamond\Box\Diamond Y \]
 Using part (1) of Lemma 4.2, we then get
 \[ \Box\Diamond (\Box\Diamond X\wedge\Box\Diamond Y)\supset(\Box\Diamond X\wedge\Box\Diamond Y) \]
 being $S4$ valid.
 
 (b) Next, we show that
-\[ (\Box\Diamond X\wedge\Box\Diamond Y)\supset\Box\Diamond(\Box\Diamond Y\wedge\Box\Diamond Y) \]
+\[ (\Box\Diamond X\wedge\Box\Diamond Y)\supset\Box\Diamond(\Box\Diamond X\wedge\Box\Diamond Y) \]
 is $S4$ valid. Well, $X\supset\Diamond X$ is $S4$ valid, meaning
-\[ (\Box\Diamond X\wedge\Box\Diamond Y)\supset\Diamond(\Box\Diamond Y\wedge\Box\Diamond Y) \]
+\[ (\Box\Diamond X\wedge\Box\Diamond Y)\supset\Diamond(\Box\Diamond X\wedge\Box\Diamond Y) \]
 is $S4$ valid. Then we have (by the $K$ axiom)
-\[ \Box(\Box\Diamond X\wedge\Box\Diamond Y)\supset\Box\Diamond(\Box\Diamond Y\wedge\Box\Diamond Y) \]
+\[ \Box(\Box\Diamond X\wedge\Box\Diamond Y)\supset\Box\Diamond(\Box\Diamond X\wedge\Box\Diamond Y) \]
 being $S4$ valid.
 Next we show that
 \[ (\Box\Diamond X\wedge\Box\Diamond Y)\supset\Box(\Box\Diamond X\wedge\Box\Diamond Y) \]
@@ -541,18 +543,18 @@ is $S4$ valid. First,
 \[ (\Box\Diamond X\wedge\Box\Diamond Y)\supset\Box\Diamond X \]
 and
 \[ (\Box\Diamond X\wedge\Box\Diamond Y)\supset\Box\Diamond Y \]
-are both $S4$ valid (by Exercise 2.5(a)). Also,
+are both $S4$ valid. Also,
 \[ \Box\Diamond X\supset\Box\Box\Diamond X\textrm{ and }\Box\Diamond Y\supset\Box\Box\Diamond Y \]
 are both $S4$ valid (by the Transitivity axiom). Thus we have
 \[ (\Box\Diamond X\wedge\Box\Diamond Y)\supset(\Box\Box\Diamond X\wedge\Box\Box\Diamond Y) \]
 being $S4$ valid,
 and 
-\[ (\Box\Box\Diamond X\wedge\Box\Box\Diamond Y)\supset\Box(\Box\Diamond X\wedge\Box\Box\Diamond Y) \]
+\[ (\Box\Box\Diamond X\wedge\Box\Box\Diamond Y)\supset\Box(\Box\Diamond X\wedge\Box\Diamond Y) \]
 is $S4$ valid by Exercise 2.5(b), meaning
-\[ (\Box\Diamond X\wedge\Box\Diamond Y)\supset\Box(\Box\Diamond X\wedge\Box\Box\Diamond Y) \]
+\[ (\Box\Diamond X\wedge\Box\Diamond Y)\supset\Box(\Box\Diamond X\wedge\Box\Diamond Y) \]
 is $S4$ valid.
 Hence
-\[ (\Box\Diamond X\wedge\Box\Diamond Y)\supset\Box\Diamond(\Box\Diamond Y\wedge\Box\Diamond Y) \]
+\[ (\Box\Diamond X\wedge\Box\Diamond Y)\supset\Box\Diamond(\Box\Diamond X\wedge\Box\Diamond Y) \]
 is $S4$ valid.
 
 \subsection*{Exercise 4.4}
@@ -585,7 +587,7 @@ every $q'$ accessible from $p$, there is some $r$ accessible from $q'$ such that
 some $q'$ accessible from $p$ where there is no $r$ accessible from $q'$ such that (3) holds for $r$. 
 
 (b) Next, we prove part (5) of Proposition 4.3. Now, 
-$(\exists x)\llbracket\phi(x)\rrbracket=(\exists x)\Box\Diamond Y$ for some $Y$. Also, 
+$(\exists x)\llbracket\phi(x)\rrbracket=(\exists x)\Box\Diamond Y$ for some $Y$ (by the definition of the translation). Also, 
 \[ \llbracket(\exists x)\phi(x)\rrbracket=\Box\Diamond(\exists x)\Box\Diamond Y\]
 We prove the result directly, by considering some $S4$ model $\mathcal{M}$, and any of its possible worlds 
 $p$. Suppose that 
@@ -634,8 +636,8 @@ $\Box\Diamond\oldneg\Box(\llbracket X\rrbracket\wedge\Diamond\oldneg\llbracket Y
 $\Diamond$, this is equivalent to
 $\Box\Diamond\Diamond\oldneg(\llbracket X\rrbracket\wedge\oldneg\Box\llbracket Y\rrbracket)$, which, by Proposition 
 4.3 (1), is equivalent to
-$\Box\Diamond\oldneg\Box(\llbracket X\rrbracket\wedge\oldneg\llbracket Y\rrbracket)$. Now, this is equivalent to
-$\Box\Diamond\oldneg(\llbracket X\rrbracket\wedge\oldneg\Box\llbracket Y\rrbracket)$ (because 
+$\Box\Diamond\Diamond\oldneg(\llbracket X\rrbracket\wedge\oldneg\llbracket Y\rrbracket)$. Now, this is equivalent to
+$\Box\Diamond\oldneg(\llbracket X\rrbracket\wedge\oldneg\llbracket Y\rrbracket)$ (because 
 $\Diamond\Diamond X\equiv\Diamond X$), and this is the same as saying
 $\Box\Diamond(\llbracket X\rrbracket\supset\llbracket Y\rrbracket)$. 
 
@@ -648,8 +650,8 @@ $\Box\Diamond\oldneg\Box\Diamond(\exists x)\Box\Diamond\oldneg X$ \\
 $\Box\Diamond\oldneg\Box\Diamond\oldneg(\forall x)\oldneg\Box\Diamond\oldneg X$ \\
 $\Box\Diamond\oldneg\Box\Diamond\oldneg(\forall x)\Diamond\oldneg\Diamond\oldneg X$ \\
 $\Box\Diamond\oldneg\Box\Diamond\oldneg(\forall x)\Diamond\Box X$ \\
-$\Box\Diamond\Diamond\oldneg\Diamond\oldneg(\forall x)\Diamond\Box$ \\
-$\Box\Diamond\Diamond\Box(\forall x)\Diamond\Box$
+$\Box\Diamond\Diamond\oldneg\Diamond\oldneg(\forall x)\Diamond\Box X$ \\
+$\Box\Diamond\Diamond\Box(\forall x)\Diamond\Box X$
 \end{tabular}
 \end{center}
 
@@ -664,8 +666,9 @@ $r$ accessible from $q$,
 $r\vDash\oldneg(\Box\llbracket X\rrbracket\supset\Box\Diamond\llbracket Y\rrbracket)$, which is the same as saying
 $r\vDash\Box\llbracket X\rrbracket$ and $r\vDash\oldneg\Box\Diamond\llbracket Y\rrbracket$, that is, 
 $r\vDash\Diamond\Box\oldneg\llbracket Y\rrbracket$. Thus, for some $p'$ accessible from $r$, 
-$p'\vDash\llbracket X\rrbracket$ and $p'\vDash\Box\oldneg\llbracket Y\rrbracket$ (and this implies 
-$p'\vDash\Box\Diamond\oldneg\llbracket X\rrbracket$, that is, $p'\vDash\llbracket\oldneg X\rrbracket$). Because 
+$p'\vDash\llbracket X\rrbracket$ (because $r\vDash\lbc X\rbc$ and $r\mathcal{R}p'$)
+and $p'\vDash\Box\oldneg\llbracket Y\rrbracket$ (and this implies 
+$p'\vDash\Box\Diamond\oldneg\llbracket Y\rrbracket$, that is, $p'\vDash\llbracket\oldneg Y\rrbracket$). Because 
 we are considering an $S4$ model, it follows by the transitivity of the accessibility relation that all such 
 $p'$ are accessible from $p$, and therefore we are done.
 
@@ -683,7 +686,7 @@ it follows by the transitivity of the accessibility relation that all such $r$ a
 
 \subsection*{Exercise 4.7}
 (a) This formula is not $S4$ valid. For suppose $p\vDash\llbracket X\vee Y\rrbracket$, which is equivalent 
-to (1) $p\vDash\Box\Diamond(\llbracket X\rrbracket\vee \llbracket Y\rrbracket)$ (by part (2) of Proposition 4.3). We need to show that 
+to (1) $p\vDash\Box\Diamond(\llbracket X\rrbracket\vee \llbracket Y\rrbracket)$ (by part (1) of Proposition 4.4). We need to show that 
 $p\vDash\llbracket X\rrbracket\vee\llbracket Y\rrbracket$, that is, 
 (2) $p\vDash\Box\Diamond\llbracket X\rrbracket\vee\Box\Diamond\llbracket Y\rrbracket$, does not necessarily follow. Well, 
 what (1) means is that, for every $q$ accessible from $p$, there is some $r$ accessible from $q$ such that 
@@ -694,7 +697,7 @@ $q$ accessible from $p$ such that there was no $r$ accessible from $q$ such that
 $r\vDash\llbracket Y\rrbracket$.
 
 (b) This formula is just the formula listed in part (2) of Proposition 4.5. It is claimed there that the proof of that part is 
-\textit{similar} to that of part (1), though I cannot see why that is. Here is the proof that I found. Suppose 
+\textquote{similar} to that of part (1), though I cannot see why that is. Here is the proof that I found. Suppose 
 $p\vDash\llbracket X\rrbracket\vee\llbracket Y\rrbracket$, which is equivalent to
 $p\vDash\Box\Diamond\llbracket X\rrbracket\vee\Box\Diamond\llbracket Y\rrbracket$ by (2) of Proposition 4.3.
 Thus, it is either the case that, (1) for every 
@@ -708,13 +711,25 @@ $r\vDash\llbracket X\rrbracket$ or $r\vDash\llbracket Y\rrbracket$.
 Also note that the converse of part (1) of Proposition 4.5 is not $S4$ valid.
 
 \subsection*{Exercise 4.8}
-We show that for any closed formula $X$ in the language of classical logic, a finite set $S$ of classical formulas logically implies $X$ 
-iff $\lbc X\rbc$ is logically implied the set containing the translates of all the formulas in $S$.
+It was not clear how logical consequence would be defined over $S4$ models. If we wanted to show the following:
+
+If a classical formula $X$ is logically implied by some finite set $S$ of (classical) formulas $S_1,...,S_n$, that is, 
+$(S_1\wedge...\wedge S_n)\supset X$ is classically valid, then $\lbc (S_1\wedge...\wedge S_n)\supset X\rbc$ is valid over 
+all $S4$ models.
+
+Then this would be immediate from Proposition 4.7. If we instead wanted to show:
+
+If a classical formula $X$ is logically implied by some finite set $S$ of (classical) formulas $S_1,...,S_n$, that is,
+$(S_1\wedge...\wedge S_n)\supset X$ is classically valid, then $(\lbc S_1\rbc\wedge...\wedge\lbc S_n\rbc)\supset\lbc X\rbc$ is valid
+over all $S4$ models.
+
+then the following would suffice.
 
 On the one hand, suppose that a finite set $S$ of classical formulas logically implies a classical formula $X$. Suppose the 
 formulas in $S$ are $S_1,...,S_n$. Thus $(S_1\wedge...\wedge S_n)\supset X$ is classically valid. By Proposition 4.7, it follows that 
-$\lbc(S_1\wedge...\wedge S_n)\supset X\rbc$ is valid over all $S4$ models. Using part (3) of Proposition 4.3, one can see that this means 
-$\lbc(\lbc S_1\rbc\wedge...\wedge\lbc S_n\rbc)\supset\lbc X\rbc\rbc$ is valid over all $S4$ models, which is what we were required to show.
+$\lbc(S_1\wedge...\wedge S_n)\supset X\rbc$ is valid over all $S4$ models. Using part (3) of Proposition 4.3 and part (1) of Proposition 4.5, 
+one can see that this means 
+$(\lbc S_1\rbc\wedge...\wedge\lbc S_n\rbc)\supset\lbc X\rbc$ is valid over all $S4$ models, which is what we were required to show.
 
 On the other hand, suppose that $X$ is not logically implied by some finite set $S$ (say it contains the formulas $S_1,...,S_n$)
 of formulas in some classical model $M$. Construct 
@@ -723,9 +738,12 @@ arbitrary set. Set $p\mathcal{R}p$. Take for $\mathcal{D}$ the domain of the cla
 $A$, set $p\vDash A$ iff $A$ is true in $M$. In this model, for any formula $Z$, $p\vDash Z$ iff $p\vDash\Box Z$ iff $p\vDash\Diamond Z$. Then,
 by induction on degrees, it follows that for each closed formula $Z$, $Z$ is true in $M$ iff $p\vDash\lbc Z\rbc$. Since 
 $X$ is not logically implied by $S$ in $M$, then $(S_1\wedge...\wedge S_n)\supset X$ is not true over $M$, meaning 
-$p\nvDash\lbc (S_1\wedge...\wedge S_n)\supset X\rbc$, and, using part (3) of Proposition 4.3, it follows that 
-$p\nvDash\lbc ((\lbc S_1\rbc\wedge...\wedge\lbc S_n\rbc)\supset\lbc X\rbc)\rbc$. Contrapositively, if
-$(\lbc S_1\rbc\wedge...\wedge\lbc S_n\rbc)\supset\lbc X\rbc$ is valid over all $S4$ models, 
-$(S_1\wedge...\wedge S_n)\supset X$ is valid over all classical models ($X$ is logically implied by $S$).
+$p\nvDash\lbc (S_1\wedge...\wedge S_n)\supset X\rbc$. Now, if $(\lbc S_1\rbc\wedge...\wedge\lbc S_n\rbc)\supset\lbc X\rbc$ was valid over 
+all $S4$ models, then we would have $\Box\Diamond(((\lbc S_1\rbc\wedge...\wedge\lbc S_n\rbc)\supset\lbc X\rbc)$ being valid over all 
+$S4$ models, and, using Proposition 4.3 and Proposition 4.4, this would mean $\lbc (S_1\wedge...\wedge S_n)\supset X\rbc$ was valid over 
+all models, contrary to the assumption that $p\nvDash\lbc (S_1\wedge...\wedge S_n)\supset X\rbc$. Thus it must be that 
+$(\lbc S_1\rbc\wedge...\wedge\lbc S_n\rbc)\supset\lbc X\rbc$ is not valid over all $S4$ models. Contrapositively, 
+if $(\lbc S_1\rbc\wedge...\wedge\lbc S_n\rbc)\supset\lbc X\rbc$ is valid over all $S4$ models, then $(S_1\wedge...\wedge S_n)\supset X$ is 
+valid over all classical models. 
 
 \end{document}
