@@ -95,14 +95,14 @@ each $a_i$ in $\phi$ by $\pi(a_i)$, defines $\pi''(D)$ over $\pi''(C)$.
 \begin{proof}
 Assume the hypothesis. Consider any subclass $C$ of $A$. We prove this by induction on the degree of the formulas.
 
-Atomic case: In this case, the formula would have to either be of the form $x\in a$ or $a\in x$, where $a\in C$. 
-Suppose that it is the first case; that is, the formula is of the form $x\in a$ (where $a\in C$). We show that 
+Atomic case: In this case, the formula would have to either be of the form $x\in x$, $x\in a$, or $a\in x$, where $a\in C$. 
+Suppose that it is the second case; that is, the formula is of the form $x\in a$ (where $a\in C$). We show that 
 $\pi''(D)$ is definable over $\pi''(C)$ by $x\in\pi(a)$. Well, note that $\pi(a)$ is indeed a member of 
 $\pi''(C)$ (as $a\in C$). On the one hand, suppose that $\pi(b)\in\pi(a)$ holds for some $\pi(b)\in\pi''(C)$ (where $b\in C$). 
 Then, because $\pi$ is an $\in$-isomorphism, $b\in a$, meaning $b\in D$, and thus $\pi(b)\in\pi''(D)$. On the other hand, 
 suppose that $\pi(b)\in\pi''(D)$ (for some $b\in D$). Then $b\in D$, meaning $b\in a$, and thus, because $\pi$ is an 
-$\in$-isomorphism, $\pi(b)\in\pi(a)$. Thus $x\in\pi(a)$ defines $\pi''(D)$ over $\pi''(C)$, therefore completing the first case. The second 
-case (when the formula is of the form $a\in x$) is nearly identical.
+$\in$-isomorphism, $\pi(b)\in\pi(a)$. Thus $x\in\pi(a)$ defines $\pi''(D)$ over $\pi''(C)$, therefore completing the first case. The first 
+and third cases (when the formula is of the form $x\in x$ or $a\in x$) are similar.
 
 Negation case: In this case, suppose the result holds for some formula $\phi(x)$, and that $\oldneg\phi(x)$ defines 
 $D$ over $C$. Suppose also that the only constants in $\phi(x)$ are $a_1,...,a_n$. We show that 
@@ -113,13 +113,13 @@ $\oldneg\psi(\pi(a))$ holds for some $\pi(a)\in\pi''(C)$ (where $a\in C$). By as
 $\pi(a)\in\pi''(D)$ (because $\phi(x)$ defines $C-D$, and because $\oldneg\psi(\pi(a))$ is true, we know that 
 $\psi(\pi(a))$ is false, hence $\pi(a)\in\pi''(C)$ but $\pi(a)\notin\pi''(C)-\pi''(D)$, meaning $\pi(a)\in\pi''(D)$).
 
-On the other hand, if $\pi(a)\in\pi''(D)$ (for some $a\in D$), then $a\in D$, meaning 
+On the other hand, if $\pi(a)\in\pi''(D)$, then $a\in D$, meaning 
 $\oldneg\psi(\pi(a))$ is true over $\pi''(C)$ (by assumption of $\phi$).
 
 Conjunction case: In this case, suppose that the result holds for some formulas $\phi$ (with constants $a_1,...,a_n$, and which 
 defines some class $K$) and $\psi$
 (with constants $b_1,...,b_n$, and which defines some class $L$), and that the formula
-$\gamma(x)$: $\phi\wedge\psi$ defines $D$ over $C$. Let $\phi'$ and $\psi'$ be the results of replacing the occurences of all
+$\gamma(x)$: $\phi\wedge\psi$, defines $D$ over $C$. Let $\phi'$ and $\psi'$ be the results of replacing the occurences of all
 $a_i$ in $\phi$ with $\pi(a_i)$, and the occurences of all $b_i$ in $\psi$ with $\pi(b_i)$, respectively. Then let 
 $\gamma'(x)$ be $\phi'\wedge\psi'$. Then, of course, all constants of $\gamma'(x)$ are in $\pi''(C)$.
 
@@ -134,7 +134,7 @@ $C$. Without loss of generality, suppose that $\phi(a)$ is true over $C$. Then $
 meaning $\gamma'(\pi(a))$ is also true over $\pi''(C)$. 
 
 Existential case: In this case, consider some formula of the form $(\exists x)\phi(x,y)$ (with constants $a_1,...,a_n$) which 
-defines some class $D$ over $C$. Let $\phi'(x,y)$ be the result of replacing each occurence of a $a_i$ in $\phi(x,y)$ with 
+defines some class $D$ over $C$. Let $\phi'(x,y)$ be the result of replacing each occurence of an $a_i$ in $\phi(x,y)$ with 
 $\pi(a_i)$. Then, of course, all constants of $(\exists x)\phi'(x,y)$ are in $\pi''(C)$. 
 
 On the one hand, suppose that $(\exists x)\phi'(x,\pi(a))$ holds for some $\pi(a)\in\pi''(C)$. Then, for some 
@@ -148,7 +148,7 @@ $\pi''(C)$.
 \end{proof}
 
 Now we can prove Exercise 2.1. That is, we suppose that $(K_0,K_1,...,K_\alpha,...)$ $(\alpha<\gamma)$ is a pseudo-construction 
-and that $K=\cup_\alpha<\gamma K_\alpha$, and that $\pi$ is a Mostowski-Shpepherdson map on $K$. We prove that
+and that $K=\cup_\alpha<\gamma K_\alpha$, and that $\pi$ is the Mostowski-Shpepherdson map on $K$. We prove that
 
 (a) For each $\alpha<\gamma$, $\pi''(K_\alpha)=L_\alpha$.
 
@@ -161,30 +161,35 @@ and that $K=\cup_\alpha<\gamma K_\alpha$, and that $\pi$ is a Mostowski-Shpepher
 Least ordinal case: This is given by $C_1$.
 
 Successor case: Suppose the result holds for some $\alpha<\lambda$ (and that $\alpha^+<\lambda$), that is, 
-$\pi''(K_\alpha)=L_\alpha$. We must show that $\pi''(K_{\alpha^+})=L_{\alpha^+}=\mathcal{F}(L_\alpha)$.
+$\pi''(K_\alpha)=L_\alpha$. We must show that $\pi''(K_{\alpha^+})=L_{\alpha^+}=\mathcal{F}(L_\alpha)$. We prove this by 
+showing that both $\pi''(K_{\alpha^+})\subseteq L_{\alpha^+}$ and 
+$L_{\alpha^+}\subseteq \pi''(K_{\alpha^+})$.
 
 On the one hand, suppose that $x\in\pi''(K_{\alpha^+})$. Then $x=\pi(a)$ for some 
 $a\in K_{\alpha^+}$. By $C_2$, $a\cap K\in\mathcal{F}(K_\alpha)$. Also, because 
-$\pi$ is a Mostowski-Shepherdson map, $\pi(a)=\pi''(a\cap K)$. By the above lemma, it follows that 
+$\pi$ is a Mostowski-Shepherdson map on $K$, $\pi(a)=\pi''(a\cap K)$. By the above lemma, it follows that 
 $\pi''(a\cap K)$ is definable over $\pi''(K_\alpha)=L_\alpha$, meaning $\pi''(a\cap K)\in\mathcal{F}(L_\alpha)=L_{\alpha^+}$, 
 that is, $\pi(a)\in L_{\alpha^+}$. Hence $\pi''(K_{\alpha^+})\subseteq L_{\alpha^+}$.
 
-On the other hand, suppose that $x\in L_{\alpha^+}=\mathcal{F}(L_\alpha)$. By the above lemma, it follows that 
+On the other hand, suppose that $x\in L_{\alpha^+}=\mathcal{F}(L_\alpha)$. By the above lemma (and the transfinite induction assumption), 
+it follows that 
 $(\pi^{-1})''(x)\in\mathcal{F}(K_\alpha)$. Thus (by $C_2$), for some $a\in K_{\alpha+1}$, 
 $a\cap K=(\pi^{-1})''(x)$. Then $\pi(a)\in\pi''(K_{\alpha+1})$. But $\pi(a)=\pi''(a\cap K)$ (because 
 $\pi$ is a Mostowski-Shepherdson mapping) and 
 $\pi''(a\cap K)=\pi''((\pi^{-1})''(x))=x$, and thus $x\in\pi''(K_{\alpha+1})$. Thus 
 $L_{\alpha^+1}\subseteq\pi''(K_{\alpha+1})$.
 
-Hence we have shown that $\pi''(K_{\alpha^+}=L_{\alpha^+}$.
+Hence we have shown that $\pi''(K_{\alpha^+}=L_{\alpha^+})$.
 
 Limit ordinal case: This is obvious (by $C_3$).
 
 (b) Obvious (using part (a) of this exercise).
+
+Note that this exercise proves Theorem 2.2 by using Theorem 4.1 of Chapter 10.
 \end{proof}
 
 \subsection*{Exercise 2.2}
-Suppose $K$ and $M$ are sets, and $K$ is bound up with $M$. We prove that $\mathcal{F}(K\cap M)$ is the set of all 
+Suppose $K$ and $M$ are sets, and that $K$ is bound up with $M$. We prove that $\mathcal{F}(K\cap M)$ is the set of all 
 elements $a\cap K$ such that $a\in (K\cap\mathcal{F}(M))$.
 
 \begin{proof}
@@ -210,7 +215,7 @@ $C_1$: We show that $K_0=\emptyset$. Well, $K_0=K\cap L_{\overline{0}}$. Now, $\
 any element in $K$. What this means is that $K\cap L_{\overline{0}}=\emptyset$, and thus $K_0=\emptyset$.
 
 $C_2$: Consider any $\alpha<\gamma$. Then $K$ is bound up with $L_{\overline{\alpha}}$. Also, 
-$K_{\alpha+1}=K\cap L_{\overline{\alpha+1}}$, $K_\alpha=K\cap L_{\overline{\alpha}}$. Note that 
+$K_{\alpha+1}=K\cap L_{\overline{\alpha+1}}$ and $K_\alpha=K\cap L_{\overline{\alpha}}$. Note that 
 $L_{\overline{\alpha+1}}=\mathcal{F}(L_{\overline{\alpha}})$ (because $\overline{\alpha}+1\in o(K)$, meaning 
 $L_{\overline{\alpha+1}}=L_{\overline{\alpha}+1}=\mathcal{F}(L_{\overline{\alpha}})$). Then 
 $\mathcal{F}(K\cap L_{\overline{\alpha}})$ is the set of all elements $a\cap K$ such that $a\in (K\cap L_{\overline{\alpha+1}})$ (by Exercise 2.2).
@@ -226,9 +231,10 @@ $K_\alpha=K\cap L_{\overline{\alpha}}$. But $\overline{\alpha}<\overline{\delta}
 $x\in K_\delta$ (as $K_\delta=K\cap L_{\overline{\delta}})$. 
 
 On the other hand, suppose that $x\in K_\delta$. Now, $\overline{\delta}$ must be a limit ordinal. Hence, because 
-$x\in L_{\overline{\delta}}$, it follows that $x\in L_\alpha$ for some $\alpha<\overline{\delta}$. But, because also 
-$x\in K$, it follows that there must be some $\beta\in o(K)$, where $\beta<\delta$, such that $x\in L_{\overline{\beta}}$. 
-Hence $x\in K\cap L_{\overline{\beta}}$, meaning $x\in K_\beta$, for some $\beta<\delta$.
+$x\in K$, it follows that the order of $x$ is in $o(K)$, meaning that that order must be $\overline{\beta}$ for some $\beta<\delta$ (because 
+$\overline{\beta}<\overline{\delta}$). 
+Hence $x\in K\cap L_{\overline{\beta^+}}$ (because $\overline{\beta}$ is the order of $x$ and $\overline{\beta+1}=\overline{\beta}+1$), 
+meaning $x\in K_{\beta+1}$, for some $\beta+1<\delta$.
 
 \subsection*{Exercise 2.4}
 We must show that $K$ is extensional, $B$-closed, and of the same cardinality as $A$.
@@ -240,16 +246,18 @@ $K$ is extensional.
 (b) We next show that $K$ is $B$-closed. We must therefore show that $K$ is bound up with $L_\alpha$ for every $\alpha\in o(K)$. Hence, for 
 every such $\alpha$, we must show that conditions $B_1$ and $B_2$ of Exercise 2.2 hold (taking $L_\alpha$ for $M$).
 
-$B_1$: We show that $K\cap L_\alpha$ is Henkin closed with respct to $M$. Because $\alpha\in o(K)$, it follows that 
-$\alpha\in o(A_n)$ for some $n$. Consider any formula $\phi$ (whose constants are all in $B$) of the form $(\exists x)\psi(x,y_1,...,y_n)$, and 
+$B_1$: We show that $K\cap L_\alpha$ is Henkin closed with respct to $M$. 
+Consider any formula $\phi$ (whose constants are all in $K\cap L_\alpha$) 
+of the form $(\exists x)\psi(x,y_1,...,y_n)$, and 
 suppose that for some elements $b_1,...,b_n$ of $K\cap L_\alpha$, there is an element $a$ of $L_\alpha$ such 
-that $\psi(a,b_1,...,b_n)$ is true over $L_\alpha$. Then by 3(a), it follows that there is some 
+that $\psi(a,b_1,...,b_n)$ is true over $L_\alpha$. Because $b_1,...,b_n$ combined with the constants of 
+$\phi$ make a finite number of constants, there is some $A_n$ that contains them all. Then by 3(a), it follows that there is some 
 $b\in A_{n+1}$ such that $b\in L_\alpha$ and $\psi(b,b_1,...,b_n)$ is true over $L_\alpha$. But this means there is some 
 $b\in K\cap L_\alpha$ ($b\in K$ as $b\in A_{n+1}$) such that $\psi(b,b_1,...,b_n)$ is true over $L_\alpha$, therefore meaning 
 $K\cap L_\alpha$ is Henkin closed with respect to $L_\alpha$.
 
 $B_2$: Now we show that for any $a\in\mathcal{F}(L_\alpha)$, $a\in K$ iff $a$ is definable over $L_\alpha$ by a formula whose constants are all in 
-$K\cap L_\alpha$. So suppose that $a\in\mathcal{F}(L_\alpha)$. On the one hand, suppose that $a\in K$. Then $a\in A_n$ for some $n$. Then, by 
+$K\cap L_\alpha$. So suppose that $a\in\mathcal{F}(L_\alpha)$. On the one hand, suppose that $a\in K$. Then $a\in A_n$ for some $n$. Then, 
 $3(b_1)$ tells us that there is a formula that defines $a$ over $L_\alpha$ such that all of its constants are in $A_{n+1}$ (hence also in $K$). But 
 this means that $a$ is definable over $L_\alpha$ by a formula whose constants are all in $K\cap L_\alpha$. On the other hand, suppose that 
 $a$ is definable over $L_\alpha$ by a formula whose constants are all in $K\cap L_\alpha$. Then there is some $A_n$ that contains all the constants of 
@@ -270,35 +278,37 @@ and, defining $D(\alpha)$ to be $\{\alpha,\alpha+1,\alpha+2,...,\alpha+n,...,\}$
 $o(A_n)=\cup_{\alpha\textrm{ is the order of an element in $A_n$}}D(\alpha)$, and because each $D(\alpha)$ has cardinality at most 
 $A$, it follows that $o(A_n)$ has cardinality of most $A$), meaning there are at most $A$ elements added to $A_{n+1}$ by (2).
 
-As for $(3a)$, note that for every $\alpha\in o(A_n)$, there are only at most $A$ formulas $(\exists x)\phi(x)$ with constants in
+As for $(3a)$, note that for every $\alpha\in o(A_n)$, there are only at most $\overline{\overline{A}}$ 
+formulas $(\exists x)\phi(x)$ with constants in
 $A_n\cap L_\alpha$, meaning there are at most $A$ elements added to $A_n$ by 3(a) for that particular $\alpha$, and thus, because there are 
 only $A$ elements in $o(A_n)$, there are at most $A$ elements added to $A_n$ by 3(a) in total.
 
-As for $(3b_1)$, for each $\alpha\in o(A_n)$, there are at most $A$ element $a$'s such that $a\in A_n$ and is definable over 
-$L_\alpha$, meaning there are at most $A$ elements added by $(3b_1)$ (because for any formula defining some $a\in A_n$ over 
-$L_\alpha$, it must have only a finite number of constants, and the constants are what's added to $A_{n+1}$).
+As for $(3b_1)$, for any formula defining some $a\in A_n$ (and there are at most $\overline{\overline{A}}$ such $a$'s) over 
+$L_\alpha$, it must have only a finite number of constants, and the constants are what are added to $A_{n+1}$).
 
-Lastly, as for $(3b_2)$, for each $\alpha\in o(A_n)$, there are at most $A_n$ subsets of $L_\alpha$ that are definable over $L_\alpha$ by a formula with 
-constants in $A_n\cap L_\alpha$, meaning there are at most $A$ elements added by $(3b_2)$ (because 
-there are at most $A$ elements of $o(A_n)$).
+Lastly, as for $(3b_2)$, there are at most $\overline{\overline{A}}$ subsets of $L_\alpha$ that could be defined by a formula with 
+constants in $A_n\cap L_\alpha$ (by the assumption that $\overline{\overline{A_n}}=\overline{\overline{A}}$).
 
-Thus there are at most $A$ elements added to $A_n$, and hence $A_{n+1}$ also contains $A$ elements.
+Thus there are at most $\overline{\overline{A}}$ elements added to $A_n$, and hence $A_{n+1}$ has at most cardinality 
+$\overline{\overline{A}}$.
 
 Thus we have shown that $K$ is extentional, $B$-closed, and has no higher cardinality than $A$.
 
 \subsection*{Exercise 2.5}
 Consider any infinite set $A$ whose members are constructible sets. Then, by Exercise 2.4, it is a subset of some extensional 
-set $K$ of constuctible sets such that $K$ has the same cardinality as $A$ and such that $K$ is $B$-closed. By Exercise 2.3, 
+set $K$ of constuctible sets (meaning $K$ is well founded) such that $K$ has the same cardinality as $A$ and such that $K$ is $B$-closed. By Exercise 2.3, 
 it follows that $K$ is pseudo-constructible. Then, by Theorem 2.2, it follows that 
 $K$ is Mostowski-Shepherdson mappable to some $L_\gamma$ (meaning it is $\in$-isomorphic to $L_\gamma$). Hence 
 $A$ is a subset of some extensional set $K$ of constructible sets such that $K$ has the same cardinality as $A$ and 
-$K$ is $\in$-isomorphic to some $L_\alpha$.
+$K$ is $\in$-isomorphic to some $L_\gamma$.
 
 \subsection*{Exercise 2.6}
 Suppose that $m$ is a constructible subset of $L_c$ ($c$ infinite). Then, by Theorem GI, $L_c\cup\{m\}$ can be extended to an 
 extensional set $K$ of cardinality $c$ that is Mostowski-Shepherdson mappable to some $L_\alpha$. Let $\pi$ be this 
-Mostowski-Shepherdson map. We first show that $\pi(m)=m$. Well, $L_c$ is transitive, meaning, by Theorem 5.1 of Chapter 10, 
-$\pi(x)=x$ for each $x\in L_c$. Then, $\pi(m)=\pi''(m)$, and, because $m$ is a subset of $L_c$, 
+Mostowski-Shepherdson map. We first show that $\pi(m)=m$ (which would mean that $m\in L_\alpha$). 
+Well, $L_c$ is transitive, meaning, by Theorem 5.1 of Chapter 10, 
+$\pi(x)=x$ for each $x\in L_c$. Then, $\pi(m)=\pi''(m)$ (because $\pi$ is a Mostowski-Shepherdson map, and $m\subseteq K$), 
+and, because $m$ is a subset of $L_c$, 
 $\pi(m)=m$. Next we show that $\alpha<c^*$. Well, $K$ has the same cardinality as $L_c$, and $L_\alpha$ has the same 
 cardinality as $K$ (because $K$ is isomorphic to $L_\alpha$), meaning $L_\alpha$ has the same cardinality as 
 $L_c$. But $L_c$ has cardinality $c$, and $c^*$ is the next cardinal after $c$, meaning $L_\alpha$ has cardinality 
