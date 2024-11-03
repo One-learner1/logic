@@ -48,7 +48,7 @@ Atomic case: In this case $X$ is atomic. Thus it must be that $A=X$ and $Y=B$, m
 we have assumed $A\equiv B$ is valid in $\mathcal{M}$, $X\equiv Y$ (which is the same formula) is also valid in $\mathcal{M}$.
 
 Negation case: In this case $X$ is of the form $\oldneg\phi$. Then either $A=X$ or 
-$A$ is a subformula of $\phi$. In the first case, obviously it follows that $X\equiv Y$ is valid in 
+$A$ is a proper subformula of $\phi$. In the first case, obviously it follows that $X\equiv Y$ is valid in 
 $\mathcal{M}$. In the second case, $Y$ must be of the form $\oldneg\psi$ (where $\phi\equiv\psi$ is valid over 
 $\mathcal{M}$ by assumption). Then $\phi\supset\psi$ is valid over $\mathcal{M}$ (by assumption), meaning 
 $\oldneg\psi\supset\oldneg\phi$ is valid over $\mathcal{M}$. Similarly, 
@@ -59,14 +59,14 @@ Conjunction case: In this case $X$ is of the form $\phi\wedge\psi$. Then either 
 $A$ is a subformula of either $\phi$ or $\psi$. In the first case, obviously it follows that 
 $X\equiv Y$ is valid in $\mathcal{M}$. In the second case, $Y$ must be of the form 
 $\theta\wedge\gamma$, where both $\theta\equiv\phi$ and $\gamma\equiv\psi$ are true in $\mathcal{M}$.
-Then $(\phi\wedge\psi)\equiv(\theta\wedge\gamma)$, that is, $X\equiv Y$, being valid in $\mathcal{M}$ follows 
+Then $(\phi\wedge\psi)\equiv(\theta\wedge\gamma)$, that is, $X\equiv Y$, being valid in $\mathcal{M}$, follows 
 easily.
 
 Existential case: In this case $X$ is of the form $(\exists x)\phi(x)$. Then either $A=X$ or 
 $A$ is a subformula of $\phi(x)$. Again, the first case is obvious. In the second case, we show that 
 (1) $(\exists x)\phi(x)\supset (\exists x)\psi(x)$ is valid over $\mathcal{M}$. So, for any world $p$ of the 
 model, suppose that $(\exists x)\phi(x)$ is true at $p$. Then $\phi(a)$ is true at $p$ for some 
-$a\in\mathcal{D}$. It is easy to see that this means $\psi(a)$ must be true at $p$ (because $A\equiv B$ is assumed to be 
+$a\in\mathcal{D}$. Using the induction assumption, it is easy to see that this means $\psi(a)$ must be true at $p$ (because $A\equiv B$ is assumed to be 
 valid over $\mathcal{M}$). Thus $(\exists x)\psi(x)$ is true at $p$. Hence, because (1) is true at all possible worlds of 
 $\mathcal{M}$, it follows that it is valid over $\mathcal{M}$. Similar reasoning shows that the converse of 
 (1) is valid over $\mathcal{M}$. Hence $(\exists x)\phi(x)\equiv(\exists x)\psi(x)$, that is, 
@@ -83,20 +83,21 @@ either $p\nvDash X$ or $p\vDash Y$.
 
 (3) $p\vDash (\forall x)\phi(x)$ iff $p\vDash\oldneg(\exists x)\oldneg\phi(x)$ (by definition of $\forall$) iff 
 $p\nvDash (\exists x)\oldneg\phi(x)$ iff $p\nvDash\oldneg\phi(d)$ for each $d\in\mathcal{D}$ iff 
-$p\nvDash\phi(d)$ for each $d\in\mathcal{D}$.
+$p\vDash\phi(d)$ for each $d\in\mathcal{D}$.
 
 (4) $p\vDash \Diamond X$ iff $p\vDash\oldneg\Box\oldneg X$ (by definition of $\Diamond$) iff 
 $p\nvDash\Box\oldneg X$ iff for some $q\in\mathcal{G}$ with $p\mathcal{R}q$, $q\nvDash\oldneg X$ iff 
 for some $q\in\mathcal{G}$ with $p\mathcal{R}q$, $q\vDash X$.
 
 \subsection*{Exercise 2.2}
-(1) We first prove the validity of the $K$ axiom over every modal model. Consider some modal model $\mathcal{M}$, and one of its possible 
+(1) We first prove the validity of the $K$ axiom over every modal model (note that the converse is not valid). 
+Consider some modal model $\mathcal{M}$, and one of its possible 
 worlds $p$. We must show that $p\vDash \Box(X\supset Y)\supset (\Box X\supset\Box Y)$. It suffices to show that, if 
 $p\vDash\Box(X\supset Y)$, then it follows that $p\vDash (\Box X\supset\Box Y)$. So suppose 
 $p\vDash\Box(X\supset Y)$. Then this means that, for every $q\in\mathcal{G}$ with $p\mathcal{R}q$, $q\vDash (X\supset Y)$. It suffices to show that, 
 if $p\vDash\Box X$, then it follows that $p\vDash\Box Y$. So suppose that $p\vDash\Box X$. Then, for every $q\in\mathcal{G}$ with 
 $p\mathcal{R}q$, $q\vDash X$. But also $q\vDash (X\supset Y)$, meaning $q\vDash Y$. Thus $p\vDash\Box Y$. Hence $p\vDash (\Box X\supset\Box Y)$ holds, 
-and consequently, $p\vDash\Box (X\supset Y)\supset (\Box\supset\Box Y)$ also holds, and thus $\Box (X\supset Y)\supset (\Box\supset\Box Y)$ is valid.
+and consequently, $p\vDash\Box (X\supset Y)\supset (\Box X\supset\Box Y)$ also holds, and thus $\Box (X\supset Y)\supset (\Box\supset\Box Y)$ is valid.
 
 (2) We now prove the validity of the Barcan formula over every modal model. Consider some modal model $\mathcal{M}$, and one of its possible worlds 
 $p$. We must show that $p\vDash (\forall x)\Box\phi(x)\supset\Box(\forall x)\phi(x)$. It suffices to show that, if 
@@ -106,6 +107,8 @@ $q\in\mathcal{G}$ with $p\mathcal{R}q$. To show that $p\vDash\Box(\forall x)\phi
 $q\in\mathcal{G}$ with $p\mathcal{R}q$, $q\vDash (\forall x)\phi(x)$. So consider some such $q$. We must show that 
 $q\vDash\phi(d)$ holds for each $d\in\mathcal{D}$. But we have already shown this. Thus $q\vDash (\forall x)\phi(x)$, meaning 
 $p\vDash\Box (\forall x)\phi(x)$, and consequently, the Barcan formula is valid.
+
+Note that $(\forall x)\Diamond\phi(x)\supset\Diamond(\forall x)\phi(x)$ is not valid.
 
 \subsection*{Exercise 2.3}
 We show that the converse of the Barcan formula, that is, $\Box(\forall x)\phi(x)\supset (\forall x)\Box\phi(x)$, is valid over every 
@@ -118,6 +121,8 @@ $p\vDash \Box\phi(d)$ holds for each $d\in\mathcal{D}$. So consider some such $d
 $q\vDash \phi(d)$ holds for each $q\in\mathcal{G}$ with $p\mathcal{R}q$. So consider some such $q$. But we already know that 
 $q\vDash\phi(d)$ holds. Thus $p\vDash\Box\phi(d)$, meaning $p\vdash (\forall x)\Box\phi(x)$, meaning 
 $p\vDash \Box(\forall x)\phi(x)\supset (\forall x)\Box\phi(x)$, and thus the converse of the Barcan formula is valid. 
+
+Note that $\Diamond(\forall x)\phi(x)\supset(\forall x)\Diamond\phi(x)$ is also valid.
 
 \subsection*{Exercise 2.4}
 For this, we first prove by induction (using Exercise 2.3) that
@@ -148,7 +153,7 @@ is valid.
 So suppose that \[ p\vDash\Box(\forall x_1)...(\forall x_{n+1})\phi(x_1,...,x_{n+1}) \] Then
 \[ p\vDash (\forall x_1)\Box(\forall x_2)...(\forall x_{n+1})\phi(x_1,...,x_{n+1}) \] by Exercise 2.3,
 and then
-\[ p\vDash (\forall x_1)...(\forall x_{n+1}\Box\phi(x_1,...,x_{n+1}) \] by the induction assumption and the Replacement Theorem. Hence
+\[ p\vDash (\forall x_1)...(\forall x_{n+1})\Box\phi(x_1,...,x_{n+1}) \] by the induction assumption and the Replacement Theorem. Hence
 \[ p\vDash \Box(\forall x_1)...(\forall x_{n+1})\phi(x_1,...,x_{n+1})\supset(\forall x_1)...(\forall x_{n+1})\Box\phi(x_1,...,x_{n+1}) \] is valid.
 
 Thus we know that
@@ -182,11 +187,11 @@ $p\vDash\Box (X\wedge Y)$ holds, and thus $p\vDash(\Box X\wedge\Box Y)\supset\Bo
 meaning $(\Box X\wedge\Box Y)\supset\Box (X\wedge Y)$ is valid over $\mathcal{M}$, hence valid over 
 every modal model.
 
-(c) We show that $(\Diamond\vee\Diamond Y)\equiv\Diamond(X\vee Y)$ is valid over every modal model. Consider any 
+(c) We show that $(\Diamond X\vee\Diamond Y)\equiv\Diamond(X\vee Y)$ is valid over every modal model. Consider any 
 modal model $\mathcal{M}$, and any of its possible worlds $p$.
 
 On the one hand, we show that $p\vDash (\Diamond X\vee\Diamond Y)\supset\Diamond(X\vee Y)$. It suffices to show that, 
-if $p\vDash (\Diamond\vee\Diamond Y)$, then $p\vDash\Diamond(X\vee Y)$. So suppose that 
+if $p\vDash (\Diamond X\vee\Diamond Y)$, then $p\vDash\Diamond(X\vee Y)$. So suppose that 
 $p\vDash (\Diamond X\vee\Diamond Y)$. Thus either $p\vDash\Diamond X$ or $p\vDash\Diamond Y$, hence 
 (1) there is either some $q\in\mathcal{G}$ with $p\mathcal{R}q$ such that $q\vDash X$, or there is some 
 $q\in\mathcal{G}$ with $p\mathcal{R}q$ such that $q\vDash Y$. To show that $p\vDash\Diamond (X\vee Y)$ holds, we 
@@ -204,17 +209,14 @@ either $p\vDash\Diamond X$ or $p\vDash\Diamond Y$, and thus $p\vDash (\Diamond X
 $p\vDash\Diamond (X\vee Y)\supset (\Diamond X\vee\Diamond Y)$, meaning 
 $\Diamond (X\vee Y)\supset (\Diamond X\vee\Diamond Y)$ is valid over all modal models. 
 
-(d) We first show that $(\Diamond X\wedge\Diamond Y)\supset\Diamond (X\wedge Y)$ is not valid. 
+(d) We first show that $(\Diamond X\wedge\Diamond Y)\supset\Diamond (X\wedge Y)$ is not valid (note that the converse is valid). 
 Consider any modal model $\mathcal{M}$ and any of its possible worlds $p$. We must show that it could be the case 
 that $p\nvDash (\Diamond X\wedge\Diamond Y)\supset\Diamond (X\wedge Y)$, which is the same as saying that it could be the 
 case that $p\vDash (\Diamond X\wedge\Diamond Y)\wedge\oldneg\Diamond (X\wedge Y)$. Well, it certainly could be the case 
-that $p\vDash (\Diamond X\wedge\Diamond Y)$. If it is, then either 
-$p\vDash\Diamond X$ or $p\vDash\Diamond Y$, meaning either 
-$q\vDash X$ for some $q\in\mathcal{G}$ with $p\mathcal{R}q$, or 
-$q\vDash Y$ for some $q\in\mathcal{G}$ with $p\mathcal{R}q$. But this does not mean that 
-there must be some $q\in\mathcal{G}$ with $p\mathcal{R}q$ such that both $q\vDash X$ and $q\vDash Y$ hold, 
-which is what we would need to know that $p\vDash\Diamond (X\wedge Y)$. Hence we cannot necessarily conclude 
-$p\vDash\Diamond (X\wedge Y)$, meaning $(\Diamond X\wedge\Diamond Y)\supset\Diamond (X\wedge Y)$ is not valid.
+that $p\vDash (\Diamond X\wedge\Diamond Y)$. If it is, then there is some $q$ accessible from $p$ 
+such that $q\vDash X$, and there is some $r$ accessible from $p$ such that $r\vDash Y$. To conclude that 
+$p\vDash\Diamond (X\wedge Y)$, we would need to know that there is some $p'$ accessible from $p$ such that 
+$p'\vDash (X\wedge Y)$. But, because it could be that $q\ne r$, we are not guaranteed this. 
 
 Second, we show that $\Box (X\vee Y)\supset (\Box X\vee\Box Y)$ is not valid. Consider any modal model 
 $\mathcal{M}$ and any of its possible worlds $p$. We must show that it could be the case that 
@@ -324,8 +326,7 @@ K axiom, and \textquote{Nec.} stand for Necessitation rule.
 \end{center}
 
 From the previous two proofs, we have proven $\Diamond\Diamond X\equiv\Diamond X$, and thus this is an alternative 
-proof of one part of Exercise 3.4 (note that the first part, showing $\Box\Box X\supset\Box X$, is immediate after we know that 
-the reflexivity and transitivity axioms are correct).
+proof of one part of Exercise 3.4. 
 
 \subsubsection*{$\Box(X\equiv Y)\supset (\Box X\equiv\Box Y)$}
 \begin{center}
@@ -343,8 +344,11 @@ of its possible worlds $p$. We must show that
 $p\vDash\Box(\Box A\supset\Box A)$. It suffices to show that 
 $q\vDash (\Box A\supset\Box A)$ for each $q$ accessible at $p$. So consider any such $q$.
 It suffices to show that, if $q\vDash\Box A$, then $q\vDash\Box A$. But this is obvious.
-Hence $p\vDash\Box(\Box A\supset\Box A)$, and, consequently, $\Box(\Box A\supset\Box A)$ si 
+Hence $p\vDash\Box(\Box A\supset\Box A)$, and, consequently, $\Box(\Box A\supset\Box A)$ is 
 $S4$ valid (indeed, it is valid over all modal models).
+
+Alternatively, this follows by part (1) of Proposition 2.6 and the fact that $p\vDash (\Box A\supset\Box A)$ is valid over all 
+modal models.
 
 (2) Next we show that $\Box(\Box A\vee\Box\oldneg\Box A)$ is not $S4$ valid. So consider any $S4$ model $\mathcal{M}$, and 
 any of its possible worlds $p$. Well, it certainly could be that 
@@ -394,8 +398,8 @@ $S4$), and thus $q'$ is accessible from $p$, meaning $p\vDash\Diamond X$.
 
 On the other hand, we show that $p\vDash\Diamond X\supset\Diamond\Diamond X$. So suppose that 
 $p\vDash\Diamond X$. Thus $q\vDash X$ for some $q$ accessible from $p$. But $q$ is accessible from 
-$q$. Hence $q'\vDash X$ for some $q'$ (namely $q$ itself) that is accessible from some $q$ that is accessible from 
-$p$, meaning $p\vDash\Diamond\Diamond X$.
+$q$. Hence $q'\vDash X$ for some $q'$ that is accessible from some $q$ that is accessible from 
+$p$ ($q'$ is itself $q$), meaning $p\vDash\Diamond\Diamond X$.
 
 \section*{Section 4}
 
