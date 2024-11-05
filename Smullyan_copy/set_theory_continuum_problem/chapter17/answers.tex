@@ -41,12 +41,14 @@
 \section*{Section 1}
 
 \subsection*{Notes}
-Here is an explanation for the remarks given on page 224. Note that we are certainly assuming $M$ contains all ordinals for 
+Here is an explanation for the remarks given on page 224. Note that we are certainly assuming $M$ contains all ordinals for (explain why 
+this is; show why this causes your given proof of the second part of remark (3) to not follow through, as it would mean that, indeed,
+the sequence $R^\mathcal{G}_0,R^\mathcal{G}_1,...$ did not contain all ordinals, hence was not an ordinal hierarchy).
 Definition 1.1 to even work in the first place.
 
 \begin{lemma}
 For any $\alpha$, if, $R^\mathcal{G}_\beta\in M$ for all $\beta<\alpha$, then 
-$R^\mathcal{G}_\alpha\in M$ and the $R^\mathcal{G}_\alpha$ function is in $M$. 
+both $R^\mathcal{G}_\alpha\in M$ and the $R^\mathcal{G}_\alpha$ function are in $M$. 
 \end{lemma}
 
 \begin{proof}
@@ -67,8 +69,47 @@ and if $\alpha$ is a limit ordinal, then it is defined over $M$ by the following
 Thus, in any case, we know that the $R^\mathcal{G}_\alpha$ function is definable over $M$. Thus, 
 because $\alpha\in M$, we can conclude that $R^\mathcal{G}_\alpha\in M$ (as it is the domain of the function).
 
-Next, we must show that the $R^\mathcal{G}_\alpha$ function is in $M$. Now that we know 
-$R^\mathcal{G}_\alpha\in M$, this follows easily. Note that 
+We first show that $R^\mathcal{G}_\alpha\in M$. Well, if $\alpha$ is a successor ordinal of some $\beta$, then it 
+is defined by the formula
+\[ (\forall y\in x)(y\susbseteq\mathcal{G}\times R^\mathcal{G}_\beta) \]
+which works, as $\mathcal{G}\times R^\mathcal{G}_\beta\in M$ for the following reason:
+both $\mathcal{G}$ and $R^\mathcal{G}_\beta$ are in $M$, meaning 
+$\{\mathcal{G},R^\mathcal{G}_\beta\}\in M$ (because $M$ is a first order universe). Thus
+$\cup\{\mathcal{G},R^\mathcal{G}_\beta\}\in M$, meaning
+$\mathcal{P}(\cup\{\mathcal{G},R^\mathcal{G}_\beta\})\cap M\in M$, and thus
+(1) $\mathcal{P}(\mathcal{P}(\cup\{\mathcal{G},R^\mathcal{G}_\beta\})\cap M)\cap M\in M$. Now, it is 
+obvious that the formula in $M$ in (1) is such that $\langle x,y\rangle$ is in it for each 
+$x\in\mathcal{G}$ and each $y\in R^\mathcal{G}_\beta$. Then it is easy to see that 
+$\mathcal{G}\times R^\mathcal{G}_\beta$ is first-order definable over $M$, and, because this 
+would mean it is a first-order definable susbset of the set in (1), 
+$\mathcal{G}\times R^\mathcal{G}_\beta\in M$ (because $M$ is first-order swelled). 
+
+The case where $\alpha$ is a limit ordinal is mostly similar. In particular, because we 
+are assuming the $R^\mathcal{G}_\beta$ function is in $M$ for each $\beta<\alpha$, the following 
+defines $R^\mathcal{G}_\alpha$:
+\[ (\exists\beta<\alpha)(\exists f)(\textrm{R-beta func}(f)\wedge(\exists\delta<\beta)(x\in f(\delta))) \]
+
+Thus we know that $R^\mathcal{G}_\alpha\in M$.
+
+Now we show that the $R^\mathcal{G}_\alpha$ function is definable over $M$.
+Well, if $\alpha$ is a successor ordinal of some $\beta$, then
+the $R^\mathcal{G}_\alpha$ function is definable over $M$ by the formula
+\[ (x=\beta\wedge y=R^\mathcal{G}_\beta)\vee \]
+\[ (\exists\delta<\alpha)(\exists f)(\textrm{R-delta func}(f)\wedge x\in\textrm{Dom}(f)\wedge y=f(x)) \]
+and if $\alpha$ is a limit ordinal, then it is defined over $M$ by the following formula
+\[ (\exists\delta<\alpha)(\exists f)(\textrm{R-delta func}(f)\wedge x\in\textrm{Dom}(f)\wedge y=f(x)) \]
+Thus, in any case, we know that the $R^\mathcal{G}_\alpha$ function is definable over $M$. Because 
+$\alpha\in M$, this means that the domain of the $R^\mathcal{G}_\alpha$ function, the 
+set $S$ of all $R^\mathcal{G}_\beta$ for $\beta<\alpha$, is in $M$. Hence 
+$\{\alpha,S\}\in M$, $\cup\{\alpha,S\}\in M$, 
+$\mathcal{P}(\cup\{\alpha,S\})\in M$,
+and $\mathcal{P}(\mathcal{P}(\cup\{\alpha,S\}))\in M$. Now, 
+for each $\beta<\alpha$ and $x\in S$, it of course follows that 
+$\langle \beta,x\rangle\in\mathcal{P}(\mathcal{P}(\cup\{\alpha,S\}))$. That is, 
+the $R^\mathcal{G}_\alpha$ function is a first-order definable subset of 
+$\mathcal{P}(\mathcal{P}(\cup\{\alpha,S\}))$, which is in $M$, meaning
+the function itself is in $M$.
+\end{proof}  
 
 \subsubsection*{Remark 1}
 We show that each $R^\mathcal{G}_\alpha$ is a memver of $M$.
@@ -197,6 +238,12 @@ $f\in R^\mathcal{G}_{\beta+1}$, and thus $f\in\mathcal{D}^\mathcal{G}$.
 
 \subsection*{Remark 5}
 I could not see how to show the isomorphism, but the rest of the remark seems to be just Exercise 1.2, which I will give here.
+
+Here is how we could get this recursion to work in the first place. We define a function $m_\alpha$ for each 
+$\alpha$ whose domain is $R^\mathcal{G}_\alpha$ and which satisfies the conditions of the function. We use 
+transfinite recursion, where $m_{\alpha+1}=g(m_\alpha)$, where 
+$g(m_\alpha)$ is the set containing all members of $m_\alpha$, as well as all 
+sets of the form $\langle x,\{m_\alpha(g):\langle p,g\rangle\in x\}$. 
 
 Suppose $\mathcal{G}=\{p\}$, and a mapping $m$ is defined by (I was unsure how we could get this recursion to work in the first place)
 \[ m(f)=\{m(g)|\langle p,g\rangle\in f\} \]
