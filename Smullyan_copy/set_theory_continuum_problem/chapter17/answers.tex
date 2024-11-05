@@ -180,8 +180,20 @@ Lastly, the $R^\mathcal{G}_{\lambda}$ function is definable over $M$ by
 \end{proof}
 
 Note that, as a consequence of the above lemma (and part (2) of the remarks), 
-we know that, for all $\alpha$, $R^\mathcal{G}_\alpha\in R^\mathcal{G}_{\alpha+1}$. Now we show that 
+we know that, for all $\alpha$, $R^\mathcal{G}_\alpha\in R^\mathcal{G}_{\alpha+1}$. (No! this is incorrect) Now we show that 
 $R^\mathcal{G}_{\alpha}\ne R^\mathcal{G}_{\alpha+1}$.
+
+\begin{lemma}
+For each limit ordinal $\lambda$, $R^\mathcal{G}_\lambda\in R^\mathcal{G}_{\lambda^+}$.
+\end{lemma}
+
+\begin{proof}
+Consider some limit ordinal $\lambda$. Hence $R^\mathcal{G}_\lambda=\cup_{\alpha<\lambda}R^\mathcal{G}_\alpha$.
+We already know that $R^\mathcal{G}_\lambda$ is in $M$ (by (1) of the remarks). Also, it can 
+easily be seen that $R^\mathcal{G}_\lambda\subseteq\mathcal{G}\times R^\mathcal{G}_\lambda$. 
+Thus, by definition of $R^\mathcal{G}_{\lambda^+}$, it follows that 
+$R^\mathcal{G}_\lambda\in R^\mathcal{G}_{\lambda^+}$.
+\end{proof}
 
 \begin{proof}
 This is in fact immediate from the above lemma. For, we know from that that 
@@ -210,9 +222,10 @@ $R^\mathcal{G}_{\alpha+1}=R^\mathcal{G}_\alpha$, then it would follow that $z=\{
 $z\in R^\mathcal{G}_\alpha$. What this would mean is that $\langle x,y\rangle\in\mathcal{G}\times R^\mathcal{G}_\beta$. 
 But that would mean $y\in R^\mathcal{G}_\beta$, a contradiction. Thus it must be that $R^\mathcal{G}_{\alpha+1}\ne R^\mathcal{G}_\alpha$.
 
-On the other hand, suppose that $\alpha$ is a limit ordinal. Then pick some successor ordinal $\beta^+<\alpha$. By the 
-transfinite induction assumption, we know that there is some $x\in R^\mathcal{G}_{\beta^+}$ such that 
-$x\notin R^\mathcal{G}_\beta$. By (2) of the remarks, we know that this means $x\in R^\mathcal{G}_
+On the other hand, suppose that $\alpha$ is a limit ordinal. Then we know that 
+$R^\mathcal{G}_\alpha\in R^\mathcal{G}_{\alpha^+}$ (by the above lemma). 
+$R^\mathcal{G}_\alpha =R^\mathcal{G}_{\alpha^+}$ would then easily lead to a contradiction, 
+due to the assumption that $M$, and thus also $R^\mathcal{G}_\alpha$, is well founded. 
 \end{proof}
 
 Now we show that $\mathcal{D}^\mathcal{G}$ is a proper class in $M$ (that is, 
