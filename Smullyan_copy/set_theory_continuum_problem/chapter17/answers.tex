@@ -333,17 +333,54 @@ We show that for $f,g\in R^\mathcal{G}_\alpha$, if $p\vDash (f\approx g)$ then
 $p\vDash (f\approx_\alpha g)$.
 
 \begin{proof}
-By transfinite induction.
+By transfinite induction. In particular, we make the induction assumption that, for all possible worlds 
+$p$ (we are not just considering one particular one), if $p\vDash (f\approx g)$ then 
+$p\vDash (f\approx_\alpha g)$.
 
 This vacuously holds for the case of $0$.
 
 Suppose it holds for all ordinals less than some successor ordinal $\alpha^+$. Suppose 
-$f,g\in R^\mathcal{G}_{\alpha^+}$ and that $p\vDash f\approx g$. Then, by definition, it follows tha t
+$f,g\in R^\mathcal{G}_{\alpha^+}$ and that $p\vDash f\approx g$. Then, by definition, it follows that
 $f\approx_\beta g$ for some ordinal $\beta$. This can easily be seen to mean that, for some 
 successor ordinal $\delta^+<\beta$,
-\[ p\vDash \lbc (\forall x)[(x\epsilon f)\supset (\exists y)(y\epsilon g\wedge y\approx_\delta x)]\wedge \]
-\[ (\forall x)[(x\epsilon g)\suspet (\exists y)(y\epsilon f\wedge y\approx_\delta x)]\rbc \]
-But, by the induction assumption, it is an easy consequence that
+\[ \textrm{(1) }p\vDash \lbc (\forall x)[(x\epsilon f)\supset (\exists y)(y\epsilon g\wedge y\approx_\delta x)]\wedge \]
+Now, we must show that 
+\[ \textrm{(2) }p\vDash \lbc (\forall x)[(x\epsilon f)\suspet(\exists y)(y\epsilon g\wedge y\approx_\alpha x)]\wedge \]
+\[ (\forall x)[(x\epsilon g)\supset(\exists y)(y\epsilon f\wedge y\approx_\alpha x)] \]
+It suffices to show that $p\vDash\lbc (\forall x)[(x\epsilon f)\suspet(\exists y)(y\epsilon g\wedge y\approx_\alpha x)]$ and 
+that $p\vDash\lbc (\forall x)[(x\epsilon g)\suspet(\exists y)(y\epsilon g\wedge y\approx_\alpha)]$. We show 
+$p\vDash\lbc (\forall x)[(x\epsilon f)\suspet(\exists y)(y\epsilon g\wedge y\approx_\alpha x)]$ (the other case is similar).
+It suffices to show that, $p\vDash\lbc(d\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\alpha d)\rbc$ for each 
+$d\in\mathcal{D}^\mathcal{G}$, and this is the same as showing 
+$p\vDash\Box\Diamond[\lbc d\epsilon f\rbc\supset\lbc (\exists y)(y\epsilon g\wedge y\approx_\alpha d)\rbc]$.
+Consider some world $p''$ accessible from some $p'$ accessible from $p$. Then, if 
+$\lbc d\epsilon f\rbc$, we know by (1) that
+$p''\vDash\lbc (\exists y)(y\epsilon g\wedge y\approx_\delta d)]$, and thus 
+$p'''\vDash \lbc(e\epsilon g\wedge e\approx_\delta d)\rbc$, meaning 
+both $p'''\vDash\lbc (e\epsilon g)\rbc$ and 
+$p'''\vDash\lbc e\approx_\delta d\rbc$. It can easily be shown that 
+this means $p'''\vDash\lbc e\approx_\gamma d\rbc$ for some limit ordinal $\gamma<\delta^+$, and because it is a 
+successor ordinal, $p'''\vDash (e\approx_\gamma d)$, meaning $p'''\vDash (e\approx d)$ and thus, by the induction assumption (and the 
+fact that $x$ and $y$ must be in $R^\mathcal{G}_\delta$), $p'''\vDash (e\approx_\delta d)$, which implies 
+$p'''\vDash \lbc e\approx_\delta d\rbc$. Thus we have 
+both $p'''\vDash\lbc (e\epsilon g)\rbc$ and $p'''\lbc e\approx_\delta d\rbc$. Having these two things we can then show this implies 
+(2).
+
+We show that $p\vDash \lbc (\forall x)[(x\epsilon f)\suspet(\exists y)(y\epsilon g\wedge y\approx_\alpha x)], which 
+is equivalent to $p\vDash \lbc (d\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\delta d)\rbc$ holding for 
+all $d\in\mathcal{D}^\mathcal{G}$. This is equivalent to 
+$p\vDash\Box\Diamond(\lbc d\epsilon f\rbc\supset\lbc(\exists y)(y\epsilon g\wedge y\approx_\delta d)\rbc)$.
+So suppose $p''\vDash(\lbc d\epsilon f\rbc\supset\lbc(\exists y)(y\epsilon g\wedge y\approx_\delta d)\rbc)$ for 
+some $p''$ accessible from some $p'$ accessible from $p$. Suppose 
+$p''\vDash \lbc d\epsilon f\rbc$. We must show that $p''\vDash \lbc(\exists y)(y\epsilon g\wedge y\approx_\delta d)\rbc$, that is, 
+$p''\vDash\Box\Diamond(\exists y)\lbc (y\epsilon g\wedge y\approx_\delta d)\rbc$. Suppose this didn't hold. Then, for some 
+$p'''$ accessible from $p''$, there are no $p''''$ accessible from $p'''$ such that 
+$p''''\vDash (\exists y)\lbc (y\epsilon g\wedge y\approx_\delta d)\rbc$ hold. But, because $p''''$ is accessible from 
+$p$, this contradicts the results of the preceeding paragraph. 
+
+For the limit ordinal case, suppose the result holds for all $\alpha<\lambda$ for some limit ordinal $\lambda$. Suppose 
+Because $f,g\in R^\mathcal{G}_\lambda$, $f,g\in R^\mathcal{G}_\alpha$ for some $\alpha<\lambda$. Thus, by the 
+induction assumption, $p\vDash (f\approx_\alpha g)$, meaning $p\vDash (f\approx_\lambda g)$.
 
 \subsection*{Defintion 1.6}
 It was not entirely clear to mehow $\lbc fin g\rbc$ was meant to be defined, 
