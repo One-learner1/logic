@@ -41,10 +41,15 @@
 \section*{Section 1}
 
 \subsection*{Notes}
-Here is an explanation for the remarks given on page 224. Note that we are certainly assuming $M$ contains all ordinals for (explain why 
-this is; show why this causes your given proof of the second part of remark (3) to not follow through, as it would mean that, indeed,
-the sequence $R^\mathcal{G}_0,R^\mathcal{G}_1,...$ did not contain all ordinals, hence was not an ordinal hierarchy).
-Definition 1.1 to even work in the first place.
+Here is an explanation for the remarks given on page 224. Note that I am assuming $M$ contains all ordinals (see the section for 
+Remark 3). 
+Definition 1.1 to even work in the first place. If a function $f$ has domain $\alpha$, and is such that, for all $\beta<\alpha$, 
+$f(\beta)=R^\mathcal{G}_\beta$, call $f$ an $R^\mathcal{G}_\alpha$ function. Let $\textrm{R-alpha func}(f)$ stand for the following formula:
+\[ \textrm{Func}(f)\wedge\textrm{Dom}(f)=\alpha\wedge f(0)=0\wedge \]
+\[ (\forall\beta<\alpha)(\beta^+<\alpha\supset(\forall x)(x\in f(\beta^+)\equiv x\subseteq\mathcal{G}\times f(\beta))) \]
+\[ \wedge (\forall\beta<\alpha)(\textrm{beta is a successor ordinal}\supset(\forall x)(x\in f(\beta) \]
+\[ \equiv(\exists\delta<\beta)(x\in f(\delta)))) \]
+Note that $\textrm{R-alpha func}(f)$ just means $f$ is the $R^\mathcal{G}_\alpha$ function.
 
 \begin{lemma}
 For any $\alpha$, if, $R^\mathcal{G}_\beta\in M$ for all $\beta<\alpha$, then 
@@ -54,24 +59,14 @@ both $R^\mathcal{G}_\alpha\in M$ and the $R^\mathcal{G}_\alpha$ function are in 
 \begin{proof}
 By transfinite induction.
 
+The least ordinal case is obvious (because $\emptyset\in M$).
+
 Suppose it holds for all ordinals less than some ordinal $\alpha$. So suppose that 
 $R^\mathcal{G}_\beta\in M$ for all $\beta<\alpha$. Then it follows that the 
-$R^\mathcal{G}_\beta$ function is in $M$ for all $\beta<\alpha$. We first show that 
-$R^\mathcal{G}_\alpha\in M$. We do this by showing that the 
-$R^\mathcal{G}_\alpha$ function is definable over $M$, and the fact that $\alpha\in M$ (because all 
-ordinals are in $M$). Then we would use condition $F_8$ of being a first-order universe 
-to conclude that $R^\mathcal{G}_\alpha\in M$. Well, if $\alpha$ is a successor ordinal of some $\beta$, then
-the $R^\mathcal{G}_\alpha$ function is definable over $M$ by the formula
-\[ (x=\beta\wedge y=R^\mathcal{G}_\beta)\vee \]
-\[ (\exists\delta<\alpha)(\exists f)(\textrm{R-delta func}(f)\wedge x\in\textrm{Dom}(f)\wedge y=f(x)) \]
-and if $\alpha$ is a limit ordinal, then it is defined over $M$ by the following formula
-\[ (\exists\delta<\alpha)(\exists f)(\textrm{R-delta func}(f)\wedge x\in\textrm{Dom}(f)\wedge y=f(x)) \]
-Thus, in any case, we know that the $R^\mathcal{G}_\alpha$ function is definable over $M$. Thus, 
-because $\alpha\in M$, we can conclude that $R^\mathcal{G}_\alpha\in M$ (as it is the domain of the function).
-
+$R^\mathcal{G}_\beta$ function is in $M$ for all $\beta<\alpha$. 
 We first show that $R^\mathcal{G}_\alpha\in M$. Well, if $\alpha$ is a successor ordinal of some $\beta$, then it 
 is defined by the formula
-\[ (\forall y\in x)(y\susbseteq\mathcal{G}\times R^\mathcal{G}_\beta) \]
+\[ (\forall y)(y\in x\equiv y\subseteq\mathcal{G}\times R^\mathcal{G}_\beta) \]
 which works, as $\mathcal{G}\times R^\mathcal{G}_\beta\in M$ for the following reason:
 both $\mathcal{G}$ and $R^\mathcal{G}_\beta$ are in $M$, meaning 
 $\{\mathcal{G},R^\mathcal{G}_\beta\}\in M$ (because $M$ is a first order universe). Thus
@@ -99,7 +94,7 @@ the $R^\mathcal{G}_\alpha$ function is definable over $M$ by the formula
 and if $\alpha$ is a limit ordinal, then it is defined over $M$ by the following formula
 \[ (\exists\delta<\alpha)(\exists f)(\textrm{R-delta func}(f)\wedge x\in\textrm{Dom}(f)\wedge y=f(x)) \]
 Thus, in any case, we know that the $R^\mathcal{G}_\alpha$ function is definable over $M$. Because 
-$\alpha\in M$, this means that the domain of the $R^\mathcal{G}_\alpha$ function, the 
+$\alpha\in M$, this means that the range of the $R^\mathcal{G}_\alpha$ function, the 
 set $S$ of all $R^\mathcal{G}_\beta$ for $\beta<\alpha$, is in $M$. Hence 
 $\{\alpha,S\}\in M$, $\cup\{\alpha,S\}\in M$, 
 $\mathcal{P}(\cup\{\alpha,S\})\in M$,
@@ -112,16 +107,9 @@ the function itself is in $M$.
 \end{proof}  
 
 \subsubsection*{Remark 1}
-We show that each $R^\mathcal{G}_\alpha$ is a memver of $M$.
-
-\begin{proof}
-By transfinite induction. The case for 0 obviously holds (because $M$ is a first-order universe). 
-Suppose the result holds for some $\alpha$. Then 
-$R^\mathcal{G}_{\alpha+1}=M\cap\mathcal{P}(\mathcal{G}\times R^\mathcal{G}_\alpha)$, and thus 
-$R^\mathcal{G}_{\alpha+1}\in M$ because $M$ is a first order universe. 
-
-Now suppose the result holds for all $\alpha<\lambda$ for a limit ordinal $\lambda$.
-\end{proof}
+The fact that each $R^\mathcal{G}_\alpha\in M$ is immediate from the above lemma (using an obvious transfinite induction 
+argument). Then 
+$\mathcal{D}^\mathcal{G}$ being a subclass of $M$ follows because $M$ is transitive.
 
 \subsubsection*{Remark 2}
 We show that $R^\mathcal{G}_\alpha\subseteq R^\mathcal{G}_{\alpha+1}$. In fact, we directly prove the stronger result, 
@@ -134,57 +122,20 @@ The least ordinal case is vacuous.
 
 Suppose the result holds for some $\alpha$. Now, if $x\in R^\mathcal{G}_\alpha$, 
 there is some $\beta<\alpha$ such that all members of $x$ are of the form 
-$\{\langle y,z\rangle\}$ where $y\in\mathcal{G}$ and $z\in R^\mathcal{G}_\beta$. By the induction 
+$\langle y,z\rangle$ where $y\in\mathcal{G}$ and $z\in R^\mathcal{G}_\beta$. By the induction 
 assumption, this means that $z\in R^\mathcal{G}_\alpha$. Then 
-$\{\langle y,z\rangle\}$ would also be in $R^\mathcal{G}_\alpha$ for all such $y$ and $z$, and then so would 
+$\langle y,z\rangle$ would also be in $R^\mathcal{G}_\alpha$ for all such $y$ and $z$, and then so would 
 $x$ (as we are assuming $x$ is in $M$).
 
 The limit ordinal case is obvious.
 \end{proof}
 
 \subsubsection*{Remark 3}
-We first show that $R^\mathcal{G}_{\alpha+1}\ne R_\mathcal{G}_\alpha$. For this, we prove the following lemma. Call 
-a function a $R^\mathcal{G}_\alpha$ function is it has a domain of $\alpha$, and it assigns $R^\mathcal{G}_\beta$ to 
-each $\beta<\alpha$. If an $R^\mathcal{G}_\alpha$ function is definable over $M$, let 
-$\textrm{R-alpha func}(f)$ be a formula meaning $x$ is that function. For instance, that formula could be
-\[ \textrm{Func}(f)\wedge\textrm{Dom}(f)=\alpha\wedge f(0)=0\wedge \]
-\[ (\forall \beta<\alpha)[\beta^+<\alpha\supset (x\in f(\beta^+)\equiv x\subseteq\mathcal{G}\times f(\beta))] \]
+We first prove the following lemma.
 
 \begin{lemma}
-For each $\alpha$, $R^\mathcal{G}_\alpha$ is first-order definable over $M$, and 
-the $R^\mathcal{G}_\alpha$ function is definable over $M$. 
-\end{lemma}
-
-\begin{proof}
-By transfinite induction. Obviously the least ordinal case works.
-
-Successor ordinal case: Suppose the result holds for some $\alpha$. Thus 
-$R^\mathcal{G}_\alpha$ is definable over $M$. Also note that, by (1) of the 
-remarks, $R^\mathcal{G}_\alpha\in M$. Then $R^\mathcal{G}_{\alpha+1}$ is defined over 
-$M$ by the formula
-\[ (\forall x\in z)(\forall y\in x)(x\in\mathcal{G}\times R^\mathcal{G}_\alpha) \] which works, 
-as $\mathcal{G}$ is definable over $M$. Lastly, the $R^\mathcal{G}_{\alpha^+}$ function is definable over 
-$M$ by 
-\[ (x=\alpha\wedge y=R^\mathcal{G}_\alpha)\vee(\exists beta<\alpha^+)(\exists f)[ \]
-\[ \textrm{R-alpha func}(f)\wedge\textrm{Ord}(x)\wedge y=f(x)] \]
-
-Limit ordinal case: Suppose the result holds for all $\alpha<\lambda$ for some 
-limit ordinal $\lambda$. Note that $\lambda\in M$ (meaning it is first-order definable over $M$, as $M$ is transitive). 
-Then the following formula 
-defines $R^\mathcal{G}_\lambda$ over $M$ (which works, as $M$ is assumed to be transitive):
-\[ (\exists \beta<\lambda)(\exists f)([\textrm{Func}(f)\wedge\textrm{Dom}(f)=\beta\wedge f(0)=0 \]
-\[ (\forall \alpha<\beta)(\alpha^+<\beta\supset (x\in f(\alpha^+)\equiv x\subseteq\mathcal{G}\times f(\alpha)))] \]
-\[ \wedge (\exists \alpha<\beta)(x\in f(\alpha))) \]
-Lastly, the $R^\mathcal{G}_{\lambda}$ function is definable over $M$ by
-\[ (\exists \alpha<\lambda)(\textrm{R-alpha func}(f)\wedge\textrm{Ord}(x)\wedge x=f(y) \]
-\end{proof}
-
-Note that, as a consequence of the above lemma (and part (2) of the remarks), 
-we know that, for all $\alpha$, $R^\mathcal{G}_\alpha\in R^\mathcal{G}_{\alpha+1}$. (No! this is incorrect) Now we show that 
-$R^\mathcal{G}_{\alpha}\ne R^\mathcal{G}_{\alpha+1}$.
-
-\begin{lemma}
-For each limit ordinal $\lambda$, $R^\mathcal{G}_\lambda\in R^\mathcal{G}_{\lambda^+}$.
+For each limit ordinal $\lambda$, $R^\mathcal{G}_\lambda\in R^\mathcal{G}_{\lambda^+}$ (note that this does not generally 
+hold for non limit ordinals).
 \end{lemma}
 
 \begin{proof}
@@ -195,22 +146,20 @@ Thus, by definition of $R^\mathcal{G}_{\lambda^+}$, it follows that
 $R^\mathcal{G}_\lambda\in R^\mathcal{G}_{\lambda^+}$.
 \end{proof}
 
-\begin{proof}
-This is in fact immediate from the above lemma. For, we know from that that 
-$R^\mathcal{G}_\alpha\in R^\mathcal{G}_{\alpha+1}$. But this means, if 
-$R^\mathcal{G}_\alpha=R^\mathcal{G}_{\alpha+1}$, then 
-$R^\mathcal{G}_\alpha\in R^\mathcal{G}_\alpha$. By (1) of the remarks, we know that 
-$R^\mathcal{G}_\alpha$ is a subclass of $M$, hence well founded (because we are assuming $M$ to 
-be well founded). But $R^\mathcal{G}_\alpha\in R^\mathcal{G}_\alpha$ contradicts this.
+We now prove that $R^\mathcal{G}_{\alpha+1}\ne R^\mathcal{G}_\alpha$.
 
+\begin{proof}
 By transfinite induction. In particular, we show that, for every $\alpha$, $R^\mathcal{G}_\beta\ne R^\mathcal{G}_\alpha$ for every 
-$\beta<\alpha$. We do this by assuming the result holds for all ordinals l
+$\beta<\alpha$.
 
 Suppose the result holds for all ordinals less than some ordinal $\delta$.
 
-Successor ordinal case: Suppose the $\delta$ is the successor of some ordinal $\alpha$.
+Least ordinal case: The case when $\delta=\emptyset$ is vacuous.
+
+Successor ordinal case: Suppose $\delta$ is the successor of some ordinal $\alpha$.
 There are two cases: either $\alpha$ itself is a successor ordinal, 
-or it is a limit ordinal (of course, $\alpha$ could be $\emptyset$, but that case is trivial). We must show the result holds for $\alpha^+$. 
+or it is a limit ordinal (of course, $\alpha$ could be $\emptyset$, but that case is trivial). We must show the result holds for $\alpha^+$ 
+(that is, $\delta$). 
 Note that it suffices to show that $R^\mathcal{G}_{\alpha+1}\ne R^\mathcal{G}_\alpha$, for, if we show that, then if 
 $R^\mathcal{G}_{\alpha+1}=R^\mathcal{G}_\beta$ for some $\beta<\alpha$, then it would follow that 
 $R^\mathcal{G}_\beta=R^\mathcal{G}_\alpha$ by part (2) of the remarks, contrary to the induction assumption.
@@ -222,10 +171,11 @@ $R^\mathcal{G}_{\alpha+1}=R^\mathcal{G}_\alpha$, then it would follow that $z=\{
 $z\in R^\mathcal{G}_\alpha$. What this would mean is that $\langle x,y\rangle\in\mathcal{G}\times R^\mathcal{G}_\beta$. 
 But that would mean $y\in R^\mathcal{G}_\beta$, a contradiction. Thus it must be that $R^\mathcal{G}_{\alpha+1}\ne R^\mathcal{G}_\alpha$.
 
-On the other hand, suppose that $\alpha$ is a limit ordinal. Then we know that 
-$R^\mathcal{G}_\alpha\in R^\mathcal{G}_{\alpha^+}$ (by the above lemma). 
-$R^\mathcal{G}_\alpha =R^\mathcal{G}_{\alpha^+}$ would then easily lead to a contradiction, 
-due to the assumption that $M$, and thus also $R^\mathcal{G}_\alpha$, is well founded. 
+On the other hand, suppose that $\alpha$. By Lemma 0.2, it follows that $R^\mathcal{G}_\alpha\in R^\mathcal{G}_{\alpha^+}$. 
+If $R^\mathcal{G}_{\alpha^+}=R^\mathcal{G}_\alpha$, then $R^\mathcal{G}_\alpha\in R^\mathcal{G}_\alpha$, which contradicts the 
+assumption that $M$, and, by extension, $R^\mathcal{G}_\alpha$, is well founded. 
+
+Limit ordinal case: This is easy.
 \end{proof}
 
 Now we show that $\mathcal{D}^\mathcal{G}$ is a proper class in $M$ (that is, 
@@ -239,31 +189,37 @@ $R^\mathcal{G}_{\alpha+1}=\mathcal{D}^\mathcal{G}$. But this contradicts the fac
 $R^\mathcal{G}_{\alpha+1}\ne R^\mathcal{G}_\alpha$. Thus it cannot be that 
 $\mathcal{D}^\mathcal{G}\in M$.
 
+The above paragraph explains why I am assuming contains all ordinals. For if it didn't, then 
+we wouldn't even know the sequence from Definition 1.1 was defined for all ordinals, and thus we couldn't use 
+Theorem 2.1 of Chapter 7. However, it may indeed be that we could prove the result without this theorem - I was, however, 
+unable to see this.
+
 \subsubsection*{Remark 4}
-Suppose $f\subseteq\mathcal{G}\times\mathcal{D}^\mathcal{G}$ and $f$ is an $M-set$. Now, for 
-each $x\in f$, $x\in R^\mathcal{G}_\alpha$ for some $\alpha$. Let $o(f)$ be the class of all 
-$\alpha$ such that $x\in f$ for at least one $x\in R^\mathcal{G}_\alpha$. We show that there must be some 
+Suppose $f\subseteq\mathcal{G}\times\mathcal{D}^\mathcal{G}$ and $f$ is an $M$-$set$. Now, for 
+each $x\in f$, $x$ is of the form $\langle y,z\rangle$ for some $y\in\mathcal{G}$ and some 
+$z\in R^\mathcal{G}_\alpha$ for some $\alpha$. Let $o(f)$ be the class of all 
+$\alpha$ such that $\langle x,y\rangle\in f$ for at least one $y\in R^\mathcal{G}_\alpha$. We show that there must be some 
 $\beta$ higher than all the $\alpha\in o(f)$. For suppose there weren't. Then it would follow that 
 $o(f)$ could be put into a 1-1 correspondence with $On$. But $o(f)$ is a set (because $f$ is a set), which would 
 mean that $On$ is a set (by the axiom of substitution), which is impossible. Thus it must be that there is some 
 $\beta$ higher than all the $\alpha\in o(f)$. Consider the least such $\beta$. Because $f\in M$, it is easy to see that 
 $f\in R^\mathcal{G}_{\beta+1}$, and thus $f\in\mathcal{D}^\mathcal{G}$.
 
-\subsection*{Remark 5}
+\subsubsection*{Remark 5}
 I could not see how to show the isomorphism, but the rest of the remark seems to be just Exercise 1.2, which I will give here.
 
 Here is how we could get this recursion to work in the first place. We define a function $m_\alpha$ for each 
 $\alpha$ whose domain is $R^\mathcal{G}_\alpha$ and which satisfies the conditions of the function. We use 
 transfinite recursion, where $m_{\alpha+1}=g(m_\alpha)$, where 
 $g(m_\alpha)$ is the set containing all members of $m_\alpha$, as well as all 
-sets of the form $\langle x,\{m_\alpha(g):\langle p,g\rangle\in x\}$. 
+sets of the form $\langle x,\{m_\alpha(g)|\langle p,g\rangle\in x\}\rangle$ for $x\in R^\mathcal{G}_{\alpha+1}-R^\mathcal{G}_\alpha$. 
 
-Suppose $\mathcal{G}=\{p\}$, and a mapping $m$ is defined by (I was unsure how we could get this recursion to work in the first place)
+Suppose $\mathcal{G}=\{p\}$, and a mapping $m$ is defined by
 \[ m(f)=\{m(g)|\langle p,g\rangle\in f\} \]
 
 First, we show that the mapping is 1-1. Note for this that an obvious transfinite induction argument shows that
-if $\beta<\alpha$, $m(g)$ stays constant between $m$ applied to $R^\mathcal{G}_\beta$ and $R^\mathcal{G}_\alpha$, for 
-any $m\in R^\mathcal{G}_\beta$.
+if $\beta<\alpha$, $m(g)$ stays constant between $m$ applied to $R^\mathcal{G}_\beta$ and $R^\mathcal{G}_\alpha$
+(that is, between $m_\beta$ and $m_\alpha$), for any $g\in R^\mathcal{G}_\beta$.
 
 \begin{proof}
 By transfinite induction.
@@ -272,8 +228,8 @@ The case for $R^\mathcal{G}_0$ obviously holds.
 
 Suppose it holds for all ordinals less than some $\alpha$. Now consider any 
 $f$ and $h$ in $R^\mathcal{G}_\alpha$. Suppose $m(f)=m(h)$. Then 
-\[ m(f)=\{m(g)|\langle p,g\rangle\in f\}=m(h)=\{m(l)|langle p,l\rangle\in f\} \]
-Then it easily follows that $f=h$, as the values of $m(g)$ for all 
+\[ m(f)=\{m(g)|\langle p,g\rangle\in f\}=m(h)=\{m(l)|\langle p,l\rangle\in f\} \]
+Then it easily follows by the induction assumption that $f=h$, as the values of $m(g)$ for all 
 $g\in R^\mathcal{G}_\beta$ for some $\beta<\alpha$ stay constant. 
 \end{proof}
 
@@ -287,7 +243,9 @@ The case for $R^\mathcal{G}_0$ vacuously holds.
 Suppose it holds for some $\alpha$. Consider any $x\in R^\mathcal{G}_{\alpha+1}$; then
 $m(f)=\{m(g)|\langle p,g\rangle\in f\}$, and, by assumption, each 
 $m(g)$ would be in $R_\alpha$. Thus $m(f)$ is a subset of $R_\alpha$, and, consequently, 
-it is in $R_{\alpha+1}$ (because $R_{\alpha+1}=\mathcal{P}(R_\alpha)}$.
+it is in $R_{\alpha+1}$ (because $R_{\alpha+1}=\mathcal{P}(R_\alpha)$.
+
+The limit ordinal case is obvious.
 \end{proof}
 
 \subsection*{Clarification}
@@ -300,7 +258,7 @@ $\lbc x\epsilon y\rbc=\Box\Diamond x\epsilon y$.
 The errata listed at \url{https://id144254.securedata.net/melvinfitting/errata/book_errors/RevisedSetBookErrors/RevisedSetCorrections.pdf}
 are important to note for this section.
 
-It should be noted why $(f\approx_\lambda g)\suspet\lbc f\approx_\lambda g\rbc$ for limit ordinals $\lambda$. We prove this using 
+It should be noted why $(f\approx_\lambda g)\supset\lbc f\approx_\lambda g\rbc$ for limit ordinals $\lambda$. We prove this using 
 transfinite induction. Suppose it holds for all ordinals less than $\lambda$. By the definition of 
 $\approx_\lambda$, $(f\approx_\alpha g)\supset (f\approx_\lambda g)$ is valid in the model for 
 all $\alpha<\lambda$. Thus $\Box\Diamond(f\approx_\alpha g)\supset\Box\Diamond (f\approx_\lambda g)$ is also 
@@ -345,11 +303,11 @@ $f\approx_\beta g$ for some ordinal $\beta$. This can easily be seen to mean tha
 successor ordinal $\delta^+<\beta$,
 \[ \textrm{(1) }p\vDash \lbc (\forall x)[(x\epsilon f)\supset (\exists y)(y\epsilon g\wedge y\approx_\delta x)]\wedge \]
 Now, we must show that 
-\[ \textrm{(2) }p\vDash \lbc (\forall x)[(x\epsilon f)\suspet(\exists y)(y\epsilon g\wedge y\approx_\alpha x)]\wedge \]
+\[ \textrm{(2) }p\vDash \lbc (\forall x)[(x\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\alpha x)]\wedge \]
 \[ (\forall x)[(x\epsilon g)\supset(\exists y)(y\epsilon f\wedge y\approx_\alpha x)] \]
-It suffices to show that $p\vDash\lbc (\forall x)[(x\epsilon f)\suspet(\exists y)(y\epsilon g\wedge y\approx_\alpha x)]$ and 
-that $p\vDash\lbc (\forall x)[(x\epsilon g)\suspet(\exists y)(y\epsilon g\wedge y\approx_\alpha)]$. We show 
-$p\vDash\lbc (\forall x)[(x\epsilon f)\suspet(\exists y)(y\epsilon g\wedge y\approx_\alpha x)]$ (the other case is similar).
+It suffices to show that $p\vDash\lbc (\forall x)[(x\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\alpha x)]$ and 
+that $p\vDash\lbc (\forall x)[(x\epsilon g)\supset(\exists y)(y\epsilon g\wedge y\approx_\alpha)]$. We show 
+$p\vDash\lbc (\forall x)[(x\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\alpha x)]$ (the other case is similar).
 It suffices to show that, $p\vDash\lbc(d\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\alpha d)\rbc$ for each 
 $d\in\mathcal{D}^\mathcal{G}$, and this is the same as showing 
 $p\vDash\Box\Diamond[\lbc d\epsilon f\rbc\supset\lbc (\exists y)(y\epsilon g\wedge y\approx_\alpha d)\rbc]$.
@@ -366,7 +324,7 @@ $p'''\vDash \lbc e\approx_\delta d\rbc$. Thus we have
 both $p'''\vDash\lbc (e\epsilon g)\rbc$ and $p'''\lbc e\approx_\delta d\rbc$. Having these two things we can then show this implies 
 (2).
 
-We show that $p\vDash \lbc (\forall x)[(x\epsilon f)\suspet(\exists y)(y\epsilon g\wedge y\approx_\alpha x)], which 
+We show that $p\vDash \lbc (\forall x)[(x\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\alpha x)]$, which 
 is equivalent to $p\vDash \lbc (d\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\delta d)\rbc$ holding for 
 all $d\in\mathcal{D}^\mathcal{G}$. This is equivalent to 
 $p\vDash\Box\Diamond(\lbc d\epsilon f\rbc\supset\lbc(\exists y)(y\epsilon g\wedge y\approx_\delta d)\rbc)$.
@@ -385,5 +343,6 @@ induction assumption, $p\vDash (f\approx_\alpha g)$, meaning $p\vDash (f\approx_
 \subsection*{Defintion 1.6}
 It was not entirely clear to mehow $\lbc fin g\rbc$ was meant to be defined, 
 but I it seems like it would just consist of adding $\Box\Diamond$ to the beginning of Definition 1.7.
+\end{proof}
 
 \end{document}
