@@ -290,4 +290,63 @@ $m(g)$ would be in $R_\alpha$. Thus $m(f)$ is a subset of $R_\alpha$, and, conse
 it is in $R_{\alpha+1}$ (because $R_{\alpha+1}=\mathcal{P}(R_\alpha)}$.
 \end{proof}
 
+\subsection*{Clarification}
+Definition 1.4 in the book needs clarification. In particular, the $\lbc\rbc$ translation is being used, 
+yet this is not yet been defined for the $\approx_\alpha$ relation. The definition should be:
+$\lbc f\approx_{\alpha+1} g\rbc=f\approx_{\alpha+1} g$, 
+$\lbc f\approx_\lambda g\rbc=\Box\Diamond f\approx_\lambda$ for $\lambda$ a limit ordinal, and
+$\lbc x\epsilon y\rbc=\Box\Diamond x\epsilon y$. 
+
+The errata listed at \url{https://id144254.securedata.net/melvinfitting/errata/book_errors/RevisedSetBookErrors/RevisedSetCorrections.pdf}
+are important to note for this section.
+
+It should be noted why $(f\approx_\lambda g)\suspet\lbc f\approx_\lambda g\rbc$ for limit ordinals $\lambda$. We prove this using 
+transfinite induction. Suppose it holds for all ordinals less than $\lambda$. By the definition of 
+$\approx_\lambda$, $(f\approx_\alpha g)\supset (f\approx_\lambda g)$ is valid in the model for 
+all $\alpha<\lambda$. Thus $\Box\Diamond(f\approx_\alpha g)\supset\Box\Diamond (f\approx_\lambda g)$ is also 
+valid in the model, that is, $\lbc f\approx_\alpha g\rbc\supset \lbc f\approx_\lambda\rbc$ is valid in the model.
+Now if $p\vDash (f\approx_\lambda g)$, then $p\vDash (f\approx_\alpha g)$, and by the induction assumption, 
+this means $p\vDash \lbc f\approx_\alpha g\rbc$, and hence $p\vDash\lbc f\approx_\lambda g\rbc$.
+
+\subsubsection*{Proposition 1.5}
+One such error listed in the errata is with regards to the limit ordinal case in this proposition. 
+The definition of $\approx_\lambda$ is not that 
+$p\vDash\lbc f\approx_\lambda\rbc$ implies 
+$p\vDash\lbc f\approx_\alpha\rbc$ for some $\alpha<\lambda$,
+but rather that $p\vDash f\approx_\lambda$ implies 
+$p\vDash f\approx_\alpha$ for some $\alpha<\lambda$. Thus the inference made in the proof is invalid.
+
+Instead, we show that $p\vDash f\approx_\lambda g$ implies 
+$p\vDash f\approx_\beta g$. Well, if $p\vDash f\approx_\lambda g$, then 
+$p\vDash f\approx_\alpha g$ for some $\alpha<\lambda$. Then it easily follows that 
+$p\vDash \lbc f\approx_\alpha g\rbc$, and thus, by the induction assumption, 
+$p\vDash \lbc f\approx_\beta g\rbc$.
+
+Thus, if we know that $p\vDash \lbc f\approx_\lambda g\rbc$, we must show that this means 
+$p\vDash f\approx_\lambda g$. Well, we know that 
+$p\vDash (f\approx_\lambda g)\supset \lbc f\approx_\beta g\rbc$ is valid in the model, meaning, 
+using standard $S4$ manipulation, $p\vDash\Box\Diamond (f\approx_\lambda g)\supset\Box\Diamond\lbc f\approx_\beta g\rbc$, 
+that is, $p\vDash\lbc f\approx_\lambda g\rbc\supset\lbc f\approx_\beta g\rbc$.
+
+\subsection*{Exercise 1.3}
+We show that for $f,g\in R^\mathcal{G}_\alpha$, if $p\vDash (f\approx g)$ then 
+$p\vDash (f\approx_\alpha g)$.
+
+\begin{proof}
+By transfinite induction.
+
+This vacuously holds for the case of $0$.
+
+Suppose it holds for all ordinals less than some successor ordinal $\alpha^+$. Suppose 
+$f,g\in R^\mathcal{G}_{\alpha^+}$ and that $p\vDash f\approx g$. Then, by definition, it follows tha t
+$f\approx_\beta g$ for some ordinal $\beta$. This can easily be seen to mean that, for some 
+successor ordinal $\delta^+<\beta$,
+\[ p\vDash \lbc (\forall x)[(x\epsilon f)\supset (\exists y)(y\epsilon g\wedge y\approx_\delta x)]\wedge \]
+\[ (\forall x)[(x\epsilon g)\suspet (\exists y)(y\epsilon f\wedge y\approx_\delta x)]\rbc \]
+But, by the induction assumption, it is an easy consequence that
+
+\subsection*{Defintion 1.6}
+It was not entirely clear to mehow $\lbc fin g\rbc$ was meant to be defined, 
+but I it seems like it would just consist of adding $\Box\Diamond$ to the beginning of Definition 1.7.
+
 \end{document}
