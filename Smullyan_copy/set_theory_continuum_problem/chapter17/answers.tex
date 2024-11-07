@@ -134,11 +134,15 @@ The limit ordinal case is obvious.
 We first prove the following lemma.
 
 \begin{lemma}
-For each limit ordinal $\lambda$, $R^\mathcal{G}_\lambda\in R^\mathcal{G}_{\lambda^+}$ (note that this does not generally 
-hold for non limit ordinals).
+For each ordinal $\alpha$, if $\alpha$ is the least ordinal or a limit ordinal, 
+$R^\mathcal{G}_\alpha\in R^\mathcal{G}_{\alpha^+}$ (note, however, that $R^\mathcal{G}_{\alpha^+}\notin R^\mathcal{G}_{\alpha^{++}}$ in 
+general for successor ordinals $\alpha^+$). 
 \end{lemma}
 
 \begin{proof}
+The least ordinal case is obvious, as $R^\mathcal{G}_0\in R^\mathcal{G}_1$ because 
+$R^\mathcal{G}_0=\emptyset$ and $R^\mathcal{G}_1=\{\emptyset\}$.
+
 Consider some limit ordinal $\lambda$. Hence $R^\mathcal{G}_\lambda=\cup_{\alpha<\lambda}R^\mathcal{G}_\alpha$.
 We already know that $R^\mathcal{G}_\lambda$ is in $M$ (by (1) of the remarks). Also, it can 
 easily be seen that $R^\mathcal{G}_\lambda\subseteq\mathcal{G}\times R^\mathcal{G}_\lambda$. 
