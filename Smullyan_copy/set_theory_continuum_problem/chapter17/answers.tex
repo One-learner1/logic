@@ -301,22 +301,17 @@ This vacuously holds for the case of $0$, and the limit ordinal case is obvious.
 
 The successor ordinal case is where the real work is required. Suppose the result holds for all 
 ordinals less than some successor ordinal $\alpha^+$. Suppose $f,g\in R^\mathcal{G}_\alpha$, and 
-$p\vDash (f\approx g)$. If $\alpha=0$, then showing $p\vDash (f\approx_{\alpha+1} g)$ is trivial, 
-because, in this case, $f=g=\emptyset$ (because $R^\mathcal{G}_1=\{\emptyset\}$). So suppose 
-$\alpha\ne\emptyset$. Now, $p\vDash (f\approx_\beta g)$ for some $\beta$. Because $\alpha\ne\emptyset$, 
-this can easily be seen (using transfinite induction on $\beta$) to imply that $p\vDash (f\approx_\delta^+ g)$ for some 
-successor ordinal $\delta<\beta$.
-
-Now, $p\vDash (f\approx_\beta g)$ for some $\beta$. This means $p\vDash (f\approx_\delta^+ g)$ for some 
+$p\vDash (f\approx g)$. 
+Now, $p\vDash (f\approx_\beta g)$ for some $\beta$. This means $p\vDash (f\approx_\delta g)$ for some 
 successor ordinal $\delta^+\le\beta$. Thus we have
 \[ p\vDash\lbc(\forall x)[(x\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\delta x)]\wedge \]
-\[ (\forall x)[(x\epsilon g(\supset(\exists y)(y\epsilon f\wedge y\approx_\delta x)]\rbc \]
+\[ (\forall x)[(x\epsilon g)\supset(\exists y)(y\epsilon f\wedge y\approx_\delta x)]\rbc \]
 meaning we have
 \[ p\vDash\lbc(\forall x)[(x\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\delta x)]\rbc \]
 which means we have, for each $d\in\mathcal{D}^\mathcal{G}$,
 \[ p\vDash\lbc(x\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\delta x)\rbc \]
 meaning we have
-\[ \textrm{(1) }p\vDash\Box\Diamond\lbc x\epsilon f\rbc\supset\lbc(\exists y)(y\epsilon g\wedge y\approx_\delta d)\rbc \]
+\[ \textrm{(1) }p\vDash\Box\Diamond(\lbc x\epsilon f\rbc\supset\lbc(\exists y)(y\epsilon g\wedge y\approx_\delta d))\rbc \]
 What we are trying to show is
 \[ p\vDash\lbc(\forall x)[(x\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\alpha x)]\wedge \]
 \[ (\forall x)[(x\epsilon g)\supset(\exists y)(y\epsilon f\wedge y\approx_\alpha x)]\rbc \]
@@ -325,7 +320,30 @@ $p\vDash\lbc(\forall x)[(x\epsilon g)\supset(\exists y)(y\epsilon f\wedge y\appr
 (2) $p\vDash\lbc(\forall x)[(x\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\alpha x)]\rbc$ - the other case is similar. Now, (2) 
 is the same as saying $p\vDash(\forall x)\lbc(x\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\alpha x)\rbc$. It suffices to show that, 
 for all $d\in\mathcal{D}^\mathcal{G}$, $p\vDash\lbc(d\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\alpha d)\rbc$. So consider any 
-$d\in\mathcal{D}^\mathcal{G}$.
+$d\in\mathcal{D}^\mathcal{G}$. We must show that
+$p\vDash\lbc(d\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\alpha d)\rbc$, which is equivalent to
+$p\vDash\Box\Diamond(\lbc d\epsilon f\rbc\supset\lbc(\exists y)(y\epsilon g\wedge y\approx_\alpha d)\rbc)$, which is equivalent to
+$p\vDash\Box\Diamond(\lbc d\epsilon f\rbc\supset\Box\Diamond(\exists y)\lbc y\epsilon g\wedge y\approx_\alpha d\rbc)$. To show this,
+consider any $p'$ accessible from $p$. By (1), there is some $p''$ accessible from $p'$ such that 
+$p''\vDash \lbc x\epsilon f\rbc\supset\lbc(\exists y)(y\epsilon g\wedge y\approx_\delta d)\rbc$, which is equivalent to
+(3) $p''\vDash\lbc d\epsilon f\rbc\supset\Box\Diamond\lbc(\exists y)(y\epsilon g\wedge y\approx_\delta d)\rbc$. We show that
+(4) $p''\vDash \lbc d\epsilon f\rbc\supset\Box\Diamond(\exists y)\lbc y\epsilon g\wedge y\approx_\alpha d\rbc$. So suppose that 
+$p''\vDash\lbc d\epsilon f\rbc$. By (3), this means that 
+(5) $p''\vDash\Box\Diamond\lbc(\exists y)(y\epsilon g\wedge y\approx_\delta d)\rbc$. To show that (4) holds, consider any 
+$q$ accessible from $p''$. By (5), this means that there is some $q'$ accessible from $q$ such that
+$q'\vDash\lbc(\exists y)(y\epsilon g\wedge y\approx_\delta d)\rbc$. Then there is some $q''$ accessible from $q'$
+such that there is some $k\in\mathcal{D}^\mathcal{G}$ with
+$q''\vDash\lbc k\epsilon g\wedge k\approx_\delta d\rbc$, which implies
+$q''\vDash\lbc k\epsilon g\rbc$ and $q''\vDash\lbc k\approx_\delta d\rbc$. Note that $d,k\in R^\mathcal{G}_\alpha$. 
+Because $q''\vDash\lbc k\approx_\delta d\rbc$, it follows that 
+$q''\vDash\Box\Diamond (k\approx_\delta d)$. Thus there is some $r'$ accessible from some $r$ accessible from $q''$ such 
+that $r\vDash (k\approx_\delta d)$. Now, this implies $r\vDash (k\approx d)$. By the induction assumption, this tells us 
+that $r\vDash (k\approx_\alpha d)$, which implies $r\vDash\lbc k\approx_\alpha\rbc$. 
+Also, because $r$ is accessibe from $q''$ (by the transitivity of the accessibility relation), 
+$r''\vDash\lbc k\epsilon g\rbc$. Now, because $r''$ is accessible from $q$, the fact that we have shown both 
+$r''\vDash\lbc k\approx_\alpha\rbc$ and $r''\vDash\lbc k\epsilon g\rbc$ proves that 
+$p''\vDash\Box\Diamond(\exists y)\lbc(y\epsilon g)\wedge (y\approx_\alpha d)$, which completes the proof in this case.
+\end{proof}
 
 Suppose it holds for all ordinals less than some successor ordinal $\alpha^+$. Suppose 
 $f,g\in R^\mathcal{G}_{\alpha^+}$ and that $p\vDash f\approx g$. Then, by definition, it follows that
@@ -335,7 +353,7 @@ successor ordinal $\delta^+<\beta$,
 \[ (\forall x)[(x\epsilon g)\supset (\exists y)(y\epsilon f\wedge y\approx_\delta x)] \]
 Thus we have $p\vDash\lbc (\forall x)[(x\epsilon f)\supset (\exists y)(y\epsilon g\wedge y\approx_\delta x)]\rbc$, 
 which means, for each $d\in\mathcal{D}^\mathcal{G}$,
-$p\vDash\lbc[(d\epsilon g)\supset (\exists y)(y\epsilon f\wedge y\approx_\delta
+$p\vDash\lbc[(d\epsilon g)\supset (\exists y)(y\epsilon f\wedge y\approx_\delta$
 Now, we must show that 
 \[ \textrm{(2) }p\vDash \lbc (\forall x)[(x\epsilon f)\supset(\exists y)(y\epsilon g\wedge y\approx_\alpha x)]\wedge \]
 \[ (\forall x)[(x\epsilon g)\supset(\exists y)(y\epsilon f\wedge y\approx_\alpha x)] \]
@@ -377,6 +395,5 @@ induction assumption, $p\vDash (f\approx_\alpha g)$, meaning $p\vDash (f\approx_
 \subsection*{Defintion 1.7}
 It was not entirely clear to me how $\lbc f\in g\rbc$ was meant to be defined, 
 but I it seems like it would just consist of adding $\Box\Diamond$ to the beginning of Definition 1.7.
-\end{proof}
 
 \end{document}
