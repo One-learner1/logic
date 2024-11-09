@@ -354,4 +354,115 @@ $p''\vDash\Box\Diamond(\exists y)\lbc(y\epsilon g)\wedge (y\approx_\alpha d)$, w
 It was not entirely clear to me how $\lbc f\in g\rbc$ was meant to be defined, 
 but it seems to me like it would just consist of adding $\Box\Diamond$ to the beginning of Definition 1.7.
 
+\section*{Section 2}
+
+\subsection*{Lemma 2.1}
+It is claimed that $(f\approx_\alpha g)\equiv\lbc f\approx_\alpha g\rbc$, yet this is incorrect. In particular, if 
+$\lbc (f\approx_\alpha g)\rbc$ for $\alpha$ a limit ordinal, it does not necessarily follow that $(f\approx_\alpha g)$.
+
+The proof of this lemma leaves out the limit ordinal case. Here is an explanation for that case. Suppose the 
+result holds for all $\alpha<\lambda$ for some limit ordinal $\lambda$. Now suppose that 
+(1) $p\vDash\lbc f\approx_\lambda g\rbc$ and (2) $p\vDash\lbc g\approx_\lambda h\rbc$, which imply both 
+$p\vDash\Box\Diamond(f\approx_\lambda g)$ and $p\vDash\Box\Diamond(g\approx_\lambda h)$. To prove 
+$p\vDash\lbc f\approx_\lambda h\rbc$, it suffices to show that 
+$p\vDash\Box\Diamond(f\approx_\lambda h)$. So consider any $p'$ accessible from $p$. By (1), this means there is some 
+$p''$ accessible from $p'$ such that $p''\vDash f\approx_\lambda g$, meaning 
+$p''\vDash f\approx_\alpha g$ for some $\alpha<\lambda$, and thus (3) $p''\vDash\lbc f\approx_\alpha g\rbc$.
+Because $p''$ is itself accessible from $p$, it follows by (2) that there is some $p'''$ accessible from $p''$ such 
+that $p'''\vDash g\approx_\lambda h$, which implies $p'''\vDash g\approx_\beta h$ for some $\beta<\lambda$, which implies 
+$p'''\vDash \lbc g\approx_\beta h$. Now, by (3), and the fact that $p'''$ is accessible from $p''$, 
+$p'''\vDash\lbc f\approx_\alpha g\rbc$. Pick the greater of $\alpha$ and $\beta$ (say it is $\alpha$).
+Then, by cumulativity, $p'''\vDash \lbc g\approx_\alpha h\rbc$. Hence, by the induction assumption, it follows that 
+$p'''\vDash\lbc f\approx_\alpha h\rbc$. What this means is that for some $q'$ accessible from some $q$ accessible from 
+$p'''$, $q'\vDash f\approx_\alpha h$, which implies $q'\vDash f\approx_\lambda h$ (because $\alpha<\lambda$). 
+But $q'$ is accessible from $p'$. Thus we have shown, for every world 
+$p'$ accessible from $p$, there is some world $q'$ such that $q'\vDash f\approx_lambda h$ holds, and this proves 
+$p\vDash\Box\Diamond (f\approx_\lambda h)$, that is, $p\vDash\lbc f\approx_\lambda h\rbc$. 
+
+\subsection*{Theorem 2.2}
+The proof of this theorem is incorrect. It is claimed that $p\vDash\lbc f\approx g\rbc$ implies 
+$p\vDash\lbc f\approx_\alpha g\rbc$ for some $\alpha$, but this may not be the case. Here is a corrected proof (it is in fact
+reminiscent of the proof of the limit ordinal case of Lemma 2.1).
+
+Suppose $p\vDash\lbc f\approx g\rbc$, that is, (3) $p\vDash\Box\Diamond (f\approx g)$. Also suppose 
+$p\vDash\lbc g\approx h\rbc$, that is, (2) $p\vDash\Box\Diamond (g\approx h)$. To show 
+$p\vDash\lbc f\approx h\rbc$, we show $p\vDash\Box\Diamond (f\approx h)$. So consider any $p'$ accessible from 
+$p$. Then, by (2), there is some $p''$ accessible from $p'$ such that $p''\vDash f\approx g$, meaning 
+$p''\vDash f\approx_\alpha g$ for some $\alpha$, hence (3) $p''\vDash\lbc f\approx_\alpha g\rbc$. 
+Because $p''$ is itself accessible from $p$, 
+(2) tells us that $p'''\vDash g\approx h$ for some $p'''$ accessible from $p''$, which means 
+$p'''\vDash g\approx_\beta h$ for some $\beta$, which implies $p'''\vDash\lbc g\approx_\beta h\rbc$. 
+Because $p'''$ is accessible form $p''$, we have 
+$p'''\vDash\lbc f\approx_\alpha g\rbc$ by (3). Without loss of generality, let $\alpha$ be the maximum of 
+$\alpha$ and $\beta$. Then, by cumulativity, $p'''\vDash \lbc g\approx_\alpha h\rbc$. Hence, by Lemma 2.1,
+it follows that $p'''\vDash\lbc f\approx_\alpha h\rbc$. This means 
+$q'\vDash f\approx_h$ for some $q'$ accessible from some $q$ accessible from $p'''$, which 
+implies $q'\vDash f\approx h$. But $q'$ is then 
+accessible from $p'$. Thus we have shown that, for every $p'$ accessible from $p$, there is some 
+$q'$ accessible from $p'$ such that $q'\vDash f\approx h$, which proves that 
+$p\vDash\Box\Diamond(f\approx h)$, that is, $p\vDash\lbc f\approx h\rbc$. 
+
+\subsection*{Exercise 2.1}
+We first prove that if $f\in R^\mathcal{G}_\alpha$, then $p\vDash (f\approx_\alpha f)$.
+
+\begin{proof}
+By transfinite induction. The least ordinal case is vacuous, and the limit ordinal case is obvious.
+
+We now consider the successor ordinal case. So suppose the result holds for some $\alpha$, and 
+suppose $f\in R^\mathcal{G}_{\alpha^+}$. We must show $p\vDash (f\approx_{\alpha^+} f)$, that is,
+\[ p\vDash\lbc(\forall x)[(x\epsilon f)\supset(\exists y)(y\epsilon f\wedge y\approx_\alpha x)]\wedge \]
+\[ (\forall x)[(x\epsilon f)\supset(\exists y)(y\epsilon f\wedge y\approx_\alpha x)]\rbc \]
+which is the same as just showing
+$p\vDash\lbc(\forall x)[(x\epsilon f)\supset(\exists y)(y\epsilon f\wedge y\approx_\alpha x)]\rbc$. So consider any 
+$d\in\mathcal{D}^\mathcal{G}$. We must show that 
+$p\vDash\lbc(d\epsilon f)\supset(\exists y)(y\epsilon f\wedge y\approx_\alpha d)\rbc$, that is, 
+$p\vDash\Box\Diamond(\lbc d\epsilon f\rbc\supset\lbc(\exists y)(y\epsilon f\wedge y\approx_\alpha d)\rbc)$. So consider any 
+$p'$ with $p\mathcal{R}p'$. Then consider any $p''$ with $p'\mathcal{R}p''$. We show that 
+$p''\vDash(\lbc d\epsilon f\rbc\supset\lbc(\exists y)(y\epsilon f\wedge y\approx_\alpha d))$.
+Suppose $p''\vDash\lbc d\epsilon f\rbc$. This means 
+that, for some $q'$ accessible from some $q$ accessible from $p''$, $q'\vDash d\epsilon f\rbc$, which implies 
+that $d\in R^\mathcal{G}_\alpha$. Now, to show that $p''\vDash\lbc(\exists y)(y\epsilon f\wedge y\approx_\alpha d)\rbc$, we show 
+that $p''\vDash\lbc (d\epsilon f\wedge d\approx_\alpha d)\rbc$, that is, that both 
+$p''\vDash\lbc d\epsilon f\rbc$ and $p''\vDash\lbc d\approx_\alpha d\rbc$. We already know that 
+$p''\vDash\lbc d\epsilon f\rbc$. As for $p''\vDash\lbc d\approx_\alpha d\rbc$, this is obvious now that we know 
+$d\in R^\mathcal{G}_\alpha$ (because, by the induction assumption, this means that $r\vDash d\approx_\alpha d$ for all 
+possible worlds $r$). Thus we have $p''\vDash\lbc (d\epsilon f\wedge d\approx_\alpha d)\rbc$, hence 
+$p''\vDash\lbc(\exists y)(y\epsilon f\wedge y\approx_\alpha d)$, which is what we wanted to show.
+\end{proof}
+
+Thus, we know that $f\in R^\mathcal{G}_\alpha$ implies $p\vDash (f\approx_\alpha f)$, hence 
+$p\vDash (f\approx f)$, hence $p\vDash\lbc (f\approx f)\rbc$.
+
+\section*{Lemma 2.6}
+There are two problems in this proof. First, $\lbc f\approx g\rbc$ being true at $p$ does not 
+mean $\lbc f\approx_{\alpha+1} g\rbc$ is true at $p$ for some $\alpha$, but rather, 
+$\lbc f\approx_{\alpha+1} g\rbc$ is true at some $q$ accessible from $p$. Similarly, 
+$p''\vDash\lbc b\approx_\alpha a\rbc$ does not mean $p''\vDash\lbc b\approx a\rbc$, but rather 
+$r\vDash\lbc b\approx a\rbc$ for some $r$ accessible from $p''$. These two things are not 
+major issues in the proof, and can be easily corrected.
+
+\section*{Exercise 2.2}
+We prove that $\lbc(\forall x)(\forall y)[(x\epsilon y)\supset(\phi(x)\equiv\phi(y))]\rbc$ is $S4$ valid 
+in $\mathcal{M}$. It suffices to show that, for all $f,g\in\mathcal{D}^\mathcal{G}$, and any possible world $p$, 
+$p\vDash\lbc(d\epsilon f)\supset(\phi(d)\equiv\phi(f))$, that is,
+$p\vDash\Box\Diamond(\lbc d\epsilon f\rbc\supset\lbc(\phi(d)\equiv\phi(f))\rbc)$. So consider anf 
+$p'$ with $p\mathcal{R}p'$ and anf $p''$ with $p'\mathcal{R}p''$. We show
+$p''\vDash(\lbc d\epsilon f\rbc\supset\lbc (\phi(d)\equiv\phi(f))\rbc)$. Suppose
+$p''\vDash \lbc d\epsilon f\rbc$. For the sake of contradiction, suppose that 
+$p''\nvDash\lbc\phi(d)\equiv\phi(f)\rbc$. This would mean either 
+$p''\nvDash\lbc\phi(d)\supset\phi(f)\rbc$ or $p''\nvDash\lbc\phi(f)\supset\phi(d)\rbc$. Without loss of 
+generality, suppose it is the former case. Then, for some $p'''$ accessible from $p''$, 
+both $p'''\vDash\lbc\phi(d)\rbc$ and $p'''\vDash\lbc\oldneg\phi(f)\rbc$ hold. Now, because 
+$p'''$ is accessible rom $p''$, and $p''\vDash\lbc d\epsilon f\rbc$, $p'''\vDash\lbc d\epsilon f\rbc$. Thus, by 
+Theorem 2.7, and the assummption that $\phi(x)$ has only $x$ free, 
+$p'''\vDash\lbc\phi(d)\rbc\equiv\lbc\phi(f)\rbc$. Thus, because we have $p'''\vDash\lbc\phi(d)\rbc$, it follows 
+that $p'''\vDash\lbc\phi(f)\rbc$. But this contradicts $p'''\vDash\lbc\oldneg\phi(f)\rbc$.
+
+\section*{Theorem 2.10}
+Here is why Theorem 2.10 follows from Lemma 2.9. Suppose 
+$p\vDash(\forall x)\lbc x\in f\equiv x\in g\rbc$ and $f,g\in R^\mathcal{G}_\alpha$. Then, by Lemma 2.9,
+$p\vDash\lbc f\approx_\alpha g\rbc$, which implies $p\vDash \lbc f\approx_{\alpha^+} g\rbc$, which implies 
+$p\vDash f\approx_{\alpha^+} g\rbc$, which implies $p\vDash f\approx g$, which implies 
+$p\vDash \lbc f\approx g\rbc$.
+
 \end{document}
