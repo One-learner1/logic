@@ -444,7 +444,7 @@ We prove that $\lbc(\forall x)(\forall y)[(x\approx y)\supset(\phi(x)\equiv\phi(
 in $\mathcal{M}$. It suffices to show that, for all $f,g\in\mathcal{D}^\mathcal{G}$, and any possible world $p$, 
 $p\vDash\lbc(d\approx f)\supset(\phi(d)\equiv\phi(f))\rbc$, that is,
 $p\vDash\Box\Diamond(\lbc d\approx f\rbc\supset\lbc(\phi(d)\equiv\phi(f))\rbc)$. So consider any 
-$p'$ with $p\mathcal{R}p'$ and anf $p''$ with $p'\mathcal{R}p''$. We show
+$p'$ with $p\mathcal{R}p'$ and any $p''$ with $p'\mathcal{R}p''$. We show
 $p''\vDash(\lbc d\approx f\rbc\supset\lbc (\phi(d)\equiv\phi(f))\rbc)$. Suppose
 $p''\vDash \lbc d\approx f\rbc$. For the sake of contradiction, suppose that 
 $p''\nvDash\lbc\phi(d)\equiv\phi(f)\rbc$. This would mean either 
@@ -462,5 +462,112 @@ $p\vDash(\forall x)\lbc x\in f\equiv x\in g\rbc$ and $f,g\in R^\mathcal{G}_\alph
 $p\vDash\lbc f\approx_\alpha g\rbc$, which implies $p\vDash \lbc f\approx_{\alpha^+} g\rbc$, which implies 
 $p\vDash \lbc f\approx_{\alpha^+} g\rbc$, which implies $p\vDash f\approx g$, which implies 
 $p\vDash \lbc f\approx g\rbc$.
+
+\section*{Definition 3.1}
+It is not explained in the book, but here is why $\hat{x}\in\mathcal{D}^\mathcal{G}$ in the first place.
+
+First, define the following ordinal hierarchy:
+
+$R^M_0=\emptyset$
+
+$R^M_{\alpha^+}=\mathcal{P}(R^M_\alpha)\cap M$
+
+$R^M_\lambda=\cup_{\alpha<\lambda}R^M_\alpha$ for limit ordinals $\lambda$
+
+An obvious transfinite induction argument (using the fact that $M$ is a first-order universe) shows that 
+each $R^M_\alpha$ is in $M$. Let $R^M=\cup_\alpha R_\alpha$. By Theorem 3.3 of Chapter 8 (and the fact 
+that $M$ is transitive and well founded), each element of $M$ has a rank. It follows by transfinite induction 
+that, in fact, $R^M=M$. Thus if we can show that there is a function satisfying the requirenments of Definition 3.1 
+for $R^M$, it also satisfies the requirenments for $M$ itself. In particular, we want an $f$ such that 
+$f(x)=\{\langle p,f(y)\rangle|p\in\mathcal{G}\wedge y\in x\}$. To this, we show that there is a function 
+$f_\alpha$ for each $\alpha$ whose domain is $R^M_\alpha$, and such that 
+$f_\alpha=\{\langle p,f_\alpha(y)\rangle|p\in\mathcal{G}\wedge y\in x\}$. This is of course immediate by 
+any of the transfinite recursion theorems.
+
+Now, the next thing we need to know is that, ineed, the range of each $f_\alpha$ is a subclass of 
+$\mathcal{D}^\mathcal{G}$.  
+
+\section*{Proposition 3.3}
+It is said in the proof of this proposition that we can assume $\phi$ has all negations at the atomic level, as 
+all $\Sigma_0$ formulas are equivalent to one in this form. Note that this follows from on obvious induction argument 
+on the degree of $\phi$.
+
+\textquote{But then $p\vDash (a\epsilon\hat{t})$} is not correct. Rather, it follows that 
+$p'\vDash (a\epsilon\hat{t})$ for some $p'$ accessible from $p$ (though this is not a major issue in the 
+proof).
+
+\section*{Corollary 3.4}
+Note that we can use Proposition 3.3 because $t_1,...,t_k$ must be well founded, as it is assumed $M$ is well 
+founded and transitive.
+
+\section*{Exercise 3.1}
+We prove that, if $p\vDash(\hat{a}\approx\hat{b})$, then $a$ and $b$ are the same set. We prove this by 
+induction on the $\alpha$ for which $p\vDash(\hat{a}\approx_\alpha\hat{b})$ holds.
+
+The least ordinal case is vacuous, and the limit ordinal case is obvious.
+
+Now consider the successor ordinal case. So suppose $p\vDash(\hat{a}\approx_{\alpha^+}\hat{b})$, and the 
+result holds for $\alpha$. We then have both
+(1) $p\vDash\lbc(\forall x)(x\epsilon\hat{a}\supset(\exists y)(y\epsilon\hat{b}\wedge x\approx_\alpha y))\rbc$ 
+and (2) $p\vDash\lbc(\forall x)(x\epsilon\hat{b}\supset(\exists y)(y\epsilon\hat{a}\wedge x\approx_\alpha y))\rbc$.
+We show that $a$ and $b$ are the same set by showing that $a\subseteq b$ and $b\subseteq a$.
+
+On the one hand, suppose that $c\in a$. Then it follows that, for every possible world $q$, 
+$\langle q,\hat{c}\rangle\in\hat{a}$. Thus we have $p\vDash\lbc\hat{c}\epsilon\hat{a}\rbc$, 
+meaning, by (1), there is some $p'$ with $p\mathcal{R}p'$ and some $d\in\mathcal{D}^\mathcal{G}$ such that
+$p'\vDash\lbc(d\epsilon\hat{b}\wedge d\approx_\alpha\hat{c})$. Because $p'\vDash\lbc (d\epsilon\hat{b})\rbc$, 
+$d$ is $\hat{e}$ for some $e\in b$. Thus $p'\vDash\lbc\hat{e}\approx_\alpha\hat{c}\rbc$, meaning, 
+for some $p''$ with $p'\mathcal{R}p''$, $p'\vDash\hat{e}\approx_\alpha\hat{c}$, and this 
+implies $e=c$ by the induction assumption. Thus, because $e\in b$, $c\in b$, and therefore 
+$a\subseteq b$.
+
+The other hand is similar, but using (2) instead of (1).
+
+\section*{Exercise 3.2}
+(1) We first prove the universal bounded quantifier case. In this case, the formula is of the form 
+$(\forall x\in s)\phi(x,s,s_1,...,s_n)$.
+
+On the one hand, suppose $(\forall x\in s)\phi(x,s,s_1,...,s_n)$ is true in $M$, that is,
+(1) $(\forall x)(x\in s\supset\phi(x,s,s_1,...,s_n))$. Now, suppose there was some $p$ such that 
+$p\nvDash\lbc(\forall x\in\hat{s})\phi(x,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$. This would mean, for some 
+$d\in\mathcal{D}^\mathcal{G}$, $p\nvDas\lbc (d\in\hat{s})\supset\phi(d,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$. This means,
+for some $p'$ with $p\mathcal{R}p'$, $p'\vDash\lbc d\in\hat{s}\rbc$ and $p'\vDash\lbc\oldneg\phi(d,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$. 
+Because $p'\vDash\lbc d\in\hat{s}\rbc$, there must be some $b$ and some $p''$ accessible from $p'$ such that 
+$p''\vDash\hat{b}\in\hat{s}$ and $p''\vDash\lbc d\approx\hat{b}\rbc$. By the induction assumption, this means
+$b\in s$, and thus, by (1), $\phi(b,s,s_1,...,s_n)$, and then, again by the induction assumption,
+$p''\vDash\lbc\phi(\hat{b},\hat{s},\hat{s_1},...,\hat{s_n})\rbc$. Because 
+$p''\vDash\lbc d\approx\hat{b}\rbc$, it follows by Corollary 2.8 that 
+$p''\vDash\lbc\phi(d,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$. But because $p''$ is accessible from
+$p'$, and $p'\vDash\lbc\oldneg\phi(d,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$, we have 
+$p''\vDash\lbc\oldneg\phi(d,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$, a contradiction. Thus it must be that 
+$\lbc(\forall x\in\hat{s})\phi(x,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$ is true at every world of $\mathcal{G}$.
+
+On the other hand, suppose that $p\vDash\lbc(\forall x\in\hat{s})\phi(x,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$.
+For the sake of contradiction, suppose that there was some $d\in M$ such 
+$(d\in s)\wedge\oldneg\phi(d,s,s_1,...,s_n)$. Then, by the induction assumption,
+$\oldneg(\lbc (\hat{d}\in\hat{s})\rbc\supset\phi(\hat{d},\hat{s},\hat{s_1},...,\hat{s_n})\rbc)$ is true at all 
+possible worlds, which means $p\nvDash\lbc(\hat{d}\in\hat{s})\supset\phi(\hat{d},\hat{s},\hat{s_1},...,\hat{s_n})$, 
+a contradiction.
+
+(2) Next, we prove the existential bounded quantifier case. In this case, the formula is of the form
+$(\exists x\in s)\phi(x,s,s_1,...,s_n)$.
+
+On the one hand, suppose $(\exists x\in s)\phi(x,s,s_1,...,s_n)$ is tre in $M$. Thus, for some 
+$d\in M$, both $d\in s$ and $\phi(d,s,s_1,...,s_n)$ are true in $M$, meaning
+$(d\in s)\supset\phi(d,s,s_1,...,s_n)$ is true in $M$. By the induction assumption, 
+this means that, for every possible world $p$,
+$p\vDash\lbc(\hat{d}\in\hat{s})\supset\phi(\hat{d},\hat{s},\hat{s_1},...,\hat{s_n})\rbc$, which implies
+$p\vDash\lbc(\exists x\in\hat{s})\phi(x,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$.
+
+On the other hand, suppose that $p\vDash\lbc(\exists x\in\hat{s})\phi(x,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$. Thus, for 
+some $p'$ with $p\mathcal{R}p'$, there is some $d\in\mathcal{D}^\mathcal{G}$ with 
+$p'\vDash\lbc(d\in\hat{s})\wedge\phi(d,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$, and thus both
+(1) $p'\vDash\lbc(d\in\hat{s})\rbc$ and (2) $p'\vDash\lbc\phi(d,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$. By (1),
+there is some $p''$ accessible from $p'$ such that there is some $b$ with 
+$p''\vDash\lbc d\approx\hat{b}\rbc$ and $p''\vDash\hat{b}\in\hat{s}$. By the induction assumption, this means
+$b\in s$ is true in $M$. Also, by (2) and Corollary 2.8, we then have $p''\vDash\lbc\phi(\hat{b},\hat{s},\hat{s_1},...,\hat{s_n})$. Hence, by 
+the induction assumption, $\phi(b,s,s_1,...,s_n)$ is true in $M$, meaning
+$(b\in s)\wedge\phi(b,s,s_1,...,s_n)$ is true in $M$, hence
+$(\exists x\in s)\phi(x,s,s_1,...,s_n)$ is true in $M$. 
 
 \end{document}
