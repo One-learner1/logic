@@ -47,7 +47,7 @@ Definition 1.1 to even work in the first place. If a function $f$ has domain $\a
 $f(\beta)=R^\mathcal{G}_\beta$, call $f$ an $R^\mathcal{G}_\alpha$ function. Let $\textrm{R-alpha func}(f)$ stand for the following formula:
 \[ \textrm{Func}(f)\wedge\textrm{Dom}(f)=\alpha\wedge f(0)=0\wedge \]
 \[ (\forall\beta<\alpha)(\beta^+<\alpha\supset(\forall x)(x\in f(\beta^+)\equiv x\subseteq\mathcal{G}\times f(\beta))) \]
-\[ \wedge (\forall\beta<\alpha)(\textrm{beta is a successor ordinal}\supset(\forall x)(x\in f(\beta) \]
+\[ \wedge (\forall\beta<\alpha)(\textrm{beta is a limit ordinal}\supset(\forall x)(x\in f(\beta) \]
 \[ \equiv(\exists\delta<\beta)(x\in f(\delta)))) \]
 Note that $\textrm{R-alpha func}(f)$ just means $f$ is the $R^\mathcal{G}_\alpha$ function.
 
@@ -474,8 +474,9 @@ $R^M_{\alpha^+}=\mathcal{P}(R^M_\alpha)\cap M$
 
 $R^M_\lambda=\cup_{\alpha<\lambda}R^M_\alpha$ for limit ordinals $\lambda$
 
+Each $R^M_\alpha$ is just the set of all members of $R_\alpha$ that happen to be in $M$.
 An obvious transfinite induction argument (using the fact that $M$ is a first-order universe) shows that 
-each $R^M_\alpha$ is in $M$. Let $R^M=\cup_\alpha R_\alpha$. By Theorem 3.3 of Chapter 8 (and the fact 
+each $R^M_\alpha$ is in $M$ (for $\alpha\in M$). Let $R^M=\cup_\alpha R_\alpha$. By Theorem 3.3 of Chapter 8 (and the fact 
 that $M$ is transitive and well founded), each element of $M$ has a rank. It follows by transfinite induction 
 that, in fact, $R^M=M$. Thus if we can show that there is a function satisfying the requirenments of Definition 3.1 
 for $R^M$, it also satisfies the requirenments for $M$ itself. In particular, we want an $f$ such that 
@@ -484,8 +485,74 @@ $f_\alpha$ for each $\alpha$ whose domain is $R^M_\alpha$, and such that
 $f_\alpha=\{\langle p,f_\alpha(y)\rangle|p\in\mathcal{G}\wedge y\in x\}$. This is of course immediate by 
 any of the transfinite recursion theorems.
 
-Now, the next thing we need to know is that, ineed, the range of each $f_\alpha$ is a subclass of 
-$\mathcal{D}^\mathcal{G}$.  
+Call a function an $M_\alpha$ function if it satisfies the following conditons: its domain is 
+$\alpha$, and for each $\alpha$, $f(\alpha)=f_\alpha$.
+
+Let $\textrm{M-func}_\alpha(x)$ stand for the following:
+\[ \textrm{Func}(x)\wedge\textrm{Dom}(x)=R^M_\alpha\wedge f(0)=0\wedge \]
+\[ (\forall\beta<\alpha)[\beta^+<\alpha\supset \]
+\[ (\forall y)(y\in f(\beta^+)\equiv(y\in f(\beta)\vee(\exists v)(\exists w)(y=\langle w,v\rangle\wedge \]
+\[ w\in(R^M_{\beta^+}-R^M_\beta)\wedge(\forall z)(z\in v\equiv(\exists p)(\exists s)(p\in\mathcal{G}\wedge s\in v\wedge z=\langle p,f(\beta)(s))] \]
+\[ \wedge(\forall\lambda<\alpha)[\textrm{lambda is a limit ordinal}\supset(\forall y)(y\in f(\lambda)\equiv(\exists\beta<\lambda)(y\in f(\beta))]) \]
+If the $M_\alpha$ function happens to be in $M$, then $\textrm{M-func}_\alpha(f)$ will be true in $M$ for that function $f$. 
+
+We first prove that each $f_\alpha$ is in $M$ (for all $\alpha$ in $M$), and each $M_\alpha$ function is in $M$.
+
+\begin{theorem}
+For all $\alpha\in M$, $f_\alpha\in M$ and the $M_\alpha$ function is in $M$.
+\end{theorem}
+
+\begin{proof}
+By transfinite induction.
+
+The least ordinal case is given by the empty set axiom holding over $M$.
+
+Suppose the result holds for some $\alpha$. Thus we know that $f_\alpha\in M$ and 
+the $M_\alpha$ function is in $M$. Let $M_\alpha$ stand for the $M_\alpha$ function. 
+The $f_{\alpha^+}$ function is defined over $M$ by:
+\[ (x\in\textrm{Dom}(f_\alpha)\wedge f_\alpha(x)=y)\vee \]
+\[ [x\in(R^M_{\alpha^+}-R^M_\alpha)\wedge(\forall z)(z\in y\equiv(\exists w)(\exists v)(z=\langle w,v\rangle\wedge \]
+\[ w\in\mathcal{G}\wedge(\exists s)(s\in x\wedge v=M_\alpha(s))))] \] 
+Because the domain of the $f_{\alpha^+}$ function, $R^M_{\alpha^+}$, is in $M$, it follows that 
+by the axiom of substitution (over $M$) that the range is also in $M$. Then the set 
+$S:\mathcal{P}(\mathcal{P}(\cup\{\textrm{Dom}(f_{\alpha^+}),\textrm{Ran}(f_{\alpha^+})\})\cap M)\cap M\in M$. Then, 
+because $f_{\alpha^+}$ is a first-order definable (over $M$) subset of $S$, it follows that $f_{\alpha^+}\in M$.
+
+Next we show that $M_{\alpha^+}\in M$. This function is definable by
+\[ (x\in\textrm{Dom}(M_\alpha)\wedge M_\alpha(x)=y)\vee (x=\alpha\wedge y=f_\alpha) \]
+and because the domain of the function, $\alpha^+$, is in $M$, it follows that so is the range. Then by an 
+argument similar in nature to the one in the previous paragraph, it follows that $M_{\alpha^+}\in M$
+
+Now we consider the limit ordinal case. Suppose the result holds for all $\alpha<\lambda$ for some limit ordinal 
+$\lambda$. First, the $M_\lambda$ function is definable over $M$ by
+\[ (\exists\alpha<\lambda)(\exists f)(\textrm{M-func}_\alpha(f)\wedge(\exists\beta<\alpha)(x=\beta\wedge f(x)=y)) \]
+Because the domain of this function, $\lambda$, is in $M$, it follows that so is the range, that is, 
+the set $S$ of all $f_\alpha$ for $\alpha<\lambda$. But then $\cup S$, that is, $f_\lambda$, is in $M$. Then, because 
+both $\lambda$ and $S$ are in $M$, it easily follows that the $M_\lambda$ function is also in $M$. 
+
+\end{proof}
+
+Because we have shown each $f_\alpha$ to be in $M$, it follows by the transitivity of $M$ that 
+$f_\alpha(x)\in M$ for each $x\in R^M_\alpha$. 
+Lastly, we show that if $x\in R^M_\alpha$, then $\hat{x}\in R^\mathcal{G}_\alpha$, that is, 
+$f_\alpha(x)\in R^\mathcal{G}_\alpha$.
+
+\begin{proof}
+By transfinite induction.
+
+The least ordinal case is vacuous, and the limit ordinal case is obvious.
+
+Suppose the result holds for some $\alpha$, that is, for 
+each $x\in R^M_\alpha$, $f_\alpha\in R^\mathcal{G}_\alpha$. Now consider any 
+$x\in R^M_{\alpha^+}$. We already have shown that $f_{\alpha^+}(x)\in M$. Thus, if we can 
+show that all members of $f_{\alpha^+}(x)$ are of the form 
+$\langle p,y\rangle$ for some $y\in R^\mathcal{G}_\alpha$, the desired result follows. Well, 
+by definition of the $f_{\alpha^+}$ function, each member of $f_{\alpha^+}(x)$ is of the form 
+$\langle p,f_\alpha(y)\rangle$ for some $y\in x$. But because $y\in x$, and $x\in R^M_{\alpha^+}$, it follows 
+that $y\in R^M_\alpha$, and thus, by the induction assumption, $f_\alpha(y)\in R^\mathcal{G}_\alpha$, which 
+completes the proof.
+
+\end{proof} 
 
 \section*{Proposition 3.3}
 It is said in the proof of this proposition that we can assume $\phi$ has all negations at the atomic level, as 
@@ -530,7 +597,7 @@ $(\forall x\in s)\phi(x,s,s_1,...,s_n)$.
 On the one hand, suppose $(\forall x\in s)\phi(x,s,s_1,...,s_n)$ is true in $M$, that is,
 (1) $(\forall x)(x\in s\supset\phi(x,s,s_1,...,s_n))$. Now, suppose there was some $p$ such that 
 $p\nvDash\lbc(\forall x\in\hat{s})\phi(x,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$. This would mean, for some 
-$d\in\mathcal{D}^\mathcal{G}$, $p\nvDas\lbc (d\in\hat{s})\supset\phi(d,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$. This means,
+$d\in\mathcal{D}^\mathcal{G}$, $p\nvDash\lbc (d\in\hat{s})\supset\phi(d,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$. This means,
 for some $p'$ with $p\mathcal{R}p'$, $p'\vDash\lbc d\in\hat{s}\rbc$ and $p'\vDash\lbc\oldneg\phi(d,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$. 
 Because $p'\vDash\lbc d\in\hat{s}\rbc$, there must be some $b$ and some $p''$ accessible from $p'$ such that 
 $p''\vDash\hat{b}\in\hat{s}$ and $p''\vDash\lbc d\approx\hat{b}\rbc$. By the induction assumption, this means
