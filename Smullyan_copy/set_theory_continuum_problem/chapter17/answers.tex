@@ -592,11 +592,12 @@ $p'\vDash (a\epsilon\hat{t})$ for some $p'$ accessible from $p$ (though this is 
 proof).
 
 \section*{Corollary 3.4}
-Note that we can use Proposition 3.3 because $t_1,...,t_k$ must be well founded, as it is assumed $M$ is well 
+Note that we can use Proposition 3.3 because $t_1,...,t_k$ must all be well founded, as it is assumed $M$ is well 
 founded and transitive.
 
 \section*{Exercise 3.1}
-We prove that, if $p\vDash(\hat{a}\approx\hat{b})$, then $a$ and $b$ are the same set. We prove this by 
+We prove that, if $p\vDash(\hat{a}\approx\hat{b})$, then $a$ and $b$ are the same set (note that the converse of 
+this statement holds by the reflexivity of the $\approx$ relation). We prove this by 
 induction on the $\alpha$ for which $p\vDash(\hat{a}\approx_\alpha\hat{b})$ holds.
 
 The least ordinal case is vacuous, and the limit ordinal case is obvious.
@@ -610,9 +611,9 @@ We show that $a$ and $b$ are the same set by showing that $a\subseteq b$ and $b\
 On the one hand, suppose that $c\in a$. Then it follows that, for every possible world $q$, 
 $\langle q,\hat{c}\rangle\in\hat{a}$. Thus we have $p\vDash\lbc\hat{c}\epsilon\hat{a}\rbc$, 
 meaning, by (1), there is some $p'$ with $p\mathcal{R}p'$ and some $d\in\mathcal{D}^\mathcal{G}$ such that
-$p'\vDash\lbc(d\epsilon\hat{b}\wedge d\approx_\alpha\hat{c})$. Because $p'\vDash\lbc (d\epsilon\hat{b})\rbc$, 
+$p'\vDash\lbc(d\epsilon\hat{b}\wedge d\approx_\alpha\hat{c})\rbc$. Because $p'\vDash\lbc (d\epsilon\hat{b})\rbc$, 
 $d$ is $\hat{e}$ for some $e\in b$. Thus $p'\vDash\lbc\hat{e}\approx_\alpha\hat{c}\rbc$, meaning, 
-for some $p''$ with $p'\mathcal{R}p''$, $p'\vDash\hat{e}\approx_\alpha\hat{c}$, and this 
+for some $p''$ with $p'\mathcal{R}p''$, $p''\vDash\hat{e}\approx_\alpha\hat{c}$, and this 
 implies $e=c$ by the induction assumption. Thus, because $e\in b$, $c\in b$, and therefore 
 $a\subseteq b$.
 
@@ -640,8 +641,8 @@ $\lbc(\forall x\in\hat{s})\phi(x,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$ is true a
 On the other hand, suppose that $p\vDash\lbc(\forall x\in\hat{s})\phi(x,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$.
 For the sake of contradiction, suppose that there was some $d\in M$ such 
 $(d\in s)\wedge\oldneg\phi(d,s,s_1,...,s_n)$. Then, by the induction assumption,
-$\oldneg(\lbc (\hat{d}\in\hat{s})\rbc\supset\phi(\hat{d},\hat{s},\hat{s_1},...,\hat{s_n})\rbc)$ is true at all 
-possible worlds, which means $p\nvDash\lbc(\hat{d}\in\hat{s})\supset\phi(\hat{d},\hat{s},\hat{s_1},...,\hat{s_n})$, 
+$\lbc\oldneg((\hat{d}\in\hat{s})\supset\phi(\hat{d},\hat{s},\hat{s_1},...,\hat{s_n}))\rbc$
+is true at all possible worlds, which means $p\nvDash\lbc(\hat{d}\in\hat{s})\supset\phi(\hat{d},\hat{s},\hat{s_1},...,\hat{s_n})\rbc$, 
 a contradiction.
 
 (2) Next, we prove the existential bounded quantifier case. In this case, the formula is of the form
@@ -649,9 +650,9 @@ $(\exists x\in s)\phi(x,s,s_1,...,s_n)$.
 
 On the one hand, suppose $(\exists x\in s)\phi(x,s,s_1,...,s_n)$ is tre in $M$. Thus, for some 
 $d\in M$, both $d\in s$ and $\phi(d,s,s_1,...,s_n)$ are true in $M$, meaning
-$(d\in s)\supset\phi(d,s,s_1,...,s_n)$ is true in $M$. By the induction assumption, 
+$(d\in s)\wedge\phi(d,s,s_1,...,s_n)$ is true in $M$. By the induction assumption, 
 this means that, for every possible world $p$,
-$p\vDash\lbc(\hat{d}\in\hat{s})\supset\phi(\hat{d},\hat{s},\hat{s_1},...,\hat{s_n})\rbc$, which implies
+$p\vDash\lbc(\hat{d}\in\hat{s})\wedge\phi(\hat{d},\hat{s},\hat{s_1},...,\hat{s_n})\rbc$, which implies
 $p\vDash\lbc(\exists x\in\hat{s})\phi(x,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$.
 
 On the other hand, suppose that $p\vDash\lbc(\exists x\in\hat{s})\phi(x,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$. Thus, for 
@@ -660,7 +661,7 @@ $p'\vDash\lbc(d\in\hat{s})\wedge\phi(d,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$, an
 (1) $p'\vDash\lbc(d\in\hat{s})\rbc$ and (2) $p'\vDash\lbc\phi(d,\hat{s},\hat{s_1},...,\hat{s_n})\rbc$. By (1),
 there is some $p''$ accessible from $p'$ such that there is some $b$ with 
 $p''\vDash\lbc d\approx\hat{b}\rbc$ and $p''\vDash\hat{b}\in\hat{s}$. By the induction assumption, this means
-$b\in s$ is true in $M$. Also, by (2) and Corollary 2.8, we then have $p''\vDash\lbc\phi(\hat{b},\hat{s},\hat{s_1},...,\hat{s_n})$. Hence, by 
+$b\in s$ is true in $M$. Also, by (2) and Corollary 2.8, we then have $p''\vDash\lbc\phi(\hat{b},\hat{s},\hat{s_1},...,\hat{s_n})\rbc$. Hence, by 
 the induction assumption, $\phi(b,s,s_1,...,s_n)$ is true in $M$, meaning
 $(b\in s)\wedge\phi(b,s,s_1,...,s_n)$ is true in $M$, hence
 $(\exists x\in s)\phi(x,s,s_1,...,s_n)$ is true in $M$. 
