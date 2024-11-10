@@ -668,56 +668,59 @@ $(\exists x\in s)\phi(x,s,s_1,...,s_n)$ is true in $M$.
 
 \section*{Lemma 4.6}
 It is claimed that $A$ is a proper class over $M$, though this does not necessarily follow. 
-For suppose there was only one possible world $p$, and say $a=\langle p,0\rangle$. Now, 
+For suppose there was only one possible world $p$, and say $a=\{\langle p,0\rangle\}$. Now, 
 this means $p\vDash\lbc\emptyset\in a\rbc$, but also that 
 $p\nvDash\lbc c\in a\rbc$ for any $c\ne\emptyset$. Thus $A=\{\emptyset\}$, and,
 because $\{\emptyset\}\in M$, it follows that $A\in M$.
 
 \section*{Exercise 4.1}
-Say $f,g\in R^\mathcal{G}_\alpha$. Define a set $g$ as follows:
-\[ \langle p,a\rangle\in g\equiv p\in\mathcal{G}\textrm{ and }a\in R^\mathcal{G}_\alpha\textrm{ and }p\vDash\lbc a\in\cup f\rbc \]
+Say $f,g\in R^\mathcal{G}_\alpha$. Define a set $h$ as follows:
+\[ \langle p,a\rangle\in h\equiv p\in\mathcal{G}\textrm{ and }a\in R^\mathcal{G}_\alpha\textrm{ and }p\vDash\lbc a\in\cup f\rbc \]
 It is not obvious that $h\in R^\mathcal{G}_{\alpha+1}$, but this is true (see the \textquote{Sets in Theorems of Section 4} section). 
 It is obvious that, for $a\in R^\mathcal{G}_\alpha$, 
-\[ p\vDash (a\epsilon h)\equiv p\vDash\lbc p\vDash\lbc a\in\cup\{f,g\} \]
+\[ p\vDash (a\epsilon h)\equiv p\vDash\lbc a\in\cup\{f,g\}\rbc \]
 
-There are a few things we note. First, if $p\vDash a\epsilon h$, it follows that $p\vDash\lbc a\epsilon h\rbc$ (the argument for 
-this is basically the same as in the proof of Theorem 4.1).
+Note that, for all worlds
+$p$, both $\lbc f\in\{f,g\}\rbc$ and $\lbc g\in\{f,g\}\rbc$ are true at $p$ (by the reflexivitiy of the $\approx$ relation). Then,
+because both $f,g\in R^\mathcal{G}_\alpha$, it follows by the definition of $h$ that $\langle p,f\rangle$ and 
+$\langle p,h\rangle$ are both in $g$ for all possible worlds $p$, and an easy consequence of this is that 
+$(f\in h)$ and $(g\in h)$ are true at all possible worlds.
+
 
 Now suppose that for some $p$, $p\nvDash\lbc(\forall x)(x\in h\equiv x\in\{f,g\})\rbc$; we derive a contradiction.
 
 (1) Suppose for some $a$, $p\nvDash\lbc a\in h\supset a\in\{f,g\}\rbc$ (this case is nearly identical to that of 
 (1) in Theorem 4.1). Then there is some $p'$ with 
-$p\mathcal{R}p'$ such that $p'\vDash\lbc a\in h\rbc$ and $p'\vDash\lbc\oldneg (a\in\{f,g\})$. By definition, for some 
+$p\mathcal{R}p'$ such that $p'\vDash\lbc a\in h\rbc$ and $p'\vDash\lbc\oldneg (a\in\{f,g\})\rbc$. By definition, for some 
 $a'$ and some $p''$ with $p'\mathcal{R}p''$, $p''\vDash\lbc a\approx a'\rbc$ and $p''\vDash\lbc a'\epsilon h\rbc$. But then, 
 for some $p'''$ with $p''\mathcal{R}p'''$, $p'''\vDash a'\epsilon h$, and it then follows by the definition of $h$ that 
-$p'''\vDash\lbc a'\in\{f,g\}\rbc$. Then by substitutivity, $p''\vDash\lbc a\in\{f,g\}\rbc$, and this is impossible 
-since $\lbc\oldneg(a\in\{f,g\})\rbc$ is true at $p'$, hence at $p'''$. Also note that, for all worlds 
-$p$, both $\lbc f\in\{f,g\}\rbc$ and $\lbc g\in\{f,g\}\rbc$ are true at $p$, and thus $\langle p,f\rangle$ and 
-$\langle p,g\rangle$ are in $g$ for all worlds $p$. 
+$p'''\vDash\lbc a'\in\{f,g\}\rbc$. Then by substitutivity, $p'''\vDash\lbc a\in\{f,g\}\rbc$, and this is impossible 
+since $\lbc\oldneg(a\in\{f,g\})\rbc$ is true at $p'$, hence at $p'''$. 
 
 (2) Suppose for some $a$, $p\nvDash\lbc a\in\{f,g\}\supset a\in h\rbc$. Then for some $p'$ with $p\mathcal{R}p'$, 
 $p'\vDash\lbc a\in\{f,g\}\rbc$ and $p'\vDash\lbc\oldneg(a\in h)\rbc$. Since $p'\vDash\lbc a\in\{f,g\}\rbc$, 
 $p'\vDash\lbc a\approx f\vee a\approx g\rbc$, meaning, at some world $p''$ accessible from $p'$, either 
-$p''\vDash\lbc a\approx f\rbc$ or $p''\vDash a\approx g\rbc$ holds. Without loss of generality, suppose 
-it is the former that is true, that is, $p''\vDash\lbc a\approx f\rbc. Then we know that, for 
-every world $p'''$, accessible from $p''$, $p'''\vDash\lbc a\approx f\rbc$ holds, and this implies that 
-$p''\vDash\lbc a\in\{f,g\}\rbc$, which is a contradiction. 
+$p''\vDash\lbc a\approx f\rbc$ or $p''\vDash\lbc a\approx g\rbc$ holds. Without loss of generality, suppose 
+it is the former that is true, that is, $p''\vDash\lbc a\approx f\rbc$. By substitutivity, we would then know that 
+$p''\vDash\lbc\oldneg(f\in h)\rbc$, which contradicts the fact that 
+$(f\in h)$ is true at all possible worlds. 
 
 \section*{Exercise 4.2}
-Suppose $p\nvDash\lbc(\forall y)(\forall z)(\exists w)(forall x)(x\in w\equiv x\in\{y,z\})\rbc$. Then for some 
+Suppose $p\nvDash\lbc(\forall y)(\forall z)(\exists w)(\forall x)(x\in w\equiv x\in\{y,z\})\rbc$. Then for some 
 $f,g\in\mathcal{D}^\mathcal{G}$, (1) $p\nvDash\lbc(\exists w)(\forall x)(x\in w\equiv x\in\{f,g\})$. By 
 Theorem 4.3, there is some $h\in\mathcal{D}^\mathcal{G}$ such that 
-$p\vDash\lbc(\forall x)(x\in h\equiv x\in\{f,g\})\rbc. But by (1), 
+$p\vDash\lbc(\forall x)(x\in h\equiv x\in\{f,g\})\rbc$. But by (1), 
 $p\nvDash\lbc(\forall x)(x\in h\equiv x\in\{f,g\})$, a contradiction.
 
 \section*{Exercise 4.3}
-Suppose $p\nvDash\lbc(\exists y)(y\in a)\supset(\exists y)(y\in a\wedge(\forall z)(z\in a\supset\olndeg(z\in y))\rbc$. 
+Suppose $p\nvDash\lbc(\exists y)(y\in a)\supset(\exists y)(y\in a\wedge(\forall z)(z\in a\supset\oldneg(z\in y))\rbc$. 
 Then, for some $p'$ with $p\mathcal{R}p'$,
 $p'\vDash\lbc(\exists y)(y\in a)\rbc$ and $p'\vDash\lbc\oldneg(\exists y)(y\in a\wedge(\forall z)(z\in a\supset\oldneg(z\in y)))\rbc$.
 Thus, for some $p''$ with $p'\mathcal{R}p''$ and for some $g\in\mathcal{D}^\mathcal{G}$, we have
 $p''\vDash\lbc g\in a\rbc$ and (1) $p''\vDash\lbc\oldneg(\exists y)(y\in a\wedge(\forall z)(z\in a\supset\oldneg(z\in y)))\rbc$. By Lemma 4.6, 
 there is some $p'''$ with $p''\mathcal{R}p'''$ and some $c$ such that 
-(2) $p'''\vDash\lbc c\in a\rbc$ and $p'''\vDash(\forall z)\lbc(z\in a\supset\oldneg(z\in c))\rbc$. By (1), 
+(2) $p'''\vDash\lbc c\in a\rbc$ and $p'''\vDash(\forall z)\lbc(z\in a\supset\oldneg(z\in c))\rbc$, which is equivalent to
+$p'''\vDash\lbc(\forall z)(z\in a\supset\oldneg (z\in c))\rbc$. By (1), 
 $p'''\vDash\lbc(c\in a)\supset\oldneg(\forall z)(z\in a\supset\oldneg(z\in c))\rbc$, meaning, by (2), 
 $p'''\vdash\lbc\oldneg(\forall z)(z\in a\supset\oldneg(z\in c))\rbc$, a contradiction.
 
@@ -727,13 +730,9 @@ other proofs in section 4. In reality, the result does follow, but much work is 
 all members of $g$ are of the form $\langle p,a\rangle$ for $p\in\mathcal{G}$ and $a\in R^\mathcal{G}_\alpha$, but we do not yet know that 
 $g\in M$, which is required to conclude that $g\in R^\mathcal{G}_{\alpha^+}$. One method to show that $g$ is in $M$ is to first show that it is 
 definable over $M$, and, because $g\subseteq\mathcal{G}\times R^\mathcal{G}_\alpha$ (and $\mathcal{G}\times R^\mathcal{G}_\alpha$ is in 
-$M$), it would then follow that $g$ would also be in $M$. In fact, the case of $g$ happens to be relatively simple: it is defined by the formula
-\[ (\exists p\in\mathcal{G})(\exists a\in R^\mathcal{G}_\alpha)[x=\langle p,a\rangle\wedge \]
-\[ (\forall p')(p\mathcal{R}p'\supset(\exists p'')(p'\mathcal{R}p''\wedge(\exists y)(y\in f\wedge a\in y)))] \] which works, 
-as we know that $\langle\mathcal{G},\mathcal{R}\rangle\in M$, and thus also $\mathcal{R}\in M$.
+$M$), it would then follow that $g$ would also be in $M$.
 
-However, showing the desired set in (say) Exercise 4.1 really is in $M$ requires much more work. We leave out the details here, and only give the outline
-of one method. First, an encoding of formulas with $\Box$, $\Diamond$, $\epsilon$, and $\lbc\rbc$ would be required. This is fairly straightforward to do, 
+First, an encoding of formulas with $\Box$, $\Diamond$, $\epsilon$, and $\lbc\rbc$ would be required. This is fairly straightforward to do, 
 as we know that $\mathcal{R}\in M$, and thus we can represent the notion of accessible worlds in modal formulas.
 Next, one would need to introduce a relation $t^p(x)$ for the code of some formula $x$ meaning $x$ is true at world $p$. After this, 
 it would next be necessary to encode the $\approx_\alpha$ relations, and then the $\approx$ relation itself. This would require transfinite induction, and, 
@@ -742,6 +741,6 @@ $\approx$ has been properly encoded, and there is a valuation function for codes
 $f\in g$ being true at $p$ would have to be acocunted for in the valuation function.
 
 It should be noted that, if \textquote{definable over $M$} allows the use of formulas involving the various new relations introduced in this 
-chapter, then none of the encoding work is needed, and it is obvious that the sets in the theorems are in $M$
+chapter, then none of the encoding work is needed, and it is obvious that the sets in the theorems are in $M$.
 
 \end{document}
