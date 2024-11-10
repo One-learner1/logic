@@ -52,7 +52,7 @@ $f(\beta)=R^\mathcal{G}_\beta$, call $f$ an $R^\mathcal{G}_\alpha$ function. Let
 Note that $\textrm{R-alpha func}(f)$ just means $f$ is the $R^\mathcal{G}_\alpha$ function.
 
 \begin{lemma}
-For any $\alpha$, if, $R^\mathcal{G}_\beta\in M$ for all $\beta<\alpha$, then 
+For any $\alpha$ ($\alpha\in M$), if, $R^\mathcal{G}_\beta\in M$ for all $\beta<\alpha$, then 
 both $R^\mathcal{G}_\alpha\in M$ and the $R^\mathcal{G}_\alpha$ function are in $M$. 
 \end{lemma}
 
@@ -477,12 +477,12 @@ $R^M_\lambda=\cup_{\alpha<\lambda}R^M_\alpha$ for limit ordinals $\lambda$
 Each $R^M_\alpha$ is just the set of all members of $R_\alpha$ that happen to be in $M$.
 An obvious transfinite induction argument (using the fact that $M$ is a first-order universe) shows that 
 each $R^M_\alpha$ is in $M$ (for $\alpha\in M$). Let $R^M=\cup_\alpha R_\alpha$. By Theorem 3.3 of Chapter 8 (and the fact 
-that $M$ is transitive and well founded), each element of $M$ has a rank. It follows by transfinite induction 
+that $M$ is transitive and well founded), each element of $M$ has a rank. It follows 
 that, in fact, $R^M=M$. Thus if we can show that there is a function satisfying the requirenments of Definition 3.1 
 for $R^M$, it also satisfies the requirenments for $M$ itself. In particular, we want an $f$ such that 
-$f(x)=\{\langle p,f(y)\rangle|p\in\mathcal{G}\wedge y\in x\}$. To this, we show that there is a function 
-$f_\alpha$ for each $\alpha$ whose domain is $R^M_\alpha$, and such that 
-$f_\alpha=\{\langle p,f_\alpha(y)\rangle|p\in\mathcal{G}\wedge y\in x\}$. This is of course immediate by 
+$f(x)=\{\langle p,f(y)\rangle|p\in\mathcal{G}\wedge y\in x\}$. To show this, we show that there is a function 
+$f_\alpha$ for each $\alpha$, whose domain is $R^M_\alpha$, and such that 
+$f_\alpha(x)=\{\langle p,f_\alpha(y)\rangle|p\in\mathcal{G}\wedge y\in x\}$. This is of course immediate by 
 any of the transfinite recursion theorems.
 
 Call a function an $M_\alpha$ function if it satisfies the following conditons: its domain is 
@@ -492,14 +492,14 @@ Let $\textrm{M-func}_\alpha(x)$ stand for the following:
 \[ \textrm{Func}(x)\wedge\textrm{Dom}(x)=R^M_\alpha\wedge f(0)=0\wedge \]
 \[ (\forall\beta<\alpha)[\beta^+<\alpha\supset \]
 \[ (\forall y)(y\in f(\beta^+)\equiv(y\in f(\beta)\vee(\exists v)(\exists w)(y=\langle w,v\rangle\wedge \]
-\[ w\in(R^M_{\beta^+}-R^M_\beta)\wedge(\forall z)(z\in v\equiv(\exists p)(\exists s)(p\in\mathcal{G}\wedge s\in v\wedge z=\langle p,f(\beta)(s))] \]
+\[ w\in(R^M_{\beta^+}-R^M_\beta)\wedge(\forall z)(z\in v\equiv(\exists p)(\exists s)(p\in\mathcal{G}\wedge s\in w\wedge z=\langle p,f(\beta)(s))))))] \]
 \[ \wedge(\forall\lambda<\alpha)[\textrm{lambda is a limit ordinal}\supset(\forall y)(y\in f(\lambda)\equiv(\exists\beta<\lambda)(y\in f(\beta))]) \]
 If the $M_\alpha$ function happens to be in $M$, then $\textrm{M-func}_\alpha(f)$ will be true in $M$ for that function $f$. 
 
 We first prove that each $f_\alpha$ is in $M$ (for all $\alpha$ in $M$), and each $M_\alpha$ function is in $M$.
 
 \begin{theorem}
-For all $\alpha\in M$, $f_\alpha\in M$ and the $M_\alpha$ function is in $M$.
+For all $\alpha\in M$, $f_\alpha\in M$, and the $M_\alpha$ function is in $M$.
 \end{theorem}
 
 \begin{proof}
@@ -512,10 +512,10 @@ the $M_\alpha$ function is in $M$. Let $M_\alpha$ stand for the $M_\alpha$ funct
 The $f_{\alpha^+}$ function is defined over $M$ by:
 \[ (x\in\textrm{Dom}(f_\alpha)\wedge f_\alpha(x)=y)\vee \]
 \[ [x\in(R^M_{\alpha^+}-R^M_\alpha)\wedge(\forall z)(z\in y\equiv(\exists w)(\exists v)(z=\langle w,v\rangle\wedge \]
-\[ w\in\mathcal{G}\wedge(\exists s)(s\in x\wedge v=M_\alpha(s))))] \] 
-Because the domain of the $f_{\alpha^+}$ function, $R^M_{\alpha^+}$, is in $M$, it follows that 
+\[ w\in\mathcal{G}\wedge(\exists s)(s\in x\wedge v=f_\alpha(s))))] \] 
+Because the domain of the $f_{\alpha^+}$ function, $R^M_{\alpha^+}$, is in $M$, it follows 
 by the axiom of substitution (over $M$) that the range is also in $M$. Then the set 
-$S:\mathcal{P}(\mathcal{P}(\cup\{\textrm{Dom}(f_{\alpha^+}),\textrm{Ran}(f_{\alpha^+})\})\cap M)\cap M\in M$. Then, 
+$S:\mathcal{P}(\mathcal{P}(\cup\{\textrm{Dom}(f_{\alpha^+}),\textrm{Ran}(f_{\alpha^+})\})\cap M)\cap M$ is in $M$. Then, 
 because $f_{\alpha^+}$ is a first-order definable (over $M$) subset of $S$, it follows that $f_{\alpha^+}\in M$.
 
 Next we show that $M_{\alpha^+}\in M$. This function is definable by
@@ -525,16 +525,16 @@ argument similar in nature to the one in the previous paragraph, it follows that
 
 Now we consider the limit ordinal case. Suppose the result holds for all $\alpha<\lambda$ for some limit ordinal 
 $\lambda$. First, the $M_\lambda$ function is definable over $M$ by
-\[ (\exists\alpha<\lambda)(\exists f)(\textrm{M-func}_\alpha(f)\wedge(\exists\beta<\alpha)(x=\beta\wedge f(x)=y)) \]
+\[ (\exists\alpha<\lambda)(\exists f)(\textrm{M-func}_\alpha(f)\wedge x\in\textrm{Dom}(f)\wedge f(x)=y) \]
 Because the domain of this function, $\lambda$, is in $M$, it follows that so is the range, that is, 
-the set $S$ of all $f_\alpha$ for $\alpha<\lambda$. But then $\cup S$, that is, $f_\lambda$, is in $M$. Then, because 
+the set $S$ of all $f_\alpha$ for $\alpha<\lambda$. But then $\cup S$, that is, $f_\lambda$, is in $M$. Also, because 
 both $\lambda$ and $S$ are in $M$, it easily follows that the $M_\lambda$ function is also in $M$. 
 
 \end{proof}
 
 Because we have shown each $f_\alpha$ to be in $M$, it follows by the transitivity of $M$ that 
 $f_\alpha(x)\in M$ for each $x\in R^M_\alpha$. 
-Lastly, we show that if $x\in R^M_\alpha$, then $\hat{x}\in R^\mathcal{G}_\alpha$, that is, 
+Next, we show that if $x\in R^M_\alpha$, then $\hat{x}\in R^\mathcal{G}_\alpha$, that is, 
 $f_\alpha(x)\in R^\mathcal{G}_\alpha$.
 
 \begin{proof}
@@ -546,13 +546,41 @@ Suppose the result holds for some $\alpha$, that is, for
 each $x\in R^M_\alpha$, $f_\alpha\in R^\mathcal{G}_\alpha$. Now consider any 
 $x\in R^M_{\alpha^+}$. We already have shown that $f_{\alpha^+}(x)\in M$. Thus, if we can 
 show that all members of $f_{\alpha^+}(x)$ are of the form 
-$\langle p,y\rangle$ for some $y\in R^\mathcal{G}_\alpha$, the desired result follows. Well, 
+$\langle p,y\rangle$ for some $y\in R^\mathcal{G}_\alpha$ and some $p\in\mathcal{G}$, the desired result follows. Well, 
 by definition of the $f_{\alpha^+}$ function, each member of $f_{\alpha^+}(x)$ is of the form 
 $\langle p,f_\alpha(y)\rangle$ for some $y\in x$. But because $y\in x$, and $x\in R^M_{\alpha^+}$, it follows 
 that $y\in R^M_\alpha$, and thus, by the induction assumption, $f_\alpha(y)\in R^\mathcal{G}_\alpha$, which 
 completes the proof.
 
 \end{proof} 
+
+Lastly, we show that $x$ has rank $\alpha$ (for $x\in M$) iff $\hat{x}$ has $\mathcal{G}$-rank $\alpha$.
+
+\begin{proof}
+By transfinite induction.
+The least ordinal case is obvious.
+
+Suppose the result holds for all ordinals less than $\alpha$ (where $\alpha>0$).
+
+On the one hand, suppose that $x$ has rank $\alpha$. 
+Thus $x\in R^M_{\alpha^+}-R^M_\alpha$. We have already shown that this means $\hat{x}\in R^\mathcal{G}_{\alpha^+}$. 
+Suppose that $\hat{x}\in R^M_\alpha$. Then, for some successor ordinal $\beta^+\le\alpha$, it follows that 
+$\hat{x}\in R^M_{\beta^+}$, and thus all elements of $\hat{x}$ are of the form 
+$\langle p,\hat{y}\rangle$ where $\hat{y}\in R^\mathcal{G}_\beta$ and $y\in x$. This would mean that each 
+such $\hat{y}$ has $\mathcal{G}$-rank less than $\beta$, which, by the induction assumption, means each $y\in x$ is in 
+$R^M_\beta$, which would mean $x\in R^M_{\beta^+}$, which is a contradiction, as $\beta<\alpha$, but 
+$x$ was assumed to have rank $\alpha$.
+
+On the other hand, suppose that $\hat{x}$ has $\mathcal{G}$-rank $\alpha$. By the definition of 
+$R^\mathcal{G}_{\alpha^+}$ and $\hat{x}$, this implies that $x\in R^M_{\alpha^+}$ (by the induction assumption). Suppose 
+that $x\in R^M_\alpha$. Then, for some $\beta^+\le\alpha$, it follows that $x\in R^M_{\beta^+}$ and 
+each element of $x$ is in $R^M_\beta$ (has rank less than $\beta$). 
+Hence, by the induction assumption, it follows that, for 
+each $y\in x$, $\hat{y}\in R^\mathcal{G}_\beta$, which would mean (by definition of $R^\mathcal{G}_{\beta^+}$) that 
+$\hat{x}\in R^\mathcal{G}_{\beta^+}$, which is a contradiction, as $\beta<\alpha$, but 
+$\hat{x}$ was assumed to have $\mathcal{G}$-rank $\alpha$.
+
+\end{proof}
 
 \section*{Proposition 3.3}
 It is said in the proof of this proposition that we can assume $\phi$ has all negations at the atomic level, as 
