@@ -13,6 +13,7 @@
 \usepackage{comment}
 \usepackage{placeins}
 \usepackage{geometry}
+\usepackage{cleveref}
 \usepackage{stmaryrd}
 \usepackage{hyperref}
 \usepackage{tikz}
@@ -23,6 +24,7 @@
 \let\oldemptyset\emptyset
 \newcommand{\lbc}{\llbracket}
 \newcommand{\rbc}{\rrbracket}
+\newcommand{\ltop}[1]{\stackrel{\leftarrow}{#1}}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
@@ -45,8 +47,8 @@ Here is an explanation for the remarks given on page 224. Note that I am assumin
 Remark 3). 
 Definition 1.1 to even work in the first place. If a function $f$ has domain $\alpha$, and is such that, for all $\beta<\alpha$, 
 $f(\beta)=R^\mathcal{G}_\beta$, call $f$ an $R^\mathcal{G}_\alpha$ function. Let $\textrm{R-alpha func}(f)$ stand for the following formula:
-\[ \textrm{Func}(f)\wedge\textrm{Dom}(f)=\alpha\wedge f(0)=0\wedge \]
-\[ (\forall\beta<\alpha)(\beta^+<\alpha\supset(\forall x)(x\in f(\beta^+)\equiv x\subseteq\mathcal{G}\times f(\beta))) \]
+\[ \textrm{Func}(f)\wedge\textrm{Dom}(f)=\alpha^+\wedge f(0)=0\wedge \]
+\[ (\forall\beta\le\alpha)(\beta^+<\alpha\supset(\forall x)(x\in f(\beta^+)\equiv x\subseteq\mathcal{G}\times f(\beta))) \]
 \[ \wedge (\forall\beta<\alpha)(\textrm{beta is a limit ordinal}\supset(\forall x)(x\in f(\beta) \]
 \[ \equiv(\exists\delta<\beta)(x\in f(\delta)))) \]
 Note that $\textrm{R-alpha func}(f)$ just means $f$ is the $R^\mathcal{G}_\alpha$ function.
@@ -64,8 +66,8 @@ The least ordinal case is obvious (because $\emptyset\in M$).
 Suppose it holds for all ordinals less than some ordinal $\alpha$. So suppose that 
 $R^\mathcal{G}_\beta\in M$ for all $\beta<\alpha$. Then it follows that the 
 $R^\mathcal{G}_\beta$ function is in $M$ for all $\beta<\alpha$. 
-We first show that $R^\mathcal{G}_\alpha\in M$. Well, if $\alpha$ is a successor ordinal of some $\beta$, then it 
-is defined by the formula
+We first show that $R^\mathcal{G}_\alpha\in M$. Well, if $\alpha$ is a successor ordinal of some $\beta$, then
+$R^\mathcal{G}_\alpha$ is defined by the formula
 \[ (\forall y)(y\in x\equiv y\subseteq\mathcal{G}\times R^\mathcal{G}_\beta) \]
 which works, as $\mathcal{G}\times R^\mathcal{G}_\beta\in M$ for the following reason:
 both $\mathcal{G}$ and $R^\mathcal{G}_\beta$ are in $M$, meaning 
@@ -77,33 +79,33 @@ obvious that the formula in $M$ in (1) is such that $\langle x,y\rangle$ is in i
 $x\in\mathcal{G}$ and each $y\in R^\mathcal{G}_\beta$. Then it is easy to see that 
 $\mathcal{G}\times R^\mathcal{G}_\beta$ is first-order definable over $M$, and, because this 
 would mean it is a first-order definable susbset of the set in (1), 
-$\mathcal{G}\times R^\mathcal{G}_\beta\in M$ (because $M$ is first-order swelled). 
-
-The case where $\alpha$ is a limit ordinal is mostly similar. In particular, because we 
-are assuming the $R^\mathcal{G}_\beta$ function is in $M$ for each $\beta<\alpha$, the following 
-defines $R^\mathcal{G}_\alpha$:
-\[ (\exists\beta<\alpha)(\exists f)(\textrm{R-beta func}(f)\wedge(\exists\delta<\beta)(x\in f(\delta))) \]
-
-Thus we know that $R^\mathcal{G}_\alpha\in M$.
+$\mathcal{G}\times R^\mathcal{G}_\beta\in M$ (because $M$ is first-order swelled). Then 
+$\mathcal{P}(\mathcal{G}\times R^\mathcal{G}_\beta)\cap M$, that is, 
+$R^\mathcal{G}_{\beta^+}$, is in $M$.
 
 Now we show that the $R^\mathcal{G}_\alpha$ function is definable over $M$.
-Well, if $\alpha$ is a successor ordinal of some $\beta$, then
-the $R^\mathcal{G}_\alpha$ function is definable over $M$ by the formula
+The $R^\mathcal{G}_\alpha$ function is definable over $M$ by the formula
 \[ (x=\beta\wedge y=R^\mathcal{G}_\beta)\vee \]
-\[ (\exists\delta<\alpha)(\exists f)(\textrm{R-delta func}(f)\wedge x\in\textrm{Dom}(f)\wedge y=f(x)) \]
-and if $\alpha$ is a limit ordinal, then it is defined over $M$ by the following formula
-\[ (\exists\delta<\alpha)(\exists f)(\textrm{R-delta func}(f)\wedge x\in\textrm{Dom}(f)\wedge y=f(x)) \]
-Thus, in any case, we know that the $R^\mathcal{G}_\alpha$ function is definable over $M$. Because 
-$\alpha\in M$, this means that the range of the $R^\mathcal{G}_\alpha$ function, the 
-set $S$ of all $R^\mathcal{G}_\beta$ for $\beta<\alpha$, is in $M$. Hence 
-$\{\alpha,S\}\in M$, $\cup\{\alpha,S\}\in M$, 
+\[ (\exists\delta<\alpha)(\exists f)(\textrm{R-delta func}(f)\wedge x\in\textrm{Dom}(f)\wedge y=f(x)) \] 
+Because
+$\alpha^+\in M$, this means that the range of the $R^\mathcal{G}_\alpha$ function, the
+set $S$ of all $R^\mathcal{G}_\beta$ for $\beta<\alpha$, is in $M$ (and thus also $R^\mathcal{G}_\alpha\in M$). Hence
+$\{\alpha,S\}\in M$, $\cup\{\alpha,S\}\in M$,
 $\mathcal{P}(\cup\{\alpha,S\})\in M$,
-and $\mathcal{P}(\mathcal{P}(\cup\{\alpha,S\}))\in M$. Now, 
-for each $\beta<\alpha$ and $x\in S$, it of course follows that 
-$\langle \beta,x\rangle\in\mathcal{P}(\mathcal{P}(\cup\{\alpha,S\}))$. That is, 
-the $R^\mathcal{G}_\alpha$ function is a first-order definable subset of 
+and $\mathcal{P}(\mathcal{P}(\cup\{\alpha,S\}))\in M$. Now,
+for each $\beta<\alpha$ and $x\in S$, it of course follows that
+$\langle \beta,x\rangle\in\mathcal{P}(\mathcal{P}(\cup\{\alpha,S\}))$. That is,
+the $R^\mathcal{G}_\alpha$ function is a first-order definable subset of
 $\mathcal{P}(\mathcal{P}(\cup\{\alpha,S\}))$, which is in $M$, meaning
 the function itself is in $M$.
+
+Now suppose $\alpha$ is a limit ordinal. Then the $R^\mathcal{G}_\alpha$ function is defined by 
+\[ (\exists\delta<\alpha)(\exists f)(\textrm{R-delta func}(f)\wedge x\in\textrm{Dom}(f)\wedge y=f(x))\vee \]
+\[ (x=\alpha\wedge y=R^\mathcal{G}_\alpha) \]
+and similar reasoning as in the above paragraph shows that the $R^\mathcal{G}_\alpha$ function is then in $M$.
+Then, because $R^\mathcal{G}_\alpha$ is just the union of the range of the $R^\mathcal{G}_\alpha$ function, it 
+follows that $R^\mathcal{G}_\alpha\in M$.
+
 \end{proof}  
 
 \subsubsection*{Remark 1}
@@ -513,6 +515,8 @@ The $f_{\alpha^+}$ function is defined over $M$ by:
 \[ (x\in\textrm{Dom}(f_\alpha)\wedge f_\alpha(x)=y)\vee \]
 \[ [x\in(R^M_{\alpha^+}-R^M_\alpha)\wedge(\forall z)(z\in y\equiv(\exists w)(\exists v)(z=\langle w,v\rangle\wedge \]
 \[ w\in\mathcal{G}\wedge(\exists s)(s\in x\wedge v=f_\alpha(s))))] \] 
+(note that this relies upon each such $y$ being in $M$, but this is easy to see using the induction assumption, because 
+it is a first-order definable subset of $f_\alpha$)
 Because the domain of the $f_{\alpha^+}$ function, $R^M_{\alpha^+}$, is in $M$, it follows 
 by the axiom of substitution (over $M$) that the range is also in $M$. Then the set 
 $S:\mathcal{P}(\mathcal{P}(\cup\{\textrm{Dom}(f_{\alpha^+}),\textrm{Ran}(f_{\alpha^+})\})\cap M)\cap M$ is in $M$. Then, 
@@ -742,5 +746,99 @@ $f\in g$ being true at $p$ would have to be acocunted for in the valuation funct
 
 It should be noted that, if \textquote{definable over $M$} allows the use of formulas involving the various new relations introduced in this 
 chapter, then none of the encoding work is needed, and it is obvious that the sets in the theorems are in $M$.
+
+\section*{Exercise 5.1}
+Recall that, for each $\alpha$, we have already shown (in my notes on \cref{sec:1}) that the $R^\mathcal{G}_\alpha$ function is in 
+$M$. Thus the formula $\mathcal{D}(x)$ is simply:
+\[ (\exists\alpha)[\textrm{Ordinal}(\alpha)\wedge(\exists f)(\textrm{R-alpha func}(f)\wedge(\exists\beta<\alpha)(x\in f(\beta)))] \]
+
+\section*{Lemma 5.2}
+
+There is an issue with the proof of this lemma. First, it is claimed that $(x\approx_\alpha y)$ and 
+$\lbc (x\approx_\alpha y)\rbc$ are equivalent, but this is not the case. Instead of trying to express
+\[ p\vDash(\forall x)\Box\Diamond[\Box\Diamond(x\epsilon f)\supset\Box\Diamond(\exists y)(\Box\Diamond(y\epsilon g)\wedge (x\approx_\alpha y))] \]
+we should be trying to express
+\[ p\vDash(\forall x)\Box\Diamond[\Box\Diamond(x\epsilon f)\supset\Box\Diamond(\exists y)(\Box\Diamond(y\epsilon g)\wedge\Box\Diamond(x\approx_\alpha y))] \]
+To do this, change $F(\mathcal{A},p,f,g)$ to be
+\[ (\forall x\in\mathcal{D})(\forall q\mathcal{R}p)(\exists q'\mathcal{R}p)\{(\forall r\mathcal{R}q')(\exists r'\mathcal{R}r)\langle r',x\rangle\in f\supset \]
+\[ (\forall r\mathcal{R}q')(\exists r'\mathcal{R}r)(\exists y\in\mathcal{D})[(\forall s\mathcal{R}r')(\exists s'\mathcal{R}s)(\langle s',y\rangle\in g)\wedge \]
+\[ (\forall s\mathcal{R}r')(\exists s'\mathcal{R}s)(\langle s',x,y\rangle\in\mathcal{A})\} \]
+(Here I am omitting the placement of the leftward arrow above $\mathcal{R}$)
+
+\section*{Proposition 5.3}
+There are multiple issues with the proof of this lemma. The given formula for 
+$\textrm{Equal}(p,f,g)$ does not work as is, simply because we do not yet know if the function 
+asserted to exist in $M$ in that formula really is in $M$. I will go about showing this by a slightly different method, 
+though the end result is the same.
+
+First, define the following sequence by transfinite recursion:
+
+$s_0=\emptyset$
+
+%$s_{\alpha^+}=\{\langle y,z,w\rangle|\textrm{Next_Equal}(s_\beta,y,z,w)\textrm{ and }z,w\in R^\mathcal{G}_{\alpha^+}\}$
+
+$s_\lambda=\cup_{\alpha<\lambda}s_\alpha$ for $\lambda$ a limit ordinal.
+
+The condition that makes this different from the one in the book is the requirenment that $z,w$ be in 
+$R^\mathcal{G}_{\alpha^+}$. The reason for this is as follows: 
+$f\approx_\alpha g$ may be true at $p$ when $f$ or $g$ has rank $\ge\alpha$. What this could mean is that 
+the set $S$ of \textit{all} $\langle p,f,g\rangle$ such that $p\vDash f\approx_{\alpha^+}g$ may not be a subset of 
+$(\mathcal{G}\times R^\mathcal{G}_{\alpha^+}\times R^\mathcal{G}_{\alpha^+})\cap M$. This is important - this means 
+that $S$ may not be a set; but for the formula to come out correctly, we need to know that $S$ is set. Thus we 
+simply restrict the domain of each $s_{\alpha^+}$ to only those ordered pairs $\langle p,f,g\rangle$ where 
+$f,g\in R^\mathcal{G}_{\alpha^+}$. Then, once we shown each $s_\alpha$ to be in $M$, we will be ready to 
+make a formula for the $\approx$ relation itself.
+
+Call a function $f$ an $s_\alpha$ function if it satisfies the following conditions: it has a domain of 
+$\alpha$, and for each $\beta<\alpha$, $f(\beta)=s_\beta$. What we now aim to show is that, for each 
+$\alpha$ (where $\alpha\in M$), both $s_\alpha$ and the $s_\alpha$ function are in $M$.
+
+Let $\textrm{s-alpha func}(f)$ stand for the following (it is fairly similar to the 
+$\textrm{Equal}(p,g,f)$ formula given in the book):
+\[ \textrm{Func}(f)\wedge\textrm{Dom}(f)=\alpha\wedge \]
+\[ (\forall\beta<\alpha)[(\beta=0\supset f(\beta)=0)\wedge \]
+\[ (\beta^+<\alpha\supset(\forall y,z,w)(\langle y,z,w\rangle\in f(\beta^+)\equiv \]
+\[ (y\in\mathcal{G}\wedge z,w\in R^\mathcal{G}_{\beta^+}\wedge\textrm{Next Equal}(f(\beta),y,z,w))))\wedge \]
+\[ (\textrm{Limit Ordinal}(\beta)\supset f(\beta)=\cup_{\gamma<\beta}f(\gamma))] \]
+If the $s_\alpha$ function happens to be in $M$, then $\textrm{s-alpha func}(f)$ would be true in $M$ for that 
+function $f$. 
+
+\begin{theorem}
+For each $\alpha$ in $M$, both $s_\alpha$ and the $s_\alpha$ function are in $M$.
+\end{theorem}
+
+\begin{proof}
+The least ordinal case holds by the empty set axiom.
+
+In the successor ordinal case, suppose both $s_\alpha$ and the $s_\alpha$ function are in $M$. 
+Then $s_{\alpha^+}(p,x,y)$ is definable over $M$ by 
+\[ (\exists w)(\exists v)(x=\langle w,v\rangle\wedge w,v\in R^\mathcal{G}_{\alpha^+}\wedge \]
+\[ \textrm{Next Equal}(s_{\alpha},p,x,y)) \]
+which defines $s_{\alpha^+}$ over $M$. Because $\mathcal{G}$ and $R^\mathcal{G}_{\alpha^+}$ are 
+both in $M$, thus so is $S:(\mathcal{G}\times R^\mathcal{G}_{\alpha^+}\times R^\mathcal{G}_{\alpha^+})\cap M$. 
+Then, because $s_{\alpha^+}$ is a subset of $S$, it follows that $s_{\alpha^+}$ is a first-order definable subset of 
+$S$, and thus, because $M$ is first-order swelled, $s_{\alpha^+}\in M$. The $s^{\alpha^+}$ function being in $M$ then
+easily follows.
+
+Now consider the limit ordinal case (for some limit ordinal $\lambda$). Then 
+the $s_\lambda$ function is definable over $M$ by the following:
+\[ (\exists f)(\exists\alpha<\lambda)(\textrm{s-alpha func}(f)\wedge x\in\textrm{Dom}(f)\wedge f(x)=y) \]
+The domain of the function is $\lambda$, and thus, because $\lambda\in M$, it follows by familiar reasoning that 
+both $s_\lambda$ and $s^\lambda$ are in $M$.
+
+\end{proof}
+
+Thus we have the $s_\alpha$ function in $M$ for each $\alpha\in M$. Now we need to account for the 
+possibility that $f\approx_\alpha g$ but one of $f$ and $g$ has a $\mathcal{G}$-rank $\ge\alpha$. We actually 
+won't explicitly define a formula just for the $\approx_\alpha$ relation, but rather, for the $\approx$ relation 
+in its entirety. Now, there must be \textit{some} $\beta$ for which both $f,g\in R^\mathcal{G}_\beta$. This 
+suggests the following definition for $\textrm{Equal}(p,f,g)$:
+\[ (\exists f)(\exists\alpha)[\textrm{Ordinal}(\alpha)\wedge\textrm{s-alpha func}(f)\wedge \]
+\[ (\exists\beta<\alpha)(f_\beta(p,f,g))] \]
+
+Lastly, we want a formula for $p\vDash\lbc f\approx g\rbc$ (currenlty we just have one for 
+$p\vDash f\approx g$). This is just
+\[ (\forall q\ltop{p})(\exists q'\ltop{q})(\textrm{Equal}(q',f,g)) \]
+and this formula satisfies the conditions of Proposition 5.3.
 
 \end{document}
