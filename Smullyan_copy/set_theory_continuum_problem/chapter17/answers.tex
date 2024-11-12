@@ -730,27 +730,10 @@ $p'''\vdash\lbc\oldneg(\forall z)(z\in a\supset\oldneg(z\in c))\rbc$, a contradi
 
 \section*{Sets in Theorems of Section 4}
 In Theorem 4.1, it is claimed that it is obvious that $g\in R^\mathcal{G}_{\alpha+1}$, and this is similarly claimed for similar sets in many 
-other proofs in section 4. In reality, the result does follow, but much work is required. In Theorem 4.1, we indeed do know that 
-all members of $g$ are of the form $\langle p,a\rangle$ for $p\in\mathcal{G}$ and $a\in R^\mathcal{G}_\alpha$, but we do not yet know that 
-$g\in M$, which is required to conclude that $g\in R^\mathcal{G}_{\alpha^+}$. One method to show that $g$ is in $M$ is to first show that it is 
-definable over $M$, and, because $g\subseteq\mathcal{G}\times R^\mathcal{G}_\alpha$ (and $\mathcal{G}\times R^\mathcal{G}_\alpha$ is in 
-$M$), it would then follow that $g$ would also be in $M$.
-
-First, an encoding of formulas with $\Box$, $\Diamond$, $\epsilon$, and $\lbc\rbc$ would be required. This is fairly straightforward to do, 
-as we know that $\mathcal{R}\in M$, and thus we can represent the notion of accessible worlds in modal formulas.
-Next, one would need to introduce a relation $t^p(x)$ for the code of some formula $x$ meaning $x$ is true at world $p$. After this, 
-it would next be necessary to encode the $\approx_\alpha$ relations, and then the $\approx$ relation itself. This would require transfinite induction, and, 
-ultimately, a variant $t^p_\alpha (x)$ of the relation $t^p(x)$ to also give truth values for formulas containing $\approx_\alpha$. Once 
-$\approx$ has been properly encoded, and there is a valuation function for codes of formulas including it, the notion of 
-$f\in g$ being true at $p$ would have to be acocunted for in the valuation function.
-
-It should be noted that, if \textquote{definable over $M$} allows the use of formulas involving the various new relations introduced in this 
-chapter, then none of the encoding work is needed, and it is obvious that the sets in the theorems are in $M$.
-
-\section*{Exercise 5.1}
-Recall that, for each $\alpha$, we have already shown (in my notes on \cref{sec:1}) that the $R^\mathcal{G}_\alpha$ function is in 
-$M$. Thus the formula $\mathcal{D}(x)$ is simply:
-\[ (\exists\alpha)[\textrm{Ordinal}(\alpha)\wedge(\exists f)(\textrm{R-alpha func}(f)\wedge(\exists\beta<\alpha)(x\in f(\beta)))] \]
+other proofs in section 4. In reality, the result does follow, but much work is required. In fact, the work required is just the work of 
+section 5 of this chapter. Using the notion from Theorem 5.4, it \textit{is} obvious that the various sets in the various theorems of 
+Section 4 are definable over $M$, and because each of them is a subset of some $R^\mathcal{G}_\alpha$, this would mean 
+the set itself is in $M$ (because $M$ is first-order swelled). 
 
 \section*{Lemma 5.2}
 
@@ -760,13 +743,14 @@ $\lbc (x\approx_\alpha y)\rbc$ are equivalent, but this is not the case. Instead
 we should be trying to express
 \[ p\vDash(\forall x)\Box\Diamond[\Box\Diamond(x\epsilon f)\supset\Box\Diamond(\exists y)(\Box\Diamond(y\epsilon g)\wedge\Box\Diamond(x\approx_\alpha y))] \]
 To do this, change $F(\mathcal{A},p,f,g)$ to be
-\[ (\forall x\in\mathcal{D})(\forall q\mathcal{R}p)(\exists q'\mathcal{R}p)\{(\forall r\mathcal{R}q')(\exists r'\mathcal{R}r)\langle r',x\rangle\in f\supset \]
-\[ (\forall r\mathcal{R}q')(\exists r'\mathcal{R}r)(\exists y\in\mathcal{D})[(\forall s\mathcal{R}r')(\exists s'\mathcal{R}s)(\langle s',y\rangle\in g)\wedge \]
-\[ (\forall s\mathcal{R}r')(\exists s'\mathcal{R}s)(\langle s',x,y\rangle\in\mathcal{A})\} \]
-(Here I am omitting the placement of the leftward arrow above $\mathcal{R}$)
+\[ (\forall x\in\mathcal{D})(\forall q\ltop{\mathcal{R}}p)(\exists q'\ltop{\mathcal{R}}p)\{(\forall r\ltop{\mathcal{R}}q')(\exists r'\ltop{\mathcal{R}}r)\langle r',x\rangle\in f\supset \]
+\[ (\forall r\ltop{\mathcal{R}}q')(\exists r'\ltop{\mathcal{R}}r)(\exists y\in\mathcal{D})[(\forall s\ltop{\mathcal{R}}r')(\exists s'\ltop{\mathcal{R}}s)(\langle s',y\rangle\in g)\wedge \]
+\[ (\forall s\ltop{\mathcal{R}}r')(\exists s'\ltop{\mathcal{R}}s)(\langle s',x,y\rangle\in\mathcal{A})\}\wedge \]
+\[ p\in\mathcal{G}\wedge\mathcal{D}(f)\wedge\mathcal{D}(g) \]
+(the last line I added in to ensure that $p,f,g$ are correctly set up)
 
 \section*{Proposition 5.3}
-There are multiple issues with the proof of this lemma. The given formula for 
+There are multiple issues with the proof of this proposition. The given formula for 
 $\textrm{Equal}(p,f,g)$ does not work as is, simply because we do not yet know if the function 
 asserted to exist in $M$ in that formula really is in $M$. I will go about showing this by a slightly different method, 
 though the end result is the same.
@@ -775,13 +759,13 @@ First, define the following sequence by transfinite recursion:
 
 $s_0=\emptyset$
 
-%$s_{\alpha^+}=\{\langle y,z,w\rangle|\textrm{Next_Equal}(s_\beta,y,z,w)\textrm{ and }z,w\in R^\mathcal{G}_{\alpha^+}\}$
+$s_{\alpha^+}=\{\langle y,z,w\rangle|\textrm{Next Equal}(s_\alpha,y,z,w)\textrm{ and }z,w\in R^\mathcal{G}_{\alpha^+}\}$
 
 $s_\lambda=\cup_{\alpha<\lambda}s_\alpha$ for $\lambda$ a limit ordinal.
 
 The condition that makes this different from the one in the book is the requirenment that $z,w$ be in 
 $R^\mathcal{G}_{\alpha^+}$. The reason for this is as follows: 
-$f\approx_\alpha g$ may be true at $p$ when $f$ or $g$ has rank $\ge\alpha$. What this could mean is that 
+$f\approx_{\alpha^+} g$ may be true at $p$ when $f$ or $g$ has rank $\ge\alpha^+$. What this could mean is that 
 the set $S$ of \textit{all} $\langle p,f,g\rangle$ such that $p\vDash f\approx_{\alpha^+}g$ may not be a subset of 
 $(\mathcal{G}\times R^\mathcal{G}_{\alpha^+}\times R^\mathcal{G}_{\alpha^+})\cap M$. This is important - this means 
 that $S$ may not be a set; but for the formula to come out correctly, we need to know that $S$ is set. Thus we 
@@ -811,34 +795,58 @@ For each $\alpha$ in $M$, both $s_\alpha$ and the $s_\alpha$ function are in $M$
 The least ordinal case holds by the empty set axiom.
 
 In the successor ordinal case, suppose both $s_\alpha$ and the $s_\alpha$ function are in $M$. 
-Then $s_{\alpha^+}(p,x,y)$ is definable over $M$ by 
+Then $s_{\alpha^+}$ is definable over $M$ by 
 \[ (\exists w)(\exists v)(x=\langle w,v\rangle\wedge w,v\in R^\mathcal{G}_{\alpha^+}\wedge \]
 \[ \textrm{Next Equal}(s_{\alpha},p,x,y)) \]
 which defines $s_{\alpha^+}$ over $M$. Because $\mathcal{G}$ and $R^\mathcal{G}_{\alpha^+}$ are 
-both in $M$, thus so is $S:(\mathcal{G}\times R^\mathcal{G}_{\alpha^+}\times R^\mathcal{G}_{\alpha^+})\cap M$. 
+both in $M$, thus so is $S:\mathcal{G}\times R^\mathcal{G}_{\alpha^+}\times R^\mathcal{G}_{\alpha^+}$.
 Then, because $s_{\alpha^+}$ is a subset of $S$, it follows that $s_{\alpha^+}$ is a first-order definable subset of 
-$S$, and thus, because $M$ is first-order swelled, $s_{\alpha^+}\in M$. The $s^{\alpha^+}$ function being in $M$ then
+$S$, and thus, because $M$ is first-order swelled, $s_{\alpha^+}\in M$. The $s_{\alpha^+}$ function being in $M$ then
 easily follows.
 
 Now consider the limit ordinal case (for some limit ordinal $\lambda$). Then 
 the $s_\lambda$ function is definable over $M$ by the following:
 \[ (\exists f)(\exists\alpha<\lambda)(\textrm{s-alpha func}(f)\wedge x\in\textrm{Dom}(f)\wedge f(x)=y) \]
 The domain of the function is $\lambda$, and thus, because $\lambda\in M$, it follows by familiar reasoning that 
-both $s_\lambda$ and $s^\lambda$ are in $M$.
+both $s_\lambda$ and the $s_\lambda$ function are in $M$.
 
 \end{proof}
 
 Thus we have the $s_\alpha$ function in $M$ for each $\alpha\in M$. Now we need to account for the 
 possibility that $f\approx_\alpha g$ but one of $f$ and $g$ has a $\mathcal{G}$-rank $\ge\alpha$. We actually 
-won't explicitly define a formula just for the $\approx_\alpha$ relation, but rather, for the $\approx$ relation 
+won't explicitly define a formula just for the $\approx_\alpha$ relation, but rather, the $\approx$ relation 
 in its entirety. Now, there must be \textit{some} $\beta$ for which both $f,g\in R^\mathcal{G}_\beta$. This 
 suggests the following definition for $\textrm{Equal}(p,f,g)$:
+\[ p\in\mathcal{G}\wedge\mathcal{D}(f)\wedge\mathcal{D}(g)\wedge \]
 \[ (\exists f)(\exists\alpha)[\textrm{Ordinal}(\alpha)\wedge\textrm{s-alpha func}(f)\wedge \]
 \[ (\exists\beta<\alpha)(f_\beta(p,f,g))] \]
 
 Lastly, we want a formula for $p\vDash\lbc f\approx g\rbc$ (currenlty we just have one for 
 $p\vDash f\approx g$). This is just
-\[ (\forall q\ltop{p})(\exists q'\ltop{q})(\textrm{Equal}(q',f,g)) \]
+\[ (\forall q\ltop{\mathcal{R}}p)(\exists q'\ltop{\mathcal{R}}q)(\textrm{Equal}(q',f,g)) \]
 and this formula satisfies the conditions of Proposition 5.3.
+
+\section*{Theorem 5.4}
+There are multiple things to note about this theorem.
+
+First, the proof given for the atomic case is incorrect. The formula should instead be
+\[ z\in\mathcal{G}\wedge\mathcal{D}(f)\wedge\mathcal{D}(g)\wedge \]
+\[ (\forall z'\ltop{\mathcal{R}}z)(\exists z''\ltop{\mathcal{R}}z')(\textrm{Equal}(z'',w,x)\wedge \]
+\[ (\forall z'''\ltop{\mathcal{R}}z'')(\exists z''''\ltop{\mathcal{R}}z''')(\langle z'''',w\rangle\in y)) \]
+
+Also, because we have the $\textrm{Equal}(p,f,g)$ formula, it should be noted that 
+Theorem 5.4 can be easily altered so that, if we extend the language $\mathcal{L}_c$ to include that 
+$\approx$ relation (i.e., so that formulas can be built out of the $\approx$ relation) and the $\epsilon$ relation, 
+the same result will follow.
+
+The negation case is slightly incorrect. Instead, we should take the formula 
+$F_\phi(z,x_1,...,x_n)$ to be
+\[ (\forall z'\ltop{\mathcal{R}}z)(\exists z''\ltop{\mathcal{R}}z')\oldneg F_\psi(z'',x_1,...,x_n) \]
+
+Lastly, here is the answer for Exercise 5.2. The last remaining case in this theorem is for the existential quantifier. Consider 
+some formula $\phi(x_1,...,x_n)$ of the form $(\exists x)\psi(x,x_1,...,x_n)$. Recall that 
+$\lbc(\exists x)\psi(x,x_1,...,x_n)\rbc$ is $\Box\Diamond(\exists x)\lbc\psi(x,x_1,...,x_n)\rbc$. Then take 
+$F_\phi(z,x_1,...,x_n)$ to be the formula
+\[ (\forall z'\ltop{\mathcal{R}}z)(\exists z''\ltop{\mathcal{R}}z')(\exists x)F_\psi(z'',x,x_1,...,x_n) \]
 
 \end{document}
