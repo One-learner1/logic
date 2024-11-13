@@ -855,35 +855,31 @@ $g\in\mathcal{D}^\mathcal{G}$, so $g\in R^\mathcal{G}_\alpha$ for some $\alpha$.
 $g^*$ are thus in $\mathcal{G}\times R^\mathcal{G}_\alpha$, meaning, if we can show that $g^*\in M$, then 
 it will follow that $g^*\in R^\mathcal{G}_{\alpha^+}$, hence $g^*\in\mathcal{D}^\mathcal{G}$. Well, 
 $g^*$ is definable over $M$ by
-\[ (\exists p\mathcal{R}q)\langle p,f\rangle\in g \]
+\[ (\exists q)(\exists f)(x=\langle q,f\rangle\wedge(\exists p\mathcal{R}q)(\langle p,f\rangle\in g)) \]
 Thus $g^*$ is a definable subset of $\mathcal{G}\times R^\mathcal{G}_\alpha$, meaning 
 $g^*\in M$, and therefore, $g^*\in\mathcal{D}^\mathcal{G}$.
 
 \section*{Proposition 6.1}
-Note why $F\in\mathcal{D}^\mathcal{G}$. Let $\phi(x,y,z)$ be the formula
-\[ \langle x,y\rangle\in z\rangle \]
-and let $\psi(s)$ be the formula
+Note why $F\in\mathcal{D}^\mathcal{G}$. Let $\psi(s)$ be the formulas
 \[ (\forall x)(x\in s\supset(\exists y)\phi(x,y)) \]
-Recall the notation used in Theorem 5.4. We have two formula 
-$F_\phi(v,x,y,z)$ and $F_\psi(v,s)$, such that 
-\[ p\vDash\lbc\phi(f_1,f_2,f_3)\rbc\textrm{ iff }F_\phi(p,f_1,f_2,f_3)\textrm{ is true over }M \]
-and
+Recall the notation used in Theorem 5.4. We have a formula 
+$F_\psi(v,s)$, such that 
 \[ p\vDash\lbc\psi(f)\rbc\textrm{ iff }F_\psi(p,f)\textrm{ is true over}M \]
 Now, because we are assuming $f\in\mathcal{D}^\mathcal{G}$, it easily follows that 
 $F\subseteq\mathcal{G}\times R^\mathcal{G}_\alpha$ for some $\alpha$. Thus, if we show that 
-$F\in M$, it follows that $F\in R^\mathcal{G}_\alpha$, and thus also $\mathcal{D}^\mathcal{G}$. Well, 
+$F\in M$, it follows that $F\in R^\mathcal{G}_{\alpha^+}$, and thus also $\mathcal{D}^\mathcal{G}$. Well, 
 $F$ is definable over $M$ by the formula
-\[ q\in\mathcal{G}\wedge F_\phi(q,a,f)\wedge F_\psi(q,f) \]
+\[ q\in\mathcal{G}\wedge(\forall q'\ltop{\mathcal{R}}q)(\exists q''\ltop{\mathcal{R}}q')\langle q'',a\rangle\in f\wedge F_\psi(q,f) \]
 meaning $F$ is a first-order definable subset of $\mathcal{G}\times R^\mathcal{G}_\alpha$, and thus 
 $F\in M$, hence $F\in\mathcal{D}^\mathcal{G}$.
 
 Here is why Proposition 6.1 yields the validity of the translate of the collection schema over all 
 $S4$ models of $M$. Suppose for some world $p$
-\[ p\nvDash\lbc(\forall a)[(\forall x\in a)(\exists y)\phi(x,y)\supset(\exists b)(\forall x\in a)(\exists y\in b)\phi(x,y)] \]
+\[ p\nvDash\lbc(\forall a)[(\forall x\in a)(\exists y)\phi(x,y)\supset(\exists b)(\forall x\in a)(\exists y\in b)\phi(x,y)]\rbc \]
 Then, for some $f\in\mathcal{D}^\mathcal{G}$,
 \[ p\nvDash\lbc(\forall x\in f)(\exists y)\phi(x,y)\supset(\exists b)(\forall x\in f)(\exists y\in b)\phi(x,y)\rbc \]
 which means, for some $p'$ with $p\mathcal{R}p'$,
-$p'\vDash\lbc(\forall x\in f)(\exists y)\phi(x,y)$ and (1) $p'\nvDash\lbc(\exists b)(\forall x\in f)(\exists y\in b)\phi(x,y)\rbc$.
+$p'\vDash\lbc(\forall x\in f)(\exists y)\phi(x,y)\rbc$ and (1) $p'\nvDash\lbc(\exists b)(\forall x\in f)(\exists y\in b)\phi(x,y)\rbc$.
 By Proposition 6.1, it follows that there is some $g^*\in\mathcal{D}^\mathcal{G}$ such that 
 $p'\vDash\lbc(\forall x\in f)(\exists y\in g^*)\phi(x,y)\rbc$, but this is in direct contradiction with (1).
 
@@ -894,13 +890,13 @@ $p''\vDash\lbc a\approx a'\rbc$ and $p''\vDash\lbc a'\epsilon f\rbc$.
 
 \section*{Exercise 6.1}
 Here is the full formula $\psi(u,v)$ used in the proof of Proposition 6.1 (using the notation introduced in section 5 of this chapter):
-\[ \mathcal{D}(u)\wedge\mathcal{D}(v)\wedge(\exists q\in\mathcal{G})(\exists q'\ltop{\mathcal{R}})(\exists a)(\exists b)[ \]
+\[ \mathcal{D}(u)\wedge\mathcal{D}(v)\wedge(\exists q\in\mathcal{G})(\exists q'\ltop{\mathcal{R}q})(\exists a)(\exists b)[ \]
 \[ u=\langle q,a\rangle\wedge v=\langle q',b\rangle\wedge F_\phi(q',a,b)] \]
 
 \section*{Exercise 6.2}
-Here is why $g\in\mathcal{D}^\mathcal{G}$. Because $h$ is a set, and $g$ is a subset of it, we already know that 
+Here is why $g\in\mathcal{D}^\mathcal{G}$. Because $h$ is a set (in $M$), and $g$ is a subset of it, we already know that 
 $g\in M$ (the formula defining $g$ over $M$ is given in the book). Now, we know that $g\subseteq\mathcal{D}^\mathcal{G}$. 
-So, if we can show that there is some $\mathcal{G}$-rank greater than all of the ranks the elements of $g$, it would follow 
+So, if we can show that there is some $\mathcal{G}$-rank greater than all of the ranks of the elements of $g$, it would follow 
 that $g\in\mathcal{D}^\mathcal{G}$. But suppose that wasn't the case; that is, that there is no $\mathcal{G}$-rank greater than 
 all of the ranks of the elements of $g$. Then it is easy to see that the function assigning each 
 element $x$ of $g$ to the $\mathcal{G}$-rank of $x$ is first-order definable over $M$, and thus, because $g$ is itself 
