@@ -906,4 +906,22 @@ is an ordinal greater than all of the ordinals in $M$ (or $On$ itself, which is 
 Thus it must be that there is some ordinal 
 in $M$ greater than all of the $\mathcal{G}$-ranks of the elements of $g$, meaning $g\in\mathcal{D}^\mathcal{G}$.
 
+\section*{Section 7}
+There were numerous things that were unclear to me in this section. First, it is claimed that $s\in R^\mathcal{G}_{\alpha+1}$. Certainly, 
+we know that $s\subseteq\mathcal{G}\times R^\mathcal{G}_\alpha$, yet I do not see why we know that $s\in M$, unless 
+the well ordering of $R^\mathcal{G}_\alpha$ itself exists (so that we can say \textquote{$m(q,a)$ exists} in a formula defining 
+$s$ over $M$). Next, it was not clear to me why Propositions 7.8 and 7.10 yield Theorem 7.11. It is clear to my why they yield 
+the translate of $S$ being valid over $\mathcal{M}$, where $S$ is the formula that states that every set of 
+non-empty, non-overlapping sets has a choice set. S is equivalent to AC \textit{in the current model}, though 
+this is not true in all classical models whatsoever (meaning I do not think we would be able to use Corollary 4.8 of Chapter 16 here).
+
+\subsection*{Proposition 7.10}
+There is a familiar error (but again, inconsequential) in this proof: it is said that 
+$p\vDash\lbc a\in f\wedge x\in a\wedge x\in s\wedge y\in a\wedge y\in s\rbc$ implies 
+that there are some $a',x'$ and $y'$ so that $p\vDash\lbc a\approx a'\wedge x\approx x'\wedge y\approx y'\rbc$ and 
+$p\vDash\lbc a'\epsilon f\wedge x'\epsilon a'\wedge x'\epsilon s\wedge y'\epsilon a\wedge y'\epsilon s\rbc$, but, in reality, 
+it means that there is some $p'$ with $p\mathcal{R}p'$ and some $a',x'$ and $y'$ so that
+$p'\vDash\lbc a\approx a'\wedge x\approx x'\wedge y\approx y'\rbc$ and
+$p'\vDash\lbc a'\epsilon f\wedge x'\epsilon a'\wedge x'\epsilon s\wedge y'\epsilon a\wedge y'\epsilon s\rbc$.
+
 \end{document}
