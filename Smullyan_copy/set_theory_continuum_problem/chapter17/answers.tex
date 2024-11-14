@@ -907,6 +907,24 @@ Thus it must be that there is some ordinal
 in $M$ greater than all of the $\mathcal{G}$-ranks of the elements of $g$, meaning $g\in\mathcal{D}^\mathcal{G}$.
 
 \section*{Section 7}
+Here is why the principle discussed in this section is equivalent to the Axiom of Choice (AC) (in the form that 
+every non-empty set has a choice function). Call that principle
+(that every set $f$ of non-empty and non-overlapping members has a choice set) Axiom S.
+
+On the one hand, we show that Axiom S implies AC. Consider some non-empty set $f$. We must show that it has a choice function.
+For each subset $S$ of $f$, let $S'$ be $\{S\}\times S$. Then consider the set $D$ of all $S'$ (for each non-empty subset $S$ of $f$). 
+$D$ is then a set of non-empty and non-overlapping sets (non-overlapping, as for any $S_1'$ and $S_2'$ in $D$, where 
+$S_1\ne S_2$, each member of $S_1'$ is of the form $\langle S_1,x\rangle$ for $x\in S_1$, and each member of $S_2'$ is 
+of the form $\langle S_2,y\rangle$ for $y\in S_2$, and because $S_1\ne S_2$, $\langle S_1,x\rangle\ne\langle S_2,y\rangle$ for all 
+elements $x\in S_1$ and $y\in S_2$). Thus, by Axiom S, there is a choice set for $S'$, and this is a choice function 
+for $f$.
+
+On the other hand, we show that AC implies Axiom S. Consider some non-empty set $f$ (the case where $f$ is empty is obvious) all of whose 
+elements are non-empty and non-overlapping. We must show that there is a choice set for $f$. Consider $\cup f$. By AC, there is a 
+choice function $g$ for $\cup f$. Also, for each $x\in f$, $x\subseteq\cup f$. Then take $s$ to be the set of all 
+$y$ where $g(x)=y$ for some $x\in f$. By the assumption that each element of $f$ is nonoverlaping, 
+$s$ contains exactly one element of each $x\in f$. 
+
 There were numerous things that were unclear to me in this section. First, it is claimed that $s\in R^\mathcal{G}_{\alpha+1}$. Certainly, 
 we know that $s\subseteq\mathcal{G}\times R^\mathcal{G}_\alpha$, yet I do not see why we know that $s\in M$, unless 
 the well ordering of $R^\mathcal{G}_\alpha$ itself exists (so that we can say \textquote{$m(q,a)$ exists} in a formula defining 
