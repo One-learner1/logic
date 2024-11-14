@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{cleveref}
+\usepackage{stmaryrd}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tabto}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+\newcommand{\lbc}{\llbracket}
+\newcommand{\rbc}{\rrbracket}
+\newcommand{\ltop}[1]{\stackrel{\leftarrow}{#1}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 18 Notes}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Section 2}
+
+\subsection*{Lemma 2.2}
+Here is why $\cup_{q_0\in\mathcal{G}}S(q_0)$ is an $M$-set (and hence so is $S$). Let 
+$G(x,q)$ stand for the formula
+\[ (\forall y\in x)(\textrm{Ordinal}(y)\wedge(\exists g\in R^\mathcal{G}_\beta)(q\vDash\lbc\hat{y}\approx g\rbc)) \]
+(this can be expanded to a real first-order formula by results in the previous chapter).
+If $S(q_0)$ happens to be in $M$, then $G(S(q_0),q_0)$ will be true in $M$. Now, we already know that each 
+$S(q_0)\in M$. Then consider the following function which is definable over $M$:
+\[ x\in\mathcal{G}\wedge G(y,x) \]
+Because the domain, $\mathcal{G}$, is in $M$, so is the range, and because we have shown each $S(q_0)$ to be in $M$, the 
+range is the set of all $S(q_0)$ (for $q_0\in\mathcal{G}$). Then the union of this, which is also in $M$, 
+is just $S$ itself.
+
+\subsection*{Theorem 2.3}
+It is not fully clear to me why 
+$p\vDash\lbc(\textrm{Ordinal}(f)\wedge\textrm{Ordinal}(\hat{\delta}))\supset (f\in\hat{\delta}\vee\hat{\delta}\in f\vee f\approx\hat{\delta})\rbc$.
+
+A familiar error (see my notes on the previous chapter for what this error is) occurs in this proof.
+
+\section*{Section 3}
+
+\subsection*{Theorem 3.2}
+A familiar error (see my notes on the previous chapter for what this error is) occurs in this proof.
+
+\end{document}
