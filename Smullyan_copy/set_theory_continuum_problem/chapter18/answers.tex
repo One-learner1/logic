@@ -65,4 +65,29 @@ A familiar error (see my notes on the previous chapter for what this error is) o
 \subsection*{Theorem 3.2}
 A familiar error (see my notes on the previous chapter for what this error is) occurs in this proof.
 
+\section*{Section 4}
+
+\subsection*{Notes}
+It should be noted why both $\mathcal{G}\in M$ and $\mathcal{R}\in M$ (which are both conditions we need to have).
+$\mathcal{G}$ is a subset of $(\mathcal{P}\cap M)\times(\mathcal{P}\cap M)$, which is in $M$. Also, 
+$\mathcal{G}$ is definable over $M$ by
+\[ (\exists P)(\exists N)(\exists n)(\exists m)(\exists f)(\exists g)(x=\langle P,N\rangle\wedge \textrm{Num}(n)\wedge\textrm{Num}(m)\wedge \]
+\[ \textrm{f is 1-1 func}(n,N)\wedge\textrm{g is 1-1 func}(m,P)\wedge P\cap N=\emptyset) \]
+(this works because, for each 1-1 function from a number $n$ to some $N$ or $P$, it is finite, so it 
+is in $M$). Thus $\mathcal{G}\in M$. As for $\mathcal{R}$, it is a subset of 
+$\mathcal{G}\times\mathcal{G}$, which is in $M$, and is defined over $M$ by the formula:
+\[ (\exists P_1,P_2)(\exists N_1,N_2)(x=\langle P_1,N_1\rangle\wedge y=\langle P_2,N_2\rangle\wedge x\in\mathcal{G}\wedge y\in\mathcal{G} \]
+\[ \wedge P_1\subseteq P_2\wedge N_1\subseteq N_2) \]
+and thus $\mathcal{R}\in M$.
+
+In Case 1 of Theorem 4.1, note that $r'\vDash\lbc\oldneg (\hat{n}\in\hat{c})\rbc$ would follow by Proposition 3.3 of the previous chapter.
+
+\subsection*{Exercise 4.1}
+Suppose $n\in N$. We show that $\langle P,N\rangle\vDash\lbc\oldneg(\hat{n}\epsilon f_0)\rbc$. 
+Because $n\in N$, $n\notin P$. Thus $\langle P,N\rangle\vDash\oldneg(\hat{n}\epsilon f_0)$. Now, if 
+$\langle P,N\rangle\mathcal{R}\langle P_1,N_1\rangle$, then $N\subseteq N_1$, and thus $n\in N_1$, but 
+$n\notin P_1$, which would mean $\langle P_1,N_1\rangle\vDash\oldneg(\hat{n}\epsilon f_0)$. This explains 
+why $\langle P,N\rangle\vDash\Box\oldneg(\hat{n}\epsilon f_0)$, and thus 
+$\langle P,N\rangle\vDash\lbc\oldneg(\hat{n}\epsilon f_0)\rbc$. 
+
 \end{document}
