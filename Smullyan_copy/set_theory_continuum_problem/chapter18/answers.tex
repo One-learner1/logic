@@ -99,9 +99,9 @@ Here is why the negation of the formula on page 253 is $\Sigma$ formula. Its neg
 \[ \oldneg\textrm{Ordina}(\alpha)\vee(\exists\beta\in\alpha)(\exists f)(\textrm{1-1 onto}(f,\beta,\alpha)) \]
 and this is $\Sigma$ because $\textrm{Ordinal}(\alpha)$ and $\textrm{1-1 onto}(f,\beta,\alpha)$ are both $\Sigma_0$.
 
-In Lemma 5.3, it is not clear to me what \textquote{is} stands for. Previously, on in section 3 of this chapter, it was said that 
+In Lemma 5.3, it is not clear to me what \textquote{is} stands for. Previously, in section 3 of this chapter, it was said that 
 $y\textrm{ is }L_x$ stands for the formula $\mathcal{M}(x,y)$ defined in section 4 of Chapter 14. Clearly that is not what \textquote{is} stands 
-for in this section. Whatever the case, is we suppose that $[x\textrm{ is }f(y)\wedge x'\textrm{ is }f(y)]\supset x=x'$ is indeed classically valid, 
+for in this section. Whatever the case, suppose that $[x\textrm{ is }f(y)\wedge x'\textrm{ is }f(y)]\supset x=x'$ is indeed classically valid; 
 here is why this means $r\vDash\lbc\hat{d_1}\approx\hat{d_2}\rbc$. Using standard $S4$ manipulation, it follows that 
 $r\vDash\lbc\hat{d_1}=\hat{d_2}\rbc$. By Theorem 2.10 of Chapter 17, this means that $p\vDash\lbc\hat{d_1}\approx\hat{d_2}\rbc$.
 
@@ -119,9 +119,10 @@ $p\vDash\Diamond\lbc\hat{\delta}\textrm{ is }f(\hat{\gamma})\rbc$ for some $\gam
 $p\vDash\lbc(\exists y)(y\in\hat{\beta}\wedge\hat{\delta}\textrm{ is }f(y))\rbc$, meaning, at some world 
 $p'$ accessible from $p$, there is some $d$ such that 
 $p'\vDash\lbc d\in\hat{\beta}\rbc$ and $p'\vDash\lbc\hat{\delta}\textrm{ is }f(d)\rbc$. Because 
-$p'\vDash\lbc d\in\hat{\beta}\rbc$, $p''\vDash\lbc d\approx e\rbc$ and $p''\vDash e\epsilon\hat{\beta}$. But this means 
+$p'\vDash\lbc d\in\hat{\beta}\rbc$, $p''\vDash\lbc d\approx e\rbc$ and $p''\vDash e\epsilon\hat{\beta}$ for some $p''$ with 
+$p'\mathcal{R}p''$. But this means 
 $e$ is $\hat{\gamma}$ for some $\gamma\in\beta$. Also, $p''\vDash\lbc\hat{\delta}\textrm{ is }f(d)\rbc$, and 
-by substitutivity, it follows that $p''\vDash\lbc\hat{\delta}\textrm{ is }f(\hat{\gamma})$. Thus, because $p\mathcal{R}p''$, 
+by substitutivity, it follows that $p''\vDash\lbc\hat{\delta}\textrm{ is }f(\hat{\gamma})\rbc$. Thus, because $p\mathcal{R}p''$, 
 $p\vDash\Diamond\lbc\hat{\delta}\textrm{ is }f(\hat{\gamma})\rbc$ for some $\gamma\in\beta$.
 
 Note that, in general, it does not follow that, if $f\in\mathcal{D}^\mathcal{G}$, then $f=\hat{x}$ for some $x\in M$. This is because, 
@@ -130,13 +131,13 @@ $p$, and this certainly is not the case for all $f\in\mathcal{D}^\mathcal{G}$.
 
 It should be noted why Lemma 5.4 does not immediately follow from Proposition 3.3 of the last chapter. For instance, one might argue that, 
 by that result of the last chapter, $p\vDash\lbc\textrm{1-1 onto}(f,\hat{\beta},\hat{\alpha})\rbc$ would immediately imply 
-$\textrm{1-1 onto}(f,\beta,\alpha)$ being true in $M$, a contradiction to the asusmption that $\beta<\alpha$. However, 
-this cannot be concluded - to do that we would need to know that $f=\hat{x}$ for some $x\in M$, which we do not know.
+$\textrm{1-1 onto}(f,\beta,\alpha)$ being true in $M$, a contradiction to the asusmption that $\beta<\alpha$ and $\alpha$ is a cardinal. 
+However, this cannot be concluded - to do that we would need to know that $f=\hat{x}$ for some $x\in M$, which we do not know.
 
 \subsection*{Theorem 5.5}
 Note why $p'\vDash\lbc b\in\hat{\alpha}\rbc$ implies 
 $p''\vdash\lbc b\approx\hat{\beta}\rbc$ for some $p''$ with $p'\mathcal{R}p''$ and $\beta\in\alpha$. 
-Because $p'\vDash\lbc b\in\hat{\alpha}\rbc$, $p''\vDash\lbc b\approx x\rbc$ and $p''\vDash\lbc x\in\hat{\alpha}\rbc$ for some 
+Because $p'\vDash\lbc b\in\hat{\alpha}\rbc$, $p''\vDash\lbc b\approx x\rbc$ and $p''\vDash\lbc x\epsilon\hat{\alpha}\rbc$ for some 
 $p''$ with $p'\mathcal{R}p''$. Then $x$ is some $\hat{\beta}$ for $\beta\in\alpha$, and thus $p''\vDash\lbc b\approx\hat{\beta}\rbc$.
 
 There is an error in this proof. When the contradiction arises with $p''\vDash\lbc\textrm{1-1 onto}(f,\hat{\beta},\hat{\alpha})\rbc$, 
@@ -154,7 +155,30 @@ whence it follows that $\aleph_0\times\overline{\overline{A}}\ge\overline{\overl
 
 \subsection*{Lemma 6.1}
 Note that, if $p\vDash\lbc x\approx x'\rbc$, it follows that 
-$p\vDash\lbc x=x'\rbc$. This explains why $\gamma_1\ne\gamma_2$ implies 
+$p\vDash\lbc x=x'\rbc$ (we prove this below). This explains why $\gamma_1\ne\gamma_2$ implies 
 $\lbc\oldneg(\hat{\gamma_1}\approx\hat{\gamma_2})\rbc$ being valid in the $S4$ model. 
+
+\begin{proof}
+We prove that, if $p\vDash\lbc f\approx f'\rbc$ (for some $f,f'\in\mathcal{D}^\mathcal{G}$), then 
+$p\vDash\lbc f=f'\rbc$. But suppose not. That is, $p\nvDash\lbc f=f'\rbc$. Then either 
+(1) $p\nvDash\lbc(\forall x)(x\in f\supset x\in f')\rbc$ or $p\nvDash\lbc(\forall x)(x\in f'\supset x\in f)\rbc$. Without 
+loss of generality, suppose that it is the former case. Now, because $p\vDash\lbc f\approx f'\rbc$, we know that 
+(2) $p\vDash\lbc(\forall x)[(x\epsilon f)\supset(\exists y)(y\epsilon f'\wedge y\approx x)]\rbc$ (by Proposition 2.12 
+of Chapter 17). By (1), there is some $d$ and some $p'$ with $p\mathcal{R}p'$ such that
+$p'\vDash\lbc d\in f\rbc$ and $p'\vDash\lbc\oldneg(d\in f')\rbc$. We derive a contradiction by showing that 
+$p'\vDash\lbc d\in f'\rbc$. We do this by showing $p'\vDash\Box\Diamond(d\in f')$.
+
+Consider any $p''$ with $p'\mathcal{R}p''$. Because $p'\vDash\lbc d\in f\rbc$, there is some 
+$p'''$ with $p''\mathcal{R}p'''$ and some $b$ such that 
+$p'''\vDash\lbc b\epsilon f\rbc$ and $p'''\vDash\lbc d\approx b\rbc$.
+By (2), it follows that there is some $c$ and some $q$ with $p'''\mathcal{R}q$ such that 
+$q\vDash\lbc c\epsilon f'\rbc$ and $q\vDash\lbc c\approx b\rbc$. Because $p'''\mathcal{R}q$, 
+$q\vDash\lbc d\approx b\rbc$, meaning, by transitivity, 
+$q\vDash\lbc d\approx c\rbc$, and thus, by definition of $\in$, $q\vDash d\in f'$. Hence, because 
+$p''\mathcal{R}q$, $p''\vDash\Diamond(d\in f')$. Because $p''$ was arbitrary, it follows that
+$p'\vDash\Box\Diamond(d\in f')$, that is, 
+$p'\vDash\lbc(d\in f')\rbc$, a contradiction.
+\end{proof}
+
 
 \end{document}
