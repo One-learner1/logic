@@ -142,7 +142,33 @@ $p''$ with $p'\mathcal{R}p''$. Then $x$ is some $\hat{\beta}$ for $\beta\in\alph
 
 There is an error in this proof. When the contradiction arises with $p''\vDash\lbc\textrm{1-1 onto}(f,\hat{\beta},\hat{\alpha})\rbc$, 
 by using Lemma 5.4, this inference is not actually correct. For, it could be that $\beta$ is finite - yet Lemma 5.4 requires $\beta$ 
-to be infinite.
+to be infinite. Whether or not Lemma 5.4 can be proven if $\beta$ is finite is not fully clear to me - it depends upon what 
+the relation \textquote{is} means, but this has not been defined. If we suppose that $p\vDash\lbc x\textrm{ is }y\rbc$ implies 
+$p\vDash\lbc x\approx y\rbc$, then Lemma 5.4 certainly follows if $\beta$ is finite.
+
+\begin{proof}
+We show the result of Lemma 5.4, but in the case that $\beta$ is finite. This is actually really easy - we don't even need to 
+define the function $F$. We aim to derive a contradiction by showing that $\beta$ must contain an infinite number of elements.
+Suppose that $\beta$ contained $n$ elements. Because $\alpha$ is infinite, we can choose $n+1$ (distinct) elements from it, 
+say $a_1,...,a_n,a_{n+1}$. Because $p\vDash\lbc\textrm{1-1 onto}(f,\hat{\beta},\hat{\alpha})$, we know that 
+$p\vDash\lbc(\hat{a_i}\in\hat{\alpha}\supset(\exists y)(y\in\hat{\beta}\wedge\hat{a_i}\textrm{ is }f(y)))$ for 
+each $a_i$ (for $i\le n+1$). It can easily (by induction on $n$)
+be seen that this means there exist $c_1,c_2,...,c_n,c_{n+1}\in\beta$ and some 
+$p'$ with $p\mathcal{R}p'$ such that $p'\vDash\lbc\hat{c_i}\in\hat{\beta}$ and 
+$p'\vDash\lbc\hat{a_i}\textrm{ is }f(\hat{c_i})\rbc$ (for each $i\le n+1$). Because 
+$\beta$ was assumed to have only $n$ members, it must be that $c_i=c_j$ for some 
+$i$ and $j$. Then $p'\vDash\lbc\hat{c_i}\approx\hat{c_j}$, meaning 
+$p'\vDash\lbc f(\hat{c_i)}\approx f(\hat{c_j})\rbc$. Because we have 
+both $p'\vDash\lbc \hat{a_i}\textrm{ is }f(\hat{c_i})\rbc$ and
+$p'\vDash\lbc\hat{a_j}\textrm{ is }f(\hat{c_j})\rbc$, and we are assuming
+$p'\vDash\lbc x\textrm{ is }\rbc$ implies $p'\vDash\lbc x\approx y\rbc$ (we are assuming that this is 
+what \textquote{is} measn), it follows by transitivity that 
+$p'\vDash\lbc\hat{a_i}\approx\hat{a_j}\rbc$, meaning $p'\vDash\lbc\hat{a_i}=\hat{a_j}\rbc$. This 
+means $a_i=a_j$, contrary to the assumption that $a_i$ and $a_j$ are distinct. 
+
+Thus, no matter what size $\beta$ is (assuming $\beta$ is finite), assuming 
+$p\vDash\lbc\textrm{1-1 onto}(f,\hat{\beta},\hat{\alpha})$ led to a contradiction, therefore completing the proof.
+\end{proof}
 
 \subsection*{Exercise 5.1}
 We show that $\aleph_0\times\overline{\overline{A}}\ge\overline{\overline{\cup A}}$. By Lemma 5.3, 
