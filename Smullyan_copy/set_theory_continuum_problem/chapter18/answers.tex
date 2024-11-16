@@ -90,4 +90,71 @@ $n\notin P_1$, which would mean $\langle P_1,N_1\rangle\vDash\oldneg(\hat{n}\eps
 why $\langle P,N\rangle\vDash\Box\oldneg(\hat{n}\epsilon f_0)$, and thus 
 $\langle P,N\rangle\vDash\lbc\oldneg(\hat{n}\epsilon f_0)\rbc$. 
 
+\section*{Section 5}
+
+\subsection*{Notes}
+Here is why the negation of the formula on page 253 is $\Sigma$ formula. Its negation is
+\[ \oldneg(\textrm{Ordinal}(\alpha)\wedge(\forall\beta\in\alpha)\oldneg(\exists f)(\textrm{1-1 onto}(f,\beta,\alpha))) \]
+\[ \oldneg\textrm{Ordinal}(\alpha)\vee\oldneg(\forall\beta\in\alpha)\oldneg(\exists f)(\textrm{1-1 onto}(f,\beta,\alpha)) \]
+\[ \oldneg\textrm{Ordina}(\alpha)\vee(\exists\beta\in\alpha)(\exists f)(\textrm{1-1 onto}(f,\beta,\alpha)) \]
+and this is $\Sigma$ because $\textrm{Ordinal}(\alpha)$ and $\textrm{1-1 onto}(f,\beta,\alpha)$ are both $\Sigma_0$.
+
+In Lemma 5.3, it is not clear to me what \textquote{is} stands for. Previously, on in section 3 of this chapter, it was said that 
+$y\textrm{ is }L_x$ stands for the formula $\mathcal{M}(x,y)$ defined in section 4 of Chapter 14. Clearly that is not what \textquote{is} stands 
+for in this section. Whatever the case, is we suppose that $[x\textrm{ is }f(y)\wedge x'\textrm{ is }f(y)]\supset x=x'$ is indeed classically valid, 
+here is why this means $r\vDash\lbc\hat{d_1}\approx\hat{d_2}\rbc$. Using standard $S4$ manipulation, it follows that 
+$r\vDash\lbc\hat{d_1}=\hat{d_2}\rbc$. By Theorem 2.10 of Chapter 17, this means that $p\vDash\lbc\hat{d_1}\approx\hat{d_2}\rbc$.
+
+Also, in Lemma 5.3, note why the choice of $q$ works. That is, when, for each $d\in F(c)$, we associate some 
+$q$ with it such that $p\mathcal{R}q$. What we need of this association is that, for each $d\in F(c)$, the $q$ associated with 
+$d$ is unique (if we didn't have this, we couldn't conclude that $F(c)$ could be placed in a 1-1 correspondence with 
+the set of all associates, which we need to show that $F(c)$ must be countable). Well, if, for some 
+$d_1,d_2\in F(c)$, we had the $q_1$ and $q_2$ associated, respectively, with each of $d_1$ and $d_2$, such that 
+$q_1=q_2$, it would trivially follow that $q_1$ and $q_2$ were compatible. Then, by the result in the second paragraph of the proof, 
+it would have to be that $d_1=d_2$.
+
+\subsection*{Lemma 5.4}
+Here is why, in the second paragraph, we can conlclude that 
+$p\vDash\Diamond\lbc\hat{\delta}\textrm{ is }f(\hat{\gamma})\rbc$ for some $\gamma\in\beta$. We know that 
+$p\vDash\lbc(\exists y)(y\in\hat{\beta}\wedge\hat{\delta}\textrm{ is }f(y))\rbc$, meaning, at some world 
+$p'$ accessible from $p$, there is some $d$ such that 
+$p'\vDash\lbc d\in\hat{\beta}\rbc$ and $p'\vDash\lbc\hat{\delta}\textrm{ is }f(d)\rbc$. Because 
+$p'\vDash\lbc d\in\hat{\beta}\rbc$, $p''\vDash\lbc d\approx e\rbc$ and $p''\vDash e\epsilon\hat{\beta}$. But this means 
+$e$ is $\hat{\gamma}$ for some $\gamma\in\beta$. Also, $p''\vDash\lbc\hat{\delta}\textrm{ is }f(d)\rbc$, and 
+by substitutivity, it follows that $p''\vDash\lbc\hat{\delta}\textrm{ is }f(\hat{\gamma})$. Thus, because $p\mathcal{R}p''$, 
+$p\vDash\Diamond\lbc\hat{\delta}\textrm{ is }f(\hat{\gamma})\rbc$ for some $\gamma\in\beta$.
+
+Note that, in general, it does not follow that, if $f\in\mathcal{D}^\mathcal{G}$, then $f=\hat{x}$ for some $x\in M$. This is because, 
+if this were the case, $f$ would need to have ordered pairs of the form $\langle p,y\rangle$ (for some $y$) for every possible world 
+$p$, and this certainly is not the case for all $f\in\mathcal{D}^\mathcal{G}$.
+
+It should be noted why Lemma 5.4 does not immediately follow from Proposition 3.3 of the last chapter. For instance, one might argue that, 
+by that result of the last chapter, $p\vDash\lbc\textrm{1-1 onto}(f,\hat{\beta},\hat{\alpha})\rbc$ would immediately imply 
+$\textrm{1-1 onto}(f,\beta,\alpha)$ being true in $M$, a contradiction to the asusmption that $\beta<\alpha$. However, 
+this cannot be concluded - to do that we would need to know that $f=\hat{x}$ for some $x\in M$, which we do not know.
+
+\subsection*{Theorem 5.5}
+Note why $p'\vDash\lbc b\in\hat{\alpha}\rbc$ implies 
+$p''\vdash\lbc b\approx\hat{\beta}\rbc$ for some $p''$ with $p'\mathcal{R}p''$ and $\beta\in\alpha$. 
+Because $p'\vDash\lbc b\in\hat{\alpha}\rbc$, $p''\vDash\lbc b\approx x\rbc$ and $p''\vDash\lbc x\in\hat{\alpha}\rbc$ for some 
+$p''$ with $p'\mathcal{R}p''$. Then $x$ is some $\hat{\beta}$ for $\beta\in\alpha$, and thus $p''\vDash\lbc b\approx\hat{\beta}\rbc$.
+
+There is an error in this proof. When the contradiction arises with $p''\vDash\lbc\textrm{1-1 onto}(f,\hat{\beta},\hat{\alpha})\rbc$, 
+by using Lemma 5.4, this inference is not actually correct. For, it could be that $\beta$ is finite - yet Lemma 5.4 requires $\beta$ 
+to be infinite.
+
+\subsection*{Exercise 5.1}
+We show that $\aleph_0\times\overline{\overline{A}}\ge\overline{\overline{\cup A}}$. By Lemma 5.3, 
+$\aleph_0$ is an upper bound on the size for members of $A$. Then an upper bound on the size of 
+$\overline{\overline{\cup A}}$ is obviously $\aleph_0\times\overline{\overline{A}}$ (because in the 
+case of the upper bound, it could be 1-1 mapped onto $\aleph_0\times\overline{\overline{A}}$) from 
+whence it follows that $\aleph_0\times\overline{\overline{A}}\ge\overline{\overline{\cup A}}$.
+
+\section*{Section 6}
+
+\subsection*{Lemma 6.1}
+Note that, if $p\vDash\lbc x\approx x'\rbc$, it follows that 
+$p\vDash\lbc x=x'\rbc$. This explains why $\gamma_1\ne\gamma_2$ implies 
+$\lbc\oldneg(\hat{\gamma_1}\approx\hat{\gamma_2})\rbc$ being valid in the $S4$ model. 
+
 \end{document}
