@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{cleveref}
+\usepackage{stmaryrd}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tabto}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+\newcommand{\lbc}{\llbracket}
+\newcommand{\rbc}{\rrbracket}
+\newcommand{\ltop}[1]{\stackrel{\leftarrow}{#1}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 19 Notes}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Section 2}
+
+\subsection*{Notes}
+For the model in this section to work, we need $\omega_2\in M$. However, it is not clear to my why this is.
+
+If we assume that $\omega_2\in M$, here is why $\langle\mathcal{G},\mathcal{R}\rangle$ is an $M$-set. It 
+is easy to see that each particular forcing condition is in $M$ - each particular one can be explicitly defined, 
+as it is assumed that $p(\alpha)=\langle\emptyset,\emptyset\rangle$ for all but a finite number of $\alpha\in\omega_2$. 
+The $\mathcal{G}$ set of all forcing conditions is a subset of 
+$\mathcal{P}(\mathcal{P}(\mathcal{P}(\omega_2\times\mathcal{P}(\omega\times\omega)\cap M)\cap M)\cap M)\cap M$, which is in $M$.
+$\mathcal{G}$ is also easily seen to be definable over $M$, and consequently, $\mathcal{G}\in M$. Then 
+$\mathcal{R}$ is also easily seen to be in $M$, as it is definable over $M$, and is a subset of $\mathcal{G}\times\mathcal{G}$, which 
+is in $M$ (as we have shown $\mathcal{G}$ to be in $M$).
+
+\subsection*{Exercise 2.1}
+This is basically the same proof as Theorem 4.1 of Chapter 18.
+
+\begin{proof}
+
+We prove that, for each $\alpha\in\omega_2$, $\lbc\oldneg\textrm{Const}(f_\alpha)\rbc$ is valid in the model
+$M$. Suppose, to the contrary, that $p\nvDash\lbc\oldneg\textrm{Const}(f_\alpha)\rbc$ for some $p$. 
+Then for some $p'$ with $p\mathcal{R}p'$, $p'\vDash\lbc\textrm{Const}(f_\alpha)\rbc$. By Theorem 3.2 of 
+Chapter 18, it follows that $p\vDash\Diamond\lbc f_\alpha\approx\hat{c}\rbc$ for some contrsuctible set $c\in M$.
+This means that, for some $p''$ with $p'\mathcal{R}p''$, $p''\vDash\lbc f_\alpha\approx\hat{c}\rbc$. We derive a 
+contradiction by showing $p''\vDash\lbc\oldneg (f_\alpha\approx\hat{c})\rbc$. $p''$ is some forcing condition, and 
+suppose that $p''(\alpha)=\langle P,N\rangle$. There are then two cases.
+
+Case 1) $c\subseteq P$. Because both $P$ and $N$ are finite, we can pick some integer $n$ 
+such that $n\notin P\cup N$ (thus also $n\notin c$). Let $P'=P\cup\{n\}$. Then there is some 
+forcing condition $q$ such that, for all $\beta\in\omega_2$, if $\beta\ne\alpha$, then 
+$q(\beta)=p''(\beta)$, and if $\beta=\alpha$, then $q(\beta)=\langle P',N\rangle$. Obviously 
+$p''\mathcal{R}q$. Because $c\in P'$, it follows that 
+$q\vDash\lbc\hat{n}\in f_\alpha\rbc$. But because $n\notin c$, $q\vDash\lbc\oldneg(\hat{n}\in\hat{c})\rbc$. 
+These two things jointly imply $q\nvDash\lbc f_\alpha\approx\hat{c}\rbc$. But 
+also $q\vDash\lbc f_\alpha\approx\hat{c}\rbc$, as $p''\vDash\lbc f_\alpha\approx\hat{c}$ and 
+$p''\mathcal{R}q$. Thus this is our contradiction in this case.
+
+Case 2) $c\nsubseteq P$. Pick some $n$ in $c$ but not in $P$. Let $N'=N\cup\{n\}$. 
+Then there is some forcing condition $q$ such that, for all $\beta\in\omega_2$, if 
+$\beta\ne\alpha$, then $q(\beta)=p''(\beta)$, and if $\beta=\alpha$, then $q(\beta)=\langle P,N'\rangle$. Obviously 
+$p''\mathcal{R}q$. Because $n\in c$, it follows that 
+$q\vDash\lbc\hat{n}\in\hat{c}\rbc$. But because $n\in N'$, it follows that $q\vDash\lbc\oldneg(\hat{n}\in f_\alpha)\rbc$. These 
+two things imply that $q\nvDash\lbc f_\alpha\approx\hat{c}\rbc$. But also $q\vDash\lbc f_\alpha\approx\hat{c}\rbc$ (for the 
+same reason as in the first case), which is our contradiction in this case.
+
+\end{proof}
+
+\end{document}
