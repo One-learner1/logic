@@ -91,4 +91,48 @@ same reason as in the first case), which is our contradiction.
 
 \end{proof}
 
+\section*{Section 3}
+
+\subsection*{Exercise 3.1}
+We prove that $\lbc f:\hat{\omega}\xrightarrow[\textrm{onto}]{\text{1-1}}\hat{\omega_2}\rbc$ is 
+valid in the described $S4$-regular model described. Consider any artibrary world $p$. It suffices to show that 
+the following four things hold:
+\[\textrm{(1) }p\vDash\lbc(\forall x)(\forall y)(\forall z)((\langle x,y\rangle\in f\wedge\langle x,z\rangle\in f)\supset y=z)\rbc \]
+(this is the translate of the formula saying $f$ is a function)
+\[\textrm{(2) }p\vDash\lbc(\forall x)(\forall y)(\forall z)((\langle x,z\rangle\in f\wedge\langle y,z\rangle\in f)\supset x=y)\rbc \]
+(this is the translate of the formula saying that $f$ is 1-1)
+\[\textrm{(3) }p\vDash\lbc(\forall x)(x\in\hat{\omega}\supset(\exists y)(y\in\hat{\omega_2}\wedge\langle x,y\rangle\in f))\rbc \]
+(this is the translate of the formula which says that, for each $y\in\omega$, there is some $x\in\omega_2$ such that 
+$f(x)=y$)
+\[\textrm{(4) }p\vDash\lbc(\forall x)(x\in\hat{\omega_2}\supset(\exists y)(y\in\hat{\omega}\wedge\langle x,y\rangle\in f))\rbc \]
+(this is the translate of the formula which says that, for each $x\in\omega_2$, there is some $y\in\omega$ such that 
+$f(x)=y$)
+
+(1) We first show that formula (1) is true at $p$. It suffices to consider any $a,b,c$, and show that
+$p\vDash\lbc((\langle a,b\rangle\in f\wedge\langle a,c\rangle\in f)\supset b=c)\rbc$. Suppose, on the contrary, that 
+$p\nvDash\lbc((\langle a,b\rangle\in f\wedge\langle a,c\rangle\in f)\supset b=c)\rbc$. Then, for some $q$ with 
+$p\mathcal{R}q$, $q\vDash\lbc\langle a,b\rangle\in f\rbc$, $q\vDash\lbc\langle a,c\rangle\in f\rbc$, 
+and $q\vDash\lbc\oldneg (b=c)\rbc$. Because $q\vDash\lbc\langle a,b\rangle\in f\rbc$, it follows that for some 
+$g$ and some $q'$ with $q\mathcal{R}q'$, $q'\vDash\lbc\langle a,b\rangle\approx g\rangle$, 
+$q'\vDash\lbc\langle g\epsilon f\rangle\rbc$. Then it is easily seen that $g=\widehat{\langle n,\alpha\rangle}$ for 
+some $n$ and $\alpha$. Because $q\vDash\lbc\langle a,c\rangle\in f\rbc$ (and hence also $q'\vDash\lbc a,c\rangle\in f\rbc$), 
+similar reasoning will yield $q''\vDash\lbc\langle a,c\rangle\approx\widehat{\langle m,\beta\rangle}\rbc$ and 
+$q''\vDash\lbc\widehat{\langle m,\beta\rangle}\epsilon f\rbc$ for some $q''$ with $q'\mathcal{R}q''$ and some 
+$m$ and $\beta$. From this it easily follows that $q''\vDash\lbc\hat{n}\approx\hat{m}\rbc$. This is because 
+$(\forall x)(\forall y)((\langle x,y\rangle=\langle a,b\rangle)\supset x=a)$ is classically true in $M$, hence its translate is valid 
+in the model. Then we can use this translate twice to get both $q''\vDash\lbc a\approx\hat{n}\rbc$ and 
+$q''\vDash\lbc a\approx\hat{m}\rbc$, from which it follows that $q''\vDash\lbc\hat{m}=\hat{n}\rbc$. Similar reasoning shows that 
+$q''\vDash\lbc\hat{\alpha}\approx b\rbc$, and $q''\vDash\lbc\hat{\beta}\approx c\rbc$. 
+Then it follows (by Lemma 3.2 of Chapter 17) that $n$ and $m$ are the same set. 
+Thus both $q''\vDash\lbc\widehat{\langle n,\alpha\rangle}\epsilon f\rbc$ and 
+$q''\vDash\lbc\widehat{\langle n,\beta\rangle}\epsilon f\rbc$, which can easily be seen to imply 
+$r\vDash\widehat{\langle n,\beta\rangle}\epsilon f$ and $s\vDash\widehat{\langle n,\alpha\rangle}\epsilon f$ 
+for some $r$ and $s$ with $r\mathcal{R}s$. But, by the definition of the accessibility relation, 
+$s$ is an extension of $r$. Also, by the definition of $f$, $n\in\textrm{Dom}(r)$ and 
+$r(n)=\alpha$. Because $s$ is an extension of $r$, and $n\in\textrm{Dom}(s)$, it follows that 
+$s(n)=\beta=\alpha$. Thus $\alpha=\beta$, meaning $q''\vDash\lbc\hat{\alpha}=\hat{\beta}\rbc$, meaning 
+$q''\vDash\lbc\hat{\alpha}\approx\hat{\beta}\rbc$. This implies $q''\vDash\lbc b\approx c\rbc$, that is, 
+$q''\vDash\lbc b=c\rbc$. But we also have 
+$p\vDash\lbc\oldneg (b=c)\rbc$ (by assumption), hence also $q''\vDash\lbc\oldneg (b=c)\rbc$, a contradiction.
+
 \end{document}
