@@ -93,6 +93,11 @@ same reason as in the first case), which is our contradiction.
 
 \section*{Section 3}
 
+\begin{lemma}
+If $p\vDash\lbc\langle a,b\rangle\approx\textrm{Op}(c,d)\rbc$, then 
+$p\vDash\lbc a\approx c\rbc$ and $p\vDash\lbc b\approx d\rbc$. 
+\end{lemma}
+
 \subsection*{Exercise 3.1}
 We prove that $\lbc f:\hat{\omega}\xrightarrow[\textrm{onto}]{\text{1-1}}\hat{\omega_2}\rbc$ is 
 valid in the described $S4$-regular model described. Consider any artibrary world $p$. It suffices to show that 
@@ -114,19 +119,16 @@ $p\nvDash\lbc((\langle a,b\rangle\in f\wedge\langle a,c\rangle\in f)\supset b=c)
 $p\mathcal{R}q$, $q\vDash\lbc\langle a,b\rangle\in f\rbc$, $q\vDash\lbc\langle a,c\rangle\in f\rbc$, 
 and $q\vDash\lbc\oldneg (b=c)\rbc$. Because $q\vDash\lbc\langle a,b\rangle\in f\rbc$, it follows that for some 
 $g$ and some $q'$ with $q\mathcal{R}q'$, $q'\vDash\lbc\langle a,b\rangle\approx g\rangle\rbc$, 
-$q'\vDash\lbc\langle g\epsilon f\rangle\rbc$. Then it is easily seen that $g=\widehat{\langle n,\alpha\rangle}$ for 
+$q'\vDash\lbc g\epsilon f\rbc$. Then it is easily seen that $g=\textrm{Op}(\hat{n},\hat{\alpha})$ for 
 some $n$ and $\alpha$. Because $q\vDash\lbc\langle a,c\rangle\in f\rbc$ (and hence also $q'\vDash\lbc\langle a,c\rangle\in f\rbc$), 
-similar reasoning will yield $q''\vDash\lbc\langle a,c\rangle\approx\widehat{\langle m,\beta\rangle}\rbc$ and 
+similar reasoning will yield $q''\vDash\lbc\langle a,c\rangle\approx\textrm{Op}(\hat{m},\hat{\beta})\rbc$ and 
 $q''\vDash\lbc\widehat{\langle m,\beta\rangle}\epsilon f\rbc$ for some $q''$ with $q'\mathcal{R}q''$ and some 
-$m$ and $\beta$. From this it easily follows that $q''\vDash\lbc\hat{n}\approx\hat{m}\rbc$. This is because 
-$(\forall x)(\forall y)((\langle x,y\rangle=\langle a,b\rangle)\supset x=a)$ is classically true in $M$, hence its translate is valid 
-in the model. Then we can use this translate twice to get both $q''\vDash\lbc a\approx\hat{n}\rbc$ and 
-$q''\vDash\lbc a\approx\hat{m}\rbc$, from which it follows that $q''\vDash\lbc\hat{m}=\hat{n}\rbc$. Similar reasoning shows that 
-$q''\vDash\lbc\hat{\alpha}\approx b\rbc$, and $q''\vDash\lbc\hat{\beta}\approx c\rbc$. 
+$m$ and $\beta$. From this it follows that $q''\vDash\lbc\hat{n}\approx\hat{m}\rbc$, by the above lemma.
+Similarly, $q''\vDash\lbc\hat{\alpha}\approx b\rbc$, and $q''\vDash\lbc\hat{\beta}\approx c\rbc$ both follow. 
 Then it follows (by Lemma 3.2 of Chapter 17) that $n$ and $m$ are the same set. 
-Thus both $q''\vDash\lbc\widehat{\langle n,\alpha\rangle}\epsilon f\rbc$ and 
-$q''\vDash\lbc\widehat{\langle n,\beta\rangle}\epsilon f\rbc$, which can easily be seen to imply 
-$r\vDash\widehat{\langle n,\beta\rangle}\epsilon f$ and $s\vDash\widehat{\langle n,\alpha\rangle}\epsilon f$ 
+Thus both $q''\vDash\lbc\textrm{Op}(\hat{n},\hat{\alpha})\epsilon f\rbc$ and 
+$q''\vDash\lbc\textrm{Op}(\hat{n},\hat{\beta})\epsilon f\rbc$, which can easily be seen to imply 
+$r\vDash\textrm{Op}(\hat{n},\hat{\beta})\epsilon f$ and $s\vDash\textrm{Op}(\hat{n},\hat{\alpha})\epsilon f$ 
 for some $r$ and $s$ with $r\mathcal{R}s$. But, by the definition of the accessibility relation, 
 $s$ is an extension of $r$. Also, by the definition of $f$, $n\in\textrm{Dom}(r)$ and 
 $r(n)=\alpha$. Because $s$ is an extension of $r$, and $n\in\textrm{Dom}(s)$, it follows that 
