@@ -91,12 +91,129 @@ same reason as in the first case), which is our contradiction.
 
 \end{proof}
 
-\section*{Section 3}
+\section*{Sections 3 and 4}
+There are multiple issues with these two sections. First, Exercise 3.1, with the given definition of $f$, is simply incorrect. Second, 
+the definition of $F$ in section 4 is incorrect. However, both of these issues can be fixed by altering the definitions.
+
+First, in order to fix Exercise 3.1, the definition of $f$ needs to be altered to: $p\vDash\textrm{Op}(\hat{n},\hat{\alpha})\epsilon f$ 
+iff $n\in\textrm{Dom}(p)$ and $p(n)=\alpha$. This is shown to fix the problem in the succeeding section of these notes, titled 
+\textquote{Section 3}. The problem of the given definition 
+lies in the fact that, if we were to show that 
+$\lbc f:\hat{\omega}\xrightarrow[\textrm{onto}]{\text{1-1}}\hat{\omega_2}\rbc$ is valid
+over $\mathcal{M}$, we would need to show that
+\[\textrm{(3) }p\vDash\lbc(\forall x)(x\in\hat{\omega}\supset(\exists y)(y\in\widehat{\omega_2}\wedge\langle x,y\rangle\in f))\rbc \]
+But the $\langle x,y\rangle\in f$ is the problem: we only have 
+$p\vDash\widehat{\langle n,\alpha\rangle}\epsilon f$, and $\widehat{\langle n,\alpha\rangle}$ does not act like an ordered pair ($p$, 
+nor any other world, for that matter, necesarily thinks it does). This is we why instead use 
+$p\vDash\textrm{Op}(\hat{n},\hat{\alpha})\epsilon f$. This works, as $p$ (and any other world, for that matter), 
+thinks that $\textrm{Op}(\hat{n},\hat{\alpha})$ is an ordered pair (this will be shown below).
+
+Second, the $F$ in section 4 has an incorrect definition. $F$ as currently defined isn't even a member of $\mathcal{D}^\mathcal{G}$, let alone 
+$R^\mathcal{G}_{\omega_2+3}$. In order to fix this, change the definition of $F$ to the following:
+\[ F=\{\langle p,\textrm{Op}(\hat{\alpha},f_\alpha)\rangle|p\in\mathcal{G},\alpha\in\omega_2\} \]
+
+In order to show why these two fixes actually work, we prove some preliminary results. The main thing we need to show is that for 
+any $f,g\in\mathcal{D}^\mathcal{G}$, $\lbc\langle f,g\rangle =\textrm{Op}(f,g)\rbc$ is valid over the model. This is just an 
+abbreviation for:
+\[ \lbc (\forall x)(x\in\textrm{Op}(f,g)\equiv (x=\{f\}\vee x=\{f,g\}))\rbc \]
+which is in turn an abbreviation for:
+\[ \lbc(\forall x)(x\in\textrm{Op}(f,g)\equiv[(\forall z)(z\in x\equiv z=f)\vee(\forall z)(z\in x\equiv (z=f\vee z=g))])\rbc \] 
+Proving this would establish that all possible worlds think $\textrm{Op}(x,y)$ is just $\langle x,y\rangle$.
+
+First, here is a starter result (though not actually necessary for the proof). We prove that 
+if $\textrm{Op}(a,b)=\textrm{Op}(c,d)$, then $a=c$ and $b=d$.
+
+\begin{proof}
+Suppose $\textrm{Op}(a,b)=\textrm{Op}(c,d)$. For simplicity's sake, let $S_1=\mathcal{G}\times\{a\}$, 
+$S_2=\mathcal{G}\times\{a,b\}$, $S_3=\mathcal{G}\times\{c\}$ and $S_4=\mathcal{G}\times\{c,d\}$. Then 
+$\textrm{Up}(a,a)=S_1$, $\textrm{Up}(a,b)=S_2$, $\textrm{Up}(c,c)=S_3$ and $\textrm{Up}(c,d)=S_4$.
+Also, $\textrm{Op}(a,b)=\textrm{Up}(S_1,S_2)=\mathcal{G}\times\{S_1,S_2\}$ and 
+$\textrm{Op}(c,d)=\textrm{Up}(S_3,S_4)=\mathcal{G}\times\{S_3,S_4\}$.
+
+Because $\mathcal{G}\times\{S_1,S_2\}=\mathcal{G}\times\{S_3,S_4\}$, it 
+follows that either $S_1=S_3$ or $S_1=S_4$, and either $S_2=S_4$ or $S_2=S_3$. 
+
+Suppose, on the one hand, that $S_1=S_3$. Then $a=c$. If $S_2\ne S_4$, then 
+$S_2=S_3$ and $S_4=S_1$, and then $a=b=c=d$. If $S_2=S_4$, then 
+either $b=d$ or $b=a$, and either $d=a$ or $d=b$; these two things obviously imply $b=d$. Hence we have both 
+$a=c$ and $b=d$, and this completes the proof in this case.
+
+On the other hand, suppose that $S_1=S_4$. Then $a=c=d$. If $S_2=S_3$, then 
+$b=c=d$, and we are done. If $S_2=S_4$, then, because $c=d$, $b=d$ also follows easily. Hence we also 
+have $a=c$ and $b=d$ in this case, therefore completing the proof.
+
+\end{proof}
 
 \begin{lemma}
-If $p\vDash\lbc\langle a,b\rangle\approx\textrm{Op}(c,d)\rbc$, then 
-$p\vDash\lbc a\approx c\rbc$ and $p\vDash\lbc b\approx d\rbc$. 
+\[ \lbc(\forall x)[x\in\textrm{Up}(f,g)\equiv (x\approx f\vee x\approx g)]\rbc \]
+is valid in $\mathcal{M}$ (this is just Exercise 4.1).
 \end{lemma}
+
+\begin{proof}
+Suppose that $p\nvDash\lbc(\forall x)[x\in\textrm{Up}(f,g)\equiv (x\approx f\vee x\approx g)]\rbc$ for some $p$. We 
+derive a contradiction. There must be some $d$ such that 
+$p\nvDash\lbc[d\in\textrm{Up}(f,g)\equiv (d\approx f\vee d\approx g)]\rbc$. There are then two cases.
+
+Case 1) $p\nvDash\lbc[d\in\textrm{Up}(f,g)\supset (d\approx f\vee d\approx g)]\rbc$. Then it follows that 
+for some $p'$ with $p\mathcal{R}p'$, 
+$p'\vDash\lbc d\in\textrm{Up}(f,g)\rbc$ and $p'\vDash\lbc\oldneg(d\approx f\vee d\approx g)\rbc$. Because 
+$p'\vDash\lbc d\in\textrm{Up}(f,g)\rbc$, $p''\vDash\lbc d\approx c\rbc$ and $p''\vDash\lbc c\epsilon\textrm{Up}(f,g)\rbc$ 
+for some $c$ and some $p''$ with $p'\mathcal{R}p''$. But by the definition of $\textrm{Up}(f,g)$, it easily follows that 
+$p''\vDash\lbc c\epsilon\textrm{Up}(f,g)\rbc$ implies either $c=f$ or $c=g$. Thus either 
+$p''\vDash\lbc d\approx f\rbc$ or $p''\vDash\lbc d\approx g\rbc$, meaning
+$p''\vDash\lbc (d\approx f\vee d\approx g)\rbc$, contradicting the assumption that 
+$p''\vDash\lbc\oldneg(d\approx f\vee d\approx g)\rbc$.
+
+Case 2) $p\nvDash\lbc[(d\approx f\vee d\approx g)\supset d\in\textrm{Up}(f,g)]\rbc$. Then it follows that 
+for some $p'$ with $p\mathcal{R}p'$,
+$p'\vDash\lbc (d\approx f\vee d\approx g)\rbc$ and $p'\vDash\lbc\oldneg (d\in\textrm{Up}(f,g))\rbc$. 
+Because $p'\vDash\lbc (d\approx f\vee d\approx g)\rbc$, there is some $p''$ with $p'\mathcal{R}p''$ such that 
+at least one of $p''\lbc d\approx f\rbc$ or $p''\lbc d\approx g\rbc$ is true at $p''$. Suppose, without loss of generality, that the 
+former is true, that is, $p''\vDash\lbc d\approx f\rbc$. Now, $p''\vDash\lbc f\epsilon\textrm{Up}(f,g)\rbc$ can easily be seen to be 
+true. This means that $p''\vDash\lbc d\in\textrm{Up}(f,g)\rbc$. But this contradicts the assumption that 
+$p''\vDash\lbc\oldneg (d\in\textrm{Up}(f,g))\rbc$.
+
+\end{proof}
+
+Now we prove the main preliminary result.
+
+\begin{theorem}
+\[ \lbc(\forall x)(x\in\textrm{Op}(f,g)\equiv[(\forall z)(z\in x\equiv z=f)\vee(\forall z)(z\in x\equiv (z=f\vee z=g))])\rbc \]
+is valid over $\mathcal{M}$.
+\end{theorem}
+
+\begin{proof}
+Suppose that
+\[ p\nvDash\lbc(\forall x)(x\in\textrm{Op}(f,g)\equiv[(\forall z)(z\in x\equiv z=f)\vee(\forall z)(z\in x\equiv (z=f\vee z=g))])\rbc \]
+We derive a contradiction. There must be some $d$ such that 
+\[ p\nvDash\lbc(d\in\textrm{Op}(f,g)\equiv[(\forall z)(z\in x\equiv z=f)\vee(\forall z)(z\in x\equiv (z=f\vee z=g))])\rbc \]
+There are then two cases.
+
+Case 1) \[ p\nvDash\lbc(d\in\textrm{Op}(f,g)\supset[(\forall z)(z\in d\equiv z=f)\vee(\forall z)(z\in d\equiv (z=f\vee z=g))])\rbc \]
+Then there is some $p'$ with $p\mathcal{R}p'$ such that 
+$p'\vDash\lbc (d\in\textrm{Op}(f,g))\rbc$ and $p'\vDash\lbc\oldneg[(\forall z)(z\in d\equiv z=f)\vee(\forall z)(z\in d\equiv (z=f\vee z=g))]\rbc$.
+Because $p'\vDash\lbc (d\in\textrm{Op}(f,g))\rbc$, it follows, by the above lemma and the definition of 
+$\textrm{Op}(f,g)$, that either (1) $p'\vDash\lbc d\approx\textrm{Up}(f,f)\rbc$ or 
+(2) $p'\vDash\lbc d\approx\textrm{Up}(f,g)\rbc$. Also, by the above lemma, we know that both 
+$p'\vDash\lbc (\forall z)(z\in\textrm{Up}(f,f)\equiv x=f)\rbc$ and 
+$p'\vDash\lbc (\forall z)(z\in\textrm{Up}(f,g)\equiv (x=f\vee x=g))\rbc$. These two things imply that, whether (1) or (2) holds,
+$p'\vDash\lbc [(\forall z)(z\in d\equiv z=f)\vee(\forall z)(z\in d\equiv (z=f\vee z=g))]\rbc$ must hold, a contradiction to the assumption that 
+$p'\vDash\lbc\oldneg[(\forall z)(z\in d\equiv z=f)\vee(\forall z)(z\in d\equiv (z=f\vee z=g))]\rbc$. 
+
+Case 2) \[ p\nvDash\lbc[(\forall z)(z\in d\equiv z=f)\vee(\forall z)(z\in d\equiv (z=f\vee z=g))]\supset d\in\textrm{Op}(f,g))\rbc \] 
+Then there is some $p'$ with $p\mathcal{R}p'$ such that
+(1) $p'\vDash\lbc [(\forall z)(z\in d\equiv z=f)\vee(\forall z)(z\in d\equiv (z=f\vee z=g))]\rbc$ and 
+$p'\vDash\lbc\oldneg d\in\textrm{Op}(f,g)\rbc$. By (1), there is some $p''$ with $p'\mathcal{R}p''$ such that at least one of 
+$p''\vDash\lbc(\forall z)(z\in d\equiv z=f)\rbc$ and $p''\vDash\lbc(\forall z)(z\in d\equiv(z=f\vee z=g))\rbc$ hold. Suppose, without loss of generality, that 
+the former holds, that is, $p''\vDash\lbc(\forall z)(z\in d\equiv z=f)\rbc$. Then, by the above lemma, it easily follows that 
+$p''\vDash\lbc d=\textrm{Op}(f,f)\rbc$. Again by the above lemma, it follows that 
+$p''\vDash\lbc (\forall x)[x\in\textrm{Op}(f,g)\equiv (x\approx\textrm{Up}(f,f)\vee x\approx\textrm{Up}(f,g))]\rbc$, and this can easily be seen to imply 
+that $p''\vDash\lbc (d\in\textrm{Op}(f,g)\rbc$. But this contradicts the assumption that $p'\vDash\lbc\oldneg(d\in\textrm{Up}(f,g))\rbc$
+(and hence also $p''\vDash\lbc\oldneg(d\in\textrm{Up}(f,g))\rbc$).
+
+\end{proof}
+
+\section*{Section 3}
 
 \subsection*{Exercise 3.1}
 We prove that $\lbc f:\hat{\omega}\xrightarrow[\textrm{onto}]{\text{1-1}}\hat{\omega_2}\rbc$ is 
@@ -196,127 +313,6 @@ contradicts $q'\vDash\lbc\oldneg(\exists y)(y\in\hat{\omega}\wedge\langle y,a\ra
 
 Case 2) This is uses a similar idea as to Case 2 in part (3) of this proof.
 
-\section*{Sections 3 and 4}
-There are multiple issues with these two sections. First, Exercise 3.1, with the given definition of $f$, is simply incorrect. Second, 
-the definition of $F$ is section 4 is incorrect. However, both of these issues can be fixed by altering the definitions.
-
-First, in order to fix Exercise 3.1, $f$ the definition of $f$ needs to be altered to: $p\vDash\textrm{Op}(\hat{n},\hat{\alpha})\epsilon f$ 
-iff $n\in\textrm{Dom}(p)$ and $p(n)=\alpha$. This is shown to fix the problem in the above section. The problem of the given definition 
-lies in the fact that, if we were to show that 
-$\lbc f:\hat{\omega}\xrightarrow[\textrm{onto}]{\text{1-1}}\hat{\omega_2}\rbc$ is valid
-over $\mathcal{M}$, we would need to show that
-\[\textrm{(3) }p\vDash\lbc(\forall x)(x\in\hat{\omega}\supset(\exists y)(y\in\widehat{\omega_2}\wedge\langle x,y\rangle\in f))\rbc \]
-But the $\langle x,y\rangle\in f$ is the problem: we only have 
-$p\vDash\widehat{\langle n,\alpha\rangle}\epsilon f$, and $\widehat{\langle n,\alpha\rangle}$ does not act like an ordered pair ($p$, 
-nor any other world, for that matter, necesarily thinks it does; explain why this is! is it really correct?). This is we why instead use 
-$p\vDash\textrm{Op}(\hat{n},\hat{\alpha})\epsilon f$. This works, as $p$ (and any other world, for that matter), 
-thinks that $\textrm{Op}(\hat{n},\hat{\alpha})$ is an ordered pair.
-
-Second, the $F$ in section 4 has an incorrect definition. $F$ as currently defined isn't even a member of $\mathcal{D}^\mathcal{G}$, let alone 
-$R^\mathcal{G}_{\omega_2+3}$. In order to fix this, change the definition of $F$ to the following:
-\[ F=\{\langle p,\textrm{Op}(\hat{\alpha},f_\alpha)\rangle|p\in\mathcal{G},\alpha\in\omega_2\} \]
-
-In order to show why these two fixes actually work, we prove some preliminary results. The main thing we need to show is that for 
-any $f,g\in\mathcal{D}^\mathcal{G}$, $\lbc\langle f,g\rangle =\textrm{Op}(f,g)\rbc$ is valid over the model. This is just an 
-abbreviation for:
-\[ \lbc (\forall x)(x\in\textrm{Op}(f,g)\equiv (x=\{f\}\vee x=\{f,g\}))\rbc \]
-which is in turn an abbreviation for:
-\[ \lbc(\forall x)(x\in\textrm{Op}(f,g)\equiv(\exists y)[x=y\wedge((\forall z)(z\in y\equiv z=f)\vee(\forall z)(z\in y\equiv (z=f\vee z=g))))] \] 
-Proving this would establish that all possible worlds think $\textrm{Op}(x,y)$ is just $\langle x,y\rangle$.
-
-First, here is a starter result (though not actually necessary for the proof). We prove that 
-if $\textrm{Op}(a,b)=\textrm{Op}(c,d)$, then $a=c$ and $b=d$.
-
-\begin{proof}
-Suppose $\textrm{Op}(a,b)=\textrm{Op}(c,d)$. For simplicity's sake, let $S_1=\mathcal{G}\times\{a\}$, 
-$S_2=\mathcal{G}\times\{a,b\}$, $S_3=\mathcal{G}\times\{c\}$ and $S_4=\mathcal{G}\times\{c,d\}$. Then 
-$\textrm{Up}(a,a)=S_1$, $\textrm{Up}(a,b)=S_2$, $\textrm{Up}(c,c)=S_3$ and $\textrm{Up}(c,d)=S_4$.
-Also, $\textrm{Op}(a,b)=\textrm{Up}(S_1,S_2)=\mathcal{G}\times\{S_1,S_2\}$ and 
-$\textrm{Op}(c,d)=\textrm{Up}(S_3,S_4)=\mathcal{G}\times\{S_3,S_4\}$.
-
-Because $\mathcal{G}\times\{S_1,S_2\}=\mathcal{G}\times\{S_3,S_4\}$, it 
-follows that either $S_1=S_3$ or $S_1=S_4$, and either $S_2=S_4$ or $S_1=S_3$. 
-If the former is immediately the case, we are done. On the 
-other hand, suppose that $S_1=S_4$. On the one hand, suppose that $S_2=S_3$. Then it is easily 
-seen to follow that $f=h$. From this, and the assumption that $S_1=S_3$, it also 
-can easily be seen to follow that $f=k$; similarly, because $S_2=S_3$, $g=h$ also easily follows. 
-Then it can easily be concluded that $S_1=S_2=S_3=S_4$. On the other hand, suppose that $S_2=S_4$. If also 
-$S_2=S_3$, then the result follows by the above reasoning. If, on the other hand, $S_2\ne S_3$, it immediately 
-follows (because either $S_3=S_1$ or $S_3=S_2$) that $S_1=S_3$, which also completes the proof. 
-
-\end{proof}
-
-\begin{lemma}
-\[ \lbc(\forall x)[x\in\textrm{Up}(f,g)\equiv (x\approx f\vee x\approx g)]\rbc \]
-is valid in $\mathcal{M}$ (this is just Exercise 4.1).
-\end{lemma}
-
-\begin{proof}
-Suppose that $p\nvDash\lbc(\forall x)[x\in\textrm{Up}(f,g)\equiv (x\approx f\vee x\approx g)]\rbc$ for some $p$. We 
-derive a contradiction. There must be some $d$ such that 
-$p\nvDash\lbc[d\in\textrm{Up}(f,g)\equiv (d\approx f\vee d\approx g)]\rbc$. There are then two cases.
-
-Case 1) $p\nvDash\lbc[d\in\textrm{Up}(f,g)\supset (d\approx f\vee d\approx g)]\rbc$. Then it follows that 
-for some $p'$ with $p\mathcal{R}p'$, 
-$p'\vDash\lbc d\in\textrm{Up}(f,g)\rbc$ and $p'\vDash\lbc\oldneg(d\approx f\vee d\approx g)\rbc$. Because 
-$p'\vDash\lbc d\in\textrm{Up}(f,g)\rbc$, $p''\vDash\lbc d\approx c\rbc$ and $p''\vDash\lbc c\epsilon\textrm{Up}(f,g)\rbc$ 
-for some $c$. But by the definition of $\textrm{Up}(f,g)$, it easily follows that 
-$p''\vDash\lbc c\epsilon\textrm{Up}(f,g)\rbc$ implies either $c=f$ or $c=g$. Thus either 
-$p''\vDash\lbc d\approx f\rbc$ or $p''\vDash\lbc d\approx g\rbc$, meaning ]
-$p''\vDash\lbc (d\approx f\vee d\approx g)\rbc$, contradicting the assumption that 
-$p''\vDash\lbc\oldneg(d\approx f\vee d\approx g)\rbc$.
-
-Case 2) $p\nvDash\lbc[(d\approx f\vee d\approx g)\supset d\in\textrm{Up}(f,g)]\rbc$. Then it follows that 
-for some $p'$ with $p\mathcal{R}p'$,
-$p'\vDash\lbc (d\approx f\vee d\approx g)\rbc$ and $p'\vDash\lbc\oldneg d\in\textrm{Up}(f,g)\rbc$. 
-Because $p'\vDash\lbc (d\approx f\vee d\approx g)\rbc$, there is some $p''$ with $p'\mathcal{R}p''$ such that 
-at least one of $p''\lbc d\approx f\rbc$ or $p''\lbc d\approx g\rbc$ is true at $p''$. Suppose, without loss of generality, that the 
-former is true, that is, $p''\lbc d\approx f\rbc$. Now, $p''\vDash\lbc f\epsilon\textrm{Up}(f,g)\rbc$ can easily be seen to be 
-true. This means taht $p''\lbc d\in\textrm{Up}(f,g)\rbc$. But this contradicts the assumption that 
-$p''\vDash\lbc\oldneg d\in\textrm{Up}(f,g)\rbc$.
-
-\end{proof}
-
-Now we prove the main preliminary result.
-
-\begin{theorem}
-\[ \lbc(\forall x)(x\in\textrm{Op}(f,g)\equiv(\exists y)[x=y\wedge((\forall z)(z\in y\equiv z=f)\vee(\forall z)(z\in y\equiv (z=f\vee z=g)))]) \]
-is valid over $\mathcal{M}$.
-\end{theorem}
-
-\begin{proof}
-Suppose that
-\[ p\nvDash\lbc(\forall x)(x\in\textrm{Op}(f,g)\equiv(\exists y)[x=y\wedge((\forall z)(z\in y\equiv z=f)\vee(\forall z)(z\in y\equiv (z=f\vee z=g)))]) \]
-We derive a contradiction. There must be some $d$ such that 
-\[ p\nvDash\lbc(d\in\textrm{Op}(f,g)\equiv(\exists y)[d=y\wedge((\forall z)(z\in y\equiv z=f)\vee(\forall z)(z\in y\equiv (z=f\vee z=g)))]) \]
-There are then two cases.
-
-Case 1) \[ p\nvDash\lbc(d\in\textrm{Op}(f,g)\supset(\exists y)[d=y\wedge((\forall z)(z\in y\equiv z=f)\vee(\forall z)(z\in y\equiv (z=f\vee z=g)))]) \]
-Then there is some $p'$ with $p\mathcal{R}p'$ such that 
-$p'\vDash\lbc (d\in\textrm{Op}(f,g))\rbc$ and $p'\vDash\lbc\oldneg(\exists y)[d=y\wedge((\forall z)(z\in y\equiv z=f)\vee(\forall z)(z\in y\equiv (z=f\vee z=g)))]$.
-Because $p'\vDash\lbc (d\in\textrm{Op}(f,g))\rbc$, it follows by the above lemma, and the definition of 
-$\textrm{Op}(f,g)$, that either (1) $p'\vDash\lbc d\approx\textrm{Up}(f,f)\rbc$ or 
-(2) $p'\vDash\lbc d\approx\textrm{Up}(f,g)\rbc$. Also, by the above lemma, we know that both 
-$p'\vDash\lbc (\forall z)(z\in\textrm{Up}(f,f)\equiv x=f)\rbc$ and 
-$p'\vDash\lbc (\forall z)(z\in\textrm{Up}(f,g)\equiv x=f\vee x=g)\rbc$. These two things imply that, whether (1) or (2) holds,
-$p'\vDash\lbc (\exists )[d=y\wedge((\forall z)(z\in y\equiv z=f)\vee(\forall z)(z\in y\equiv (z=f\vee z=g)))]$ must hold, a contradiction to the assumption that 
-$p'\vDash\lbc\oldneg(\exists y)[d=y\wedge((\forall z)(z\in y\equiv z=f)\vee(\forall z)(z\in y\equiv (z=f\vee z=g)))]$. 
-
-Case 2) \[ p\nvDash\lbc((\exists y)[d=y\wedge((\forall z)(z\in y\equiv z=f)\vee(\forall z)(z\in y\equiv (z=f\vee z=g)))]\supset d\in\textrm{Op}(f,g))\rbc \] 
-Then there is some $p'$ with $p\mathcal{R}p'$ such that
-(1) $p'\vDash\lbc (\exists y)[d=y\wedge((\forall z)(z\in y\equiv z=f)\vee(\forall z)(z\in y\equiv (z=f\vee z=g)))]$ and 
-(2) $p'\vDash\lbc\oldneg d\in\textrm{Op}(f,g)\rbc$. By (1), there is some $p''$ with $p'\mathcal{R}p''$ and some $e$ such that 
-$p''\vDash\lbc [d=e\wedge((\forall z)(z\in e\equiv z=f)\vee (\forall z)(z\in e\equiv (z=f\vee z=g)))]\rbc$. Then $p''\vDash\lbc d=e\rbc$,
-and there is some 
-$p'''$ with $p''\mathcal{R}p'''$ such that at least one of $p'''\vDash\lbc(\forall z)(z\in e\equiv z=f)$ or 
-$p'''\vDash\lbc(\forall z)(z\in e\equiv (z=f\vee z=g))\rbc$ holds. Then, by the above lemma, either 
-From these two things it follows that either $p'''\vDash\lbc e=\textrm{Up}(f,f)\rbc$ or 
-$p'''\vDash\lbc e=\textrm{Up}(f,g)\rbc$, meaning either 
-$p'''\vDash\lbc d=\textrm{Up}(f,f)\rbc$ or $p'''\vDash\lbc d=\textrm{Up}(f,g)\rbc$. By the above lemma, this implies that 
-$p'''\vDash\lbc d\in\textrm{Op}(f,g)\rbc$, contradicting the fact that it was assumed $p'''\vDash\lbc\oldneg(d\in\textrm{Op}(f,g))\rbc$.
-
-\end{proof}
-
 \section*{Section 4}
 
 \subsection*{Exercise 4.2}
@@ -329,10 +325,10 @@ the following four things hold:
 (this is the translate of the formula saying $F$ is a function)
 \[\textrm{(2) }p\vDash\lbc(\forall x)(\forall y)(\forall z)((\langle x,z\rangle\in F\wedge\langle y,z\rangle\in F)\supset x=y)\rbc \]
 (this is the translate of the formula saying that $F$ is 1-1)
-\[\textrm{(3) }p\vDash\lbc(\forall x)(x\in\hat{\omega}\supset(\exists y)(y\in\widehat{\omega_2}\wedge\langle x,y\rangle\in F))\rbc \]
+\[\textrm{(3) }p\vDash\lbc(\forall x)(x\in\widehat{\omega_2}\supset(\exists y)(y\in S\wedge\langle x,y\rangle\in F))\rbc \]
 (this is the translate of the formula which says that, for each $x\in\omega_2$, there is some $y\in S$ such that
 $F(x)=y$)
-\[\textrm{(4) }p\vDash\lbc(\forall x)(x\in\widehat{\omega_2}\supset(\exists y)(y\in\hat{\omega}\wedge\langle y,x\rangle\in F))\rbc \]
+\[\textrm{(4) }p\vDash\lbc(\forall x)(x\in S\supset(\exists y)(y\in\widehat{\omega_2}\wedge\langle y,x\rangle\in F))\rbc \]
 (this is the translate of the formula which says that, for each $x\in S$, there is some $y\in\omega_2$ such that
 $F(y)=x$)
 
@@ -347,7 +343,7 @@ it is easily seen that $g=\textrm{Op}(\hat{\alpha},f_\alpha)$ for some $\alpha\i
 $q''\vDash\lbc\langle a,c\rangle\approx\textrm{Op}(\hat{\beta},f_\beta)\rbc$ and
 $q''\vDash\lbc\textrm{Op}(\hat{\beta},f_\beta)\epsilon f\rbc$ for some $q''$ with $q'\mathcal{R}q''$ and some 
 $\beta\in\omega_2$. From this it can easily be seen to follow that $q''\vDash\lbc\hat{\alpha}\approx\hat{\beta}\rbc$ (because, 
-for all $v$ and $w$, $\textrm{Op}(v,w)$ is thought to be $\langle v,w\rangle$ and every possible world of the model). Then 
+for all $v$ and $w$, $\textrm{Op}(v,w)$ is thought to be $\langle v,w\rangle$ at every possible world of the model). Then 
 it follows (by Lemma 3.2 of Chapter 17) that $\alpha$ and $\beta$ are the same set. Thus both $q''\vDash\lbc\textrm{Op}(\hat{\alpha},f_\alpha)\epsilon F\rbc$
 and $q''\vDash\lbc\textrm{Op}(\hat{\alpha},f_\beta)\epsilon F\rbc$, which, by the definition of $F$, implies that 
 $f_\alpha=f_\beta$, and thus $q''\vDash\lbc f_\alpha\approx f_\beta\rbc$. This implies $q''\vDash\lbc b\approx c\rbc$, 
@@ -363,7 +359,7 @@ $s$ with $r\mathcal{R}s$, $r\vDash\textrm{Op}(\hat{\alpha},f_\alpha)\epsilon F$ 
 $s\vDash\textrm{Op}(\hat{\beta},f_\alpha)\epsilon F$ for some $\alpha,\beta\in\omega_2$, where 
 $r\vDash\lbc a\approx\hat{\alpha}\rbc$ and $r\vDash\lbc b\approx\hat{m}\rbc$. By the definition of $F$, it is easy 
 to see that, because $f_\alpha=f_\beta$, $\alpha=\beta$, and thus 
-$r\vDash\lbc\hat{\alpha}\approx\hat{\beta}$, meaning $r\vDash\lbc a\approx b\rbc$, that is, 
+$r\vDash\lbc\hat{\alpha}\approx\hat{\beta}\rbc$, meaning $r\vDash\lbc a\approx b\rbc$, that is, 
 $r\vDash\lbc a=b\rbc$. But $q\vDash\lbc\oldneg(a=b)\rbc$, meaning $r\vDash\lbc\oldneg(a=b)\rbc$, which is a 
 contradiction.
 
@@ -402,12 +398,12 @@ $q'\vDash\lbc\oldneg(\exists y)(y\in\widehat{\omega_2}\wedge\langle y,a\rangle\i
 Thus we have proven that $p\vDash\lbc (F:\widehat{\omega_2}\xrightarrow[\textrm{onto}]{\text{1-1}}S)\rbc$. Next we show that 
 $p\vDash\lbc (\forall x)(x\in S\supset x\subseteq\hat{\omega})\rbc$ holds. First note that, by the definition of 
 $f_\alpha$ (for any $\alpha$, which is given on pg. 260), it easily follows that 
-$\langle f_\alpha\subseteq\hat{\omega}\rbc$ is valid in $\mathcal{M}$. Then, if 
+$\lbc f_\alpha\subseteq\hat{\omega}\rbc$ is valid in $\mathcal{M}$. Then, if 
 $p\nvDash\lbc (\forall x)(x\in S\supset x\subseteq\hat{\omega})\rbc$, it would follow that, for some $q$ with $p\mathcal{R}q$,
 $q\vDash\lbc (a\in S)\rbc$ and $q\vDash\lbc\oldneg (a\subseteq\hat{\omega})\rbc$. But by the definition of $S$, this means 
 $r\vDash\lbc (a\approx f_\alpha)\rbc$ for some $\alpha$ and some $r$ with $q\mathcal{R}r$. This would imply 
-$q\vDash\lbc\oldneg (f_\alpha\subseteq\hat{\omega})\rbc$, contradicting the fact that 
-$q\vDash\lbc (f_\alpha\subseteq\hat{\omega})\rbc$.
+$r\vDash\lbc\oldneg (f_\alpha\subseteq\hat{\omega})\rbc$, contradicting the fact that 
+$r\vDash\lbc (f_\alpha\subseteq\hat{\omega})\rbc$.
 
 We have now proven both $p\vDash\lbc (F:\widehat{\omega_2}\xrightarrow[\textrm{onto}]{\text{1-1}}S)\rbc$
 and $p\vDash\lbc (\forall x)(x\in S\supset x\subseteq\hat{\omega})\rbc$, which completes the proof.
@@ -424,12 +420,12 @@ $\wedge(\forall x)(x\in S\supset x\subseteq a)$ \\
 $\wedge(F:c\xrightarrow[\textrm{onto}]{\text{1-1}} S)]\rbc$
 \end{tabular}
 \end{center}
-we suppose that this formula was not true at some world $p$. Pick 
+is valid in $\mathcal{M}$, we suppose that this formula was not true at some world $p$. Let 
 $a=\hat{\omega}$, $b=\widehat{\omega_1}$, $c=\widehat{\omega_2}$, and 
 $S$ and $F$ be defined as they were on pg. 262. Then 
 $p\vDash\lbc a\textrm{ is }\omega\rbc$ holds (because 
 $\omega\textrm{ is }\omega$ is true in $M$, as $x\textrm{ is }\omega$ is $\Sigma_0$,
-hence $\lbc\hat{\omega}\textrm{ is }\omega$ is 
+hence $\lbc\hat{\omega}\textrm{ is }\omega\rbc$ is 
 valid in $\mathcal{M}$). Also, because $\mathcal{M}$ meets the countable chain condition, 
 $p\vDash\lbc\textrm{Cardinal}(b)\rbc$ and $p\vDash\lbc\textrm{Cardinal}(c)\rbc$ both hold.
 In addition, because both $\omega\in\omega_1$ and $\omega_1\in\omega_2$ are true in $M$, 
