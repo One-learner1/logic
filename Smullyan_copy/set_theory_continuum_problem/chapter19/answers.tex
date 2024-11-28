@@ -122,9 +122,9 @@ $g$ and some $q'$ with $q\mathcal{R}q'$, $q'\vDash\lbc\langle a,b\rangle\approx 
 $q'\vDash\lbc g\epsilon f\rbc$. Then it is easily seen that $g=\textrm{Op}(\hat{n},\hat{\alpha})$ for 
 some $n$ and $\alpha$. Because $q\vDash\lbc\langle a,c\rangle\in f\rbc$ (and hence also $q'\vDash\lbc\langle a,c\rangle\in f\rbc$), 
 similar reasoning will yield $q''\vDash\lbc\langle a,c\rangle\approx\textrm{Op}(\hat{m},\hat{\beta})\rbc$ and 
-$q''\vDash\lbc\widehat{\langle m,\beta\rangle}\epsilon f\rbc$ for some $q''$ with $q'\mathcal{R}q''$ and some 
-$m$ and $\beta$. From this it follows that $q''\vDash\lbc\hat{n}\approx\hat{m}\rbc$, by the above lemma.
-Similarly, $q''\vDash\lbc\hat{\alpha}\approx b\rbc$, and $q''\vDash\lbc\hat{\beta}\approx c\rbc$ both follow. 
+$q''\vDash\lbc\textrm{Op}(\hat{m},\hat{\beta})\epsilon f\rbc$ for some $q''$ with $q'\mathcal{R}q''$ and some 
+$m$ and $\beta$. From this it can easily be seen to follow that follows that $q''\vDash\lbc\hat{n}\approx\hat{m}\rbc$ (because, for all 
+$v$ and $w$, $\textrm{Op}(v,w)$ is thought to be $\langle v,w\rangle$ at every possible world of the model).
 Then it follows (by Lemma 3.2 of Chapter 17) that $n$ and $m$ are the same set. 
 Thus both $q''\vDash\lbc\textrm{Op}(\hat{n},\hat{\alpha})\epsilon f\rbc$ and 
 $q''\vDash\lbc\textrm{Op}(\hat{n},\hat{\beta})\epsilon f\rbc$, which can easily be seen to imply 
@@ -142,10 +142,10 @@ $p\vDash\lbc((\langle a,c\rangle\in f\wedge\langle b,c\rangle\in f)\supset a=b)\
 $p\nvDash\lbc((\langle a,c\rangle\in f\wedge\langle b,c\rangle\in f)\supset a=b)\rbc$. Then, for some $q$ with 
 $p\mathcal{R}q$, $q\vDash\lbc\langle a,c\rangle\in f\rbc$, $q\vDash\lbc\langle b,c\rangle\in f\rbc$, 
 and $q\vDash\lbc\oldneg(a=b)\rbc$. Using near identical reasoning as in part (1) of this proof, it follows that for 
-some $r$ with $q\mathcal{R}r$ and some $s$ with $r\mathcal{R}s$, $r\vDash\widehat{\langle n,\alpha\rangle}\epsilon f$ and 
-$s\vDash\widehat{\langle m,\alpha\rangle }\epsilon f$ for some $n,m$, and $\alpha$, where 
+some $r$ with $q\mathcal{R}r$ and some $s$ with $r\mathcal{R}s$, $r\vDash\textrm{Op}(\hat{n},\hat{\alpha})\epsilon f$ and 
+$s\vDash\textrm{Op}(\hat{m},\hat{\alpha})\epsilon f$ for some $n,m$, and $\alpha$, where 
 $r\vDash\lbc a\approx\hat{n}\rbc$ and $r\vDash\lbc b\approx\hat{m}\rbc$. Because 
-$r\vDash\widehat{\langle n,\alpha\rangle}\epsilon f$, it follows, by the definition of $f$, that 
+$r\vDash\textrm{Op}(\hat{n},\hat{\alpha})\epsilon f$, it follows, by the definition of $f$, that 
 $n\in\textrm{Dom}(r)$ and $r(n)=\alpha$. Similarly, 
 $n\in\textrm{Dom}(s)$ and $s(m)=\alpha$. But $s$ is an extension of $r$, and because 
 both $r$ and $s$ are 1-1 (all forcing conditions under consideration here are 1-1 functions), 
@@ -157,19 +157,44 @@ $q\vDash\lbc\oldneg(a=b)\rbc$, meaning $r\vDash\lbc\oldneg(a=b)\rbc$, which is a
 (3) Next, we show that formula (3) is true at $p$. It suffices to consider any $a$, and show that 
 $p\vDash\lbc(a\in\hat{\omega}\supset(\exists y)(y\in\widehat{\omega_2}\wedge\langle x,y\rangle\in f))\rbc$. Suppose, on the 
 contrary, that $p\nvDash\lbc(a\in\hat{\omega}\supset(\exists y)(y\in\widehat{\omega_2}\wedge\langle a,y\rangle\in f))\rbc$. Then it 
-follows that, for some $q$ with $p\mathcal{R}q$, $q\vDash\lbc(a\in\hat{\omega})$ and 
+follows that, for some $q$ with $p\mathcal{R}q$, $q\vDash\lbc(a\in\hat{\omega})\rbc$ and 
 $q\vDash\lbc\oldneg(\exists y)(y\in\widehat{\omega_2}\wedge\langle a,y\rangle\in f)\rbc$. It follows by the usual reasoning that, for 
-some $q'$ with $q\mathcal{R}q'$, $q'\vDash\lbc a\approx\hat{n}\rbc$ for some $n\in\omega$ such that $q'\vDash\lbc\hat{n}\epsilon\hat{\omega}$.
+some $q'$ with $q\mathcal{R}q'$, $q'\vDash\lbc a\approx\hat{n}\rbc$ for some $n\in\omega$.
 Also, $q'\vDash\lbc\oldneg(\exists y)(y\in\widehat{\omega_2}\wedge\langle a,y\rangle\in f)\rbc$. There are two 
 cases: either $n\in\textrm{Dom}(q')$, or $n\notin\textrm{Dom}(q')$.
 
-Case 1) $n\in\textrm{Dom}(q')$. Let $q'(n)=\alpha$. In order to derive a contradiction, we would need to know that 
-$\langle a,\hat{\alpha}\rangle\in\mathcal{D}^\mathcal{G}$, but we certainly do not know this. It is the case that 
-$\hat{\langle a,\hat{\alpha}\rangle}$, but this is not what allows us to prove 
-$r\vDash\lbc\langle\hat{n},\hat{\alpha}\rangle\rbc$ for some $r$ with $q'\mathcal{R}r$, which is what we needed.
+Case 1) $n\in\textrm{Dom}(q')$. Let $q'(n)=\alpha$. Because $q'$ thinks $\textrm{Op}(\hat{n},\hat{\alpha})$ is an ordered pair, 
+$q'\vDash\lbc\langle\hat{n},\hat{\alpha}\rangle\approx\textrm{Op}(\hat{n},\hat{\alpha})\rbc$. Also, by definition of $q'$, 
+$\alpha\in\omega_2$, meaning $q'\vDash\lbc\hat{\alpha}\in\hat{\omega_2}\rbc$. By the definition of $f$, it can also easily be 
+seen to follow that $q'\vDash\lbc\textrm{Op}(\hat{n},\hat{\alpha})\in f\rbc$, meaning we would have 
+$q'\vDash\lbc (\hat{\alpha}\in\hat{\omega_2}\wedge\textrm{Op}(\hat{n},\hat{\alpha})\in f)\rbc$, thus 
+$q'\vDash\lbc (\hat{\alpha}\in\hat{\omega_2}\wedge\langle\hat{n},\hat{\alpha}\rangle\in f)\rbc$, thus 
+$q'\vDash\lbc (\hat{\alpha}\in\hat{\omega_2}\wedge\langle a,\hat{\alpha}\rangle\in f\rbc$ (because $q'\vDash\lbc a\approx\hat{n}\rbc$). 
+But this contradicts $q'\vDash\lbc\oldneg(\exists y)(y\in\hat{\omega_2}\wedge\langle a,y\rangle\in f)\rbc$.
 
-Thus we cannot actually prove that $\lbc f:\hat{\omega}\xrightarrow[\textrm{onto}]{\text{1-1}}\hat{\omega_2}\rbc$ is valid 
-over $\mathcal{M}$. 
+Case 2) $n\notin\textrm{Dom}(q')$. Define an extension $r$ or $q'$ as follows: Pick some $\alpha\in\omega_2$. Then, for each 
+$m\in\textrm{Dom}(q')$, let $r(m)=q'(m)$, and set $r(n)=\alpha$. Thus we have an extension $r$ or $q'$ where $r(n)=\alpha$, that 
+is, $n\in\textrm{Dom}(r)$. Because $r\vDash\lbc a\approx\hat{n}\rbc$ and $r\vDash\lbc\oldneg(\exists y)(y\in\hat{\omega_2}\wedge\langle a,y\rangle\in f)\rbc$ 
+both hold (because $q'\mathcal{R}r$), a contradiction can then be derived in the same way as in Case 1 of this proof.
+
+(4) Lastly, we show that formula (4) is true at $p$. It suffices to consider any $a$, and show that 
+$p\vDash\lbc(a\in\widehat{\omega_2}\supset(\exists y)(y\in\hat{\omega}\wedge\langle y,x\rangle\in f))\rbc$. Suppose, on the 
+contrary, that $p\nvDash\lbc(a\in\widehat{\omega_2}\supset(\exists y)(y\in\hat{\omega}\wedge\langle y,x\rangle\in f))\rbc$. Then it follows that, 
+for some $q$ with $p\mathcal{R}q$, $q\vDash\lbc(a\in\widehat{\omega_2})\rbc$ and $q\vDash\lbc\oldneg(\exists y)(y\in\hat{\omega}\wedge\langle y,a\rangle\in f)\rbc$.
+It follows by the usual reasoning that, for some $q'$ with 
+$q\mathcal{R}q'$, $q'\vDash\lbc a\approx\hat{\alpha}\rbc$ for some $\alpha\in\omega_2$. Also,
+$q'\vDash\lbc\oldneg(\exists y)(y\in\hat{\omega}\wedge\langle y,a\rangle\in f)\rbc$. There are two cases: 
+either $\alpha\in\textrm{Ran}(q')$ or $\alpha\notin\textrm{Ran}(q')$.
+
+Case 1) $\alpha\in\textrm{Ran}(q')$. Let $n$ be such that $q'(n)=\alpha$. Because $q'$ thinks 
+$\textrm{Op}(\hat{n},\hat{\alpha})$ is an ordered pair, $q'\vDash\lbc\langle\hat{n},\hat{\alpha}\rangle\approx\textrm{Op}(\hat{n},\hat{\alpha})\rbc$. 
+Also, by definition of $q'$, $n\in\omega$, meaning $q'\vDash\lbc\hat{n}\in\hat{\omega}\rbc$. By the definition of $f$, it can also easily be seen to follow that
+$q'\vDash\lbc\textrm{Op}(\hat{n},\hat{\alpha})\in f\rbc$, meaning we would have $q'\vDash\lbc (\hat{n}\in\hat{\omega}\wedge\textrm{Op}(\hat{n},\hat{\alpha})\in f)\rbc$,
+thus $q'\vDash\lbc(\hat{n}\in\hat{\omega}\wedge\langle\hat{n},\hat{\alpha}\rangle\in f)\rbc$, 
+thus $q'\vDash\lbc(\hat{n}\in\hat{\omega}\wedge\langle\hat{n},a\rangle\in f)\rbc$ (because $q'\vDash\lbc a\approx\hat{\alpha}\rbc$). But this 
+contradicts $q'\vDash\lbc\oldneg(\exists y)(y\in\hat{\omega}\wedge\langle y,a\rangle\in f)\rbc$.
+
+Case 2) This is uses a similar idea as to Case 2 in part (3) of this proof.
 
 \section*{Sections 3 and 4}
 There are multiple issues with these two sections. First, Exercise 3.1, with the given definition of $f$, is simply incorrect. Second, 
@@ -246,7 +271,7 @@ for some $p'$ with $p\mathcal{R}p'$,
 $p'\vDash\lbc (d\approx f\vee d\approx g)\rbc$ and $p'\vDash\lbc\oldneg d\in\textrm{Up}(f,g)\rbc$. 
 Because $p'\vDash\lbc (d\approx f\vee d\approx g)\rbc$, there is some $p''$ with $p'\mathcal{R}p''$ such that 
 at least one of $p''\lbc d\approx f\rbc$ or $p''\lbc d\approx g\rbc$ is true at $p''$. Suppose, without loss of generality, that the 
-former is true, that is, $p''\lbc d\approx f\rbc$. Now, $p''\vDash f\epsilon\textrm{Up}(f,g)\rbc$ can easily be seen to be 
+former is true, that is, $p''\lbc d\approx f\rbc$. Now, $p''\vDash\lbc f\epsilon\textrm{Up}(f,g)\rbc$ can easily be seen to be 
 true. This means taht $p''\lbc d\in\textrm{Up}(f,g)\rbc$. But this contradicts the assumption that 
 $p''\vDash\lbc\oldneg d\in\textrm{Up}(f,g)\rbc$.
 
