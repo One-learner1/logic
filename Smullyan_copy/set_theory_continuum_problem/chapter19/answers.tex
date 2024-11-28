@@ -109,21 +109,21 @@ the following four things hold:
 \[\textrm{(3) }p\vDash\lbc(\forall x)(x\in\hat{\omega}\supset(\exists y)(y\in\widehat{\omega_2}\wedge\langle x,y\rangle\in f))\rbc \]
 (this is the translate of the formula which says that, for each $y\in\omega$, there is some $x\in\omega_2$ such that 
 $f(x)=y$)
-\[\textrm{(4) }p\vDash\lbc(\forall x)(x\in\widehat{\omega_2}\supset(\exists y)(y\in\hat{\omega}\wedge\langle x,y\rangle\in f))\rbc \]
+\[\textrm{(4) }p\vDash\lbc(\forall x)(x\in\widehat{\omega_2}\supset(\exists y)(y\in\hat{\omega}\wedge\langle y,x\rangle\in f))\rbc \]
 (this is the translate of the formula which says that, for each $x\in\omega_2$, there is some $y\in\omega$ such that 
-$f(x)=y$)
+$f(y)=x$)
 
-(1) We first show that formula (1) is true at $p$. It suffices to consider any $a,b,c$, and show that
+(1) We first show that (1) holds. It suffices to consider any $a,b,c$, and show that
 $p\vDash\lbc((\langle a,b\rangle\in f\wedge\langle a,c\rangle\in f)\supset b=c)\rbc$. Suppose, on the contrary, that 
 $p\nvDash\lbc((\langle a,b\rangle\in f\wedge\langle a,c\rangle\in f)\supset b=c)\rbc$. Then, for some $q$ with 
 $p\mathcal{R}q$, $q\vDash\lbc\langle a,b\rangle\in f\rbc$, $q\vDash\lbc\langle a,c\rangle\in f\rbc$, 
 and $q\vDash\lbc\oldneg (b=c)\rbc$. Because $q\vDash\lbc\langle a,b\rangle\in f\rbc$, it follows that for some 
-$g$ and some $q'$ with $q\mathcal{R}q'$, $q'\vDash\lbc\langle a,b\rangle\approx g\rangle\rbc$, 
+$g$ and some $q'$ with $q\mathcal{R}q'$, $q'\vDash\lbc\langle a,b\rangle\approx g\rbc$ and 
 $q'\vDash\lbc g\epsilon f\rbc$. Then it is easily seen that $g=\textrm{Op}(\hat{n},\hat{\alpha})$ for 
 some $n$ and $\alpha$. Because $q\vDash\lbc\langle a,c\rangle\in f\rbc$ (and hence also $q'\vDash\lbc\langle a,c\rangle\in f\rbc$), 
 similar reasoning will yield $q''\vDash\lbc\langle a,c\rangle\approx\textrm{Op}(\hat{m},\hat{\beta})\rbc$ and 
 $q''\vDash\lbc\textrm{Op}(\hat{m},\hat{\beta})\epsilon f\rbc$ for some $q''$ with $q'\mathcal{R}q''$ and some 
-$m$ and $\beta$. From this it can easily be seen to follow that follows that $q''\vDash\lbc\hat{n}\approx\hat{m}\rbc$ (because, for all 
+$m$ and $\beta$. From this it can easily be seen to follow that $q''\vDash\lbc\hat{n}\approx\hat{m}\rbc$ (because, for all 
 $v$ and $w$, $\textrm{Op}(v,w)$ is thought to be $\langle v,w\rangle$ at every possible world of the model).
 Then it follows (by Lemma 3.2 of Chapter 17) that $n$ and $m$ are the same set. 
 Thus both $q''\vDash\lbc\textrm{Op}(\hat{n},\hat{\alpha})\epsilon f\rbc$ and 
@@ -137,7 +137,7 @@ $q''\vDash\lbc\hat{\alpha}\approx\hat{\beta}\rbc$. This implies $q''\vDash\lbc b
 $q''\vDash\lbc b=c\rbc$. But we also have 
 $q\vDash\lbc\oldneg (b=c)\rbc$ (by assumption), hence also $q''\vDash\lbc\oldneg (b=c)\rbc$, a contradiction.
 
-(2) Now we move on to showing that formula (2) is true at $p$. It suffices to consider any $a,b,c$, and show that
+(2) Now we move on to showing that (2) holds. It suffices to consider any $a,b,c$, and show that
 $p\vDash\lbc((\langle a,c\rangle\in f\wedge\langle b,c\rangle\in f)\supset a=b)\rbc$. Suppose, on the contrary, that 
 $p\nvDash\lbc((\langle a,c\rangle\in f\wedge\langle b,c\rangle\in f)\supset a=b)\rbc$. Then, for some $q$ with 
 $p\mathcal{R}q$, $q\vDash\lbc\langle a,c\rangle\in f\rbc$, $q\vDash\lbc\langle b,c\rangle\in f\rbc$, 
@@ -154,7 +154,7 @@ $r\vDash\lbc a\approx\hat{n}\rbc$ and $r\vDash\lbc b\approx\hat{m}\rbc$, it then
 $r\vDash\lbc a\approx b\rbc$, that is, $r\vDash\lbc a=b\rbc$. But 
 $q\vDash\lbc\oldneg(a=b)\rbc$, meaning $r\vDash\lbc\oldneg(a=b)\rbc$, which is a contradiction.
 
-(3) Next, we show that formula (3) is true at $p$. It suffices to consider any $a$, and show that 
+(3) Next, we show that (3) holds. It suffices to consider any $a$, and show that 
 $p\vDash\lbc(a\in\hat{\omega}\supset(\exists y)(y\in\widehat{\omega_2}\wedge\langle x,y\rangle\in f))\rbc$. Suppose, on the 
 contrary, that $p\nvDash\lbc(a\in\hat{\omega}\supset(\exists y)(y\in\widehat{\omega_2}\wedge\langle a,y\rangle\in f))\rbc$. Then it 
 follows that, for some $q$ with $p\mathcal{R}q$, $q\vDash\lbc(a\in\hat{\omega})\rbc$ and 
@@ -177,7 +177,7 @@ $m\in\textrm{Dom}(q')$, let $r(m)=q'(m)$, and set $r(n)=\alpha$. Thus we have an
 is, $n\in\textrm{Dom}(r)$. Because $r\vDash\lbc a\approx\hat{n}\rbc$ and $r\vDash\lbc\oldneg(\exists y)(y\in\hat{\omega_2}\wedge\langle a,y\rangle\in f)\rbc$ 
 both hold (because $q'\mathcal{R}r$), a contradiction can then be derived in the same way as in Case 1 of this proof.
 
-(4) Lastly, we show that formula (4) is true at $p$. It suffices to consider any $a$, and show that 
+(4) Lastly, we show that (4) holds. It suffices to consider any $a$, and show that 
 $p\vDash\lbc(a\in\widehat{\omega_2}\supset(\exists y)(y\in\hat{\omega}\wedge\langle y,x\rangle\in f))\rbc$. Suppose, on the 
 contrary, that $p\nvDash\lbc(a\in\widehat{\omega_2}\supset(\exists y)(y\in\hat{\omega}\wedge\langle y,x\rangle\in f))\rbc$. Then it follows that, 
 for some $q$ with $p\mathcal{R}q$, $q\vDash\lbc(a\in\widehat{\omega_2})\rbc$ and $q\vDash\lbc\oldneg(\exists y)(y\in\hat{\omega}\wedge\langle y,a\rangle\in f)\rbc$.
@@ -316,5 +316,144 @@ $p'''\vDash\lbc d=\textrm{Up}(f,f)\rbc$ or $p'''\vDash\lbc d=\textrm{Up}(f,g)\rb
 $p'''\vDash\lbc d\in\textrm{Op}(f,g)\rbc$, contradicting the fact that it was assumed $p'''\vDash\lbc\oldneg(d\in\textrm{Op}(f,g))\rbc$.
 
 \end{proof}
+
+\section*{Section 4}
+
+\subsection*{Exercise 4.2}
+We prove that $\lbc (F:\widehat{\omega_2}\xrightarrow[\textrm{onto}]{\text{1-1}}S\rbc)\wedge(\forall x)(x\in S\supset x\subseteq\hat{\omega})\rbc$ 
+is valid in $\mathcal{M}$. Consider any artibrary world $p$. It suffices to show that both 
+$p\vDash\lbc (F:\widehat{\omega_2}\xrightarrow[\textrm{onto}]{\text{1-1}}S\rbc)\rbc$ and 
+$p\vDash\lbc (\forall x)(x\in S\supset x\subseteq\hat{\omega})\rbc$ hold. We first show that the former holds. It suffices to show that 
+the following four things hold:
+\[\textrm{(1) }p\vDash\lbc(\forall x)(\forall y)(\forall z)((\langle x,y\rangle\in F\wedge\langle x,z\rangle\in F)\supset y=z)\rbc \]
+(this is the translate of the formula saying $F$ is a function)
+\[\textrm{(2) }p\vDash\lbc(\forall x)(\forall y)(\forall z)((\langle x,z\rangle\in F\wedge\langle y,z\rangle\in F)\supset x=y)\rbc \]
+(this is the translate of the formula saying that $F$ is 1-1)
+\[\textrm{(3) }p\vDash\lbc(\forall x)(x\in\hat{\omega}\supset(\exists y)(y\in\widehat{\omega_2}\wedge\langle x,y\rangle\in F))\rbc \]
+(this is the translate of the formula which says that, for each $x\in\omega_2$, there is some $y\in S$ such that
+$F(x)=y$)
+\[\textrm{(4) }p\vDash\lbc(\forall x)(x\in\widehat{\omega_2}\supset(\exists y)(y\in\hat{\omega}\wedge\langle y,x\rangle\in F))\rbc \]
+(this is the translate of the formula which says that, for each $x\in S$, there is some $y\in\omega_2$ such that
+$F(y)=x$)
+
+(1) We first show that (1) holds. It suffices to consider any $a,b,c,$ and show that 
+$p\vDash\lbc((\langle a,b\rangle\in F\wedge\langle a,c\rangle\in F)\supset b=c)\rbc$. Suppose, on the contrary, that 
+$p\nvDash\lbc((\langle a,b\rangle\in F\wedge\langle a,c\rangle\in F)\supset b=c)\rbc$. Then, for some $q$ with 
+$p\mathcal{R}q$, $q\vDash\lbc\langle a,b\rangle\in f\rbc$, $q\vDash\lbc\langle a,c\rangle\in f\rbc$, and $q\vDash\lbc\oldneg(b=c)\rbc$. Because 
+$q\vDash\lbc\langle a,b\rangle\in f\rbc$, it follows that for some $g$ and some $q'$ with $q\mathcal{R}q'$,
+$q'\vDash\lbc\langle a,b\rangle\approx g\rbc$ and $q'\vDash\lbc g\epsilon F\rbc$. Then, by the definition of $F$,
+it is easily seen that $g=\textrm{Op}(\hat{\alpha},f_\alpha)$ for some $\alpha\in\omega_2$. Because $q\vDash\lbc\langle a,c\rangle\in F\rbc$, 
+(and hence also $q'\vDash\lbc\langle a,c\rangle\in F\rbc$), similar reasoning will yield
+$q''\vDash\lbc\langle a,c\rangle\approx\textrm{Op}(\hat{\beta},f_\beta)\rbc$ and
+$q''\vDash\lbc\textrm{Op}(\hat{\beta},f_\beta)\epsilon f\rbc$ for some $q''$ with $q'\mathcal{R}q''$ and some 
+$\beta\in\omega_2$. From this it can easily be seen to follow that $q''\vDash\lbc\hat{\alpha}\approx\hat{\beta}\rbc$ (because, 
+for all $v$ and $w$, $\textrm{Op}(v,w)$ is thought to be $\langle v,w\rangle$ and every possible world of the model). Then 
+it follows (by Lemma 3.2 of Chapter 17) that $\alpha$ and $\beta$ are the same set. Thus both $q''\vDash\lbc\textrm{Op}(\hat{\alpha},f_\alpha)\epsilon F\rbc$
+and $q''\vDash\lbc\textrm{Op}(\hat{\alpha},f_\beta)\epsilon F\rbc$, which, by the definition of $F$, implies that 
+$f_\alpha=f_\beta$, and thus $q''\vDash\lbc f_\alpha\approx f_\beta\rbc$. This implies $q''\vDash\lbc b\approx c\rbc$, 
+that is, $q''\vDash\lbc b=c\rbc$. But we also have 
+$q\vDash\lbc\oldneg (b=c)\rbc$ (by assumption), hence also $q''\vDash\lbc\oldneg(b=c)\rbc$, a contradiction. 
+
+(2) Now we move on to showing that (2) holds. It suffices to consider any $a,b,c,$ and show that 
+$p\vDash\lbc((\langle a,c\rangle\in F\wedge\langle b,c\rangle\in F)\supset a=b)\rbc$. Suppose, on the contrary, that 
+$p\nvDash\lbc((\langle a,c\rangle\in F\wedge\langle b,c\rangle\in F)\supset a=b)\rbc$. Then, for some $q$ with $p\mathcal{R}q$,
+$q\vDash\lbc\langle a,c\rangle\in F\rbc$, $q\vDash\lbc\langle b,c\rangle\in F\rbc$, and $q\vDash\lbc\oldneg(a=b)\rbc$. Using near 
+identical reasoning as in part (1) of this proof, it follows that for some $r$ with $q\mathcal{R}r$ and some 
+$s$ with $r\mathcal{R}s$, $r\vDash\textrm{Op}(\hat{\alpha},f_\alpha)\epsilon F$ and
+$s\vDash\textrm{Op}(\hat{\beta},f_\alpha)\epsilon F$ for some $\alpha,\beta\in\omega_2$, where 
+$r\vDash\lbc a\approx\hat{\alpha}\rbc$ and $r\vDash\lbc b\approx\hat{m}\rbc$. By the definition of $F$, it is easy 
+to see that, because $f_\alpha=f_\beta$, $\alpha=\beta$, and thus 
+$r\vDash\lbc\hat{\alpha}\approx\hat{\beta}$, meaning $r\vDash\lbc a\approx b\rbc$, that is, 
+$r\vDash\lbc a=b\rbc$. But $q\vDash\lbc\oldneg(a=b)\rbc$, meaning $r\vDash\lbc\oldneg(a=b)\rbc$, which is a 
+contradiction.
+
+(3) Next, we show that (3) holds. It suffices to consider any $a$, and show that 
+$p\vDash\lbc(a\in\widehat{\omega_2}\supset(\exists y)(y\in S\wedge\langle x,y\rangle\in F))\rbc$. Suppose, on the contrary, that 
+$p\nvDash\lbc(a\in\widehat{\omega_2}\supset(\exists y)(y\in S\wedge\langle a,y\rangle\in F))\rbc$. Then it follows that, for 
+some $q$ with $p\mathcal{R}q$, $q\vDash\lbc(a\in\widehat{\omega_2})\rbc$ and $q\vDash\lbc\oldneg(\exists y)(y\in S\wedge\langle a,y\rangle\in F)\rbc$.
+It follows by the usual reasoning that, for some $q'$ with $q\mathcal{R}q'$, 
+$q'\vDash\lbc a\approx\hat{\alpha}\rbc$ for some $\alpha\in\omega_2$. Also, $q'\vDash\lbc\oldneg(\exists y)(y\in S\wedge\langle a,y\rangle\in F)\rbc$. By 
+the definition of $F$, we know that $q'\vDash\lbc\textrm{Op}(\hat{\alpha},f_\alpha)\in F\rbc$. Because $q'$ thinks 
+$\textrm{Op}(\hat{\alpha},f_\alpha)$ is an ordered pair, 
+$q'\vDash\lbc\langle\hat{\alpha},f_\alpha\rangle\approx\textrm{Op}(\hat{\alpha},f_\alpha)\rbc$. Also, by the definition of $S$, it easily can be seen that 
+$q'\vDash\lbc f_\alpha\in S\rbc$. Thus 
+$q'\vDash\lbc (f_\alpha\in S\wedge\textrm{Op}(\hat{\alpha},f_\alpha)\in F)\rbc$, hence
+$q'\vDash\lbc (f_\alpha\in S\wedge\langle\hat{\alpha},f_\alpha\rangle\in F)\rbc$, hence
+$q'\vDash\lbc (f_\alpha\in S\wedge\langle a,f_\alpha\rangle\in F)\rbc$ (because $q'\vDash\lbc a\approx\hat{\alpha}\rbc$), hence
+$q'\vDash\lbc(\exists y)(y\in S\wedge\langle a,y\rangle\in F)\rbc$. But we also have 
+$q'\vDash\lbc\oldneg(\exists y)(y\in S\wedge\langle a,y\rangle\in F)\rbc$, which is a contradiction.
+
+(4) Lastly, we show that (4) holds. It suffices to consider any $a$, and show that
+$p\vDash\lbc(a\in S\supset(\exists y)(y\in\widehat{\omega_2}\wedge\langle y,x\rangle\in F))\rbc$. Suppose, on the contrary, that
+$p\nvDash\lbc(a\in S\supset(\exists y)(y\in\widehat{\omega_2}\wedge\langle y,x\rangle\in F))\rbc$. Then if follows that, for 
+some $q$ with $p\mathcal{R}q$, $q\vDash\lbc(a\in S)\rbc$ and $q\vDash\lbc\oldneg(\exists y)(y\in\widehat{\omega_2}\wedge\langle y,a\rangle\in F)\rbc$.
+It follows by the usual reasoning (and the definition of $S$) that, 
+for some $q'$ with $q\mathcal{R}q'$, $q'\vDash\lbc a\approx f_\alpha\rbc$ for some $\alpha\in\omega_2$. By the definition of 
+$F$, it can easily be seen that $q'\vDash\lbc\textrm{Op}(\hat{\alpha},f_\alpha)\in F\rbc$. Because $q'$ thinks 
+$\textrm{Op}(\hat{\alpha},f_\alpha)$ is an ordered pair, $q'\vDash\lbc\langle\hat{\alpha},f_\alpha\rangle\approx\textrm{Op}(\hat{\alpha},f_\alpha)\rbc$. 
+Also $q'\vDash\lbc\hat{\alpha}\in\widehat{\omega_2}\rbc$, meaning 
+$q'\vDash\lbc (\hat{\alpha}\in\widehat{\omega_2}\wedge\textrm{Op}(\hat{\alpha},f_\alpha)\in F)\rbc$, hence
+$q'\vDash\lbc (\hat{\alpha}\in\widehat{\omega_2}\wedge\langle\hat{\alpha},f_\alpha\rangle\in F)\rbc$, hence
+$q'\vDash\lbc (\hat{\alpha}\in\widehat{\omega_2}\wedge\langle\hat{\alpha},a\rangle\in F)\rbc$ (because 
+$q'\vDash\lbc a\approx f_\alpha\rbc$), hence
+$q'\vDash\lbc(\exists y)(y\in\widehat{\omega_2}\wedge\langle y,a\rangle\in F)\rbc$. But we also have 
+$q'\vDash\lbc\oldneg(\exists y)(y\in\widehat{\omega_2}\wedge\langle y,a\rangle\in F)\rbc$, which is a contradiction.
+
+Thus we have proven that $p\vDash\lbc (F:\widehat{\omega_2}\xrightarrow[\textrm{onto}]{\text{1-1}}S)\rbc$. Next we show that 
+$p\vDash\lbc (\forall x)(x\in S\supset x\subseteq\hat{\omega})\rbc$ holds. First note that, by the definition of 
+$f_\alpha$ (for any $\alpha$, which is given on pg. 260), it easily follows that 
+$\langle f_\alpha\subseteq\hat{\omega}\rbc$ is valid in $\mathcal{M}$. Then, if 
+$p\nvDash\lbc (\forall x)(x\in S\supset x\subseteq\hat{\omega})\rbc$, it would follow that, for some $q$ with $p\mathcal{R}q$,
+$q\vDash\lbc (a\in S)\rbc$ and $q\vDash\lbc\oldneg (a\subseteq\hat{\omega})\rbc$. But by the definition of $S$, this means 
+$r\vDash\lbc (a\approx f_\alpha)\rbc$ for some $\alpha$ and some $r$ with $q\mathcal{R}r$. This would imply 
+$q\vDash\lbc\oldneg (f_\alpha\subseteq\hat{\omega})\rbc$, contradicting the fact that 
+$q\vDash\lbc (f_\alpha\subseteq\hat{\omega})\rbc$.
+
+We have now proven both $p\vDash\lbc (F:\widehat{\omega_2}\xrightarrow[\textrm{onto}]{\text{1-1}}S)\rbc$
+and $p\vDash\lbc (\forall x)(x\in S\supset x\subseteq\hat{\omega})\rbc$, which completes the proof.
+
+\subsection*{Corollary 4.4}
+We provide a proof of Corollary 4.4 (note that $a\textrm{ is }\omega$ is in fact $\Sigma_0$, not just 
+$\Sigma$, as the Corollary states). To show that 
+\begin{center}
+\begin{tabular}{l}
+$\lbc(\exists a)(\exists b)(\exists c)(\exists S)(\exists F)$ \\
+$[a\textrm{ is }\omega\wedge\textrm{Cardinal}(b)\wedge\textrm{Cardinal}(c)$ \\
+$\wedge a\in b\wedge b\in c$ \\
+$\wedge(\forall x)(x\in S\supset x\subseteq a)$ \\
+$\wedge(F:c\xrightarrow[\textrm{onto}]{\text{1-1}} S)]\rbc$
+\end{tabular}
+\end{center}
+we suppose that this formula was not true at some world $p$. Pick 
+$a=\hat{\omega}$, $b=\widehat{\omega_1}$, $c=\widehat{\omega_2}$, and 
+$S$ and $F$ be defined as they were on pg. 262. Then 
+$p\vDash\lbc a\textrm{ is }\omega\rbc$ holds (because 
+$\omega\textrm{ is }\omega$ is true in $M$, as $x\textrm{ is }\omega$ is $\Sigma_0$,
+hence $\lbc\hat{\omega}\textrm{ is }\omega$ is 
+valid in $\mathcal{M}$). Also, because $\mathcal{M}$ meets the countable chain condition, 
+$p\vDash\lbc\textrm{Cardinal}(b)\rbc$ and $p\vDash\lbc\textrm{Cardinal}(c)\rbc$ both hold.
+In addition, because both $\omega\in\omega_1$ and $\omega_1\in\omega_2$ are true in $M$, 
+so do $p\vDash\lbc a\in b\rbc$ and $p\vDash\lbc b\in c\rbc$ both hold. By Proposition 4.3, we 
+also have $p\vDash\lbc (F: c\xrightarrow[\textrm{onto}]{\text{1-1}}S)\wedge(\forall x)(x\in S\supset x\subseteq a)\rbc$. 
+Thus we have
+\begin{center}
+\begin{tabular}{l}
+$p\vDash\lbc[a\textrm{ is }\omega\wedge\textrm{Cardinal}(b)\wedge\textrm{Cardinal}(c)$ \\
+$\wedge a\in b\wedge b\in c$ \\
+$\wedge(\forall x)(x\in S\supset x\subseteq a)$ \\
+$\wedge(F:c\xrightarrow[\textrm{onto}]{\text{1-1}} S)]\rbc$
+\end{tabular}
+\end{center}
+which implies
+\begin{center}
+\begin{tabular}{l}
+$p\vDash\lbc(\exists a)(\exists b)(\exists c)(\exists S)(\exists F)$ \\
+$[a\textrm{ is }\omega\wedge\textrm{Cardinal}(b)\wedge\textrm{Cardinal}(c)$ \\
+$\wedge a\in b\wedge b\in c$ \\
+$\wedge(\forall x)(x\in S\supset x\subseteq a)$ \\
+$\wedge(F:c\xrightarrow[\textrm{onto}]{\text{1-1}} S)]\rbc$
+\end{tabular}
+\end{center}
+which is a contradiction, as we supposed that this same formula did not hold.
 
 \end{document}
