@@ -513,16 +513,12 @@ $r\vDash\lbc\oldneg(\exists y)(y\epsilon a\wedge y\approx c)\rbc$).
 
 \end{proof}
 
-There were multiple other issues that I had with this section. First, it seems that, in order for this section to work, we would need to know that
+There was another issue that I had with this section. It seem that, in order for this section to work, we would need to know that 
 $\omega_1,\omega_2,$ and $\omega_3$ are all in $L$ (we are setting $M=L$ in this section), yet I do not recall this being previously established.
-Secondly, I was unable to understand the notion of $C_0$ as defined on pg. 264. In particular, it seems me that either $C_0=C$, or 
-$C_0$ cannot exist. My argument is that if there are at least two $a,b\in C$ such that $a\ne b$ but $\lbc a\approx b\rbc$ is valid 
-in $\mathcal{M}$. If this is the case, then $\{a\},\{b\},$ and $\{a,b\}$ are all equivalence classes. If $C_0$ contained exactly one member from 
-all equivalence classes, it would have to contain exactly one member from each of these three. Hence it would contain both 
-$a$ and $b$, meaning it does not contain just one member of $\{a,b\}$, a contradiction.
-On the other hand, if two such $a$ and $b$ did not exist, then the only equivalence classes would be all of those sets of the form 
-$\{a\}$ for $a\in C$. Hence $C_0$ would exist, and it would just be $C$. As I could not understand the definition of $C_0$, I did not attmept to 
-answer Exercise 5.3 
+
+Note to self: The notion of equivalence class discussed on pg. 264 is such that, if $a$ and $b$ are equivalent, then 
+the equivalence classes for $a$ and $b$ are the same. The distinct equivalence classes are guaranteed to have disjoint members, which explains 
+why we can construct $C_0$ in the first place.
 
 \subsection*{Exercise 5.2}
 We prove that $\overline{\overline{\mathcal{G}}}=\aleph_2$. In order to do this, we show that 
@@ -541,5 +537,90 @@ finite, disjoint sets of integers). This means $f_i$ has cardinality $\aleph_2$,
 $\mathcal{G}$ has cardinality $\aleph_2$.
 
 On the other hand, it easily follows by the definition of $\mathcal{G}$ that $\aleph_2\le\overline{\overline{\mathcal{G}}}$.
+
+\subsection*{Exercise 5.3}
+We prove that $\lbc (f:\mathcal{P}(\hat{\omega})\rightarrow\widehat{\omega_2})\wedge\textrm{1-1}(f)\rbc$. First note, however, that 
+there is an error in the definition of $f$. Currently, the definition is such that $f$ is not even in 
+$\mathcal{D}^\mathcal{G}$. The definition really should be 
+\[ f=\{\langle p,\textrm{Op}(a,\hat{\alpha}\rangle)|p\in\mathcal{G}\textrm{ and }a\in C_0\textrm{ and }f_0(a)=\alpha\} \]
+
+In addition, the formula we are trying to prove seems incorrect, as $\mathcal{P}(\hat{\omega})$ is not 
+in $\mathcal{D}^\mathcal{G}$. It seems to me that we really should prove that, for every possible world $p$, 
+the following for things hold:
+\[ \textrm{(1) }p\vDash\lbc(\forall x)(x\subseteq\hat{\omega}\supset(\exists y)(\langle x,y\rangle\in f))\rbc \]
+\[ \textrm{(2) }p\vDash\lbc(\forall x)(\forall y)(\langle x,y\rangle\in f\supset (x\subseteq\hat{\omega}\wedge y\in\widehat{\omega_2}))\rbc \]
+\[ \textrm{(3) }p\vDash\lbc(\forall x)(\forall y)(\forall z)((\langle x,y\rangle\in f\wedge\langle x,z\rangle\in f)\supset y=z)\rbc \]
+\[ \textrm{(4) }p\vDash\lbc(\forall x)(\forall y)(\forall z)((\langle x,z\rangle\in f\wedge\langle y,z\rangle\in f)\supset x=y)\rbc \]
+
+\begin{proof}
+Consider any possible world $p$. We show that the four things above all hold. 
+
+(1) We show that (1) holds. Suppose, on the contrary, that 
+$p\nvDash\lbc(\forall x)(x\subseteq\hat{\omega}\supset(\exists y)\langle x,y\rangle\in f)\rbc$. Then, for some 
+$d$ and for some $q$ with $p\mathcal{R}q$,
+$q\vDash\lbc d\subseteq\hat{\omega}\rbc$ and $q\vDash\lbc\oldneg(\exists y)\langle d,y\rangle\in f\rbc$.
+Because $p\vDash\lbc d\subseteq\hat{\omega}\rbc$, we know by Exercise 5.1 that 
+$q\vDash\lbc d\approx b\rbc$ for some $b\subseteq\hat{\omega}$. Either $b\in C_0$, or it is a member of 
+some equivalence class including some $c\in C_0$. In either case, there is some $c\in C_0$ 
+such that $\lbc b\approx c\rbc$ is valid in $\mathcal{M}$. Then there is some $\alpha$ such that 
+$f_0(c)=\alpha$. Then, by the definition of $f$, it easily follows that 
+$q\vDash\lbc\textrm{Op}(c,\hat{\alpha})\in f\rbc$. But 
+$q$ thinks $\textrm{Op}(c,\hat{\alpha})$ is $\langle c,\hat{\alpha}\rangle$, meaning 
+$q\vDash\lbc\langle c,\hat{\alpha}\rangle\in f\rbc$, meaning (because $q\vDash\lbc d\approx b\rbc$ and 
+$q\vDash\lbc b\approx c\rbc$)
+$q\vDash\lbc\langle d,\hat{\alpha}\rangle\in f\rbc$. This implies 
+$q\vDash\lbc(\exists y)\langle d,y\rangle\in f\rbc$. But this contradicts 
+$p\vDash\lbc\oldneg(\exists y)\langle d,y\rangle\in f\rbc$ (which implies
+$q\vDash\lbc\oldneg(\exists y)\langle d,y\rangle\in f\rbc$).
+
+(2) We show that (2) holds. Suppose, on the contrary, that
+$p\nvDash\lbc(\forall x)(\forall y)(\langle x,y\rangle\in f\supset (x\subseteq\hat{\omega}\wedge y\in\widehat{\omega_2}))\rbc$.
+Then, for some $a$ and $b$ and some $q$ with $p\mathcal{R}q$,
+$q\vDash\lbc\langle a,b\rangle\in f\rbc$, and either $q\vDash\lbc\oldneg (a\subseteq\hat{\omega})\rbc$ or 
+$q\vDash\lbc\oldneg (b\in\widehat{\omega_2})\rbc$. Suppose, without loss of generality, that the former holds, that 
+is, $q\vDash\lbc\oldneg (a\subseteq\hat{\omega})\rbc$. Now, because 
+$q\vDash\lbc\langle a,b\rangle\in f\rbc$, it follows that for some
+$r$ with $q\mathcal{R}r$, and some $\textrm{Op}(c,\hat{\alpha})$ with $c\in C_0$ and 
+$f_0(c)=\alpha$, $r\vDash\lbc\langle a,b\rangle\approx\textrm{Op}(c,\hat{\alpha})\rbc$. 
+From this it follows that $r\vDash\lbc a\approx c\rbc$ and 
+$r\vDash\lbc b\approx\hat{\alpha}\rbc$. Because $c\in C_0$, it follows that 
+$c\subseteq\hat{\omega}$. This can easily be seen to imply that 
+$r\vDash\lbc c\subseteq\hat{\omega}\rbc$. Hence
+$r\vDash\lbc a\subseteq\hat{\omega}\rbc$ (because $r\vDash\lbc a\approx c\rbc$). But 
+this contradicts $q\vDash\lbc\oldneg (a\subseteq\hat{\omega})\rbc$ (which implies 
+$r\vDash\lbc\oldneg (a\subseteq\hat{\omega})\rbc$). 
+
+(3) We show that (3) holds. Suppose, on the contrary, that 
+$p\nvDash\lbc(\forall x)(\forall y)(\forall z)((\langle x,y\rangle\in f\wedge\langle x,z\rangle\in f)\supset y=z)\rbc$. 
+Then, for some $a,b,c,$ and some $q$ with $p\mathcal{R}q$,
+$q\vDash\lbc\langle a,b\rangle\in f\rbc$, $q\vDash\lbc\langle a,c\rangle\in f\rbc$, 
+and $q\vDash\lbc\oldneg (b=c)\rbc$. Using the usual reasoning, it follows that, for some $r$ with $q\mathcal{R}r$,
+$r\vDash\lbc\langle a,b\rangle\approx\textrm{Op}(c,\hat{\alpha})\rbc$ and 
+$r\vDash\lbc\langle a,c\rangle\approx\textrm{Op}(d,\hat{\beta})\rbc$, for some 
+$c,d\in C_0$ where $f_0(c)=\alpha$ and $f_0(d)=\beta$. These things imply 
+$r\vDash\lbc a\approx c\rbc$, $r\vDash\lbc a\approx d\rbc$. This means 
+$r\vDash\lbc c\approx d\rbc$
+Now, because $f_0$ is a function, it follows that $\alpha=\beta$. This means 
+$r\vDash\lbc b\approx c\rbc$, hence also $r\vDash\lbc b=c\rbc$. But this contradicts 
+$q\vDash\lbc\oldneg(b=c)\rbc$ (which implies 
+$r\vDash\lbc\oldneg(b=c)\rbc$).
+
+(4) We show that (4) holds. Suppose, on the contrary, that 
+$p\nvDash\lbc(\forall x)(\forall y)(\forall z)((\langle x,z\rangle\in f\wedge\langle y,z\rangle\in f)\supset x=y)\rbc$. Then, 
+for some $a,b,c,$ and some $q$ with $p\mathcal{R}q$,
+$q\vDash\lbc\langle a,c\rangle\in f\rbc$, $q\vDash\lbc\langle b,c\rangle\in f\rbc$, 
+and $q\vDash\lbc\oldneg(a=b)\rbc$. Using the usual reasoning, it follows that, for some $r$ with 
+$q\mathcal{R}r$, $r\vDash\lbc\langle a,c\rangle\approx\textrm{Op}(w,\hat{\alpha})\rbc$ and 
+$r\vDash\lbc\langle b,c\rangle\approx\textrm{Op}(v,\hat{\alpha})\rbc$, for some $w,v\in C_0$ where
+$f_0(w)=\alpha$ and $f_0(v)=\beta$. These things imply that $r\vDash\lbc a\approx w\rbc$,
+$r\vDash\lbc c\approx\hat{\alpha}\rbc$, $r\vDash\lbc b\approx v\rbc$ and 
+$r\vDash\lbc c\approx\hat{\beta}\rbc$. Then 
+$r\vDash\lbc\hat{\alpha}\approx\hat{\beta}\rbc$, meaning $\alpha=\beta$. Because $f$ is 1-1, 
+this implies $w=v$, thus 
+$r\vDash\lbc a\approx b\rbc$. But 
+this contradicts $q\vDash\lbc\oldneg(a=b)\rbc$ (which implies 
+$r\vDash\lbc\oldneg(a=b)\rbc$).
+
+\end{proof}
 
 \end{document}
