@@ -516,7 +516,7 @@ $r\vDash\lbc\oldneg(\exists y)(y\epsilon a\wedge y\approx c)\rbc$).
 There was another issue that I had with this section. It seem that, in order for this section to work, we would need to know that 
 $\omega_1,\omega_2,$ and $\omega_3$ are all in $L$ (we are setting $M=L$ in this section), yet I do not recall this being previously established.
 
-Note to self: The notion of equivalence class discussed on pg. 264 is such that, if $a$ and $b$ are equivalent, then 
+Note to self: The notion of an equivalence class discussed on pg. 264 is such that, if $a$ and $b$ are equivalent, then 
 the equivalence classes for $a$ and $b$ are the same. The distinct equivalence classes are guaranteed to have disjoint members, which explains 
 why we can construct $C_0$ in the first place.
 
@@ -539,6 +539,8 @@ $\mathcal{G}$ has cardinality $\aleph_2$.
 On the other hand, it easily follows by the definition of $\mathcal{G}$ that $\aleph_2\le\overline{\overline{\mathcal{G}}}$.
 
 \subsection*{Exercise 5.3}
+This is the proof I attempted of Proposition 5.6. You will see that I was unable to complete step (3) of the proof.
+
 We prove that $\lbc (f:\mathcal{P}(\hat{\omega})\rightarrow\widehat{\omega_2})\wedge\textrm{1-1}(f)\rbc$. First note, however, that 
 there is an error in the definition of $f$. Currently, the definition is such that $f$ is not even in 
 $\mathcal{D}^\mathcal{G}$. The definition really should be 
@@ -598,12 +600,14 @@ and $q\vDash\lbc\oldneg (b=c)\rbc$. Using the usual reasoning, it follows that, 
 $r\vDash\lbc\langle a,b\rangle\approx\textrm{Op}(c,\hat{\alpha})\rbc$ and 
 $r\vDash\lbc\langle a,c\rangle\approx\textrm{Op}(d,\hat{\beta})\rbc$, for some 
 $c,d\in C_0$ where $f_0(c)=\alpha$ and $f_0(d)=\beta$. These things imply 
-$r\vDash\lbc a\approx c\rbc$, $r\vDash\lbc a\approx d\rbc$. This means 
-$r\vDash\lbc c\approx d\rbc$
-Now, because $f_0$ is a function, it follows that $\alpha=\beta$. This means 
-$r\vDash\lbc b\approx c\rbc$, hence also $r\vDash\lbc b=c\rbc$. But this contradicts 
-$q\vDash\lbc\oldneg(b=c)\rbc$ (which implies 
-$r\vDash\lbc\oldneg(b=c)\rbc$).
+$r\vDash\lbc a\approx c\rbc$, $r\vDash\lbc a\approx d\rbc$, $r\vDash\lbc b\approx\hat{\alpha}\rbc$
+and $r\vDash\lbc c\approx\hat{\beta}\rbc$. This means 
+$r\vDash\lbc c\approx d\rbc$. In order to derive a contradiction, we would need to know that 
+$c=d$, which would imply $\alpha=\beta$, and then $r\vDash\lbc b=c\rbc$. However, it does not seem 
+to me that we know $c=d$ for sure. If $c\ne d$, then it would follow by the 
+definition of $C_0$ that $\lbc c\approx d\rbc$ was not valid; but that would not necessarily mean 
+$r\nvDash\lbc c\approx d\rbc$, which is what would be a contradiction in this case. 
+Thus it does not seem to me that we can prove this case.
 
 (4) We show that (4) holds. Suppose, on the contrary, that 
 $p\nvDash\lbc(\forall x)(\forall y)(\forall z)((\langle x,z\rangle\in f\wedge\langle y,z\rangle\in f)\supset x=y)\rbc$. Then, 
