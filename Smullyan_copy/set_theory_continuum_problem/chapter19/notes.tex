@@ -1,0 +1,100 @@
+
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{cleveref}
+\usepackage{stmaryrd}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tabto}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+\newcommand{\lbc}{\llbracket}
+\newcommand{\rbc}{\rrbracket}
+\newcommand{\ltop}[1]{\stackrel{\leftarrow}{#1}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\setlength{\parindent}{.5in}
+\geometry{margin=0.5in}
+\setlength{\parskip}{12pt}
+\title{Chapter 19 Notes}
+\begin{document}
+\date{}
+\maketitle
+
+\section*{Well Ordering of a Set Implies Linear Ordering of the Power Set}
+Suppose some set $S$ can be well ordered under some relation $\le$. Define the following ordering $\preceq$ on 
+$\mathcal{P}(S)$: for any $x,y\in\mathcal{P}(S)$, $x\preceq y$ iff 
+$x=y$ or the least element (under $\le$) $e$ of $x\triangle y$ (the symmtetric difference of $x$ and $y$) 
+is in $x$ but not in $y$. We show that this is a linear ordering.
+
+Reflexivity: This is obvious.
+
+Anti-Symmetry: Suppose $x\preceq y$ and $y\preceq x$. Using $x\preceq y$, there are then two cases.
+
+Case 1) $x=y$. This is just what we wanted to obtain.
+
+Case 2) $e\in x$ and $e\notin y$ for $e$ the least element of $x\triangle y$. We also have $y\preceq x$. There are then two 
+subcases based on this. The first is when $y=x$, and again, this is just the result we wanted. Otherwise, 
+$e\in y$ and $e\notin x$ for $e$ the least element of $y\triangle x$. But this is a contradiction, as 
+$e\in x$. Hence it must be that $x=y$.
+
+Transitivity: Suppose $x\preceq y$ and $y\preceq z$. Using $x\preceq y$, there are then two cases.
+
+Case 1) $x=y$. This obviously implies $x\preceq z$.
+
+Case 2) $e\in x$ and $e\notin x$ for $e$ the least element of $x\triangle y$. There are then two subcases, based off of 
+$y\preceq z$. In the first subcase, 
+$y=z$. This obviously implies $x\preceq z$. In the second subcase, $f\in y$ and $f\notin z$ for $f$ the least element of 
+$y\triangle z$. We aim to show that $h\in x$ and $h\notin z$ for $h$ the least element of $x\triangle z$. First, for any element 
+$d<e$, if $d\in z$, then either $d\in y$ (which implies $d\in x$), or $f<d<e$, which would imply that $f\in x$ (and 
+recall that $f\notin z$). What this says is that no 
+element $d<e$ of $z$ could be the least element of $x\triangle z$. Then, if 
+$e\notin z$, we immediately know that $e$ is the least element of $x\triangle z$. On the other hand, suppose that $e\in z$. 
+This means, because $e\notin y$, that $f<e$. Then it would follow that $f\in x$. In this case, $f$ would be the least element of 
+$x\triangle z$, as we have already shown there are no elements $d<e$ of $z$ in $x\triangle z$. Thus we have $x\preceq z$. 
+
+Linearity: This is obvious.
+
+\section*{$2^{|S|}=|\mathcal{P}(S)|$}
+The result is easy to prove by induction if the cardinality of $S$ is finite; so suppose that the cardinality of $S$ is 
+infinite. We show that, if $\mathcal{P}(S)$ has cardinality, then $2^{|S|}=|\mathcal{P}(S)|$, by showing that 
+both $2^S\preceq\mathcal{P}(S)$ and $\mathcal{P}(S)\preceq 2^S$ (which works, as $2^{|S|}$ is equinumorous with $2^S$).
+
+First we show that $2^S\preceq\mathcal{P}(S)$. 
+Consider any function $f\in 2^S$. There are three cases: (1) either 
+$f(x)=1$ for all $x\in\textrm{Dom}(f)$; (2) $f(x)=0$ for all $x\in\textrm{Dom}(f)$; or 
+$f(x)=1$ for some $x\in\textrm{Dom}(f)$ but $f(x)=0$ for some other $x\in\textrm{Dom}(f)$. If we can show that the 
+set of all functions of type (1) has cardinality $|\mathcal{P}(S)|$, and show the same result for the set of all 
+functions of types (2) and (3), then we will have the desired result. It is obvious that there are 
+$|\mathcal{P}(S)|$ functions of types (1) and (2). Now, consider any function $f$ of type (3). There are 
+$|\mathcal{P}(S)|$ possible ways the subset of $\textrm{Dom}(f)$, where each $x$ in the subset is such that 
+$f(x)=0$, could be made up. It suffices to show that, for each such possible subset, there are only 
+$|\mathcal{P}(S)|$ possible ways the subset of $\textrm{Dom}(f)$, where each $x$ in the subset is such that 
+$f(x)=1$, could be made up (because this would mean that the set of all functions of 
+type (3) would have cardinality equal to $|\mathcal{P}(S)|\times|\mathcal{P}(S)|$, and this equals 
+$|\mathcal{P}(S)|$ as $|\mathcal{P}(S)|$ is infinte, as $S$ was assumed to be infinite). But this is obvious. Hence 
+we know that the set of all functions of type (3) is of size $|\mathcal{P}(S)|$, which completes this case. 
+
+It is obvious that $\mathcal{P}(S)\preceq 2^S$, so this completes the proof.
+
+\end{document}

@@ -452,4 +452,94 @@ $\wedge(F:c\xrightarrow[\textrm{onto}]{\text{1-1}} S)]\rbc$
 \end{center}
 which is a contradiction, as we supposed that this same formula did not hold.
 
+\section*{Secction 5}
+
+\subsection*{Notes}
+There is an error in the first paragraph on pg. 264. It is claimed that, if $\lbc a\subseteq\hat{\omega}\rbc$ is true at $p$, 
+then $\lbc a\approx b\rbc$ is true at $p$ for some $b\subseteq\mathcal{G}\times\hat{\omega}$. This is an incorrect definition, as 
+$b\subseteq\mathcal{G}\times R^\mathcal{G}_\omega$ is also meant to hold, but $\mathcal{G}\times\hat{\omega}\subseteq\mathcal{G}\times R^\mathcal{G}_\omega$ does not hold. This is because all members of $\mathcal{G}\times R^\mathcal{G}_\omega$ are of the form 
+$\langle p,a\rangle$ for some $p\in\mathcal{G}$ and some $a\in R^\mathcal{G}_n$ for some $n<\omega$, whereas all members of 
+$\mathcal{G}\times\hat{\omega}$ are of the form $\langle p,\langle q,\hat{m}\rangle\rangle$ for some $m<\omega$, but 
+$\hat{m}$ is never equal to $a$.
+
+As noted in the online errata, the sentences at the end of this paragraph in the book should be replaced by
+\textquote{Now, this result can be improved, to establish that if $\lbc a\subseteq\hat{\omega}\rbc$ is true at $p$ then 
+$\lbc a\approx b\rbc$ is true at $p$ for some $b\subseteq\mathcal{G}\times\{\hat{n} |n\in\omega\}$ (equivalently, for some 
+$b\subseteq\hat{\omega}$).} A proof of this is given in the online errata, and a proof will also be given here (this is just answering the 
+corrected form of Exercise 5.1).
+
+\begin{theorem}
+If $p\vDash\lbc a\subseteq\hat{\omega}\rbc$, then $p\vDash\lbc a\approx b\rbc$ for some 
+$b\subseteq\hat{\omega}$.
+\end{theorem}
+
+\begin{proof}
+Suppose $p\vDash\lbc a\subseteq\hat{\omega}\rbc$. Define a set $b$ as follows:
+\[ \langle q,d\rangle\in b\leftrightarrow q\in\mathcal{G}\textrm{ and }
+d=\hat{n}\textrm{ for some }n<\omega\textrm{ and }q\vDash(\exists x)\lbc w\approx d\wedge w\epsilon a\rbc \]
+
+Of course $b\subseteq\hat{\omega}$, and for each $q\in\mathcal{G}$,
+\[ q\vDash (d\epsilon b)\leftrightarrow d=\hat{n}\textrm{ for some }n<\omega\textrm{ and }q\vDash\lbc c\approx d\rbc
+\textrm{ and }q\vDash\lbc c\epsilon a\rbc\textrm{ for some }c \]
+In addition, it is easy to see that, if $q\vDash d\epsilon b$, then $q\vDash\lbc d\epsilon b\rbc$. Now we will show that 
+$\lbc a\approx b\rbc$ is true at $p$.
+
+Suppose $\lbc a\approx b\rbc$ was not true at $p$. Then, by Proposition 2.12 of Chapter 17, either 
+$p\nvDash\lbc(\forall x)[(x\epsilon a)\supset(\exists y)(y\epsilon b\wedge y\approx x)]\rbc$ or 
+$p\nvDash\lbc(\forall x)[(x\epsilon b)\supset(\exists y)(y\epsilon a\wedge y\approx x)]\rbc$.
+
+Case 1) $p\nvDash\lbc(\forall x)[(x\epsilon a)\supset(\exists y)(y\epsilon b\wedge y\approx x)]\rbc$. Then it follows that, 
+for some $q$ with $p\mathcal{R}q$ and some $c$, 
+$q\vDash\lbc c\epsilon a\rbc$ and $q\vDash\lbc\oldneg(\exists y)(y\epsilon b\wedge y\approx c)\rbc$. Because 
+$q\vDash\lbc c\epsilon a\rbc$, and $q\vDash\lbc a\subseteq\hat{\omega}\rbc$, it follows that 
+$q\vDash\lbc c\in\hat{\omega}\rbc$, meaning $r\vDash\lbc c\approx\hat{n}\rbc$ and 
+$r\vDash\lbc\hat{n}\epsilon\hat{\omega}\rbc$ for some $n$ and some $r$ with $q\mathcal{R}r$. Because 
+$r\vDash\lbc c\approx\hat{n}\rbc$ and $r\vDash\lbc c\epsilon a\rbc$, it follows, by the definition of 
+$b$, that $\langle r,\hat{n}\rangle\in b$. Thus we have $r\vDash\hat{n}\epsilon b$, which implies 
+$r\vDash\lbc\hat{n}\epsilon b\rbc$. Because we also have $r\vDash\lbc c\approx\hat{n}\rbc$, this yields 
+$r\vDash\lbc(\exists y)(y\epsilon b\wedge y\approx c)\rbc$, contradicting 
+$q\vDash\lbc\oldneg(\exists y)(y\epsilon b\wedge y\approx c)\rbc$ (which implies 
+$r\vDash\lbc\oldneg(\exists y)(y\epsilon b\wedge y\approx c)\rbc$). 
+
+Case 2) $p\nvDash\lbc(\forall x)[(x\epsilon b)\supset(\exists y)(y\epsilon a\wedge y\approx x)]\rbc$. Then it follows that, 
+for some $q$ with $p\mathcal{R}q$ and some $c$,
+$q\vDash\lbc c\epsilon b\rbc$ and $q\vDash\lbc\oldneg(\exists y)(y\epsilon a\wedge y\approx c)\rbc$. Because
+$q\vDash\lbc c\epsilon b\rbc$, it follows that 
+$c=\hat{n}$ for some $n<\omega$ and, for some $r$ with $q\mathcal{R}r$, 
+$r\vDash\lbc (d\epsilon a\wedge d\approx c)\rbc$ for some $d$. This implies 
+$r\vDash\lbc(\exists y)(y\epsilon a\wedge y\approx c)\rbc$. But this contradicts 
+$q\vDash\lbc\oldneg(\exists y)(y\epsilon a\wedge y\approx c)\rbc$ (which implies
+$r\vDash\lbc\oldneg(\exists y)(y\epsilon a\wedge y\approx c)\rbc$). 
+
+\end{proof}
+
+There were multiple other issues that I had with this section. First, it seems that, in order for this section to work, we would need to know that
+$\omega_1,\omega_2,$ and $\omega_3$ are all in $L$ (we are setting $M=L$ in this section), yet I do not recall this being previously established.
+Secondly, I was unable to understand the notion of $C_0$ as defined on pg. 264. In particular, it seems me that either $C_0=C$, or 
+$C_0$ cannot exist. My argument is that if there are at least two $a,b\in C$ such that $a\ne b$ but $\lbc a\approx b\rbc$ is valid 
+in $\mathcal{M}$. If this is the case, then $\{a\},\{b\},$ and $\{a,b\}$ are all equivalence classes. If $C_0$ contained exactly one member from 
+all equivalence classes, it would have to contain exactly one member from each of these three. Hence it would contain both 
+$a$ and $b$, meaning it does not contain just one member of $\{a,b\}$, a contradiction.
+On the other hand, if two such $a$ and $b$ did not exist, then the only equivalence classes would be all of those sets of the form 
+$\{a\}$ for $a\in C$. Hence $C_0$ would exist, and it would just be $C$. As I could not understand the definition of $C_0$, I did not attmept to 
+answer Exercise 5.3 
+
+\subsection*{Exercise 5.2}
+We prove that $\overline{\overline{\mathcal{G}}}=\aleph_2$. In order to do this, we show that 
+$\overline{\overline{\mathcal{G}}}\le\aleph_2$ and $\aleph_2\le\overline{\overline{\mathcal{G}}}$. 
+
+First, we show that $\overline{\overline{\mathcal{G}}}\le\aleph_2$. To do this, for each $n\in\omega$, 
+define $f_n$ to be the set of all forcing conditions 
+$p$ such that $p(\alpha)=\langle\emptyset,\emptyset\rangle$ for all but $n$ ordinals $\alpha\in\omega_2$. Then 
+$\mathcal{G}=\cup\{f_0,f_1,...,f_n,...\}$. Hence, to show that $\overline{\overline{\mathcal{G}}}=\aleph_2$, it suffices to show that 
+$\overline{\overline{f_i}}\le\aleph_2$ for each $i$. So consider any $f_i$. Because, for each $p\in f_i$, the domain of 
+$p$ is $\omega_2$, and there are all but $n$ ordinals $\alpha$ such that $p(\alpha)\ne\langle\emptyset,\emptyset\rangle$, it can easily be seen 
+by induction on $n$ to follow that there are $\aleph_2$ possibilites for which $p(\alpha)$ are not $\langle\emptyset,\emptyset\rangle$. 
+For any given configuration of which $\alpha$ are such that $p(\alpha)\ne\langle\emptyset,\emptyset\rangle$, there are 
+in turn $\omega$ possibilities for the choice of $P_\alpha$ and $N_\alpha$ (because $P_\alpha$ and $N_\alpha$ are both 
+finite, disjoint sets of integers). This means $f_i$ has cardinality $\aleph_2$, from which it follows that 
+$\mathcal{G}$ has cardinality $\aleph_2$.
+
+On the other hand, it easily follows by the definition of $\mathcal{G}$ that $\aleph_2\le\overline{\overline{\mathcal{G}}}$.
+
 \end{document}
