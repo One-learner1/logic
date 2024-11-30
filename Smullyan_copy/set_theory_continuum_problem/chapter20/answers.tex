@@ -57,11 +57,11 @@ $\theta^{-1}$ is also such a function. That is,
 $\theta^{-1}(f)=\{\langle\theta^{-1}(p),\theta^{-1}(g)\rangle|\langle p,g\rangle\in f\}$ for 
 all $f\in\mathcal{D}^\mathcal{G}$ (and the function is still 1-1 and the domain and ranges stay the same). This can be shown in the 
 following way. $\theta^{-1}(f)$ is some $h$ such that 
-$\{\langle\theta(p),\theta(g)\rangle|\langle p,g\rangle\in h|\}=f$. Then 
+$\{\langle\theta(p),\theta(g)\rangle|\langle p,g\rangle\in h\}=f$. Then 
 \begin{center}
 \begin{tabular}{ll}
 & $\{\langle\theta^{-1}(p),\theta^{-1}(g)\rangle|\langle p,g\rangle\in f\}$ \\
-$=$ & $\{\langle\theta\theta^{-1}(p),\theta\theta^{-1}(g)\rangle|\langle p,g\rangle\in h\}$ \\
+$=$ & $\{\langle\theta^{-1}\theta(p),\theta^{-1}\theta(g)\rangle|\langle p,g\rangle\in h\}$ \\
 $=$ & $\{\langle p,g\rangle|\langle p,g\rangle\in h\}$ \\
 $=$ & $h$ \\
 $=$ & $\theta^{-1}(f)$
@@ -72,13 +72,15 @@ Also, if $\phi$ and $\psi$ are functions obtained by Definition 2.2, then
 $\phi\psi$ is also such a function. 
 That is, $\phi\psi(f)=\{\langle\phi\psi(p),\phi\psi(g)\rangle|\langle p,g\rangle\in f\}$ for all 
 $f\in\mathcal{D}^\mathcal{G}$ (this just follows by the definition of $\phi$, $\psi$, and function composition).
-The fact that $\phi\psi$ is still 1-1 and has a domain and range of $\mathcal{D}^\mathcal{G}$ is also easily seen.
+The fact that $\phi\psi$ is still 1-1 and has a domain and range of $\mathcal{G}\cup\mathcal{D}^\mathcal{G}$ is also easily seen.
 
 \subsection*{Exercise 2.1}
 We prove Proposition 2.3. First, we show tha
 $\theta:\mathcal{D}^\mathcal{G}\xrightarrow[\textrm{onto}]{\text{1-1}}\mathcal{D}^\mathcal{G}$.
 By definition, the domain of $\theta$ includes all members of $\mathcal{D}^\mathcal{G}$. We use transfinite induction 
 to show that $\theta$ is 1-1, and is such that the range of $\theta$ includes all members and only members of $\mathcal{D}^\mathcal{G}$.
+
+\begin{proof}
 
 The least ordinal case is obvious.
 
@@ -88,15 +90,14 @@ of $\mathcal{D}^\mathcal{G}$); (2) $f\in\textrm{Ran}(\theta)$; and (3) $\theta(f
 We show that those two conditions also hold for every $f\in\mathcal{R}^\mathcal{G}_{\alpha+1}$. As for (1), suppose that 
 $f\in\mathcal{R}^\mathcal{G}_{\alpha+1}$ and, for some $a$, $\theta(f)=\theta(a)$. 
 Now, $\theta(f)=\{\langle\theta(p),\theta(g)\rangle|\langle p,g\rangle\in f\}$ and 
-$\theta(a)=\{\langle\theta(p),\theta(g)\rangle|\langle p,g\rangle\in a\}$. Thus
-$\{\langle\theta(p),\theta(g)\rangle|\langle p,g\rangle\in f\}=\{\langle\theta(p),\theta(g)\rangle|\langle p,g\rangle\in a\}$. To show 
-that $f=a$, we show that $f\subseteq a$ and $a\subseteq f$. We prove the first case, that is, $f\subseteq a$; the other case 
+$\theta(a)=\{\langle\theta(p),\theta(g)\rangle|\langle p,g\rangle\in a\}$.
+To show that $f=a$, we show that $f\subseteq a$ and $a\subseteq f$. We prove the first case, that is, $f\subseteq a$; the other case 
 is similar. Suppose $x\in f$. Then $x=\langle p,a\rangle$ for some $p$ and $a$. Then it follows that 
 $\langle\theta(p),\theta(g)\rangle\in\theta(f)$. But, because we assumed $\theta(f)=\theta(a)$, it follows that 
 $\langle\theta(p),\theta(g)\rangle\in\theta(a)$. Hence, by the definition of $\theta(a)$, it follows that 
 $\langle q,h\rangle\in a$ for some $q,h$ where $\theta(p)=\theta(q)$ and $\theta(g)=\theta(h)$. But, by the induction assumption, the 
 fact that $g\in\mathcal{R}^\mathcal{G}_\alpha$ and the fact that $\theta\restriction\mathcal{G}$ is 1-1, it follows that 
-$p=q$ and $g=h$. Thus $\langle\theta(p),\theta(g)\rangle=\langle\theta(q),\theta(h)\rangle$, meaning $x\in g$.
+$p=q$ and $g=h$. Thus $\langle p,g\rangle=\langle q,h\rangle$, meaning $x\in a$.
 
 Next we show that (2): for every $f\in\mathcal{R}^\mathcal{G}_{\alpha+1}$, $f\in\textrm{Ran}(\theta)$. Now, all members of 
 $f$ are of the form $\langle p,g\rangle$ where $g\in\mathcal{R}^\mathcal{G}_\alpha$. Hence, it follows by the induction assumption 
@@ -115,44 +116,70 @@ not fully sure of this). Hence $\theta(f)\in\mathcal{D}^\mathcal{G}$.
 
 The limit ordinal case is obvious.
 
+\end{proof}
+
 Thus we know, by transfinite induction, that $\theta$ is 1-1, and is such that the range of $\theta$ includes all members and only members of 
 $\mathcal{D}^\mathcal{G}$. Hence we know $\theta:\mathcal{D}^\mathcal{G}\xrightarrow[\textrm{onto}]{\text{1-1}}\mathcal{D}^\mathcal{G}$. The last 
 two things we must show are that, if $e$ is the identity automorphism of $\langle\mathcal{G},\mathcal{R}\rangle$, then $e$ is the identity 
-map on $\mathcal{D}^\mathcal{G}$, and similarly for inverse.
+map on $\mathcal{D}^\mathcal{G}$, and similarly for inverses.
 
 First, suppose that $e$ is the identity automorphism of $\langle\mathcal{G},\mathcal{R}\rangle$. We prove, by transfinite induction, 
 that $e(f)=f$ for all $f\in\mathcal{D}^\mathcal{G}$.
 
+\begin{proof}
+
 The least ordinal case is obvious, and likewise for the limit ordinal case.
 
 Suppose the result holds for some $\alpha$, that is, for all $f\in R^\mathcal{G}_\alpha$, $e(f)=f$. Consider any 
-$f\in R^\mathcal{G}_{\alpha+1}$. Then 
+$f\in R^\mathcal{G}_{\alpha+1}$. Then, if $f\ne\emptyset$, 
 \begin{center}
 \begin{tabular}{llll}
-$e(f)$ & $=$ & $\{\langle\theta(p),\theta(g)\rangle|\langle p,g\rangle\in f\}$ \\
+$e(f)$ & $=$ & $\{\langle e(p),e(g)\rangle|\langle p,g\rangle\in f\}$ \\
 & $=$ & $\{\langle p,g\rangle|\langle p,g\rangle\in f\}$ & (By induction assumption and fact that $e$ is identity map) \\
 & $=$ & $f$
 \end{tabular}
 \end{center}
-which completes the proof.
+On the other hand, if $f=\emptyset$, $e(f)=f$ is obvious, and this completes the proof.
+
+\end{proof}
 
 Second, suppose that $\theta^{-1}$ is an inverse of some automorphism $\theta$ of 
 $\langle\mathcal{G},\mathcal{R}\rangle$. We show that $\theta^{-1}$ is the inverse of 
 $\theta$ on $\mathcal{D}^\mathcal{G}$. We prove this by showing that, for all $f\in\mathcal{D}^\mathcal{G}$, 
 $\theta\theta^{-1}(f)=f$ and $\theta^{-1}\theta=f$. We do this by using transfinite induction.
 
+\begin{proof}
+
 Again, the least ordinal and limit ordinal cases are obvious.
 
 Suppose the result holds for some $\alpha$, that is, for all $f\in R^\mathcal{G}_\alpha$, 
 $\theta\theta^{-1}(f)=f$ and $\theta^{-1}\theta=f$. Consider any 
-$f\in R^\mathcal{G}_{\alpha+1}$. Then 
+$f\in R^\mathcal{G}_{\alpha+1}$ (where $f\ne\emptyset$; the case where $f=\emptyset$ is obvious). 
+We first show that $\theta\theta^{-1}f=f$. Now, 
 $\theta^{-1}(f)=\{\langle\theta^{-1}(p),\theta^{-1}(g)\rangle|\langle p,g\rangle\in f\}$. Hence
-\[ \theta\theta^{-1}(f)=\{\langle\theta\theta^{-1}(p),\theta\theta^{-1}(g)\rangle|\langle p,g\rangle\in f\}=f \] by the induction assumption, 
-and the fact that $\theta^{-1}$ is the inverse of $\theta$ on $\langle\mathcal{G},\mathcal{R}\rangle$.
+\begin{center}
+\begin{tabular}{ll}
+& $\theta\theta^{-1}(f)$ \\
+$=$ & $\{\langle\theta\theta^{-1}(p),\theta\theta^{-1}(g)\rangle|\langle p,g\rangle\in f\}$ \\
+$=$ & $\{\langle p,q\rangle|\langle p,g\rangle\in f\}$ \\
+$=$ & $f$
+\end{tabular}
+\end{center}
+by the induction assumption and the fact that $\theta^{-1}$ is the inverse of $\theta$ on $\langle\mathcal{G},\mathcal{R}\rangle$.
 Thus we know that $\theta\theta^{-1}(f)=f$. Next we must show that $\theta^{-1}\theta=f$.
-Well, $\theta(f)=\{\langle\theta(p),\theta(g)\rangle|\langle p,g\rangle\in f\}$, and thus 
-\[ \theta^{-1}\theta(f)=\{\langle\theta^{-1}\theta(p),\theta^{-1}\theta(g)\rangle|\langle p,g\rangle\in f\}=f \] by the induction assumption.
+Well, $\theta(f)=\{\langle\theta(p),\theta(g)\rangle|\langle p,g\rangle\in f\}$, and thus
+\begin{center}
+\begin{tabular}{ll}
+& $\theta^{-1}\theta(f)$ \\
+$=$ & $\{\langle\theta^{-1}\theta(p),\theta^{-1}\theta(g)\rangle|\langle p,g\rangle\in f\}$ \\
+$=$ & $\{\langle p,q\rangle|\langle p,g\rangle\in f\}$ \\
+$=$ & $f$
+\end{tabular}
+\end{center} 
+by the induction assumption.
 
-This completes the proof.
+\end{proof}
+
+This completes the proof of Proposition 2.3.
 
 \end{document}
