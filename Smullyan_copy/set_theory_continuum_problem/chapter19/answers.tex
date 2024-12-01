@@ -520,6 +520,17 @@ Note to self: The notion of an equivalence class discussed on pg. 264 is such th
 the equivalence classes for $a$ and $b$ are the same. The distinct equivalence classes are guaranteed to have disjoint members, which explains 
 why we can construct $C_0$ in the first place.
 
+\subsection*{Lemma 5.4}
+It is remarked in the proof of this lemma that the cardinality of all cores is bounded by the cardinality of all countable 
+subsets of $\mathcal{G}$, that is, $\le\overline{\overline{\mathcal{G}^\omega}}$. This is correct, though 
+$\overline{\overline{\mathcal{G}^\omega}}$ is not by definition the upper bound of the cardinality of all countable subsets of 
+$\mathcal{G}$. Instead, the cardinality is
+\[ \overline{\overline{\mathcal{G}^0}}\cup\overline{\overline{\mathcal{G}^1}}\cup 
+...\cup\overline{\overline{\mathcal{G}^n}}\cup ...\cup\overline{\overline{\mathcal{G}^\omega}} \]
+Then an obvious induction argument shows that $\overline{\overline{\mathcal{G}^n}}\le\aleph_2$ for each $n$ (because 
+$\overline{\overline{\mathcal{G}}}\le\aleph_2$), which explains why the union itself has cardinality
+$\aleph_2$.
+
 \subsection*{Exercise 5.2}
 We prove that $\overline{\overline{\mathcal{G}}}=\aleph_2$. In order to do this, we show that 
 $\overline{\overline{\mathcal{G}}}\le\aleph_2$ and $\aleph_2\le\overline{\overline{\mathcal{G}}}$. 

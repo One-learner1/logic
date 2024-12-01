@@ -10,6 +10,7 @@
 \usepackage{amsthm}
 \usepackage{csquotes}
 \usepackage{yhmath}
+\usepackage{yfonts}
 \usepackage{comment}
 \usepackage{placeins}
 \usepackage{geometry}
@@ -181,5 +182,52 @@ by the induction assumption.
 \end{proof}
 
 This completes the proof of Proposition 2.3.
+
+\subsection*{Exercise 2.2}
+We prove that if $a$ is an $M$-set (i.e., $a\in M$), $\theta(\hat{a})=\hat{a}$ for every automorphism $\theta$. Then we show that 
+the counterparts of $M$-sets (i.e., $\hat{a}$ for each $a\in M$) are \textfrak{J}-invariant for every automorphism sequence \textfrak{G}. 
+First we prove by transfinite induction (on the $\alpha$ for which $\hat{a}\in R^\mathcal{G}_\alpha$)
+that $\theta(\hat{a})=\hat{a}$ for every automorphism $\theta$ and every $M$-set $a$.
+
+\begin{proof}
+Consider any automorphism $\theta$. The least ordinal case is vacuous, and the limit ordinal case is obvious.
+
+Suppose the result holds for some $\alpha$. That is, suppose that for every $\hat{a}\in R^\mathcal{G}_\alpha$, 
+$\theta(\hat{a})=\hat{a}$. Consider any $\hat{b}\in R^\mathcal{G}_{\alpha+1}$. If $\hat{b}=\emptyset$, then 
+the result obviously follows. So suppose $\hat{b}\ne\emptyset$. Then 
+$\hat{b}=\{\langle p,\hat{g}\rangle|p\in\mathcal{G}\textrm{ and }g\in b\}$. Hence 
+\begin{center}
+\begin{tabular}{lll}
+& $\theta(\hat{b})=\{\langle\theta(p),\theta(\hat{g})\rangle|\langle p,g\rangle\in b\}$ \\
+$=$ & $\{\langle\theta(p),\hat{g}\rangle|\langle p,g\rangle\in b\}$ & (By the induction assumption) \\
+$=$ & $\hat{b}$ & (Because $\theta:\mathcal{G}\xrightarrow[\textrm{onto}]{\text{1-1}}\mathcal{G}$)
+\end{tabular}
+\end{center}
+
+\end{proof}
+
+Now consider any automorphism sequence \textfrak{J} and some $M$-set $a$. Then, by the above result, 
+$\theta(\hat{a})=\hat{a}$ for every automorphism $\theta$. Consequently 
+$\hat{a}$ is \textfrak{G}-invariant for every automorphism group \textfrak{G} of $\langle\mathcal{G},\mathcal{R}\rangle$. To show that 
+$\hat{a}$ is \textfrak{J}-invariant, we must show that (1) for some \textfrak{G} in the sequence 
+\textfrak{J}, $\hat{a}$ is \textfrak{G}-invariant; (2) for each $\langle p,g\rangle\in\hat{a}$, $g$ is 
+\textfrak{J}-invariant. We prove these two things by induction on the $\mathcal{G}$-rank of $\hat{a}$.
+
+\begin{proof}
+Again, the least ordinal case is vacuous. Also, the case when 
+$\hat{a}=\emptyset$ is likewise obvious, so suppose $\hat{a}\ne\emptyset$. Now suppose the result holds for all ordinals less than some 
+ordinal $\alpha$. We show that, for all $\hat{a}$ with $\mathcal{G}$-rank $\alpha$, both (1) and (2) hold.
+
+(1) This holds because, as remarked just before the start of this proof, 
+$\hat{a}$ is \textfrak{G}-invariant for \textit{every} automorphism group \textfrak{G} of $\langle\mathcal{G},\mathcal{R}\rangle$,
+hence also \textfrak{G}-invariant for every \textfrak{G} in the sequence \textfrak{J}.
+
+(2) Consider any $\langle p,g\rangle\in\hat{a}$. By definition of $\hat{a}$, it follows that 
+$g=\hat{b}$ for some $b$, and $\hat{b}$ must have $\mathcal{G}$-rank less than $\alpha$. Thus, by the induction 
+assumption, $\hat{b}$, that is, $g$, must be \textfrak{J}-invariant.
+
+\end{proof}
+
+This completes the proof of Proposition 2.9.
 
 \end{document}
