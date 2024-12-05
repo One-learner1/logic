@@ -75,6 +75,9 @@ That is, $\phi\psi(f)=\{\langle\phi\psi(p),\phi\psi(g)\rangle|\langle p,g\rangle
 $f\in\mathcal{D}^\mathcal{G}$ (this just follows by the definition of $\phi$, $\psi$, and function composition).
 The fact that $\phi\psi$ is still 1-1 and has a domain and range of $\mathcal{G}\cup\mathcal{D}^\mathcal{G}$ is also easily seen.
 
+I did not fully understand the paragraph titled \textquote{\textbf{Notation}} on pg. 269. In particular, it was not fully clear to me why 
+the recursion taking place in that paragraph was possible.
+
 \subsection*{Exercise 2.1}
 We prove Proposition 2.3. First, we show tha
 $\theta:\mathcal{D}^\mathcal{G}\xrightarrow[\textrm{onto}]{\text{1-1}}\mathcal{D}^\mathcal{G}$.
@@ -229,5 +232,289 @@ assumption, $\hat{b}$, that is, $g$, must be \textfrak{J}-invariant.
 \end{proof}
 
 This completes the proof of Proposition 2.9.
+
+\section*{Section 3}
+
+\subsection*{Theorem 3.3}
+We show that Theorem 3.3 is provable from Lemma 3.4.
+
+\begin{theorem}
+Suppose \textfrak{J} is an automorphism sequence of $\langle\mathcal{G},\mathcal{R}\rangle$ and $\theta\in\textfrak{G}_0$. 
+If $f$ is \textfrak{J}-invariant, so is $\theta(f)$.
+\end{theorem}
+
+\begin{proof}
+By transfinite induction on the $\alpha$ for which $f\in R^\mathcal{G}_\alpha$. 
+The least ordinal and limit ordinal cases are obvious. Suppose the result holds for some $\alpha$. If 
+$f=\emptyset$, then the result easily follows (because $\theta(f)=f$). So suppose $f\ne\emptyset$. Because 
+$f$ is \textfrak{J}-invariant, it follows by definition that (1) for some 
+$\textfrak{G}_k$ in the sequence \textfrak{J}, $f$ is $\textfrak{G}_k$-invariant; (2) for each 
+$\langle p,g\rangle\in f$, $g$ is \textfrak{J}-invariant. To prove that 
+$\theta(f)$ is \textfrak{J}-invariant, we must show that (3) for some 
+$\textfrak{G}_j$ in the sequence \textfrak{J}, $f$ is $\textfrak{G}_j$-invariant; (2) for each
+$\langle\theta(p),\theta(g)\rangle\in\theta(f)$ (for $\langle p,g\rangle\in f$), $\theta(g)$ is 
+\textfrak{J}-invariant. By Lemma 3.4, and the fact that $f$ is $\textfrak{G}_k$-invariant, 
+$\theta(f)$ is also $\textfrak{G}_k$-invariant, from which (3) follows immediately. As for 
+(4), consider any $\langle\theta(p),\theta(g)\rangle\in\theta(f)$ where $\langle p,g\rangle\in f$. Then, by 
+(2), $g$ is \textfrak{J}-invariant. But $g\in R^\mathcal{G}_\alpha$, and thus, by the induction assumption, 
+$\theta(g)$ is also \textfrak{J}-invariant. This completes the proof.
+
+\end{proof}
+
+\subsection*{Theorem 3.5}
+We provide details of the proof of Theorem 3.5.
+
+\begin{theorem}
+Let $X$ be any closed formula of $\mathcal{L}^*_C$ (the language with only $\in$ as a relation symbol) having 
+all constants in $\mathcal{D}^\mathcal{G}_\textfrak{J}$. For any $p\in\mathcal{G}$ and any $\theta\in\textfrak{G}_0$, 
+$p\vDash_\textfrak{J} X$ iff $\theta(p)\vDash_\textfrak{J}\theta(X)$.
+\end{theorem}
+
+\begin{proof}
+First we note the things remarked in proof given of the theorem in the book. By the previous theorem, if $X$ has all its 
+constants in $\mathcal{D}^\mathcal{G}_\textfrak{J}$, the same is true for $\theta(X)$, so 
+$\theta(p)\vDash_\textfrak{J}\theta(X)$ is a sensical statement. Now, the result is true for atomic $X$ in 
+$\mathcal{L}^*_C$, since at the atomic level, $\vDash_\textfrak{J}$ and $\vDash$ agree, and we 
+have Theorem 3.2. Now we prove the result for non-atomic formulas by induction on degree. This is done by considering 
+the negation, disjunction, existential quantifier and the modal necessity cases.
+
+Negation case: Suppose the result holds for $X$. We show it also holds for $\oldneg X$. That is, we show that 
+$p\vDash_\textfrak{J}\oldneg X$ iff $\theta(p)\vDash_\textfrak{J}\theta(\oldneg X)$. On the one hand, suppose that 
+$p\vDash_\textfrak{J}\oldneg X$. Then $p\nvDash_\textfrak{J} X$, meaning, by the induction assumption, 
+$\theta(p)\nvDash_\textfrak{J}\theta(X)$, hence 
+$\theta(p)\vDash_\textfrak{J}\oldneg\theta(X)$, which is the same as saying 
+$\theta(p)\vDash_\textfrak{J}\theta(\oldneg X)$. On the other hand, suppose that 
+$\theta(p)\vDash_\textfrak{J}\theta(\oldneg X)$. This is the same as saying 
+$\theta(p)\vDash_\textfrak{J}\oldneg\theta(X)$, hence 
+$\theta(p)\nvDash_\textfrak{J}\theta(X)$, meaning, by the induction assumption,
+$p\nvDash X$, hence $p\vDash\oldneg X$. Thus the negation case is complete.
+
+Disjunction case: Suppose the result holds for $X$ and $Y$. We show it also holds for $X\vee Y$. That is, we show that 
+$p\vDash_\textfrak{J} X\vee Y$ iff $\theta(p)\vDash_\textfrak{J}\theta(X\vee Y)$. On the one hand, suppose that 
+$p\vDash_\textfrak{J} X\vee Y$. If $\theta(p)\nvDash_\textfrak{J}\theta(X\vee Y)$, we would have 
+$\theta(p)\nvDash_\textfrak{J}\theta(X)\vee\theta(Y)$, hence both 
+$\theta(p)\nvDash_\textfrak{J}\theta(X)$ and $\theta(p)\nvDash_\textfrak{J}\theta(Y)$, meaning, by the induction assumption, 
+both $p\nvDash_\textfrak{J} X$ and $p\nvDash_\textfrak{J} Y$, meaning $p\vDash_\textfrak{J}\oldneg (X\vee Y)$, a contradiction. Hence we must have 
+$\theta(p)\vDash_\textfrak{J}\theta(X\vee Y)$. On the other hand, suppose
+$\theta(p)\vDash_\textfrak{J}\theta(X\vee Y)$. Then, if $p\nvDash X\vee Y$, we would have 
+both $p\nvDash X$ and $p\nvDash Y$, meaning, by the induction assumption, both 
+$\theta(p)\nvDash_\textfrak{J}\theta(X)$ and $\theta(p)\nvDash_\textfrak{J}\theta(Y)$, hence
+$\theta(p)\vDash_\textfrak{J}\oldneg(\theta(X)\vee\theta(Y))$, that is, 
+$\theta(p)\vDash_\textfrak{J}\oldneg\theta(X\vee Y)$, a contradiction. Thus it must be that 
+$p\vDash X\vee Y$. This concludes the disjunction case.
+
+Existential quantifier case: Suppose, for all $a\in\mathcal{D}^\mathcal{G}_\textfrak{J}$, 
+the result holds for $\phi(a)$ (for some $\phi(x)$ with $x$ being the only free variable of $\phi$). We must show that 
+result also holds for $(\exists x)\phi(x)$. That is, we show that 
+$p\vDash_\textfrak{J}(\exists x)\phi(x)$ iff $\theta(p)\vDash_\textfrak{J}\theta((\exists x)\phi(x))$. On the one hand, suppose 
+$p\vDash_\textfrak{J}(\exists x)\phi(x)$. Then, for some $a\in\mathcal{D}^\mathcal{G}_\textfrak{J}$, 
+$p\vDash_\textfrak{J}\phi(a)$. Then, by the induction assumption, 
+$\theta(p)\vDash_\textfrak{J}\theta(\phi(a))$. Let $\theta((\exists x)\phi(x))=(\exists x)\psi(x)$. 
+Now, $\theta(\phi(a))=\psi(\theta(a))$, meaning $\theta(p)\vDash_\textfrak{J}\psi(\theta(a))$, and thus 
+$\theta(p)\vDash_\textfrak{J}(\exists x)\psi(x)$, that is, $\theta(p)\vDash_\textfrak{J}\theta((\exists x)\phi(x))$.
+On the other hand, suppose $\theta(p)\vDash_\textfrak{J}\theta((\exists x)\phi(x))$. Again, let 
+$\theta((\exists x)\phi(x))=(\exists x)\psi(x)$. Thus we have 
+$\theta(p)\vDash_\textfrak{J}(\exists x)\psi(x)$, meaning $\theta(p)\vDash_\textfrak{J}\psi(a)$ for some $a$. Now, 
+$\psi(a)=\theta(\phi(\theta^{-1}(a)))$, meaning $\theta(p)\vDash_\textfrak{J}\theta(\phi(\theta^{-1}(a)))$, and thus, 
+by the induction assumption, $p\vDash_\textfrak{J}\phi(\theta^{-1}(a))$, meaning 
+$p\vDash_\textfrak{J}(\exists x)\phi(x)$. This completes the existential quantifier case.
+
+Modal necessity case: Suppose the result holds for $X$. We must show it also holds for $\Box X$. That is, we show that 
+$p\vDash_\textfrak{J}\Box X$ iff $\theta(p)\vDash_\textfrak{J}\theta(\Box X)$, which is just saying
+$\theta(p)\vDash_\textfrak{J}\Box\theta(X)$. On the one hand, suppose $p\vDash_\textfrak{J}\Box X$. To show 
+that $\theta(p)\vDash_\textfrak{J}\Box\theta(X)$, consider any $q$ with 
+$\theta(p)\mathcal{R}q$. Then, because $\theta:\mathcal{G}\xrightarrow[\text{onto}]{\text{1-1}}\mathcal{G}$, 
+$\theta(p')=q$ for some $p'$. Hence $\theta(p)\mathcal{R}\theta(p')$, meaning, because $\theta$ is an 
+automorphism, $p\mathcal{R}p'$, and thus $p'\vDash_\textfrak{J} X$, which implies 
+$\theta(p')\vDash_\textfrak{J}\theta(X)$ by the induction assumption, that is, 
+$q\vDash_\textfrak{J}\theta(X)$. Because $q$ was arbitrary, it follows that 
+$\theta(p)\vDash_\textfrak{J}\Box\theta(X)$. 
+On the other hand, suppose $\theta(p)\vDash_\textfrak{J}\Box\theta(X)$. To show that 
+$p\vDash_\textfrak{J}\Box X$, consider any $q$ with $p\mathcal{R}q$. Because $\theta$ is an 
+automorphism, it follows that $\theta(p)\mathcal{R}\theta(q)$, and thus
+$\theta(q)\vDash_\textfrak{J}\theta(X)$, meaning, by the induction assumption, 
+$q\vDash_\textfrak{J} X$. Because $q$ was arbitrary, it follows that 
+$p\vDash_\textfrak{J}\Box X$. This concludes the modal necessity case, therefore completing the proof.
+
+\end{proof}
+
+\section*{Section 4}
+
+\subsection*{Proposition 4.1}
+It is remakred in the second sentence of the first paragraph of the proof of Proposition 4.1 
+that $f\in g$ and $\lbc f\in g\rbc$ are equivalent. This is 
+not correct; $p\vDash f\in g$ implies $p\vDash\lbc f\in g\rbc$, but $p\vDash\lbc f\in g\rbc$ does not necessarily imply
+$p\vDash f\in g$. However, the atomic case is still simple as $p\vDash f\in g$ iff 
+$p\vDash_\textfrak{J} f\in g$ for every $p$ (and $f,g\in\mathcal{D}^\mathcal{G}_\textfrak{J}$), by the definition of
+$\vDash_\textfrak{J}$. It follows that $p\vDash\Box\Diamond(f\in g)$ iff 
+$p\vDash_\textfrak{J}\Box\Diamond(f\in g)$ for every $p$, that is, 
+$p\vDash\lbc f\in g\rbc$ iff $p\vDash_\textfrak{J}\lbc f\in g\rbc$ for every $p$.
+
+As a second note, we provide a proof of the second case mentioned, but omitted, in the proof given in the book. 
+
+\begin{proof}
+That is, we suppose 
+$\phi(x_1,...,x_n)$ is $(\exists y)[y\in x_1\wedge\psi(y,x_1,...,x_n)]$, the result is known for $\psi$, 
+$p\vDash_\textfrak{J}\lbc\phi(s_1,...,s_n)\rbc$, where $s_1,...,s_n\in\mathcal{D}^\mathcal{G}_\textfrak{J}$, but 
+$p\nvDash\lbc\phi(s_1,...,s_n)\rbc$. We derive a contradiction.
+
+Because $p\nvDash\lbc\phi(s_1,...,s_n)\rbc$, $p'\vDash\lbc\oldneg\phi(s_1,...,s_n)\rbc$ for some 
+$p'$ with $p\mathcal{R}p'$, or equivalently,
+$p'\vDash\lbc(\forall y)[y\in s_1\supset\oldneg\psi(y,s_1,...,s_n)]\rbc$.
+
+Since $p\vDash_\textfrak{J}\lbc\phi(s_1,...,s_n)\rbc$, also 
+$p'\vDash_\textfrak{J}\lbc\phi(s_1,...,s_n)\rbc$, that is, 
+$p'\vDash_\textfrak{J}\lbc(\exists y)[y\in s_1\wedge\psi(y,s_1,...,s_n)]\rbc$. Then for some 
+$p''$ with $p'\mathcal{R}p''$ and some $a\in\mathcal{D}^\mathcal{G}_\textfrak{J}$,
+$p''\vDash_\textfrak{J}\lbc[a\in s_1\wedge\psi(a,s_1,...,s_n)]\rbc$. It follows that both 
+$p''\vDash_\textfrak{J}\lbc (a\in s_1)\rbc$ and $p''\vDash_\textfrak{J}\lbc\psi(a,s_1,...,s_n)\rbc$. Because the atomic case has been established, 
+$p''\vDash\lbc (a\in s_1)\rbc$. But also, since $p'\mathcal{R}p''$,
+$p''\vDash\lbc(\forall y)[y\in s_1\supset\oldneg\psi(y,s_1,...,s_n)]\rbc$, which implies
+$p''\vDash\lbc\oldneg\psi(a,s_1,...,s_n)\rbc$. But 
+$p''\vDash_\textfrak{J}\lbc\psi(a,s_1,...,s_n)\rbc$ has also been established, and this contradicts the induction
+hypothesis.
+
+\end{proof}
+
+\subsection*{Exercise 4.1}
+
+(a) We suppose that $X$ is $\Pi$-formula, and show that $\oldneg X$ is equivalent to some 
+$\Sigma$-formula.
+
+\begin{proof}
+By induction on the complexity of $X$. The atomic case is obvious (because atomic formulas are $\Delta_0$, hence both 
+$\Sigma$ and $\Pi$ formulas). The different cases are for disjunction, conjunction, universal quantification, 
+bounded universal quantification and bounded existential quantification.
+
+Disjunction case: Suppose the result holds for two $\Pi$-formulas $X$ and $Y$. We must show that it also holds for 
+$X\vee Y$. Well, $\oldneg(X\vee Y)$ is equivalent to $\oldneg X\wedge\oldneg Y$. By the induction assumption, 
+$\oldneg X$ and $\oldneg Y$ are equivalent to two $\Sigma$-formulas $X'$ and $Y'$, respectively. Hence 
+$\oldneg(X\vee Y)$ is equivalent to $X'\wedge Y'$, which is a $\Sigma$-formula. This completes the disjunction case.
+
+Conjunction case: Suppose the result holds for two $\Pi$-formulas $X$ and $Y$. We must show that it also holds for 
+$X\wedge Y$. Well, $\oldneg(X\wedge Y)$ is equivalent to $\oldneg X\vee\oldneg Y$. By the induction assumption,
+$\oldneg X$ and $\oldneg Y$ are equivalent to two $\Sigma$-formulas $X'$ and $Y'$, respectively. Hence
+$\oldneg(X\wedge Y)$ is equivalent to $X'\vee Y'$, which is a $\Sigma$-formula. This completes the conjunction case.
+
+Universal quantification case: Suppose the result holds for some $\Pi$-formula $\phi$. We must show it also holds for 
+$(\forall x)\phi$. Well, $\oldneg(\forall x)\phi$ is equivalent to 
+$(\exists x)\oldneg\phi$. By the induction assumption, $\oldneg\phi$ is equivalent to $\psi$ for some 
+$\Sigma$-formula $\psi$. Hence $\oldneg(\forall x)\phi$ is equivalent to 
+$(\exists x)\psi$, which is a $\Sigma$-formula. This completes the universal quantification case.
+
+Bounded universal quantification: Suppose the result holds for some $\Pi$-formula $\phi$. We must show it 
+also holds for $(\forall x\in y)\phi$. Well, $\oldneg(\forall x\in y)\phi$ is 
+equivalent to $(\exists x\in y)\oldneg\phi$. By the induction assumption, $\oldneg\phi$ is equivalent to 
+$\psi$ for some $\Sigma$-formula $\psi$. Hence $\oldneg(\forall x\in y)\phi$ is equivalent to
+$(\exists x\in y)\psi$, which is a $\Sigma$-formula. This completes the bounded universal quantification case.
+
+Bounded existential quantification: Suppose the result holds for some $\Pi$-formula $\phi$. We must show it 
+also holds for $(\exists x\in y)\phi$. Well, $\oldneg(\exists x\in y)\phi$ is 
+equivalent to $(\forall x\in y)\oldneg\phi$. By the induction assumption, $\oldneg\phi$ is equivalent to
+$\psi$ for some $\Sigma$-formula $\psi$. Hence $\oldneg(\exists x\in y)\phi$ is equivalent to
+$(\forall x\in y)\psi$, which is a $\Sigma$-formula. This completes the bounded existential quantification case, 
+therefore completing the proof of (a).
+
+\end{proof}
+
+(b) The proof of (b) is nearly identical to that of (a), so we omit it.
+
+\subsection*{Exercise 4.2}
+We prove Corollary 4.3. That is, let $\phi(x_1,...,x_n)$ be a formula of $\mathcal{L}_C$, and  $s_1,...,s_n$ be members of 
+$\mathcal{D}^\mathcal{G}_\textfrak{J}$. If $\phi$ is a $\Sigma$-formula and 
+$p\vDash_\textfrak{J}\lbc\phi(s_1,...,s_n)\rbc$, we show that $p\vDash\lbc\phi(s_1,...,s_n)\rbc$. If $\phi$ is a 
+$\Pi$-formula and $p\vDash\lbc\phi(s_1,...,s_n)\rbc$, we show that $p\vDash_\textfrak{J}\lbc\phi(s_1,...,s_n)\rbc$.
+
+\begin{proof}
+By induction on the complexity of $\phi$. 
+
+(a) First, suppose that $\phi$ is a $\Sigma$-formula. Also suppose that 
+$p\vDash_\textfrak{J}\lbc\phi(s_1,...,s_n)\rbc$. We must show that $p\vDash\lbc(s_1,...,s_n)\rbc$.
+The case where $\phi$ is also a $\Delta_0$ formula is immediate 
+from Proposition 4.1. Thus we need only consider the disjunction, conjunction, existential quantifier, 
+bounded universal quantifier and bounded existential quantifier cases. 
+
+Disjunction case: Suppose $\phi(s_1,...,s_n)$ is of the form $\psi(s_1,...,s_n)\vee\delta(s_1,...,s_n)$, but
+$p\nvDash\lbc\phi(s_1,...,s_n)\rbc$. We derive a contradiction. Because 
+$p\nvDash\lbc\phi(s_1,...,s_n)\rbc$, it follows that 
+$p'\vDash\lbc\oldneg\phi(s_1,...,s_n)\rbc$ for some $p'$ with $p\mathcal{R}p'$. Also, for 
+some $p''$ with $p'\mathcal{R}p''$, at least one of $p''\vDash_\textfrak{J}\lbc\psi(s_1,...,s_n)\rbc$ and 
+$p''\vDash_\textfrak{J}\lbc\delta(s_1,...,s_n)\rbc$ holds. Suppose, without loss of generality, that the former is the case, that is, 
+$p''\vDash_\textfrak{J}\lbc\psi(s_1,...,s_n)\rbc$. By the induction assumption, this means 
+$p''\vDash\lbc\psi(s_1,...,s_n)\rbc$. Because $p'\mathcal{R}p''$, $p''\vDash\lbc\oldneg\phi(s_1,...,s_n)\rbc$, 
+and hence $p''\nvDash\lbc\phi(s_1,...,s_n)\rbc$, meaning $p''\nvDash\lbc\psi(s_1,...,s_n)\rbc$, a contradiction.
+
+Conjunction case: Suppose $\phi(s_1,...,s_n)$ is of the form $\psi(s_1,...,s_n)\wedge\delta(s_1,...,s_n)$, but
+$p\nvDash\lbc\phi(s_1,...,s_n)\rbc$. We derive a contradiction. Because
+$p\nvDash\lbc\phi(s_1,...,s_n)\rbc$, it follows that 
+$p'\vDash\lbc\oldneg\phi(s_1,...,s_n)\rbc$ for some $p'$ with $p\mathcal{R}p'$. Also,
+$p'\vDash_\textfrak{J}\lbc\psi(s_1,...,s_n)\rbc$ and 
+$p'\vDash_\textfrak{J}\lbc\delta(s_1,...,s_n)\rbc$ both hold, meaning, by the induction assumption, 
+both $p'\vDash\lbc\psi(s_1,...,s_n)\rbc$ and 
+$p'\vDash\lbc\delta(s_1,...,s_n)\rbc$ hold. Because 
+$p'\vDash\lbc\oldneg\phi(s_1,...,s_n)\rbc$, either 
+$p'\nvDash\lbc\psi(s_1,...,s_n)\rbc$ or $p'\nvDash\lbc\delta(s_1,...,s_n)\rbc$, and this is a contradiction.
+
+Existential quantifier case: Suppose $\phi(s_1,...,s_n)$ is of the form 
+$(\exists x)\phi(x,s_1,...,s_n)$, but $p\nvDash\lbc(\exists x)\phi(x,s_1,...,s_n)\rbc$. We derive a contradiction. 
+This means $p'\vDash\lbc\oldneg(\exists x)\phi(x,s_1,...,s_n)\rbc$ for some $p'$ with $p\mathcal{R}p'$. Because 
+$p\vDash_\textfrak{J}\lbc(\exists x)\phi(x,s_1,...,s_n)\rbc$, it follows by the induction assumption that, for some 
+$f\in\mathcal{D}^\mathcal{G}_\textfrak{J}$ and some $p''$ with $p'\mathcal{R}p''$,
+$p''\vDash\lbc\phi(f,s_1,...,s_n)\rbc$. Then $p''\vDash\lbc(\exists x)(x,s_1,...s_n)\rbc$. But 
+we also have $p'\vDash\lbc\oldneg(\exists x)\phi(x,s_1,...,s_n)\rbc$, and this implies
+$p''\vDash\lbc\oldneg(\exists x)\phi(x,s_1,...,s_n)\rbc$, a contradiction.
+
+Bounded universal quantifier case: Suppose $\phi(s_1,...,s_n)$ is of the form
+$(\forall x\in s_1)\psi(x,s_1,...,s_n)$, but $p\nvDash\lbc\phi(s_1,...,s_n)\rbc$. We derive a contradiction.
+This means $p'\vDash\lbc\oldneg(\forall x\in s_1)\phi(x,s_1,...,s_n)\rbc$ for some $p'$ with $p\mathcal{R}p'$, which 
+implies $p''\vDash\lbc d\in s_1\rbc$ and $p''\vDash\lbc\oldneg\phi(d,s_1,...,s_n)\rbc$ for some 
+$p''$ with $p'\mathcal{R}p''$ and some $d\in\mathcal{D}^\mathcal{G}$. Because 
+$p''\vDash\lbc d\in s_1\rbc$, it follows that $p'''\vDash\lbc f\epsilon s_1\rbc$ and 
+$p'''\vDash\lbc d\approx f\rbc$ for some $f$ and some $p'''$ with $p''\mathcal{R}p'''$. 
+Because $s_1\in\mathcal{D}^\mathcal{G}_\textfrak{J}$, 
+$s_1$ is \textfrak{J}-invariant, which means, by Proposition 2.8, that $g$ is \textfrak{J}-invariant as well, and thus 
+$g\in\mathcal{D}^\mathcal{G}_\textfrak{J}$. Then, by substitutivity, 
+$p'''\vDash\lbc\oldneg\phi(g,s_1,...,s_n)\rbc$. Also, by Proposition 4.1, 
+$p'''\vDash_\textfrak{J}\lbc g\in s_1\rbc$. But also 
+$p'''\vDash_\textfrak{J}\lbc(\forall x\in s_1)\psi(x,s_1,...,s_n)\rbc$ (because 
+$p\vDash_\textfrak{J}\lbc(\forall x\in s_1)\psi(x,s_1,...,s_n)\rbc$), which means
+$p'''\vDash_\textfrak{J}\lbc\psi(g,s_1,...,s_n)\rbc$, hence
+$p'''\vDash\lbc\psi(g,s_1,...,s_n)\rbc$ by the induction hypothesis, which is a contradiction.
+
+Bounded existential quantifier case: This is even easier than the bounded universal quantifier case, and we omit it.
+
+(b) Next, suppose that $\phi$ is a $\Pi$-formula. Also suppose that $p\vDash\lbc\phi(s_1,...,s_n)\rbc$. We 
+must show that $p\vDash_\textfrak{J}\lbc\phi(s_1,...,s_n)\rbc$. The case where $\phi$ is also a $\Delta_0$ formula
+is immediate from Proposition 4.1. The disjunction and conjunction cases are identical to those of part (a), 
+while the bounded universal quantifier case is even easier than that of (a). Thus we only consider the 
+universal quantifier and bounded existential quantifier cases.
+
+Universal quantifier case: Suppose $\phi(s_1,...,s_n)$ is of the form
+$(\forall x)\phi(x,s_1,...,s_n)$, but $p\nvDash_\textfrak{J}\lbc(\forall x)\phi(x,s_1,...,s_n)\rbc$. We derive a contradiction.
+This means $p'\vDash_\textfrak{J}\lbc\oldneg\phi(d,s_1,...,s_n)\rbc$ for some $d\in\mathcal{D}^\mathcal{G}_\textfrak{J}$ and 
+some $p'$ with $p\mathcal{R}p'$. Because $p\vDash\lbc(\forall x)\phi(x,s_1,...,s_n)\rbc$,
+also $p'\vDash\lbc(\forall x)\phi(x,s_1,...,s_n)\rbc$, meaning
+$p'\vDash\lbc\phi(d,s_1,...,s_n)\rbc$. But by the induction hypothesis, this means
+$p'\vDash_\textfrak{J}\lbc\phi(d,s_1,...,s_n)\rbc$, and this is a contradiction.
+
+Bounded existential quantifier case: Suppose $\phi(s_1,...,s_n)$ is of the form
+$(\exists x\in s_1)\phi(x,s_1,...,s_n)$, but $p\nvDash_\textfrak{J}\lbc(\exists x\in s_1)\phi(x,s_1,...,s_n)\rbc$. We derive a contradiction.
+Because $p\nvDash_\textfrak{J}\lbc(\exists x\in s_1)\phi(x,s_1,...,s_n)\rbc$, it follows that
+$p'\vDash_\textfrak{J}\lbc\oldneg(\exists x\in s_1)\phi(x,s_1,...,s_n)\rbc$ for some $p'$ with $p\mathcal{R}p'$, that is, 
+$p'\vDash_\textfrak{J}\lbc(\forall x\in s_1)\oldneg\phi(x,s_1,...,s_n)\rbc$. Because 
+$p\vDash\lbc(\exists x\in s_1)\phi(x,s_1,...,s_n)\rbc$, also
+$p'\vDash\lbc(\exists x\in s_1)\phi(x,s_1,...,s_n)\rbc$, and thus
+$p''\vDash\lbc d\in s_1\rbc$ and $p''\vDash\lbc\phi(d,s_1,...,s_n)\rbc$ for some 
+$d\in\mathcal{D}^\mathcal{G}$. Because $p''\vDash\lbc d\in s_1\rbc$, 
+$p'''\vDash\lbc d\approx f\rbc$ and $p'''\vDash\lbc f\epsilon s_1\rbc$ both hold for some $f$. Using similar reasoning as in the 
+bounded universal quantifier case of (a), it follows that $f\in\mathcal{D}^\mathcal{G}_\textfrak{J}$. By substitutivity,
+$p'''\vDash\lbc\phi(f,s_1,...,s_n)\rbc$, meaning
+$p'''\vDash_\textfrak{J}\lbc\phi(f,s_1,...,s_n)\rbc$ by the induction hypothesis. But also
+$p'''\vDash_\textfrak{J}\lbc f\in s_1\rbc$ (by Proposition 4.1) and 
+$p'''\vDash_\textfrak{J}\lbc(\forall x\in s_1)\oldneg\phi(x,s_1,...,s_n)\rbc$ (because
+$p'\mathcal{R}p'''$), meaning $p'''\vDash\lbc\oldneg\phi(f,s_1,...,s_n)\rbc$, and this is a 
+contradiction.
+
+\end{proof}
 
 \end{document}
