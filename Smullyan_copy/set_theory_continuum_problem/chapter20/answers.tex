@@ -517,4 +517,85 @@ contradiction.
 
 \end{proof}
 
+\section*{Section 5}
+
+\subsection*{Lemma 5.1}
+I will note two things about the proof of this lemma. First, there is an error in the last paragraph of part (1). It is claimed that, 
+because $q\vDash\lbc c\approx x'\wedge c\epsilon a\rbc$ and $\theta^{-1}\in\textfrak{G}$, Theorem 3.2 and the
+\textfrak{G}-invariance of $a$ means
+$\theta^{-1}(q)\vDash\lbc\theta^{-1}(c)\approx\theta^{-1}(x')\wedge\theta^{-1}(c)\epsilon a\rbc$. 
+Supposedly, the reasoning was that, because $q\vDash\lbc c\approx x'\wedge c\epsilon a\rbc$,
+Theorem 3.2 obtains
+$\theta^{-1}(q)\vDash\lbc\theta^{-1}(c)\approx\theta^{-1}(x')\wedge\theta^{-1}(c)\epsilon\theta^{-1}(a)\rbc$. Then,
+because $a$ is \textfrak{G}-invariant, $\theta^{-1}(q)\vDash\lbc a\approx\theta^{-1}(a)\rbc$, and thus, by substitutivity,
+$\theta^{-1}(q)\vDash\lbc\theta^{-1}(c)\approx\theta^{-1}(x')\wedge\theta^{-1}(c)\epsilon a\rbc$. But this is an incorrect 
+conclusion to draw, as substitutivity only applies for formulas in the language $\mathcal{L}_C$, whereas the formula 
+it was used on involves an instance of $\epsilon$. In order to fix this problem, note that, because 
+$q\vDash\lbc c\epsilon a\rbc$, we also have $q\vDash\lbc c\in a\rbc$. \textit{Then} we have
+$q\vDash\lbc c\approx x'\wedge c\in a\rbc$, for which we can use substitutivity and Theorem 3.2 to receive
+$\theta^{-1}(q)\vDash\lbc\theta^{-1}(c)\approx\theta^{-1}(x')\wedge\theta^{-1}(c)\in a\rbc$. This does not 
+yield $\theta^{-1}(q)\vDash\theta^{-1}(x')\epsilon b$ as in the proof, but it can easily be seen to yield
+$\theta^{-1}(q)\vDash\lbc\theta^{-1}(x')\epsilon b\rbc$, which is what is actually needed.
+
+The second thing I will note are the details for part (2) of the proof, where we show that $p\vDash\lbc a\approx b\rbc$. 
+
+\begin{proof}
+Suppose $\lbc a\approx b\rbc$ was not true at $p$ - we derive a contradiction. Then, by Proposition 2.12 of Chapter 17, either 
+$p\nvDash\lbc(\forall x)[(x\epsilon a)\supset(\exists y)(y\epsilon b\wedge y\approx x)]\rbc$ or
+$p\nvDash\lbc(\forall x)[(x\epsilon b)\supset(\exists y)(y\epsilon a\wedge y\approx x)]\rbc$.
+
+Case 1) $p\nvDash\lbc(\forall x)[(x\epsilon a)\supset(\exists y)(y\epsilon b\wedge y\approx x)]\rbc$. Then it follows that, 
+for some $q$ with $p\mathcal{R}q$ and some $c$, $q\vDash\lbc c\epsilon a\rbc$ and
+$q\vDash\lbc\oldneg(\exists y)(y\epsilon b\wedge y\approx c)\rbc$. Because $q\vDash\lbc c\epsilon a\rbc$ and 
+$q\vDash\lbc a\subseteq f\rbc$, it follows that $q\vDash\lbc c\in f\rbc$, meaning 
+$r\vDash\lbc c\approx d\rbc$ and $r\vDash\lbc d\epsilon f\rbc$ for some $d$ and some 
+$r$ with $q\mathcal{R}r$. Because $r\vDash\lbc d\epsilon f\rbc$, it follows that, because
+$f$ is \textfrak{J}-invariant, so is $d$. Also, because $f\in R^\mathcal{G}_{\alpha+1}$ and 
+$r\vDash\lbc d\epsilon f\rbc$, it follows that $d\in R^\mathcal{G}_\alpha$. Hence we know that 
+$d\in R^\mathcal{J}_\alpha\cap\mathcal{D}^\mathcal{G}_\textfrak{J}$. By the definition of 
+$b$, it then follows that $r\vDash d\epsilon b$, which implies $r\vDash\lbc d\epsilon b\rbc$. Because we also have 
+$r\vDash\lbc c\approx d\rbc$, this yields $r\vDash\lbc(\exists y)(y\epsilon b\wedge y\approx c)\rbc$, contradicting 
+$q\vDash\lbc\oldneg(\exists y)(y\epsilon b\wedge y\approx c)\rbc$ (which implies
+$r\vDash\lbc\oldneg(\exists y)(y\epsilon b\wedge y\approx c)\rbc$).
+
+Case 2) $p\nvDash\lbc(\forall x)[(x\epsilon b)\supset(\exists y)(y\epsilon a\wedge y\approx x)]\rbc$. Then it follows that,
+for some $q$ with $p\mathcal{R}q$ and some $c$, $q\vDash\lbc c\epsilon b\rbc$ and 
+$q\vDash\lbc\oldneg(\exists y)(y\epsilon a\wedge y\approx c)\rbc$. Because $q\vDash\lbc c\epsilon b\rbc$, this implies
+$r\vDash\lbc (d\approx c\wedge d\epsilon a)\rbc$ for some $r$ with $q\mathcal{R}r$ and some $d$. Hence
+$r\vDash\lbc(\exists y)(y\epsilon a\wedge y\approx c)\rbc$, but this contradicts 
+$q\vDash\lbc\oldneg(\exists y)(y\epsilon a\wedge y\approx c)\rbc$.
+
+\end{proof}
+
+\subsection*{Exercise 5.1}
+We complete the proof of Theorem 5.2.
+
+\begin{proof}
+That is, we show that $g$ behaves like a powerset in $\mathcal{M}_\textfrak{J}$. What this means is that we show
+\[ \lbc (\forall x)(x\epsilon g\equiv x\subseteq f)\rbc \]
+is valid in $\mathcal{M}_\textfrak{J}$. Suppose, on the contrary, that
+$p\nvDash\lbc(\forall x)(x\epsilon g\equiv x\subseteq f)\rbc$ for some possible world $p$. We derive a contradiction. It follows 
+that, for some $d\in\mathcal{D}^\mathcal{G}_\textfrak{J}$, $p\nvDash\lbc(d\epsilon g\equiv d\subseteq f)\rbc$. 
+There are two cases: $p\nvDash\lbc(d\epsilon g\supset d\subseteq f)\rbc$ or 
+$p\nvDash\lbc(d\subseteq f\supset d\epsilon g)\rbc$.
+
+Case 1) $p\nvDash\lbc(d\epsilon g\supset d\subseteq f)\rbc$. Then it follows that 
+$q\vDash\lbc\oldneg(d\epsilon g\supset d\subseteq f)\rbc$ for some $q$ with 
+$p\mathcal{R}q$. This means that, for some $r$ with $q\mathcal{R}r$,
+$r\vDash\lbc d\epsilon g\rbc$ and $r\vDash\lbc\oldneg(d\subseteq f)\rbc$. Because 
+$r\vDash\lbc d\epsilon g\rbc$, it follows by the definition of $g$, that, for some 
+$r'$ with $r\mathcal{R}r'$, $r'\vDash\lbc d\subseteq f\rbc$. But, because 
+$r\mathcal{R}r'$, also $r'\vDash\lbc\oldneg(d\subseteq f)\rbc$, and this is a contradiction.
+
+Case 2) $p\nvDash\lbc(d\subseteq f\supset d\epsilon g)\rbc$. Then it follows that
+$q\vDash\lbc\oldneg(d\subseteq f\supset d\epsilon g)\rbc$ for some $q$ with
+$p\mathcal{R}q$. This means that, for some $r$ with $q\mathcal{R}r$,
+$r\vDash\lbc d\subseteq f\rbc$ and $r\vDash\lbc\oldneg(d\epsilon g)\rbc$. Because 
+$r\vDash\lbc d\subseteq f\rbc$ and $d\in\mathcal{D}^\mathcal{G}_\textfrak{J}$,
+$r\vDash d\epsilon g$ follows by the definition of $g$, and thus
+$r\vDash\lbc d\epsilon g\rbc$. But this contradicts
+$r\vDash\lbc\oldneg(d\epsilon g)\rbc$.
+
+\end{proof}
+
 \end{document}
