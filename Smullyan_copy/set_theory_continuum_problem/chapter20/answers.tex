@@ -518,6 +518,7 @@ contradiction.
 \end{proof}
 
 \section*{Section 5}
+Note that I encountered multiple difficulties with Propositions 5.3 and 5.4 of this section.
 
 \subsection*{Lemma 5.1}
 I will note two things about the proof of this lemma. First, there is an error in the last paragraph of part (1). It is claimed that, 
@@ -597,5 +598,69 @@ $r\vDash\lbc d\epsilon g\rbc$. But this contradicts
 $r\vDash\lbc\oldneg(d\epsilon g)\rbc$.
 
 \end{proof}
+
+\subsection*{Proposition 5.3 and Exercise 5.3}
+It was not clear to me how Proposition 5.3 was any different from Theorem 2.7 of Chapter 17. 
+$\mathcal{M}_\textfrak{J}$ is an S4 model, so it would seem that that theorem carries over to 
+$\mathcal{M}_\textfrak{J}$. Thus it seems to me that Exercise 5.2 could be answered by just giving the same proof 
+as in Theorem 2.7 of Chapter 17. It was not clear to me what was meant by \textquote{the translate of the 
+extentionsionality axiom will be needed}, as it was not needed for the proof of Theorem 2.7 of Chapter 17.
+
+Exercise 5.3 is basically immediate from what we already know about the relationship between 
+$\approx$ and $=$. Recall that $p\vDash\lbc a\approx b\rbc$ iff $p\vDash\lbc a=b\rbc$. 
+So, if $a,b\in\mathcal{D}^\mathcal{G}_\textfrak{J}$ and $p\in\mathcal{G}$,
+$p\vDash\lbc a\approx b\rbc$ iff $p\vDash\lbc a=b\rbc$ iff
+$p\vDash_\textfrak{J}\lbc a=b\rbc$ (by Proposition 4.1).
+
+\subsection*{Proposition 5.4}
+There is an error in the proof of this proposition (as well as the proof of Proposition 6.1 of Chapter 17). 
+In particular, it is claimed that members of $g$ are 
+\textquote{by definition} members of $\mathcal{D}^\mathcal{G}$. However, members of $g$ are in fact 
+by definition \textit{not} members of $\mathcal{D}^\mathcal{G}$. This is because members $v$ 
+of $g$ are of the form $\langle q',b\rangle$ for some $q'\in\mathcal{G}$ and some 
+$b\in\mathcal{D}^\mathcal{G}_\textfrak{J}$. But if $v\in\mathcal{D}^\mathcal{G}$, then 
+$v\in\mathcal{R}^\mathcal{G}_{\alpha+1}$ for some $\alpha$. Then
+$v\subseteq\mathcal{G}\times\mathcal{R}^\mathcal{G}_\alpha$. But obviously that cannot happen if 
+$v=\langle q',b\rangle$. In fact, this is not so much of an error with the proof, as an errant tangent. For, all 
+members of $g$ are in $\mathcal{G}\times\mathcal{D}^\mathcal{G}$ (more specifically,
+$\mathcal{G}\times\mathcal{D}^\mathcal{G}_\textfrak{J}$), so $g\in\mathcal{D}^\mathcal{G}$ as well.
+
+There is another error in the proof of this proposition. In paricular, the axiom 
+of substitution in $M$ is used on $F$ for $\psi$ - yet it was never verified that $\psi$ was a function over $F$. Indeed, it 
+seems that $\psi$ is \textit{not} a function over $F$. For, suppose that $\psi(u,v)$ for some 
+$u\in F$. Thus $u=\langle q,a\rangle$ and $v=\langle q',b\rangle$ for some $a,b\in\mathcal{D}^\mathcal{G}_\textfrak{J}$ and 
+some $q$ and $q'$ with $q\mathcal{R}q'$ where $q'\vDash_\textfrak{J}\lbc\phi(a,b)\rbc$. 
+Now, it could very well be that $q'\mathcal{R}q''$ for some $q''\ne q'$. If that was the case, 
+it would follow that $q''\vDash_\textfrak{J}\lbc\phi(a,b)\rbc$, which would mean $\psi(u,v')$ where 
+$v'=\langle q'',b\rangle$ - so that $v'\ne v$. This error is simple to fix. Because $\mathcal{M}$ is 
+well founded, the axiom of collection holds in $\mathcal{M}$, so that we can have the set $g$ that we 
+want, even though $\psi$ may not be a function over $F$ (this is how it worked in the proof of Proposition 6.1 of Chapter 17).
+
+Another error in the proof of this proposition occurs in the second paragraph of pg. 278 (which I am not sure 
+how to fix). It is claimed that, because 
+$f$ is \textfrak{G}-invariant and $q\vDash\lbc b\epsilon f\rbc$, we have
+$\theta^{-1}(q)\vDash\lbc\theta^{-1}(b)\epsilon f\rbc$. The error that is occuring here is basically identical to the one 
+that I described in the first paragraph of the section of these notes titled \textquote{Lemma 5.1}. 
+
+There is a typo in the second sentence of the penultimate paragraph of this proof on pg. 277. In this sentence,
+\textquote{$\theta\in\mathcal{G}$} should be replaced with \textquote{$\theta\in\textfrak{G}$}.
+
+Lastly, here is an explanation for why, if $p\vDash_\textfrak{J}\lbc(\forall x)[x\in f\supset(\exists !y)\phi(x,y)]\rbc$ then
+$p\vDash_\textfrak{J}\lbc(\forall x)[x\in f\supset(\exists y)(y\in g^*\wedge\phi(x,y))]\rbc$. Suppose
+$p\vDash_\textfrak{J}\lbc(\forall x)[x\in f\supset(\exists !y)\phi(x,y)]\rbc$ but
+$p\nvDash_\textfrak{J}\lbc(\forall x)[x\in f\supset(\exists y)(y\in g^*\wedge\phi(x,y))]\rbc$ - we derive a contradiction.
+Because $p\nvDash_\textfrak{J}\lbc(\forall x)[x\in f\supset(\exists y)(y\in g^*\wedge\phi(x,y))]\rbc$, it follows that,
+for some $p'$ with $p\mathcal{R}p'$ and some $d\in\mathcal{D}^\mathcal{G}_\textfrak{J}$,
+$p'\vDash_\textfrak{J}\lbc (d\epsilon f)\rbc$ and
+$q\vDash_\textfrak{J}\lbc\oldneg(\exists y)(y\in g^*\wedge\phi(d,y))\rbc$. Then it follows, by the definition of $F$, that
+$\langle p',d\rangle\in F$. Hence, for some $v=\langle q,b\rangle$ with $v\in g$, $p'\mathcal{R}q$ and 
+$b\in\mathcal{D}^\mathcal{G}_\textfrak{J}$, $\psi(\langle p',d\rangle,\langle q,b\rangle)$, meaning 
+$q\vDash_\textfrak{J}\lbc\phi(d,b)\rbc$. Now, because $\langle q,b\rangle\in g$, 
+$\langle q',b\rangle\in g^*$ for every $q'$ with $q\mathcal{R}q'$. This means that
+$q\vDash_\textfrak{J}\lbc (b\in g^*)\rbc$. Hence we have both 
+$q\vDash_\textfrak{J}\lbc (b\in g^*)\rbc$ and 
+$q\vDash_\textfrak{J}\lbc \phi(d,b)\rbc$, meaning
+$q\vDash_\textfrak{J}\lbc(\exists y)(y\in g^*\wedge\phi(d,y))\rbc$. But this contradicts
+$q\vDash_\textfrak{J}\lbc\oldneg(\exists y)(y\in g^*\wedge\phi(d,y))\rbc$.
 
 \end{document}
