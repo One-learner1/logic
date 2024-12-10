@@ -519,7 +519,6 @@ contradiction.
 \end{proof}
 
 \section*{Section 5}
-Note that I encountered multiple difficulties with Propositions 5.3 and 5.4 of this section.
 
 \subsection*{Notes}
 Note that, if $f$ is \textfrak{G}-invariant and $\langle p,g\rangle\in f$, it does \textit{not} follow that
@@ -529,7 +528,9 @@ either $p\vDash\lbc a\epsilon f\rbc$ or $p\vDash\lbc a\epsilon\theta(g)\rbc$ hol
 $\lbc f\approx\theta(g)\rbc$ would trivially hold). This means that, if $f$ is \textfrak{J}-invariant 
 and \textfrak{G}-invariant for some \textfrak{G} in the sequence \textfrak{J}, it follows that 
 $g$ (for $\langle p,g\rangle\in f$) is \textfrak{J}-invariant, but it does not follow that 
-$g$ is \textfrak{G}-invariant. 
+$g$ is \textfrak{G}-invariant. Of course, if $f$ happens to be $\hat{a}$ for some $a$, then the result does follow. That is, 
+if $\langle p,g\rangle\in f$, then because $f=\hat{a}$, $g=\hat{b}$ for some $b\in a$. By Exercise 2.2, 
+we then know that $\theta(\hat{a})=\hat{a}$, that is, $\theta(g)=g$. 
 
 \subsection*{Lemma 5.1}
 I will note two things about the proof of this lemma. First, there is an error in the last paragraph of part (1). It is claimed that, 
@@ -611,15 +612,72 @@ $r\vDash_\textfrak{J}\lbc\oldneg(d\epsilon g)\rbc$.
 \end{proof}
 
 \subsection*{Proposition 5.3 and Exercise 5.3}
-It was not clear to me how Proposition 5.3 was any different from Theorem 2.7 of Chapter 17. 
-$\mathcal{M}_\textfrak{J}$ is an S4 model, so it would seem that that theorem carries over to 
-$\mathcal{M}_\textfrak{J}$. Thus it seems to me that Exercise 5.2 could be answered by just giving the same proof 
-as in Theorem 2.7 of Chapter 17. It was not clear to me what was meant by \textquote{the translate of the 
-extentionsionality axiom will be needed}, as it was not needed for the proof of Theorem 2.7 of Chapter 17.
+We already have Proposition 5.3 for $S4$-\textit{regular} models (Theorem 2.7 of Chapter 17), but $\mathcal{M}_\textfrak{J}$ is not an 
+$S4$-regular model - only an $S4$ model. We prove Proposition 5.3 by induction on the degree of $X$ (it is basically the same proof as 
+that of Theorem 2.7 of Chapter 17).
 
-Exercise 5.3 is basically immediate from what we already know about the relationship between 
-$\approx$ and $=$. Recall that $p\vDash\lbc a\approx b\rbc$ iff $p\vDash\lbc a=b\rbc$. 
-So, if $a,b\in\mathcal{D}^\mathcal{G}_\textfrak{J}$ and $p\in\mathcal{G}$,
+\begin{proof}
+The argument is by induction on the complexity of $X$. The atomic case easily follows by using the fact that the translate of the axiom of 
+extensionality is valid in $\mathcal{M}_\textfrak{J}$.
+Classically, every formula is equivalent to one with only $\oldneg,\wedge$ and $\forall$ as quantifiers, and by Corollary 4.8 of Chapter 16, if 
+$A$ and $B$ are classically equivalent, then $\lbc A\rbc$ and $\lbc B\rbc$ are $S4$ equivalent. Consequently we need only consider 
+the $\oldneg,\wedge$ and $\forall$ cases in the induction. And two of these cases are simply since 
+$\lbc A\wedge B\rbc (\lbc A\rbc\wedge\lbc B\rbc)$ is $S4$ valid, and ismilarly for the universal quantifier. Consequently it is only the 
+negation case that we presnt in detail.
+
+Suppose we know that whenever $\lbc f\approx g\rbc$ is true at a possible world, so is $\lbc X\rbc\equiv\lbc X'\rbc$. Suppose further that
+$p\vDash\lbc f\approx g\rbc$ but $p\nvDash\lbc\oldneg X\rbc\equiv\lbc\oldneg X'\rbc$ - we derive a contradiction. Say 
+$p\nvDash\lbc\oldneg X\rbc\supset\lbc \oldneg X'\rbc$ - the other direction is similar. Thus $p\vDash\lbc\oldneg X\rbc$ but 
+$p\nvDash\lbc\oldneg X'\rbc$. Since $p\nvDash\lbc\oldneg X'\rbc$, for some $p'$ with $p\mathcal{R}p'$, 
+$p'\vDash\lbc X'\rbc$, meaning, by the induction hypothesis, $p'\vDash\lbc X\rbc$. But we also have 
+$p'\vDash\lbc\oldneg X\rbc$, and this is a contradiction.
+
+\end{proof}
+
+For Exercise 5.3, first note that $p\vDash_\textfrak{J}\lbc a=b\rbc$ iff 
+$p\vDash_\textfrak{J}\lbc a\approx b\rbc$ (we prove this; also note that the basic results about equality from Section 2 of Chapter 17 still 
+hold for $\mathcal{M}_\textfrak{J}$, as the proofs do not rely upon $\mathcal{M}$ being a $S4$-regular model, only an $S4$ model).
+
+\begin{proof}
+Suppose, on the contrary, that either $p\vDash_\textfrak{J}\lbc a=b\rbc$ and 
+$p\nvDash_\textfrak{J}\lbc a\approx b\rbc$, or
+$p\vDash_\textfrak{J}\lbc a\approx b\rbc$ and $p\nvDash_\textfrak{J}\lbc a=b\rbc$.
+
+Case 1) $p\vDash_\textfrak{J}\lbc a=b\rbc$ and 
+$p\nvDash_\textfrak{J}\lbc a\approx b\rbc$. Then (by Proposition 2.12 of Chapter 17), for some $p'$ with $p\mathcal{R}p'$,
+either $p'\vDash_\textfrak{J}\lbc\oldneg(\forall x)(x\epsilon a\supset(\exists y)(y\epsilon b\wedge x\approx y))\rbc$ or
+$p'\vDash_\textfrak{J}\lbc\oldneg(\forall x)(x\epsilon b\supset(\exists y)(y\epsilon a\wedge x\approx y))\rbc$. Suppose, without loss of generality, that it is the 
+former that holds. That is, $p'\vDash_\textfrak{J}\lbc\oldneg(\forall x)(x\epsilon a\supset(\exists y)(y\epsilon b\wedge x\approx y))\rbc$. Hence, 
+for some $f$, $p'\vDash_\textfrak{J}\lbc\oldneg(f\epsilon a\supset(\exists y)(y\epsilon b\wedge f\approx y))\rbc$. This means that for some 
+$p''$ with $p'\mathcal{R}p''$,
+$p''\vDash_\textfrak{J}\lbc f\epsilon a\rbc$ and $p''\vDash_\textfrak{J}\lbc\oldneg(\exists y)(y\epsilon b\wedge f\approx y)\rbc$. Because 
+$p''\vDash_\textfrak{J}\lbc f\epsilon a\rbc$, $p''\vDash_\textfrak{J}\lbc f\in a\rbc$. Also
+$p''\vDash_\textfrak{J}\lbc a=b\rbc$, meaning $p''\vDash_\textfrak{J}\lbc f\in b\rbc$. Hence, for some 
+$g$ and some $p'''$ with $p''\mathcal{R}p'''$, $p'''\vDash_\textfrak{J}\lbc g\epsilon b\rbc$ and 
+$p'''\vDash_\textfrak{J}\lbc f\approx g\rbc$. But this contradicts $p''\vDash_\textfrak{J}\lbc\oldneg(\exists y)(y\epsilon b\wedge f\approx y)\rbc$.
+
+Case 2) $p\vDash_\textfrak{J}\lbc a\approx b\rbc$ and $p\nvDash_\textfrak{J}\lbc a=b\rbc$. We prove this by induction on the 
+$R^\mathcal{G}_\alpha$ for which $a,b\in R^\mathcal{G}_\alpha$. The least ordinal and limit ordinal cases are obvious.
+
+Now suppose the result holds for all members of $R^\mathcal{G}_\alpha\cap\mathcal{D}^\mathcal{G}_\textfrak{J}$ for some $\alpha$. Consider any 
+$a,b\in\mathcal{R}^\mathcal{G}_{\alpha+1}\cap\mathcal{D}^\mathcal{G}_\textfrak{J}$. Suppose 
+$p\vDash_\textfrak{J}\lbc a\approx b\rbc$ and $p\nvDash_\textfrak{J}\lbc a=b\rbc$. Then either
+$p\nvDash_\textfrak{J}\lbc(\forall x)(x\in a\supset x\in b)\rbc$ or $p\nvDash_\textfrak{J}\lbc(\forall x)(x\in b\supset x\in a)\rbc$. Without loss of 
+generality, suppose it is the former that holds, that is, $p\nvDash_\textfrak{J}\lbc(\forall x)(x\in a\supset x\in b)\rbc$. Then, for some 
+$p'$ with $p\mathcal{R}p'$ and some $f$, $p'\vDash_\textfrak{J}\lbc f\epsilon a\rbc$,
+$p'\vDash_\textfrak{J}\lbc f\in a\rbc$ and $p'\vDash_\textfrak{J}\lbc\oldneg(f\in b)\rbc$. Then
+$p''\vDash_\textfrak{J}\lbc g\approx f\rbc$ and $p''\vDash_\textfrak{J}\lbc g\epsilon a\rbc$ for some $g$ and some $p''$ with 
+$p'\mathcal{R}p''$. Because $p\vDash_\textfrak{J}\lbc a\approx b\rbc$, it follows that 
+$p'''\vDash\lbc h\epsilon b\rbc$ and $p'''\vDash\lbc h\approx g\rbc$ for some $h$ and some $p'''$ with 
+$p''\mathcal{R}p'''$. By transitivity, this means $p'''\vDash_\lbc h\approx f\rbc$. 
+Both $f$ and $h$ are in $R^\mathcal{G}_\alpha$, so, by the induction assumption,
+$p'''\vDash_\textfrak{J}\lbc f=h\rbc$. By the translate of the axiom of extensionality, it follows that 
+$p'''\vDash_\textfrak{J}\lbc f\in b\rbc$, which contradicts $p'\vDash_\textfrak{J}\lbc\oldneg(f\in b)\rbc$.
+
+\end{proof}
+
+With this out of the way, Exercise 5.3 is nearly immediate.
+For, if $a,b\in\mathcal{D}^\mathcal{G}_\textfrak{J}$ and $p\in\mathcal{G}$,
 $p\vDash\lbc a\approx b\rbc$ iff $p\vDash\lbc a=b\rbc$ iff
 $p\vDash_\textfrak{J}\lbc a=b\rbc$ (by Proposition 4.1).
 
