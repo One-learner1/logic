@@ -599,14 +599,17 @@ $q\vDash_\textfrak{J}\lbc\oldneg(d\epsilon g\supset d\subseteq f)\rbc$ for some 
 $p\mathcal{R}q$. This means that, for some $r$ with $q\mathcal{R}r$,
 $r\vDash_\textfrak{J}\lbc d\epsilon g\rbc$ and $r\vDash_\textfrak{J}\lbc\oldneg(d\subseteq f)\rbc$. Because 
 $r\vDash_\textfrak{J}\lbc d\epsilon g\rbc$, it follows by the definition of $g$, that, for some 
-$r'$ with $r\mathcal{R}r'$, $r'\vDash_\textfrak{J}\lbc d\subseteq f\rbc$. But, because 
+$r'$ with $r\mathcal{R}r'$, $r'\vDash_\textfrak{J}\lbc d\subseteq f\rbc$ (in fact it follows that 
+$r'\vDash\lbc d\subseteq f\rbc$, but $r'\vDash_\textfrak{J}\lbc d\subseteq f\rbc$ then follows by Proposition 4.1 because 
+$x\subseteq y$ is $\Delta_0$). But, because 
 $r\mathcal{R}r'$, also $r'\vDash_\textfrak{J}\lbc\oldneg(d\subseteq f)\rbc$, and this is a contradiction.
 
 Case 2) $p\nvDash_\textfrak{J}\lbc(d\subseteq f\supset d\epsilon g)\rbc$. Then it follows that
 $q\vDash_\textfrak{J}\lbc\oldneg(d\subseteq f\supset d\epsilon g)\rbc$ for some $q$ with
 $p\mathcal{R}q$. This means that, for some $r$ with $q\mathcal{R}r$,
 $r\vDash_\textfrak{J}\lbc d\subseteq f\rbc$ and $r\vDash_\textfrak{J}\lbc\oldneg(d\epsilon g)\rbc$. Because 
-$r\vDash_\textfrak{J}\lbc d\subseteq f\rbc$ and $d\in\mathcal{D}^\mathcal{G}_\textfrak{J}$,
+$r\vDash_\textfrak{J}\lbc d\subseteq f\rbc$ (which also means $r\vDash\lbc d\subseteq f\rbc$) 
+and $d\in\mathcal{D}^\mathcal{G}_\textfrak{J}$,
 $r\vDash_\textfrak{J} d\epsilon g$ follows by the definition of $g$, and thus
 $r\vDash_\textfrak{J}\lbc d\epsilon g\rbc$. But this contradicts
 $r\vDash_\textfrak{J}\lbc\oldneg(d\epsilon g)\rbc$.
@@ -795,7 +798,7 @@ $x\in\cup f$ as an abbreviation for $(\exists y)(y\in f\wedge x\in y)$.
 \end{theorem}
 
 \begin{proof}
-Suppose $f\in R^\mathcal{G}_{\alpha+2}$ for some $\alpha$. Define a set $g$ as follows:
+Suppose $f\in R^\mathcal{G}_{\alpha+2}\cap\mathcal{D}^\mathcal{G}_\textfrak{J}$ for some $\alpha$. Define a set $g$ as follows:
 \[ \langle p,a\rangle\in g\biconditional p\in\mathcal{G}\textrm{ and }a\in\mathcal{R}^\mathcal{G}_\alpha\textrm{ and }
 a\textrm{ is }\textfrak{J}\textrm{-invariant}\textrm{ and }p\vDash\lbc a\in\cup f\rbc \]
 It follows that $g\in R^\mathcal{G}_{\alpha+1}$, that is, $g\in\mathcal{D}^\mathcal{G}$. Also, it can easily be seen that if
@@ -844,7 +847,10 @@ Case 1) $p\nvDash_\textfrak{J}\lbc (a\in g\supset a\in \cup f)\rbc$. Then it fol
 $q$ with $p\mathcal{R}q$, $q\vDash_\textfrak{J}\lbc a\in g\rbc$ and $q\vDash_\textfrak{J}\lbc\oldneg(a\in\cup f)\rbc$. It follows that for some 
 $r$ with $q\mathcal{R}r$ and some $b\in\mathcal{D}^\mathcal{G}_\textfrak{J}$, $r\vDash_\textfrak{J}\lbc a\approx b\rbc$ and 
 $r\vDash_\textfrak{J} b\epsilon g$. By the definition of $g$, it follows that 
-$r\vDash_\textfrak{J}\lbc b\in\cup f\rbc$. Because $q\mathcal{R}r$, we also have
+$r\vDash_\textfrak{J}\lbc b\in\cup f\rbc$ (in fact it follows that 
+$r\vDash\lbc b\in\cup f\rbc$. Then, because $x\in\cup y$, that is, 
+$(\exists z\in y)x\in z$, is $\Delta_0$, $r\vDash_\textfrak{J}\lbc b\in\cup f\rbc$ follows by Proposition 4.1). 
+Because $q\mathcal{R}r$, we also have
 $r\vDash_\textfrak{J}\lbc\oldneg(a\in \cup f)\rbc$. By substitutivity, 
 $r\vDash_\textfrak{J}\lbc\oldneg(b\in \cup f)\rbc$. But this contradicts $r\vDash_\textfrak{J}\lbc b\in\cup f\rbc$.
 
@@ -855,11 +861,86 @@ $r\vDash_\textfrak{J}\lbc b\in f\wedge a\in b\rbc$. Because $f\in\mathcal{R}^\ma
 $r'\vDash_\textfrak{J}\lbc c\in f\wedge a\in c\rbc$ for some $r'$ with $r\mathcal{R}r'$ and some 
 $c\in\mathcal{R}^\mathcal{G}_{\alpha+1}$. Likewise, because $c\in\mathcal{R}^\mathcal{G}_{\alpha+1}$, it follows that
 $r''\vDash_\textfrak{J}\lbc c\in f\wedge d\in c\rbc$ for some $r''$ with $r'\mathcal{R}r''$ and some
-$d\in\mathcal{R}^\mathcal{G}_\alpha$ where $r''\vDash_\textfrak{J}\lbc a\approx d\rbc$. By the definition of $g$, it follows that
+$d\in\mathcal{R}^\mathcal{G}_\alpha$ where $r''\vDash_\textfrak{J}\lbc a\approx d\rbc$. By the definition of $g$ (and 
+because $r''\vDash_\textfrak{J}\lbc c\in f\wedge d\in c\rbc$ implies $r''\vDash\lbc c\in f\wedge d\in c\rbc$ using two applications of 
+Proposition 4.1), it follows that
 $r''\vDash_\textfrak{J} d\epsilon g$, hence $r''\vDash_\textfrak{J}\lbc d\epsilon g\rbc$, hence 
 $r''\vDash_\textfrak{J}\lbc d\in g\rbc$. But because $q\mathcal{R}r''$ we have
 $r''\vDash_\textfrak{J}\lbc\oldneg(a\in g)\rbc$, meaning, by substitutivity, $r''\vDash_\textfrak{J}\lbc\oldneg(d\in g)\rbc$, which 
 is a contradiction.
+
+\end{proof}
+
+Next we show that the translate of the unordered pair axiom is valid over $\mathcal{M}_\textfrak{J}$.
+
+\begin{theorem}
+For any $f,g\in\mathcal{D}^\mathcal{G}_\textfrak{J}$ there is some $h\in\mathcal{D}^\mathcal{G}_\textfrak{J}$ such that
+\[ (\forall x)(x\in h\equiv x\in\{f,g\})\rbc \]
+is valid over $\mathcal{M}_\textfrak{J}$, where we write $x\in\{f,g\}$ as an abbreviation for $x\approx f\vee x\approx g$.
+\end{theorem}
+
+\begin{proof}
+Suppose $f,g\in\mathcal{R}^\mathcal{G}_{\alpha+1}\cap\mathcal{D}^\mathcal{G}_\textfrak{J}$ for some $\alpha$. Define a set 
+$h$ as follows:
+\[ \langle p,a\rangle\in h\biconditional p\in\mathcal{G}\textrm{ and }a\in\mathcal{R}^\mathcal{G}_\alpha\textrm{ and }
+a\in\mathcal{D}^\mathcal{G}_\textfrak{J}\textrm{ and }p\vDash\lbc a\in\cup\{f,g\}\rbc \]
+
+It follows that $h\in\mathcal{R}^\mathcal{G}_{\alpha+1}$, that is, $h\in\mathcal{D}^\mathcal{G}$. Also, it can easily be seen that 
+if $p\vDash a\epsilon h$, then $p\vDash\lbc a\epsilon h\rbc$ as well. Note that both $\lbc f\in h\rbc$ and 
+$\lbc g\in h\rbc$ are valid in $\mathcal{M}$ (and $\mathcal{M}_\textfrak{J}$) by the reflexitivity of the $\approx$ relation.
+We first vierfy that $h\in\mathcal{D}^\mathcal{G}_\textfrak{J}$.
+To show this, we must show that (1) $h$ is \textfrak{G}-invariant for some \textfrak{G} in the sequence \textfrak{J}; and (2) for each
+$\langle p,a\rangle\in h$, $a$ is \textfrak{J}-invariant. (2) follows by definition of $h$, so it is (1) that we must show.
+
+Because $f,g\in\mathcal{D}^\mathcal{G}_\textfrak{J}$, $f$ is \textfrak{G}-invariant for some \textfrak{G} in the sequence \textfrak{J},
+and $g$ is $\textfrak{G}'$ for some $\textfrak{G}'$ in the sequence \textfrak{J}. Suppose, without loss of generality, that 
+\textfrak{G} is the latter of the two groups in the sequence \textfrak{J}, so that both 
+$f$ and $g$ are \textfrak{G}-invariant. We show that $h$ is \textfrak{G}-invariant. As in the previous proof (for the 
+translate of the union axiom), it suffices to show that $\lbc h\subseteq\theta(h)\rbc$ is valid in $\mathcal{M}$ for 
+every $\theta\in\textfrak{G}$.
+
+To show this, suppose, on the contrary, that $p\nvDash\lbc h\subseteq\theta(h)\rbc$ for some $p$ and for some 
+$\theta\in\textfrak{G}$ - we derive a contradiction. Because $p\nvDash\lbc h\subseteq\theta(h)\rbc$, it follows that, for 
+some $p'$ with $p\mathcal{R}p'$ and some $a\in\mathcal{D}^\mathcal{G}$, $p'\vDash\lbc a\epsilon h\rbc$, 
+$p'\vDash a\epsilon h$ and $p'\vDash\lbc\oldneg(a\in\theta(h))\rbc$ all hold. Because 
+$p'\vDash a\epsilon h$, $p'\vDash\lbc a\in\cup\{f,g\}\rbc$ follows by the definition of $g$. Because 
+both $f$ and $g$ are \textfrak{G}-invariant, and $\theta^{-1}\in\textfrak{G}$,
+$\theta^{-1}(p')\vDash\lbc\theta^{-1}(a)\in\cup\{f,g\}\rbc$. Then, for some $\theta^{-1}(q)$ with $\theta^{-1}(p')\mathcal{R}\theta^{-1}(q)$, 
+at least one of $\theta^{-1}(q)\vDash\lbc\theta^{-1}(a)\approx f\rbc$ and 
+$\theta^{-1}(q)\vDash\lbc\theta^{-1}(a)\approx g\rbc$ hold. Suppose, without loss of generality, that it is the former that holds, that is,
+$\theta^{-1}(q)\vDash\lbc\theta^{-1}(a)\approx f\rbc$. Because $\theta^{-1}(q)\vDash\lbc f\in h\rbc$, it follows by substitutivity that
+$\theta^{-1}(q)\vDash\lbc\theta^{-1}(a)\in h\rbc$, hence, by Theorem 3.2,
+$q\vDash\lbc a\in\theta(h)\rbc$. Because $\theta^{-1}(p')\mathcal{R}\theta^{-1}(q)$ and $\theta^{-1}$ is an automorphism,
+$p'\mathcal{R}q$, meaning $p\mathcal{R}q$ as well. But then $q\vDash\lbc\oldneg(a\in\theta(h))\rbc$ holds, which 
+contradicts $q\vDash\lbc a\in\theta(h)\rbc$.
+
+Now that we know that $h$ is \textfrak{G}-invariant (that is, $h\in\mathcal{D}^\mathcal{G}_\textfrak{J}$), we need to show that 
+$\lbc(\forall x)(x\in h\equiv x\in\{f,g\})\rbc$ is valid over $\mathcal{M}_\textfrak{J}$. Suppose, on the contrary, that 
+$p\nvDash_\textfrak{J}\lbc(\forall x)(x\in h\equiv x\in\{f,g\})\rbc$ held for some $p$ - we derive a contradiction. It follows that 
+$p\nvDash\lbc(a\in h\equiv a\in\{f,g\})\rbc$ for some $a\in\mathcal{D}^\mathcal{G}_\textfrak{J}$. There are two cases.
+
+Case 1) $p\nvDash_\textfrak{J}\lbc(a\in h\supset a\in\{f,g\})\rbc$. Then it follows that, for some $q$ with $p\mathcal{R}q$,
+$q\vDash_\textfrak{J}\lbc a\in h\rbc$ and $q\vDash_\textfrak{J}\lbc\oldneg(a\in\{f,g\})\rbc$.
+Because $q\vDash_\textfrak{J}\lbc a\in h\rbc$, it follows that 
+for some $r$ with $q\mathcal{R}r$ and some $b\in\mathcal{D}^\mathcal{G}_\textfrak{J}$,
+$r\vDash_\textfrak{J}\lbc a\approx b\rbc$, $r\vDash_\textfrak{J}\lbc b\epsilon h\rbc$ and 
+$r\vDash_\textfrak{J} b\epsilon h$ all hold. By the definition of $h$, it follows that
+$r\vDash\lbc b\approx f\vee b\approx g\rbc$, hence $r\vDash\lbc b=f\vee b=g\rbc$. Then, for some 
+$r'$ with $r\mathcal{R}r'$, at least one of $r'\vDash\lbc b=f\rbc$ and $r'\vDash\lbc b=g\rbc$ hold. Suppose, without loss of generality, that 
+the former is the case, that is, $r'\vDash\lbc b=f\rbc$. Then, because $x=y$ is $\Sigma_0$, it follows by Proposition 4.1 tha t
+$r'\vDash_\textfrak{J}\lbc b=f\rbc$, hence $r'\vDash_\textfrak{J}\lbc b\approx f\rbc$, and thus, by substitutivity,
+$r'\vDash_\textfrak{J}\lbc a\approx f\rbc$, which implies 
+$r'\vDash_\textfrak{J}\lbc a\approx f\vee a\approx g\rbc$, that is, $r'\vDash_\textfrak{J}\lbc a\in\{f,g\}\rbc$. But this contradicts 
+$q\vDash\lbc\oldneg(a\in\{f,g\})$. 
+
+Case 2) $p\nvDash_\textfrak{J}\lbc(a\in\{f,g\}\supset a\in h)$. Then it follows that, for some $q$ with $p\mathcal{R}q$,
+$q_\textfrak{J}\vDash\lbc a\in\{f,g\}\rbc$ and $q\vDash_\textfrak{J}\lbc\oldneg(a\in h)\rbc$. 
+Because $q\vDash_\textfrak{J}\lbc a\in\{f,g\}\rbc$, there is some 
+$r$ with $q\mathcal{R}r$ such that at least one of $r\vDash_\textfrak{J}\lbc a\approx f\rbc$ and 
+$r\vDash_\textfrak{J}\lbc a\approx g\rbc$ holds. Suppose, without 
+loss of generality, that it is the former that holds, that is, $r\vDash_\textfrak{J}\lbc a\approx f\rbc$. Becuase 
+$\lbc f\in h\rbc$ is valid in $\mathcal{M}_\textfrak{J}$, it follows that 
+$r\vDash_\textfrak{J}\lbc a\in h\rbc$. But this contradicts $q\vDash_\textfrak{J}\lbc\oldneg(a\in h)\rbc$. 
 
 \end{proof}
 
