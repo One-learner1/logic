@@ -76,8 +76,10 @@ That is, $\phi\psi(f)=\{\langle\phi\psi(p),\phi\psi(g)\rangle|\langle p,g\rangle
 $f\in\mathcal{D}^\mathcal{G}$ (this just follows by the definition of $\phi$, $\psi$, and function composition).
 The fact that $\phi\psi$ is still 1-1 and has a domain and range of $\mathcal{G}\cup\mathcal{D}^\mathcal{G}$ is also easily seen.
 
-I did not fully understand the paragraph titled \textquote{\textbf{Notation}} on pg. 269. In particular, it was not fully clear to me why 
-the recursion taking place in that paragraph was possible.
+Note that the thing being spoken about in the section titled \textquote{\textbf{Notation}} 
+does not involve recursion (this is a note to self; after I 
+read it at first, I mistakenly believed that recursion was involved). $\theta_1 h\theta_2$ does not depend upon the notation introduced in this 
+section - it is in fact an automorphism, because $h$ is just an automorphism in $H$; $h$ is not itself a group of automorphisms.
 
 \subsection*{Exercise 2.1}
 We prove Proposition 2.3. First, we show tha
@@ -621,12 +623,12 @@ The argument is by induction on the complexity of $X$. The atomic case easily fo
 extensionality is valid in $\mathcal{M}_\textfrak{J}$.
 Classically, every formula is equivalent to one with only $\oldneg,\wedge$ and $\forall$ as quantifiers, and by Corollary 4.8 of Chapter 16, if 
 $A$ and $B$ are classically equivalent, then $\lbc A\rbc$ and $\lbc B\rbc$ are $S4$ equivalent. Consequently we need only consider 
-the $\oldneg,\wedge$ and $\forall$ cases in the induction. And two of these cases are simply since 
-$\lbc A\wedge B\rbc (\lbc A\rbc\wedge\lbc B\rbc)$ is $S4$ valid, and ismilarly for the universal quantifier. Consequently it is only the 
+the $\oldneg,\wedge$ and $\forall$ cases in the induction. And two of these cases are simple since 
+$\lbc A\wedge B\rbc\equiv (\lbc A\rbc\wedge\lbc B\rbc)$ is $S4$ valid, and similarly for the universal quantifier. Consequently it is only the 
 negation case that we presnt in detail.
 
-Suppose we know that whenever $\lbc f\approx g\rbc$ is true at a possible world, so is $\lbc X\rbc\equiv\lbc X'\rbc$. Suppose further that
-$p\vDash\lbc f\approx g\rbc$ but $p\nvDash\lbc\oldneg X\rbc\equiv\lbc\oldneg X'\rbc$ - we derive a contradiction. Say 
+Suppose we know that whenever $\lbc f=g\rbc$ is true at a possible world, so is $\lbc X\rbc\equiv\lbc X'\rbc$. Suppose further that
+$p\vDash\lbc f=g\rbc$ but $p\nvDash\lbc\oldneg X\rbc\equiv\lbc\oldneg X'\rbc$ - we derive a contradiction. Say 
 $p\nvDash\lbc\oldneg X\rbc\supset\lbc \oldneg X'\rbc$ - the other direction is similar. Thus $p\vDash\lbc\oldneg X\rbc$ but 
 $p\nvDash\lbc\oldneg X'\rbc$. Since $p\nvDash\lbc\oldneg X'\rbc$, for some $p'$ with $p\mathcal{R}p'$, 
 $p'\vDash\lbc X'\rbc$, meaning, by the induction hypothesis, $p'\vDash\lbc X\rbc$. But we also have 
@@ -634,7 +636,7 @@ $p'\vDash\lbc\oldneg X\rbc$, and this is a contradiction.
 
 \end{proof}
 
-For Exercise 5.3, first note that $p\vDash_\textfrak{J}\lbc a=b\rbc$ iff 
+Note that $p\vDash_\textfrak{J}\lbc a=b\rbc$ iff 
 $p\vDash_\textfrak{J}\lbc a\approx b\rbc$ (we prove this; also note that the basic results about equality from Section 2 of Chapter 17 still 
 hold for $\mathcal{M}_\textfrak{J}$, as the proofs do not rely upon $\mathcal{M}$ being a $S4$-regular model, only an $S4$ model).
 
@@ -659,24 +661,23 @@ $p'''\vDash_\textfrak{J}\lbc f\approx g\rbc$. But this contradicts $p''\vDash_\t
 Case 2) $p\vDash_\textfrak{J}\lbc a\approx b\rbc$ and $p\nvDash_\textfrak{J}\lbc a=b\rbc$. We prove this by induction on the 
 $R^\mathcal{G}_\alpha$ for which $a,b\in R^\mathcal{G}_\alpha$. The least ordinal and limit ordinal cases are obvious.
 
-Now suppose the result holds for all members of $R^\mathcal{G}_\alpha\cap\mathcal{D}^\mathcal{G}_\textfrak{J}$ for some $\alpha$. Consider any 
+For the successor ordinal case, suppose the result holds for all members of 
+$R^\mathcal{G}_\alpha\cap\mathcal{D}^\mathcal{G}_\textfrak{J}$ for some $\alpha$. Consider any 
 $a,b\in\mathcal{R}^\mathcal{G}_{\alpha+1}\cap\mathcal{D}^\mathcal{G}_\textfrak{J}$. Suppose 
 $p\vDash_\textfrak{J}\lbc a\approx b\rbc$ and $p\nvDash_\textfrak{J}\lbc a=b\rbc$. Then either
 $p\nvDash_\textfrak{J}\lbc(\forall x)(x\in a\supset x\in b)\rbc$ or $p\nvDash_\textfrak{J}\lbc(\forall x)(x\in b\supset x\in a)\rbc$. Without loss of 
 generality, suppose it is the former that holds, that is, $p\nvDash_\textfrak{J}\lbc(\forall x)(x\in a\supset x\in b)\rbc$. Then, for some 
 $p'$ with $p\mathcal{R}p'$ and some $f$, $p'\vDash_\textfrak{J}\lbc f\epsilon a\rbc$,
-$p'\vDash_\textfrak{J}\lbc f\in a\rbc$ and $p'\vDash_\textfrak{J}\lbc\oldneg(f\in b)\rbc$. Then
-$p''\vDash_\textfrak{J}\lbc g\approx f\rbc$ and $p''\vDash_\textfrak{J}\lbc g\epsilon a\rbc$ for some $g$ and some $p''$ with 
-$p'\mathcal{R}p''$. Because $p\vDash_\textfrak{J}\lbc a\approx b\rbc$, it follows that 
-$p'''\vDash\lbc h\epsilon b\rbc$ and $p'''\vDash\lbc h\approx g\rbc$ for some $h$ and some $p'''$ with 
-$p''\mathcal{R}p'''$. By transitivity, this means $p'''\vDash_\lbc h\approx f\rbc$. 
-Both $f$ and $h$ are in $R^\mathcal{G}_\alpha$, so, by the induction assumption,
-$p'''\vDash_\textfrak{J}\lbc f=h\rbc$. By the translate of the axiom of extensionality, it follows that 
+$p'\vDash_\textfrak{J}\lbc f\in a\rbc$ and $p'\vDash_\textfrak{J}\lbc\oldneg(f\in b)\rbc$.
+Because $p\vDash_\textfrak{J}\lbc a\approx b\rbc$, it follows that 
+$p'''\vDash\lbc g\epsilon b\rbc$ and $p'''\vDash\lbc g\approx f\rbc$ for some $h$ and some $p'''$. 
+Both $f$ and $g$ are in $R^\mathcal{G}_\alpha$, so, by the induction assumption,
+$p'''\vDash_\textfrak{J}\lbc f=g\rbc$. By the translate of the axiom of extensionality, it follows that 
 $p'''\vDash_\textfrak{J}\lbc f\in b\rbc$, which contradicts $p'\vDash_\textfrak{J}\lbc\oldneg(f\in b)\rbc$.
 
 \end{proof}
 
-With this out of the way, Exercise 5.3 is nearly immediate.
+Exercise 5.3 is nearly immediate.
 For, if $a,b\in\mathcal{D}^\mathcal{G}_\textfrak{J}$ and $p\in\mathcal{G}$,
 $p\vDash\lbc a\approx b\rbc$ iff $p\vDash\lbc a=b\rbc$ iff
 $p\vDash_\textfrak{J}\lbc a=b\rbc$ (by Proposition 4.1).
@@ -730,7 +731,9 @@ $\theta^{-1}(q)\vDash_\textfrak{J}\lbc(\forall x)(x\in f\supset(\exists !y)\phi(
 $q\vDash\lbc b\epsilon f\rbc$, we have $\theta^{-1}(q)\vDash\lbc\theta^{-1}(b)\in f\rbc$. Then it follows that, for some 
 $\theta^{-1}(q')$ with $\theta^{-1}(q)\mathcal{R}\theta^{-1}(q')$, 
 $\theta^{-1}(q')\vDash\lbc\theta^{-1}(c)\epsilon f\rbc$ for some $\theta^{-1}(c)\in\mathcal{D}^\mathcal{G}_\textfrak{J}$, where 
-$\theta^{-1}(q')\vDash\lbc\theta^{-1}(b)\approx\theta^{-1}(c)\rbc$. Hence, by definition of $F$,
+$\theta^{-1}(q')\vDash\lbc\theta^{-1}(b)\approx\theta^{-1}(c)\rbc$ (this uses the fact that 
+$\theta^{-1}:\mathcal{G}\xrightarrow[onto]{\text{1-1}}\mathcal{G}$ and
+$\theta^{-1}:\mathcal{D}^\mathcal{G}\xrightarrow[onto]{\text{1-1}}\mathcal{D}^\mathcal{G}$). Hence, by definition of $F$,
 $\langle\theta^{-1}(q'),\theta^{-1}(c)\rangle\in F$. So for some $\langle r,d\rangle\in g$, 
 $\psi(\langle\theta^{-1}(q'),\theta^{-1}(c)\rangle,\langle r,d\rangle)$, so $\theta^{-1}(q')\mathcal{R}r$ and 
 $r\vDash_\textfrak{J}\lbc\phi(\theta^{-1}(c),d)\rbc$. Because $\langle r,d\rangle\in g$, 
@@ -739,16 +742,19 @@ $r\vDash_\textfrak{J}\lbc d\in g^*\rbc$. Using Theorem 3.5, we have
 $\theta(r)\vDash_\textfrak{J}\lbc\phi(c,\theta(d))\rbc$ and $\theta(r)\vDash_\textfrak{J}\lbc\theta(d)\in\theta(g^*)\rbc$. Also,
 because $\theta^{-1}(q)\mathcal{R}\theta^{-1}(q')$, $q\mathcal{R}q'$. Then, because $\theta^{-1}(q')\mathcal{R}r$, 
 $q'\mathcal{R}\theta(r)$, hence also $q\mathcal{R}\theta(r)$. Because $q'\vDash\lbc c\in f\rbc$, this means
-$\theta(r)\vDash\lbc c\in f\rbc$, hence also $\theta(r)_\textfrak{J}\lbc c\in f\rbc$. Also 
+$\theta(r)\vDash\lbc c\in f\rbc$, hence also $\theta(r)\vDash_\textfrak{J}\lbc c\in f\rbc$. Also 
 $\theta(r)\vDash_\textfrak{J}\lbc(\forall x)[x\in f\supset(\exists !y)\phi(x,y)]\rbc$. Hence 
 $\theta(r)\vDash_\textfrak{J}\lbc(\exists !y)\phi(c,y)\rbc$. Because 
 $p\vDash_\textfrak{J}\lbc\phi(b,a)\rbc$, we also have 
-$\theta(r)\vDash_\textfrak{J}\lbc\phi(b,a)\rbc$. Because $\theta^{-1}(q')\vDash\lbc\theta^{-1}(b)\approx\theta^{-1}(c)\rbc$, 
-$\theta^{-1}(q')\vDash\lbc\theta^{-1}(b)=\theta^{-1}(c)\rbc$. Because $\theta^{-1}(q')\mathcal{R}r$,
+$\theta(r)\vDash_\textfrak{J}\lbc\phi(b,a)\rbc$ (because $p\mathcal{R}\theta(r)$). 
+Because $\theta^{-1}(q')\vDash\lbc\theta^{-1}(b)\approx\theta^{-1}(c)\rbc$, 
+$\theta^{-1}(q')\vDash\lbc\theta^{-1}(b)=\theta^{-1}(c)\rbc$. Then, because $\theta^{-1}(q')\mathcal{R}r$,
 $\theta(r)\vDash\lbc b=c\rbc$, meaning $\theta(r)\vDash_\textfrak{J}\lbc b=c\rbc$ (by Proposition 4.1 and the fact that 
 $x=y$ is a $\Delta_0$ formula). So, by substitutivity,
 $\theta(r)\vDash_\textfrak{J}\lbc\phi(c,a)\rbc$, meaning
-$\theta(r)\vDash_\textfrak{J}\lbc a=\theta(d)\rbc$. We know that 
+$\theta(r)\vDash_\textfrak{J}\lbc a=\theta(d)\rbc$ (because all three of
+$\theta(r)\vDash_\textfrak{J}\lbc\phi(c,a)\rbc$, $\theta(r)\vDash_\textfrak{J}\lbc\phi(c,\theta(d))\rbc$ and 
+$\theta(r)\vDash_\textfrak{J}\lbc(\exists !y)\phi(c,y)\rbc$ all hold). We know that 
 $\theta(r)\vDash_\textfrak{J}\lbc\theta(d)\in\theta(g^*)\rbc$, so also
 $\theta(r)\vDash_\textfrak{J}\lbc a\in\theta(g^*)\rbc$, meaning
 $\theta(r)\vDash\lbc a\in\theta(g^*)\rbc$, which contradicts 
