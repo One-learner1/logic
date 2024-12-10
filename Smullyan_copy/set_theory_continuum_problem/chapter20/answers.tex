@@ -786,8 +786,8 @@ $q\vDash_\textfrak{J}\lbc \phi(d,b)\rbc$, meaning
 $q\vDash_\textfrak{J}\lbc(\exists y)(y\in g^*\wedge\phi(d,y))\rbc$. But this contradicts
 $q\vDash_\textfrak{J}\lbc\oldneg(\exists y)(y\in g^*\wedge\phi(d,y))\rbc$.
 
-\section*{Translates of the Unorderd Pair and Union Axioms}
-In this section we provide proofs that the translates of the unorderd pair and union axioms are 
+\section*{Translates of the Unorderd Pairs and Union Axioms}
+In this section we provide proofs that the translates of the unorderd pairs and union axioms are 
 valid in $\mathcal{M}$. Consider $\mathcal{M}_\textfrak{J}$ for any automorphism sequence \textfrak{J} of 
 $\langle\mathcal{G},\mathcal{R}\rangle$. First we handle the case for the union axiom.
 
@@ -871,7 +871,7 @@ is a contradiction.
 
 \end{proof}
 
-Next we show that the translate of the unordered pair axiom is valid over $\mathcal{M}_\textfrak{J}$.
+Next we show that the translate of the unordered pairs axiom is valid over $\mathcal{M}_\textfrak{J}$.
 
 \begin{theorem}
 For any $f,g\in\mathcal{D}^\mathcal{G}_\textfrak{J}$ there is some $h\in\mathcal{D}^\mathcal{G}_\textfrak{J}$ such that
@@ -888,12 +888,12 @@ a\in\mathcal{D}^\mathcal{G}_\textfrak{J}\textrm{ and }p\vDash\lbc a\in\cup\{f,g\
 It follows that $h\in\mathcal{R}^\mathcal{G}_{\alpha+1}$, that is, $h\in\mathcal{D}^\mathcal{G}$. Also, it can easily be seen that 
 if $p\vDash a\epsilon h$, then $p\vDash\lbc a\epsilon h\rbc$ as well. Note that both $\lbc f\in h\rbc$ and 
 $\lbc g\in h\rbc$ are valid in $\mathcal{M}$ (and $\mathcal{M}_\textfrak{J}$) by the reflexitivity of the $\approx$ relation.
-We first vierfy that $h\in\mathcal{D}^\mathcal{G}_\textfrak{J}$.
+We first verify that $h\in\mathcal{D}^\mathcal{G}_\textfrak{J}$.
 To show this, we must show that (1) $h$ is \textfrak{G}-invariant for some \textfrak{G} in the sequence \textfrak{J}; and (2) for each
 $\langle p,a\rangle\in h$, $a$ is \textfrak{J}-invariant. (2) follows by definition of $h$, so it is (1) that we must show.
 
 Because $f,g\in\mathcal{D}^\mathcal{G}_\textfrak{J}$, $f$ is \textfrak{G}-invariant for some \textfrak{G} in the sequence \textfrak{J},
-and $g$ is $\textfrak{G}'$ for some $\textfrak{G}'$ in the sequence \textfrak{J}. Suppose, without loss of generality, that 
+and $g$ is $\textfrak{G}'$-invariant for some $\textfrak{G}'$ in the sequence \textfrak{J}. Suppose, without loss of generality, that 
 \textfrak{G} is the latter of the two groups in the sequence \textfrak{J}, so that both 
 $f$ and $g$ are \textfrak{G}-invariant. We show that $h$ is \textfrak{G}-invariant. As in the previous proof (for the 
 translate of the union axiom), it suffices to show that $\lbc h\subseteq\theta(h)\rbc$ is valid in $\mathcal{M}$ for 
@@ -901,8 +901,8 @@ every $\theta\in\textfrak{G}$.
 
 To show this, suppose, on the contrary, that $p\nvDash\lbc h\subseteq\theta(h)\rbc$ for some $p$ and for some 
 $\theta\in\textfrak{G}$ - we derive a contradiction. Because $p\nvDash\lbc h\subseteq\theta(h)\rbc$, it follows that, for 
-some $p'$ with $p\mathcal{R}p'$ and some $a\in\mathcal{D}^\mathcal{G}$, $p'\vDash\lbc a\epsilon h\rbc$, 
-$p'\vDash a\epsilon h$ and $p'\vDash\lbc\oldneg(a\in\theta(h))\rbc$ all hold. Because 
+some $p'$ with $p\mathcal{R}p'$ and some $a\in\mathcal{D}^\mathcal{G}_\textfrak{J}$, 
+$p'\vDash a\epsilon h$ and $p'\vDash\lbc\oldneg(a\in\theta(h))\rbc$ both hold. Because 
 $p'\vDash a\epsilon h$, $p'\vDash\lbc a\in\cup\{f,g\}\rbc$ follows by the definition of $g$. Because 
 both $f$ and $g$ are \textfrak{G}-invariant, and $\theta^{-1}\in\textfrak{G}$,
 $\theta^{-1}(p')\vDash\lbc\theta^{-1}(a)\in\cup\{f,g\}\rbc$. Then, for some $\theta^{-1}(q)$ with $\theta^{-1}(p')\mathcal{R}\theta^{-1}(q)$, 
@@ -917,24 +917,24 @@ contradicts $q\vDash\lbc a\in\theta(h)\rbc$.
 Now that we know that $h$ is \textfrak{G}-invariant (that is, $h\in\mathcal{D}^\mathcal{G}_\textfrak{J}$), we need to show that 
 $\lbc(\forall x)(x\in h\equiv x\in\{f,g\})\rbc$ is valid over $\mathcal{M}_\textfrak{J}$. Suppose, on the contrary, that 
 $p\nvDash_\textfrak{J}\lbc(\forall x)(x\in h\equiv x\in\{f,g\})\rbc$ held for some $p$ - we derive a contradiction. It follows that 
-$p\nvDash\lbc(a\in h\equiv a\in\{f,g\})\rbc$ for some $a\in\mathcal{D}^\mathcal{G}_\textfrak{J}$. There are two cases.
+$p\nvDash_\textfrak{J}\lbc(a\in h\equiv a\in\{f,g\})\rbc$ for some $a\in\mathcal{D}^\mathcal{G}_\textfrak{J}$. There are two cases.
 
 Case 1) $p\nvDash_\textfrak{J}\lbc(a\in h\supset a\in\{f,g\})\rbc$. Then it follows that, for some $q$ with $p\mathcal{R}q$,
 $q\vDash_\textfrak{J}\lbc a\in h\rbc$ and $q\vDash_\textfrak{J}\lbc\oldneg(a\in\{f,g\})\rbc$.
 Because $q\vDash_\textfrak{J}\lbc a\in h\rbc$, it follows that 
 for some $r$ with $q\mathcal{R}r$ and some $b\in\mathcal{D}^\mathcal{G}_\textfrak{J}$,
-$r\vDash_\textfrak{J}\lbc a\approx b\rbc$, $r\vDash_\textfrak{J}\lbc b\epsilon h\rbc$ and 
-$r\vDash_\textfrak{J} b\epsilon h$ all hold. By the definition of $h$, it follows that
+$r\vDash_\textfrak{J}\lbc a\approx b\rbc$ and 
+$r\vDash_\textfrak{J} b\epsilon h$ both hold. By the definition of $h$, it follows that
 $r\vDash\lbc b\approx f\vee b\approx g\rbc$, hence $r\vDash\lbc b=f\vee b=g\rbc$. Then, for some 
 $r'$ with $r\mathcal{R}r'$, at least one of $r'\vDash\lbc b=f\rbc$ and $r'\vDash\lbc b=g\rbc$ hold. Suppose, without loss of generality, that 
-the former is the case, that is, $r'\vDash\lbc b=f\rbc$. Then, because $x=y$ is $\Sigma_0$, it follows by Proposition 4.1 tha t
+the former is the case, that is, $r'\vDash\lbc b=f\rbc$. Then, because $x=y$ is $\Sigma_0$, it follows by Proposition 4.1 that
 $r'\vDash_\textfrak{J}\lbc b=f\rbc$, hence $r'\vDash_\textfrak{J}\lbc b\approx f\rbc$, and thus, by substitutivity,
 $r'\vDash_\textfrak{J}\lbc a\approx f\rbc$, which implies 
 $r'\vDash_\textfrak{J}\lbc a\approx f\vee a\approx g\rbc$, that is, $r'\vDash_\textfrak{J}\lbc a\in\{f,g\}\rbc$. But this contradicts 
-$q\vDash\lbc\oldneg(a\in\{f,g\})$. 
+$q\vDash\lbc\oldneg(a\in\{f,g\})\rbc$. 
 
 Case 2) $p\nvDash_\textfrak{J}\lbc(a\in\{f,g\}\supset a\in h)$. Then it follows that, for some $q$ with $p\mathcal{R}q$,
-$q_\textfrak{J}\vDash\lbc a\in\{f,g\}\rbc$ and $q\vDash_\textfrak{J}\lbc\oldneg(a\in h)\rbc$. 
+$q\vDash_\textfrak{J}\lbc a\in\{f,g\}\rbc$ and $q\vDash_\textfrak{J}\lbc\oldneg(a\in h)\rbc$. 
 Because $q\vDash_\textfrak{J}\lbc a\in\{f,g\}\rbc$, there is some 
 $r$ with $q\mathcal{R}r$ such that at least one of $r\vDash_\textfrak{J}\lbc a\approx f\rbc$ and 
 $r\vDash_\textfrak{J}\lbc a\approx g\rbc$ holds. Suppose, without 
