@@ -521,6 +521,16 @@ contradiction.
 \section*{Section 5}
 Note that I encountered multiple difficulties with Propositions 5.3 and 5.4 of this section.
 
+\subsection*{Notes}
+Note that, if $f$ is \textfrak{G}-invariant and $\langle p,g\rangle\in f$, it does \textit{not} follow that
+$g$ is also \textfrak{G}-invariant. For it could be that, for some $\theta\in\textfrak{G}$, 
+$\lbc f\approx\theta(g)\rbc$ is valid in $\mathcal{M}$ only because there is no world $p$ where 
+either $p\vDash\lbc a\epsilon f\rbc$ or $p\vDash\lbc a\epsilon\theta(g)\rbc$ hold for any $a$ (meaning 
+$\lbc f\approx\theta(g)\rbc$ would trivially hold). This means that, if $f$ is \textfrak{J}-invariant 
+and \textfrak{G}-invariant for some \textfrak{G} in the sequence \textfrak{J}, it follows that 
+$g$ (for $\langle p,g\rangle\in f$) is \textfrak{J}-invariant, but it does not follow that 
+$g$ is \textfrak{G}-invariant. 
+
 \subsection*{Lemma 5.1}
 I will note two things about the proof of this lemma. First, there is an error in the last paragraph of part (1). It is claimed that, 
 because $q\vDash\lbc c\approx x'\wedge c\epsilon a\rbc$ and $\theta^{-1}\in\textfrak{G}$, Theorem 3.2 and the
@@ -637,11 +647,56 @@ $v'=\langle q'',b\rangle$ - so that $v'\ne v$. This error is simple to fix. Beca
 well founded, the axiom of collection holds in $\mathcal{M}$, so that we can have the set $g$ that we 
 want, even though $\psi$ may not be a function over $F$ (this is how it worked in the proof of Proposition 6.1 of Chapter 17).
 
-Another error in the proof of this proposition occurs in the second paragraph of pg. 278 (which I am not sure 
-how to fix). It is claimed that, because 
+Another error in the proof of this proposition occurs in the second paragraph of pg. 278.
+It is claimed that, because 
 $f$ is \textfrak{G}-invariant and $q\vDash\lbc b\epsilon f\rbc$, we have
 $\theta^{-1}(q)\vDash\lbc\theta^{-1}(b)\epsilon f\rbc$. The error that is occuring here is basically identical to the one 
-that I described in the first paragraph of the section of these notes titled \textquote{Lemma 5.1}. 
+that I described in the first paragraph of the section of these notes titled \textquote{Lemma 5.1}. Here is a corrected proof that 
+$\lbc g^*\subseteq\theta(g^*)\rbc$ is valid in $\mathcal{M}$ for every $\theta\in\textfrak{G}$.
+
+\begin{proof}
+Suppose $\lbc g^*\subseteq\theta(g^*)\rbc$ were not valid in $\mathcal{M}$, for some $\theta\in\textfrak{G}$. Then, in the usual way, 
+there would be some $q\in\mathcal{G}$ and some $a\in\mathcal{D}^\mathcal{G}$ such that
+$q\vDash\lbc a\in g^*\rbc$, $q\vDash\lbc(a\epsilon g^*)\rbc$, and $q\vDash\lbc\oldneg(a\in\theta(g^*))\rbc$. We derive a contradiction from 
+this.
+
+Since $q\vDash(a\epsilon g^*)$, $\langle p,a\rangle\in g$ for some $p\in\mathcal{G}$ with $p\mathcal{R}q$, and so for some 
+$\langle p_0,b\rangle\in F$, $\psi(\langle p_0,g\rangle,\langle p,a\rangle)$ is true. Since $\langle p_0,b\rangle\in F$, 
+$p_0\vDash_\textfrak{J}\lbc(\forall x)(x\in f\supset(\exists !y)\phi(x,y)]\rbc$ and 
+$p_0\vDash\lbc b\epsilon f\rbc$. Since $\psi(\langle p_0,b\rangle,\langle p,a\rangle)$, $p_0\mathcal{R}p$ and 
+$p\vDash_\textfrak{J}\lbc\phi(b,a)\rbc$. It follows that
+$q\vDash_\textfrak{J}\lbc(\forall x)(x\in f\supset(\exists !y)\phi(x,y)]\rbc$ and $q\vDash\lbc b\epsilon f\rbc$.
+
+By Theorem 3.5 and the fact that $f$ is \textfrak{G}-invariant, we have 
+$\theta^{-1}(q)\vDash_\textfrak{J}\lbc(\forall x)(x\in f\supset(\exists !y)\phi(x,y)]\rbc$. Also, by Theorem 3.2 and the fact that we have 
+$q\vDash\lbc b\epsilon f\rbc$, we have $\theta^{-1}(q)\vDash\lbc\theta^{-1}(b)\in f\rbc$. Then it follows that, for some 
+$\theta^{-1}(q')$ with $\theta^{-1}(q)\mathcal{R}\theta^{-1}(q')$, 
+$\theta^{-1}(q')\vDash\lbc\theta^{-1}(c)\epsilon f\rbc$ for some $\theta^{-1}(c)\in\mathcal{D}^\mathcal{G}_\textfrak{J}$, where 
+$\theta^{-1}(q')\vDash\lbc\theta^{-1}(b)\approx\theta^{-1}(c)\rbc$. Hence, by definition of $F$,
+$\langle\theta^{-1}(q'),\theta^{-1}(c)\rangle\in F$. So for some $\langle r,d\rangle\in g$, 
+$\psi(\langle\theta^{-1}(q'),\theta^{-1}(c)\rangle,\langle r,d\rangle)$, so $\theta^{-1}(q')\mathcal{R}r$ and 
+$r\vDash_\textfrak{J}\lbc\phi(\theta^{-1}(c),d)\rbc$. Because $\langle r,d\rangle\in g$, 
+$r\vDash\lbc d\epsilon g^*\rbc$, and it follows that 
+$r\vDash_\textfrak{J}\lbc d\in g^*\rbc$. Using Theorem 3.5, we have
+$\theta(r)\vDash_\textfrak{J}\lbc\phi(c,\theta(d))\rbc$ and $\theta(r)\vDash_\textfrak{J}\lbc\theta(d)\in\theta(g^*)\rbc$. Also,
+because $\theta^{-1}(q)\mathcal{R}\theta^{-1}(q')$, $q\mathcal{R}q'$. Then, because $\theta^{-1}(q')\mathcal{R}r$, 
+$q'\mathcal{R}\theta(r)$, hence also $q\mathcal{R}\theta(r)$. Because $q'\vDash\lbc c\in f\rbc$, this means
+$\theta(r)\vDash\lbc c\in f\rbc$, hence also $\theta(r)_\textfrak{J}\lbc c\in f\rbc$. Also 
+$\theta(r)\vDash_\textfrak{J}\lbc(\forall x)[x\in f\supset(\exists !y)\phi(x,y)]\rbc$. Hence 
+$\theta(r)\vDash_\textfrak{J}\lbc(\exists !y)\phi(c,y)\rbc$. Because 
+$p\vDash_\textfrak{J}\lbc\phi(b,a)\rbc$, we also have 
+$\theta(r)\vDash_\textfrak{J}\lbc\phi(b,a)\rbc$. Because $\theta^{-1}(q')\vDash\lbc\theta^{-1}(b)\approx\theta^{-1}(c)\rbc$, 
+$\theta^{-1}(q')\vDash\lbc\theta^{-1}(b)=\theta^{-1}(c)\rbc$. Because $\theta^{-1}(q')\mathcal{R}r$,
+$\theta(r)\vDash\lbc b=c\rbc$, meaning $\theta(r)\vDash_\textfrak{J}\lbc b=c\rbc$ (by Proposition 4.1 and the fact that 
+$x=y$ is a $\Delta_0$ formula). So, by substitutivity,
+$\theta(r)\vDash_\textfrak{J}\lbc\phi(c,a)\rbc$, meaning
+$\theta(r)\vDash_\textfrak{J}\lbc a=\theta(d)\rbc$. We know that 
+$\theta(r)\vDash_\textfrak{J}\lbc\theta(d)\in\theta(g^*)\rbc$, so also
+$\theta(r)\vDash_\textfrak{J}\lbc a\in\theta(g^*)\rbc$, meaning
+$\theta(r)\vDash\lbc a\in\theta(g^*)\rbc$, which contradicts 
+$q\vDash\lbc\oldneg(a\in\theta(g^*))\rbc$ (because $q\mathcal{R}\theta(r)$). This completes the proof.
+
+\end{proof}
 
 There is a typo in the second sentence of the penultimate paragraph of this proof on pg. 277. In this sentence,
 \textquote{$\theta\in\mathcal{G}$} should be replaced with \textquote{$\theta\in\textfrak{G}$}.
