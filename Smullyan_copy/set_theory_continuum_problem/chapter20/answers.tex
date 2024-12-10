@@ -700,19 +700,20 @@ Suppose, on the contrary, that $p\nvDash\lbc g\subseteq\theta(g)\rbc$ for some $
 it would follow that for some $q$ with $p\mathcal{R}q$ and some $a\in\mathcal{D}^\mathcal{G}$,
 all of $q\vDash\lbc a\epsilon g\rbc$, $q\vDash a\epsilon g$ and $q\vDash\lbc\oldneg(a\in\theta(g))\rbc$ would hold. Because 
 $q\vDash\lbc a\epsilon g\rbc$, we also have $q\vDash\lbc a\in g\rbc$. Also, because $q\vDash a\epsilon g$, we have 
-$q\vDash\lbc a\in\cup f\rbc$. Then it can easily be seen to follow that (using the fact that $f$ is 
-\textfrak{G}-invariant, and $a\in\cup f$ is an abbreviation for $(\exists y)(y\in f\wedge x\in y)$) that there is some 
-$b\in\mathcal{R}^\mathcal{G}_{\alpha+1}\cap\mathcal{D}^\mathcal{G}_\textfrak{J}$ and some $r$ with $q\mathcal{R}r$ such that
-$r\vDash\lbc b\in f\wedge a\in b\rbc$. It follows that, for some 
-$r'$ with $r\mathcal{R}r'$ and some $c\in\mathcal{R}^\mathcal{G}_\alpha\cap\mathcal{D}^\mathcal{G}_\textfrak{J}$,
-$r'\vDash\lbc a\approx c\rbc$ and $r'\vDash\lbc b\in f\wedge c\in b\rbc$. By Theorem 3.2, this means
-$\theta^{-1}(r')\vDash\lbc\theta^{-1}(a)\approx c\rbc$. Also, we have (because 
-$q\mathcal{R}r'$ and $r'\vDash\lbc a\approx c\rbc$) $r'\vDash\lbc c\in g\rbc$ and 
-$r'\vDash\lbc\oldneg(c\in\theta(g))\rbc$. By Theorem 3.2 (and the fact that $b,c$ and $f$ are all \textfrak{G}-invariant), we also have
-$\theta^{-1}(r')\vDash\lbc b\in f\wedge c\in b\rbc$, meaning, by the definition of $g$,
-$\theta^{-1}(r')\vDash\lbc c\epsilon g\rbc$, so by Theorem 3.2 again, $r'\vDash\lbc\theta(c)\in\theta(g)\rbc$. But also 
-$r'\vDash\lbc a\approx\theta(c)\rbc$ (because $\theta^{-1}(r')\vDash\lbc\theta^{-1}(a)\approx c\rbc)$, and it follows that
-$r'\vDash\lbc a\in\theta(g)\rbc$. But this is a contradiction, as $r'\vDash\lbc\oldneg(a\in\theta(g))\rbc$ also holds. 
+$q\vDash\lbc a\in\cup f\rbc$. Then, using the fact that $f$ is 
+\textfrak{G}-invariant, we have
+$\theta^{-1}(q)\vDash\lbc\theta^{-1}(a)\in\cup f\rbc$. Because $f$ is \textfrak{G}-invariant, and $a\in\cup f$ is an abbreviation for
+$(\exists y)(y\in f\wedge a\in y)$, it can then easily be seen to follow that, for
+some $b\in\mathcal{R}^\mathcal{G}_{\alpha+1}\cap\mathcal{D}^\mathcal{G}_\textfrak{J}$, some 
+$c\in\mathcal{R}^\mathcal{G}_\alpha\cap\mathcal{D}^\mathcal{G}_\textfrak{J}$ and some $\theta^{-1}(q')$ with 
+$\theta^{-1}(q)\mathcal{R}\theta^{-1}(q')$, $\theta^{-1}(q')\vDash\lbc\theta^{-1}(a)\approx c\rbc$ and
+$\theta^{-1}(q')\vDash\lbc b\in f\wedge c\in b\rbc$ both hold. By definition of $g$, this means that 
+$\theta^{-1}(q')\vDash c\epsilon g$, hence $\theta^{-1}(q')\vDash\lbc c\epsilon g\rbc$, so by Theorem 3.2, 
+$q'\vDash\lbc\theta(c)\in\theta(g)\rbc$. 
+Then, because $q'\vDash\lbc a\approx\theta(c)\rbc$
+(because $\theta^{-1}(q')\vDash\lbc\theta^{-1}(a)\approx c\rbc$), we have $q'\vDash\lbc a\in\theta(g)\rbc$. 
+Because $\theta^{-1}$ is an automorphism and $\theta^{-1}(q)\mathcal{R}\theta^{-1}(q')$, $q\mathcal{R}q'$. Hence
+$q'\vDash\lbc\oldneg(a\in\theta(g))\rbc$ also holds (because $q\vDash\lbc\oldneg(a\in\theta(g))\rbc$ and $q\mathcal{R}q'$), which is a contradiction.
 
 Now that we know that $g$ is \textfrak{G}-invariant, we show that $\lbc(\forall x)(x\in g\equiv x\in\cup f)\rbc$ is 
 valid over $\mathcal{M}_\textfrak{J}$. Suppose, on the contrary, that 
