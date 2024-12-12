@@ -18,6 +18,8 @@
 \usepackage{stmaryrd}
 \usepackage{hyperref}
 \usepackage{tikz}
+\usepackage{colortbl}
+\usepackage{xcolor}
 \usepackage{tabto}
 \newcommand*{\oldneg}{\mathord{\sim}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -941,6 +943,179 @@ $r\vDash_\textfrak{J}\lbc a\approx g\rbc$ holds. Suppose, without
 loss of generality, that it is the former that holds, that is, $r\vDash_\textfrak{J}\lbc a\approx f\rbc$. Becuase 
 $\lbc f\in h\rbc$ is valid in $\mathcal{M}_\textfrak{J}$, it follows that 
 $r\vDash_\textfrak{J}\lbc a\in h\rbc$. But this contradicts $q\vDash_\textfrak{J}\lbc\oldneg(a\in h)\rbc$. 
+
+\end{proof}
+
+\section*{Section 6}
+
+\subsection*{Cantor's Reverse Diagonal Arrangement}
+Here is a note on the three properties listed on pg. 279, in particular, showing that these properties 
+do indeed apply to the reverse diagonal arrangement. (2) and (3) are obvious, so I will only give details 
+for (1). This consists in showing that, for every $m\in\omega$, 
+$m\in I_n$ for some $n$ and that, if $m\in I_{n_1}$ then $m\notin I_{n_2}$ for any $n_2\ne n_1$.
+
+The first of these two things (that for every $m\in\omega$, $m\in I_n$ for some $n$) is simple. In fact this can 
+be proven by induction on $m$. The base case, for $m=0$, is obvious ($0\in I_0$ for $k=0$). Suppose the result holds for 
+some $m$. That is, for some $n$ and some $k$,
+\[ \dfrac{(n+k)(n+k+1)}{2}+k=m \]
+There are two cases: either $n=0$ or $n>0$.
+
+Case 1) $n=0$. In this case $m+1$ is the first element of $I_{k+1}$ (conceptually, in order to find $m+1$, we follow the diagonal that 
+$m$ is on all the way to the left, and then go one row below that position). To see this, note that, because $n=0$,
+\[ \dfrac{k^2+k}{2}+k=m \] by definition. Then the first element of $I_{k+1}$ is (by definition)
+\begin{center}
+\begin{tabular}{ll}
+    & $\dfrac{(k+1)(k+2)}{2}$ \\
+$=$ & $\dfrac{(k^2+3k+2)}{2}$ \\
+$=$ & $\dfrac{k^2+k}{2}+k+1$ \\
+$=$ & $m+1$
+\end{tabular}
+\end{center}
+
+Case 2) $n>0$. In this case $m+1$ is just obtained by moving along the diagonal $m$ is on one place up to the right. That is, 
+$m+1$ is the $k+2$th element of $I_{n-1}$. This is because the $k+2$th element of $I_{n-1}$ is
+\begin{center}
+\begin{tabular}{ll}
+    & $\dfrac{(n-1+k+1)(n-1+k+2)}{2}+k+1$ \\
+$=$ & $\dfrac{(n+k)(n+k+1)}{2}+k+1$ \\
+$=$ & $m+1$
+\end{tabular}
+\end{center}
+
+The second thing to show is that, if $m\in I_{n_1}$ then $m\notin I_{n_2}$ for any $n_2\ne n_1$. To show this, it will be convenient
+to introduce the following notation: Let $(n_i,k_j)$ stand for the element of $I_i$ obtained when $k=k_j$ (i.e., 
+$(0,0)=0$, $(2,1)=7$, $(3,2)=17$, etc.,). Now, suppose that 
+$m\in I_i$ and $m\in I_j$ for $i\ne j$ - we derive a contradiction. Then $m=(n_i,k')$ and $m=(n_j,k_2)$ for some $k_1$ and $k'$. Suppose, without loss of 
+generality, that $n_j>n_i$. Consider the following diagram:
+\begin{center}
+\resizebox{0.99\textwidth}{!}{
+\begin{tabular}{l|l|l|l|l|l|l|l|l|l|l}
+$I_0$ & $0$ & $2$ & $5$ & $...$ & $(n_0,k_2)$ & $(n_0,k_2+1)$ & $...$ & $(n_0,k_1-1)$ & $(n_0,k_1)$ & $...$ \\
+$I_1$ & $1$ & $4$ & $8$ & $...$ & $(n_1,k_2)$ & $(n_1,k_2+1)$ & $...$ & $(n_0,k_1-1)$ & $(n_0,k_1)$ & $...$ \\
+$I_2$ & $3$ & $7$ & $12$ & $...$ & $(n_2,k_2)$ & $(n_1,k_2+1)$ & $...$ & $(n_0,k_1-1)$ & $(n_0,k_1)$ & $...$ \\
+$...$ \\
+$I_i$ & $(n_i,0)$ & $(n_i,1)$ & $(n_i,2)$ & $...$ & $(n_i,k_2)$ & $(n_i,k_2+1)$ & $...$ & $q':(n_i,k_2+(n_j-n_i-1))$ & \cellcolor{red}$q:(n_i,k_1)=m+n_j-n_i$ & $...$ \\
+$I_{i+1}$ & $(n_{i+1},0)$ & $(n_{i+1},1)$ & $(n_{i+1},2)$ & $...$ & $(n_{i+1},k_2)$ & $(n_{i+1},k_2+1)$ & $...$ & \cellcolor{red}$m+n_j-n_i-1$ & $(n_{i+1},k_2+n_j-n_i)$ & $...$ \\
+$...$ \\
+$I_{j-1}$ & $(n_{j-1},0)$ & $(n_{j-1},1)$ & $(n_{j-1},2)$ & $...$ & $(n_{j-1},k_2)$ & \cellcolor{red}$m+1$ & $...$ & $(n_{j-1},k_2+(n_j-n_i-1))$ & $(n_{j-1},k_2+n_j-n_i)$ & $...$ \\
+$I_j$ & $(n_j,0)$ & $(n_j,1)$ & $(n_j,2)$ & $...$ & \cellcolor{red}$m:(n_j,k_2)$ & $(n_j,k_2+1)$ & $...$ & $(n_j,k_2+(n_j-n_i-1))$ & $(n_j,k_2+n_j-n_i)$ & $...$ \\
+$...$
+\end{tabular}
+}
+\end{center}
+What this diagram is doing is following $(n_j,k_2)$ up along the rightward diagonal until it reaches the point $q:(n_i,k_1)$ on the row 
+$I_i$. Recall that, when traveling rightward up such a diagonal, going one space up to the right on 
+the diagonal increases the value by one. Formally, for all $v$ and $w$ (with $v>0$), $(n_v,k_w)+1=(n_{v-1},k_{w+1})$ (we showed this in the 
+paragraph starting with \textquote{Case 2} of this proof). What this means is that $q=m+n_j-n_i$ (because getting to $q$ from 
+$m$ consisted of going up along the diagonal $n_j-n_i$ times). Of course, this means that $q>m$. If we can show that all points 
+to the left of $q$ are less than $m$, and all points to the right of $q$ are greater than $m$, it immediately follows that no point on 
+row $I_i$ could be equal to $m$ (but by assumption, there was such a point, so this would be a contradiction). 
+The second part of this, that all points to the right of $q$ are greater than $m$, follows because 
+$q>m$ and the function used to compute the values of $I_i$ is strictly increasing. To show that all points to the left of 
+$q$ are less than $m$, it suffices to show that the point directly to the left of $q$ is less than $m$, again because 
+the function used to compute the values of $I_i$ is strictly increasing. Of course, this assumes that there is indeed a point 
+directly to the left of $q$ - if there wasn't, it would vacuously follow that all points to the left of $q$ are less than $m$. So 
+suppose that there is a point $q'$ directly to the left of $q$ (this point is shown in the diagram). We show that it must be less than $m$. Suppose, for the sake of 
+contradiction, that $q'\ge m$.
+There are two cases: $k_2\ne 0$ or $k_2=0$.
+
+Case 1) $k_2\ne 0$. Consider the following diagram:
+\begin{center}
+\resizebox{0.99\textwidth}{!}{
+\begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l|l}
+$I_0$ & $0$ & $2$ & $5$ & $...$ & $(n_0,k_2-1)$ & $(n_0,k_2)$ & $(n_0,k_2+1)$ & $...$ & $(n_0,k_1-2)$ & $(n_0,k_1-1)$ & $(n_0,k_1)$ & $...$ \\
+$I_1$ & $1$ & $4$ & $8$ & $...$ & $(n_1,k_2-1)$ & $(n_1,k_2)$ & $(n_1,k_2+1)$ & $...$ & $(n_1,k_1-2)$ & $(n_1,k_1-1)$ & $(n_1,k_1)$ & $...$ \\
+$I_2$ & $3$ & $7$ & $12$ & $...$ & $(n_2,k_2-1)$ & $(n_2,k_2)$ & $(n_2,k_2+1)$ & $...$ & $(n_2,k_1-2)$ & $(n_2,k_1-1)$ & $(n_2,k_1)$ & $...$ \\
+$...$ \\
+$I_i$ & $(n_i,0)$ & $(n_i,1)$ & $(n_i,2)$ & $...$ & $(n_i,k_2-1)$ & $(n_i,k_2)$ & $(n_i,k_2+1)$ & $...$ & $(n_i,k_2+(n_j-n_i-2))$ & \cellcolor{orange}$q':(n_i,k_2+(n_j-n_i-1))$ & $q:(n_i,k_1)=m+n_j-n_i$ & $...$ \\
+$I_{i+1}$ & $(n_{i+1},0)$ & $(n_{i+1},1)$ & $(n_{i+1},2)$ & $...$ & $(n_{i+1},k_2-1)$ & $(n_{i+1},k_2)$ & $(n_{i+1},k_2+1)$ & $...$ & \cellcolor{orange}$q'-1$ & $m+n_j-n_i-1$ & $(n_{i+1},k_2+n_j-n_i)$ & $...$ \\
+$...$ \\
+$I_{j-1}$ & $(n_{j-1},0)$ & $(n_{j-1},1)$ & $(n_{j-1},2)$ & $...$ & $(n_{j-1},k_2-1)$ & \cellcolor{orange}$(n_{j-1},k_2):q'-(n_j-n_i-1)$ & $m+1$ & $...$ & $(n_{j-1},k_2+(n_j-n_i-2))$ & $(n_{j-1},k_2+(n_j-n_i-1))$ & $(n_{j-1},k_2+n_j-n_i)$ & $...$ \\
+$I_j$ & $(n_j,0)$ & $(n_j,1)$ & $(n_j,2)$ & $...$ & \cellcolor{orange}$(n_j,k_2-1):q'-(n_j-n_i)$ & $m:(n_j,k_2)$ & $(n_j,k_2+1)$ & $...$ & $(n_j,k_2+(n_j-n_i-2))$ & $(n_j,k_2+(n_j-n_i-1))$ & $(n_j,k_2+n_j-n_i)$ & $...$ \\
+$...$
+\end{tabular}
+}
+\end{center}
+From it, we can see that $(n_j,k_2-1)+n_j-n_i=q'$. Hence, because it was assumed that $q'\ge m$, 
+$(n_j,k_2-1)+n_j-n_i\ge m$. Also, recall that we assumed that $(n_j,k_2)=m$. Hence we have
+\begin{center}
+\begin{tabular}{l}
+$(n_j,k_2-1)+n_j-n_i\ge (n_j,k_2)$ \\
+$\dfrac{(n_j+k_2)(n_j+k_2-1)}{2}+k_2-1+n_j-n_i\ge\dfrac{(n_j+k_2+1)(n_j+k_2)}{2}+k_2$ \\
+$\dfrac{n_j^2+k_2^2+2n_jk_2-k_2-n_j}{2}+n_j-n_i-1\ge\dfrac{n_j^2+k_2^2+2n_jk_2+k_2+n_j}{2}$ \\
+$\dfrac{-k_2-n_j}{2}+n_j-n_i-1\ge\dfrac{k_2+n_j}{2}$ \\
+$n_j-n_i-1\ge k_2+n_j$ \\
+$-n_i-1\ge k_2$
+\end{tabular}
+\end{center}
+which is impossible, as both $n_i$ and $k_2$ are positive. Hence we have a contradiction in this case.
+
+Case 2) $k_2=0$. Consider the following diagram:
+\begin{center}
+\resizebox{0.99\textwidth}{!}{
+\begin{tabular}{l|l|l|l|l|l|l|l|l}
+$I_0$ & $0$ & $2$ & $5$ & $...$ & $(n_0,n_j-n_i-1)$ & $(n_0,n_j-n_i-1)$ & $(n_0,n_j-n_i)$ & $...$ \\
+$I_1$ & $1$ & $4$ & $8$ & $...$ & $(n_1,n_j-n_i-2)$ & $(n_1,n_j-n_i-1)$ & $n_1,n_j-n_i)$ & $...$ \\
+$I_2$ & $3$ & $7$ & $12$ & $...$ & $(n_2,n_j-n_i-2)$ & $(n_2,n_j-n_i-1)$ & $(n_2,n_j-n_1)$ & $...$ \\
+$...$ \\
+$I_i$ & $(n_i,0)$ & $(n_i,1)$ & $(n_i,2)$ & $...$ & $(n_i,n_j-n_i-2)$ & \cellcolor{green}$q':(n_i,n_j-n_i-1)$ & $q:(n_i,k_1)=m+n_j-n_i$ &  $...$ \\
+$I_{i+1}$ & $(n_{i+1},0)$ & $(n_{i+1},1)$ & $(n_{i+1},2)$ & $...$ & \cellcolor{green}$q'-1$ & $m+n_j-n_i-1$ & $(n_{i+1},n_j-n_i)$ & $...$ \\
+$...$ \\
+$I_{j-3}$ & $(n_{j-3},0)$ & $(n_{j-3},1)$ & \cellcolor{green}$(n_{j-3},2):q'-((n_j-1-n_i)-2)$ & $...$ & $(n_{j-3},n_j-n_i-2)$ & $(n_{j-3},n_j-n_i-1)$ & $(n_{j-3},n_j-n_i)$ & $...$ \\
+$I_{j-2}$ & $(n_{j-2},0)$ & \cellcolor{green}$(n_{j-2},2):q'-((n_j-1-n_i)-1)$ & $(n_{j-2},2)$ & $...$ & $(n_{j-2},n_j-n_i-2)$ & $(n_{j-2},n_j-n_i-1)$ & $(n_{j-2},n_j-n_i)$ & $...$ \\
+$I_{j-1}$ & \cellcolor{green}$(n_{j-1},0):q'-(n_j-1-n_i)$ & $(n_{j-1},1)$ & $(n_{j-1},2)$ & $...$ & $(n_{j-1},n_j-n_i-2)$ & $(n_{j-1},n_j-n_i-1)$ & $(n_{j-1},n_j-n_i)$ & $...$ \\
+$I_j$ & $m:(n_j,0)$ & $(n_j,1)$ & $(n_j,2)$ & $...$ & $(n_j,n_j-n_i-2)$ & $(n_j,n_j-n_i-1)$ & $(n_j,n_j-n_i)$ & $...$ \\
+$...$
+\end{tabular}
+}
+\end{center}
+From it, we can see that $(n_{j-1},0)+(n_j-1)-n_i=q'$. Hence, because it was assumed that $q'\ge m$,
+$(n_{j-1},0)+(n_j-1)-n_i\ge m$. Also, recall that we assumed that $(n_j,k_2)=m$. Hence we have (because $k_2=0$)
+\begin{center}
+\begin{tabular}{l}
+$(n_{j-1},0)+(n_j-1)-n_i\ge (n_j,k_2)$ \\
+$\dfrac{(n_j-1)n_j}{2}+(n_j-1)-n_i\ge\dfrac{n_j(n_j+1)}{2}$ \\
+$\dfrac{n_j^2-n_j}{2}+(n_j-1)-n_i\ge\dfrac{n_j^2+n_j}{2}$ \\
+$n_j-n_i-1\ge n_j$ \\
+\end{tabular}
+\end{center}
+Again, this means $n_i<0$, which is impossible. Hence we also have a contradiction in this case. This completes the proof 
+that, if $m\in I_{n_1}$, then $m\notin I_{n_2}$ where $n_1\ne n_2$.
+
+The last thing to show is that, for each $x\in I_n$, $x$ really is a natural number. This amounts to showing that, 
+for all $n$ and $k$, $(n+k)(n+k+1)$ is divisible by 2. First an obvious lemma:
+
+\begin{lemma}
+For all natural numbers $n$, $n^2+n$ is even.
+\end{lemma}
+
+\begin{proof}
+By induction. The base case is obvious. Suppose the result holds for some $n$. Then 
+\begin{center}
+\begin{tabular}{ll}
+    & $(n+1)^2+n+1$ \\
+$=$ & $n^2+2n+1+n+1$ \\
+$=$ & $n^2+n+2n+2$
+\end{tabular}
+\end{center}
+which is even by the induction assumption.
+
+\end{proof}
+
+Now we prove that, for all $n$ and $k$, $(n+k)(n+k+1)$ is divisible by 2.
+
+\begin{proof}
+By induction on $k$. The base case is immediate from the above lemma.
+Suppose it holds for some $k$, that is, that $(n+k)(n+k+1)=n^2+k^2+2kn+n+k$ is even. Then
+\begin{center}
+\begin{tabular}{ll}
+    & $(n+k+1)(n+k+2)$ \\
+$=$ & $n^2+(k+1)^2+2(k+1)n+n+k+1$ \\
+$=$ & $n^2+k^2+2k+1+2kn+2n+n+k+1$ \\
+$=$ & $n^2+k^2+2kn+n+k+2k+2n+2$
+\end{tabular}
+\end{center}
+which is even by the induction assumption.
 
 \end{proof}
 
