@@ -1119,4 +1119,64 @@ which is even by the induction assumption.
 
 \end{proof}
 
+\subsection*{Notes}
+It is remarked on pg. 280 that, for each $n,k\in\omega$, if $n\ne k$ then $\lbc\oldneg(s_n\approx s_k)\rbc$ is valid in $\mathcal{M}$. Here 
+is a proof of this (which is, as noted on that page, basically the same exact proof as that of Proposition 4.1 of Chapter 19).
+
+\begin{proof}
+Suppose $n,k\in\omega$ and $n\ne k$. Suppose $\lbc\oldneg(s_n\approx s_k)\rbc$ was not valid in $\mathcal{M}$ - we derive a contradiction. 
+Because $\lbc\oldneg(s_n\approx s_k)\rbc$ is not valid in $\mathcal{M}$, it follows that
+$p\vDash\lbc(s_n\approx s_k)\rbc$ for some $p$. Say $p(n)=\langle P_n,N_n\rangle$ and 
+$p(k)=\langle P_k,N_k\rangle$. Let $m$ be a number not in $P_n\cup N_n\cup P_k\cup N_k$ (there is such a number 
+because all of $P_n,N_n,P_k$ and $N_k$ are finite). Let $p'$ be the same as $p$, except 
+$p(n)=\langle P_n\cup\{m\},N_n\rangle$. Then $p\mathcal{R}p'$. Now, $p'\vDash\hat{m}\epsilon s_n$ and, in fact, 
+$p'\vDash\lbc\hat{m}\epsilon s_n\rbc$. Hence, because $p'\vDash\lbc s_n\approx s_k\rbc$, 
+$p'\vDash\lbc\hat{m}\in s_k\rbc$. Let $q$ be like $p'$, except 
+$q(k)=\langle P_k,N_k\cup\{m\}\rangle$. Then $p'\mathcal{R}q$. Hence
+$q\vDash\lbc\hat{m}\in s_k\rbc$, meaning, for some $r$ with $q\mathcal{R}r$ and some $d$,
+$r\vDash\lbc\hat{d}\approx\hat{m}\rbc$ and $r\vDash\hat{d}\epsilon s_k$. Hence 
+$d=m$ and $\langle r,\hat{d}\rangle$, that is, $\langle r,\hat{m}\rangle$, is in $s_k$. By definition, 
+this means that, if $r(k)=\langle A_k,B_k\rangle$, $m\in A_k$. But, because $q\mathcal{R}r$ and
+$q=\langle P_k,N_k\cup\{m\}\rangle$, it also follows that $m\in B_k$, which contradicts 
+$m\in A_k$.
+\end{proof}
+
+It is remarked on pg. 280 that, for each special permutation $\theta$, $\theta$ is an automorphism of $\langle\mathcal{G},\mathcal{R}\rangle$. 
+Here is a proof of this.
+
+\begin{proof}
+Suppose $\theta$ is a special permutation. In order to show that $\theta$ is an autmorphism of $\langle\mathcal{G},\mathcal{R}\rangle$, 
+we must show that $\theta:\mathcal{G}\xrightarrow[onto]{\text{1-1}}\mathcal{G}$ and, for all $p,q\in\mathcal{G}$, 
+$\theta(p)\mathcal{R}\theta(q)$ iff $p\mathcal{R}q$.
+
+First we show that $\theta:\mathcal{G}\xrightarrow[onto]{\text{1-1}}\mathcal{G}$. This amounts to showing: (1) 
+for each $p\in\mathcal{G}$, $\theta(p)\in\mathcal{G}$; (2) 
+for each $p\in\mathcal{G}$ there is some $q\in\mathcal{G}$ such that $\theta(q)=p$; and (3) 
+$\theta$ is 1-1 over $\mathcal{G}$. As for (1), suppose that $p\in\mathcal{G}$. $\theta(p)$ 
+being in $\mathcal{G}$ follows because $\theta^{-1}$ is 1-1 and there are only a finite number of 
+$n$ for which $p(n)\ne\langle\emptyset,\emptyset\rangle$, meaning there are also only a finite number of 
+$n$ for which $\theta(p)(n)=p(\theta^{-1}(n))$ is not equal to $\langle\emptyset,\emptyset\rangle$. 
+As for (2), suppose that $p\in\mathcal{G}$. Define $q$ as follows: 
+$q(\theta^{-1}(n))=p(n)$ (this works as $\theta:\omega:\xrightarrow[onto]{\text{1-1}}\omega$).
+Then $\theta(q)(n)=q(\theta^{-1}(n))=p(n)$. As for (3), suppose that 
+$\theta(p)=\theta(q)$. We must show that $p=q$. Consider any 
+$n\in\omega$. Then there is some $m\in\omega$ for which $\theta^{-1}(m)=n$. Because 
+$\theta(p)=\theta(q)$, $\theta(p)(m)=\theta(q)(m)$. But 
+$\theta(p)(m)=p(\theta^{-1}(m))=p(n)$ and $\theta(q)(m)=q(\theta^{-1}(m))=q(n)$, meaning 
+$(p)(n)=(q)(n)$. Hence $p=q$.
+
+Next we show that, for all $p,q\in\mathcal{G}$, $\theta(p)\mathcal{R}\theta(q)$ iff $p\mathcal{R}q$. So consider 
+any $p,q\in\mathcal{G}$. On the one hand, suppose that 
+$\theta(p)\mathcal{R}\theta(q)$. Consider any $n\in\omega$, and let 
+$p(n)=\langle P_n,N_n\rangle$ and $q(n)=\langle P'_n,N'_n\rangle$. We must show 
+$P_n\subseteq P'_n$ and $N_n\subseteq N'_n$. Let $m$ be the number such that $\theta^{-1}(m)=n$.
+Then $\theta(p)(m)=p(\theta^{-1}(m))=p(n)$ and $\theta(q)(m)=q(\theta^{-1}(m))=q(n)$. From the assumption that 
+$\theta(p)\mathcal{R}\theta(q)$, this immediately implies $P_n\subseteq P'_n$ and 
+$N_n\subseteq N'_n$. On the other hand, suppose that $p\mathcal{R}q$. Consider any 
+$n\in\omega$, and let $\theta(p)(n)=\langle P_n,N_n\rangle$ and $\theta(q)(n)=\langle P'_n,N'_n\rangle$. 
+Because $\theta(p)(n)=p(\theta^{-1}(n))$ and $\theta(q)(n)=q(\theta^{-1}(n))$, it immediately follows by the assumption that 
+$p\mathcal{R}q$ that $P_n\subseteq P'_n$ and $N_n\subseteq N'_n$.
+
+\end{proof}
+
 \end{document}
