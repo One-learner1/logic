@@ -1,0 +1,122 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{exercises}
+\usepackage{indentfirst}
+\usepackage{circledsteps}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{yhmath}
+\usepackage{yfonts}
+\usepackage{comment}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{cleveref}
+\usepackage{stmaryrd}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{tabto}
+\newcommand*{\oldneg}{\mathord{\sim}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldemptyset\emptyset
+\newcommand{\lbc}{\llbracket}
+\newcommand{\rbc}{\rrbracket}
+\newcommand{\ltop}[1]{\stackrel{\leftarrow}{#1}}
+\let\biconditional\leftrightarrow
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{Chapter 21 Notes}
+\geometry{margin=0.5in}
+\date{}
+\begin{document}
+\maketitle
+
+\section*{Section 1}
+
+\subsection*{Notes}
+Here is a note explaining the last paragraph of this section. In particular, why is it that, if 
+$f\in M$ for $f$ the function that maps $\omega$ onto $M$, there would be a contradiction? This is because 
+$M$ is a standard model, so that, if $f\in M$, it would follow that $\omega\in M$, and thus by 
+the power axiom there would be an uncountable member of $M$. Then because $M$ is transitive, it would follow 
+that $M$ would be uncountable, which would be a contradiction.
+
+\section*{Section 3}
+
+\subsection*{Exercise 3.1}
+I could not prove this. In particular, if any filter could be extended to a maximal filter, consider any two distinct 
+filters $G$ and $G'$. Then they could be extended to some maximal filter $H$. It would then follow that, for any 
+$p\in G$ and $q\in G'$, $p,g\in H$, and thus $p\mathcal{R}r$ and $q\mathcal{R}r$ for some $r\in H$. This means that 
+$p$ and $q$ are comptable for all $p\in G$ and $q\in G'$, which I was not sure how to show.
+
+\subsection*{Exercise 3.2}
+Let $D$ be the set of worlds at which $X$ is true.
+
+
+On the one hand, suppose that $p\vDash\Box\Diamond X$. To show that the set of worlds at which $X$ is true is 
+dense below $p$, we must show that, for every world accessible from $p$ there is a world accessible from 
+it that is in $D$. Consider any $q$ with $p\mathcal{R}q$. Then $q\vDash\Diamond X$, hence 
+$r\vDash X$ for some $r$ with $q\mathcal{R}r$. But then $r\in D$, meaning $D$ is dense below $p$.
+
+On the other hand, suppose that the set $D$ of worlds at which $X$ is true is dense below $p$. 
+To show that $p\vDash\Box\Diamond X$, consider any $q$ with $p\mathcal{R}q$. Then, because 
+$D$ is dense below below $p$, there is some $r$ with $q\mathcal{R}r$ such that 
+$r\vDash X$. Because $q$ was arbitrary, this proves that $p\vDash\Box\Diamond X$. 
+
+\section*{Section 5}
+
+\subsection*{Exercise 5.1}
+We show that $f_G\cup g_G=(f\cup g)_G$.
+
+On the one hand, suppose that $x\in f_G\cup g_G$. Suppose $x\in f_G$ - the other case is similar.
+Then $x=h_G$ for some $h_G$ where $p\vDash\lbc h\epsilon f\rbc$ for some $p\in G$. But this means 
+$p\vDash\lbc h\epsilon (f\cup g)\rbc$, and thus, by definition, $h_G\in (f\cup g)_G$.
+
+On the other hand, suppose that $x\in (f\cup g)_G$. Then 
+$x=h_G$ for some $h_G$ where $p\vDash\lbc h\epsilon (f\cup g)\rbc$ for some $p\in G$. I was unable to show that
+$h_G\in f_G\cup g_G$. 
+
+\section*{Section 6}
+
+\subsection*{Notes}
+Here is a note why the limit ordinal case of part (1) of Proposition 6.2 works. Suppose 
+$p\vDash\lbc f\approx_\lambda g\rbc$ for some limit ordinal $\lambda$. Then it is easily seen 
+that the set $D$ of all $q$ for which $q\vDash f\approx_\lambda g$ is dense below $p$. Hence, by 
+Lemma 5.6, $q\in G$ for some $q$ where $q\vDash f\approx_\lambda g$, meaning 
+$q\vDash f\approx_\alpha g$ for some $\alpha<\lambda$, hence also $q\vDash\lbc f\approx_\alpha g\rbc$. Then, by 
+the induction assumption and the fact that $q\in G$, this implies $f_G=g_G$ is true in $M[G]$. 
+
+\section*{Section 7}
+
+\subsection*{Exercise 7.1}
+We show that $\lbc X\rbc$ is valid in the modal model $\mathcal{M}$ iff $X$ is true in 
+every generic extension $M[G]$.
+
+\begin{proof}
+One direction is obvious: If $\lbc X\rbc$ is valid in the modal model, then 
+$p\vDash\lbc X\rbc$ for every $p\in\mathcal{G}$. This means that 
+$p\vDash\lbc X\rbc$ for some $p\in G$ for every generic extension $M[G]$, meaning, 
+by Theorem 6.1, that $X$ is true in every generic extension $M[G]$.
+
+Now for the other direction: Suppose $X$ is true in $M[G]$ for every 
+generic extension $M[G]$. To show that $\lbc X\rbc$ is valid in the modal model, we 
+show that $\lbc X\rbc$ is true at every world $p$. Consider any world $p$. Suppose 
+$p\nvDash\lbc X\rbc$. Then it follows that, for some $q$ with $p\mathcal{R}q$,
+$q\vDash\lbc\oldneg X\rbc$. By Theorem 4.1, there is some $G$ that is 
+$\langle\mathcal{G},\mathcal{R}\rangle$-generic where $q\in G$. By assumption, $X$ is true 
+in $M[G]$, and thus, by Theorem 6.1, $r\vDash\lbc X\rbc$ for some $r\in G$. But then both 
+$r\vDash\lbc X\rbc$ and $q\vDash\lbc\oldneg X\rbc$, and this contradicts Proposition 4.3 
+
+\end{proof}
+
+\end{document}

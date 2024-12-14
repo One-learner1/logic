@@ -1179,4 +1179,88 @@ $p\mathcal{R}q$ that $P_n\subseteq P'_n$ and $N_n\subseteq N'_n$.
 
 \end{proof}
 
+It is remarked that each $\textfrak{G}_n$ is a group (an automorphism group). This says that (1) 
+the identity map is in $\textfrak{G}_n$; (2) for each $\theta\in\textfrak{G}_n$, $\theta^{-1}\in\textfrak{G}_n$; and 
+(3) for all $\theta_1,\theta_2\in\textfrak{G}_n$, $\theta_1\theta_2\in\textfrak{G}_n$. (1) follows by definition 
+of $\textfrak{G}_n$. (2) also obviously follows. And (3) also obviously follows, because, if 
+$\theta_1$ and $\theta_2$ are both the identity for all integers $<n$, then 
+$\theta_1\theta_2$ is also the identity for all integers $<n$ (and $\theta_1\theta_2$ is also 
+a special permutation).
+
+Here is why $\theta(s_k)=s_{\theta(k)}$ (a fact used in various places throughout this section). 
+$\theta(s_k)=\{\langle\theta(p),\theta(\hat{g})\rangle|\langle p,\hat{g}\rangle\in s_k\}$, which is 
+just $\{\langle\theta(p),\hat{g}\rangle|\langle p,\hat{g}\rangle\in s_k\}$.
+$s_{\theta_k}=\{\langle p,\hat{g}\rangle|p\in\mathcal{G},p(\theta(k))=\langle P_n,N_n\rangle\textrm{ and }g\in P_n\}$. To show that 
+$s_{\theta_k}=\theta(s_k)$, we show that both $s_{\theta_k}\subseteq\theta(s_k)$ and 
+$\theta(s_k)\subseteq s_{\theta_k}$. On the one hand, suppose that 
+$x\in s_{\theta(k)}$. Then $x$ is of the form $\langle p,\hat{g}\rangle$ where 
+$p(\theta(k))=\langle P_n,N_n\rangle$ and $g\in P_n$. To show that 
+$x\in\theta(s_k)$, we must show that it is of the form $\langle\theta(q),\hat{h}\rangle$ for some $\langle q,\hat{h}\rangle\in s_k$.
+Well, $p=\theta(q)$ for some $q$. Also, $p(\theta(k))=\langle P_n,N_n\rangle$, that is, 
+$\theta(q)(\theta(k))=\langle P_n,N_n\rangle$. But $\theta(q)(\theta(k))=q(\theta^{-1}\theta(k))=q(k)$. Thus 
+$q(k)=\langle P_n,N_n\rangle$ and $\hat{h}\in P_n$, which proves that $\langle q,\hat{h}\rangle\in s_k$. On the other hand, 
+suppose that $x\in\theta(s_k)$. Then $x$ is of the form $\langle\theta(p),\hat{k}\rangle$ where 
+$\langle p,\hat{k}\rangle\in s_k$. To show that $x\in s_{\theta(k)}$, we must show that
+$x$ is of the form $\langle q,\hat{h}\rangle$ for some $q$ where $q(\theta(k))=\langle P_n,N_n\rangle$ and 
+$g\in P_n$. Well, $\theta(p)(\theta(k))=p(\theta^{-1}\theta(k))=p(k)$, and we know that 
+$\langle p,\hat{h}\rangle\in s_k$, meaning $\theta(p)(\theta(k))=\langle P_n,N_n\rangle$ and $g\in P_n$. This completes the proof.
+
+Using the result from the above paragraph, here is a more explicit proof of Proposition 6.5. That is, we show that 
+$t_n$ is $\textfrak{G}_k$-invariant for each $k$. 
+
+\begin{proof}
+By definition, 
+$p\vDash (s_k\epsilon t_n)$ iff $k\in I_n$. Now, by the above result,
+$\theta(p)\vDash (\theta(s_k)\epsilon\theta(t_n))$ iff 
+$\theta(p)\vDash s_{\theta(k)}\epsilon\theta(t_n)$ iff $\theta(k)\in I_n$. From this we can show that 
+$t_n=\theta(t_n)$ (conceptually, this occurs because $t_n$ does not depend on any properties of $p$). For suppose 
+$x\in t_n$. Then $x=\langle p,s_k\rangle$ for some $p$ and $s_k$ where $k\in I_n$.
+Because $\theta$ maps $I_n$ 1-1 onto itself, $\theta(j)=k$ for some $j\in I_n$.
+Then $\theta\theta^{-1}(p)\vDash s_{\theta{j}}\epsilon\theta(t_n)$,
+that is, $\langle p,s_k\rangle\in\theta(t_n)$. On the other hand, suppose 
+$x\in\theta(t_n)$. Then $x=\langle\theta(p),s_{\theta(k)}\rangle$ for some $p$ and $s_{\theta(k)}$ where 
+$\theta(k)\in I_n$, which in fact implies $x\in t_n$ by the definition of $t_n$.
+
+\end{proof} 
+
+Also note that $\theta(T)=T$ as a consequence of the above result (again, $T$ does not depend upon any properties of $p$).
+
+\subsection*{Exercise 6.1}
+Note that there is a typo in the proof of Proposition 6.4. In particular, the line directly before (2) should be replaced by
+\[ (1')\quad p\vDash(\hat{k}\epsilon s_n)\biconditional p\vDash(\hat{k}\epsilon\theta(s_n)) \]
+We complete the proof of Proposition 6.4 by giving the argument for part (2). That is, we show that 
+$\lbc s_n\approx\theta(s_n)\rbc$ is valid in $\mathcal{M}$. As per usual, it suffices to show that 
+$\lbc s_n\subseteq\theta(s_n)\rbc$ is valid in $\mathcal{M}$. Suppose, to the contrary, that 
+$p\nvDash\lbc s_n\subseteq\theta(s_n)\rbc$ for some $p$ - we derive a contradiction. Because 
+$p\nvDash\lbc s_n\subseteq\theta(s_n)\rbc$ 
+$p'\vDash \hat{k}\epsilon s_n$ and $p'\vDash\lbc\oldneg(\hat{k}\in\theta(s_n))\rbc$ both hold for some 
+$\hat{k}$ and some $p'$ with $p\mathcal{R}p'$. By $(1')$, it follows that 
+$p'\vDash(\hat{k}\epsilon\theta(s_n))$, which can easily be seen to imply 
+$p'\vDash\lbc(\hat{k}\epsilon\theta(s_n))\rbc$, hence also 
+$p'\vDash\lbc(\hat{k}\in\theta(s_n))\rbc$. But this contradicts 
+$p\vDash\lbc\oldneg(\hat{k}\in\theta(s_n))\rbc$.
+
+\subsection*{Exercise 6.2}
+We prove that, for each $n$, $s_n$ is non-constructible. The proof of this basically follows that of Theorem 4.1 of 
+Chapter 18. That is, we show that in $\mathcal{M}$, the formula $\lbc\oldneg\textrm{Const}(s_n)\rbc$ is valid. 
+
+\begin{proof}
+Suppose not, say $p\nvDash\lbc\oldneg\textrm{Const}(s_n)\rbc$. Then $q\vDash\lbc\textrm{Const}(s_n)\rbc$ for some 
+$q$ with $p\mathcal{R}q$. Because $\mathcal{M}$ is an $S4-ZF$ model, we can use Theorem 3.2 of Chapter 18, which implies that, for 
+some constructible set in $M$, $q\vDash\Diamond\lbc s_n\approx\hat{c}\rbc$, meaning, for 
+some $r$ with $q\mathcal{R}r$, $r\vDash\lbc s_n\approx\hat{c}\rbc$ - we will derive a contradiction from this. Suppose 
+$r(n)=\langle P_n,N_n\rangle$. There are two cases.
+
+Case 1) $c\subseteq P_n$. Since $P_n$ and $N_n$ are finite, we can choose an integer $n$ such that 
+$n\notin P\cup N$ (so $n\notin c$ as well). Let $P'=P\cup\{n\}$ and let $r'$ be the same as $r$, except 
+$r'(n)=\langle P',N_n\rangle$. Then $r\mathcal{R}r'$, so $r'\vDash\lbc\hat{n}\in s_n\rbc$. But since 
+$n\notin c$, $r'\vDash\lbc\oldneg(\hat{n}\in\hat{c})\rbc$, which contradicts $r\vDash\lbc s_n\approx\hat{c}\rbc$.
+
+Case 2) $c\nsubseteq P_n$. Let $n$ be an integer in $c$ but not in $P_n$, let $N'=N\cup\{n\}$ and let 
+$r'$ be the same as $r$, except $r'(n)=\langle P_n,N'\rangle$. Again $r\mathcal{R}r'$. This time we have 
+$r'\vDash\lbc\oldneg(\hat{n}\in s_n)\rbc$ and $r'\vDash\lbc\hat{n}\in\hat{c}\rbc$. But this contradicts 
+$r\vDash\lbc s_n\approx\hat{c}\rbc$.
+
+\end{proof}
+
 \end{document}
